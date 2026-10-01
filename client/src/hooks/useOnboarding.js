@@ -13,6 +13,14 @@ import { api } from '../api.js';
 let state = { loading: true, status: null, error: null, session: 0 };
 const listeners = new Set();
 let inFlight = null;
+const COMPLETED_KEY = 'saos.setup.completed';
+let completedHere = false;
+try { completedHere = localStorage.getItem(COMPLETED_KEY) === 'true'; } catch {}
+
+function browserStatus(status) {
+  if (!status || status.required || completedHere) return status;
+  return { ...status, required: true, reason: 'first-run' };
+}
 
 function set(next) {
   const wasRequired = Boolean(state.status?.required);
@@ -24,7 +32,7 @@ function set(next) {
 export function refreshOnboarding() {
   if (inFlight) return inFlight;
   inFlight = api.get('/onboarding')
-    .then((status) => set({ loading: false, status, error: null }))
+    .then((status) => set({ loading: false, status: browserStatus(status), error: null }))
     // A server that does not answer owes no wizard — the app's own
     // "server not responding" banner is the right thing to show then.
     .catch((err) => set({ loading: false, error: err.message }))
@@ -33,8 +41,16 @@ export function refreshOnboarding() {
 }
 
 /** Adopt a status a setup route already returned, without asking again. */
-export function setOnboardingStatus(status) {
-  if (status) set({ loading: false, status, error: null });
+export function setOnboardingStatus(status, { completed = false } = {}) {
+  if (!status) return;
+  if (completed || status.required) {
+    completedHere = completed && !status.required;
+    try {
+      if (completedHere) localStorage.setItem(COMPLETED_KEY, 'true');
+      else localStorage.removeItem(COMPLETED_KEY);
+    } catch {}
+  }
+  set({ loading: false, status: browserStatus(status), error: null });
 }
 
 export function useOnboarding() {

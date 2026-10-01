@@ -802,7 +802,7 @@ function SetupWizard({ status }) {
     refreshHealth();
     setLeaving(true);
     navigate(to);
-    setTimeout(() => setOnboardingStatus(next), reducedMotion() ? 0 : 280);
+    setTimeout(() => setOnboardingStatus(next, { completed: true }), reducedMotion() ? 0 : 280);
   };
 
   const id = SETUP_STEPS[step].id;

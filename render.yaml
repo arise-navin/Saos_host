@@ -29,7 +29,7 @@ services:
       - key: SAOS_AUTH_PASSWORD
         sync: false
       - key: FRONTEND_ORIGIN
-        sync: false
+        value: https://saos-host.vercel.app
       - key: LLM_PROVIDER
         value: ollama
       - key: OLLAMA_BASE_URL
