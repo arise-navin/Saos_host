@@ -45,3 +45,31 @@ test('libSQL supports existing migrations, sessions, rollback, FTS and binary em
     db.close();
   }
 });
+
+test('remote schema versions persist and roll back without PRAGMA user_version', () => {
+  const raw = new LibsqlDatabase(':memory:');
+  const db = adaptLibsqlDatabase({
+    exec(sql) {
+      assert.doesNotMatch(sql, /PRAGMA\s+user_version/i);
+      return raw.exec(sql);
+    },
+    prepare(sql) {
+      assert.doesNotMatch(sql, /PRAGMA\s+user_version/i);
+      return raw.prepare(sql);
+    },
+    close: () => raw.close(),
+  }, { remote: true });
+  try {
+    migrate(db);
+    const version = db.prepare('PRAGMA user_version').get().user_version;
+    assert.ok(version > 0);
+    migrate(db);
+    assert.equal(db.prepare('PRAGMA user_version').get().user_version, version);
+    db.exec('BEGIN');
+    db.exec('PRAGMA user_version = 0;');
+    db.exec('ROLLBACK');
+    assert.equal(db.prepare('PRAGMA user_version').get().user_version, version);
+  } finally {
+    db.close();
+  }
+});
