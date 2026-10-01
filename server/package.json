@@ -16,6 +16,7 @@
     "exceljs": "^4.4.0",
     "express": "^4.19.2",
     "jszip": "^3.10.2",
+    "libsql": "^0.5.29",
     "mammoth": "^1.12.3",
     "pdfjs-dist": "^6.3.289",
     "tesseract.js": "^7.0.0"

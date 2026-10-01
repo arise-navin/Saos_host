@@ -20,6 +20,10 @@ services:
         value: 0.0.0.0
       - key: SAOS_DATA_DIR
         value: /var/data
+      - key: TURSO_DATABASE_URL
+        value: libsql://saos-navin-patel.aws-ap-south-1.turso.io
+      - key: TURSO_AUTH_TOKEN
+        sync: false
       - key: SAOS_AUTH_USER
         sync: false
       - key: SAOS_AUTH_PASSWORD

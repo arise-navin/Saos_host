@@ -3,6 +3,7 @@ import path from 'node:path';
 import { DATA_DIR } from '../config/paths.js';
 import { DatabaseSync } from 'node:sqlite';
 import { log } from '../logging.js';
+import { openDatabase } from './connection.js';
 
 /**
  * One SQLite file for everything NowHelpAssist needs to remember: sessions,
@@ -1593,6 +1594,17 @@ function adoptLegacyDatabase() {
 /** Opens the database, applying any migrations this file has not yet seen. */
 export function getDb() {
   if (handle) return handle;
+  if (process.env.TURSO_DATABASE_URL || process.env.TURSO_AUTH_TOKEN) {
+    const db = openDatabase(DB_FILE);
+    try {
+      handle = migrate(db);
+      log.info('storage', 'connected to Turso');
+      return handle;
+    } catch (error) {
+      db.close();
+      throw error;
+    }
+  }
   fs.mkdirSync(DATA_DIR, { recursive: true });
   const adopted = adoptLegacyDatabase();
   if (adopted) log.info('storage', `adopted ${path.basename(adopted)} as ${path.basename(DB_FILE)}`);
@@ -1633,4 +1645,4 @@ export function _setDbForTests(db) {
   handle = db;
 }
 
-export const DB_PATH = DB_FILE;
+export const DB_PATH = process.env.TURSO_DATABASE_URL || DB_FILE;
