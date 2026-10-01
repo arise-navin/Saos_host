@@ -42,8 +42,10 @@ import './servicenow/post-install-state.js';
 import { primeCapability } from './servicenow/fluent.js';
 
 const app = express();
+const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || 'https://saos-host.vercel.app';
+app.get('/', (_req, res) => res.redirect(FRONTEND_ORIGIN));
 app.get('/healthz', (_req, res) => res.json({ ok: true }));
-app.use(cors({ origin: process.env.FRONTEND_ORIGIN || 'https://saos-host.vercel.app' }));
+app.use(cors({ origin: FRONTEND_ORIGIN }));
 app.use(express.json({ limit: '2mb' }));
 const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
 const HOST = process.env.HOST || '127.0.0.1';
@@ -195,7 +197,7 @@ function start(attempt = 1) {
     /* Also asks the instance for the real time, before the window's first request. */
     const lic = licenceRequired() ? licence.status() : null;
     banner([
-      `NowHelpAssist  ·  http://localhost:${PORT}   (bound ${HOST} — ${LOOPBACK.has(HOST) ? 'loopback only' : 'password protected'})`,
+      `NowHelpAssist  ·  http://localhost:${PORT}   (bound ${HOST} — ${LOOPBACK.has(HOST) ? 'loopback only' : 'public API'})`,
       `instance   ${s.connection.instanceUrl || '(none bound)'}   (both tiers derive from this)`,
       `model      ${s.llm.provider} · ${s.llm.model || '(default)'}`,
       `storage    ${DB_PATH}`,
