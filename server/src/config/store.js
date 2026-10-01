@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DATA_DIR } from './paths.js';
+import { readAccount, saveAccountSettings } from '../accounts/store.js';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -185,7 +186,7 @@ let cache = null;
 function load() {
   if (cache) return cache;
   try {
-    const raw = fs.readFileSync(FILE, 'utf8');
+    const raw = process.env.SAOS_USER_ID ? readAccount(process.env.SAOS_USER_ID)?.settings : fs.readFileSync(FILE, 'utf8');
     const parsed = JSON.parse(raw);
     cache = {
       connection: { ...DEFAULTS.connection, ...(parsed.connection || {}) },
@@ -343,6 +344,7 @@ export function saveSettings(patch) {
 
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
+  saveAccountSettings(next);
   cache = next;
   announceBinding();
   return next;
@@ -365,12 +367,14 @@ export function saveSetup({ profile, onboarding } = {}) {
   };
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
+  saveAccountSettings(next);
   cache = next;
   return next;
 }
 
 /** Whether settings.json exists at all — a fresh clone or a wiped data folder has none. */
 export function settingsFileExists() {
+  if (process.env.SAOS_USER_ID) return Boolean(readAccount(process.env.SAOS_USER_ID));
   return fs.existsSync(FILE);
 }
 
@@ -396,6 +400,7 @@ export function saveSkills(skills) {
   const next = { ...cur, skills: { ...cur.skills, ...(skills || {}) } };
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
+  saveAccountSettings(next);
   cache = next;
   return next.skills;
 }
@@ -406,6 +411,7 @@ export function clearConnection() {
   const next = { ...cur, connection: { ...DEFAULTS.connection } };
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
+  saveAccountSettings(next);
   cache = next;
   announceBinding();
   return next;

@@ -1,21 +1,23 @@
 import { DatabaseSync } from 'node:sqlite';
 import LibsqlDatabase from 'libsql';
 
-export function adaptLibsqlDatabase(db, { remote = false } = {}) {
+export function adaptLibsqlDatabase(db, { remote = false, namespace = '' } = {}) {
+  if (namespace && !/^[a-f0-9]{64}$/.test(namespace)) throw new Error('Invalid database account.');
+  const versionTable = namespace ? `u_${namespace}_schema_version` : 'saos_schema_version';
   if (remote) {
-    db.exec('CREATE TABLE IF NOT EXISTS saos_schema_version (id INTEGER PRIMARY KEY CHECK (id = 1), user_version INTEGER NOT NULL)');
-    db.exec('INSERT OR IGNORE INTO saos_schema_version (id, user_version) VALUES (1, 0)');
+    db.exec(`CREATE TABLE IF NOT EXISTS ${versionTable} (id INTEGER PRIMARY KEY CHECK (id = 1), user_version INTEGER NOT NULL)`);
+    db.exec(`INSERT OR IGNORE INTO ${versionTable} (id, user_version) VALUES (1, 0)`);
   }
   return {
     exec(sql) {
       const version = remote && /^\s*PRAGMA\s+user_version\s*=\s*(\d+)\s*;?\s*$/i.exec(sql);
-      if (version) return db.prepare('UPDATE saos_schema_version SET user_version = ? WHERE id = 1').run(Number(version[1]));
+      if (version) return db.prepare(`UPDATE ${versionTable} SET user_version = ? WHERE id = 1`).run(Number(version[1]));
       return db.exec(sql);
     },
     close: () => db.close(),
     prepare(sql) {
       if (remote && /^\s*PRAGMA\s+user_version\s*;?\s*$/i.test(sql)) {
-        sql = 'SELECT user_version FROM saos_schema_version WHERE id = 1';
+        sql = `SELECT user_version FROM ${versionTable} WHERE id = 1`;
       }
       const statement = db.prepare(sql);
       const bind = (args) => args.map((value) => value instanceof Uint8Array ? Buffer.from(value) : value);
@@ -38,5 +40,5 @@ export function openDatabase(file, env = process.env) {
   if (!['libsql:', 'https:'].includes(target.protocol) || target.username || target.password || target.search || target.hash || !['', '/'].includes(target.pathname)) {
     throw new Error('TURSO_DATABASE_URL must be a libsql:// or https:// database origin.');
   }
-  return adaptLibsqlDatabase(new LibsqlDatabase(url, { authToken }), { remote: true });
+  return adaptLibsqlDatabase(new LibsqlDatabase(url, { authToken }), { remote: true, namespace: env.SAOS_USER_ID || '' });
 }

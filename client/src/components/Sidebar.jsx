@@ -194,7 +194,7 @@ function NavGroup({ id, label, icon, open, onToggle, collapsed, slotId, children
 export default function Sidebar() {
   const isMobile = useMediaQuery(MOBILE_Q);
   const { pathname } = useLocation();
-  const { name: profileName } = useOnboarding();
+  const { name: profileName, status: setupStatus } = useOnboarding();
 
   /* Remembered across reloads: someone who collapses the column to read a wide
      table does not want it back on every navigation. Guarded — storage throws
@@ -421,11 +421,11 @@ export default function Sidebar() {
               The name given at setup, or a generic "User" when none was. It
               is a greeting, not an identity: nothing is signed in, so nothing
               beyond what the person typed is invented here. */}
-          <div className="nav-user" title="Signed in locally">
+          <div className="nav-user" title={setupStatus?.userId ? 'Signed in with ServiceNow' : 'Signed in locally'}>
             <span className="nav-user-avatar" aria-hidden="true"><Icon name="user" size={15} /></span>
             <span className="nav-user-text">
               <span className="nav-user-name">{profileName || 'User'}</span>
-              <span className="nav-user-sub">local workspace</span>
+              <span className="nav-user-sub">{setupStatus?.userId ? setupStatus.settings?.connection?.username : 'local workspace'}</span>
             </span>
           </div>
         </div>

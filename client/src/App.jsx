@@ -25,6 +25,7 @@ import Sidebar from './components/Sidebar.jsx';
 import PlaygroundBackground from './components/PlaygroundBackground.jsx';
 import SAOSLoadingScreen from './components/SAOSLoadingScreen.jsx';
 import Onboarding from './components/Onboarding.jsx';
+import AccountGate from './components/AccountGate.jsx';
 import { discoverHealthRun } from './components/healthRun.js';
 
 const TITLES = {
@@ -200,6 +201,7 @@ function Shell() {
 
 export default function App() {
   return (
+    <AccountGate>
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Shell />
       {/* Mounted once, outside the routed content: a toast raised by a page
@@ -228,5 +230,6 @@ export default function App() {
           navigation can bring it back. */}
       <SAOSLoadingScreen />
     </BrowserRouter>
+    </AccountGate>
   );
 }

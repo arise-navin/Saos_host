@@ -4,6 +4,7 @@ import { DATA_DIR } from '../config/paths.js';
 import { DatabaseSync } from 'node:sqlite';
 import { log } from '../logging.js';
 import { openDatabase } from './connection.js';
+import { namespaceDatabase } from './namespace.js';
 
 /**
  * One SQLite file for everything NowHelpAssist needs to remember: sessions,
@@ -1592,10 +1593,24 @@ function adoptLegacyDatabase() {
 }
 
 /** Opens the database, applying any migrations this file has not yet seen. */
+export function scopeAccountDatabase(db, id) {
+  const names = MIGRATIONS.flatMap(migration => {
+    const sql = String(migration);
+    return [
+      ...[...sql.matchAll(/CREATE\s+(?:VIRTUAL\s+|UNIQUE\s+)?(?:TABLE|INDEX|TRIGGER)\s+(?:IF\s+NOT\s+EXISTS\s+)?(\w+)/gi)].map(match => match[1]),
+      ...[...sql.matchAll(/ALTER\s+TABLE\s+\w+\s+RENAME\s+TO\s+(\w+)/gi)].map(match => match[1]),
+    ];
+  });
+  return namespaceDatabase(db, id, names);
+}
+
 export function getDb() {
   if (handle) return handle;
   if (process.env.TURSO_DATABASE_URL || process.env.TURSO_AUTH_TOKEN) {
-    const db = openDatabase(DB_FILE);
+    let db = openDatabase(DB_FILE);
+    if (process.env.SAOS_USER_ID) {
+      db = scopeAccountDatabase(db, process.env.SAOS_USER_ID);
+    }
     try {
       handle = migrate(db);
       log.info('storage', 'connected to Turso');

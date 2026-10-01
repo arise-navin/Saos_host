@@ -7,6 +7,8 @@
  * suite cannot check.
  */
 
+import { accountStorageKey } from '../account.js';
+
 export const SETUP_STEPS = Object.freeze([
   Object.freeze({ id: 'welcome', label: 'Welcome', hint: 'Your name and look' }),
   Object.freeze({ id: 'workspace', label: 'Workspace', hint: 'What this computer has' }),
@@ -30,13 +32,13 @@ export const clampStep = (n) => (Number.isInteger(n) ? Math.min(Math.max(0, n), 
  */
 const STEP_KEY = 'saos.setup.step';
 export function readSetupStep() {
-  try { return clampStep(Number(localStorage.getItem(STEP_KEY))); } catch { return 0; }
+  try { return clampStep(Number(localStorage.getItem(accountStorageKey(STEP_KEY)))); } catch { return 0; }
 }
 export function writeSetupStep(n) {
-  try { localStorage.setItem(STEP_KEY, String(n)); } catch { /* resume is a convenience */ }
+  try { localStorage.setItem(accountStorageKey(STEP_KEY), String(n)); } catch { /* resume is a convenience */ }
 }
 export function clearSetupStep() {
-  try { localStorage.removeItem(STEP_KEY); } catch { /* noop */ }
+  try { localStorage.removeItem(accountStorageKey(STEP_KEY)); } catch { /* noop */ }
 }
 
 /* The platform's own domain, written so the bare suffix is never a full host. */

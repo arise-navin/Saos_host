@@ -2,6 +2,7 @@ import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'rea
 import { createPortal } from 'react-dom';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { api, sse } from '../api.js';
+import { accountStorageKey } from '../account.js';
 import { progressLabel } from '../streamWatchdog.js';
 import { logToServer } from '../logging.js';
 import { useHealth } from '../hooks/useHealth.js';
@@ -45,7 +46,7 @@ import { ActivityIndicator, ActivityDrawer } from '../components/ActivityDock.js
 import AgentWelcome from '../components/AgentWelcome.jsx';
 
 const SESSION_KEY = 'nowhelpassist.sessionId';
-const scopedSessionKey = (instanceUrl) => `${SESSION_KEY}:${instanceUrl || 'unbound'}`;
+const scopedSessionKey = (instanceUrl) => accountStorageKey(`${SESSION_KEY}:${instanceUrl || 'unbound'}`);
 
 let nextId = 1;
 const uid = () => `m${nextId++}`;

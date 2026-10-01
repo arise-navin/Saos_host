@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api, sse } from '../api.js';
+import { accountStorageKey } from '../account.js';
 import { confirmDestructive, CONSEQUENCE } from '../components/confirm.js';
 import { toast } from '../components/toast.js';
 import { refreshHealth } from '../hooks/useHealth.js';
@@ -7,7 +8,7 @@ import { refreshBinding } from '../hooks/useBinding.js';
 import { buildScoresIfNone, resetHealthRun } from '../components/healthRun.js';
 
 /* Must match the key AgentChat files its current chat under. */
-const chatSessionKey = (instanceUrl) => `nowhelpassist.sessionId:${instanceUrl || 'unbound'}`;
+const chatSessionKey = (instanceUrl) => accountStorageKey(`nowhelpassist.sessionId:${instanceUrl || 'unbound'}`);
 
 export default function Dashboard() {
   const [conn, setConn] = useState({ instanceUrl: '', authType: 'basic', username: '', password: '', clientId: '', clientSecret: '' });

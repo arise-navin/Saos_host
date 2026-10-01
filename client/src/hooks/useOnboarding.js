@@ -18,7 +18,7 @@ let completedHere = false;
 try { completedHere = localStorage.getItem(COMPLETED_KEY) === 'true'; } catch {}
 
 function browserStatus(status) {
-  if (!status || status.required || completedHere) return status;
+  if (!status || status.userId || status.required || completedHere) return status;
   return { ...status, required: true, reason: 'first-run' };
 }
 
