@@ -74,6 +74,9 @@ test('seed facts use one batch and preserve confidence and provenance on repeate
 });
 
 test('API requires an authenticated cookie, creates blank user setup, remembers identities, and revokes logout', async () => {
+  const cloud = { LLM_PROVIDER: 'ollama', OLLAMA_BASE_URL: 'https://ollama.com/v1', OLLAMA_MODEL: 'gpt-oss:120b', OLLAMA_API_KEY: 'test-cloud-key' };
+  const previousEnv = Object.fromEntries(Object.keys(cloud).map(key => [key, process.env[key]]));
+  Object.assign(process.env, cloud);
   process.env.SAOS_MULTI_USER = 'true';
   const { accountGateway, stopAccountWorkers } = await import('../src/accounts/gateway.js');
   const { readAccount } = await import('../src/accounts/store.js');
@@ -99,10 +102,19 @@ test('API requires an authenticated cookie, creates blank user setup, remembers 
     assert.equal(setup.required, true);
     assert.equal(setup.settings.profile.name, '');
     assert.equal(setup.settings.connection.username, 'alice');
+    assert.equal(setup.settings.llm.provider, 'ollama');
+    assert.equal(setup.settings.llm.baseUrl, cloud.OLLAMA_BASE_URL);
+    assert.equal(setup.settings.llm.model, cloud.OLLAMA_MODEL);
+    assert.equal(setup.settings.llm.hasApiKey, true);
+    assert.equal(setup.settings.llm.apiKey, undefined);
     assert.equal(fs.existsSync(path.join(process.env.SAOS_ACCOUNTS_DIR, 'users', session.user.id, 'nowhelpassist.db')), false);
     await post('/api/onboarding/profile', { name: 'Alice' }, cookie);
     assert.equal((await (await post('/api/onboarding/complete', { name: 'Alice' }, cookie)).json()).required, false);
     await post('/api/agent/sessions', { id: 'private-chat', title: 'Alice only' }, cookie);
+    const custom = await (await post('/api/system/settings', { llm: { provider: 'anthropic', apiKey: 'user-key', model: 'user-model', baseUrl: 'https://api.anthropic.com' } }, cookie)).json();
+    assert.equal(custom.llm.provider, 'anthropic');
+    assert.equal(custom.llm.model, 'user-model');
+    assert.equal(custom.llm.baseUrl, 'https://api.anthropic.com');
     const bobResponse = await post('/api/auth/login', { username: 'bob', password: 'valid' });
     const bobCookie = bobResponse.headers.get('set-cookie').split(';')[0];
     const bob = await bobResponse.json();
@@ -128,6 +140,10 @@ test('API requires an authenticated cookie, creates blank user setup, remembers 
     server.closeAllConnections();
     await new Promise(resolve => server.close(resolve));
     await stopAccountWorkers();
+    for (const [key, value] of Object.entries(previousEnv)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
     delete process.env.SAOS_MULTI_USER;
   }
 });

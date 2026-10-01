@@ -9,11 +9,15 @@ export default function AccountGate({ children }) {
   const [firstTime, setFirstTime] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const check = () => api.get('/auth/session').then(value => {
+  const [checking, setChecking] = useState(false);
+  const check = () => {
+    setChecking(true);
+    return api.get('/auth/session').then(value => {
     setAccountId(value.user?.id);
     setSession(value);
     setError('');
-  }).catch(err => setError(err.message));
+    }).catch(err => setError(err.message)).finally(() => setChecking(false));
+  };
   useEffect(() => { check(); }, []);
 
   const login = async (event) => {
@@ -42,8 +46,8 @@ export default function AccountGate({ children }) {
   </>;
   return <main className="account-gate">
     <form className="card account-form" onSubmit={login}>
-      <h1>{!session ? 'Connecting to SAOS' : firstTime ? 'Set up your workspace' : 'Sign in to SAOS'}</h1>
-      {session && <>
+      <h1>{firstTime ? 'Set up your workspace' : 'Sign in to SAOS'}</h1>
+      <>
         <p>{firstTime ? 'Save your username and password, then complete your own setup.' : 'Use your saved username and password. New accounts continue to setup.'}</p>
         <label className="label" htmlFor="account-instance">ServiceNow instance URL</label>
         <input id="account-instance" className="input" type="url" placeholder="https://your-instance.service-now.com" value={form.instanceUrl} onChange={event => setForm({ ...form, instanceUrl: event.target.value })} required autoComplete="url" />
@@ -53,9 +57,9 @@ export default function AccountGate({ children }) {
         <input id="account-password" className="input" type="password" value={form.password} onChange={event => setForm({ ...form, password: event.target.value })} required autoComplete="current-password" />
         <button className="btn primary" type="submit" disabled={busy}>{busy ? 'Signing in…' : firstTime ? 'Continue setup' : 'Sign in'}</button>
         <button className="btn" type="button" disabled={busy} onClick={() => setFirstTime(!firstTime)}>{firstTime ? 'Already set up? Sign in' : 'First time? Set up your workspace'}</button>
-      </>}
+      </>
       {error && <p role="alert">{error}</p>}
-      {!session && error && <button className="btn" type="button" onClick={check}>Retry</button>}
+      {!session && error && <button className="btn" type="button" disabled={checking} onClick={check}>{checking ? 'Retrying…' : 'Retry'}</button>}
     </form>
   </main>;
 }

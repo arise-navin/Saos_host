@@ -46,7 +46,6 @@ function workerFor(id) {
     HOST: '127.0.0.1', PORT: '0', SAOS_WORKER_SECRET: secret,
   };
   delete env.SAOS_CLIENT_DIR;
-  for (const name of ['LLM_PROVIDER', 'OLLAMA_API_KEY', 'OLLAMA_BASE_URL', 'OLLAMA_MODEL']) delete env[name];
   const child = fork(path.join(SERVER_ROOT, 'src', 'index.js'), [], { env, stdio: ['ignore', 'ignore', 'inherit', 'ipc'] });
   const entry = { child, lastUsed: Date.now(), active: 0 };
   entry.ready = new Promise((resolve, reject) => {

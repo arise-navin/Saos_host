@@ -5,6 +5,34 @@ import { openDatabase, adaptLibsqlDatabase } from '../src/memory/connection.js';
 import { migrate, _setDbForTests } from '../src/memory/db.js';
 import { createSession, getSession, deleteSession } from '../src/memory/sessions.js';
 
+test('a dropped remote read retries once; writes and transactions are never replayed', () => {
+  let failures = 0;
+  let preparations = 0;
+  const db = adaptLibsqlDatabase({
+    exec() {},
+    close() {},
+    prepare() {
+      preparations++;
+      if (failures-- > 0) throw new Error('Hrana(Http("connection closed before message completed"))');
+      return { run: () => ({}), get: () => ({ ok: true }) };
+    },
+  }, { remote: true });
+  failures = 1;
+  preparations = 0;
+  assert.equal(db.prepare('SELECT 1 AS ok').get().ok, true);
+  assert.equal(preparations, 2);
+  failures = 1;
+  preparations = 0;
+  assert.throws(() => db.prepare('INSERT INTO sessions(id) VALUES (?)'), /connection closed/);
+  assert.equal(preparations, 1);
+  db.exec('BEGIN');
+  failures = 1;
+  preparations = 0;
+  assert.throws(() => db.prepare('SELECT 1'), /connection closed/);
+  assert.equal(preparations, 1);
+  db.exec('ROLLBACK');
+});
+
 test('local storage remains available and incomplete Turso configuration fails', () => {
   const db = openDatabase(':memory:', {});
   try { assert.equal(db.prepare('SELECT 1 AS ok').get().ok, 1); }

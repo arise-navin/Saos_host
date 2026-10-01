@@ -190,7 +190,7 @@ function load() {
     const parsed = JSON.parse(raw);
     cache = {
       connection: { ...DEFAULTS.connection, ...(parsed.connection || {}) },
-      llm: { ...DEFAULTS.llm, ...(parsed.llm || {}) },
+      llm: { ...DEFAULTS.llm, ...(process.env.LLM_PROVIDER ? { provider: process.env.LLM_PROVIDER } : {}), ...(parsed.llm || {}) },
       agent: { ...DEFAULTS.agent, ...(parsed.agent || {}) },
       dba: { ...DEFAULTS.dba, ...(parsed.dba || {}) },
       rag: { ...DEFAULTS.rag, ...(parsed.rag || {}) },
@@ -206,14 +206,15 @@ function load() {
 
 export function getSettings() {
   const settings = load();
+  const deploymentModel = !process.env.SAOS_USER_ID || settings.llm.provider === process.env.LLM_PROVIDER;
   return {
     ...settings,
     llm: {
       ...settings.llm,
-      ...(process.env.LLM_PROVIDER ? { provider: process.env.LLM_PROVIDER } : {}),
-      ...(process.env.OLLAMA_API_KEY ? { apiKey: process.env.OLLAMA_API_KEY } : {}),
-      ...(process.env.OLLAMA_BASE_URL ? { baseUrl: process.env.OLLAMA_BASE_URL } : {}),
-      ...(process.env.OLLAMA_MODEL ? { model: process.env.OLLAMA_MODEL } : {}),
+      ...(!process.env.SAOS_USER_ID && process.env.LLM_PROVIDER ? { provider: process.env.LLM_PROVIDER } : {}),
+      ...(deploymentModel && process.env.OLLAMA_API_KEY && (!process.env.SAOS_USER_ID || !settings.llm.apiKey) ? { apiKey: process.env.OLLAMA_API_KEY } : {}),
+      ...(deploymentModel && process.env.OLLAMA_BASE_URL && (!process.env.SAOS_USER_ID || !settings.llm.baseUrl) ? { baseUrl: process.env.OLLAMA_BASE_URL } : {}),
+      ...(deploymentModel && process.env.OLLAMA_MODEL && (!process.env.SAOS_USER_ID || !settings.llm.model) ? { model: process.env.OLLAMA_MODEL } : {}),
     },
   };
 }
@@ -420,6 +421,7 @@ export function clearConnection() {
 /** Redacts secrets for sending to the client. */
 export function publicSettings() {
   const s = load();
+  const llm = getSettings().llm;
   return {
     connection: {
       instanceUrl: s.connection.instanceUrl,
@@ -432,11 +434,11 @@ export function publicSettings() {
       warnings: credentialWarnings(s.connection),
     },
     llm: {
-      provider: s.llm.provider,
-      hasApiKey: Boolean(s.llm.apiKey),
-      baseUrl: s.llm.baseUrl,
-      model: s.llm.model,
-      embedModel: s.llm.embedModel,
+      provider: llm.provider,
+      hasApiKey: Boolean(llm.apiKey),
+      baseUrl: llm.baseUrl,
+      model: llm.model,
+      embedModel: llm.embedModel,
     },
     agent: {
       autoApprove: s.agent.autoApprove,

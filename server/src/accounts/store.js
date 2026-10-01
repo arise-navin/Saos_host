@@ -8,8 +8,9 @@ export function accountStore() {
   if (db) return db;
   const root = process.env.SAOS_ACCOUNTS_DIR || DATA_DIR;
   fs.mkdirSync(root, { recursive: true });
-  db = openDatabase(path.join(root, 'accounts.db'), { ...process.env, SAOS_USER_ID: '' });
-  db.exec(`CREATE TABLE IF NOT EXISTS saos_accounts (
+  const opened = openDatabase(path.join(root, 'accounts.db'), { ...process.env, SAOS_USER_ID: '' });
+  try {
+    opened.exec(`CREATE TABLE IF NOT EXISTS saos_accounts (
     id TEXT PRIMARY KEY, instance TEXT NOT NULL, username TEXT NOT NULL, settings TEXT NOT NULL
   );
   CREATE TABLE IF NOT EXISTS saos_login_sessions (
@@ -18,6 +19,11 @@ export function accountStore() {
   CREATE TABLE IF NOT EXISTS saos_account_passwords (
     account TEXT PRIMARY KEY, salt TEXT NOT NULL, digest TEXT NOT NULL
   );`);
+  } catch (error) {
+    opened.close();
+    throw error;
+  }
+  db = opened;
   return db;
 }
 
