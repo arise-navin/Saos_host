@@ -44,7 +44,7 @@ export default function AccountGate({ children }) {
     <form className="card account-form" onSubmit={login}>
       <h1>{!session ? 'Connecting to SAOS' : firstTime ? 'Set up your workspace' : 'Sign in to SAOS'}</h1>
       {session && <>
-        <p>{firstTime ? 'Connect your ServiceNow account, then enter your own name and setup preferences.' : 'Use your ServiceNow account to open your saved workspace.'}</p>
+        <p>{firstTime ? 'Save your username and password, then complete your own setup.' : 'Use your saved username and password. New accounts continue to setup.'}</p>
         <label className="label" htmlFor="account-instance">ServiceNow instance URL</label>
         <input id="account-instance" className="input" type="url" placeholder="https://your-instance.service-now.com" value={form.instanceUrl} onChange={event => setForm({ ...form, instanceUrl: event.target.value })} required autoComplete="url" />
         <label className="label" htmlFor="account-username">Username</label>

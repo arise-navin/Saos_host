@@ -1,4 +1,5 @@
-import { createHash } from 'node:crypto';
+import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
+import { accountStore } from './store.js';
 
 export function instanceOrigin(value) {
   const url = new URL(value);
@@ -10,28 +11,32 @@ export function instanceOrigin(value) {
   return url.origin;
 }
 
-export async function authenticateServiceNow({ instanceUrl, username, password }, fetcher = fetch) {
+export function authenticateAccount({ instanceUrl, username, password }) {
   const instance = instanceOrigin(instanceUrl);
   if (typeof username !== 'string' || !username.trim() || username.length > 200
       || /[\r\n:^]/.test(username) || typeof password !== 'string' || !password || password.length > 4096) {
     throw new Error('Enter your ServiceNow username and password.');
   }
   const login = username.trim();
-  const url = new URL('/api/now/table/sys_user', instance);
-  url.searchParams.set('sysparm_query', `user_name=${login}^active=true`);
-  url.searchParams.set('sysparm_fields', 'sys_id,user_name');
-  url.searchParams.set('sysparm_limit', '1');
-  const response = await fetcher(url, {
-    headers: { Authorization: `Basic ${Buffer.from(`${login}:${password}`).toString('base64')}`, Accept: 'application/json' },
-    redirect: 'error', signal: AbortSignal.timeout(15000),
-  });
-  if (!response.ok) throw new Error('ServiceNow sign-in failed. Check your credentials and REST API access.');
-  const user = (await response.json()).result?.[0];
-  if (!user || !/^[a-f0-9]{32}$/i.test(user.sys_id) || user.user_name.toLowerCase() !== login.toLowerCase()) {
-    throw new Error('ServiceNow could not verify this user. Check access to your user record.');
+  const db = accountStore();
+  const previous = db.prepare('SELECT * FROM saos_accounts WHERE instance = ? AND lower(username) = ?').get(instance, login.toLowerCase());
+  const id = previous?.id || createHash('sha256').update(`${instance}\n${login.toLowerCase()}`).digest('hex');
+  const saved = db.prepare('SELECT salt, digest FROM saos_account_passwords WHERE account = ?').get(id);
+  if (saved) {
+    if (!timingSafeEqual(scryptSync(password, saved.salt, 64), Buffer.from(saved.digest, 'hex'))) {
+      throw new Error('Incorrect username or password.');
+    }
+  } else {
+    const salt = randomBytes(32).toString('hex');
+    if (previous) {
+      const storedPassword = JSON.parse(previous.settings).connection?.password;
+      if (!storedPassword || !timingSafeEqual(scryptSync(password, salt, 64), scryptSync(storedPassword, salt, 64))) {
+        throw new Error('Incorrect username or password.');
+      }
+    }
+    db.prepare('INSERT INTO saos_account_passwords(account, salt, digest) VALUES (?, ?, ?)').run(id, salt, scryptSync(password, salt, 64).toString('hex'));
   }
   return {
-    id: createHash('sha256').update(`${instance}\n${user.sys_id}`).digest('hex'),
-    instance, username: user.user_name,
+    id, instance, username: previous?.username || login,
   };
 }

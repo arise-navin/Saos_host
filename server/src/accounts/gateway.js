@@ -6,11 +6,10 @@ import fs from 'node:fs';
 import express from 'express';
 import { DATA_DIR, SERVER_ROOT } from '../config/paths.js';
 import { accountStore, readAccount } from './store.js';
-import { authenticateServiceNow } from './identity.js';
+import { authenticateAccount } from './identity.js';
 import { clientApp } from '../client-app.js';
 
-export const multiUser = !process.env.SAOS_USER_ID && (process.env.SAOS_MULTI_USER === 'true'
-  || !['127.0.0.1', 'localhost', '::1'].includes(process.env.HOST || '127.0.0.1'));
+export const multiUser = !process.env.SAOS_USER_ID && process.env.SAOS_DESKTOP !== '1';
 const COOKIE = 'saos_session';
 const hash = value => createHash('sha256').update(value).digest('hex');
 const lifetime = 7 * 24 * 60 * 60 * 1000;
@@ -44,7 +43,7 @@ function workerFor(id) {
     ...process.env, SAOS_USER_ID: id, SAOS_ACCOUNTS_DIR: root,
     SAOS_DATA_DIR: path.join(root, 'users', id),
     SAOS_WORKSPACES_DIR: workspaceRoot,
-    HOST: '127.0.0.1', PORT: '0', SAOS_AUTH_USER: 'worker', SAOS_AUTH_PASSWORD: secret,
+    HOST: '127.0.0.1', PORT: '0', SAOS_WORKER_SECRET: secret,
   };
   delete env.SAOS_CLIENT_DIR;
   for (const name of ['LLM_PROVIDER', 'OLLAMA_API_KEY', 'OLLAMA_BASE_URL', 'OLLAMA_MODEL']) delete env[name];
@@ -72,7 +71,7 @@ export async function stopAccountWorkers() {
   })));
 }
 
-export function accountGateway({ authenticate = authenticateServiceNow } = {}) {
+export function accountGateway() {
   const router = express.Router();
   if (!multiUser) {
     router.get('/api/auth/session', (_req, res) => res.json({ enabled: false }));
@@ -100,7 +99,7 @@ export function accountGateway({ authenticate = authenticateServiceNow } = {}) {
     if (rate && rate.until > now && rate.count >= 10) return res.status(429).json({ message: 'Too many sign-in attempts. Try again in a minute.' });
     attempts.set(key, { until: rate?.until > now ? rate.until : now + 60000, count: rate?.until > now ? rate.count + 1 : 1 });
     try {
-      const identity = await authenticate(req.body || {});
+      const identity = authenticateAccount(req.body || {});
       const db = accountStore();
       const previous = readAccount(identity.id);
       const settings = previous ? JSON.parse(previous.settings) : { profile: { name: '' }, onboarding: { startedAt: new Date().toISOString() } };
@@ -118,7 +117,7 @@ export function accountGateway({ authenticate = authenticateServiceNow } = {}) {
       res.cookie(COOKIE, value, { httpOnly: true, sameSite: 'lax', secure: req.secure || req.get('X-Forwarded-Proto') === 'https', maxAge: lifetime, path: '/' });
       return res.json({ user: { id: identity.id, username: identity.username, instanceUrl: identity.instance } });
     } catch (error) {
-      return res.status(401).json({ message: error.message.startsWith('ServiceNow') || error.message.startsWith('Enter ') ? error.message : 'Sign-in failed. Please try again.' });
+      return res.status(401).json({ message: error.message.startsWith('Incorrect ') || error.message.startsWith('Enter ') ? error.message : 'Sign-in failed. Please try again.' });
     }
   });
   router.post('/api/auth/logout', (req, res) => {

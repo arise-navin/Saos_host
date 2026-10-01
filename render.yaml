@@ -24,10 +24,8 @@ services:
         value: libsql://saos-navin-patel.aws-ap-south-1.turso.io
       - key: TURSO_AUTH_TOKEN
         sync: false
-      - key: SAOS_AUTH_USER
-        sync: false
-      - key: SAOS_AUTH_PASSWORD
-        sync: false
+      - key: SAOS_MULTI_USER
+        value: "true"
       - key: FRONTEND_ORIGIN
         value: https://saos-host.vercel.app
       - key: LLM_PROVIDER

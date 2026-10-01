@@ -4,10 +4,10 @@ export const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
 
 export function accessGuard(env = process.env) {
   const publicHost = !LOOPBACK.has(env.HOST || '127.0.0.1');
-  const username = env.SAOS_AUTH_USER;
-  const password = env.SAOS_AUTH_PASSWORD;
-  if ((publicHost || username || password) && (!username || !password)) {
-    throw new Error('Set SAOS_AUTH_USER and SAOS_AUTH_PASSWORD before exposing the backend.');
+  const username = env.SAOS_USER_ID ? 'worker' : null;
+  const password = env.SAOS_WORKER_SECRET;
+  if (publicHost || (username && !password) || (!username && password)) {
+    throw new Error('Workspace servers require a private worker secret and loopback binding.');
   }
   const digest = (value) => createHash('sha256').update(value).digest();
   const expected = username && password ? digest(`Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`) : null;

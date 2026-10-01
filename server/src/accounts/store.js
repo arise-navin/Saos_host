@@ -14,6 +14,9 @@ export function accountStore() {
   );
   CREATE TABLE IF NOT EXISTS saos_login_sessions (
     token TEXT PRIMARY KEY, account TEXT NOT NULL, expires INTEGER NOT NULL
+  );
+  CREATE TABLE IF NOT EXISTS saos_account_passwords (
+    account TEXT PRIMARY KEY, salt TEXT NOT NULL, digest TEXT NOT NULL
   );`);
   return db;
 }

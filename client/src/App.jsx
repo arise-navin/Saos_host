@@ -26,6 +26,7 @@ import PlaygroundBackground from './components/PlaygroundBackground.jsx';
 import SAOSLoadingScreen from './components/SAOSLoadingScreen.jsx';
 import Onboarding from './components/Onboarding.jsx';
 import AccountGate from './components/AccountGate.jsx';
+import { useOnboarding, refreshOnboarding } from './hooks/useOnboarding.js';
 import { discoverHealthRun } from './components/healthRun.js';
 
 const TITLES = {
@@ -199,6 +200,19 @@ function Shell() {
   );
 }
 
+function StartupScreen() {
+  const { loading, open, status, error } = useOnboarding();
+  if (loading || (!status && error)) return (
+    <div className="account-gate account-startup">
+      <div className="card account-form">
+        <h1>{loading ? 'Opening your setup…' : 'Could not open setup'}</h1>
+        {error && <><p role="alert">{error}</p><button className="btn" onClick={refreshOnboarding}>Retry</button></>}
+      </div>
+    </div>
+  );
+  return open ? null : <SAOSLoadingScreen />;
+}
+
 export default function App() {
   return (
     <AccountGate>
@@ -228,7 +242,7 @@ export default function App() {
           as before, and this only reports that happening. It unmounts itself
           once the real startup signals land, and App never remounts, so no
           navigation can bring it back. */}
-      <SAOSLoadingScreen />
+      <StartupScreen />
     </BrowserRouter>
     </AccountGate>
   );

@@ -147,7 +147,7 @@ const PORT = process.env.SAOS_USER_ID ? 0 : Number(process.env.PORT) || 4000;
  */
 const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
 const HOST = process.env.HOST || '127.0.0.1';
-if (!multiUser && !LOOPBACK.has(HOST) && (!process.env.SAOS_AUTH_USER || !process.env.SAOS_AUTH_PASSWORD)) {
+if (!multiUser && !LOOPBACK.has(HOST)) {
   log.error('http',
     `refusing to bind ${HOST}: NowHelpAssist is unauthenticated and holds instance admin credentials, ` +
     `and its approval endpoint authorises writes to ${getSettings().connection.instanceUrl || 'the bound instance'}. ` +

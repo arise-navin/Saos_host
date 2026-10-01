@@ -13,6 +13,7 @@
   padding: 28px;
 }
 .account-form h1, .account-form p { margin: 0 0 8px; }
+.account-startup { position: fixed; inset: 0; z-index: 1100; }
 .account-menu {
   position: fixed;
   top: 12px;

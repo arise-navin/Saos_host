@@ -5,24 +5,27 @@ import os from 'node:os';
 import path from 'node:path';
 import express from 'express';
 import LibsqlDatabase from 'libsql';
-import { authenticateServiceNow, instanceOrigin } from '../src/accounts/identity.js';
+import { authenticateAccount, instanceOrigin } from '../src/accounts/identity.js';
+import { accountStore } from '../src/accounts/store.js';
 import { adaptLibsqlDatabase } from '../src/memory/connection.js';
 import { migrate, scopeAccountDatabase } from '../src/memory/db.js';
 
-test('ServiceNow authentication verifies credentials and scopes identity to instance and sys_id', async () => {
+process.env.SAOS_ACCOUNTS_DIR = fs.mkdtempSync(path.join(os.tmpdir(), 'saos-accounts-'));
+
+test('first login saves credentials without contacting ServiceNow; later login checks the saved password', () => {
   const body = { instanceUrl: 'https://dev123.service-now.com/', username: 'navin', password: 'correct-password' };
-  const fetcher = async (url, options) => {
-    assert.equal(url.origin, 'https://dev123.service-now.com');
-    assert.equal(url.searchParams.get('sysparm_query'), 'user_name=navin^active=true');
-    assert.equal(options.headers.Authorization, `Basic ${Buffer.from('navin:correct-password').toString('base64')}`);
-    assert.equal(options.redirect, 'error');
-    return { ok: true, json: async () => ({ result: [{ sys_id: '1'.repeat(32), user_name: 'navin' }] }) };
-  };
-  const user = await authenticateServiceNow(body, fetcher);
-  assert.match(user.id, /^[a-f0-9]{64}$/);
-  assert.equal((await authenticateServiceNow(body, fetcher)).id, user.id);
-  await assert.rejects(authenticateServiceNow(body, async () => ({ ok: false })), /sign-in failed/);
-  await assert.rejects(authenticateServiceNow(body, async () => ({ ok: true, json: async () => ({ result: [] }) })), /verify this user/);
+  const original = globalThis.fetch;
+  globalThis.fetch = () => { throw new Error('ServiceNow must not be contacted at login'); };
+  try {
+    const user = authenticateAccount(body);
+    assert.match(user.id, /^[a-f0-9]{64}$/);
+    assert.equal(authenticateAccount(body).id, user.id);
+    assert.equal(authenticateAccount({ ...body, username: 'NAVIN' }).id, user.id);
+    assert.throws(() => authenticateAccount({ ...body, password: 'wrong' }), /Incorrect/);
+    assert.notEqual(authenticateAccount({ ...body, instanceUrl: 'https://dev456.service-now.com' }).id, user.id);
+    const stored = accountStore().prepare('SELECT digest FROM saos_account_passwords WHERE account = ?').get(user.id);
+    assert.notEqual(stored.digest, body.password);
+  } finally { globalThis.fetch = original; }
   for (const url of ['http://dev123.service-now.com', 'https://localhost', 'https://dev123.service-now.com.evil.com', 'https://user:pass@dev123.service-now.com', 'https://dev123.service-now.com:444', 'https://dev123.service-now.com/path']) {
     assert.throws(() => instanceOrigin(url));
   }
@@ -53,25 +56,20 @@ test('two accounts share a database without sharing schema versions, chats, sear
 });
 
 test('API requires an authenticated cookie, creates blank user setup, remembers identities, and revokes logout', async () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'saos-accounts-'));
-  process.env.SAOS_ACCOUNTS_DIR = dir;
   process.env.SAOS_MULTI_USER = 'true';
   const { accountGateway, stopAccountWorkers } = await import('../src/accounts/gateway.js');
   const { readAccount } = await import('../src/accounts/store.js');
   const app = express();
-  app.use(accountGateway({ authenticate: async body => {
-    if (body.password !== 'valid') throw new Error('ServiceNow sign-in failed.');
-    return { id: body.username === 'alice' ? 'a'.repeat(64) : 'b'.repeat(64), instance: 'https://dev123.service-now.com', username: body.username };
-  } }));
+  app.use(accountGateway());
   const server = app.listen(0, '127.0.0.1');
   await new Promise(resolve => server.once('listening', resolve));
   const base = `http://127.0.0.1:${server.address().port}`;
-  const post = (route, body, cookie) => fetch(base + route, { method: 'POST', headers: { 'Content-Type': 'application/json', ...(cookie ? { Cookie: cookie } : {}) }, body: JSON.stringify(body) });
+  const post = (route, body, cookie) => fetch(base + route, { method: 'POST', headers: { 'Content-Type': 'application/json', ...(cookie ? { Cookie: cookie } : {}) }, body: JSON.stringify({ instanceUrl: 'https://dev123.service-now.com', ...body }) });
   try {
     assert.equal((await fetch(base + '/api/onboarding')).status, 401);
-    assert.equal((await post('/api/auth/login', { username: 'alice', password: 'bad' })).status, 401);
     const alice = await post('/api/auth/login', { username: 'alice', password: 'valid' });
     assert.equal(alice.status, 200);
+    assert.equal((await post('/api/auth/login', { username: 'alice', password: 'bad' })).status, 401);
     const cookie = alice.headers.get('set-cookie').split(';')[0];
     assert.match(alice.headers.get('set-cookie'), /HttpOnly/i);
     assert.match(alice.headers.get('set-cookie'), /SameSite=Lax/i);
