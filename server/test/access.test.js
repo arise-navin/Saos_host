@@ -34,6 +34,17 @@ test('backend protects API, rejects wrong credentials and disallowed origins', (
   assert.equal(request(guard, {}, '/api/system/health').status, 401);
 });
 
+test('backend normalizes the configured frontend URL and explains origin rejection', () => {
+  const guard = accessGuard({ ...env, FRONTEND_ORIGIN: 'https://saos.example/' });
+  assert.equal(request(guard, { Authorization: authorization, Origin: env.FRONTEND_ORIGIN }).allowed, true);
+  const denied = request(guard, { Authorization: authorization, Origin: 'https://other.example' });
+  assert.equal(denied.status, 403);
+  assert.match(denied.body.message, /FRONTEND_ORIGIN/);
+  assert.equal(request(accessGuard({ ...env, FRONTEND_ORIGIN: undefined }), {
+    Authorization: authorization, Origin: env.FRONTEND_ORIGIN,
+  }).status, 403);
+});
+
 test('Vercel challenges browser requests and fails closed without configured login', async () => {
   const previous = { user: process.env.SAOS_AUTH_USER, password: process.env.SAOS_AUTH_PASSWORD };
   try {

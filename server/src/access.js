@@ -11,12 +11,14 @@ export function accessGuard(env = process.env) {
   }
   const digest = (value) => createHash('sha256').update(value).digest();
   const expected = username && password ? digest(`Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`) : null;
+  let frontendOrigin;
+  try { frontendOrigin = new URL(env.FRONTEND_ORIGIN).origin; } catch { frontendOrigin = null; }
   return (req, res, next) => {
     if (req.method === 'GET' && req.path === '/healthz') return res.json({ ok: true });
     if (!expected) return next();
     res.set('Cache-Control', 'no-store');
     const origin = req.get('Origin');
-    if (origin && origin !== env.FRONTEND_ORIGIN) return res.status(403).json({ error: 'Origin not allowed' });
+    if (origin && origin !== frontendOrigin) return res.status(403).json({ error: 'Origin not allowed', message: 'Origin not allowed. Set FRONTEND_ORIGIN on the backend to the browser site URL, then restart the backend.' });
     if (!timingSafeEqual(digest(req.get('Authorization') || ''), expected)) {
       res.set('WWW-Authenticate', 'Basic realm="SAOS", charset="UTF-8"');
       return res.status(401).json({ error: 'Authentication required' });
