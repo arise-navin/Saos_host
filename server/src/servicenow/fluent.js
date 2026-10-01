@@ -237,7 +237,7 @@ export async function autoBootstrapSdkWorkspace() {
 
   log.info('fluent', 'ServiceNow SDK is not installed in server/fluent-workspace; running npm install for the managed workspace.');
   const npm = npmInvocation();
-  sdkBootstrap = pexec(npm.file, [...npm.prefixArgs, 'install', '--prefix', WORKSPACE], {
+  sdkBootstrap = pexec(npm.file, [...npm.prefixArgs, 'install', '--include=dev', '--prefix', WORKSPACE], {
     cwd: SERVER_ROOT,
     timeout: SDK_BOOTSTRAP_TIMEOUT_MS,
     maxBuffer: 8 * 1024 * 1024,
@@ -251,7 +251,7 @@ export async function autoBootstrapSdkWorkspace() {
       const result = {
         attempted: true,
         ok,
-        command: `npm install --prefix ${path.relative(REPO_ROOT, WORKSPACE).replace(/\\/g, '/')}`,
+        command: `npm install --include=dev --prefix ${path.relative(REPO_ROOT, WORKSPACE).replace(/\\/g, '/')}`,
         stdout: stripAnsi(stdout).slice(-1200),
         stderr: stripAnsi(stderr).slice(-1200),
         entry: ok ? entry : null,
@@ -265,7 +265,7 @@ export async function autoBootstrapSdkWorkspace() {
       const result = {
         attempted: true,
         ok: false,
-        command: `npm install --prefix ${path.relative(REPO_ROOT, WORKSPACE).replace(/\\/g, '/')}`,
+        command: `npm install --include=dev --prefix ${path.relative(REPO_ROOT, WORKSPACE).replace(/\\/g, '/')}`,
         error: stripAnsi(err.stderr || err.stdout || err.message).slice(0, 1200),
         code: err.code ?? null,
         timedOut: err.killed === true,
