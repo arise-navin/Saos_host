@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { publicAccess } from './publicAccess.js';
 import { systemRouter } from './routes/system.js';
 import { incidentsRouter } from './routes/incidents.js';
 import { catalogRouter } from './routes/catalog.js';
@@ -45,6 +46,10 @@ const app = express();
 app.get('/healthz', (_req, res) => res.json({ ok: true }));
 app.use(cors());
 app.use(express.json({ limit: '2mb' }));
+const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
+const HOST = process.env.HOST || '127.0.0.1';
+if (!LOOPBACK.has(HOST)) app.use(publicAccess());
+else app.get('/api/auth/session', (_req, res) => res.json({ enabled: false, authenticated: true }));
 // Before the routes, so a request is logged even when it 404s.
 app.use(requestLogger());
 // The licence (installed desktop app only): once it has ended, every request
@@ -126,31 +131,6 @@ process.on('unhandledRejection', (reason) => log.error('process', 'unhandled pro
 process.on('uncaughtException', (err) => { log.error('process', 'uncaught exception', err); process.exit(1); });
 
 const PORT = Number(process.env.PORT) || 4000;
-
-/*
- * WI-3 — THE LISTENER BINDS LOOPBACK, AND SAYS SO IF IT CANNOT.
- *
- * This process holds a ServiceNow admin password, and `POST /api/agent/approve`
- * authorises writes to a live instance. It has no authentication of any kind —
- * that is a deliberate, documented property of a local dev tool, and it is only
- * defensible while the socket is unreachable from anywhere else. `app.listen(PORT)`
- * binds 0.0.0.0, which on a laptop on a conference network is the whole app,
- * admin credentials included, offered to the LAN.
- *
- * `HOST` exists so that someone who genuinely means to expose it has to say so
- * out loud. Anything but a loopback address fails at boot rather than starting
- * and hoping — the alternative is a server that is only as safe as the network
- * it happens to be on, with nothing anywhere saying which one that was.
- */
-const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
-const HOST = process.env.HOST || '127.0.0.1';
-if (!LOOPBACK.has(HOST)) {
-  log.error('http',
-    `refusing to bind ${HOST}: NowHelpAssist is unauthenticated and holds instance admin credentials, ` +
-    `and its approval endpoint authorises writes to ${getSettings().connection.instanceUrl || 'the bound instance'}. ` +
-    `It may only listen on loopback (${[...LOOPBACK].join(', ')}). Unset HOST, or put a real proxy in front of it.`);
-  process.exit(1);
-}
 
 // Storage comes up before the listener: migrations are idempotent, and a
 // database that cannot open should stop the server rather than fail the first
