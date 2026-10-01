@@ -1,0 +1,18 @@
+.startup-screen {
+  min-height: 100dvh;
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--bg, #edf5f5);
+}
+.startup-screen .startup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100%, 440px);
+  padding: 28px;
+}
+.startup-screen .startup-form h1, .startup-screen .startup-form p { margin: 0 0 8px; }

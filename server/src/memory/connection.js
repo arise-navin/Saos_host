@@ -1,9 +1,8 @@
 import { DatabaseSync } from 'node:sqlite';
 import LibsqlDatabase from 'libsql';
 
-export function adaptLibsqlDatabase(db, { remote = false, namespace = '' } = {}) {
-  if (namespace && !/^[a-f0-9]{64}$/.test(namespace)) throw new Error('Invalid database account.');
-  const versionTable = namespace ? `u_${namespace}_schema_version` : 'saos_schema_version';
+export function adaptLibsqlDatabase(db, { remote = false } = {}) {
+  const versionTable = 'saos_schema_version';
   let inTransaction = false;
   if (remote) {
     db.exec(`CREATE TABLE IF NOT EXISTS ${versionTable} (id INTEGER PRIMARY KEY CHECK (id = 1), user_version INTEGER NOT NULL)`);
@@ -49,5 +48,5 @@ export function openDatabase(file, env = process.env) {
   if (!['libsql:', 'https:'].includes(target.protocol) || target.username || target.password || target.search || target.hash || !['', '/'].includes(target.pathname)) {
     throw new Error('TURSO_DATABASE_URL must be a libsql:// or https:// database origin.');
   }
-  return adaptLibsqlDatabase(new LibsqlDatabase(url, { authToken }), { remote: true, namespace: env.SAOS_USER_ID || '' });
+  return adaptLibsqlDatabase(new LibsqlDatabase(url, { authToken }), { remote: true });
 }

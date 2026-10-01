@@ -82,14 +82,6 @@ systemRouter.get('/settings', (_req, res) => res.json(publicSettings()));
 
 systemRouter.post('/settings', (req, res) => {
   const { connection, llm, agent } = req.body || {};
-  if (connection && process.env.SAOS_USER_ID) {
-    const current = getSettings().connection;
-    if ((connection.instanceUrl && connection.instanceUrl.replace(/\/$/, '') !== current.instanceUrl)
-        || (connection.username && connection.username !== current.username)
-        || (connection.authType && connection.authType !== 'basic')) {
-      return res.status(403).json({ message: 'Sign out and sign in to switch ServiceNow accounts.' });
-    }
-  }
   // Don't wipe stored secrets when the client sends blanks for untouched fields.
   if (connection) {
     if (connection.password === '') delete connection.password;

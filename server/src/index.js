@@ -1,7 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import { accessGuard } from './access.js';
-import { accountGateway, multiUser } from './accounts/gateway.js';
 import { systemRouter } from './routes/system.js';
 import { incidentsRouter } from './routes/incidents.js';
 import { catalogRouter } from './routes/catalog.js';
@@ -44,23 +42,9 @@ import './servicenow/post-install-state.js';
 import { primeCapability } from './servicenow/fluent.js';
 
 const app = express();
-let workspaceInitialized = false;
-function initializeWorkspace() {
-  if (workspaceInitialized) return;
-  getDb();
-  seedLedger();
-  closeOrphanedRecordings();
-  requeuePending();
-  workspaceInitialized = true;
-}
-app.use(accountGateway());
-if (!multiUser) app.use(accessGuard());
+app.get('/healthz', (_req, res) => res.json({ ok: true }));
 app.use(cors());
 app.use(express.json({ limit: '2mb' }));
-app.use((req, _res, next) => {
-  if (process.env.SAOS_USER_ID && !req.path.startsWith('/api/onboarding') && req.path !== '/api/logs') initializeWorkspace();
-  next();
-});
 // Before the routes, so a request is logged even when it 404s.
 app.use(requestLogger());
 // The licence (installed desktop app only): once it has ended, every request
@@ -141,7 +125,7 @@ app.use((err, req, res, _next) => {
 process.on('unhandledRejection', (reason) => log.error('process', 'unhandled promise rejection', reason));
 process.on('uncaughtException', (err) => { log.error('process', 'uncaught exception', err); process.exit(1); });
 
-const PORT = process.env.SAOS_USER_ID ? 0 : Number(process.env.PORT) || 4000;
+const PORT = Number(process.env.PORT) || 4000;
 
 /*
  * WI-3 — THE LISTENER BINDS LOOPBACK, AND SAYS SO IF IT CANNOT.
@@ -160,7 +144,7 @@ const PORT = process.env.SAOS_USER_ID ? 0 : Number(process.env.PORT) || 4000;
  */
 const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
 const HOST = process.env.HOST || '127.0.0.1';
-if (!multiUser && !LOOPBACK.has(HOST)) {
+if (!LOOPBACK.has(HOST)) {
   log.error('http',
     `refusing to bind ${HOST}: NowHelpAssist is unauthenticated and holds instance admin credentials, ` +
     `and its approval endpoint authorises writes to ${getSettings().connection.instanceUrl || 'the bound instance'}. ` +
@@ -171,8 +155,8 @@ if (!multiUser && !LOOPBACK.has(HOST)) {
 // Storage comes up before the listener: migrations are idempotent, and a
 // database that cannot open should stop the server rather than fail the first
 // chat turn with something unrecognisable.
-if (!multiUser && !process.env.SAOS_USER_ID) getDb();
-const seeded = multiUser || process.env.SAOS_USER_ID ? { seeded: 0, instance: '' } : seedLedger();
+getDb();
+const seeded = seedLedger();
 
 /*
  * SESSION 1 / WI-3 — the first SDK probe runs at boot, not on the first
@@ -181,7 +165,7 @@ const seeded = multiUser || process.env.SAOS_USER_ID ? { seeded: 0, instance: ''
  * capabilities are honestly UNKNOWN; after it they stay known across every
  * TTL refresh (stale-while-revalidate in fluent.js).
  */
-if (!multiUser && !process.env.SAOS_USER_ID) primeCapability();
+primeCapability();
 
 /*
  * The transcription queue is in memory, so a restart mid-meeting would leave
@@ -191,8 +175,8 @@ if (!multiUser && !process.env.SAOS_USER_ID) primeCapability();
  * claim in meetings/queue.js true rather than aspirational.
  */
 // A meeting still marked `recording` at boot is one the agent never closed.
-const orphans = multiUser || process.env.SAOS_USER_ID ? 0 : closeOrphanedRecordings();
-const requeued = multiUser || process.env.SAOS_USER_ID ? 0 : requeuePending();
+const orphans = closeOrphanedRecordings();
+const requeued = requeuePending();
 
 /*
  * The listener, and why it is not a one-liner any more.
@@ -291,7 +275,6 @@ function shutdown(signal) {
 for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
   process.on(sig, () => shutdown(sig));
 }
-if (process.env.SAOS_USER_ID) process.once('disconnect', () => shutdown('parent disconnected'));
 /*
  * Started by the desktop app (desktop/main.js) as its child, with an IPC
  * channel: Windows has no SIGTERM to send, and a hard kill would skip the

@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DATA_DIR } from './paths.js';
-import { readAccount, saveAccountSettings } from '../accounts/store.js';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -186,7 +185,7 @@ let cache = null;
 function load() {
   if (cache) return cache;
   try {
-    const raw = process.env.SAOS_USER_ID ? readAccount(process.env.SAOS_USER_ID)?.settings : fs.readFileSync(FILE, 'utf8');
+    const raw = fs.readFileSync(FILE, 'utf8');
     const parsed = JSON.parse(raw);
     cache = {
       connection: { ...DEFAULTS.connection, ...(parsed.connection || {}) },
@@ -206,15 +205,14 @@ function load() {
 
 export function getSettings() {
   const settings = load();
-  const deploymentModel = !process.env.SAOS_USER_ID || settings.llm.provider === process.env.LLM_PROVIDER;
   return {
     ...settings,
     llm: {
       ...settings.llm,
-      ...(!process.env.SAOS_USER_ID && process.env.LLM_PROVIDER ? { provider: process.env.LLM_PROVIDER } : {}),
-      ...(deploymentModel && process.env.OLLAMA_API_KEY && (!process.env.SAOS_USER_ID || !settings.llm.apiKey) ? { apiKey: process.env.OLLAMA_API_KEY } : {}),
-      ...(deploymentModel && process.env.OLLAMA_BASE_URL && (!process.env.SAOS_USER_ID || !settings.llm.baseUrl) ? { baseUrl: process.env.OLLAMA_BASE_URL } : {}),
-      ...(deploymentModel && process.env.OLLAMA_MODEL && (!process.env.SAOS_USER_ID || !settings.llm.model) ? { model: process.env.OLLAMA_MODEL } : {}),
+      ...(process.env.LLM_PROVIDER ? { provider: process.env.LLM_PROVIDER } : {}),
+      ...(process.env.OLLAMA_API_KEY ? { apiKey: process.env.OLLAMA_API_KEY } : {}),
+      ...(process.env.OLLAMA_BASE_URL ? { baseUrl: process.env.OLLAMA_BASE_URL } : {}),
+      ...(process.env.OLLAMA_MODEL ? { model: process.env.OLLAMA_MODEL } : {}),
     },
   };
 }
@@ -345,7 +343,6 @@ export function saveSettings(patch) {
 
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
-  saveAccountSettings(next);
   cache = next;
   announceBinding();
   return next;
@@ -368,14 +365,12 @@ export function saveSetup({ profile, onboarding } = {}) {
   };
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
-  saveAccountSettings(next);
   cache = next;
   return next;
 }
 
 /** Whether settings.json exists at all — a fresh clone or a wiped data folder has none. */
 export function settingsFileExists() {
-  if (process.env.SAOS_USER_ID) return Boolean(readAccount(process.env.SAOS_USER_ID));
   return fs.existsSync(FILE);
 }
 
@@ -401,7 +396,6 @@ export function saveSkills(skills) {
   const next = { ...cur, skills: { ...cur.skills, ...(skills || {}) } };
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
-  saveAccountSettings(next);
   cache = next;
   return next.skills;
 }
@@ -412,7 +406,6 @@ export function clearConnection() {
   const next = { ...cur, connection: { ...DEFAULTS.connection } };
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2));
-  saveAccountSettings(next);
   cache = next;
   announceBinding();
   return next;

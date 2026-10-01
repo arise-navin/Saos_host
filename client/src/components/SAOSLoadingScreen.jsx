@@ -127,7 +127,7 @@ function Wave() {
   );
 }
 
-export default function SAOSLoadingScreen({ ready = false }) {
+export default function SAOSLoadingScreen({ ready = false, canFinish = true, onComplete }) {
   const health = useHealth();
   /** loading → complete → leaving → gone. Terminal. */
   const [phase, setPhase] = useState('loading');
@@ -192,18 +192,18 @@ export default function SAOSLoadingScreen({ ready = false }) {
   const view = describeStartup(done, clock(), sinceRef.current);
   // Monotonic. A stage landing out of order can only raise the base, but a
   // number that ever went backwards would be read as something failing.
-  const percent = phase === 'loading' ? Math.max(shownRef.current, view.percent) : 100;
+  const percent = phase === 'loading' ? Math.max(shownRef.current, canFinish ? view.percent : Math.min(view.percent, 99)) : 100;
   shownRef.current = percent;
-  const label = phase === 'loading' ? view.label : 'Ready';
+  const label = phase === 'loading' ? (view.ready && !canFinish ? 'Checking setup…' : view.label) : 'Ready';
 
   /* Completion: hold at full, fade, unmount. Timed, not transitionend — see
      the note on motion above. */
   useEffect(() => {
-    if (phase === 'loading' && view.ready) {
+    if (phase === 'loading' && view.ready && canFinish) {
       setPhase('complete');
       logToServer('info', `startup ready in ${Math.round(clock() - startedAt.current)}ms`);
     }
-  }, [phase, view.ready]);
+  }, [phase, view.ready, canFinish]);
   useEffect(() => {
     if (phase === 'complete') {
       const t = setTimeout(() => setPhase('leaving'), HOLD_MS);
@@ -216,11 +216,13 @@ export default function SAOSLoadingScreen({ ready = false }) {
     return undefined;
   }, [phase]);
 
+  useEffect(() => { if (phase === 'gone') onComplete?.(); }, [phase, onComplete]);
+
   if (phase === 'gone') return null;
 
   // `view.ready` rather than the phase, so the completion glow lands in the
   // same frame as the 100, not one effect later.
-  const cls = ['saos-splash', view.ready || phase !== 'loading' ? 'is-complete' : '', phase === 'leaving' ? 'is-leaving' : '']
+  const cls = ['saos-splash', (view.ready && canFinish) || phase !== 'loading' ? 'is-complete' : '', phase === 'leaving' ? 'is-leaving' : '']
     .filter(Boolean).join(' ');
 
   return (

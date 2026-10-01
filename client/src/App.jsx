@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { logToServer } from './logging.js';
 import Dashboard from './pages/Dashboard.jsx';
@@ -25,7 +25,7 @@ import Sidebar from './components/Sidebar.jsx';
 import PlaygroundBackground from './components/PlaygroundBackground.jsx';
 import SAOSLoadingScreen from './components/SAOSLoadingScreen.jsx';
 import Onboarding from './components/Onboarding.jsx';
-import AccountGate from './components/AccountGate.jsx';
+import './components/StartupScreen.css';
 import { useOnboarding, refreshOnboarding } from './hooks/useOnboarding.js';
 import { discoverHealthRun } from './components/healthRun.js';
 
@@ -200,17 +200,18 @@ function Shell() {
   );
 }
 
-function StartupScreen() {
-  const { loading, open, status, error } = useOnboarding();
-  if (loading || (!status && error)) return (
-    <div className="account-gate account-startup">
-      <div className="card account-form">
-        <h1>{loading ? 'Opening your setup…' : 'Could not open setup'}</h1>
+function StartupScreen({ splashDone, onSplashDone }) {
+  const { loading, status, error } = useOnboarding();
+  if (!splashDone) return <SAOSLoadingScreen canFinish={!loading} onComplete={onSplashDone} />;
+  if (!status && error) return (
+    <div className="startup-screen">
+      <div className="card startup-form">
+        <h1>Could not open setup</h1>
         {error && <><p role="alert">{error}</p><button className="btn" onClick={refreshOnboarding}>Retry</button></>}
       </div>
     </div>
   );
-  return open ? null : <SAOSLoadingScreen />;
+  return null;
 }
 
 function WorkspaceGate({ children }) {
@@ -219,8 +220,8 @@ function WorkspaceGate({ children }) {
 }
 
 export default function App() {
+  const [splashDone, setSplashDone] = useState(false);
   return (
-    <AccountGate>
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <WorkspaceGate><Shell /></WorkspaceGate>
       {/* Mounted once, outside the routed content: a toast raised by a page
@@ -241,14 +242,13 @@ export default function App() {
           screen below — the shell still mounts underneath — and inside the
           router so its last step can take you to a page. It renders nothing
           once setup is finished on this machine. */}
-      <Onboarding />
+      {splashDone && <Onboarding />}
       {/* The startup screen. An overlay above the shell, not a gate around
           it: everything above mounts and loads from the first frame exactly
           as before, and this only reports that happening. It unmounts itself
           once the real startup signals land, and App never remounts, so no
           navigation can bring it back. */}
-      <StartupScreen />
+      <StartupScreen splashDone={splashDone} onSplashDone={() => setSplashDone(true)} />
     </BrowserRouter>
-    </AccountGate>
   );
 }

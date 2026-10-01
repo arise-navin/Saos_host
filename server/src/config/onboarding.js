@@ -85,7 +85,7 @@ export function setupStatus() {
   const decision = decideSetup({
     onboarding: s.onboarding,
     configured: settingsFileExists() && hasConfiguration(s),
-    machineId: process.env.SAOS_USER_ID ? s.onboarding.machineId || here.id : here.id,
+    machineId: here.id,
   });
 
   if (decision.adopt) {
@@ -100,7 +100,6 @@ export function setupStatus() {
 
   const ob = getSettings().onboarding;
   return {
-    userId: process.env.SAOS_USER_ID || null,
     required: decision.required,
     reason: decision.reason,
     version: BACKEND_VERSION,
