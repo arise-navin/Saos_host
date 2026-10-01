@@ -32,6 +32,18 @@ test('first login saves credentials without contacting ServiceNow; later login c
   }
 });
 
+test('username-only accounts require explicit creation and store a password hash', () => {
+  const body = { username: 'local-user', password: 'local-password' };
+  assert.throws(() => authenticateAccount(body), /Create an account first/);
+  const user = authenticateAccount({ ...body, createAccount: true });
+  assert.equal(user.instance, '');
+  assert.equal(authenticateAccount(body).id, user.id);
+  assert.throws(() => authenticateAccount({ ...body, createAccount: true }), /already exists/);
+  assert.throws(() => authenticateAccount({ ...body, password: 'wrong' }), /Incorrect/);
+  const saved = accountStore().prepare('SELECT digest FROM saos_account_passwords WHERE account = ?').get(user.id);
+  assert.notEqual(saved.digest, body.password);
+});
+
 test('two accounts share a database without sharing schema versions, chats, search, or profile data', () => {
   const raw = new LibsqlDatabase(':memory:');
   const make = id => scopeAccountDatabase(adaptLibsqlDatabase(raw, { remote: true, namespace: id }), id);

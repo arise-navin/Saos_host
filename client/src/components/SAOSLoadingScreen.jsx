@@ -127,7 +127,7 @@ function Wave() {
   );
 }
 
-export default function SAOSLoadingScreen() {
+export default function SAOSLoadingScreen({ ready = false }) {
   const health = useHealth();
   /** loading → complete → leaving → gone. Terminal. */
   const [phase, setPhase] = useState('loading');
@@ -161,7 +161,7 @@ export default function SAOSLoadingScreen() {
   /* health — the shared poller's first answer, whatever it was. Subscribing
      here shares the request the agent workspace and the routes already make;
      it does not add one. */
-  useEffect(() => { if (!health.loading) complete('health'); }, [health.loading, complete]);
+  useEffect(() => { if (ready || !health.loading) complete('health'); }, [ready, health.loading, complete]);
 
   /* workspace — the shell beneath has painted with the health answer. Two
      frames: the first is requested before React's commit of that answer has

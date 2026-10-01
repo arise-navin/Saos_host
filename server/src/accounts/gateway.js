@@ -102,7 +102,7 @@ export function accountGateway() {
       const db = accountStore();
       const previous = readAccount(identity.id);
       const settings = previous ? JSON.parse(previous.settings) : { profile: { name: '' }, onboarding: { startedAt: new Date().toISOString() } };
-      settings.connection = { instanceUrl: identity.instance, authType: 'basic', username: identity.username, password: req.body.password };
+      if (identity.instance) settings.connection = { instanceUrl: identity.instance, authType: 'basic', username: identity.username, password: req.body.password };
       const running = workers.get(identity.id);
       if (running && JSON.parse(previous.settings).connection?.password !== req.body.password) {
         if (running.active) return res.status(409).json({ message: 'This account is busy. Retry after its current request finishes.' });

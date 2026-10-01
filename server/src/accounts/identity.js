@@ -11,8 +11,8 @@ export function instanceOrigin(value) {
   return url.origin;
 }
 
-export function authenticateAccount({ instanceUrl, username, password }) {
-  const instance = instanceOrigin(instanceUrl);
+export function authenticateAccount({ instanceUrl, username, password, createAccount = false }) {
+  const instance = instanceUrl ? instanceOrigin(instanceUrl) : '';
   if (typeof username !== 'string' || !username.trim() || username.length > 200
       || /[\r\n:^]/.test(username) || typeof password !== 'string' || !password || password.length > 4096) {
     throw new Error('Enter your ServiceNow username and password.');
@@ -22,6 +22,8 @@ export function authenticateAccount({ instanceUrl, username, password }) {
   const previous = db.prepare('SELECT * FROM saos_accounts WHERE instance = ? AND lower(username) = ?').get(instance, login.toLowerCase());
   const id = previous?.id || createHash('sha256').update(`${instance}\n${login.toLowerCase()}`).digest('hex');
   const saved = db.prepare('SELECT salt, digest FROM saos_account_passwords WHERE account = ?').get(id);
+  if (createAccount && (saved || previous)) throw new Error('Incorrect username: account already exists. Sign in instead.');
+  if (!saved && !previous && !createAccount && !instanceUrl) throw new Error('Incorrect username or password. Create an account first.');
   if (saved) {
     if (!timingSafeEqual(scryptSync(password, saved.salt, 64), Buffer.from(saved.digest, 'hex'))) {
       throw new Error('Incorrect username or password.');
