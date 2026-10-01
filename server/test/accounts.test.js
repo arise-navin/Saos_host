@@ -8,7 +8,8 @@ import LibsqlDatabase from 'libsql';
 import { authenticateAccount, instanceOrigin } from '../src/accounts/identity.js';
 import { accountStore } from '../src/accounts/store.js';
 import { adaptLibsqlDatabase } from '../src/memory/connection.js';
-import { migrate, scopeAccountDatabase } from '../src/memory/db.js';
+import { migrate, scopeAccountDatabase, _setDbForTests } from '../src/memory/db.js';
+import { seedLedger } from '../src/memory/facts.js';
 
 process.env.SAOS_ACCOUNTS_DIR = fs.mkdtempSync(path.join(os.tmpdir(), 'saos-accounts-'));
 
@@ -55,6 +56,23 @@ test('two accounts share a database without sharing schema versions, chats, sear
   } finally { raw.close(); }
 });
 
+test('seed facts use one batch and preserve confidence and provenance on repeated initialization', () => {
+  const raw = new LibsqlDatabase(':memory:');
+  const db = migrate(adaptLibsqlDatabase(raw));
+  _setDbForTests(db);
+  try {
+    const first = seedLedger({ instance: 'https://dev123.service-now.com' });
+    const fact = db.prepare('SELECT * FROM facts LIMIT 1').get();
+    db.prepare('UPDATE facts SET confidence = ?, provenance = ? WHERE id = ?').run(0.98, 'Existing evidence', fact.id);
+    seedLedger({ instance: 'https://dev123.service-now.com' });
+    assert.equal(db.prepare('SELECT count(*) AS n FROM facts').get().n, first.seeded);
+    const updated = db.prepare('SELECT * FROM facts WHERE id = ?').get(fact.id);
+    assert.equal(updated.confidence, 0.99);
+    assert.equal(updated.provenance, 'Existing evidence');
+    assert.equal(updated.value, fact.value);
+  } finally { _setDbForTests(null); raw.close(); }
+});
+
 test('API requires an authenticated cookie, creates blank user setup, remembers identities, and revokes logout', async () => {
   process.env.SAOS_MULTI_USER = 'true';
   const { accountGateway, stopAccountWorkers } = await import('../src/accounts/gateway.js');
@@ -81,6 +99,7 @@ test('API requires an authenticated cookie, creates blank user setup, remembers 
     assert.equal(setup.required, true);
     assert.equal(setup.settings.profile.name, '');
     assert.equal(setup.settings.connection.username, 'alice');
+    assert.equal(fs.existsSync(path.join(process.env.SAOS_ACCOUNTS_DIR, 'users', session.user.id, 'nowhelpassist.db')), false);
     await post('/api/onboarding/profile', { name: 'Alice' }, cookie);
     assert.equal((await (await post('/api/onboarding/complete', { name: 'Alice' }, cookie)).json()).required, false);
     await post('/api/agent/sessions', { id: 'private-chat', title: 'Alice only' }, cookie);

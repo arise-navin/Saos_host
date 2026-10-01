@@ -213,11 +213,16 @@ function StartupScreen() {
   return open ? null : <SAOSLoadingScreen />;
 }
 
+function WorkspaceGate({ children }) {
+  const { loading, open, status } = useOnboarding();
+  return loading || open || !status ? null : children;
+}
+
 export default function App() {
   return (
     <AccountGate>
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <Shell />
+      <WorkspaceGate><Shell /></WorkspaceGate>
       {/* Mounted once, outside the routed content: a toast raised by a page
           that is navigating away must still be readable, the dialog must
           outlive the row that opened it, and neither may be unmounted by the
@@ -230,7 +235,7 @@ export default function App() {
           same reason as the two above: it must survive navigation and must not
           be unmounted by the boundary catching a page. It renders nothing at
           all when this build does not ship the capture agent. */}
-      <MeetingDock />
+      <WorkspaceGate><MeetingDock /></WorkspaceGate>
       {/* First-run setup: a fresh install, a data folder moved to another
           computer, or "Re-run setup" in Settings. An overlay like the startup
           screen below — the shell still mounts underneath — and inside the

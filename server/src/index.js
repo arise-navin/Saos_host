@@ -44,10 +44,23 @@ import './servicenow/post-install-state.js';
 import { primeCapability } from './servicenow/fluent.js';
 
 const app = express();
+let workspaceInitialized = false;
+function initializeWorkspace() {
+  if (workspaceInitialized) return;
+  getDb();
+  seedLedger();
+  closeOrphanedRecordings();
+  requeuePending();
+  workspaceInitialized = true;
+}
 app.use(accountGateway());
 if (!multiUser) app.use(accessGuard());
 app.use(cors());
 app.use(express.json({ limit: '2mb' }));
+app.use((req, _res, next) => {
+  if (process.env.SAOS_USER_ID && !req.path.startsWith('/api/onboarding') && req.path !== '/api/logs') initializeWorkspace();
+  next();
+});
 // Before the routes, so a request is logged even when it 404s.
 app.use(requestLogger());
 // The licence (installed desktop app only): once it has ended, every request
@@ -158,8 +171,8 @@ if (!multiUser && !LOOPBACK.has(HOST)) {
 // Storage comes up before the listener: migrations are idempotent, and a
 // database that cannot open should stop the server rather than fail the first
 // chat turn with something unrecognisable.
-if (!multiUser) getDb();
-const seeded = multiUser ? { seeded: 0, instance: '' } : seedLedger();
+if (!multiUser && !process.env.SAOS_USER_ID) getDb();
+const seeded = multiUser || process.env.SAOS_USER_ID ? { seeded: 0, instance: '' } : seedLedger();
 
 /*
  * SESSION 1 / WI-3 — the first SDK probe runs at boot, not on the first
@@ -178,8 +191,8 @@ if (!multiUser && !process.env.SAOS_USER_ID) primeCapability();
  * claim in meetings/queue.js true rather than aspirational.
  */
 // A meeting still marked `recording` at boot is one the agent never closed.
-const orphans = multiUser ? 0 : closeOrphanedRecordings();
-const requeued = multiUser ? 0 : requeuePending();
+const orphans = multiUser || process.env.SAOS_USER_ID ? 0 : closeOrphanedRecordings();
+const requeued = multiUser || process.env.SAOS_USER_ID ? 0 : requeuePending();
 
 /*
  * The listener, and why it is not a one-liner any more.

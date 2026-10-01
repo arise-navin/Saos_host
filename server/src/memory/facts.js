@@ -285,19 +285,15 @@ const SEED = [
  */
 export function seedLedger({ instance } = {}) {
   const inst = instance || currentInstance();
-  let written = 0;
-  for (const f of SEED) {
-    recordFact({
-      instance: f.scope === 'instance' ? inst : UNIVERSAL,
-      kind: f.kind,
-      key: f.key,
-      value: f.value,
-      provenance: f.provenance,
-      confidence: f.confidence,
-    });
-    written += 1;
-  }
-  return { seeded: written, instance: inst };
+  const timestamp = now();
+  const values = SEED.flatMap(f => [f.scope === 'instance' ? inst : UNIVERSAL, f.kind, f.key, String(f.value), f.provenance || null, f.confidence ?? 0.6, timestamp]);
+  getDb().prepare(`INSERT INTO facts (instance, kind, key, value, provenance, confidence, ts)
+    VALUES ${SEED.map(() => '(?, ?, ?, ?, ?, ?, ?)').join(', ')}
+    ON CONFLICT(instance, kind, key) DO UPDATE SET
+      confidence = CASE WHEN facts.value = excluded.value THEN MIN(0.99, MAX(facts.confidence, excluded.confidence) + 0.05) ELSE excluded.confidence END,
+      provenance = CASE WHEN facts.value = excluded.value THEN facts.provenance ELSE excluded.provenance END,
+      value = excluded.value, ts = excluded.ts`).run(...values);
+  return { seeded: SEED.length, instance: inst };
 }
 
 /* ------------------------------------------------------------------ *

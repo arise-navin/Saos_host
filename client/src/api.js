@@ -19,10 +19,12 @@ async function request(method, path, body) {
       method,
       headers: body ? { 'Content-Type': 'application/json' } : undefined,
       body: body ? JSON.stringify(body) : undefined,
+      signal: AbortSignal.timeout(path.startsWith('/onboarding/checks') ? 120000 : 30000),
     });
   } catch (err) {
     // The server is unreachable — the one failure the server cannot log.
     logToServer('error', `${method} ${path} — network failure: ${err.message}`);
+    if (err.name === 'TimeoutError') throw new Error('The request timed out. Please retry.');
     throw err;
   }
   const text = await res.text();

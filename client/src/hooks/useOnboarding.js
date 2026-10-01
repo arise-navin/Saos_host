@@ -31,6 +31,7 @@ function set(next) {
 
 export function refreshOnboarding() {
   if (inFlight) return inFlight;
+  set({ loading: true, error: null });
   inFlight = api.get('/onboarding')
     .then((status) => set({ loading: false, status: browserStatus(status), error: null }))
     // A server that does not answer owes no wizard — the app's own
