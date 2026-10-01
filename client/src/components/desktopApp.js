@@ -1,3 +1,5 @@
+import { apiUrl } from '../apiBase.js';
+
 /**
  * Preferences → Desktop app, decided in plain JS (the offline suite imports
  * this; Node cannot import .jsx).
@@ -34,4 +36,4 @@ export function orderMacBuilds(builds = []) {
   return [...builds].sort((a, b) => (rank[a.arch] ?? 9) - (rank[b.arch] ?? 9));
 }
 
-export const downloadHref = (build) => `/api/desktop/download/${encodeURIComponent(build.file)}`;
+export const downloadHref = (build) => apiUrl(`/desktop/download/${encodeURIComponent(build.file)}`);

@@ -1,7 +1,6 @@
 import { logToServer } from './logging.js';
 import { watchdogVerdict, PROBE_EVERY_MS } from './streamWatchdog.js';
-
-const BASE = '/api';
+import { apiUrl } from './apiBase.js';
 
 /**
  * Every call reports its outcome to the server terminal.
@@ -15,7 +14,7 @@ async function request(method, path, body) {
   const start = Date.now();
   let res;
   try {
-    res = await fetch(BASE + path, {
+    res = await fetch(apiUrl(path), {
       method,
       headers: body ? { 'Content-Type': 'application/json' } : undefined,
       body: body ? JSON.stringify(body) : undefined,
@@ -57,7 +56,7 @@ async function upload(path, file, signal) {
   const start = Date.now();
   let res;
   try {
-    res = await fetch(BASE + path, {
+    res = await fetch(apiUrl(path), {
       method: 'POST',
       headers: { 'Content-Type': file.type || 'application/octet-stream' },
       body: file,
@@ -133,7 +132,7 @@ function cancelledError() {
  * clear error (streamWatchdog.js decides; this only measures).
  */
 async function healthBootId() {
-  const res = await fetch(BASE + '/system/health', { signal: AbortSignal.timeout(3000) });
+  const res = await fetch(apiUrl('/system/health'), { signal: AbortSignal.timeout(3000) });
   if (!res.ok) throw new Error(`health answered ${res.status}`);
   return (await res.json())?.bootId ?? null;
 }
@@ -174,7 +173,7 @@ export async function sse(path, body, onEvent, method = 'POST', { signal, watchd
   try {
     let res;
     try {
-      res = await fetch(BASE + path, {
+      res = await fetch(apiUrl(path), {
         method,
         headers: body ? { 'Content-Type': 'application/json' } : undefined,
         body: body ? JSON.stringify(body) : undefined,

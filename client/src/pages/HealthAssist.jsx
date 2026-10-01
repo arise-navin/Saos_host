@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { api } from '../api.js';
+import { apiUrl } from '../apiBase.js';
 import { SkeletonLines, EmptyState } from '../components/states.jsx';
 import { toast } from '../components/toast.js';
 import RemediationDrawer from '../components/RemediationDrawer.jsx';
@@ -1369,8 +1370,8 @@ export default function HealthAssist() {
       if (scope !== 'all') qs.set('scope', scope);
       const q = qs.toString();
       return run.id
-        ? `/api/health/runs/${run.id}/export.csv${q ? `?${q}` : ''}`
-        : `/api/health/modules/export.csv${q ? `?${q}` : ''}`;
+        ? apiUrl(`/health/runs/${run.id}/export.csv${q ? `?${q}` : ''}`)
+        : apiUrl(`/health/modules/export.csv${q ? `?${q}` : ''}`);
     })()
     : '#';
   const unreadable = coverageRows.filter((c) => !USABLE.includes(c.status));

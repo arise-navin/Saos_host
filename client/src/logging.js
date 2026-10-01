@@ -18,7 +18,9 @@
  *  - **It never blocks a page.** Every failure path is a no-op.
  */
 
-const ENDPOINT = '/api/logs';
+import { apiUrl } from './apiBase.js';
+
+const ENDPOINT = apiUrl('/logs');
 const FLUSH_MS = 700;
 const MAX_QUEUE = 200;
 

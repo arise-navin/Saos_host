@@ -1,7 +1,6 @@
 {
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://saos-host.onrender.com/api/:path*" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }

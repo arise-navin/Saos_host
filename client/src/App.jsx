@@ -219,43 +219,7 @@ function WorkspaceGate({ children }) {
   return loading || open || !status ? null : children;
 }
 
-function AccessGate({ children }) {
-  const [access, setAccess] = useState(null);
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  useEffect(() => {
-    fetch('/api/auth/session').then(res => res.json()).then(setAccess)
-      .catch(() => setError('Could not connect to the server.'));
-  }, []);
-  async function signIn(event) {
-    event.preventDefault();
-    setError('');
-    try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Sign-in failed.');
-      setPassword('');
-      setAccess(data);
-    } catch (err) { setError(err.message); }
-  }
-  if (access?.authenticated) return children;
-  return (
-    <div className="startup-screen">
-      <form className="card startup-form" onSubmit={signIn}>
-        <h1>{access ? 'Open workspace' : 'Connecting to workspace…'}</h1>
-        {access && <><label htmlFor="access-password">Deployment password</label>
-          <input id="access-password" type="password" autoComplete="current-password" value={password} onChange={event => setPassword(event.target.value)} required />
-          <button className="btn primary" type="submit">Open</button></>}
-        {error && <p role="alert">{error}</p>}
-      </form>
-    </div>
-  );
-}
-
-function WorkspaceApp() {
+export default function App() {
   const [splashDone, setSplashDone] = useState(false);
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
@@ -287,8 +251,4 @@ function WorkspaceApp() {
       <StartupScreen splashDone={splashDone} onSplashDone={() => setSplashDone(true)} />
     </BrowserRouter>
   );
-}
-
-export default function App() {
-  return <AccessGate><WorkspaceApp /></AccessGate>;
 }

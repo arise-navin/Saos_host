@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import { publicAccess } from './publicAccess.js';
 import { systemRouter } from './routes/system.js';
 import { incidentsRouter } from './routes/incidents.js';
 import { catalogRouter } from './routes/catalog.js';
@@ -44,12 +43,10 @@ import { primeCapability } from './servicenow/fluent.js';
 
 const app = express();
 app.get('/healthz', (_req, res) => res.json({ ok: true }));
-app.use(cors());
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN || 'https://saos-host.vercel.app' }));
 app.use(express.json({ limit: '2mb' }));
 const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
 const HOST = process.env.HOST || '127.0.0.1';
-if (!LOOPBACK.has(HOST)) app.use(publicAccess());
-else app.get('/api/auth/session', (_req, res) => res.json({ enabled: false, authenticated: true }));
 // Before the routes, so a request is logged even when it 404s.
 app.use(requestLogger());
 // The licence (installed desktop app only): once it has ended, every request

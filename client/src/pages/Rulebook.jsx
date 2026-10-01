@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../api.js';
+import { apiUrl } from '../apiBase.js';
 import { toast } from '../components/toast.js';
 import CustomRuleModal from '../components/CustomRuleModal.jsx';
 import RuleEditModal from '../components/RuleEditModal.jsx';
@@ -97,7 +98,7 @@ function ExportMenu({ tab, tabLabel, shown, filters }) {
     const p = new URLSearchParams({ tab: t });
     if (withFilters) for (const [k, v] of Object.entries(filters)) if (v) p.set(k, v);
     if (withFilters && filters.status === 'removed') p.set('removed', '1');
-    return `/api/health/rulebook/export.xlsx?${p}`;
+    return apiUrl(`/health/rulebook/export.xlsx?${p}`);
   };
   const pick = (label) => { setOpen(false); toast.info(`Exporting ${label} to Excel…`); };
   return (

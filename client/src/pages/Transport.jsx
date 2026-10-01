@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api.js';
+import { apiUrl } from '../apiBase.js';
 import { toast } from '../components/toast.js';
 import { EmptyState, LoadingRegion } from '../components/states.jsx';
 import ScopeBadge from '../components/ScopeBadge.jsx';
@@ -72,7 +73,7 @@ export default function Transport() {
     try {
       const check = await api.get(`/transport/sets/${set.setSysId}/export?inspect=true`);
       if (!check.parity?.ok) { toast.error('The export did not match the set; it was not downloaded.'); return; }
-      window.location.href = `/api/transport/sets/${set.setSysId}/export`;
+      window.location.href = apiUrl(`/transport/sets/${set.setSysId}/export`);
       toast.success(`${check.filename} — ${check.manifest.count} update${check.manifest.count === 1 ? '' : 's'}, parity verified`);
     } catch (e) { toast.error(e.message); }
   };
