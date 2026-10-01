@@ -25,10 +25,10 @@ export function watchdogVerdict({
   if (bootAtStart && bootNow && bootNow !== bootAtStart) {
     return { reason: 'restarted', message: `The server restarted while this request was running, so it stopped part-way and will not finish. ${AFTERWARDS}` };
   }
-  if (probeFailures >= maxProbeFailures) {
+  if (probeFailures >= maxProbeFailures && now - lastByteAt > stallMs) {
     return {
       reason: 'unreachable',
-      message: 'The server is not responding, so this request cannot finish. Start it again with `npm start` in the repo root. '
+      message: 'The server stopped responding during this request. Check the connection and try again. '
         + AFTERWARDS,
     };
   }

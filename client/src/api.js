@@ -237,7 +237,7 @@ export async function sse(path, body, onEvent, method = 'POST', { signal, watchd
       // needs the line more than the console does.
       const message =
         'The connection to the SAOS server ended before this finished, so it is unknown how far it got. '
-        + 'Check the server terminal — if it is not running, start it with `npm start` in the repo root. '
+        + 'Check the connection before trying again. '
         + 'If it was changing a flow, your next message will say so. Anything already written to the instance is on the Audit page.';
       logToServer('error', `${method} ${path} (stream) ended without a done/error frame — connection lost mid-stream`);
       throw new Error(message);
