@@ -1,0 +1,80 @@
+{
+  "name": "saos-desktop",
+  "productName": "SAOS",
+  "version": "0.1.0",
+  "description": "SAOS — agentic ServiceNow studio, as an installable Windows and macOS app",
+  "author": "SAOS",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "stage": "node scripts/stage.mjs",
+    "icon": "node scripts/make-icon.mjs",
+    "licence": "node scripts/licence.mjs",
+    "start": "electron .",
+    "pack": "npm run stage && electron-builder --dir",
+    "dist": "npm run stage && electron-builder",
+    "dist:win": "npm run stage && electron-builder --win nsis",
+    "dist:mac": "npm run stage && electron-builder --mac dmg"
+  },
+  "build": {
+    "appId": "com.saos.studio",
+    "productName": "SAOS",
+    "copyright": "SAOS",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "splash.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "stage/payload",
+        "to": "payload"
+      }
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SAOS",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "SAOS-Setup-${version}.exe"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg"
+        }
+      ],
+      "category": "public.app-category.developer-tools",
+      "icon": "build/icon.png",
+      "hardenedRuntime": false,
+      "artifactName": "SAOS-${version}-mac-${arch}.${ext}"
+    },
+    "dmg": {
+      "title": "SAOS ${version}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3"
+  }
+}

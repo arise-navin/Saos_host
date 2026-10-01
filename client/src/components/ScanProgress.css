@@ -1,0 +1,231 @@
+/* ── Health scan timing: the progress panel and the scan history ─────────────
+   One sheet for one feature. Drawn from the app's tokens, so it belongs to
+   whichever theme is on; the per-theme blocks at the end re-point the fill
+   colour and the shape only.
+
+     --sp-accent    text and icons in the accent (readable on the panel)
+     --sp-fill      filled shapes: the bar, the ring, the running step's dot
+     --sp-fill-ink  text drawn on --sp-fill
+
+   LAYOUT — across the page: the head, a thin progress bar, the numbers in one
+   row, the six steps side by side, then the rule packs. Below 900px the steps
+   stack into a list and the numbers go to two columns.
+
+   MOTION — the running step's spinner, and the bar and ring filling. Nothing
+   else moves. The global prefers-reduced-motion rule stops all three.
+
+   CASCADE — imported by a component, so this lands before styles.css and the
+   theme sheets; the panel is also a .card, and rules that must beat .card say
+   .card.sp. */
+
+.sp {
+  --sp-accent: var(--verdigris);
+  --sp-fill: var(--verdigris);
+  --sp-fill-ink: #0b130e;
+}
+.card.sp { padding: 0; overflow: hidden; }
+
+/* ── head ── */
+.sp-head {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 12px 16px;
+  padding: 16px 22px 14px;
+}
+.sp-head-main { display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1 1 320px; }
+.sp-head-text { min-width: 0; }
+.sp-badge {
+  flex: none;
+  display: grid; place-items: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  color: var(--sp-accent);
+  background: color-mix(in srgb, var(--sp-fill) 15%, transparent);
+}
+.sp-badge.is-cancelled { color: var(--amber); background: color-mix(in srgb, var(--amber) 14%, transparent); }
+.sp-badge.is-failed { color: var(--red); background: color-mix(in srgb, var(--red) 14%, transparent); }
+.sp-title { margin: 0; font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.sp-sub { margin: 2px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
+.sp-sub b { color: var(--text); font-weight: 600; }
+.sp-head-actions { display: flex; gap: 8px; }
+
+.sp-track { height: 3px; background: var(--line-soft); }
+.sp-track > span { display: block; height: 100%; background: var(--sp-fill); transition: width 600ms ease; }
+.sp.is-failed .sp-track > span { background: var(--red); }
+.sp.is-cancelled .sp-track > span { background: var(--amber); }
+
+/* ── the numbers, in one row ── */
+.sp-stats {
+  display: flex; align-items: center; gap: 26px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--panel-2) 55%, transparent);
+}
+.sp-ring { position: relative; flex: none; width: 76px; height: 76px; }
+.sp-ring svg { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+.sp-ring circle { fill: none; stroke-width: 9; }
+.sp-ring-track { stroke: var(--line-soft); }
+.sp-ring-fill { stroke: var(--sp-fill); stroke-linecap: round; transition: stroke-dashoffset 600ms ease; }
+.sp-ring.is-failed .sp-ring-fill { stroke: var(--red); }
+.sp-ring.is-cancelled .sp-ring-fill { stroke: var(--amber); }
+.sp-ring-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.sp-ring-text b { font-family: var(--font-display); font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.sp-ring-text em { margin-top: 2px; font-style: normal; font-size: 10.5px; color: var(--muted); }
+
+.sp-facts {
+  flex: 1; min-width: 0;
+  margin: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 22px;
+}
+.sp-fact { min-width: 0; padding-left: 16px; border-left: 1px solid var(--line-soft); }
+.sp-fact dt { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.sp-fact dd { margin: 3px 0 0; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sp-fact dd em { display: block; font-style: normal; font-size: 11.5px; font-weight: 400; color: var(--muted); }
+.sp-mono { font-family: var(--font-mono); font-size: 14px; font-variant-numeric: tabular-nums; }
+
+/* ── the six steps, side by side ── */
+.sp-steps {
+  list-style: none; margin: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+  padding: 20px 10px 18px;
+}
+.sp-step {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  min-width: 0;
+  padding: 0 10px;
+  text-align: center;
+}
+/* The line joining one step to the next, from dot edge to dot edge. */
+.sp-step:not(:last-child)::after {
+  content: '';
+  position: absolute; top: 15px; left: calc(50% + 22px); right: calc(-50% + 22px);
+  height: 2px; border-radius: 2px;
+  background: var(--line);
+}
+.sp-step.is-done:not(:last-child)::after { background: color-mix(in srgb, var(--sp-fill) 65%, var(--line)); }
+
+.sp-dot {
+  flex: none;
+  display: grid; place-items: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  transition: background-color 200ms, border-color 200ms, color 200ms;
+}
+.sp-step.is-done .sp-dot {
+  color: var(--sp-accent);
+  background: color-mix(in srgb, var(--sp-fill) 13%, var(--panel));
+  border-color: color-mix(in srgb, var(--sp-fill) 50%, var(--line));
+}
+.sp-step.is-active .sp-dot {
+  color: var(--sp-fill-ink); background: var(--sp-fill); border-color: var(--sp-fill);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--sp-fill) 18%, transparent);
+}
+.sp-step:is(.is-skipped, .is-not-run) .sp-dot { border-style: dashed; }
+.sp-step.is-failed .sp-dot { color: var(--red); border-color: var(--red); background: color-mix(in srgb, var(--red) 10%, var(--panel)); }
+.sp-step.is-stopped .sp-dot { color: var(--amber); border-color: var(--amber); background: color-mix(in srgb, var(--amber) 10%, var(--panel)); }
+
+.sp-step-text { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 0; max-width: 100%; }
+.sp-step-label { font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--text); }
+.sp-step.is-active .sp-step-label { color: var(--sp-accent); }
+.sp-step:is(.is-pending, .is-skipped, .is-not-run) .sp-step-label { font-weight: 500; color: var(--muted); }
+/* The one-line description: on the list layout only (the row keeps it as a tooltip). */
+.sp-step-hint { display: none; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+.sp-step-meta { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.sp-time { font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; color: var(--text); white-space: nowrap; }
+.sp-time.is-live { color: var(--sp-accent); font-weight: 600; }
+.sp-time.is-muted { font-family: var(--font-body); font-style: italic; color: var(--muted); }
+.sp-step-at { font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sp-step-detail {
+  max-width: 100%;
+  font-size: 12px; line-height: 1.4; color: var(--text);
+  overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.sp-spin {
+  display: block;
+  width: 13px; height: 13px;
+  border: 2px solid currentColor; border-right-color: transparent;
+  border-radius: 50%;
+  animation: sp-spin 900ms linear infinite;
+}
+.sp-badge .sp-spin { width: 16px; height: 16px; }
+@keyframes sp-spin { to { transform: rotate(360deg); } }
+
+/* ── rule packs and the estimate's basis ── */
+.sp-foot {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px;
+  padding: 12px 22px 16px;
+  border-top: 1px solid var(--line-soft);
+}
+.sp-packs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.sp-packs-label { margin-right: 2px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.sp-pack {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  font-size: 12.5px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.sp-pack > svg { color: var(--sp-accent); }
+.sp-pack b { font-weight: 600; }
+.sp-pack em { font-style: normal; font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sp-pack .sp-spin { width: 11px; height: 11px; color: var(--sp-accent); }
+.sp-pack.is-active { border-color: color-mix(in srgb, var(--sp-fill) 55%, var(--line)); background: color-mix(in srgb, var(--sp-fill) 8%, var(--panel)); }
+.sp-pack.is-stopped > svg { color: var(--amber); }
+.sp-pack.is-failed > svg { color: var(--red); }
+.sp-basis { margin: 0 0 0 auto; max-width: 520px; font-size: 12px; line-height: 1.5; color: var(--muted); text-align: right; }
+
+/* ── scan history table ── */
+.sp-history .table td { vertical-align: top; }
+.sp-cell-main { display: block; white-space: nowrap; }
+.sp-cell-sub { display: block; font-size: 11.5px; color: var(--muted); }
+.sp-num { text-align: right !important; }
+
+/* ── "usually takes" in the scan options ── */
+.sp-estimate { margin: 10px 0 0; font-size: 12px; line-height: 1.45; color: var(--text); }
+.sp-estimate span { color: var(--muted); }
+
+/* ── narrower: the steps stack into a list ── */
+@media (max-width: 899px) {
+  .sp-steps { display: flex; flex-direction: column; padding: 14px 18px 16px; }
+  .sp-step { flex-direction: row; align-items: flex-start; gap: 14px; padding: 7px 0; text-align: left; }
+  .sp-step:not(:last-child)::after { top: 42px; bottom: -4px; left: 15px; right: auto; width: 2px; height: auto; }
+  .sp-step-text { align-items: flex-start; padding-top: 5px; }
+  .sp-step-hint { display: block; }
+  .sp-step-meta { flex-direction: row; align-items: baseline; gap: 8px; }
+  .sp-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sp-basis { margin-left: 0; text-align: left; }
+}
+@media (max-width: 520px) {
+  .sp-head, .sp-stats, .sp-foot { padding-left: 14px; padding-right: 14px; }
+  .sp-steps { padding-left: 14px; padding-right: 14px; }
+  .sp-stats { gap: 14px; }
+  .sp-ring { width: 64px; height: 64px; }
+  .sp-ring-text b { font-size: 15px; }
+  .sp-fact { padding-left: 10px; }
+  .sp-fact dd { font-size: 14px; }
+}
+
+/* ══ SERVICENOW ══ */
+:root[data-theme="servicenow"] .sp { --sp-fill: var(--sn-green); --sp-fill-ink: var(--sn-navy); --sp-accent: var(--sn-green-text); }
+:root[data-theme="servicenow"] .sp-track > span { background: var(--sn-grad); }
+:root[data-theme="servicenow"] .sp-stats { background: #f7fafb; }
+
+/* ══ ROBOTIC ══ */
+:root[data-theme="robotic"] .sp { --sp-fill: var(--robo-green); --sp-fill-ink: var(--robo-ink); --sp-accent: #1a7f37; }
+:root[data-theme="robotic"] :is(.sp-dot, .sp-badge, .sp-pack) { border-radius: 0; }
+:root[data-theme="robotic"] .sp-dot { border-width: 2px; }
+:root[data-theme="robotic"] .sp-step.is-active .sp-dot { border-color: var(--robo-ink); box-shadow: 2px 2px 0 var(--robo-ink); }
+:root[data-theme="robotic"] .sp-pack { border-width: 2px; border-color: var(--robo-ink); }
+:root[data-theme="robotic"] .sp-track { height: 6px; background: #e9f1f3; border-top: 2px solid var(--robo-ink); border-bottom: 2px solid var(--robo-ink); }
+:root[data-theme="robotic"] .sp-stats { background: #f4f8f9; border-bottom: 2px solid var(--robo-ink); }
+:root[data-theme="robotic"] .sp-foot { border-top: 2px solid var(--robo-ink); }
+:root[data-theme="robotic"] .sp-fact { border-left: 2px solid var(--robo-ink); }
+:root[data-theme="robotic"] .sp-ring-fill { stroke-linecap: butt; }
+:root[data-theme="robotic"] .sp-title { text-transform: uppercase; letter-spacing: 0.02em; }

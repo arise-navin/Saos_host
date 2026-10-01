@@ -1,0 +1,250 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   HEALTH ASSIST — ONE FINDING (FindingDetail.jsx)
+
+   Layout, top to bottom: header + badges; Finding overview | Remediation side
+   by side; Finding details (Detection details | Evidence side by side);
+   Connected impact on one line; Related findings, folded.
+
+   Theme tokens only (--panel, --line, --text, --muted, --verdigris, --amber,
+   --blue, --hs-tone), so every theme — dark Original and the light ones —
+   draws it in its own colours. Severity colour comes from the existing
+   .tone-* classes, never a new palette.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.fd { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.fd-icon { flex: none; display: block; }
+.fd .mono { font-family: var(--font-mono); }
+.fd-muted { color: var(--muted); }
+.fd-small { font-size: 12.5px; }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.fd-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.fd-head-text { min-width: 0; }
+.fd-crumbs { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); margin-bottom: 6px; flex-wrap: wrap; }
+.fd-crumbs button { background: none; border: 0; padding: 0; font: inherit; color: var(--muted); cursor: pointer; }
+.fd-crumbs button:hover { color: var(--text); text-decoration: underline; }
+.fd-crumb-here { color: var(--text); font-weight: 600; }
+.fd-title {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700; line-height: 1.2;
+  margin: 0; color: var(--text); letter-spacing: -.01em; overflow-wrap: anywhere;
+}
+.fd-sub { color: var(--muted); margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; }
+.fd-back { display: inline-flex; align-items: center; gap: 8px; flex: none; }
+
+.fd-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.fd-badge {
+  display: inline-flex; align-items: center; gap: 8px; min-width: 0;
+  border: 1px solid var(--line); background: var(--panel); border-radius: 10px;
+  padding: 7px 13px; font-size: 13.5px; color: var(--muted);
+}
+.fd-badge b { color: var(--text); font-weight: 600; overflow-wrap: anywhere; }
+.fd-badge-sev {
+  color: var(--hs-tone); font-weight: 600;
+  border-color: color-mix(in srgb, var(--hs-tone) 45%, transparent);
+  background: color-mix(in srgb, var(--hs-tone) 10%, var(--panel));
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────── */
+.fd-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px 22px; box-shadow: 0 1px 3px rgba(0, 0, 0, .05); min-width: 0;
+}
+.fd-card-tight { padding: 4px 22px; }
+.fd-card-title {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0 0 14px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line-soft);
+}
+.fd-h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+.fd-text { font-size: 13.5px; line-height: 1.6; margin: 0 0 14px; }
+
+/* Overview | Remediation: equal height, side by side; stacked when narrow. */
+.fd-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+@media (max-width: 1100px) { .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Callouts ────────────────────────────────────────────────────────────── */
+.fd-callout {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--panel-2); border-radius: 10px; padding: 13px 16px; margin: 0 0 14px;
+  border-left: 3px solid var(--verdigris);
+}
+.fd-callout-icon { color: var(--verdigris); margin-top: 1px; }
+.fd-callout b { font-size: 14px; }
+.fd-callout p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.6; color: var(--text); }
+.fd-callout em { color: var(--muted); }
+
+/* Evidence, in the overview: its summary sits beside the title. */
+.fd-evsum { border-top: 1px solid var(--line-soft); margin-top: 4px; }
+.fd-dot { color: var(--muted); margin: 0 8px; }
+.fd-code {
+  font-family: var(--font-mono); font-size: 12.5px; background: var(--panel-2);
+  border: 1px solid var(--line-soft); border-radius: 6px; padding: 2px 7px; margin-right: 4px;
+}
+
+/* ── Remediation ─────────────────────────────────────────────────────────── */
+.fd-decision {
+  display: flex; gap: 12px; align-items: flex-start;
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px 15px; margin-bottom: 14px;
+  --fd-tone: var(--verdigris);
+  border-color: color-mix(in srgb, var(--fd-tone) 45%, transparent);
+  background: color-mix(in srgb, var(--fd-tone) 9%, var(--panel));
+}
+.fd-decision.is-human { --fd-tone: var(--amber); }
+.fd-decision-icon {
+  width: 26px; height: 26px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  background: var(--fd-tone); color: var(--panel);
+}
+.fd-decision b { color: color-mix(in srgb, var(--fd-tone) 75%, var(--text)); font-size: 14px; }
+.fd-decision p { margin: 3px 0 0; font-size: 13px; line-height: 1.55; color: var(--text); }
+
+/* Two option cards, each with a radio mark. */
+.fd-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 520px) { .fd-modes { grid-template-columns: 1fr; } }
+.fd-mode {
+  display: flex; align-items: center; gap: 11px; text-align: left; min-width: 0;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 11px; padding: 11px 13px;
+  font: inherit; color: var(--text); cursor: pointer;
+}
+.fd-mode:hover { border-color: color-mix(in srgb, var(--verdigris) 45%, var(--line)); }
+.fd-mode > .fd-icon { color: var(--muted); }
+.fd-mode-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.fd-mode-text b { font-size: 14px; }
+.fd-mode-text span { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.fd-radio { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--muted); flex: none; }
+.fd-mode.is-on {
+  border-color: color-mix(in srgb, var(--verdigris) 60%, transparent);
+  background: color-mix(in srgb, var(--verdigris) 10%, var(--panel));
+}
+.fd-mode.is-on > .fd-icon { color: var(--verdigris); }
+.fd-mode.is-on .fd-radio { border: 5px solid var(--verdigris); }
+
+.fd-lane { padding-top: 14px; }
+
+.fd-stepper { list-style: none; margin: 0 0 16px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.fd-stepper li { display: flex; flex-direction: column; gap: 3px; position: relative; }
+.fd-stepper li > b { font-size: 13.5px; margin-top: 6px; }
+.fd-stepper li > span:last-child { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.fd-stepper li > span:last-child b { color: var(--text); }
+.fd-stepper li:not(:last-child)::after {
+  content: ''; position: absolute; top: 15px; left: 42px; right: 4px; border-top: 2px dotted var(--line);
+}
+@media (max-width: 560px) {
+  .fd-stepper { grid-template-columns: 1fr; }
+  .fd-stepper li:not(:last-child)::after { display: none; }
+}
+.fd-step-n {
+  width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  font-weight: 600; font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--line);
+}
+.fd-step-n.is-on { background: var(--verdigris); color: #fff; border-color: var(--verdigris); }
+
+.fd-cta {
+  width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 12px 16px; font-size: 15px; border-radius: 10px;
+}
+.fd-link {
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  background: none; border: 0; padding: 10px 0 0; font: inherit; font-size: 13px; color: var(--muted); cursor: pointer;
+}
+.fd-link:hover { color: var(--text); text-decoration: underline; }
+
+.fd-manual { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-direction: column; gap: 11px; }
+.fd-manual li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; font-size: 13.5px; line-height: 1.6; }
+.fd-manual .fd-step-n { width: 28px; height: 28px; font-size: 12.5px; }
+.fd-manual code { font-family: var(--font-mono); font-size: 12px; background: var(--panel-2); border-radius: 4px; padding: 1px 5px; }
+.fd-generic { margin: 10px 0 0; line-height: 1.5; }
+
+/* Estimate: label on the left, two bars on one scale on the right. */
+.fd-estimate {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center;
+  border: 1px solid var(--line); background: var(--panel-2); border-radius: 10px;
+  padding: 12px 16px; margin-top: 16px;
+}
+@media (max-width: 600px) { .fd-estimate { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
+.fd-est-head { display: flex; align-items: flex-start; gap: 11px; padding-right: 18px; border-right: 1px solid var(--line); }
+@media (max-width: 600px) { .fd-est-head { border-right: 0; padding-right: 0; } }
+.fd-est-head > div { display: flex; flex-direction: column; gap: 2px; }
+.fd-est-head b { font-size: 13.5px; }
+.fd-estimate-icon { color: var(--blue); margin-top: 1px; }
+.fd-est-fine { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--muted); cursor: help; white-space: nowrap; }
+.fd-est-saved { font-size: 12px; font-weight: 600; color: var(--verdigris); }
+.fd-est-bars { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.fd-est-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) 56px; gap: 10px; align-items: center; }
+.fd-est-label { font-size: 12.5px; color: var(--muted); }
+.fd-est-track { height: 9px; border-radius: 999px; background: var(--line-soft); overflow: hidden; }
+.fd-est-fill { display: block; height: 100%; border-radius: 999px; }
+.fd-est-fill.is-manual { background: var(--blue); }
+.fd-est-fill.is-agent { background: var(--verdigris); }
+.fd-est-val { font-size: 12.5px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ── Folding sections ─────────────────────────────────────────────────────── */
+
+/* Folding sections. */
+.fd-fold { border-top: 1px solid var(--line-soft); }
+.fd-fold-flat { border-top: 0; }
+.fd-fold-head {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  background: none; border: 0; padding: 13px 0; cursor: pointer; color: var(--text); text-align: left;
+}
+.fd-fold-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; flex: none; }
+/* The one-line description beside a fold title. */
+.fd-fold-sub { font-family: var(--font-body); font-size: 12.5px; font-weight: 400; color: var(--muted); margin-left: 4px; min-width: 0; line-height: 1.4; }
+.fd-sub-stack { display: flex; flex-direction: column; gap: 1px; }
+.fd-sub-stack b { color: var(--text); font-weight: 600; font-size: 13px; }
+.fd-sub-stack i { font-size: 12px; }
+.fd-fold-chev { margin-left: auto; color: var(--muted); transition: transform .15s ease; }
+.fd-fold.is-open .fd-fold-chev { transform: rotate(180deg); }
+.fd-fold-body { padding: 0 0 14px; }
+.fd-count {
+  font-size: 12px; font-weight: 600; color: var(--muted); background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px;
+}
+
+/* Label → value rows. */
+.fd-kv { margin: 0; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; }
+.fd-kv > div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 12px; padding: 8px 12px; }
+.fd-kv > div + div { border-top: 1px solid var(--line-soft); }
+.fd-kv dt { color: var(--text); font-weight: 600; font-size: 12.5px; }
+.fd-kv dd { margin: 0; font-size: 12.5px; line-height: 1.5; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .fd-kv > div { grid-template-columns: 1fr; gap: 2px; } }
+.fd-pill {
+  display: inline-block; font-weight: 600; font-size: 12px; color: var(--verdigris);
+  background: color-mix(in srgb, var(--verdigris) 14%, transparent); border-radius: 999px; padding: 1px 9px;
+}
+.fd-itsm { margin-top: 8px; }
+
+/* Plain tables, inside a rounded frame; they scroll sideways only inside it. */
+.fd-table-wrap { border: 1px solid var(--line); border-radius: 9px; overflow: auto; max-width: 100%; }
+.fd-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.fd-table th {
+  text-align: left; font-weight: 600; color: var(--text); background: var(--panel-2);
+  padding: 8px 12px; border-bottom: 1px solid var(--line); white-space: nowrap;
+}
+.fd-table td { padding: 8px 12px; border-top: 1px solid var(--line-soft); vertical-align: top; overflow-wrap: anywhere; }
+.fd-table tr:first-child td { border-top: 0; }
+.fd-sysid { font-size: 11.5px; color: var(--muted); }
+.fd-more { margin-top: 8px; }
+
+/* ── Related findings ────────────────────────────────────────────────────── */
+.fd-related { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.fd-related button {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  background: none; border: 1px solid var(--line-soft); border-radius: 10px; padding: 9px 12px;
+  color: var(--text); cursor: pointer; font: inherit; font-size: 13px;
+}
+.fd-related button:hover { border-color: var(--line); background: var(--panel-2); }
+.fd-related-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 700px) {
+  .fd-head { flex-direction: column; }
+  .fd-title { font-size: 23px; }
+  .fd-card { padding: 14px 16px; }
+  .fd-card-tight { padding: 4px 16px; }
+}
+
+/* Plain sub-sections inside an open fold — headed, not folding again. */
+.fd-block + .fd-block { margin-top: 18px; }
+.fd-block-title {
+  display: flex; align-items: center; gap: 10px; margin: 0 0 10px;
+  font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--text);
+}

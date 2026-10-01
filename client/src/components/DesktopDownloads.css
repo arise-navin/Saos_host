@@ -1,0 +1,122 @@
+/* ── Preferences → Desktop app ───────────────────────────────────────────────
+   One sheet for one feature, drawn from the app's tokens so it belongs to
+   whichever theme is on; the per-theme lines at the end only adjust shape.
+   The card spans both columns of the Preferences grid. Below 720px the two
+   platforms stack. */
+
+.card.dl-card { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 18px; padding: 20px 22px; }
+
+.dl-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; }
+.dl-title { margin: 2px 0 0; font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+.dl-lead { margin: 6px 0 0; max-width: 640px; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+.dl-inapp { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ── the two platforms ── */
+.dl-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.dl-option {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.dl-option.is-here { border-color: color-mix(in srgb, var(--verdigris) 55%, var(--line)); }
+.dl-option-head { display: flex; align-items: center; gap: 12px; }
+.dl-option-head > div { flex: 1; min-width: 0; }
+.dl-option h3 { margin: 0; font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+.dl-option-head p { margin: 1px 0 0; font-size: 12.5px; color: var(--muted); }
+.dl-icon {
+  flex: none;
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  color: var(--verdigris);
+  background: color-mix(in srgb, var(--verdigris) 12%, transparent);
+}
+.dl-here {
+  flex: none;
+  padding: 2px 9px;
+  font-size: 11px; font-weight: 600;
+  color: var(--verdigris);
+  background: color-mix(in srgb, var(--verdigris) 12%, transparent);
+  border-radius: 999px;
+}
+.dl-meta { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--text); }
+.dl-meta span { display: block; color: var(--muted); }
+.dl-missing { color: var(--muted); }
+.dl-mac-build { display: flex; flex-direction: column; gap: 10px; }
+.dl-mac-build + .dl-mac-build { padding-top: 12px; border-top: 1px solid var(--line-soft); }
+.dl-btn { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+a.dl-btn:hover { text-decoration: none; }
+/* No build to offer: plainly inactive, not a faded version of the live button. */
+.dl-card .dl-btn:disabled, :root[data-theme] .dl-card .dl-btn:disabled {
+  opacity: 1; color: var(--muted); background: transparent;
+  border: 1px dashed var(--line); box-shadow: none;
+}
+
+/* ── how to install ── */
+.dl-guide { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.dl-guide-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.dl-guide-head h3 { margin: 0; font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+.dl-tabs { display: inline-flex; gap: 2px; padding: 3px; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.dl-tabs button {
+  padding: 6px 14px;
+  font: inherit; font-size: 13px; font-weight: 600;
+  color: var(--muted); background: transparent;
+  border: 0; border-radius: max(0px, calc(var(--radius-sm) - 3px));
+  cursor: pointer;
+}
+.dl-tabs button:hover { color: var(--text); }
+.dl-tabs button.is-on { color: var(--text); background: var(--panel); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--line); }
+
+.dl-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.dl-steps li { display: flex; align-items: flex-start; gap: 12px; font-size: 13.5px; line-height: 1.6; }
+.dl-step-n {
+  flex: none;
+  display: grid; place-items: center;
+  width: 24px; height: 24px; margin-top: 1px;
+  font-size: 12px; font-weight: 700;
+  color: var(--verdigris);
+  background: color-mix(in srgb, var(--verdigris) 12%, transparent);
+  border-radius: 50%;
+}
+.dl-after { margin: 2px 0 0; font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+.dl-after b { color: var(--text); }
+.dl-code {
+  padding: 1px 6px;
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 5px;
+  overflow-wrap: anywhere;
+}
+
+/* ── building them ── */
+.dl-admin { padding-top: 14px; border-top: 1px solid var(--line-soft); }
+.dl-admin summary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  cursor: pointer;
+}
+.dl-admin summary:hover { color: var(--text); }
+.dl-admin-body { margin-top: 10px; font-size: 13px; line-height: 1.65; color: var(--muted); }
+.dl-admin-body p { margin: 0 0 8px; }
+.dl-admin-body ul { margin: 0 0 8px; padding-left: 18px; }
+.dl-admin-body b { color: var(--text); }
+
+@media (max-width: 720px) {
+  .card.dl-card { padding: 16px; }
+  .dl-options { grid-template-columns: minmax(0, 1fr); }
+  .dl-btn { align-self: stretch; justify-content: center; }
+}
+
+/* ══ ROBOTIC ══ */
+:root[data-theme="robotic"] :is(.dl-option, .dl-tabs) { border-radius: 0; border: 2px solid var(--robo-ink); background: #fff; }
+:root[data-theme="robotic"] .dl-option.is-here { background: #e5f9e4; box-shadow: 3px 3px 0 var(--robo-ink); }
+:root[data-theme="robotic"] :is(.dl-icon, .dl-step-n, .dl-here, .dl-code, .dl-tabs button) { border-radius: 0; }
+:root[data-theme="robotic"] .dl-tabs button.is-on { background: var(--robo-green); color: var(--robo-ink); box-shadow: none; }
+
+/* ══ SERVICENOW ══ */
+:root[data-theme="servicenow"] .dl-option { background: #f7fafb; border-color: #dde5ea; }
+:root[data-theme="servicenow"] .dl-option.is-here { border-color: var(--sn-green); box-shadow: 0 0 0 1px var(--sn-green); }
