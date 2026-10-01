@@ -1,0 +1,339 @@
+{
+ "engine": "aggregate",
+ "rules": {
+  "ITOM-008": {
+   "undefined_dependencies": [
+    "\"connection-level failures\" — the workbook names the error class but not how a device-history outcome is classified as one"
+   ]
+  },
+  "ITOM-015": {
+   "undefined_dependencies": [
+    "per-credential authentication outcomes per range per day: the platform records a credential affinity on SUCCESS, but no table the workbook names records each failed attempt against the credential tried"
+   ]
+  },
+  "ITOM-028": {
+   "requires_tables": [
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "status",
+      "source",
+      "classified_as",
+      "cmdb_ci"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "discovery_device_history",
+   "numerator_query": "cmdb_ciISEMPTY",
+   "denominator_query": "",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "threshold",
+     "as": "complement"
+    }
+   },
+   "basis": "detected devices that produced no CI / devices detected (retained history)",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Phase 5E (a real instance): the phase each device reached is read from STRUCTURED fields — classified_as set = classified; cmdb_ci set = explored into a CI. last_state is free text (\"Active, could not classify\") with no choice list, so it is not parsed. The estate ratio is judged; the by-range and by-phase breakdown is not reported."
+   }
+  },
+  "ITOM-030": {
+   "requires_tables": [
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "status",
+      "source",
+      "classified_as",
+      "cmdb_ci"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "discovery_device_history",
+   "numerator_query": "classified_asISEMPTY^cmdb_ciISEMPTY",
+   "denominator_query": "",
+   "threshold": {
+    "op": "gt",
+    "value": 0
+   },
+   "basis": "devices that were never classified / devices detected",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Phase 5E (a real instance): the phase each device reached is read from STRUCTURED fields — classified_as set = classified; cmdb_ci set = explored into a CI. last_state is free text (\"Active, could not classify\") with no choice list, so it is not parsed. The range and port-signature grouping is not reported."
+   }
+  },
+  "ITOM-031": {
+   "requires_tables": [
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "status",
+      "source",
+      "classified_as",
+      "cmdb_ci"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "discovery_device_history",
+   "numerator_query": "classified_asISNOTEMPTY^cmdb_ciISEMPTY",
+   "denominator_query": "",
+   "threshold": {
+    "op": "gt",
+    "value": 0
+   },
+   "basis": "devices classified but never explored into a CI / devices detected",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Phase 5E (a real instance): the phase each device reached is read from STRUCTURED fields — classified_as set = classified; cmdb_ci set = explored into a CI. last_state is free text (\"Active, could not classify\") with no choice list, so it is not parsed. The resulting CI quality (attribute and edge counts) the workbook asks to attach is not read."
+   }
+  },
+  "ITOM-034": {
+   "undefined_dependencies": [
+    "the classification of a device outcome or log entry as a \"timeout\" — not defined"
+   ]
+  },
+  "ITOM-038": {
+   "specification_gap": {
+    "missing": "\"trending up\" — the workbook requires 5 runs but defines neither the error class nor the test that makes a series a rising trend"
+   }
+  },
+  "ITOM-040": {
+   "requires_tables": [
+    {
+     "table": "discovery_status",
+     "fields": [
+      "state"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "discovery_status",
+   "measure": "count",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "max_rows"
+    }
+   },
+   "basis": "discovery status rows retained",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Growth rate and rotation configuration are not read; the size against the threshold is."
+   }
+  },
+  "ITOM-041": {
+   "requires_objects": [
+    "pattern_execution"
+   ]
+  },
+  "ITOM-042": {
+   "requires_objects": [
+    "pattern_execution"
+   ]
+  },
+  "ITOM-043": {
+   "requires_objects": [
+    "pattern_execution"
+   ]
+  },
+  "ITOM-044": {
+   "requires_objects": [
+    "pattern_execution"
+   ]
+  },
+  "ITOM-049": {
+   "undefined_dependencies": [
+    "the sensor error threshold — \"relative to execution volume\", with no ratio given, and no per-sensor execution count is established"
+   ]
+  },
+  "ITOM-059": {
+   "specification_gap": {
+    "missing": "\"rising\" — three observation points are required, but no test for a rising series is given"
+   }
+  },
+  "ITOM-072": {
+   "undefined_dependencies": [
+    "service map refresh history (last refresh, configured interval, CI count per refresh run) — no refresh-run object is established"
+   ]
+  },
+  "ITOM-078": {
+   "undefined_dependencies": [
+    "mapping-run output with unmatched or unresolved CI entries — no object is established"
+   ]
+  },
+  "ITOM-081": {
+   "undefined_dependencies": [
+    "mapping-run credential errors, by credential and service — no object is established"
+   ]
+  },
+  "ITOM-087": {
+   "specification_gap": {
+    "missing": "the rolling baseline — its length, and how weekday and weekend variance are accounted for, are required but not given"
+   }
+  },
+  "ITOM-088": {
+   "undefined_dependencies": [
+    "observed processing capacity, queue depth and discard counts — no object is established"
+   ]
+  },
+  "ITOM-092": {
+   "undefined_dependencies": [
+    "event discard counts and reasons — no object is established"
+   ]
+  },
+  "ITOM-095": {
+   "requires_tables": [
+    {
+     "table": "em_event",
+     "fields": [
+      "source",
+      "node",
+      "cmdb_ci",
+      "severity",
+      "state",
+      "message_key",
+      "time_of_event"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "em_event",
+   "window": {
+    "$param": "window",
+    "as": "window"
+   },
+   "numerator_query": "cmdb_ciISEMPTY",
+   "denominator_query": "",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "threshold",
+     "as": "complement"
+    }
+   },
+   "basis": "events with no bound CI / events in the window",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "\"Processed\" is every event in the window; the by-source and by-class split is not reported."
+   }
+  },
+  "ITOM-098": {
+   "requires_tables": [
+    {
+     "table": "em_event",
+     "fields": [
+      "source",
+      "node",
+      "cmdb_ci",
+      "severity",
+      "state",
+      "message_key",
+      "time_of_event"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "em_event",
+   "numerator_query": "cmdb_ciISEMPTY",
+   "denominator_query": "",
+   "group_by": [
+    "source"
+   ],
+   "threshold": {
+    "op": "gt",
+    "value": 0
+   },
+   "basis": "events with no bound CI, by source",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Grouped by source; the node-value format grouping is ITOM-103's classification and is not applied."
+   }
+  },
+  "ITOM-103": {
+   "undefined_dependencies": [
+    "the node formats each match rule accepts — not readable from rule definitions as the workbook names them"
+   ]
+  },
+  "ITOM-110": {
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "severity",
+      "source"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "em_alert",
+   "group_by": [
+    "severity"
+   ],
+   "measure": "share",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "dominance_share"
+    }
+   },
+   "basis": "share of alerts in the largest severity band",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The estate distribution is judged; the by-source breakdown is not reported."
+   }
+  },
+  "ITOM-115": {
+   "requires_tables": [
+    {
+     "table": "em_event",
+     "fields": [
+      "node",
+      "source"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "em_event",
+   "group_by": [
+    "node"
+   ],
+   "measure": "share",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "share"
+    }
+   },
+   "basis": "share of event volume from the largest node",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Judged by node; the by-source view is not reported."
+   }
+  },
+  "ITOM-119": {
+   "undefined_dependencies": [
+    "the closure method \"closed by age\" — no field or state records it"
+   ]
+  },
+  "ITOM-121": {
+   "requires_objects": [
+    "cloud_account_registry"
+   ]
+  },
+  "ITOM-126": {
+   "undefined_dependencies": [
+    "rate-limit responses in cloud discovery logs, and the run-to-run resource-count variance threshold (\"configurable\") — not given"
+   ]
+  },
+  "ITOM-132": {
+   "undefined_dependencies": [
+    "the interval variance threshold — \"configurable\", no default — and the provider/account of each cloud schedule"
+   ]
+  }
+ }
+}

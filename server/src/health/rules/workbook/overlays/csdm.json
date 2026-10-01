@@ -1,0 +1,1845 @@
+{
+ "overlay_version": "0.1.0",
+ "sheet": "CSDM",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Hand-maintained engineering overlay (decision D-007). Seeded by server/scripts/health-workbook-overlays.mjs. `proposed` names the basis of every auto-proposed value; nothing is an engineering decision until `reviewed` is true.",
+ "rules": {
+  "CSDM-001": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-001",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-002": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-002",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-003": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-003",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-004": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-004",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-005": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-005",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-006": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-011"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-110",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-110 (D-019)"
+   }
+  },
+  "CSDM-007": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-007",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-008": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-008",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-009": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-009",
+    "engine": "text_analysis",
+    "classification": "specification_gap",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-010": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-010",
+    "engine": "text_analysis",
+    "classification": "specification_gap",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-011": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-011",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-012": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-012",
+    "engine": "relationship_graph",
+    "classification": "specification_gap",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-013": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-013",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-014": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-014",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-015": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-015",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-016": {
+   "module": "csdm",
+   "dimension": "taxonomy",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Taxonomy Conformance (CSDM-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-016",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-017": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-017",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-018": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-018",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-019": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-019",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-020": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-020",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-021": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-021",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-022": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-022",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-023": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-023",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-024": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-024",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-025": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-025",
+    "engine": "audit_history",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-026": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "rule:CSDM-017"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-021: CSDM-026 why_it_matters \"the thousands of individual empty-field findings it replaces\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-026",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-027": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-027",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-028": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-028",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-029": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-029",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-030": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-030",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-031": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-031",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-032": {
+   "module": "csdm",
+   "dimension": "lifecycle",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "csdm:lifecycle"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Lifecycle Integrity (CSDM-017 to 032)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-016: CSDM-032 why_it_matters \"every lifecycle finding below this one is unmeasurable\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-032",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-033": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-033",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-034": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-018"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-103",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-103 (D-019)"
+   }
+  },
+  "CSDM-035": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-019"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-102",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-102 (D-019)"
+   }
+  },
+  "CSDM-036": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-036",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-037": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-037",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-038": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-038",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-039": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-039",
+    "engine": "audit_history",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-040": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-040",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-041": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-041",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-042": {
+   "module": "csdm",
+   "dimension": "ownership",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Ownership (CSDM-033 to 042)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-042",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-043": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [
+    "rule:CSDM-044",
+    "rule:CSDM-046"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\"",
+    "blocks": "DEP-019: CSDM-044 confidence_basis \"gated by CSDM-043\"; DEP-020: CSDM-046 false_positive_guard \"this finding is often the symptom of CSDM-043\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-043",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-044": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-044",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-045": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-045",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-046": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-046",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-047": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-015"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-111",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-111 (D-019)"
+   }
+  },
+  "CSDM-048": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-048",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-049": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-049",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-050": {
+   "module": "csdm",
+   "dimension": "environment",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "csdm:environment"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Environment Discipline (CSDM-043 to 050)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-017: CSDM-050 why_it_matters \"Every environment finding above is unmeasurable until this is fixed.\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-050",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-051": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-051",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-052": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-052",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-053": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-013"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-113",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-113 (D-019)"
+   }
+  },
+  "CSDM-054": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-014"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-114",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-114 (D-019)"
+   }
+  },
+  "CSDM-055": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-055",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-056": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-056",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-057": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-020"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-080",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-080 (D-019)"
+   }
+  },
+  "CSDM-058": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-058",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-059": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-059",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-060": {
+   "module": "csdm",
+   "dimension": "relationships",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Relationship Correctness (CSDM-051 to 060)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-060",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-061": {
+   "module": "csdm",
+   "dimension": "offerings",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Offering and Commitment Structure (CSDM-061 to 067)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-061",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-062": {
+   "module": "csdm",
+   "dimension": "offerings",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "csdm:offerings"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Offering and Commitment Structure (CSDM-061 to 067)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-018: CSDM-062 why_it_matters \"every commitment, SLA and channel distinction has nowhere to live\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-062",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-063": {
+   "module": "csdm",
+   "dimension": "offerings",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Offering and Commitment Structure (CSDM-061 to 067)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-063",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-064": {
+   "module": "csdm",
+   "dimension": "offerings",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Offering and Commitment Structure (CSDM-061 to 067)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-064",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-065": {
+   "module": "csdm",
+   "dimension": "offerings",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Offering and Commitment Structure (CSDM-061 to 067)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-065",
+    "engine": "linkage",
+    "classification": "specification_gap",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-066": {
+   "module": "csdm",
+   "dimension": "offerings",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Offering and Commitment Structure (CSDM-061 to 067)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-066",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-067": {
+   "module": "csdm",
+   "dimension": "offerings",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Offering and Commitment Structure (CSDM-061 to 067)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-067",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-068": {
+   "module": "csdm",
+   "dimension": "maturity",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-012"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Maturity and Adoption (CSDM-068 to 074)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-112",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-112 (D-019)"
+   }
+  },
+  "CSDM-069": {
+   "module": "csdm",
+   "dimension": "maturity",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-016"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Maturity and Adoption (CSDM-068 to 074)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-017",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-017 (D-019)"
+   }
+  },
+  "CSDM-070": {
+   "module": "csdm",
+   "dimension": "maturity",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Maturity and Adoption (CSDM-068 to 074)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "CSDM-071": {
+   "module": "csdm",
+   "dimension": "maturity",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Maturity and Adoption (CSDM-068 to 074)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-004",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CSDM-004 (D-019)"
+   }
+  },
+  "CSDM-072": {
+   "module": "csdm",
+   "dimension": "maturity",
+   "kind": "context",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Maturity and Adoption (CSDM-068 to 074)\"",
+    "kind": "CSDM-072 is the module composite (derived, D-029): not a rule the score counts",
+    "systemic_role": "no severity band: a composite metric",
+    "attainment": "CSDM-072 is the module composite (derived, D-029): not scored as a rule"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-072",
+    "engine": "composite",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-073": {
+   "module": "csdm",
+   "dimension": "maturity",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Maturity and Adoption (CSDM-068 to 074)\"",
+    "kind": "wording: \"declining across assessments\" — a trend across snapshots: shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "trend: not scored"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-073",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-074": {
+   "module": "csdm",
+   "dimension": "maturity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Maturity and Adoption (CSDM-068 to 074)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-074",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-075": {
+   "module": "csdm",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Cross-Domain (CSDM-075 to 080)\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-075",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-076": {
+   "module": "csdm",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-017"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Cross-Domain (CSDM-075 to 080)\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-136",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-136 (D-019)"
+   }
+  },
+  "CSDM-077": {
+   "module": "csdm",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-019"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Cross-Domain (CSDM-075 to 080)\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-102",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-102 (D-019)"
+   }
+  },
+  "CSDM-078": {
+   "module": "csdm",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Cross-Domain (CSDM-075 to 080)\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-078",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-079": {
+   "module": "csdm",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Cross-Domain (CSDM-075 to 080)\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-079",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/csdm/rules/*.json"
+   }
+  },
+  "CSDM-080": {
+   "module": "csdm",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Cross-Domain (CSDM-075 to 080)\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-080",
+    "engine": "relationship_graph",
+    "classification": "undefined",
+    "source": "health/csdm/rules/*.json"
+   }
+  }
+ }
+}

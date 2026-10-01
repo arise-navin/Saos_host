@@ -1,0 +1,14 @@
+{
+ "version": "1.0.0",
+ "decision": "D-019",
+ "rules": {
+  "ITOM-001": {
+   "equivalent_of": "CMDB-071",
+   "note": "The same condition as CMDB-071. Ownership OWN-001 is AGREED with CMDB-071 as owner (D-023): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "ITOM-002": {
+   "equivalent_of": "CMDB-070",
+   "note": "The same condition as CMDB-070. Ownership OWN-002 is AGREED with CMDB-070 as owner (D-023): evaluated and counted in CMDB, shown here as an equivalent."
+  }
+ }
+}

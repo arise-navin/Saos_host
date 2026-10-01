@@ -1,0 +1,1250 @@
+{
+ "engine": "configuration",
+ "rules": {
+  "DQ-085": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmn_location",
+     "fields": [
+      "name",
+      "country",
+      "time_zone"
+     ]
+    },
+    {
+     "table": "contract_sla",
+     "fields": [
+      "start_condition",
+      "stop_condition",
+      "active"
+     ]
+    },
+    {
+     "table": "sysrule_assignment",
+     "fields": [
+      "condition",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmn_location",
+    "fields": [
+     "name",
+     "country",
+     "time_zone"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "dq_location_fields_referenced",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The rules that depend on the fields are the active SLA definitions and assignment rules whose conditions read location.country or location.time_zone (D-033); routing in flows is not read."
+   }
+  },
+  "DQ-090": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "name",
+      "type",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user_group",
+    "fields": [
+     "name",
+     "type",
+     "active"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "dq_empty_where_used",
+    "args": {
+     "field": "type",
+     "label": "name",
+     "unit": "active groups",
+     "practice": "group typing"
+    }
+   }
+  },
+  "DQ-097": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sysevent_email_action",
+     "fields": [
+      "active",
+      "recipient_users",
+      "recipient_groups"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "email",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "email",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysevent_email_action",
+    "fields": [
+     "recipient_users",
+     "recipient_groups"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "dq_notification_email_format",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Users and groups named directly on active notifications are judged with a permissive validator; recipients reached through a record field are resolved per record and are not."
+   }
+  },
+  "DQ-098": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element",
+      "choice",
+      "internal_type",
+      "choice_table"
+     ]
+    },
+    {
+     "table": "sys_choice",
+     "fields": [
+      "name",
+      "element",
+      "value",
+      "inactive"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "dq_choice_values_unlisted",
+    "args": {
+     "tables": [
+      "sys_user",
+      "sys_user_group",
+      "core_company",
+      "cmn_location",
+      "cmn_department",
+      "alm_asset",
+      "cmdb_ci",
+      "cmdb_ci_hardware",
+      "cmdb_model",
+      "kb_knowledge",
+      "sc_cat_item",
+      "sc_req_item",
+      "task",
+      "contract_sla",
+      "sysapproval_approver"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The dropdown choice fields (choice 1 or 3) of the master and reference tables Enterprise Data Quality judges (D-037); values in use on active records, per record class, against the class's own list or the nearest table it extends that has one; workflow stages and choices drawn from another table are not sys_choice lists and are left out. Inactive choices still in use are their own case (the workbook). Other tables are not read: 29,518 choice fields exist on the validation instance."
+   }
+  },
+  "DQ-099": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "alm_asset",
+     "fields": [
+      "install_status",
+      "substatus",
+      "ci"
+     ]
+    },
+    {
+     "table": "alm_asset_ci_state_mapping",
+     "fields": [
+      "asset_state",
+      "configuration_item_status"
+     ]
+    },
+    {
+     "table": "alm_hardware_state_mapping",
+     "fields": [
+      "asset_state",
+      "hardware_ci_status"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "install_status"
+     ]
+    },
+    {
+     "table": "cmdb_ci_hardware",
+     "fields": [
+      "hardware_status"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "alm_asset",
+    "fields": [
+     "display_name",
+     "install_status",
+     "substatus",
+     "ci",
+     "sys_class_name"
+    ],
+    "query": "ciISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_asset_ci_state_contradiction",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The mapping is the platform's own (Asset CI Install Status Mapping; hardware state mapping for hardware, D-033), read from the asset side: rows that map asset → CI or both ways."
+   }
+  },
+  "DQ-102": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "model_id"
+     ]
+    },
+    {
+     "table": "cmdb_model",
+     "fields": [
+      "name",
+      "cmdb_ci_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "model_id"
+    ],
+    "query": "model_idISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_model_class_contradiction",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The mapping is the model's own CI class (cmdb_model.cmdb_ci_class, D-033); a CI in that class or a subclass agrees."
+   }
+  },
+  "DQ-103": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "manager"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user",
+    "fields": [
+     "user_name",
+     "manager"
+    ],
+    "query": "managerISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_reference_cycles",
+    "args": {
+     "field": "manager",
+     "label": "user_name",
+     "unit": "users with a manager",
+     "selfLoops": false
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The whole manager graph is walked (each user once), so no depth bound is needed. A user who is their own manager is DQ-100, not a loop here."
+   }
+  },
+  "DQ-104": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmn_location",
+     "fields": [
+      "name",
+      "parent"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmn_location",
+    "fields": [
+     "name",
+     "parent"
+    ],
+    "query": "parentISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_reference_cycles",
+    "args": {
+     "field": "parent",
+     "label": "name",
+     "unit": "locations with a parent",
+     "selfLoops": true
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The whole location tree is walked (each location once), so no depth bound is needed; a location that is its own parent is reported as a loop of one."
+   }
+  },
+  "DQ-105": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "active",
+      "company",
+      "department"
+     ]
+    },
+    {
+     "table": "cmn_department",
+     "fields": [
+      "company"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user",
+    "fields": [
+     "user_name",
+     "company",
+     "department"
+    ],
+    "query": "active=true^companyISNOTEMPTY^departmentISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_department_company",
+    "args": {}
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "\"Multi-company\" is read as active users in more than one company. Cross-entity secondments are counted."
+   }
+  },
+  "DQ-107": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "alm_asset",
+     "fields": [
+      "ci",
+      "assigned_to"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "assigned_to"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "alm_asset",
+    "fields": [
+     "display_name",
+     "ci",
+     "assigned_to"
+    ],
+    "query": "ciISNOTEMPTY^assigned_toISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_asset_ci_assignee",
+    "args": {}
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The custodian-versus-user guard is not applied: a deliberate difference is counted."
+   }
+  },
+  "DQ-111": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "email",
+      "employee_number",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user",
+    "fields": [
+     "user_name",
+     "email",
+     "employee_number",
+     "active"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "dq_duplicate_users",
+    "args": {}
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Active-active pairs are charged; active-inactive pairs (supersession) are counted in the observation only. A deliberate second account (an admin account) sharing an email is counted."
+   }
+  },
+  "DQ-112": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user"
+     ]
+    },
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "active"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user_grmember",
+    "fields": [
+     "group",
+     "user"
+    ],
+    "query": "group.active=true^user.active=true"
+   },
+   "compare": {
+    "name": "dq_duplicate_groups",
+    "args": {
+     "overlap": {
+      "$param": "overlap"
+     },
+     "min_members": {
+      "$param": "min_members"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Overlap is the shared members over the union of the two active member sets (Jaccard). Groups with the same people serving different functions are counted."
+   }
+  },
+  "DQ-113": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmn_location",
+     "fields": [
+      "name",
+      "street",
+      "city",
+      "zip",
+      "country"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmn_location",
+    "fields": [
+     "name",
+     "street",
+     "city",
+     "zip",
+     "country"
+    ],
+    "query": "streetISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_duplicate_by",
+    "args": {
+     "fields": [
+      "street",
+      "city",
+      "zip",
+      "country"
+     ],
+     "require": [
+      "street"
+     ],
+     "label": "name",
+     "unit": "locations with a street address"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Addresses are compared after case, spacing and punctuation are normalised; floors or buildings recorded as separate locations at one address are counted."
+   }
+  },
+  "DQ-114": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "core_company",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "core_company",
+    "fields": [
+     "name"
+    ],
+    "query": "nameISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_duplicate_by",
+    "args": {
+     "fields": [
+      "name"
+     ],
+     "require": [
+      "name"
+     ],
+     "label": "name",
+     "unit": "companies"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Names are compared after case, spacing and punctuation are normalised. core_company has no registration identifier on the platform (verified, Phase 7). Legally distinct entities with the same name are counted."
+   }
+  },
+  "DQ-115": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_model",
+     "fields": [
+      "name",
+      "manufacturer",
+      "model_number"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_model",
+    "fields": [
+     "name",
+     "manufacturer",
+     "model_number"
+    ],
+    "query": "manufacturerISNOTEMPTY^model_numberISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_duplicate_by",
+    "args": {
+     "fields": [
+      "manufacturer",
+      "model_number"
+     ],
+     "require": [
+      "manufacturer",
+      "model_number"
+     ],
+     "label": "name",
+     "unit": "models with a manufacturer and part number"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The part number is the model number. Genuine variants sharing a part number are counted."
+   }
+  },
+  "DQ-116": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "active",
+      "sys_class_name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sc_cat_item",
+    "fields": [
+     "name",
+     "sys_class_name"
+    ],
+    "query": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item"
+   },
+   "compare": {
+    "name": "dq_duplicate_by",
+    "args": {
+     "fields": [
+      "name"
+     ],
+     "require": [
+      "name"
+     ],
+     "label": "name",
+     "unit": "active requestable items"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Matching normalised names are found; identical variable sets with the same fulfilment are not compared. Deliberate variants for different audiences are counted."
+   }
+  },
+  "DQ-120": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "name",
+      "active",
+      "sys_created_on"
+     ]
+    },
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user",
+      "sys_created_on"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user_group",
+    "fields": [
+     "name",
+     "sys_created_on"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "dq_stale_membership",
+    "args": {
+     "max_age": {
+      "$param": "max_age",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A membership change is read as the newest membership record; a REMOVAL leaves no record, so a group changed only by removals is counted as unchanged. Genuinely stable teams are counted."
+   }
+  },
+  "DQ-121": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "alm_asset",
+     "fields": [
+      "display_name",
+      "model",
+      "install_status"
+     ]
+    },
+    {
+     "table": "cmdb_model_lifecycle",
+     "fields": [
+      "model",
+      "lifecycle_phase",
+      "start_date"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "alm_asset",
+    "fields": [
+     "display_name",
+     "model",
+     "install_status"
+    ],
+    "query": "install_status=1"
+   },
+   "compare": {
+    "name": "dq_assets_past_model_eol",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "End of life is the model's End of Life phase in the platform's model lifecycle (cmdb_model_lifecycle, D-033); \"Deployed\" is the asset state In use (1)."
+   }
+  },
+  "DQ-122": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "kb_knowledge",
+     "fields": [
+      "number",
+      "valid_to",
+      "sys_view_count"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "kb_knowledge",
+    "fields": [
+     "number",
+     "valid_to",
+     "sys_view_count"
+    ],
+    "query": "workflow_state=published"
+   },
+   "compare": {
+    "name": "dq_articles_past_valid_to",
+    "args": {}
+   }
+  },
+  "DQ-123": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "active",
+      "sys_class_name",
+      "sys_created_on"
+     ]
+    },
+    {
+     "table": "sc_req_item",
+     "fields": [
+      "cat_item"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sc_cat_item",
+    "fields": [
+     "name",
+     "sys_created_on"
+    ],
+    "query": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item"
+   },
+   "compare": {
+    "name": "dq_never_ordered",
+    "args": {
+     "min_age": {
+      "$param": "min_age",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Seasonal or emergency items kept on purpose are counted."
+   }
+  },
+  "DQ-124": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmn_location",
+     "fields": [
+      "name",
+      "parent"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "location"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "location"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmn_location",
+    "fields": [
+     "name",
+     "sys_created_on"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "dq_unreferenced_locations",
+    "args": {}
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "cmn_location has no active field (verified, Phase 7): every location is judged. Parents of other locations are excluded; locations created ahead of a site opening are counted."
+   }
+  },
+  "DQ-127": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "active",
+      "workflow"
+     ]
+    },
+    {
+     "table": "wf_workflow",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "io_set_item",
+     "fields": [
+      "sc_cat_item",
+      "variable_set"
+     ]
+    },
+    {
+     "table": "item_option_new_set",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sc_cat_item",
+    "fields": [
+     "name",
+     "workflow"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "dq_catalog_references",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Absent workflows and variable sets are found. A workflow's \"retired\" state lives on its versions, not the workflow record, and is not judged."
+   }
+  },
+  "DQ-129": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "alm_asset",
+     "fields": [
+      "ci"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "asset"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "alm_asset",
+    "fields": [
+     "display_name",
+     "ci"
+    ],
+    "query": "ciISNOTEMPTY"
+   },
+   "compare": {
+    "name": "dq_asset_ci_links",
+    "args": {}
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Each direction is reported separately. Classes where a one-directional link is the intended model are counted."
+   }
+  },
+  "DQ-130": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sysevent_email_action",
+     "fields": [
+      "active",
+      "recipient_users",
+      "recipient_groups",
+      "recipient_fields",
+      "event_parm_1",
+      "event_parm_2",
+      "subscribable"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "active"
+     ]
+    },
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysevent_email_action",
+    "fields": [
+     "recipient_users",
+     "recipient_groups",
+     "recipient_fields",
+     "event_parm_1",
+     "event_parm_2",
+     "subscribable",
+     "collection"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "dq_notification_no_recipients",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Notifications that name users or groups are resolved now. One with recipient fields, event-parameter recipients or subscriptions resolves per record, and one naming no one may add recipients in a mail script (measured, Phase 7): neither is judged. Distinct from ITSM-011, which charges ANY inactive or empty recipient."
+   }
+  },
+  "DQ-132": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_report",
+     "fields": [
+      "title",
+      "table",
+      "field",
+      "field_list",
+      "sumfield",
+      "trend_field",
+      "column",
+      "row",
+      "filter",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "sys_db_view",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_report",
+    "fields": [
+     "title",
+     "table",
+     "field",
+     "field_list",
+     "sumfield",
+     "trend_field",
+     "column",
+     "row",
+     "filter"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "dq_report_fields_missing",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The fields a report groups, sums, trends, lists and pivots by, against the dictionary of its table and every table it extends (D-035); a dot-walk is judged on its first field. Filter condition fields, reports on database views and dashboard widgets are not read."
+   }
+  },
+  "DQ-133": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "data_classification",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "dq_identifiers_in_text",
+    "args": {
+     "fields": {
+      "$param": "fields"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "PAN and Aadhaar, in the formats the product owner approved (D-033; Aadhaar checked with its Verhoeff digit and reported separately). Account numbers are not matched until their formats are given."
+   }
+  },
+  "DQ-134": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "m2m_dictionary_dataclass",
+     "fields": [
+      "data_class",
+      "sys_dictionary"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "operation",
+      "condition",
+      "script",
+      "advanced",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_security_acl_role",
+     "fields": [
+      "sys_security_acl"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "data_classification",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "dq_personal_field_acl",
+    "args": {
+     "classes": [
+      "Personally identifiable information",
+      "HR PII",
+      "Master data PII",
+      "Transactional Data PII",
+      "Contact information",
+      "Identification information",
+      "Demographic information"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The personal-data fields are those the instance classifies with a personal-data class (D-032). A read ACL with a role, a condition or an advanced script counts as protection on the field or its table; whether that protection is adequate is not judged, and a deny-unless ACL is not modelled."
+   }
+  },
+  "DQ-135": {
+   "undefined_dependencies": [
+    "the content classification method — \"must be stated\", and none is"
+   ]
+  },
+  "DQ-137": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element"
+     ]
+    },
+    {
+     "table": "m2m_dictionary_dataclass",
+     "fields": [
+      "sys_dictionary"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_dictionary",
+    "fields": [
+     "name",
+     "element"
+    ],
+    "query": "elementSTARTSWITHu_"
+   },
+   "compare": {
+    "name": "dq_identifier_custom_fields_unclassified",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Custom fields (u_) whose values hold a PAN or a checksum-valid Aadhaar (D-033) and that are not classified. At most 200 fields are read per scan."
+   }
+  },
+  "DQ-138": {
+   "undefined_dependencies": [
+    "access to the non-production instances, or their clone and scrub configuration — outside this instance"
+   ]
+  },
+  "DQ-139": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "m2m_dictionary_dataclass",
+     "fields": [
+      "sys_dictionary"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "data_classification",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "dq_identifiers_in_text",
+    "args": {
+     "fields": {
+      "$param": "fields"
+     },
+     "mode": "unclassified"
+    }
+   }
+  }
+ }
+}

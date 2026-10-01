@@ -1,0 +1,600 @@
+{
+ "params_version": "0.1.0",
+ "sheet": "ITIL",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Parameter declaration skeleton, one entry per workbook rule. The typed declarations (type, unit, default, status DEFINED/UNDEFINED) are written in Phase 1 with the generalised registry; ITSM already has them in health/rules/itsm/parameters.json.",
+ "rules": {
+  "ITIL-001": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-002": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-003": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-004": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-005": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-006": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-007": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-008": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-009": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-010": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-011": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-012": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-013": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-014": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-015": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-016": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-017": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-018": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-019": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-020": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-021": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-022": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-023": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-024": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-025": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-026": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-027": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-028": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-029": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-030": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-031": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-032": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-033": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-034": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-035": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-036": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-037": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-038": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-039": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-040": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-041": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-042": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-043": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-044": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-045": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-046": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-047": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-048": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-049": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-050": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-051": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-052": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-053": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-054": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-055": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-056": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-057": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-058": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-059": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-060": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-061": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-062": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-063": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-064": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-065": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-066": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-067": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-068": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-069": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-070": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-071": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-072": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-073": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-074": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-075": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-076": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-077": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-078": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-079": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-080": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-081": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-082": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-083": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-084": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-085": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-086": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-087": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-088": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-089": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-090": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-091": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-092": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-093": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-094": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-095": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-096": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-097": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-098": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-099": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-100": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-101": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-102": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-103": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-104": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-105": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-106": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-107": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-108": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-109": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-110": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-111": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-112": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-113": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-114": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-115": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-116": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-117": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-118": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-119": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-120": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-121": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-122": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-123": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-124": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-125": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-126": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-127": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-128": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-129": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-130": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-131": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-132": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-133": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-134": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-135": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-136": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-137": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-138": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-139": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-140": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-141": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-142": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-143": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-144": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-145": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-146": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-147": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "ITIL-148": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "status": "UNDECLARED"
+  }
+ }
+}

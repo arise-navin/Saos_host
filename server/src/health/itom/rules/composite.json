@@ -1,0 +1,25 @@
+{
+ "engine": "composite",
+ "rules": {
+  "ITOM-147": {
+   "undefined_dependencies": [
+    "per-credential authentication outcomes per range per day: the platform records a credential affinity on SUCCESS, but no table the workbook names records each failed attempt against the credential tried"
+   ]
+  },
+  "ITOM-149": {
+   "undefined_dependencies": [
+    "duplicate-set membership with the source that created each member — owned by the CMDB duplicate rules; consumed here once the cross-domain link is built"
+   ]
+  },
+  "ITOM-151": {
+   "undefined_dependencies": [
+    "the service map's own topology as distinct from cmdb_rel_ci — no map-edge object is established"
+   ]
+  },
+  "ITOM-155": {
+   "requires_objects": [
+    "cloud_account_registry"
+   ]
+  }
+ }
+}

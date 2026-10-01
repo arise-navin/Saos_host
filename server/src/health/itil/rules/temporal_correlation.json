@@ -1,0 +1,40 @@
+{
+ "engine": "temporal_correlation",
+ "rules": {
+  "ITIL-043": {
+   "undefined_dependencies": [
+    "the platform records no a link between a breach report and the action taken on it — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-057": {
+   "undefined_dependencies": [
+    "the incident rate and the post-deployment window — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-073": {
+   "undefined_dependencies": [
+    "the platform records no an override of a failed test before promotion — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-098": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no sn_bcm_* tables) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-099": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no sn_bcm_* tables) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-108": {
+   "undefined_dependencies": [
+    "the notice period before a contract's end (ast_contract records no notice date) — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-133": {
+   "undefined_dependencies": [
+    "the platform records no the performance data a portfolio decision referenced — the rule cannot be read from any instance as worded"
+   ]
+  }
+ }
+}

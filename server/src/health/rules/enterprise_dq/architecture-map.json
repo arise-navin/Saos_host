@@ -1,0 +1,2191 @@
+{
+ "map_version": "1.0.0",
+ "phase": "Health Assist Phase 7",
+ "catalogue": "enterprise_dq",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "rule_count": 56,
+ "vocabularies": {
+  "archetypes": {
+   "record_predicate": "Per-record field-state or timestamp predicate on one task table",
+   "aggregate_distribution": "Count, ratio, share, distribution, dominance or trend over a slice, judged against a threshold",
+   "configuration_inspection": "Reads platform configuration objects and compares them with usage",
+   "reference_integrity": "A reference field must resolve to an existing, active or valid-state target",
+   "cross_record_linkage": "Existence or state of RELATED records in another ITSM table (incident↔problem↔change↔KB, approvals, tasks)",
+   "relationship_graph": "Needs the CMDB relationship graph: degree, traversal to a service, dependent CIs",
+   "audit_history": "Needs sys_audit, journal or task_sla event history to reconstruct transitions or timing",
+   "text_analysis": "Similarity, clustering, normalised-frequency, semantic consistency or pattern (regex) analysis over free text",
+   "temporal_correlation": "Correlates events across records or tables by CI and time window",
+   "composite": "Derives from other rules’ outputs or needs three or more distinct mechanisms in sequence"
+  },
+  "engines": {
+   "record_predicate": "Record Predicate Engine",
+   "aggregate": "Aggregate & Distribution Engine",
+   "configuration": "Configuration Inspection Engine",
+   "reference_integrity": "Reference Integrity Engine",
+   "linkage": "Cross-Record Linkage Engine",
+   "relationship_graph": "Relationship Graph Engine",
+   "audit_history": "Audit & Journal History Engine",
+   "text_analysis": "Text Analysis Engine",
+   "temporal_correlation": "Temporal Correlation Engine",
+   "composite": "Composite / Rule-Dependency Engine"
+  },
+  "archetype_to_engine": {
+   "record_predicate": "record_predicate",
+   "aggregate_distribution": "aggregate",
+   "configuration_inspection": "configuration",
+   "reference_integrity": "reference_integrity",
+   "cross_record_linkage": "linkage",
+   "relationship_graph": "relationship_graph",
+   "audit_history": "audit_history",
+   "text_analysis": "text_analysis",
+   "temporal_correlation": "temporal_correlation",
+   "composite": "composite"
+  },
+  "products": {
+   "Q1": "Completeness",
+   "Q2": "Validity",
+   "Q3": "Consistency",
+   "Q4": "Uniqueness",
+   "Q5": "Timeliness",
+   "Q6": "Referential integrity",
+   "Q7": "Sensitive data exposure"
+  },
+  "states": {
+   "executable": "runs once its tables are verified on the instance",
+   "unconfigured": "runs once a threshold the workbook leaves open is set",
+   "undefined": "the workbook leaves part of the detection undefined",
+   "specification_gap": "the workbook does not say enough to evaluate deterministically",
+   "object_unverified": "needs a platform object whose table is not established",
+   "not_built": "fully defined; evaluator not built in this stage",
+   "equivalent": "the same condition as another module's rule, evaluated there",
+   "derived": "the measure IS the module score (Phase 9, CSDM-072)"
+  }
+ },
+ "conventions": {
+  "tables": "the candidate tables a read-only instance validation found present and readable (rules/enterprise_dq/instance-validation.json). Every table a config reads is also in its requires_tables, which the runner verifies on EACH instance before any read.",
+  "verified_on": "techsnitchpvtltddemo2.service-now.com 2026-09-27",
+  "product": "from the workbook overlay: the Enterprise DQ dimension (Q1–Q7) the rule scores in"
+ },
+ "entries": [
+  {
+   "slot": 84,
+   "rule_id": "DQ-084",
+   "excel_row": 85,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "Critical",
+   "rule": "Group with no manager and no email",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "sys_user_group"
+   ],
+   "candidate_tables": [
+    "sys_user_group"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user_group.active",
+    "sys_user_group.email",
+    "sys_user_group.manager",
+    "sys_user_group.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 85,
+   "rule_id": "DQ-085",
+   "excel_row": 86,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "Critical",
+   "rule": "Location with no country or timezone where routing depends on it",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q1",
+   "tables": [
+    "cmn_location",
+    "contract_sla",
+    "sysrule_assignment"
+   ],
+   "candidate_tables": [
+    "cmn_location",
+    "contract_sla",
+    "sysrule_assignment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmn_location.country",
+    "cmn_location.name",
+    "cmn_location.time_zone",
+    "contract_sla.active",
+    "contract_sla.start_condition",
+    "contract_sla.stop_condition",
+    "sysrule_assignment.active",
+    "sysrule_assignment.condition"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 86,
+   "rule_id": "DQ-086",
+   "excel_row": 87,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "Critical",
+   "rule": "Asset with no model or serial",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "alm_asset",
+    "alm_hardware"
+   ],
+   "candidate_tables": [
+    "alm_asset",
+    "alm_hardware"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "alm_asset.display_name",
+    "alm_asset.model",
+    "alm_asset.serial_number",
+    "alm_asset.sys_class_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 87,
+   "rule_id": "DQ-087",
+   "excel_row": 88,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "Critical",
+   "rule": "User with no manager (approval chains cannot resolve)",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.internal_integration_user",
+    "sys_user.manager",
+    "sys_user.user_name",
+    "sys_user.web_service_access_only"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 88,
+   "rule_id": "DQ-088",
+   "excel_row": 89,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "High",
+   "rule": "Cost centre with no account number",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "cmn_cost_center"
+   ],
+   "candidate_tables": [
+    "cmn_cost_center"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 89,
+   "rule_id": "DQ-089",
+   "excel_row": 90,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "High",
+   "rule": "User with no department, location or company",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.company",
+    "sys_user.department",
+    "sys_user.internal_integration_user",
+    "sys_user.location",
+    "sys_user.user_name",
+    "sys_user.web_service_access_only"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 90,
+   "rule_id": "DQ-090",
+   "excel_row": 91,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "High",
+   "rule": "Group with no type defined",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q1",
+   "tables": [
+    "sys_user_group"
+   ],
+   "candidate_tables": [
+    "sys_user_group"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user_group.active",
+    "sys_user_group.name",
+    "sys_user_group.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 91,
+   "rule_id": "DQ-091",
+   "excel_row": 92,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "High",
+   "rule": "Catalog item with no owner or fulfilment group",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_cat_item.active",
+    "sc_cat_item.group",
+    "sc_cat_item.name",
+    "sc_cat_item.owner",
+    "sc_cat_item.sys_class_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 92,
+   "rule_id": "DQ-092",
+   "excel_row": 93,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "Moderate",
+   "rule": "Location with no parent in the hierarchy",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "cmn_location"
+   ],
+   "candidate_tables": [
+    "cmn_location"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 93,
+   "rule_id": "DQ-093",
+   "excel_row": 94,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "Moderate",
+   "rule": "Model with no manufacturer",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "cmdb_model"
+   ],
+   "candidate_tables": [
+    "cmdb_model"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_model.manufacturer",
+    "cmdb_model.name",
+    "cmdb_model.status"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 94,
+   "rule_id": "DQ-094",
+   "excel_row": 95,
+   "group": "Q1. Completeness (weight 18)",
+   "base_severity": "Moderate",
+   "rule": "Knowledge article with no owner or review date",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q1",
+   "tables": [
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "kb_knowledge.number",
+    "kb_knowledge.ownership_group",
+    "kb_knowledge.valid_to",
+    "kb_knowledge.workflow_state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 95,
+   "rule_id": "DQ-095",
+   "excel_row": 96,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "Critical",
+   "rule": "Approver or manager is an inactive user",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "Q2",
+   "tables": [
+    "sys_user",
+    "sys_user_delegate",
+    "sysapproval_approver"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sys_user_delegate",
+    "sysapproval_approver"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.manager",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 96,
+   "rule_id": "DQ-096",
+   "excel_row": 97,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "Critical",
+   "rule": "Group assigned as approver with zero active members",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "Q2",
+   "tables": [
+    "sys_user",
+    "sys_user_grmember",
+    "sysapproval_group"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sys_user_grmember",
+    "sysapproval_group"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user_grmember.group",
+    "sys_user_grmember.user",
+    "sysapproval_group.active",
+    "sysapproval_group.assignment_group"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 97,
+   "rule_id": "DQ-097",
+   "excel_row": 98,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "High",
+   "rule": "Email failing format validation on notification-critical records",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q2",
+   "tables": [
+    "sys_user",
+    "sys_user_group",
+    "sysevent_email_action"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sys_user_group",
+    "sysevent_email_action"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.email",
+    "sys_user_group.active",
+    "sys_user_group.email",
+    "sysevent_email_action.active",
+    "sysevent_email_action.recipient_groups",
+    "sysevent_email_action.recipient_users"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 98,
+   "rule_id": "DQ-098",
+   "excel_row": 99,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "High",
+   "rule": "Choice value in use that is absent from sys\\_choice",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q2",
+   "tables": [
+    "sys_choice",
+    "sys_dictionary"
+   ],
+   "candidate_tables": [
+    "sys_choice",
+    "sys_dictionary"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_choice.element",
+    "sys_choice.inactive",
+    "sys_choice.name",
+    "sys_choice.value",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_dictionary.choice",
+    "sys_dictionary.choice_table",
+    "sys_dictionary.element",
+    "sys_dictionary.internal_type",
+    "sys_dictionary.name",
+    "sys_properties.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 99,
+   "rule_id": "DQ-099",
+   "excel_row": 100,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "High",
+   "rule": "Asset state contradicting its linked CI state",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q2",
+   "tables": [
+    "alm_asset",
+    "alm_asset_ci_state_mapping",
+    "alm_hardware_state_mapping",
+    "cmdb_ci"
+   ],
+   "candidate_tables": [
+    "alm_asset",
+    "alm_asset_ci_state_mapping",
+    "alm_hardware_state_mapping",
+    "cmdb_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "alm_asset.ci",
+    "alm_asset.install_status",
+    "alm_asset.substatus",
+    "alm_asset_ci_state_mapping.asset_state",
+    "alm_asset_ci_state_mapping.configuration_item_status",
+    "alm_hardware_state_mapping.asset_state",
+    "alm_hardware_state_mapping.hardware_ci_status",
+    "cmdb_ci.install_status",
+    "cmdb_ci_hardware.hardware_status"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 100,
+   "rule_id": "DQ-100",
+   "excel_row": 101,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "Moderate",
+   "rule": "Manager pointing to self",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q2",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.manager",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 101,
+   "rule_id": "DQ-101",
+   "excel_row": 102,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "Low",
+   "rule": "Phone number not conforming to a defined pattern",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q2",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 102,
+   "rule_id": "DQ-102",
+   "excel_row": 103,
+   "group": "Q2. Validity (weight 15)",
+   "base_severity": "High",
+   "rule": "Model class contradicting the CI class it maps to",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q2",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_model"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_model"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.model_id",
+    "cmdb_ci.name",
+    "cmdb_ci.sys_class_name",
+    "cmdb_model.cmdb_ci_class",
+    "cmdb_model.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 103,
+   "rule_id": "DQ-103",
+   "excel_row": 104,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "Critical",
+   "rule": "Manager chain containing a loop",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q3",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.manager",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 104,
+   "rule_id": "DQ-104",
+   "excel_row": 105,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "Critical",
+   "rule": "Location hierarchy containing a cycle",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q3",
+   "tables": [
+    "cmn_location"
+   ],
+   "candidate_tables": [
+    "cmn_location"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmn_location.name",
+    "cmn_location.parent"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 105,
+   "rule_id": "DQ-105",
+   "excel_row": 106,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "High",
+   "rule": "User's department belonging to a different company than the user",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q3",
+   "tables": [
+    "cmn_department",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "cmn_department",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmn_department.company",
+    "sys_user.active",
+    "sys_user.company",
+    "sys_user.department"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 106,
+   "rule_id": "DQ-106",
+   "excel_row": 107,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "High",
+   "rule": "Group members drawn from companies the group does not serve",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "Q3",
+   "tables": [
+    "sys_user_grmember",
+    "sys_user_group"
+   ],
+   "candidate_tables": [
+    "sys_user_grmember",
+    "sys_user_group"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 107,
+   "rule_id": "DQ-107",
+   "excel_row": 108,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "High",
+   "rule": "Asset assigned to one user, linked CI assigned to another",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q3",
+   "tables": [
+    "alm_asset",
+    "cmdb_ci"
+   ],
+   "candidate_tables": [
+    "alm_asset",
+    "cmdb_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "alm_asset.assigned_to",
+    "alm_asset.ci",
+    "cmdb_ci.assigned_to"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 108,
+   "rule_id": "DQ-108",
+   "excel_row": 109,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "Moderate",
+   "rule": "Naming conventions diverging between import-created and manually created records",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "Q3",
+   "tables": [
+    "cmdb_ci",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 109,
+   "rule_id": "DQ-109",
+   "excel_row": 110,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "Moderate",
+   "rule": "Hierarchy depth varying widely across regions",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "Q3",
+   "tables": [
+    "cmn_department",
+    "cmn_location"
+   ],
+   "candidate_tables": [
+    "cmn_department",
+    "cmn_location"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 110,
+   "rule_id": "DQ-110",
+   "excel_row": 111,
+   "group": "Q3. Consistency (weight 15)",
+   "base_severity": "Moderate",
+   "rule": "Cost centre pointing at a company that does not own it",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "Q3",
+   "tables": [
+    "cmn_cost_center"
+   ],
+   "candidate_tables": [
+    "cmn_cost_center"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 111,
+   "rule_id": "DQ-111",
+   "excel_row": 112,
+   "group": "Q4. Uniqueness (weight 12)",
+   "base_severity": "Critical",
+   "rule": "Duplicate users by email or employee number",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q4",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.email",
+    "sys_user.employee_number",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 112,
+   "rule_id": "DQ-112",
+   "excel_row": 113,
+   "group": "Q4. Uniqueness (weight 12)",
+   "base_severity": "High",
+   "rule": "Duplicate groups with identical membership",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q4",
+   "tables": [
+    "sys_user_grmember",
+    "sys_user_group"
+   ],
+   "candidate_tables": [
+    "sys_user_grmember",
+    "sys_user_group"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user_grmember.group",
+    "sys_user_grmember.user",
+    "sys_user_group.active"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 113,
+   "rule_id": "DQ-113",
+   "excel_row": 114,
+   "group": "Q4. Uniqueness (weight 12)",
+   "base_severity": "High",
+   "rule": "Duplicate locations by address",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q4",
+   "tables": [
+    "cmn_location"
+   ],
+   "candidate_tables": [
+    "cmn_location"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmn_location.city",
+    "cmn_location.country",
+    "cmn_location.name",
+    "cmn_location.street",
+    "cmn_location.zip"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 114,
+   "rule_id": "DQ-114",
+   "excel_row": 115,
+   "group": "Q4. Uniqueness (weight 12)",
+   "base_severity": "High",
+   "rule": "Duplicate companies",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q4",
+   "tables": [
+    "core_company"
+   ],
+   "candidate_tables": [
+    "core_company"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "core_company.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 115,
+   "rule_id": "DQ-115",
+   "excel_row": 116,
+   "group": "Q4. Uniqueness (weight 12)",
+   "base_severity": "Moderate",
+   "rule": "Duplicate models by manufacturer and part number",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q4",
+   "tables": [
+    "cmdb_model"
+   ],
+   "candidate_tables": [
+    "cmdb_model"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_model.manufacturer",
+    "cmdb_model.model_number",
+    "cmdb_model.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "DQ-093"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 116,
+   "rule_id": "DQ-116",
+   "excel_row": 117,
+   "group": "Q4. Uniqueness (weight 12)",
+   "base_severity": "Moderate",
+   "rule": "Duplicate catalog items",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q4",
+   "tables": [
+    "io_set_item",
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "io_set_item",
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_cat_item.active",
+    "sc_cat_item.name",
+    "sc_cat_item.sys_class_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 117,
+   "rule_id": "DQ-117",
+   "excel_row": 118,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "Critical",
+   "rule": "User inactive in the HR feed but active in ServiceNow",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "Q5",
+   "tables": [
+    "sys_data_source",
+    "sys_import_set_run",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_data_source",
+    "sys_import_set_run",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "DQ-118"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 118,
+   "rule_id": "DQ-118",
+   "excel_row": 119,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "Systemic",
+   "rule": "HR feed failing or not run within interval",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "Q5",
+   "tables": [
+    "sys_data_source",
+    "sys_import_set_run"
+   ],
+   "candidate_tables": [
+    "sys_data_source",
+    "sys_import_set_run"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 119,
+   "rule_id": "DQ-119",
+   "excel_row": 120,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "High",
+   "rule": "Active user who has never logged in",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "Q5",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.last_login_time",
+    "sys_user.sys_created_on",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 120,
+   "rule_id": "DQ-120",
+   "excel_row": 121,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "Moderate",
+   "rule": "Group membership unchanged for over two years",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q5",
+   "tables": [
+    "sys_user_grmember",
+    "sys_user_group"
+   ],
+   "candidate_tables": [
+    "sys_user_grmember",
+    "sys_user_group"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user_grmember.group",
+    "sys_user_grmember.sys_created_on",
+    "sys_user_grmember.user",
+    "sys_user_group.active",
+    "sys_user_group.name",
+    "sys_user_group.sys_created_on"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 121,
+   "rule_id": "DQ-121",
+   "excel_row": 122,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "High",
+   "rule": "Asset past end-of-life still in Deployed state",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q5",
+   "tables": [
+    "alm_asset",
+    "cmdb_model_lifecycle"
+   ],
+   "candidate_tables": [
+    "alm_asset",
+    "cmdb_model_lifecycle"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "alm_asset.display_name",
+    "alm_asset.install_status",
+    "alm_asset.model",
+    "cmdb_model_lifecycle.lifecycle_phase",
+    "cmdb_model_lifecycle.model",
+    "cmdb_model_lifecycle.start_date"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 122,
+   "rule_id": "DQ-122",
+   "excel_row": 123,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "Moderate",
+   "rule": "Knowledge article past its review date",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q5",
+   "tables": [
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "kb_knowledge.number",
+    "kb_knowledge.sys_view_count",
+    "kb_knowledge.valid_to"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 123,
+   "rule_id": "DQ-123",
+   "excel_row": 124,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "Low",
+   "rule": "Catalog item never ordered",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q5",
+   "tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_cat_item.active",
+    "sc_cat_item.name",
+    "sc_cat_item.sys_class_name",
+    "sc_cat_item.sys_created_on",
+    "sc_req_item.cat_item"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 124,
+   "rule_id": "DQ-124",
+   "excel_row": 125,
+   "group": "Q5. Timeliness (weight 12)",
+   "base_severity": "Low",
+   "rule": "Location with no users and no CIs",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q5",
+   "tables": [
+    "cmdb_ci",
+    "cmn_location",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmn_location",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.location",
+    "cmn_location.name",
+    "cmn_location.parent",
+    "sys_user.location"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 125,
+   "rule_id": "DQ-125",
+   "excel_row": 126,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "Critical",
+   "rule": "Task assignment group that no longer exists",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "Q6",
+   "tables": [
+    "sys_user_group",
+    "task"
+   ],
+   "candidate_tables": [
+    "sys_user_group",
+    "task"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "task.assignment_group",
+    "task.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 126,
+   "rule_id": "DQ-126",
+   "excel_row": 127,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "Critical",
+   "rule": "Approver reference pointing to a deleted or inactive record",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "Q6",
+   "tables": [
+    "sys_user",
+    "sysapproval_approver"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sysapproval_approver"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sysapproval_approver.approver",
+    "sysapproval_approver.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 127,
+   "rule_id": "DQ-127",
+   "excel_row": 128,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "Critical",
+   "rule": "Catalog item referencing a retired workflow or missing variable set",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q6",
+   "tables": [
+    "io_set_item",
+    "item_option_new_set",
+    "sc_cat_item",
+    "wf_workflow"
+   ],
+   "candidate_tables": [
+    "io_set_item",
+    "item_option_new_set",
+    "sc_cat_item",
+    "wf_workflow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "io_set_item.sc_cat_item",
+    "io_set_item.variable_set",
+    "item_option_new_set.name",
+    "sc_cat_item.active",
+    "sc_cat_item.name",
+    "sc_cat_item.workflow",
+    "wf_workflow.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 128,
+   "rule_id": "DQ-128",
+   "excel_row": 129,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "Critical",
+   "rule": "Reference field pointing to a deleted record",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "Q6",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 129,
+   "rule_id": "DQ-129",
+   "excel_row": 130,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "High",
+   "rule": "Asset-to-CI link broken in one direction",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q6",
+   "tables": [
+    "alm_asset",
+    "cmdb_ci"
+   ],
+   "candidate_tables": [
+    "alm_asset",
+    "cmdb_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "alm_asset.ci",
+    "cmdb_ci.asset"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 130,
+   "rule_id": "DQ-130",
+   "excel_row": 131,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "High",
+   "rule": "Notification recipient resolving to nothing",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q6",
+   "tables": [
+    "sys_user",
+    "sys_user_grmember",
+    "sysevent_email_action"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sys_user_grmember",
+    "sysevent_email_action"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user_grmember.group",
+    "sys_user_grmember.user",
+    "sysevent_email_action.active",
+    "sysevent_email_action.event_parm_1",
+    "sysevent_email_action.event_parm_2",
+    "sysevent_email_action.recipient_fields",
+    "sysevent_email_action.recipient_groups",
+    "sysevent_email_action.recipient_users",
+    "sysevent_email_action.subscribable"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 131,
+   "rule_id": "DQ-131",
+   "excel_row": 132,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "Moderate",
+   "rule": "Knowledge article referenced in resolutions but retired or unpublished",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "Q6",
+   "tables": [
+    "kb_knowledge",
+    "m2m_kb_task"
+   ],
+   "candidate_tables": [
+    "kb_knowledge",
+    "m2m_kb_task"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-139",
+   "notes": "The same condition as ITSM-139 Ownership OWN-004 is AGREED with ITSM-139 as owner (D-027): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  {
+   "slot": 132,
+   "rule_id": "DQ-132",
+   "excel_row": 133,
+   "group": "Q6. Referential integrity (weight 18 — highest)",
+   "base_severity": "Moderate",
+   "rule": "Report or dashboard referencing a deleted field",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q6",
+   "tables": [
+    "sys_dictionary",
+    "sys_report"
+   ],
+   "candidate_tables": [
+    "sys_dictionary",
+    "sys_report"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_db_view.name",
+    "sys_dictionary.element",
+    "sys_dictionary.name",
+    "sys_report.active",
+    "sys_report.column",
+    "sys_report.field",
+    "sys_report.field_list",
+    "sys_report.filter",
+    "sys_report.row",
+    "sys_report.sumfield",
+    "sys_report.table",
+    "sys_report.title",
+    "sys_report.trend_field"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 133,
+   "rule_id": "DQ-133",
+   "excel_row": 134,
+   "group": "Q7. Sensitive data exposure (weight 10 — market-specific)",
+   "base_severity": "Systemic",
+   "rule": "PAN, Aadhaar or account-number patterns in free-text fields",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q7",
+   "tables": [
+    "sc_req_item",
+    "sys_user",
+    "task"
+   ],
+   "candidate_tables": [
+    "sc_req_item",
+    "sys_user",
+    "task"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "data_classification.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 134,
+   "rule_id": "DQ-134",
+   "excel_row": 135,
+   "group": "Q7. Sensitive data exposure (weight 10 — market-specific)",
+   "base_severity": "Systemic",
+   "rule": "Personal data in fields with no ACL protection",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "Q7",
+   "tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "candidate_tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "data_classification.name",
+    "m2m_dictionary_dataclass.data_class",
+    "m2m_dictionary_dataclass.sys_dictionary",
+    "sys_dictionary.element",
+    "sys_dictionary.name",
+    "sys_security_acl.active",
+    "sys_security_acl.advanced",
+    "sys_security_acl.condition",
+    "sys_security_acl.name",
+    "sys_security_acl.operation",
+    "sys_security_acl.script",
+    "sys_security_acl_role.sys_security_acl"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "DQ-133"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 135,
+   "rule_id": "DQ-135",
+   "excel_row": 136,
+   "group": "Q7. Sensitive data exposure (weight 10 — market-specific)",
+   "base_severity": "Critical",
+   "rule": "Personal data in attachments on records with broad read access",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "Q7",
+   "tables": [
+    "sys_attachment",
+    "sys_security_acl"
+   ],
+   "candidate_tables": [
+    "sys_attachment",
+    "sys_security_acl"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 136,
+   "rule_id": "DQ-136",
+   "excel_row": 137,
+   "group": "Q7. Sensitive data exposure (weight 10 — market-specific)",
+   "base_severity": "Critical",
+   "rule": "Personal data present beyond the defined retention period",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "Q7",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "DQ-139"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 137,
+   "rule_id": "DQ-137",
+   "excel_row": 138,
+   "group": "Q7. Sensitive data exposure (weight 10 — market-specific)",
+   "base_severity": "Critical",
+   "rule": "Custom field storing identifier-class data with no classification",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "Q7",
+   "tables": [
+    "m2m_dictionary_dataclass",
+    "sys_dictionary"
+   ],
+   "candidate_tables": [
+    "m2m_dictionary_dataclass",
+    "sys_dictionary"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "m2m_dictionary_dataclass.sys_dictionary",
+    "sys_dictionary.element",
+    "sys_dictionary.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 138,
+   "rule_id": "DQ-138",
+   "excel_row": 139,
+   "group": "Q7. Sensitive data exposure (weight 10 — market-specific)",
+   "base_severity": "Critical",
+   "rule": "Personal data replicated into non-production instances",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "Q7",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 139,
+   "rule_id": "DQ-139",
+   "excel_row": 140,
+   "group": "Q7. Sensitive data exposure (weight 10 — market-specific)",
+   "base_severity": "Systemic",
+   "rule": "No data classification applied to tables holding personal data",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "Q7",
+   "tables": [
+    "data_classification",
+    "m2m_dictionary_dataclass"
+   ],
+   "candidate_tables": [
+    "data_classification",
+    "m2m_dictionary_dataclass"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "data_classification.name",
+    "m2m_dictionary_dataclass.sys_dictionary"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "DQ-133"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "engine": "linkage",
+ "rules": {
+  "DQ-106": {
+   "undefined_dependencies": [
+    "a group's company scope — sys_user_group has no company field on the platform (verified, Phase 7)"
+   ]
+  },
+  "DQ-110": {
+   "undefined_dependencies": [
+    "a cost centre's company — cmn_cost_center has no company field on the platform (verified, Phase 7: legal_entity only)"
+   ]
+  },
+  "DQ-117": {
+   "undefined_dependencies": [
+    "which data source is the HR feed — not identified by the workbook, and not recorded on sys_data_source"
+   ]
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+  "setup": {
+    "table": "incident",
+    "payload": {
+      "short_description": "speedtest-a test"
+    }
+  },
+  "wait": {
+    "flowName": "NowForge Speed Test A",
+    "timeoutSec": 90
+  },
+  "assert": [
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      },
+      "field": "work_notes",
+      "expect": {
+        "value": "NowForge Speed Test A: received"
+      },
+      "note": "sets work_notes to \"NowForge Speed Test A: received\""
+    }
+  ],
+  "cleanup": [
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      }
+    }
+  ]
+}

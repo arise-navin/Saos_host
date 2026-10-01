@@ -1,0 +1,1254 @@
+{
+ "version": "1.0.0",
+ "phase": "Health Assist Phase 6",
+ "source": {
+  "workbook": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+  "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+  "bytes": 323662
+ },
+ "rule_count": 183,
+ "conventions": {
+  "default": "the workbook's stated default, or null with status UNDEFINED — never an invented value (DECISION 3)"
+ },
+ "declarations": {
+  "PLT-001": {
+   "workbook_text": "Any definition with duration in business-hours intent and no schedule",
+   "parameters": []
+  },
+  "PLT-002": {
+   "workbook_text": "Any band with non-zero volume and no covering definition",
+   "parameters": []
+  },
+  "PLT-003": {
+   "workbook_text": "Requires the task state transition map",
+   "parameters": []
+  },
+  "PLT-004": {
+   "workbook_text": "Report by definition pair",
+   "parameters": []
+  },
+  "PLT-005": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-006": {
+   "workbook_text": "Any insert-only condition where post-insert qualification occurs",
+   "parameters": []
+  },
+  "PLT-007": {
+   "workbook_text": "Terminal state set read from the task state model",
+   "parameters": []
+  },
+  "PLT-008": {
+   "workbook_text": "Paused duration threshold configurable",
+   "parameters": [
+    {
+     "key": "paused_threshold",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "paused duration — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-009": {
+   "workbook_text": "Compare against commitment where available",
+   "parameters": []
+  },
+  "PLT-010": {
+   "workbook_text": "Gap threshold configurable",
+   "parameters": [
+    {
+     "key": "gap",
+     "type": "duration",
+     "unit": "minutes",
+     "default": null,
+     "description": "event-to-record gap — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-011": {
+   "workbook_text": "Any occurrence with non-zero SLA volume",
+   "parameters": []
+  },
+  "PLT-012": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-013": {
+   "workbook_text": "Exact match on the functional fields",
+   "parameters": []
+  },
+  "PLT-014": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-015": {
+   "workbook_text": "Fires on multi-timezone estates",
+   "parameters": []
+  },
+  "PLT-016": {
+   "workbook_text": "Age threshold default 730 days",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 730,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-017": {
+   "workbook_text": "Maximum computed from duration plus schedule expansion",
+   "parameters": []
+  },
+  "PLT-018": {
+   "workbook_text": "Share threshold default 15%",
+   "parameters": [
+    {
+     "key": "share",
+     "type": "percent",
+     "unit": null,
+     "default": 15,
+     "description": "share of SLA records cancelled",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-019": {
+   "workbook_text": "Intended scope from the definition description and commitment where available",
+   "parameters": []
+  },
+  "PLT-020": {
+   "workbook_text": "Any occurrence; report by definition",
+   "parameters": []
+  },
+  "PLT-021": {
+   "workbook_text": "Share threshold default 25%",
+   "parameters": [
+    {
+     "key": "share",
+     "type": "percent",
+     "unit": null,
+     "default": 25,
+     "description": "share of SLA records paused longer than active",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-022": {
+   "workbook_text": "Frequency threshold configurable, default monthly",
+   "parameters": []
+  },
+  "PLT-023": {
+   "workbook_text": "Expected ratio derived from active definition count and coverage",
+   "parameters": []
+  },
+  "PLT-024": {
+   "workbook_text": "Active membership resolved live",
+   "parameters": []
+  },
+  "PLT-025": {
+   "workbook_text": "Ceiling configurable, default 500%",
+   "parameters": [
+    {
+     "key": "ceiling",
+     "type": "number",
+     "unit": null,
+     "default": 500,
+     "description": "percentage ceiling (the workbook default 500%, above the 0–100 percent type, so declared as a number)",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-026": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-027": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-028": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-029": {
+   "workbook_text": "Any occurrence with non-zero volume",
+   "parameters": []
+  },
+  "PLT-030": {
+   "workbook_text": "Compare effective duration, not raw duration — schedule expansion matters",
+   "parameters": []
+  },
+  "PLT-031": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-032": {
+   "workbook_text": "Requires both reporting configuration and commitment linkage",
+   "parameters": []
+  },
+  "PLT-033": {
+   "workbook_text": "Volume threshold configurable; combine row count and update frequency",
+   "parameters": [
+    {
+     "key": "volume",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "table volume threshold — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-034": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-035": {
+   "workbook_text": "Any occurrence; rank by the rule's execution count",
+   "parameters": []
+  },
+  "PLT-036": {
+   "workbook_text": "Operation classification configurable",
+   "parameters": []
+  },
+  "PLT-037": {
+   "workbook_text": "Base table set configurable: task, cmdb_ci, and other significant parents",
+   "parameters": []
+  },
+  "PLT-038": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-039": {
+   "workbook_text": "Row threshold configurable, default 100,000",
+   "parameters": [
+    {
+     "key": "min_rows",
+     "type": "number",
+     "unit": null,
+     "default": 100000,
+     "description": "target table row threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-040": {
+   "workbook_text": "Depth threshold default 2",
+   "parameters": [
+    {
+     "key": "max_depth",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "GlideRecord nesting depth",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-041": {
+   "workbook_text": "Field dependency analysis from script bodies",
+   "parameters": []
+  },
+  "PLT-042": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-043": {
+   "workbook_text": "Overlap threshold configurable",
+   "parameters": []
+  },
+  "PLT-044": {
+   "workbook_text": "Any occurrence without justification",
+   "parameters": []
+  },
+  "PLT-045": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-046": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-047": {
+   "workbook_text": "Pattern set configurable; include base64-encoded basic auth",
+   "parameters": []
+  },
+  "PLT-048": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-049": {
+   "workbook_text": "Any occurrence in before, after or display rules",
+   "parameters": []
+  },
+  "PLT-050": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-051": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-052": {
+   "workbook_text": "Slow threshold configurable, default 95th percentile",
+   "parameters": [
+    {
+     "key": "percentile",
+     "type": "number",
+     "unit": null,
+     "default": 95,
+     "description": "slow threshold: the percentile of total script time",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-053": {
+   "workbook_text": "Disproportion threshold default 2x",
+   "parameters": [
+    {
+     "key": "factor",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "multiple of table update volume",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-054": {
+   "workbook_text": "Threshold relative to execution count",
+   "parameters": []
+  },
+  "PLT-055": {
+   "workbook_text": "Both thresholds configurable",
+   "parameters": []
+  },
+  "PLT-056": {
+   "workbook_text": "Window default 90 days",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "observation window",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-057": {
+   "workbook_text": "Window configurable; requires transaction data before and after",
+   "parameters": []
+  },
+  "PLT-058": {
+   "workbook_text": "Ownership inference from table scope and application file membership",
+   "parameters": []
+  },
+  "PLT-059": {
+   "workbook_text": "OOB table set from the base install",
+   "parameters": []
+  },
+  "PLT-060": {
+   "workbook_text": "Any occurrence; report count and trend",
+   "parameters": []
+  },
+  "PLT-061": {
+   "workbook_text": "Report the two cases separately",
+   "parameters": []
+  },
+  "PLT-062": {
+   "workbook_text": "Any occurrence; report as a ratio",
+   "parameters": []
+  },
+  "PLT-063": {
+   "workbook_text": "Name and table exact match",
+   "parameters": []
+  },
+  "PLT-064": {
+   "workbook_text": "Requires at least 2 snapshots",
+   "parameters": [
+    {
+     "key": "min_windows",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "snapshots needed",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-065": {
+   "workbook_text": "Any occurrence; escalate where the include performs queries or writes",
+   "parameters": []
+  },
+  "PLT-066": {
+   "workbook_text": "Caller analysis from script references",
+   "parameters": []
+  },
+  "PLT-067": {
+   "workbook_text": "Privileged operation set configurable",
+   "parameters": []
+  },
+  "PLT-068": {
+   "workbook_text": "Similarity threshold default 0.85",
+   "parameters": [
+    {
+     "key": "similarity",
+     "type": "number",
+     "unit": null,
+     "default": 0.85,
+     "description": "similarity threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-069": {
+   "workbook_text": "Age threshold default 180 days; caller detection must cover dynamic invocation patterns",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 180,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-070": {
+   "workbook_text": "Threshold default 500 lines",
+   "parameters": [
+    {
+     "key": "max_lines",
+     "type": "number",
+     "unit": null,
+     "default": 500,
+     "description": "line threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-071": {
+   "workbook_text": "Depth threshold default 5",
+   "parameters": [
+    {
+     "key": "max_depth",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "call depth",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-072": {
+   "workbook_text": "Pattern set configurable",
+   "parameters": []
+  },
+  "PLT-073": {
+   "workbook_text": "Report both the observed errors and the structural absence of handling",
+   "parameters": []
+  },
+  "PLT-074": {
+   "workbook_text": "Name exact match within scope",
+   "parameters": []
+  },
+  "PLT-075": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-076": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-077": {
+   "workbook_text": "Any occurrence; rank by form view volume",
+   "parameters": []
+  },
+  "PLT-078": {
+   "workbook_text": "Operation classification configurable",
+   "parameters": []
+  },
+  "PLT-079": {
+   "workbook_text": "Any occurrence with more than one",
+   "parameters": []
+  },
+  "PLT-080": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-081": {
+   "workbook_text": "Requires form layout introspection",
+   "parameters": []
+  },
+  "PLT-082": {
+   "workbook_text": "Deprecated API set per UI framework version",
+   "parameters": []
+  },
+  "PLT-083": {
+   "workbook_text": "Field-level comparison between client validation and server enforcement",
+   "parameters": []
+  },
+  "PLT-084": {
+   "workbook_text": "Field-level comparison",
+   "parameters": []
+  },
+  "PLT-085": {
+   "workbook_text": "Conflict matrix: mandatory vs read-only, visible vs hidden",
+   "parameters": []
+  },
+  "PLT-086": {
+   "workbook_text": "Any occurrence where those paths carry volume",
+   "parameters": []
+  },
+  "PLT-087": {
+   "workbook_text": "Action classification configurable",
+   "parameters": []
+  },
+  "PLT-088": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-089": {
+   "workbook_text": "Requires documentation or control register linkage",
+   "parameters": []
+  },
+  "PLT-090": {
+   "workbook_text": "Field-level comparison across all three layers",
+   "parameters": []
+  },
+  "PLT-091": {
+   "workbook_text": "Overlap analysis across all three mechanisms",
+   "parameters": []
+  },
+  "PLT-092": {
+   "workbook_text": "Equivalence assessment by function and trigger",
+   "parameters": []
+  },
+  "PLT-093": {
+   "workbook_text": "Condition overlap analysis",
+   "parameters": []
+  },
+  "PLT-094": {
+   "workbook_text": "Any occurrence; escalate for flows on user-facing or integration paths",
+   "parameters": []
+  },
+  "PLT-095": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-096": {
+   "workbook_text": "Threshold configurable; default 24 hours for non-wait flows",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "hours",
+     "default": 24,
+     "description": "executing-state threshold for non-wait flows",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-097": {
+   "workbook_text": "Threshold default 5%",
+   "parameters": [
+    {
+     "key": "failure_rate",
+     "type": "percent",
+     "unit": null,
+     "default": 5,
+     "description": "failure rate",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-098": {
+   "workbook_text": "Volume threshold configurable",
+   "parameters": [
+    {
+     "key": "volume",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "table volume threshold — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-099": {
+   "workbook_text": "Any cycle",
+   "parameters": []
+  },
+  "PLT-100": {
+   "workbook_text": "Pattern set configurable",
+   "parameters": []
+  },
+  "PLT-101": {
+   "workbook_text": "Report the two cases separately",
+   "parameters": []
+  },
+  "PLT-102": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-103": {
+   "workbook_text": "Threshold default 20 versions",
+   "parameters": [
+    {
+     "key": "max_versions",
+     "type": "number",
+     "unit": null,
+     "default": 20,
+     "description": "version count threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-104": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-105": {
+   "workbook_text": "Age and growth thresholds configurable",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "age threshold — UNDEFINED",
+     "status": "UNDEFINED"
+    },
+    {
+     "key": "growth",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "growth threshold — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-106": {
+   "workbook_text": "Compare against both average and maximum duration",
+   "parameters": []
+  },
+  "PLT-107": {
+   "workbook_text": "Concurrency threshold configurable",
+   "parameters": [
+    {
+     "key": "concurrency",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "concurrency threshold — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-108": {
+   "workbook_text": "Row threshold configurable",
+   "parameters": [
+    {
+     "key": "min_rows",
+     "type": "number",
+     "unit": null,
+     "default": 100000,
+     "description": "target table row threshold (PLT-039's)",
+     "status": "DEFINED",
+     "source": "D-037"
+    }
+   ]
+  },
+  "PLT-109": {
+   "workbook_text": "Horizon default 90 days; requires at least 5 runs",
+   "parameters": [
+    {
+     "key": "horizon",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "projection horizon",
+     "status": "DEFINED"
+    },
+    {
+     "key": "min_runs",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "runs needed",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-110": {
+   "workbook_text": "Failure threshold default 20%",
+   "parameters": [
+    {
+     "key": "failure_rate",
+     "type": "percent",
+     "unit": null,
+     "default": 20,
+     "description": "failure rate",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-111": {
+   "workbook_text": "Age threshold default 30 days or 3 intervals, whichever is longer",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 30,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-112": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-113": {
+   "workbook_text": "Report the two cases separately",
+   "parameters": []
+  },
+  "PLT-114": {
+   "workbook_text": "Consumption measurement depends on the job type; state the method",
+   "parameters": []
+  },
+  "PLT-115": {
+   "workbook_text": "Age is the more meaningful threshold; default 10 minutes",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "minutes",
+     "default": 10,
+     "description": "oldest unprocessed event",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-116": {
+   "workbook_text": "Any occurrence with non-zero volume",
+   "parameters": []
+  },
+  "PLT-117": {
+   "workbook_text": "Share threshold default 30%",
+   "parameters": [
+    {
+     "key": "share",
+     "type": "percent",
+     "unit": null,
+     "default": 30,
+     "description": "share of event volume from one event",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-118": {
+   "workbook_text": "Threshold configurable",
+   "parameters": [
+    {
+     "key": "max_backlog",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "backlog threshold — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-119": {
+   "workbook_text": "Lag threshold configurable, default 15 minutes",
+   "parameters": [
+    {
+     "key": "max_lag",
+     "type": "duration",
+     "unit": "minutes",
+     "default": 15,
+     "description": "lag threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-120": {
+   "workbook_text": "Threshold relative to estate size; default 10 or 1% of fulfillers, whichever is lower",
+   "parameters": [
+    {
+     "key": "max_admins",
+     "type": "number",
+     "unit": null,
+     "default": 10,
+     "description": "admin count threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-121": {
+   "workbook_text": "Any occurrence; escalate on sensitive tables",
+   "parameters": []
+  },
+  "PLT-122": {
+   "workbook_text": "Inheritance resolution mandatory or this rule produces mass false positives",
+   "parameters": []
+  },
+  "PLT-123": {
+   "workbook_text": "Elevated role set configurable; correlation window configurable",
+   "parameters": []
+  },
+  "PLT-124": {
+   "workbook_text": "Elevated role set configurable; full transitive closure required",
+   "parameters": []
+  },
+  "PLT-125": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-126": {
+   "workbook_text": "Sensitive table set from classification or from DQ-139 detection",
+   "parameters": []
+  },
+  "PLT-127": {
+   "workbook_text": "Sensitive field set from classification or content detection",
+   "parameters": []
+  },
+  "PLT-128": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-129": {
+   "workbook_text": "Report elevated roles separately from ordinary ones",
+   "parameters": []
+  },
+  "PLT-130": {
+   "workbook_text": "Service account classification from naming, roles and usage pattern",
+   "parameters": []
+  },
+  "PLT-131": {
+   "workbook_text": "Report ratio and the elevated-role subset separately",
+   "parameters": [
+    {
+     "key": "direct_share",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "share of direct grants — UNDEFINED (the workbook asks for the ratio, no threshold)",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-132": {
+   "workbook_text": "Exclude roles that are containers in an active nesting structure",
+   "parameters": []
+  },
+  "PLT-133": {
+   "workbook_text": "Elevated role set configurable",
+   "parameters": []
+  },
+  "PLT-134": {
+   "workbook_text": "Review period from policy; default annual",
+   "parameters": []
+  },
+  "PLT-135": {
+   "workbook_text": "Weakness comparison across role requirement and condition restrictiveness",
+   "parameters": []
+  },
+  "PLT-136": {
+   "workbook_text": "Any occurrence; report volume by impersonator",
+   "parameters": []
+  },
+  "PLT-137": {
+   "workbook_text": "Integration account classification from web_service_access_only, naming and usage",
+   "parameters": []
+  },
+  "PLT-138": {
+   "workbook_text": "Any occurrence; report inbound and outbound separately",
+   "parameters": []
+  },
+  "PLT-139": {
+   "workbook_text": "Fires where vault or alias capability exists",
+   "parameters": []
+  },
+  "PLT-140": {
+   "workbook_text": "Scope to tables where IRE or data policies exist",
+   "parameters": []
+  },
+  "PLT-141": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-142": {
+   "workbook_text": "Threshold default 5%",
+   "parameters": [
+    {
+     "key": "failure_rate",
+     "type": "percent",
+     "unit": null,
+     "default": 5,
+     "description": "failure rate",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-143": {
+   "workbook_text": "Any occurrence; escalate for high-volume or external-facing integrations",
+   "parameters": []
+  },
+  "PLT-144": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-145": {
+   "workbook_text": "Lifetime threshold configurable; default 90 days for refresh tokens",
+   "parameters": [
+    {
+     "key": "max_days",
+     "type": "number",
+     "unit": null,
+     "default": 90,
+     "description": "refresh-token lifetime in days",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-146": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-147": {
+   "workbook_text": "Window default 180 days",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": 180,
+     "description": "window",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-148": {
+   "workbook_text": "Normalised URL comparison",
+   "parameters": []
+  },
+  "PLT-149": {
+   "workbook_text": "Size threshold configurable",
+   "parameters": [
+    {
+     "key": "max_rows",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "size threshold — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-150": {
+   "workbook_text": "Any occurrence on a recurring import",
+   "parameters": []
+  },
+  "PLT-151": {
+   "workbook_text": "Threshold relative to row volume",
+   "parameters": []
+  },
+  "PLT-152": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "PLT-153": {
+   "workbook_text": "Report the two cases separately",
+   "parameters": []
+  },
+  "PLT-154": {
+   "workbook_text": "Any unreviewed skipped update; rank by the object's execution volume and criticality",
+   "parameters": []
+  },
+  "PLT-155": {
+   "workbook_text": "Report by object type; no single threshold",
+   "parameters": []
+  },
+  "PLT-156": {
+   "workbook_text": "Change frequency derived from upgrade history across releases",
+   "parameters": []
+  },
+  "PLT-157": {
+   "workbook_text": "Threshold default 2 families",
+   "parameters": [
+    {
+     "key": "max_families",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "families behind",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-158": {
+   "workbook_text": "Grouping by table and function",
+   "parameters": []
+  },
+  "PLT-159": {
+   "workbook_text": "Usage assessment from field population and process linkage",
+   "parameters": []
+  },
+  "PLT-160": {
+   "workbook_text": "Threshold default 5%",
+   "parameters": [
+    {
+     "key": "min_population",
+     "type": "percent",
+     "unit": null,
+     "default": 5,
+     "description": "population threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-161": {
+   "workbook_text": "Semantic matching from name, type and population correlation",
+   "parameters": []
+  },
+  "PLT-162": {
+   "workbook_text": "Deprecated API list per release",
+   "parameters": []
+  },
+  "PLT-163": {
+   "workbook_text": "Deprecation status from the instance's own plugin metadata",
+   "parameters": []
+  },
+  "PLT-164": {
+   "workbook_text": "Threshold default 5 modifications in 12 months",
+   "parameters": [
+    {
+     "key": "max_changes",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "modifications",
+     "status": "DEFINED"
+    },
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "months",
+     "default": 12,
+     "description": "window",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-165": {
+   "workbook_text": "Age thresholds configurable; report the three cases separately",
+   "parameters": [
+    {
+     "key": "open_age",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "age of an open update set — UNDEFINED",
+     "status": "UNDEFINED"
+    },
+    {
+     "key": "preview_age",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "age in preview — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-166": {
+   "workbook_text": "Report count, trend and distribution by creating user",
+   "parameters": []
+  },
+  "PLT-167": {
+   "workbook_text": "Breadth assessment from actual usage",
+   "parameters": []
+  },
+  "PLT-168": {
+   "workbook_text": "Report the two cases separately",
+   "parameters": []
+  },
+  "PLT-169": {
+   "workbook_text": "Row threshold default 5; age threshold default 180 days",
+   "parameters": [
+    {
+     "key": "max_rows",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "row threshold",
+     "status": "DEFINED"
+    },
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 180,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-170": {
+   "workbook_text": "Threshold default 6 levels",
+   "parameters": []
+  },
+  "PLT-171": {
+   "workbook_text": "Threshold configurable; default 3 seconds for interactive transactions",
+   "parameters": [
+    {
+     "key": "max_seconds",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "p95 response-time threshold in seconds",
+     "status": "DEFINED"
+    },
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "hours",
+     "default": null,
+     "description": "window — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-172": {
+   "workbook_text": "Requires at least 3 windows; normalisation is mandatory or growth in usage reads as degradation",
+   "parameters": [
+    {
+     "key": "min_windows",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "windows needed",
+     "status": "DEFINED"
+    },
+    {
+     "key": "max_seconds",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "slow threshold in seconds (PLT-171's)",
+     "status": "DEFINED",
+     "source": "D-037"
+    },
+    {
+     "key": "period",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "window length — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-173": {
+   "workbook_text": "Report both frequency and total time; total time is the better ranking",
+   "parameters": []
+  },
+  "PLT-174": {
+   "workbook_text": "Size threshold configurable; default 10 million rows or the top decile",
+   "parameters": [
+    {
+     "key": "max_rows",
+     "type": "number",
+     "unit": null,
+     "default": 10000000,
+     "description": "size threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-175": {
+   "workbook_text": "Size and frequency thresholds configurable",
+   "parameters": []
+  },
+  "PLT-176": {
+   "workbook_text": "Size threshold configurable",
+   "parameters": [
+    {
+     "key": "max_rows",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "size threshold — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-177": {
+   "workbook_text": "Threshold configurable",
+   "parameters": [
+    {
+     "key": "max_bytes",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "storage threshold — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "PLT-178": {
+   "workbook_text": "Age threshold default 15 minutes",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "minutes",
+     "default": 15,
+     "description": "oldest unsent message",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-179": {
+   "workbook_text": "Thresholds from the instance's semaphore configuration",
+   "parameters": []
+  },
+  "PLT-180": {
+   "workbook_text": "Any occurrence; report frequency and trend",
+   "parameters": []
+  },
+  "PLT-181": {
+   "workbook_text": "Threshold configurable; default 10,000 rows",
+   "parameters": [
+    {
+     "key": "max_rows",
+     "type": "number",
+     "unit": null,
+     "default": 10000,
+     "description": "row threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "PLT-182": {
+   "workbook_text": "Cost threshold configurable",
+   "parameters": []
+  },
+  "PLT-183": {
+   "workbook_text": "Peak window derived from the instance's own transaction volume distribution",
+   "parameters": []
+  }
+ }
+}

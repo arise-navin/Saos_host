@@ -1,0 +1,28 @@
+{
+ "engine": "temporal_correlation",
+ "rules": {
+  "PLT-026": {
+   "specification_gap": {
+    "missing": "a tolerance after closure — the SLA record is stopped BY the closure, moments after it, so \"updated after closure\" needs a margin the workbook does not give"
+   }
+  },
+  "PLT-057": {
+   "undefined_dependencies": [
+    "script attribution in slow transactions and per-query cost — syslog_transaction records a transaction, not which rule or widget spent its time"
+   ]
+  },
+  "PLT-107": {
+   "build_pending": "expanding every schedule into run windows and counting concurrent jobs"
+  },
+  "PLT-123": {
+   "undefined_dependencies": [
+    "the approval / change correlation window (\"configurable\") and the elevated role set"
+   ]
+  },
+  "PLT-183": {
+   "undefined_dependencies": [
+    "when a scheduled report runs, and the instance's peak window \"derived from its own transaction distribution\" — no derivation is given"
+   ]
+  }
+ }
+}

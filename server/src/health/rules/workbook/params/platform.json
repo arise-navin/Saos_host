@@ -1,0 +1,740 @@
+{
+ "params_version": "0.1.0",
+ "sheet": "platform",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Parameter declaration skeleton, one entry per workbook rule. The typed declarations (type, unit, default, status DEFINED/UNDEFINED) are written in Phase 1 with the generalised registry; ITSM already has them in health/rules/itsm/parameters.json.",
+ "rules": {
+  "PLT-001": {
+   "workbook_text": "Any definition with duration in business-hours intent and no schedule",
+   "status": "UNDECLARED"
+  },
+  "PLT-002": {
+   "workbook_text": "Any band with non-zero volume and no covering definition",
+   "status": "UNDECLARED"
+  },
+  "PLT-003": {
+   "workbook_text": "Requires the task state transition map",
+   "status": "UNDECLARED"
+  },
+  "PLT-004": {
+   "workbook_text": "Report by definition pair",
+   "status": "UNDECLARED"
+  },
+  "PLT-005": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-006": {
+   "workbook_text": "Any insert-only condition where post-insert qualification occurs",
+   "status": "UNDECLARED"
+  },
+  "PLT-007": {
+   "workbook_text": "Terminal state set read from the task state model",
+   "status": "UNDECLARED"
+  },
+  "PLT-008": {
+   "workbook_text": "Paused duration threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-009": {
+   "workbook_text": "Compare against commitment where available",
+   "status": "UNDECLARED"
+  },
+  "PLT-010": {
+   "workbook_text": "Gap threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-011": {
+   "workbook_text": "Any occurrence with non-zero SLA volume",
+   "status": "UNDECLARED"
+  },
+  "PLT-012": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-013": {
+   "workbook_text": "Exact match on the functional fields",
+   "status": "UNDECLARED"
+  },
+  "PLT-014": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-015": {
+   "workbook_text": "Fires on multi-timezone estates",
+   "status": "UNDECLARED"
+  },
+  "PLT-016": {
+   "workbook_text": "Age threshold default 730 days",
+   "status": "UNDECLARED"
+  },
+  "PLT-017": {
+   "workbook_text": "Maximum computed from duration plus schedule expansion",
+   "status": "UNDECLARED"
+  },
+  "PLT-018": {
+   "workbook_text": "Share threshold default 15%",
+   "status": "UNDECLARED"
+  },
+  "PLT-019": {
+   "workbook_text": "Intended scope from the definition description and commitment where available",
+   "status": "UNDECLARED"
+  },
+  "PLT-020": {
+   "workbook_text": "Any occurrence; report by definition",
+   "status": "UNDECLARED"
+  },
+  "PLT-021": {
+   "workbook_text": "Share threshold default 25%",
+   "status": "UNDECLARED"
+  },
+  "PLT-022": {
+   "workbook_text": "Frequency threshold configurable, default monthly",
+   "status": "UNDECLARED"
+  },
+  "PLT-023": {
+   "workbook_text": "Expected ratio derived from active definition count and coverage",
+   "status": "UNDECLARED"
+  },
+  "PLT-024": {
+   "workbook_text": "Active membership resolved live",
+   "status": "UNDECLARED"
+  },
+  "PLT-025": {
+   "workbook_text": "Ceiling configurable, default 500%",
+   "status": "UNDECLARED"
+  },
+  "PLT-026": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-027": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-028": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-029": {
+   "workbook_text": "Any occurrence with non-zero volume",
+   "status": "UNDECLARED"
+  },
+  "PLT-030": {
+   "workbook_text": "Compare effective duration, not raw duration — schedule expansion matters",
+   "status": "UNDECLARED"
+  },
+  "PLT-031": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-032": {
+   "workbook_text": "Requires both reporting configuration and commitment linkage",
+   "status": "UNDECLARED"
+  },
+  "PLT-033": {
+   "workbook_text": "Volume threshold configurable; combine row count and update frequency",
+   "status": "UNDECLARED"
+  },
+  "PLT-034": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-035": {
+   "workbook_text": "Any occurrence; rank by the rule's execution count",
+   "status": "UNDECLARED"
+  },
+  "PLT-036": {
+   "workbook_text": "Operation classification configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-037": {
+   "workbook_text": "Base table set configurable: task, cmdb_ci, and other significant parents",
+   "status": "UNDECLARED"
+  },
+  "PLT-038": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-039": {
+   "workbook_text": "Row threshold configurable, default 100,000",
+   "status": "UNDECLARED"
+  },
+  "PLT-040": {
+   "workbook_text": "Depth threshold default 2",
+   "status": "UNDECLARED"
+  },
+  "PLT-041": {
+   "workbook_text": "Field dependency analysis from script bodies",
+   "status": "UNDECLARED"
+  },
+  "PLT-042": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-043": {
+   "workbook_text": "Overlap threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-044": {
+   "workbook_text": "Any occurrence without justification",
+   "status": "UNDECLARED"
+  },
+  "PLT-045": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-046": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-047": {
+   "workbook_text": "Pattern set configurable; include base64-encoded basic auth",
+   "status": "UNDECLARED"
+  },
+  "PLT-048": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-049": {
+   "workbook_text": "Any occurrence in before, after or display rules",
+   "status": "UNDECLARED"
+  },
+  "PLT-050": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-051": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-052": {
+   "workbook_text": "Slow threshold configurable, default 95th percentile",
+   "status": "UNDECLARED"
+  },
+  "PLT-053": {
+   "workbook_text": "Disproportion threshold default 2x",
+   "status": "UNDECLARED"
+  },
+  "PLT-054": {
+   "workbook_text": "Threshold relative to execution count",
+   "status": "UNDECLARED"
+  },
+  "PLT-055": {
+   "workbook_text": "Both thresholds configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-056": {
+   "workbook_text": "Window default 90 days",
+   "status": "UNDECLARED"
+  },
+  "PLT-057": {
+   "workbook_text": "Window configurable; requires transaction data before and after",
+   "status": "UNDECLARED"
+  },
+  "PLT-058": {
+   "workbook_text": "Ownership inference from table scope and application file membership",
+   "status": "UNDECLARED"
+  },
+  "PLT-059": {
+   "workbook_text": "OOB table set from the base install",
+   "status": "UNDECLARED"
+  },
+  "PLT-060": {
+   "workbook_text": "Any occurrence; report count and trend",
+   "status": "UNDECLARED"
+  },
+  "PLT-061": {
+   "workbook_text": "Report the two cases separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-062": {
+   "workbook_text": "Any occurrence; report as a ratio",
+   "status": "UNDECLARED"
+  },
+  "PLT-063": {
+   "workbook_text": "Name and table exact match",
+   "status": "UNDECLARED"
+  },
+  "PLT-064": {
+   "workbook_text": "Requires at least 2 snapshots",
+   "status": "UNDECLARED"
+  },
+  "PLT-065": {
+   "workbook_text": "Any occurrence; escalate where the include performs queries or writes",
+   "status": "UNDECLARED"
+  },
+  "PLT-066": {
+   "workbook_text": "Caller analysis from script references",
+   "status": "UNDECLARED"
+  },
+  "PLT-067": {
+   "workbook_text": "Privileged operation set configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-068": {
+   "workbook_text": "Similarity threshold default 0.85",
+   "status": "UNDECLARED"
+  },
+  "PLT-069": {
+   "workbook_text": "Age threshold default 180 days; caller detection must cover dynamic invocation patterns",
+   "status": "UNDECLARED"
+  },
+  "PLT-070": {
+   "workbook_text": "Threshold default 500 lines",
+   "status": "UNDECLARED"
+  },
+  "PLT-071": {
+   "workbook_text": "Depth threshold default 5",
+   "status": "UNDECLARED"
+  },
+  "PLT-072": {
+   "workbook_text": "Pattern set configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-073": {
+   "workbook_text": "Report both the observed errors and the structural absence of handling",
+   "status": "UNDECLARED"
+  },
+  "PLT-074": {
+   "workbook_text": "Name exact match within scope",
+   "status": "UNDECLARED"
+  },
+  "PLT-075": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-076": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-077": {
+   "workbook_text": "Any occurrence; rank by form view volume",
+   "status": "UNDECLARED"
+  },
+  "PLT-078": {
+   "workbook_text": "Operation classification configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-079": {
+   "workbook_text": "Any occurrence with more than one",
+   "status": "UNDECLARED"
+  },
+  "PLT-080": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-081": {
+   "workbook_text": "Requires form layout introspection",
+   "status": "UNDECLARED"
+  },
+  "PLT-082": {
+   "workbook_text": "Deprecated API set per UI framework version",
+   "status": "UNDECLARED"
+  },
+  "PLT-083": {
+   "workbook_text": "Field-level comparison between client validation and server enforcement",
+   "status": "UNDECLARED"
+  },
+  "PLT-084": {
+   "workbook_text": "Field-level comparison",
+   "status": "UNDECLARED"
+  },
+  "PLT-085": {
+   "workbook_text": "Conflict matrix: mandatory vs read-only, visible vs hidden",
+   "status": "UNDECLARED"
+  },
+  "PLT-086": {
+   "workbook_text": "Any occurrence where those paths carry volume",
+   "status": "UNDECLARED"
+  },
+  "PLT-087": {
+   "workbook_text": "Action classification configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-088": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-089": {
+   "workbook_text": "Requires documentation or control register linkage",
+   "status": "UNDECLARED"
+  },
+  "PLT-090": {
+   "workbook_text": "Field-level comparison across all three layers",
+   "status": "UNDECLARED"
+  },
+  "PLT-091": {
+   "workbook_text": "Overlap analysis across all three mechanisms",
+   "status": "UNDECLARED"
+  },
+  "PLT-092": {
+   "workbook_text": "Equivalence assessment by function and trigger",
+   "status": "UNDECLARED"
+  },
+  "PLT-093": {
+   "workbook_text": "Condition overlap analysis",
+   "status": "UNDECLARED"
+  },
+  "PLT-094": {
+   "workbook_text": "Any occurrence; escalate for flows on user-facing or integration paths",
+   "status": "UNDECLARED"
+  },
+  "PLT-095": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-096": {
+   "workbook_text": "Threshold configurable; default 24 hours for non-wait flows",
+   "status": "UNDECLARED"
+  },
+  "PLT-097": {
+   "workbook_text": "Threshold default 5%",
+   "status": "UNDECLARED"
+  },
+  "PLT-098": {
+   "workbook_text": "Volume threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-099": {
+   "workbook_text": "Any cycle",
+   "status": "UNDECLARED"
+  },
+  "PLT-100": {
+   "workbook_text": "Pattern set configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-101": {
+   "workbook_text": "Report the two cases separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-102": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-103": {
+   "workbook_text": "Threshold default 20 versions",
+   "status": "UNDECLARED"
+  },
+  "PLT-104": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-105": {
+   "workbook_text": "Age and growth thresholds configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-106": {
+   "workbook_text": "Compare against both average and maximum duration",
+   "status": "UNDECLARED"
+  },
+  "PLT-107": {
+   "workbook_text": "Concurrency threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-108": {
+   "workbook_text": "Row threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-109": {
+   "workbook_text": "Horizon default 90 days; requires at least 5 runs",
+   "status": "UNDECLARED"
+  },
+  "PLT-110": {
+   "workbook_text": "Failure threshold default 20%",
+   "status": "UNDECLARED"
+  },
+  "PLT-111": {
+   "workbook_text": "Age threshold default 30 days or 3 intervals, whichever is longer",
+   "status": "UNDECLARED"
+  },
+  "PLT-112": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-113": {
+   "workbook_text": "Report the two cases separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-114": {
+   "workbook_text": "Consumption measurement depends on the job type; state the method",
+   "status": "UNDECLARED"
+  },
+  "PLT-115": {
+   "workbook_text": "Age is the more meaningful threshold; default 10 minutes",
+   "status": "UNDECLARED"
+  },
+  "PLT-116": {
+   "workbook_text": "Any occurrence with non-zero volume",
+   "status": "UNDECLARED"
+  },
+  "PLT-117": {
+   "workbook_text": "Share threshold default 30%",
+   "status": "UNDECLARED"
+  },
+  "PLT-118": {
+   "workbook_text": "Threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-119": {
+   "workbook_text": "Lag threshold configurable, default 15 minutes",
+   "status": "UNDECLARED"
+  },
+  "PLT-120": {
+   "workbook_text": "Threshold relative to estate size; default 10 or 1% of fulfillers, whichever is lower",
+   "status": "UNDECLARED"
+  },
+  "PLT-121": {
+   "workbook_text": "Any occurrence; escalate on sensitive tables",
+   "status": "UNDECLARED"
+  },
+  "PLT-122": {
+   "workbook_text": "Inheritance resolution mandatory or this rule produces mass false positives",
+   "status": "UNDECLARED"
+  },
+  "PLT-123": {
+   "workbook_text": "Elevated role set configurable; correlation window configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-124": {
+   "workbook_text": "Elevated role set configurable; full transitive closure required",
+   "status": "UNDECLARED"
+  },
+  "PLT-125": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-126": {
+   "workbook_text": "Sensitive table set from classification or from DQ-139 detection",
+   "status": "UNDECLARED"
+  },
+  "PLT-127": {
+   "workbook_text": "Sensitive field set from classification or content detection",
+   "status": "UNDECLARED"
+  },
+  "PLT-128": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-129": {
+   "workbook_text": "Report elevated roles separately from ordinary ones",
+   "status": "UNDECLARED"
+  },
+  "PLT-130": {
+   "workbook_text": "Service account classification from naming, roles and usage pattern",
+   "status": "UNDECLARED"
+  },
+  "PLT-131": {
+   "workbook_text": "Report ratio and the elevated-role subset separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-132": {
+   "workbook_text": "Exclude roles that are containers in an active nesting structure",
+   "status": "UNDECLARED"
+  },
+  "PLT-133": {
+   "workbook_text": "Elevated role set configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-134": {
+   "workbook_text": "Review period from policy; default annual",
+   "status": "UNDECLARED"
+  },
+  "PLT-135": {
+   "workbook_text": "Weakness comparison across role requirement and condition restrictiveness",
+   "status": "UNDECLARED"
+  },
+  "PLT-136": {
+   "workbook_text": "Any occurrence; report volume by impersonator",
+   "status": "UNDECLARED"
+  },
+  "PLT-137": {
+   "workbook_text": "Integration account classification from web_service_access_only, naming and usage",
+   "status": "UNDECLARED"
+  },
+  "PLT-138": {
+   "workbook_text": "Any occurrence; report inbound and outbound separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-139": {
+   "workbook_text": "Fires where vault or alias capability exists",
+   "status": "UNDECLARED"
+  },
+  "PLT-140": {
+   "workbook_text": "Scope to tables where IRE or data policies exist",
+   "status": "UNDECLARED"
+  },
+  "PLT-141": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-142": {
+   "workbook_text": "Threshold default 5%",
+   "status": "UNDECLARED"
+  },
+  "PLT-143": {
+   "workbook_text": "Any occurrence; escalate for high-volume or external-facing integrations",
+   "status": "UNDECLARED"
+  },
+  "PLT-144": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-145": {
+   "workbook_text": "Lifetime threshold configurable; default 90 days for refresh tokens",
+   "status": "UNDECLARED"
+  },
+  "PLT-146": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-147": {
+   "workbook_text": "Window default 180 days",
+   "status": "UNDECLARED"
+  },
+  "PLT-148": {
+   "workbook_text": "Normalised URL comparison",
+   "status": "UNDECLARED"
+  },
+  "PLT-149": {
+   "workbook_text": "Size threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-150": {
+   "workbook_text": "Any occurrence on a recurring import",
+   "status": "UNDECLARED"
+  },
+  "PLT-151": {
+   "workbook_text": "Threshold relative to row volume",
+   "status": "UNDECLARED"
+  },
+  "PLT-152": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "PLT-153": {
+   "workbook_text": "Report the two cases separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-154": {
+   "workbook_text": "Any unreviewed skipped update; rank by the object's execution volume and criticality",
+   "status": "UNDECLARED"
+  },
+  "PLT-155": {
+   "workbook_text": "Report by object type; no single threshold",
+   "status": "UNDECLARED"
+  },
+  "PLT-156": {
+   "workbook_text": "Change frequency derived from upgrade history across releases",
+   "status": "UNDECLARED"
+  },
+  "PLT-157": {
+   "workbook_text": "Threshold default 2 families",
+   "status": "UNDECLARED"
+  },
+  "PLT-158": {
+   "workbook_text": "Grouping by table and function",
+   "status": "UNDECLARED"
+  },
+  "PLT-159": {
+   "workbook_text": "Usage assessment from field population and process linkage",
+   "status": "UNDECLARED"
+  },
+  "PLT-160": {
+   "workbook_text": "Threshold default 5%",
+   "status": "UNDECLARED"
+  },
+  "PLT-161": {
+   "workbook_text": "Semantic matching from name, type and population correlation",
+   "status": "UNDECLARED"
+  },
+  "PLT-162": {
+   "workbook_text": "Deprecated API list per release",
+   "status": "UNDECLARED"
+  },
+  "PLT-163": {
+   "workbook_text": "Deprecation status from the instance's own plugin metadata",
+   "status": "UNDECLARED"
+  },
+  "PLT-164": {
+   "workbook_text": "Threshold default 5 modifications in 12 months",
+   "status": "UNDECLARED"
+  },
+  "PLT-165": {
+   "workbook_text": "Age thresholds configurable; report the three cases separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-166": {
+   "workbook_text": "Report count, trend and distribution by creating user",
+   "status": "UNDECLARED"
+  },
+  "PLT-167": {
+   "workbook_text": "Breadth assessment from actual usage",
+   "status": "UNDECLARED"
+  },
+  "PLT-168": {
+   "workbook_text": "Report the two cases separately",
+   "status": "UNDECLARED"
+  },
+  "PLT-169": {
+   "workbook_text": "Row threshold default 5; age threshold default 180 days",
+   "status": "UNDECLARED"
+  },
+  "PLT-170": {
+   "workbook_text": "Threshold default 6 levels",
+   "status": "UNDECLARED"
+  },
+  "PLT-171": {
+   "workbook_text": "Threshold configurable; default 3 seconds for interactive transactions",
+   "status": "UNDECLARED"
+  },
+  "PLT-172": {
+   "workbook_text": "Requires at least 3 windows; normalisation is mandatory or growth in usage reads as degradation",
+   "status": "UNDECLARED"
+  },
+  "PLT-173": {
+   "workbook_text": "Report both frequency and total time; total time is the better ranking",
+   "status": "UNDECLARED"
+  },
+  "PLT-174": {
+   "workbook_text": "Size threshold configurable; default 10 million rows or the top decile",
+   "status": "UNDECLARED"
+  },
+  "PLT-175": {
+   "workbook_text": "Size and frequency thresholds configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-176": {
+   "workbook_text": "Size threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-177": {
+   "workbook_text": "Threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-178": {
+   "workbook_text": "Age threshold default 15 minutes",
+   "status": "UNDECLARED"
+  },
+  "PLT-179": {
+   "workbook_text": "Thresholds from the instance's semaphore configuration",
+   "status": "UNDECLARED"
+  },
+  "PLT-180": {
+   "workbook_text": "Any occurrence; report frequency and trend",
+   "status": "UNDECLARED"
+  },
+  "PLT-181": {
+   "workbook_text": "Threshold configurable; default 10,000 rows",
+   "status": "UNDECLARED"
+  },
+  "PLT-182": {
+   "workbook_text": "Cost threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "PLT-183": {
+   "workbook_text": "Peak window derived from the instance's own transaction volume distribution",
+   "status": "UNDECLARED"
+  }
+ }
+}

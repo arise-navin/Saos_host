@@ -1,0 +1,49 @@
+{
+ "version": "1.0.0",
+ "objects": {
+  "pattern_execution": {
+   "candidate": null,
+   "rules": [
+    "ITOM-041",
+    "ITOM-042",
+    "ITOM-043",
+    "ITOM-044",
+    "ITOM-050"
+   ]
+  },
+  "mid_certificate": {
+   "candidate": null,
+   "rules": [
+    "ITOM-056"
+   ]
+  },
+  "cloud_account_registry": {
+   "candidate": "cmdb_ci_cloud_service_account",
+   "rules": [
+    "ITOM-121",
+    "ITOM-123",
+    "ITOM-127",
+    "ITOM-129",
+    "ITOM-155"
+   ],
+   "expected_fields": [
+    "name",
+    "account_id"
+   ]
+  },
+  "cloud_provisioning": {
+   "candidate": null,
+   "rules": [
+    "ITOM-134",
+    "ITOM-135",
+    "ITOM-136",
+    "ITOM-137",
+    "ITOM-138",
+    "ITOM-140",
+    "ITOM-141",
+    "ITOM-143",
+    "ITOM-145"
+   ]
+  }
+ }
+}

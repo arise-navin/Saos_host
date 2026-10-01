@@ -1,0 +1,10 @@
+{
+ "engine": "relationship_graph",
+ "rules": {
+  "PLT-124": {
+   "undefined_dependencies": [
+    "when an elevated role is \"not evident from the role name or description\" — not defined"
+   ]
+  }
+ }
+}

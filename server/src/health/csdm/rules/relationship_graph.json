@@ -1,0 +1,59 @@
+{
+ "engine": "relationship_graph",
+ "rules": {
+  "CSDM-012": {
+   "specification_gap": {
+    "missing": "how far below the top-decile depth a service must fall to count — by construction nine services in ten are below the top decile"
+   }
+  },
+  "CSDM-070": {
+   "build_pending": "the traversal across every configured layer (capability → application → service → CI) per service, and the band threshold it is judged against"
+  },
+  "CSDM-079": {
+   "engine": "relationship_graph",
+   "requires_tables": [
+    {
+     "table": "change_request",
+     "fields": [
+      "number",
+      "cmdb_ci",
+      "risk"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    }
+   ],
+   "table": "change_request",
+   "scope": "active=true^cmdb_ciISNOTEMPTY",
+   "ci_field": "cmdb_ci",
+   "question": "path_to_service",
+   "depth": 10,
+   "offend": {
+    "path": "answer.found",
+    "op": "equals",
+    "value": false
+   },
+   "evidence_fields": [
+    "number",
+    "cmdb_ci",
+    "risk"
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Active changes whose CI reaches no service within the platform's impact depth (10, D-033); the risk assigned is shown as evidence."
+   }
+  },
+  "CSDM-080": {
+   "undefined_dependencies": [
+    "which service processes which personal data — the fields are classified (m2m_dictionary_dataclass, D-032), but no information object links them to a business application or service on the instance",
+    "a data owner — cmdb_ci_service has no data-owner field (verified, Phase 9); which field stands for it (the information object's owned_by, a role) is not given"
+   ]
+  }
+ }
+}

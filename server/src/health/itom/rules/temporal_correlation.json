@@ -1,0 +1,82 @@
+{
+ "engine": "temporal_correlation",
+ "rules": {
+  "ITOM-013": {
+   "requires_tables": [
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    },
+    {
+     "table": "cmn_schedule_span",
+     "fields": [
+      "schedule",
+      "start_date_time",
+      "end_date_time",
+      "repeat_type",
+      "days_of_week",
+      "repeat_count",
+      "repeat_until",
+      "all_day"
+     ]
+    }
+   ],
+   "mode": "schedule_intersection",
+   "table": "discovery_status",
+   "scope": "startedISNOTEMPTY^completedISNOTEMPTY",
+   "start_field": "started",
+   "end_field": "completed",
+   "schedule_table": "cmn_schedule_blackout",
+   "evidence_fields": [
+    "number",
+    "dscheduler",
+    "started",
+    "completed"
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The discovery runs that happened (discovery_status) are intersected with ServiceNow's change-freeze schedules — the blackout schedules (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)). Backup windows are not a platform object and are not read."
+   }
+  },
+  "ITOM-017": {
+   "undefined_dependencies": [
+    "per-credential authentication outcomes per range per day: the platform records a credential affinity on SUCCESS, but no table the workbook names records each failed attempt against the credential tried"
+   ]
+  },
+  "ITOM-089": {
+   "undefined_dependencies": [
+    "the authentication class of a connector error — em_connector_instance keeps its last error as free text (verified, Phase 5E), and the workbook gives no classification"
+   ]
+  },
+  "ITOM-114": {
+   "undefined_dependencies": [
+    "the co-occurrence threshold — \"configurable\", no default"
+   ]
+  },
+  "ITOM-129": {
+   "requires_objects": [
+    "cloud_account_registry"
+   ]
+  },
+  "ITOM-138": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-153": {
+   "undefined_dependencies": [
+    "MID availability history (outage windows per MID) — the platform keeps a MID's current status, not its history"
+   ]
+  },
+  "ITOM-154": {
+   "undefined_dependencies": [
+    "the correlation window — \"configurable\", no default"
+   ]
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "engine": "record_predicate",
+ "rules": {
+  "CSDM-061": {
+   "requires_tables": [
+    {
+     "table": "service_offering",
+     "fields": [
+      "name",
+      "consumer_type"
+     ]
+    }
+   ],
+   "table": "service_offering",
+   "predicates": [
+    {
+     "field": "consumer_type",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "parent"
+   ],
+   "report_ratio": true,
+   "gated_by": [
+    {
+     "rule": "CSDM-062",
+     "reason": "the offering layer is not used at all"
+    }
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "consumer_type is the consumer dimension; service_offering has no channel or audience field (verified, Phase 9). Single-channel services where differentiation is meaningless are counted."
+   }
+  }
+ }
+}

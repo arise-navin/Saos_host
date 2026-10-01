@@ -1,0 +1,328 @@
+{
+ "params_version": "0.1.0",
+ "sheet": "CSDM",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Parameter declaration skeleton, one entry per workbook rule. The typed declarations (type, unit, default, status DEFINED/UNDEFINED) are written in Phase 1 with the generalised registry; ITSM already has them in health/rules/itsm/parameters.json.",
+ "rules": {
+  "CSDM-001": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-002": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-003": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-004": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-005": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-006": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-007": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-008": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-009": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-010": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-011": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-012": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-013": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-014": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-015": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-016": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-017": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-018": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-019": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-020": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-021": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-022": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-023": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-024": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-025": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-026": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-027": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-028": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-029": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-030": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-031": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-032": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-033": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-034": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-035": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-036": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-037": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-038": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-039": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-040": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-041": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-042": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-043": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-044": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-045": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-046": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-047": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-048": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-049": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-050": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-051": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-052": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-053": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-054": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-055": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-056": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-057": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-058": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-059": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-060": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-061": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-062": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-063": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-064": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-065": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-066": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-067": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-068": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-069": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-070": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-071": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-072": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-073": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-074": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-075": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-076": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-077": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-078": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-079": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  },
+  "CSDM-080": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "status": "UNDECLARED"
+  }
+ }
+}

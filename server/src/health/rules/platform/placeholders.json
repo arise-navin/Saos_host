@@ -1,0 +1,17 @@
+{
+ "version": "1.0.0",
+ "objects": {
+  "integration_outcomes": {
+   "candidate": "sys_outbound_http_log",
+   "rules": [
+    "PLT-142",
+    "PLT-147"
+   ],
+   "expected_fields": [
+    "url",
+    "response_status",
+    "sys_created_on"
+   ]
+  }
+ }
+}

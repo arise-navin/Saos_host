@@ -1,0 +1,377 @@
+{
+ "engine": "record_predicate",
+ "rules": {
+  "ITIL-001": {
+   "requires_tables": [
+    {
+     "table": "incident",
+     "fields": [
+      "number",
+      "close_code",
+      "category"
+     ]
+    }
+   ],
+   "table": "incident",
+   "scope": "resolved_atISNOTEMPTY",
+   "predicates": [
+    {
+     "field": "close_code",
+     "op": "equals",
+     "value": "Resolved by request"
+    }
+   ],
+   "evidence_fields": [
+    "number",
+    "category",
+    "close_code"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Judged by ServiceNow's own close code \"Resolved by request\" — an incident closed as a request (D-034). Category and description patterns are not classified."
+   }
+  },
+  "ITIL-002": {
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "active",
+      "workflow",
+      "flow_designer_flow",
+      "delivery_plan"
+     ]
+    }
+   ],
+   "table": "sc_cat_item",
+   "scope": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item",
+   "predicates": [
+    {
+     "field": "workflow",
+     "op": "empty"
+    },
+    {
+     "field": "flow_designer_flow",
+     "op": "empty"
+    },
+    {
+     "field": "delivery_plan",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "No workflow, no Flow Designer flow and no execution plan (delivery plan) — the three ways the platform generates fulfilment. Fulfilment by manual assignment is charged (the guard)."
+   }
+  },
+  "ITIL-005": {
+   "undefined_dependencies": [
+    "the request age threshold by type — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-006": {
+   "undefined_dependencies": [
+    "the fulfilment task age threshold — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-015": {
+   "requires_tables": [
+    {
+     "table": "sc_task",
+     "fields": [
+      "number",
+      "description",
+      "short_description",
+      "active"
+     ]
+    }
+   ],
+   "table": "sc_task",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "description",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "number",
+    "short_description"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Open fulfilment tasks with no description carried from the request; variables shown on the task through the request item are not read."
+   }
+  },
+  "ITIL-020": {
+   "undefined_dependencies": [
+    "the platform records no review date on catalog items (sc_cat_item has no review-date field) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-022": {
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "description",
+      "short_description",
+      "active"
+     ]
+    }
+   ],
+   "table": "sc_cat_item",
+   "scope": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item",
+   "evidence_fields": [
+    "name"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "no description",
+     "predicates": [
+      {
+       "field": "description",
+       "op": "empty"
+      },
+      {
+       "field": "short_description",
+       "op": "empty"
+      }
+     ]
+    },
+    {
+     "variant": "description is the name",
+     "predicates": [
+      {
+       "field": "short_description",
+       "field2": "name",
+       "op": "same_as"
+      }
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"Description length below threshold\" needs a length the rule does not give; items with no description, or a short description equal to the name, are judged."
+   }
+  },
+  "ITIL-023": {
+   "undefined_dependencies": [
+    "whether a chargeback / showback model is in use — the customer's to state"
+   ]
+  },
+  "ITIL-033": {
+   "undefined_dependencies": [
+    "the age after which zero views counts — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-055": {
+   "undefined_dependencies": [
+    "the platform records no a release-level rollback plan (release_project has no rollback field) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-058": {
+   "requires_tables": [
+    {
+     "table": "change_request",
+     "fields": [
+      "number",
+      "outside_maintenance_schedule",
+      "state"
+     ]
+    }
+   ],
+   "table": "change_request",
+   "scope": "stateIN-1,0,3",
+   "predicates": [
+    {
+     "field": "outside_maintenance_schedule",
+     "op": "equals",
+     "value": "true"
+    }
+   ],
+   "evidence_fields": [
+    "number",
+    "type",
+    "start_date",
+    "end_date"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The release windows are the CIs' maintenance schedules; the platform sets outside_maintenance_schedule on a change planned outside them (D-034). Emergency changes are charged (the guard)."
+   }
+  },
+  "ITIL-064": {
+   "requires_tables": [
+    {
+     "table": "release_project",
+     "fields": [
+      "number",
+      "notes",
+      "description"
+     ]
+    }
+   ],
+   "table": "release_project",
+   "predicates": [
+    {
+     "field": "notes",
+     "op": "empty"
+    },
+    {
+     "field": "description",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "number"
+   ],
+   "report_ratio": true
+  },
+  "ITIL-069": {
+   "undefined_dependencies": [
+    "the platform records no acceptance criteria on a change (no such field) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-074": {
+   "undefined_dependencies": [
+    "the platform records no a change objective and its outcome validation — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-088": {
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_outage",
+     "fields": [
+      "number",
+      "type",
+      "cmdb_ci"
+     ]
+    }
+   ],
+   "table": "cmdb_ci_outage",
+   "predicates": [
+    {
+     "field": "type",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "number",
+    "cmdb_ci",
+    "begin"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Outage records with no type (Outage, Degradation, Planned Outage — ServiceNow's own values). Undisclosed exclusions in availability reports are not read."
+   }
+  },
+  "ITIL-091": {
+   "requires_tables": [
+    {
+     "table": "service_availability",
+     "fields": [
+      "cmdb_ci",
+      "mtbf"
+     ]
+    }
+   ],
+   "table": "service_availability",
+   "predicates": [
+    {
+     "field": "mtbf",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "cmdb_ci",
+    "start",
+    "end"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "MTBF is the service availability record's own field; a record without it is charged. Where no availability is recorded at all, ITIL-085 carries the finding."
+   }
+  },
+  "ITIL-103": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no sn_bcm_* tables) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-104": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no sn_bcm_* tables) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-114": {
+   "undefined_dependencies": [
+    "the platform records no supplier exit or transition plans — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-127": {
+   "requires_tables": [
+    {
+     "table": "dmn_demand",
+     "fields": [
+      "number",
+      "business_applications",
+      "business_capabilities"
+     ]
+    }
+   ],
+   "table": "dmn_demand",
+   "predicates": [
+    {
+     "field": "business_applications",
+     "op": "empty"
+    },
+    {
+     "field": "business_capabilities",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "number"
+   ],
+   "report_ratio": true
+  },
+  "ITIL-132": {
+   "requires_tables": [
+    {
+     "table": "dmn_demand",
+     "fields": [
+      "number",
+      "goal",
+      "financial_benefit"
+     ]
+    }
+   ],
+   "table": "dmn_demand",
+   "predicates": [
+    {
+     "field": "goal",
+     "op": "empty"
+    },
+    {
+     "field": "financial_benefit",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "number"
+   ],
+   "report_ratio": true
+  }
+ }
+}

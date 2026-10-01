@@ -1,0 +1,3295 @@
+{
+ "overlay_version": "0.1.0",
+ "sheet": "ITIL",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Hand-maintained engineering overlay (decision D-007). Seeded by server/scripts/health-workbook-overlays.mjs. `proposed` names the basis of every auto-proposed value; nothing is an engineering decision until `reviewed` is true.",
+ "rules": {
+  "ITIL-001": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-001",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-002": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-002",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-003": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-003",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-004": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-095",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of DQ-095 (D-019)"
+   }
+  },
+  "ITIL-005": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-005",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-006": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-006",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-007": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-007",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-008": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-008",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-009": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-091",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of DQ-091 (D-019)"
+   }
+  },
+  "ITIL-010": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-010",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-011": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-011",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-012": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-012",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-013": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-123",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of DQ-123 (D-019)"
+   }
+  },
+  "ITIL-014": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-014",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-015": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-015",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-016": {
+   "module": "itil",
+   "dimension": "request",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 1 — Request Fulfilment (ITIL-001 to 016)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-016",
+    "engine": "aggregate",
+    "classification": "specification_gap",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-017": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CSDM-016",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CSDM-016 (D-019)"
+   }
+  },
+  "ITIL-018": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-018",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-019": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-019",
+    "engine": "configuration",
+    "classification": "specification_gap",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-020": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-020",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-021": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-021",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-022": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-022",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-023": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-023",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-024": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-116",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of DQ-116 (D-019)"
+   }
+  },
+  "ITIL-025": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-025",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-026": {
+   "module": "itil",
+   "dimension": "catalogue",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 2 — Service Catalogue Management (ITIL-017 to 026)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-026",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-027": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-027",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-028": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-028",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-029": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-122",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of DQ-122 (D-019)"
+   }
+  },
+  "ITIL-030": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-030",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-031": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-066",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-066 (D-019)"
+   }
+  },
+  "ITIL-032": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-032",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-033": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-033",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-034": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-034",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-035": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-035",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-036": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-036",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-037": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-037",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-038": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-038",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-039": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-139",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-139 (D-019)"
+   }
+  },
+  "ITIL-040": {
+   "module": "itil",
+   "dimension": "knowledge",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 3 — Knowledge Management (ITIL-027 to 040)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-040",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-041": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-041",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-042": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-016",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of PLT-016 (D-019)"
+   }
+  },
+  "ITIL-043": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-043",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-044": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-044",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-045": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-045",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-046": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-046",
+    "engine": "configuration",
+    "classification": "specification_gap",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-047": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-047",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-048": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-048",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-049": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-049",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-050": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-050",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-051": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-054",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-054 (D-019)"
+   }
+  },
+  "ITIL-052": {
+   "module": "itil",
+   "dimension": "service_level",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 4 — Service Level Management as a Practice (ITIL-041 to 052)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-052",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-053": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-053",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-054": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-054",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-055": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-055",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-056": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-056",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-057": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-057",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-058": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-058",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-059": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-059",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-060": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-060",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-061": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-061",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-062": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-062",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-063": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-063",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-064": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-064",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-065": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-065",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-066": {
+   "module": "itil",
+   "dimension": "release",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 5 — Release and Deployment Management (ITIL-053 to 066)\"",
+    "kind": "wording: a trend (\"trending\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"trending\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-066",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-067": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-067",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-068": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-098",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-098 (D-019)"
+   }
+  },
+  "ITIL-069": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-069",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-070": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-070",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-071": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-071",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-072": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-072",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-073": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-073",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-074": {
+   "module": "itil",
+   "dimension": "testing",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 6 — Service Validation and Testing (ITIL-067 to 074)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-074",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-075": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-075",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-076": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-076",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-077": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\"",
+    "kind": "wording: a trend (\"growth\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"growth\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-077",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-078": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-078",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-079": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-079",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-080": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-080",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-081": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-081",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-082": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-082",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-083": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-083",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-084": {
+   "module": "itil",
+   "dimension": "capacity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 7 — Capacity and Performance Management (ITIL-075 to 084)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-084",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-085": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-085",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-086": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-086",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-087": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-087",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-088": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-088",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-089": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-089",
+    "engine": "relationship_graph",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-090": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-090",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-091": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-091",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-092": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-092",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-093": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-093",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-094": {
+   "module": "itil",
+   "dimension": "availability",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 8 — Availability Management (ITIL-085 to 094)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-094",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-095": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-095",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-096": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-096",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-097": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-097",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-098": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-098",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-099": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-099",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-100": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-100",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-101": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-101",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-102": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-102",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-103": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-103",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-104": {
+   "module": "itil",
+   "dimension": "continuity",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 9 — Service Continuity Management (ITIL-095 to 104)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-104",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-105": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-105",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-106": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-106",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-107": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-107",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-108": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-108",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-109": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-109",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-110": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-134",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of PLT-134 (D-019)"
+   }
+  },
+  "ITIL-111": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-153",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of PLT-153 (D-019)"
+   }
+  },
+  "ITIL-112": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-112",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-113": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-113",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-114": {
+   "module": "itil",
+   "dimension": "supplier",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 10 — Supplier Management (ITIL-105 to 114)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-114",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-115": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-115",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-116": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-116",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-117": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-117",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-118": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-118",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-119": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-119",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-120": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-120",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-121": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-121",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-122": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-122",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-123": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-123",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-124": {
+   "module": "itil",
+   "dimension": "service_desk",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 11 — Service Desk (ITIL-115 to 124)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-046",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-046 (D-019)"
+   }
+  },
+  "ITIL-125": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-125",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-126": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-126",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-127": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-127",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-128": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-128",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-129": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-129",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-130": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-130",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-131": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-131",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-132": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-132",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-133": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-133",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-134": {
+   "module": "itil",
+   "dimension": "portfolio",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-134",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-135": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-135",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-136": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-136",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-137": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-137",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-138": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-138",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-139": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-139",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-140": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-140",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-141": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-141",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-142": {
+   "module": "itil",
+   "dimension": "improvement",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 13 — Continual Improvement (ITIL-135 to 142)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-142",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-143": {
+   "module": "itil",
+   "dimension": "cross_practice",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 14 — Cross-Practice (ITIL-143 to 148)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-129",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-129 (D-019)"
+   }
+  },
+  "ITIL-144": {
+   "module": "itil",
+   "dimension": "cross_practice",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 14 — Cross-Practice (ITIL-143 to 148)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-134",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITOM-134 (D-019)"
+   }
+  },
+  "ITIL-145": {
+   "module": "itil",
+   "dimension": "cross_practice",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 14 — Cross-Practice (ITIL-143 to 148)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-145",
+    "engine": "composite",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-146": {
+   "module": "itil",
+   "dimension": "cross_practice",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 14 — Cross-Practice (ITIL-143 to 148)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-146",
+    "engine": "composite",
+    "classification": "undefined",
+    "source": "health/itil/rules/*.json"
+   }
+  },
+  "ITIL-147": {
+   "module": "itil",
+   "dimension": "cross_practice",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 14 — Cross-Practice (ITIL-143 to 148)\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "itil-quality/2",
+    "engine": null,
+    "classification": "derived",
+    "source": "equivalent of itil-quality/2 (D-019)"
+   }
+  },
+  "ITIL-148": {
+   "module": "itil",
+   "dimension": "cross_practice",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Group 14 — Cross-Practice (ITIL-143 to 148)\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITIL-148",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itil/rules/*.json"
+   }
+  }
+ }
+}

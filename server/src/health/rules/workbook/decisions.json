@@ -1,0 +1,196 @@
+{
+  "decisions_version": "0.1.0",
+  "note": "Decisions taken with the product owner that govern the Health Assist rule programme. Referenced by id from the deviations register, overlays and profiles. See docs/HEALTH-ASSIST-APPROACH.md.",
+  "decisions": [
+    {
+      "id": "D-001",
+      "date": "2026-09-24",
+      "decision": "The master workbook SAOS_Health_Rules_Tracker_v2_9574.xlsx is the source of truth for what Health Assist measures. Code implements it; any difference is a recorded deviation, resolved by conforming the code or ratifying into the workbook."
+    },
+    {
+      "id": "D-002",
+      "date": "2026-09-24",
+      "decision": "Enterprise Data Quality (data-quality sheet, model \"Enterprise Data Quality\", Q1–Q7) is its own module."
+    },
+    {
+      "id": "D-003",
+      "date": "2026-09-24",
+      "decision": "A condition appearing in several sheets has one owner rule by domain (data → CMDB/DQ, mechanism → ITOM, platform configuration → Platform, process → ITSM); the owner's severity applies. See ownership.json."
+    },
+    {
+      "id": "D-004",
+      "date": "2026-09-24",
+      "decision": "Where the workbook defines no dimension or module weights, start with equal weights only as an explicitly provisional configuration, labelled \"not reviewed\", and configurable. Never a silent permanent default."
+    },
+    {
+      "id": "D-005",
+      "date": "2026-09-24",
+      "decision": "A product or capability is excluded from the denominator only on reliable evidence that it is not used. Absence is never turned into a failure. Applicability detection is deterministic and recorded as evidence."
+    },
+    {
+      "id": "D-006",
+      "date": "2026-09-24",
+      "decision": "The Overall score is a configurable model, tested against realistic scenarios first. It must not hide a materially unhealthy module."
+    },
+    {
+      "id": "D-007",
+      "date": "2026-09-24",
+      "decision": "Engineering fields the workbook does not carry live in JSON overlay files in code, not as workbook columns."
+    },
+    {
+      "id": "D-008",
+      "date": "2026-09-24",
+      "decision": "Numeric scoring assumptions (weights, consequence tiers, curves, blends, minimum coverage) are not defaults until validated by scenario and sensitivity testing."
+    },
+    {
+      "id": "D-009",
+      "date": "2026-09-24",
+      "decision": "Retire CMDB-139, CMDB-142 and CMDB-143 (implemented but in no workbook sheet). Recorded in Phase 0; the code change takes effect in Phase 4 with the new CMDB scoring model and side-by-side publication. The \"principal classes\" fallbacks tied to CMDB-139 retire with it."
+    },
+    {
+      "id": "D-010",
+      "date": "2026-09-24",
+      "decision": "Keep CMDB-140 and CMDB-141: they implement workbook rules DQ-003 and DQ-077 (data-quality sheet, CMDB Quality model). Their workbook identity is recorded; they are not unratified extensions."
+    },
+    {
+      "id": "D-011",
+      "date": "2026-09-24",
+      "decision": "Constraint for this programme: the frontend (client/) is not changed, and no file outside Health Assist is changed."
+    },
+    {
+      "id": "D-012",
+      "date": "2026-09-24",
+      "decision": "ITSM, ITOM and Platform dimension weights stay equal and labelled \"not reviewed\" (confirms D-004). Deriving them from rule counts would reintroduce the dilution calibration removed; inventing values has no evidence. Revisit when SAOS supplies weights."
+    },
+    {
+      "id": "D-013",
+      "date": "2026-09-24",
+      "decision": "Record aggregation R6 (tier-stratified; bc 2 · core 1.5 · other 1 · endpoint 0.75). Consequence is already charged by the Schema's one-band escalation for Business Critical and production CIs, so tier weights only need to stop a clean tail from diluting a defective core; the steeper R5 would count consequence twice. Both pass every calibration check."
+    },
+    {
+      "id": "D-014",
+      "date": "2026-09-24",
+      "decision": "Method C aggregation C3 (start at 100, deduct each failure's severity weight): the workbook's own record formula, independent of how many rules pass. C4 passes too and remains the tested alternative."
+    },
+    {
+      "id": "D-015",
+      "date": "2026-09-24",
+      "decision": "CMDB-141 (workbook DQ-077) conforms to the workbook threshold of 70% (was 90% in code)."
+    },
+    {
+      "id": "D-016",
+      "date": "2026-09-24",
+      "decision": "Promote health-quality/2 for CMDB (cmdb-quality/2) and ITSM (itsm-quality/2) from calibration/2: tier-stratified records (R6), convex attainment, deduction controls (C3), no Systemic cap, workbook blends. It becomes the displayed score; the previous model (v1) is published beside it on every run for comparison. ITOM, Platform and the Overall keep their current models until their phases (5, 6, 8)."
+    },
+    {
+      "id": "D-017",
+      "date": "2026-09-24",
+      "decision": "The v3 \"principal classes\" fallbacks are KEPT and proposed for ratification, superseding that part of D-009: without them 14 CMDB rules would skip on every instance with no designated principal classes, lowering assessment coverage with no gain in accuracy. CMDB-139, 142 and 143 themselves are retired as decided."
+    },
+    {
+      "id": "D-018",
+      "date": "2026-09-24",
+      "decision": "The 8 CMDB code extensions (CMDB-001, 010, 021, 023 ×2, 046, 047, 050) are platform-verified corrections of the workbook text and are proposed for ratification; the code stays."
+    },
+    {
+      "id": "D-019",
+      "date": "2026-09-24",
+      "decision": "ITOM-001 and ITOM-002 are the same conditions as CMDB-071 and CMDB-070 (ownership OWN-001 / OWN-002). Until ownership is agreed, each condition is evaluated ONCE, by the existing CMDB implementation, and counted in the CMDB score only; the ITOM rows show it as equivalent with the CMDB outcome and are neither scored nor counted as ITOM coverage gaps. When OWN-001 / OWN-002 are agreed with ITOM as owner, the count moves to ITOM and out of CMDB."
+    },
+    {
+      "id": "D-020",
+      "date": "2026-09-24",
+      "decision": "Assessment coverage counts only the rules the score uses. Correlation, trend and context rules, and rules of a dimension the profile does not score (ITOM cross-domain), explain and never move the number; counting them as gaps understated how much of the number was assessed, and the calibrated coverage floor (F2) reads this share. They are listed apart (not_counted.not_scored). Applies to every module."
+    },
+    {
+      "id": "D-021",
+      "date": "2026-09-24",
+      "decision": "ITOM (Phase 5) runs on the shared rule engine as a catalogue pack beside ITSM, is scored by itom-quality/2 (the promoted C3 deduction over its five product areas, cross-domain not scored), and publishes the previous itom-checks/1 score and its capability checks beside it. The 18 hard-coded ITOM rules keep running as drill-down views and are not scored. Every ITOM rule is in one recorded state (scripts/lib/itom-decisions.mjs); a table is read only after it is verified on the instance, and a platform value only by its label."
+    },
+    {
+      "id": "D-022",
+      "date": "2026-09-24",
+      "decision": "Phase 5E — the ITOM pack was validated READ-ONLY on techsnitchpvtltddemo2 (a non-customer instance) and corrected from the evidence: the credential affinity table is dscy_credentials_affinity, and an EMPTY affinity table beside Discovery-sourced CIs makes the credential-use rules unavailable (affinities not recorded) instead of charging every credential; a range reaches a schedule directly or through its range set (discovery_schedule_range), and an IP Address List range is read from discovery_range_item_ip; a label may have several spellings across releases (Canceled / Cancelled) and resolves only when they name one value; ecc_agent.status has no choice list, so its stored text (Up / Down) is compared; a device's discovery phase is read from classified_as and cmdb_ci, not free-text state; entry points, connectors, impact status and alert management rules gained verified readers (ITOM-028, 030, 031, 074, 083, 084, 086, 106, 107, 118). Validation is recorded in rules/itom/instance-validation.json and marks rules \"Tested on PDI\" only where the instance produced a pass or fail verdict."
+    },
+    {
+      "id": "D-023",
+      "date": "2026-09-24",
+      "decision": "Ownership OWN-001 and OWN-002 are agreed with CMDB as owner: CMDB-071 owns \"IP ranges in network CIs with no discovery schedule\" (severity Critical) and CMDB-070 owns \"discovery coverage ratio below threshold\" (Systemic). Each is evaluated and counted once, in CMDB; ITOM-001 and ITOM-002 remain visible under ITOM as equivalents carrying the CMDB outcome, and are never scored in ITOM. Settles D-019."
+    },
+    {
+      "id": "D-024",
+      "date": "2026-09-24",
+      "decision": "Platform (Phase 6) is a workbook pack on the shared engine, scored by platform-quality/2 — its first score — under the calibrated coverage floor. Its script and design rules judge CUSTOMER-AUTHORED records only: records with a customer update (sys_update_xml, the platform's own Customer Updates, by sys_update_name), not the ServiceNow baseline. Measured on a real instance: 14,654 business rules, 12,897 created by admin and almost all out of the box, 320 with a customer update — sys_created_by cannot tell them apart, and charging the customer for ServiceNow's code would be wrong. PLT-002, PLT-024 and PLT-170 are the conditions of ITSM-003, ITSM-011 and CMDB-120 (ownership OWN-003 / OWN-010 / OWN-007, not yet agreed): following D-023, each is evaluated and counted once, in the module where it is built, until ownership is agreed."
+    },
+    {
+      "id": "D-025",
+      "date": "2026-09-24",
+      "decision": "Ownership OWN-003 and OWN-010 are agreed with ITSM as owner (ITSM-003: priority band with no SLA definition; ITSM-011: notifications to inactive users or empty groups), and OWN-007 with CMDB-120 (class extension depth), where it is built — the product owner's instruction to keep these conditions in the modules that evaluate them. PLT-002, PLT-024 and PLT-170 stay visible under Platform as equivalents and are never scored there."
+    },
+    {
+      "id": "D-026",
+      "date": "2026-09-24",
+      "decision": "Enterprise Data Quality (DQ-084 … DQ-139, the data-quality sheet's Enterprise Data Quality model) becomes a scanned module, run on the shared rule engine as a workbook pack over its range of the sheet (DQ-001 … DQ-083 stay CMDB's equivalents and are routed by exact id, never by the DQ- prefix). It is scored by enterprise-dq-quality/2, the promoted model, over the seven workbook dimensions Q1–Q7 with the workbook's own weights (18 · 15 · 15 · 12 · 12 · 18 · 10) — the first catalogue module whose weights the workbook states. Every table and field was verified read-only on techsnitchpvtltddemo2 first; where the workbook names a field the platform does not have (knowledge owner and review date, group and cost-centre company, asset end-of-life date), the rule is recorded as undefined rather than evaluated on a substitute. DQ-131 is the same condition as ITSM-139 (Ownership OWN-004, duplicate, process owner proposed): evaluated and counted in ITSM, shown under Enterprise DQ as an equivalent — pending the product owner's confirmation of OWN-004. It carries weight 0 in the Overall until Phase 8."
+    },
+    {
+      "id": "D-027",
+      "date": "2026-09-24",
+      "decision": "Ownership OWN-004 is agreed with ITSM-139 as owner (knowledge articles referenced in resolutions but retired or unpublished): the workbook itself marks DQ-131 as duplicating ITSM-139, and the condition is judged on process records (resolutions). DQ-131 stays visible under Enterprise Data Quality as an equivalent and is never scored there. OWN-007 stays with CMDB-120 as recorded in D-025 (class extension depth is a data-model condition: data → CMDB). Both settled by the product owner's delegation of these two calls (\"decide yourself\")."
+    },
+    {
+      "id": "D-028",
+      "date": "2026-09-24",
+      "decision": "The running Overall is overall-health/2: the calibrated O8 aggregation (λ·weighted mean + (1 − λ)·weakest module, λ = 0.5, promotion.json) over the modules that take part — scanned, scored, a positive weight, and not below the calibrated coverage floor (F2). A module that does not take part is renormalised away and named with its reason, never scored 0 or 100. Module weights are equal (1 each, CMDB, ITOM, ITSM, Platform, Enterprise DQ) and NOT REVIEWED until SAOS sets them; they are configurable per instance (parameter module overall, scope weights), and any change starts a new Overall series. The Overall validity is the worst state among the modules taking part. overall-health/1 (equal-weight mean of CMDB, ITOM, ITSM) is published beside it as previous_model."
+    },
+    {
+      "id": "D-029",
+      "date": "2026-09-25",
+      "decision": "CSDM becomes a scanned module (Health Assist Phase 9). The workbook CSDM sheet is still a placeholder; the product owner supplied its 80 rules as the CSDM KPI Articulation, kept verbatim (supplements/csdm-kpi-articulation.md) and transcribed into the sheet's own column shape (scripts/import-csdm-catalogue.mjs); the workbook importer keeps that transcription while the sheet is a placeholder. The catalogue runs on the shared rule engine as a workbook pack; its gates (CSDM-032 lifecycle, CSDM-050 environment, CSDM-062 offerings) are encoded in the rules (gated_by): a failed gate makes its dependants unmeasurable rather than raising one finding per record. Layers are read from the class or, on the base service class, from service_classification (CSDM 3 and 4 both judged). It is scored by csdm-quality/2 over the seven scored groups, equal weights, not reviewed; Group 8 (cross-domain) is correlation and not scored. CSDM-072 (severity \"Composite\") is the module score itself (derived), with no band placed: the Foundation / Crawl / Walk / Run thresholds are not given. Conditions another module already evaluates (OWN-011 … OWN-020) are equivalents there, proposed under the D-025 principle. The three hard-coded CSDM checks stay in CMDB by exact id; the CSDM- prefix now routes to the CSDM module. CSDM takes part in the Overall at the same equal, not-reviewed weight (D-028)."
+    },
+    {
+      "id": "D-030",
+      "date": "2026-09-25",
+      "decision": "Ownership OWN-011 … OWN-020 is agreed (the product owner: \"keep these rules in cmdb only, don't duplicate them into csdm\"). The conditions CMDB already evaluates (CMDB-080, 102, 103, 110, 111, 112, 113, 114) are evaluated and counted in CMDB only; the two ITSM already evaluates (ITSM-017, ITSM-136) stay in ITSM, their owner. The CSDM rules that restate them (CSDM-006, 034, 035, 047, 053, 054, 057, 068, 069, 076, 077) are not evaluated, scored or counted in CSDM: their rows remain in the workbook, as every supplied rule does, and show the owner's result."
+    },
+    {
+      "id": "D-031",
+      "date": "2026-09-25",
+      "decision": "The 80 CSDM rules are written into the master workbook's CSDM sheet (the product owner: \"add csdm rules in the same way as the other rules\"), one row per rule in the other rule sheets' shape and cell styles, by scripts/import-csdm-catalogue.mjs --write-workbook; only the CSDM sheet part of the file changed, and the file as it was is kept beside it (SAOS_Health_Rules_Tracker_v2_9574.before-csdm-2026-09-25.xlsx). The workbook is again the single source: the importer reads CSDM like every sheet; the supplied document stays in supplements/ as the provenance, and the suite checks the workbook still says what it says. The CSDM-072 Base Severity cell says \"Composite\", as supplied; the importer carries it as a declared exemption (severity_exempt), never as a band. Every file pinned to the workbook's sha256 was regenerated; no rule of any other sheet changed."
+    },
+    {
+      "id": "D-032",
+      "date": "2026-09-25",
+      "decision": "Values the CSDM rules left open are taken from ServiceNow's own documentation and the instance's own configuration (the product owner: \"go ahead with the recommendations\"). CSDM-058: the traversal depth is the instance's glide.relationship.max_depth, or ServiceNow's default of 10 when unset. CSDM-029: the planning stages are the pre-operational stages of the CSDM 5 intangible / logical life cycle (Ideation, Purchase, Inventory, Design, Deploy), Pilot excluded. CSDM-028: ServiceNow publishes no parent-child matrix; the one conflict judged is a parent at End of Life with an Operational child. CSDM-051 / 055: the permitted relationship types and containment classes are the instance's suggested relationships (cmdb_rel_type_suggest), ancestors included; a class pair it does not cover is not judged. Personal data: the fields the instance classifies (m2m_dictionary_dataclass) with Personally identifiable information, HR PII, Master data PII, Transactional Data PII, Contact information, Identification information or Demographic information — built: CSDM-014 and DQ-134. CSDM-072: reports the CSDM maturity stage by ServiceNow's staged approach (Foundation, Crawl, Walk, Run, Fly: a stage is reached when its tables hold records and every earlier stage is; no percentage thresholds exist), never scored. CSDM-001 stays Systemic (the product owner), although ServiceNow places business capabilities in the last (Fly) stage."
+    },
+    {
+      "id": "D-033",
+      "date": "2026-09-25",
+      "decision": "The rules that did not run were researched against ServiceNow's documentation, the ServiceNow Community and a read-only probe of the validation instance (docs/HEALTH-ASSIST-RULE-RESEARCH.md). The product owner approved building every rule the research answered (category A) or fully specified (category B), and the PAN / Aadhaar formats. Values used are ServiceNow's own, each cited in the research log: ITSM — incident auto-close is glide.ui.autoclose.time and the OOB \"incident autoclose\" business rule (closed_by = resolved_by); the standard incident states 1, 2, 3, 6, 7, 8; the standard change types normal, standard, emergency, model; high change risk = the platform's High / Very High; Business Critical = busines_criticality \"1 - most critical\"; dependency depth = glide.relationship.max_depth (default 10); a change freeze = the blackout schedule; change causation = close code \"Resolved by change\"; a manually raised incident = a human contact_type (phone, email, self-service, walk-in, chat, virtual agent); knowledge suggestion = a Contextual Search configuration for incident; approval routing = what change approval policies produced (approval records, applied policies); change models are walked over their own state transitions; a standard change template's review evidence is its current version date. ITOM — staleness is CMDB Health's staleness rules; the MID heartbeat window is 3 × ServiceNow's 5-minute heartbeat; a change freeze is the blackout schedule; Service Mapping CIs carry discovery source \"ServiceWatch\"; duplicates are what IRE flags (duplicate_of); an incident-creating alert rule is type \"incident\"; deduplication is em_alert.event_count; relationship deletions are sys_audit_delete. Platform — the out-of-box baseline is sys_metadata_customization (author_type Custom = the customer's record, ServiceNow = a ServiceNow record the customer modified); script timing is the Slow Scripts log (sys_script_pattern); impersonation is impersonation.start events; cancelled transactions are syslog_cancellation; the async queue is the scheduler's \"ASYNC:\" jobs; custom tables are u_ / x_; the terminal task states are the platform's own. Enterprise DQ — asset ↔ CI states are the platform's state mappings (alm_asset_ci_state_mapping, alm_hardware_state_mapping); a model's CI class is cmdb_model.cmdb_ci_class; End of Life is cmdb_model_lifecycle; a knowledge article's owner is its ownership group and its review date is Valid to (2100-01-01 = none); PAN is five letters, four digits, one letter; Aadhaar is twelve digits not starting 0 or 1 with a Verhoeff check digit (both approved by the product owner). CSDM — the life cycle mapping is life_cycle_mapping; field history is sys_audit, judged only on audited class tables; a relationship's direction is the instance's suggested relationships. Stored conditions (encoded queries) are evaluated by the instance through the Table API. Built: 78 rules (docs/HEALTH-ASSIST-RULE-RESEARCH.md, Build status); 47 A / B rules are not built yet, each with its reason there. Correction: sa_ci_to_pattern maps patterns to CI types, not executed CIs — pattern execution (ITOM-041–044, 050) needs sa_discovery_log, empty on the instance. The rest (categories C–H) went to the product owner as SAOS_Health_Rules_Open_Questions.xlsx."
+    },
+    {
+      "id": "D-034",
+      "date": "2026-09-25",
+      "decision": "The 148 supplied ITIL rules (ITIL.xlsx, kept verbatim as supplements/itil-rules.json and transcribed into the master workbook's ITIL sheet) are a seventh Health Assist module, ITIL (domain ITIL_PRACTICE, model itil-quality/2, 14 practice-group dimensions), built on the shared rule engine like CSDM (the product owner: \"New ITIL module\"). An ITIL rule that restates a rule another module already checks is an equivalent and is counted once, where it is built (ITIL-004, 009, 013, 017, 024, 029, 031, 039, 042, 051, 068, 110, 111, 124, 143, 144). ITIL-147 (the practice maturity profile) is derived from the module score by group, never a separate finding. Rules needing a customer value, a missing number, an absent product, outside data or data ServiceNow does not record are in the open-questions workbook with Module = ITIL and stay undefined until answered; none is scored as a pass."
+    },
+    {
+      "id": "D-035",
+      "date": "2026-09-25",
+      "decision": "Rules built from the second research pass, each verified read-only on the validation instance. Flow Designer structure: a flow's steps and triggers hang off its snapshots (sys_hub_flow_snapshot.parent_flow) and the current one is sys_hub_flow.master_snapshot; a subflow step names the called subflow by one of its snapshots; a record trigger keeps its table and condition in trigger_inputs (gzip-compressed JSON). Built: PLT-093 (an active workflow and a record-triggered flow on the same table, with equal conditions or either unconditioned), PLT-095 (current steps calling an action or subflow that is missing or inactive), PLT-099 (cycles in the subflow call graph), PLT-102 (customer-created flows and subflows — author \"Custom\" in the D-033 register — with no trigger and no caller among triggers, subflow steps of active flows, SLA definitions, catalog items and scripts), PLT-085 (the workbook's conflict matrix, visible vs hidden and mandatory vs read-only, between active UI policies that meet on table, UI type and view and hold at the same time: equal conditions or either unconditioned). DQ-132: the fields an active report groups, sums, trends, lists and pivots by, against the dictionary of its table and every table it extends (a dot-walk judged on its first field; database views and missing tables counted apart). A read the instance limits by ACL (fewer rows returned than it reports) is used, and the unreadable row count is reported: a finding on the rows read stands, and a clean result stays inconclusive. PLT-011 is not judged: SLA flow contexts are not retained (half of the SLAs created since the oldest retained context have none), so a flow that never ran cannot be told from a purged context — in the open-questions workbook (G). ITIL: consumption against entitlement is Subscription Management's own status (Over-allocated charged, Near capacity reported); escalation is On-Call Scheduling's configuration resolved to active users; service cost is fm_expense_line on the service and its direct supporting CIs; a reported metric is a Performance Analytics indicator of an active job, governed by an active threshold or target; the contract link is contract_rel_ci.ci_item or clm_m2m_contract_asset. ITIL-066 and ITIL-089 wait on the product owner (D and C)."
+    },
+    {
+      "id": "D-036",
+      "date": "2026-09-26",
+      "decision": "How health is shown (the product owner). Every score reads the same way on every tab: out of 100, higher is healthier, with one vocabulary — Healthy 75–100, At risk 50–74, Unhealthy 0–49. The word always comes from the number: open CMDB trust blockers, or too few of an area's rules able to run, make a score PROVISIONAL (a note beside it), never replace the word. The Full System Scan score is overall-health/3: the plain average of the area scores (equal weights), so it agrees with the bars; areas below the coverage floor take part, marked provisional; the weakest-area blend of overall-health/2 is retired. Coverage is shown as \"Rules assessed\". Each area publishes the tables it actually read (tables_read: usable extracted tables plus every table its rule engine queried, counted or aggregated); the Full System Scan shows their union. The Module health section and the ITSM catalogue card are removed from the page."
+    },
+    {
+      "id": "D-037",
+      "date": "2026-09-27",
+      "decision": "The product owner asked for the remaining A / B rules to be built. 25 were built, each verified read-only on the validation instance and tested offline; ITIL-147 needs nothing (it is the ITIL score by practice group). TRENDS: the workbook packs now keep the memory ITSM keeps (itsm/measure-history.js): a comparator may return numeric readings, stored per scan in the manifest, and the next scan of the SAME instance receives only earlier readings taken under the SAME rule configuration and parameters. Built on it: PLT-064 (customer rules per table, rising over ≥ 2 scans), PLT-105 (non-terminal flow contexts by age, and the context table's growth since the previous scan — both thresholds UNDEFINED), CSDM-073 (the CSDM-072 stage against the previous scan; a fall names the stages lost). PLT-172 builds its windows from the retained transaction log instead: the share slower than PLT-171's workbook threshold (3 s) per window, normalised by all transactions, trended by the engine's least-squares direction over ≥ 3 windows; the window length is UNDEFINED. SCRIPT ANALYSIS (customer-authored records, D-024; lexical, comments and strings set apart): PLT-039 / 108 a GlideRecord on a literal table queried with no setLimit, get() or condition, on a table of at least 100,000 rows (PLT-039's workbook default, applied to jobs for PLT-108); PLT-041 before rules on one table where a rule reads a current field a later-ordered rule writes; PLT-045 after / async update rules calling current.update() without setWorkflow(false) whose condition is empty or names a field they write; PLT-066 / 069 / 071 references to customer script includes found by name in 19 script fields of the platform (static and by-name use such as GlideAjax; flows and workflows not read): all-scope includes called from one or two scopes, includes older than 180 days named nowhere, cycles or chains deeper than 5; PLT-068 5-token-shingle Jaccard similarity ≥ 0.85 between include bodies; PLT-081 g_form field names against every view of the form layout of the table or the nearest ancestor with one; PLT-083 onSubmit validations (return false) whose fields have no data policy rule and no before rule calling setAbortAction(true). FLOWS (customer-created, author \"Custom\", as PLT-102): PLT-094 no Try / Catch or top-level error handler in the current version's flow logic; PLT-100 step inputs holding a literal credential, a password input, Basic / Bearer values, URLs with credentials, literal endpoints in URL inputs, or script steps failing the script rules' credential check. Step tables refuse paged reads of their input columns, so they are read in batches that fit one page; a full page is reported unavailable. SLA: PLT-017 uses the SLA engine's own planned end time (its expansion of the duration under the schedule, pauses included): In progress past it and never breached is a stuck timer. PLT-030 compares a commitment's own duration with its SLA's where both run on the same schedule; other pairs are counted, not judged (no commitment states a duration on the validation instance). SERVICE MODEL: a service is walked down its offerings, relationships and mapped CIs to depth 10 (as CSDM-058). CSDM-075: a Business Critical service with no impact tree (em_impact_graph) whose model ends above infrastructure, naming the layer; ITOM-152: the same services whose model reaches the application or infrastructure layer, traced to Service Mapping (a mapped service with no CI), a CI never discovered, or discovery issues on the CI; CSDM-078: models ending at the application tier against devices discovery could not classify, and leaf classes against discovery failures on that class. ITOM-156: location-less active schedules, the CIs in their discovery history without a location, and the assignment, alert management and event rules whose conditions name a location (\"DR\" rules are not a platform object). DATA: DQ-098 reads the dropdown choice fields of the master and reference tables Enterprise DQ judges (sys_user, sys_user_group, core_company, cmn_location, cmn_department, alm_asset, cmdb_ci, cmdb_ci_hardware, cmdb_model, kb_knowledge, sc_cat_item, sc_req_item, task, contract_sla, sysapproval_approver; the instance has 29,518 choice fields); values on active records, per class, against the class's own list or the nearest ancestor's; workflow stages and choices drawn from another table are not sys_choice lists. sys_choice and sys_ui_element refuse paged reads and are read as grouped counts. ITIL: ITIL-011 input variables not named or referenced by sys_id in the item's own flow (current version) or published workflow's activity settings; a flow or workflow shared by several items is generic fulfilment and not judged (its fulfillers read variables on the task form — the guard). ITIL-072 PLT-164's hotspots (more than 5 customer versions in 12 months) with no active ATF step on the object's table and no step input naming the object or its catalog item."
+    },
+    {
+      "id": "D-038",
+      "date": "2026-09-28",
+      "decision": "Rulebook and custom rules (the product owner). The Rulebook page lists every workbook rule by module (tabs CMDB, Data Quality = DQ-001…083, ITSM, ITOM, Platform, Enterprise DQ = DQ-084…139, CSDM, ITIL, Custom) with the workbook columns Rule ID, Rule, Base Severity, Group and, on expanding, What It Means, Why It Matters, Detection Logic, Threshold / Parameter, Source Tables / Fields, False Positive Guard, Remediation Lane, Cross-Domain Link; and its status today (Runs · Built, waiting for a value · Waiting on an answer · Counted in another rule), read-only — the workbook stays the source of truth. Custom rules: a person describes a check and saves it as a record check (matching records are findings), a rate check (fails above a stated share) or an age check (records older than N days) on ONE table — the kinds the product owner approved; relationship and multi-table checks are not supported yet. A rule is data (table, fields, operators from a fixed list, values that cannot carry a separator or a script), verified on the instance before anything is read, run read-only in every scan of its module; ids carry the module (CUSTOM-ITSM-001) so findings route by prefix, and a deleted id is never reused. AI assist proposes a definition from the description; nothing is saved without the person's review and a read-only preview. Custom rules COUNT in the module score (the product owner), switchable per rule, in the module area the person picks, by that module's own arithmetic: a catalogue row in the area for ITSM and the packs (a rate check graded against its own limit on the promoted curve), a KPI row in the chosen dimension for CMDB — no new dimension and no invented weight."
+    }
+  ]
+}

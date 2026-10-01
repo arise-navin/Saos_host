@@ -1,0 +1,1222 @@
+{
+ "version": "1.0.0",
+ "phase": "Health Assist Phase 5",
+ "source": {
+  "workbook": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+  "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+  "bytes": 323662
+ },
+ "rule_count": 156,
+ "conventions": {
+  "default": "the workbook's stated default, or null with status UNDEFINED — never an invented value (DECISION 3)"
+ },
+ "declarations": {
+  "ITOM-001": {
+   "workbook_text": "CIDR overlap analysis, not string matching. Report by subnet with device count.",
+   "parameters": []
+  },
+  "ITOM-002": {
+   "workbook_text": "Default threshold 85%. The expected-count derivation must be shown alongside the ratio.",
+   "parameters": []
+  },
+  "ITOM-003": {
+   "workbook_text": "CI count threshold configurable, default 50",
+   "parameters": [
+    {
+     "key": "ci_threshold",
+     "type": "number",
+     "unit": null,
+     "default": 50,
+     "description": "CIs at a location above which it needs a schedule",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-004": {
+   "workbook_text": "Any empty location on an active schedule",
+   "parameters": []
+  },
+  "ITOM-005": {
+   "workbook_text": "Require evidence the range is still live: recent incidents, recent events, or non-stale CIs from another source",
+   "parameters": []
+  },
+  "ITOM-006": {
+   "workbook_text": "Tolerance default 2x interval",
+   "parameters": [
+    {
+     "key": "tolerance",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "multiple of the schedule interval after which the last completion is overdue",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-007": {
+   "workbook_text": "Class staleness thresholds configurable; compare against the tightest threshold among classes present",
+   "parameters": []
+  },
+  "ITOM-008": {
+   "workbook_text": "Majority threshold default 90% of range unreachable",
+   "parameters": [
+    {
+     "key": "unreachable_share",
+     "type": "percent",
+     "unit": null,
+     "default": 90,
+     "description": "share of the range unreachable from the MID",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-009": {
+   "workbook_text": "Window default 90 days",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "window with no successful discovery in the range",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-010": {
+   "workbook_text": "Any overlap. Escalate where reclassification churn is present in the overlap.",
+   "parameters": []
+  },
+  "ITOM-011": {
+   "workbook_text": "Escalate where the range contains CIs supporting Business Critical services",
+   "parameters": []
+  },
+  "ITOM-012": {
+   "workbook_text": "Capability profile derived from MID host specification where available; otherwise from observed throughput",
+   "parameters": []
+  },
+  "ITOM-013": {
+   "workbook_text": "Requires the customer's schedules to be defined; report the absence if they are not",
+   "parameters": []
+  },
+  "ITOM-014": {
+   "workbook_text": "Both fields empty",
+   "parameters": []
+  },
+  "ITOM-015": {
+   "workbook_text": "Default 70% failure rate sustained for 3 consecutive days. Escalate at 14 and 30 days.",
+   "parameters": [
+    {
+     "key": "failure_rate",
+     "type": "percent",
+     "unit": null,
+     "default": 70,
+     "description": "daily failure rate",
+     "status": "DEFINED"
+    },
+    {
+     "key": "consecutive_days",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "consecutive days above the rate",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-016": {
+   "workbook_text": "Device type inference from port signature and partial classification",
+   "parameters": []
+  },
+  "ITOM-017": {
+   "workbook_text": "Any sustained failure. Temporal correlation with the credential update timestamp strengthens the root-cause claim.",
+   "parameters": []
+  },
+  "ITOM-018": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "ITOM-019": {
+   "workbook_text": "Affinity coverage threshold default 80% of successfully discovered devices",
+   "parameters": [
+    {
+     "key": "min_coverage",
+     "type": "percent",
+     "unit": null,
+     "default": 80,
+     "description": "share of successfully discovered devices with a credential affinity",
+     "status": "DEFINED"
+    },
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "window of successful discoveries — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-020": {
+   "workbook_text": "Age threshold default 90 days",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "credential age before zero use is flagged",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-021": {
+   "workbook_text": "Privilege classification configurable; derive from the credential's account role where available",
+   "parameters": []
+  },
+  "ITOM-022": {
+   "workbook_text": "Ratio threshold configurable, default scope 5x actual success footprint",
+   "parameters": [
+    {
+     "key": "scope_ratio",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "scoped range size ÷ success footprint",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-023": {
+   "workbook_text": "Device type from successful classification or port signature",
+   "parameters": []
+  },
+  "ITOM-024": {
+   "workbook_text": "Fires only where a vault capability exists on the instance",
+   "parameters": []
+  },
+  "ITOM-025": {
+   "workbook_text": "Rotation period from the customer's policy, not assumed. Report the absence of a policy separately.",
+   "parameters": [
+    {
+     "key": "rotation_period",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "the organisation's rotation period — UNDEFINED (from the customer's policy, never assumed)",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-026": {
+   "workbook_text": "Any unrestricted credential",
+   "parameters": []
+  },
+  "ITOM-027": {
+   "workbook_text": "Window default 180 days",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": 180,
+     "description": "window with no successful use",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-028": {
+   "workbook_text": "Default threshold 85%. Report by range and by phase.",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": 85,
+     "description": "share of detected devices reaching full classification",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-029": {
+   "workbook_text": "Requires at least 5 runs. Flag on positive trend with projected overrun within 90 days.",
+   "parameters": [
+    {
+     "key": "min_runs",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "completed runs needed for a trend",
+     "status": "DEFINED"
+    },
+    {
+     "key": "horizon",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "projection horizon for the overrun",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-030": {
+   "workbook_text": "Report by range and by port signature to identify the device family",
+   "parameters": []
+  },
+  "ITOM-031": {
+   "workbook_text": "Report with the resulting CI quality, not just the phase count",
+   "parameters": []
+  },
+  "ITOM-032": {
+   "workbook_text": "Default 10% of devices producing errors",
+   "parameters": [
+    {
+     "key": "error_share",
+     "type": "percent",
+     "unit": null,
+     "default": 10,
+     "description": "share of a run's devices producing errors",
+     "status": "DEFINED"
+    },
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "window of runs judged — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-033": {
+   "workbook_text": "Any occurrence; report frequency",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "window of runs judged — UNDEFINED (\"report frequency\" names no period)",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-034": {
+   "workbook_text": "Disproportion threshold default 3x expected share",
+   "parameters": [
+    {
+     "key": "disproportion",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "multiple of the expected share",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-035": {
+   "workbook_text": "Correlate by device identity and run timestamp",
+   "parameters": []
+  },
+  "ITOM-036": {
+   "workbook_text": "Depth and age thresholds configurable; age is the more meaningful of the two",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "minutes",
+     "default": null,
+     "description": "oldest unprocessed input record — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-037": {
+   "workbook_text": "Lag threshold configurable",
+   "parameters": [
+    {
+     "key": "max_lag",
+     "type": "duration",
+     "unit": "minutes",
+     "default": null,
+     "description": "output dispatch lag — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-038": {
+   "workbook_text": "Requires at least 5 runs",
+   "parameters": [
+    {
+     "key": "min_runs",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "runs needed for a trend",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-039": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "ITOM-040": {
+   "workbook_text": "Size threshold configurable",
+   "parameters": [
+    {
+     "key": "max_rows",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "discovery status row count — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-041": {
+   "workbook_text": "Requires sufficient execution volume on both; default minimum 50 executions",
+   "parameters": [
+    {
+     "key": "min_executions",
+     "type": "number",
+     "unit": null,
+     "default": 50,
+     "description": "executions needed on both patterns",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-042": {
+   "workbook_text": "Window default 90 days",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "window",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-043": {
+   "workbook_text": "Failure rate threshold default 60% with minimum volume 20",
+   "parameters": [
+    {
+     "key": "failure_rate",
+     "type": "percent",
+     "unit": null,
+     "default": 60,
+     "description": "failure rate",
+     "status": "DEFINED"
+    },
+    {
+     "key": "min_volume",
+     "type": "number",
+     "unit": null,
+     "default": 20,
+     "description": "minimum executions",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-044": {
+   "workbook_text": "Timeout rate threshold default 30% with minimum volume 20",
+   "parameters": [
+    {
+     "key": "timeout_rate",
+     "type": "percent",
+     "unit": null,
+     "default": 30,
+     "description": "step timeout rate",
+     "status": "DEFINED"
+    },
+    {
+     "key": "min_volume",
+     "type": "number",
+     "unit": null,
+     "default": 20,
+     "description": "minimum executions",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-045": {
+   "workbook_text": "Deprecation status from the instance's own metadata",
+   "parameters": []
+  },
+  "ITOM-046": {
+   "workbook_text": "Compare against the pattern version shipped with the current family",
+   "parameters": []
+  },
+  "ITOM-047": {
+   "workbook_text": "All three absent",
+   "parameters": []
+  },
+  "ITOM-048": {
+   "workbook_text": "Minimum duplicate count per pattern configurable",
+   "parameters": [
+    {
+     "key": "min_duplicates",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "duplicates per pattern — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-049": {
+   "workbook_text": "Threshold relative to execution volume",
+   "parameters": []
+  },
+  "ITOM-050": {
+   "workbook_text": "Window default 180 days",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": 180,
+     "description": "window",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-051": {
+   "workbook_text": "Criticality determined by the services the range's CIs support",
+   "parameters": []
+  },
+  "ITOM-052": {
+   "workbook_text": "Resolve through the CMDB host relationship where available; otherwise compare host identifiers",
+   "parameters": []
+  },
+  "ITOM-053": {
+   "workbook_text": "Heartbeat tolerance default 3x expected interval",
+   "parameters": [
+    {
+     "key": "heartbeat_interval",
+     "type": "duration",
+     "unit": "minutes",
+     "default": 15,
+     "description": "the MID heartbeat window: ServiceNow checks each MID every 5 minutes (MID Server heartbeat), × the workbook's tolerance of 3",
+     "status": "DEFINED",
+     "source": "D-033"
+    },
+    {
+     "key": "tolerance",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "multiple of the heartbeat interval",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-054": {
+   "workbook_text": "Compare major and minor version against instance",
+   "parameters": []
+  },
+  "ITOM-055": {
+   "workbook_text": "Any unvalidated MID in production use",
+   "parameters": []
+  },
+  "ITOM-056": {
+   "workbook_text": "Warning window default 30 days. Escalate inside 7 days.",
+   "parameters": [
+    {
+     "key": "warning_window",
+     "type": "duration",
+     "unit": "days",
+     "default": 30,
+     "description": "warning window",
+     "status": "DEFINED"
+    },
+    {
+     "key": "escalation_window",
+     "type": "duration",
+     "unit": "days",
+     "default": 7,
+     "description": "escalation window",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-057": {
+   "workbook_text": "Capability requirements per work type",
+   "parameters": []
+  },
+  "ITOM-058": {
+   "workbook_text": "Disproportion threshold default 2x the cluster mean",
+   "parameters": [
+    {
+     "key": "factor",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "multiple of the cluster mean",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-059": {
+   "workbook_text": "Requires at least 3 observation points",
+   "parameters": [
+    {
+     "key": "min_points",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "observation points",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-060": {
+   "workbook_text": "Thresholds from MID configuration where available",
+   "parameters": []
+  },
+  "ITOM-061": {
+   "workbook_text": "Tolerance default 3x heartbeat interval",
+   "parameters": [
+    {
+     "key": "heartbeat_interval",
+     "type": "duration",
+     "unit": "minutes",
+     "default": 15,
+     "description": "the MID heartbeat window: ServiceNow checks each MID every 5 minutes (MID Server heartbeat), × the workbook's tolerance of 3",
+     "status": "DEFINED",
+     "source": "D-033"
+    }
+   ]
+  },
+  "ITOM-062": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "ITOM-063": {
+   "workbook_text": "Required role set per work type; admin on a MID account is always flagged",
+   "parameters": []
+  },
+  "ITOM-064": {
+   "workbook_text": "Supported matrix per instance family",
+   "parameters": []
+  },
+  "ITOM-065": {
+   "workbook_text": "Any unconfigured MID; escalate where disk utilisation is trending up",
+   "parameters": []
+  },
+  "ITOM-066": {
+   "workbook_text": "Threshold default 90 days with no heartbeat",
+   "parameters": [
+    {
+     "key": "silence",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "no heartbeat for this long",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-067": {
+   "workbook_text": "Any non-zero value is notable. Default threshold 10%.",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": 10,
+     "description": "share of Business Critical services with no map",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-068": {
+   "workbook_text": "Default threshold 60%. Current means refreshed within its interval.",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": 60,
+     "description": "share of application services with a current map",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-069": {
+   "workbook_text": "Requires Service Mapping licensed and pattern coverage confirmed",
+   "parameters": []
+  },
+  "ITOM-070": {
+   "workbook_text": "Window aligned to the map refresh interval",
+   "parameters": []
+  },
+  "ITOM-071": {
+   "workbook_text": "Tolerance default 2x interval",
+   "parameters": [
+    {
+     "key": "tolerance",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "multiple of the refresh interval",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-072": {
+   "workbook_text": "Default 20% drop. Escalate above 50%.",
+   "parameters": [
+    {
+     "key": "drop",
+     "type": "percent",
+     "unit": null,
+     "default": 20,
+     "description": "drop between refreshes",
+     "status": "DEFINED"
+    },
+    {
+     "key": "escalate_drop",
+     "type": "percent",
+     "unit": null,
+     "default": 50,
+     "description": "escalation",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-073": {
+   "workbook_text": "Report both directions separately",
+   "parameters": []
+  },
+  "ITOM-074": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "ITOM-075": {
+   "workbook_text": "Minimum count configurable",
+   "parameters": [
+    {
+     "key": "min_count",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "duplicates from Service Mapping before the rule fires — UNDEFINED (\"minimum count configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-076": {
+   "workbook_text": "Tier model derived from the best-mapped services in the estate",
+   "parameters": []
+  },
+  "ITOM-077": {
+   "workbook_text": "Report as an estate-wide ratio, not only per service",
+   "parameters": []
+  },
+  "ITOM-078": {
+   "workbook_text": "Report count and class distribution",
+   "parameters": []
+  },
+  "ITOM-079": {
+   "workbook_text": "Any unscheduled definition",
+   "parameters": []
+  },
+  "ITOM-080": {
+   "workbook_text": "Age threshold default 365 days",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 365,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-081": {
+   "workbook_text": "Any sustained failure",
+   "parameters": []
+  },
+  "ITOM-082": {
+   "workbook_text": "Only fires where traffic-based data collection is available",
+   "parameters": []
+  },
+  "ITOM-083": {
+   "workbook_text": "Exact match on address and port",
+   "parameters": []
+  },
+  "ITOM-084": {
+   "workbook_text": "Tolerance default 3x interval",
+   "parameters": [
+    {
+     "key": "tolerance",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "multiple of the connector interval",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-085": {
+   "workbook_text": "Tool detection from CI classes, integration endpoints and credential types",
+   "parameters": []
+  },
+  "ITOM-086": {
+   "workbook_text": "Threshold from the connector's own interval",
+   "parameters": []
+  },
+  "ITOM-087": {
+   "workbook_text": "Default 70% drop against a rolling baseline. Baseline must account for weekday and weekend variance.",
+   "parameters": [
+    {
+     "key": "drop",
+     "type": "percent",
+     "unit": null,
+     "default": 70,
+     "description": "drop against the baseline",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-088": {
+   "workbook_text": "Thresholds from observed processing capacity",
+   "parameters": []
+  },
+  "ITOM-089": {
+   "workbook_text": "Any sustained failure",
+   "parameters": []
+  },
+  "ITOM-090": {
+   "workbook_text": "Liveness evidence from source CIs, credentials or other integrations",
+   "parameters": []
+  },
+  "ITOM-091": {
+   "workbook_text": "Age is the more meaningful threshold; default 15 minutes",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "minutes",
+     "default": 15,
+     "description": "oldest unprocessed event",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-092": {
+   "workbook_text": "Any sustained discarding",
+   "parameters": []
+  },
+  "ITOM-093": {
+   "workbook_text": "Any unconfigured connector",
+   "parameters": []
+  },
+  "ITOM-094": {
+   "workbook_text": "Class coverage evaluated with hierarchy expansion",
+   "parameters": []
+  },
+  "ITOM-095": {
+   "workbook_text": "Default threshold 85%. Report by source and by class.",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": 85,
+     "description": "events binding to a CI",
+     "status": "DEFINED"
+    },
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "window — UNDEFINED (\"in the window\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-096": {
+   "workbook_text": "Default threshold 15%. Escalate above 30%.",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": 15,
+     "description": "share of alerts on a CI with no relationship",
+     "status": "DEFINED"
+    },
+    {
+     "key": "escalate_at",
+     "type": "percent",
+     "unit": null,
+     "default": 30,
+     "description": "escalation",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-097": {
+   "workbook_text": "Attribute classification configurable",
+   "parameters": []
+  },
+  "ITOM-098": {
+   "workbook_text": "Report by node format to identify the systematic cases",
+   "parameters": []
+  },
+  "ITOM-099": {
+   "workbook_text": "Any occurrence within a detected duplicate set",
+   "parameters": []
+  },
+  "ITOM-100": {
+   "workbook_text": "Fires where the rule's class set contains duplicates",
+   "parameters": []
+  },
+  "ITOM-101": {
+   "workbook_text": "Retired state set from instance configuration",
+   "parameters": []
+  },
+  "ITOM-102": {
+   "workbook_text": "Attribute strength classification configurable",
+   "parameters": []
+  },
+  "ITOM-103": {
+   "workbook_text": "Format classification: FQDN, short name, IP, MAC, composite",
+   "parameters": []
+  },
+  "ITOM-104": {
+   "workbook_text": "Participating class set from the impact configuration",
+   "parameters": []
+  },
+  "ITOM-105": {
+   "workbook_text": "Any disabled rule with live event volume in its class set",
+   "parameters": []
+  },
+  "ITOM-106": {
+   "workbook_text": "Default threshold 20%. Escalate above 40%.",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": 20,
+     "description": "Critical alerts with no affected service",
+     "status": "DEFINED"
+    },
+    {
+     "key": "escalate_at",
+     "type": "percent",
+     "unit": null,
+     "default": 40,
+     "description": "escalation",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-107": {
+   "workbook_text": "Fires only on a full-population zero",
+   "parameters": []
+  },
+  "ITOM-108": {
+   "workbook_text": "Both absent",
+   "parameters": []
+  },
+  "ITOM-109": {
+   "workbook_text": "Age threshold by severity; default 4 hours Critical, 24 hours Major",
+   "parameters": [
+    {
+     "key": "critical_age",
+     "type": "duration",
+     "unit": "hours",
+     "default": 4,
+     "description": "Critical alert age",
+     "status": "DEFINED"
+    },
+    {
+     "key": "major_age",
+     "type": "duration",
+     "unit": "hours",
+     "default": 24,
+     "description": "Major alert age",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-110": {
+   "workbook_text": "Default 60% in a single band. Report by source, since one source usually causes it.",
+   "parameters": [
+    {
+     "key": "dominance_share",
+     "type": "percent",
+     "unit": null,
+     "default": 60,
+     "description": "share of alerts in one severity",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-111": {
+   "workbook_text": "Report by alert type to find the systematic gaps",
+   "parameters": []
+  },
+  "ITOM-112": {
+   "workbook_text": "Any occurrence with non-zero firing count",
+   "parameters": []
+  },
+  "ITOM-113": {
+   "workbook_text": "Ratio threshold default 0.8",
+   "parameters": [
+    {
+     "key": "ratio",
+     "type": "number",
+     "unit": null,
+     "default": 0.8,
+     "description": "alerts ÷ events",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-114": {
+   "workbook_text": "Co-occurrence threshold configurable; requires relationship data to identify the pattern",
+   "parameters": []
+  },
+  "ITOM-115": {
+   "workbook_text": "Default 20% of total volume from a single node",
+   "parameters": [
+    {
+     "key": "share",
+     "type": "percent",
+     "unit": null,
+     "default": 20,
+     "description": "share of total volume from one node",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-116": {
+   "workbook_text": "Severity bands configurable",
+   "parameters": []
+  },
+  "ITOM-117": {
+   "workbook_text": "Correlation by dedup key and node",
+   "parameters": []
+  },
+  "ITOM-118": {
+   "workbook_text": "Age threshold default 365 days",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 365,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-119": {
+   "workbook_text": "Report by rule to identify the systematic cases",
+   "parameters": []
+  },
+  "ITOM-120": {
+   "workbook_text": "Account evidence from cloud CI account identifiers and integration references",
+   "parameters": []
+  },
+  "ITOM-121": {
+   "workbook_text": "Default threshold 90%",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": 90,
+     "description": "accounts and regions with current discovery",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-122": {
+   "workbook_text": "Equivalence mapping configurable",
+   "parameters": []
+  },
+  "ITOM-123": {
+   "workbook_text": "Any sustained failure",
+   "parameters": []
+  },
+  "ITOM-124": {
+   "workbook_text": "Tolerance default 2x interval; cloud intervals are typically short",
+   "parameters": [
+    {
+     "key": "tolerance",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "multiple of the schedule interval",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-125": {
+   "workbook_text": "Scope to cloud classes expected to participate in the service model",
+   "parameters": [
+    {
+     "key": "cloud_classes",
+     "type": "list",
+     "unit": null,
+     "default": null,
+     "description": "cloud classes expected to participate in the service model — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-126": {
+   "workbook_text": "Variance threshold configurable",
+   "parameters": []
+  },
+  "ITOM-127": {
+   "workbook_text": "Any exclusion without a registered justification",
+   "parameters": []
+  },
+  "ITOM-128": {
+   "workbook_text": "Required permission set per provider and discovery scope",
+   "parameters": []
+  },
+  "ITOM-129": {
+   "workbook_text": "Requires a successful recent discovery run; absence during a failed run is not evidence of termination",
+   "parameters": []
+  },
+  "ITOM-130": {
+   "workbook_text": "Required tag set from the customer's policy; report the absence of a policy separately",
+   "parameters": [
+    {
+     "key": "required_tags",
+     "type": "list",
+     "unit": null,
+     "default": null,
+     "description": "required tag set — UNDEFINED (from the customer's policy)",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITOM-131": {
+   "workbook_text": "Availability per provider and resource type",
+   "parameters": []
+  },
+  "ITOM-132": {
+   "workbook_text": "Variance threshold configurable",
+   "parameters": []
+  },
+  "ITOM-133": {
+   "workbook_text": "Match on instance ID, private IP, MAC or hostname",
+   "parameters": []
+  },
+  "ITOM-134": {
+   "workbook_text": "Any path without registration",
+   "parameters": []
+  },
+  "ITOM-135": {
+   "workbook_text": "Requires cloud discovery to be working; guard on ITOM-121 coverage",
+   "parameters": []
+  },
+  "ITOM-136": {
+   "workbook_text": "Any path with zero enforcement",
+   "parameters": []
+  },
+  "ITOM-137": {
+   "workbook_text": "Both absent",
+   "parameters": []
+  },
+  "ITOM-138": {
+   "workbook_text": "Correlation window configurable",
+   "parameters": []
+  },
+  "ITOM-139": {
+   "workbook_text": "Deprecation data per provider",
+   "parameters": []
+  },
+  "ITOM-140": {
+   "workbook_text": "Any workflow without the step",
+   "parameters": []
+  },
+  "ITOM-141": {
+   "workbook_text": "Any defined-but-unenforced policy",
+   "parameters": []
+  },
+  "ITOM-142": {
+   "workbook_text": "Active membership resolved live",
+   "parameters": []
+  },
+  "ITOM-143": {
+   "workbook_text": "Required tag set from policy",
+   "parameters": []
+  },
+  "ITOM-144": {
+   "workbook_text": "Attribute comparison set and tolerance configurable",
+   "parameters": []
+  },
+  "ITOM-145": {
+   "workbook_text": "Age threshold default 90 days; environment from tags or used_for",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "ITOM-146": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "ITOM-147": {
+   "workbook_text": "Requires failure onset date and per-CI staleness; attribute only CIs whose staleness began after onset",
+   "parameters": []
+  },
+  "ITOM-148": {
+   "workbook_text": "Deletion attribution requires audit retention covering the window",
+   "parameters": []
+  },
+  "ITOM-149": {
+   "workbook_text": "Requires both the rule criteria and the integration's attribute payload",
+   "parameters": []
+  },
+  "ITOM-150": {
+   "workbook_text": "Any occurrence; report as a count and as a share of total alerts",
+   "parameters": []
+  },
+  "ITOM-151": {
+   "workbook_text": "Tier classification from CI class",
+   "parameters": []
+  },
+  "ITOM-152": {
+   "workbook_text": "Any Business Critical service with a structurally impossible impact result",
+   "parameters": []
+  },
+  "ITOM-153": {
+   "workbook_text": "Requires MID availability history and audit retention covering the window",
+   "parameters": []
+  },
+  "ITOM-154": {
+   "workbook_text": "Correlation window configurable",
+   "parameters": []
+  },
+  "ITOM-155": {
+   "workbook_text": "Guard on cloud discovery run success; absence during a failed run is not evidence of termination",
+   "parameters": []
+  },
+  "ITOM-156": {
+   "workbook_text": "Both counts computed, not estimated. Report the rule list by name.",
+   "parameters": []
+  }
+ }
+}

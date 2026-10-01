@@ -1,0 +1,39 @@
+{
+  "setup": {
+    "table": "incident",
+    "payload": {
+      "short_description": "speedtest-c test"
+    }
+  },
+  "wait": {
+    "flowName": "NowForge Speed Test C",
+    "timeoutSec": 90
+  },
+  "assert": [
+    {
+      "table": "sys_hub_sub_flow_instance_v2",
+      "locate": {
+        "byQuery": "subflow.name=Process Incident Assignment^flow.name=NowForge Speed Test C"
+      },
+      "field": "flow",
+      "expect": {
+        "display": "NowForge Speed Test C"
+      },
+      "note": "verifies that the subflow Process Incident Assignment was invoked for the created incident"
+    }
+  ],
+  "cleanup": [
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      }
+    },
+    {
+      "table": "sys_hub_sub_flow_instance_v2",
+      "locate": {
+        "byQuery": "subflow.name=Process Incident Assignment^flow.name=NowForge Speed Test C"
+      }
+    }
+  ]
+}

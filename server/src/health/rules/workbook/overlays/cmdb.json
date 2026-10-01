@@ -1,0 +1,3459 @@
+{
+ "overlay_version": "0.1.0",
+ "sheet": "CMDB",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Hand-maintained engineering overlay (decision D-007). Seeded by server/scripts/health-workbook-overlays.mjs. `proposed` names the basis of every auto-proposed value; nothing is an engineering decision until `reviewed` is true.",
+ "rules": {
+  "CMDB-001": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "systemic_role": "implementation: systemicKind \"config_absence\"",
+    "blocks": "implementation: systemicKind \"config_absence\" gates the CMDB composite (cmdb-quality.js GATING_KINDS); DEP-001: CMDB-001 cross_domain_link \"Invalidates all Group 1-14 scoring until fixed\""
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-001",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-002": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "systemic_role": "implementation: systemicKind \"config_absence\"",
+    "blocks": "implementation: systemicKind \"config_absence\" gates the CMDB composite (cmdb-quality.js GATING_KINDS)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-002",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-003": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "systemic_role": "implementation: systemicKind \"measured_kpi\" → blocker that also scores in its dimension",
+    "blocks": "implementation: systemicKind \"measured_kpi\" gates the CMDB composite (cmdb-quality.js GATING_KINDS)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-003",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-004": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-004",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-005": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-005",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-006": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-006",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-007": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-007",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-008": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-008",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-009": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-009",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-010": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-010",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-011": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"gate-config\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "gate-config",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-011",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-012": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-001",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-012",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-013": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-002",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-013",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-014": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-007",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-014",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-015": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-004",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-015",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-016": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [
+    "rule:CMDB-111"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-005",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "DEP-003: CMDB-111 confidence_basis \"depends on environment tagging accuracy, which is itself CMDB-016\""
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-016",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-017": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-006",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-017",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-018": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-008",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-018",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-019": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-010",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-019",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-020": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-009",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-020",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-021": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-011",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-021",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-022": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-012",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D1",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-022",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-023": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-014",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-023",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-024": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-024",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-025": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-013",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-025",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-026": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-015",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-026",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-027": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-017",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-027",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-028": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-016",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-028",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-029": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-018",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-029",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-030": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-019",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-030",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-031": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-020",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-031",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-032": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-021",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D2",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-032",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-033": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-022",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-033",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-034": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-026",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-034",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-035": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-023",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-035",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-036": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-024",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-036",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-037": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-025",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-037",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-038": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": "posture",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-027",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored",
+    "systemic_role": "implementation: systemicKind \"posture\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "posture",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-038",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-039": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-028",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-039",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-040": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-029",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-040",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-041": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-030",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-041",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-042": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-031",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D3",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-042",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-043": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "context",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"context\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"context\"",
+    "attainment": "implementation: context → not scored"
+   },
+   "reviewed": false,
+   "track": "context",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-043",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-044": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-032",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D4",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "systemic_role": "implementation: systemicKind \"config_absence\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "implementation: systemicKind \"config_absence\" gates the CMDB composite (cmdb-quality.js GATING_KINDS)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-044",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-045": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-033",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D4",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "systemic_role": "implementation: systemicKind \"config_absence\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "implementation: systemicKind \"config_absence\" gates the CMDB composite (cmdb-quality.js GATING_KINDS)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-045",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-046": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-034",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D4",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "systemic_role": "implementation: systemicKind \"measured_kpi\" → blocker that also scores in its dimension",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "implementation: systemicKind \"measured_kpi\" gates the CMDB composite (cmdb-quality.js GATING_KINDS)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-046",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-047": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-035",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D4",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-047",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-048": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-040",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D5",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-048",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-049": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [
+    "rule:CMDB-025"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-039",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D5",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "DEP-002: CMDB-049 cross_domain_link \"Blocks correction of CMDB-025 findings\""
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-049",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-050": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-036",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D4",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-050",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-051": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-042",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D5",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-051",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-052": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-041",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D5",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-052",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-053": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-037",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D4",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-053",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-054": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-038",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D4",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-054",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-055": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-043",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D5",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-055",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-056": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": "posture",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-044",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored",
+    "systemic_role": "implementation: systemicKind \"posture\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "posture",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-056",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-057": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-045",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "systemic_role": "implementation: systemicKind \"measured_kpi\" → blocker that also scores in its dimension",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "implementation: systemicKind \"measured_kpi\" gates the CMDB composite (cmdb-quality.js GATING_KINDS)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-057",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-058": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-046",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-058",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-059": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [
+    "rule:ITOM-052"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-047",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "DEP-007: ITOM-052 cross_domain_link \"depends on CMDB-059 being correct to detect\""
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-059",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-060": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-048",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-060",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-061": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-049",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-061",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-062": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-050",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-062",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-063": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-051",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-063",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-064": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-052",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-064",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-065": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-053",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-065",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-066": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-054",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-066",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-067": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-067",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-068": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-068",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-069": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-055",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D6",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-069",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-070": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "blocker",
+   "blocks": [
+    "cmdb"
+   ],
+   "applicability": null,
+   "ownership": [
+    "OWN-002"
+   ],
+   "equivalent_of": "DQ-056",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "systemic_role": "implementation: systemicKind \"measured_kpi\" → blocker that also scores in its dimension",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)",
+    "blocks": "implementation: systemicKind \"measured_kpi\" gates the CMDB composite (cmdb-quality.js GATING_KINDS)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-070",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-071": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-001"
+   ],
+   "equivalent_of": "DQ-059",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-071",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-072": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-057",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-072",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-073": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-058",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-073",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-074": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-060",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-074",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-075": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-061",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-075",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-076": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-076",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-077": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-062",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-077",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-078": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-078",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-079": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D7",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-079",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-080": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-063",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-080",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-081": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-064",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-081",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-082": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-065",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-082",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-083": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-066",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-083",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-084": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-067",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-084",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-085": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-085",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-086": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-068",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-086",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-087": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-087",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-088": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-069",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-088",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-089": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-070",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-089",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-090": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D8",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-090",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-091": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "posture",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "systemic_role": "implementation: systemicKind \"posture\""
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-091",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-092": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-092",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-093": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-093",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-094": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-094",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-095": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-095",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-096": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-096",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-097": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-097",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-098": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-098",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-099": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-099",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-100": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-100",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-101": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"governance\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "governance",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-101",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-102": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-008"
+   ],
+   "equivalent_of": "DQ-071",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D9",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-102",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-103": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-072",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D9",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-103",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-104": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "posture",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-073",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D9",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "systemic_role": "implementation: systemicKind \"posture\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "posture",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-104",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-105": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-074",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D9",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-105",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-106": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-075",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D9",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-106",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-107": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-076",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D9",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-107",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-108": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D9",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-108",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-109": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-109",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-110": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-110",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-111": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"csdm-maturity\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "csdm-maturity",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-111",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-112": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "posture",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"csdm-maturity\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "systemic_role": "implementation: systemicKind \"posture\""
+   },
+   "reviewed": false,
+   "track": "csdm-maturity",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-112",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-113": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-113",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-114": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-114",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-115": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"csdm-maturity\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "csdm-maturity",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-115",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-116": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "context",
+   "attainment": "none",
+   "systemic_role": "derived",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"context\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"context\"",
+    "attainment": "implementation: context → not scored",
+    "systemic_role": "implementation: systemicKind \"derived\""
+   },
+   "reviewed": false,
+   "track": "context",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-116",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-117": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-006"
+   ],
+   "equivalent_of": "DQ-078",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-117",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-118": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-079",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-118",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-119": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "context",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-080",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"context\"",
+    "attainment": "implementation: context → not scored",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "context",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-119",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-120": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "context",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-007"
+   ],
+   "equivalent_of": "DQ-083",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"context\"",
+    "attainment": "implementation: context → not scored",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "context",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-120",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-121": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-081",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-121",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-122": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "context",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "DQ-082",
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"context\"",
+    "attainment": "implementation: context → not scored",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link (the workbook itself does not link DQ rows to CMDB ids)"
+   },
+   "reviewed": false,
+   "track": "context",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-122",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-123": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: catalogue/cmdb.json dimension D10",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"kpi\"",
+    "attainment": "implementation: KPI — direction needs review"
+   },
+   "reviewed": false,
+   "track": "dimension",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-123",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-124": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"platform\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "platform",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-124",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-125": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"platform\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "platform",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-125",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-126": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"platform\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "platform",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-126",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-127": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"platform\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "platform",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-127",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-128": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"platform\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "platform",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-128",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-129": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"platform\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "platform",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-129",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-130": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"platform\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"record\"",
+    "attainment": "implementation: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "track": "platform",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-130",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-131": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": "posture",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored",
+    "systemic_role": "implementation: systemicKind \"posture\""
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-131",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-132": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored"
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-132",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-133": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored"
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-133",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-134": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored"
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-134",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-135": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored"
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-135",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-136": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored"
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-136",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-137": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored"
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-137",
+    "source": "health/catalogue/cmdb.json"
+   }
+  },
+  "CMDB-138": {
+   "module": "cmdb",
+   "dimension": null,
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "implementation: track \"trend\" (not a scored dimension)",
+    "track": "implementation: catalogue/cmdb.json",
+    "kind": "implementation: kind \"trend\"",
+    "attainment": "implementation: trend → not scored"
+   },
+   "reviewed": false,
+   "track": "trend",
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-138",
+    "source": "health/catalogue/cmdb.json"
+   }
+  }
+ }
+}

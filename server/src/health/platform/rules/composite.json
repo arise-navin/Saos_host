@@ -1,0 +1,10 @@
+{
+ "engine": "composite",
+ "rules": {
+  "PLT-091": {
+   "undefined_dependencies": [
+    "an overlap analysis of trigger conditions and target fields across rules, workflows and flows — not defined"
+   ]
+  }
+ }
+}

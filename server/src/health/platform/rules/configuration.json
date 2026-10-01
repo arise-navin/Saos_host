@@ -1,0 +1,4443 @@
+{
+ "engine": "configuration",
+ "rules": {
+  "PLT-003": {
+   "undefined_dependencies": [
+    "the task state transition map that makes a start / pause / stop combination reachable — not defined"
+   ]
+  },
+  "PLT-004": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "task_sla",
+     "fields": [
+      "task",
+      "sla",
+      "active"
+     ]
+    },
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "task_sla",
+    "fields": [
+     "task",
+     "sla"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_multiple_slas",
+    "args": {}
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Tasks with more than one active SLA of one type are found; the overlapping definition PAIRS are named per task, not reported as pairs."
+   }
+  },
+  "PLT-006": {
+   "undefined_dependencies": [
+    "\"insert-only\" evaluation timing — no field of contract_sla records it (verified, Phase 6)"
+   ]
+  },
+  "PLT-007": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "collection",
+      "stop_condition",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "collection",
+     "stop_condition"
+    ],
+    "query": "active=true^collectionINincident,problem,change_request"
+   },
+   "compare": {
+    "name": "plt_stop_condition_terminal_states",
+    "args": {
+     "terminal": {
+      "incident": [
+       "6",
+       "7",
+       "8"
+      ],
+      "problem": [
+       "106",
+       "107"
+      ],
+      "change_request": [
+       "3",
+       "4"
+      ]
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The terminal states are ServiceNow's own (incident Resolved 6 / Closed 7 / Canceled 8; problem 106, 107; change Closed 3 / Canceled 4 — D-033). A state is judged only where records in it exist: the instance counts those the stop condition matches."
+   }
+  },
+  "PLT-008": {
+   "build_pending": "reading when_to_resume against resume_condition per definition and joining SLA records paused beyond the threshold"
+  },
+  "PLT-009": {
+   "undefined_dependencies": [
+    "where business time \"was intended\" — implied by a schedule or commitment, not recorded"
+   ]
+  },
+  "PLT-010": {
+   "undefined_dependencies": [
+    "the triggering event's time for a record, against which the creation gap is measured — not defined"
+   ]
+  },
+  "PLT-013": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "active",
+      "collection",
+      "type",
+      "start_condition",
+      "pause_condition",
+      "stop_condition",
+      "reset_condition",
+      "cancel_condition",
+      "duration",
+      "duration_type",
+      "schedule",
+      "relative_duration_works_on",
+      "target"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "collection",
+     "type",
+     "start_condition",
+     "pause_condition",
+     "stop_condition",
+     "reset_condition",
+     "cancel_condition",
+     "duration",
+     "duration_type",
+     "schedule",
+     "relative_duration_works_on",
+     "target"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_sla_duplicates",
+    "args": {
+     "fields": [
+      "collection",
+      "type",
+      "target",
+      "start_condition",
+      "pause_condition",
+      "stop_condition",
+      "reset_condition",
+      "cancel_condition",
+      "duration",
+      "duration_type",
+      "relative_duration_works_on",
+      "schedule"
+     ]
+    }
+   }
+  },
+  "PLT-014": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "active",
+      "collection",
+      "start_condition",
+      "pause_condition",
+      "stop_condition",
+      "reset_condition",
+      "cancel_condition",
+      "resume_condition"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "collection",
+     "start_condition",
+     "pause_condition",
+     "stop_condition",
+     "reset_condition",
+     "cancel_condition",
+     "resume_condition"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_sla_condition_fields",
+    "args": {
+     "conditions": [
+      "start_condition",
+      "pause_condition",
+      "stop_condition",
+      "reset_condition",
+      "cancel_condition",
+      "resume_condition"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The first field of each condition clause is verified on the definition's table (inheritance included); the far end of a dot-walked field is not."
+   }
+  },
+  "PLT-015": {
+   "undefined_dependencies": [
+    "a \"multi-timezone estate\" and the records that span timezones — not defined"
+   ]
+  },
+  "PLT-017": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "task_sla",
+     "fields": [
+      "task",
+      "sla",
+      "stage",
+      "planned_end_time",
+      "has_breached"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "task_sla",
+    "fields": [
+     "task",
+     "sla",
+     "planned_end_time",
+     "has_breached"
+    ],
+    "query": [
+     {
+      "$clause": {
+       "template": "stage={}",
+       "value": {
+        "$choice": {
+         "table": "task_sla",
+         "element": "stage",
+         "label": [
+          "In progress",
+          "In Progress"
+         ]
+        }
+       }
+      }
+     }
+    ]
+   },
+   "compare": {
+    "name": "plt_sla_stuck",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The maximum is the SLA engine's own planned end time — the definition's duration expanded under its schedule, pauses included (D-037). An In-progress SLA past it and never marked breached has a stuck timer. Paused SLAs are not In progress."
+   }
+  },
+  "PLT-019": {
+   "undefined_dependencies": [
+    "a definition's \"intended scope\" from its description and commitment — not readable"
+   ]
+  },
+  "PLT-020": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "collection",
+      "start_condition",
+      "active"
+     ]
+    },
+    {
+     "table": "task_sla",
+     "fields": [
+      "task",
+      "sla"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "collection",
+     "start_condition"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_records_missing_sla",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Each active definition's start condition is evaluated by the instance against the ACTIVE records of its table (D-033); a definition whose table cannot be read is passed over."
+   }
+  },
+  "PLT-021": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "task_sla",
+     "fields": [
+      "sla",
+      "pause_duration",
+      "duration"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "task_sla",
+    "fields": [
+     "sla",
+     "pause_duration",
+     "duration"
+    ],
+    "query": "pause_durationISNOTEMPTY"
+   },
+   "compare": {
+    "name": "plt_pause_exceeds_active",
+    "args": {
+     "share": {
+      "$param": "share"
+     }
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "By definition; the by-group split is not reported."
+   }
+  },
+  "PLT-029": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "active",
+      "service_commitment"
+     ]
+    },
+    {
+     "table": "service_commitment",
+     "fields": [
+      "sla"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "service_commitment"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_sla_untraceable",
+    "args": {}
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "\"With non-zero volume\" is not applied: every active definition is judged."
+   }
+  },
+  "PLT-030": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "service_commitment",
+     "fields": [
+      "name",
+      "sla",
+      "time_amount",
+      "schedule"
+     ]
+    },
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "duration",
+      "schedule"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "service_commitment",
+    "fields": [
+     "name",
+     "sla",
+     "time_amount",
+     "schedule"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_commitment_duration",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A commitment that states its own duration (time_amount) against the SLA it references, where both run on the same schedule or both 24 × 7 (D-037). Pairs on different schedules are counted and not judged; a commitment that states no duration takes its SLA's by reference."
+   }
+  },
+  "PLT-031": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "busines_criticality"
+     ]
+    },
+    {
+     "table": "task_sla",
+     "fields": [
+      "task"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "busines_criticality"
+    ],
+    "query": "busines_criticality=1 - most critical"
+   },
+   "compare": {
+    "name": "plt_critical_services_without_sla",
+    "args": {
+     "critical_values": [
+      "1 - most critical"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Business Critical = the platform's top criticality, \"1 - most critical\" (D-033). Coverage is judged by what ran: an SLA on any task whose business service is the service."
+   }
+  },
+  "PLT-032": {
+   "undefined_dependencies": [
+    "which SLA definitions a report or dashboard is built on — not readable from report configuration as the workbook names it"
+   ]
+  },
+  "PLT-033": {
+   "build_pending": "combining table row counts and update frequency for the tables customer-authored rules run on"
+  },
+  "PLT-034": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active",
+      "when",
+      "when"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "current_update",
+     "fields": [
+      "when"
+     ],
+     "where": {
+      "when": {
+       "$choice": {
+        "table": "sys_script",
+        "element": "when",
+        "label": "before"
+       }
+      }
+     },
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-035": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "query_in_loop",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "variants": [
+    {
+     "variant": "business rules",
+     "reader": "customer_updates",
+     "args": {
+      "table": "sys_script"
+     },
+     "compare": {
+      "name": "plt_script_scan",
+      "args": {
+       "table": "sys_script",
+       "check": "query_in_loop",
+       "fields": [],
+       "where": {},
+       "args": {},
+       "query": "active=true"
+      }
+     }
+    },
+    {
+     "variant": "script includes",
+     "reader": "customer_updates",
+     "args": {
+      "table": "sys_script_include"
+     },
+     "compare": {
+      "name": "plt_script_scan",
+      "args": {
+       "table": "sys_script_include",
+       "check": "query_in_loop",
+       "fields": [],
+       "where": {},
+       "args": {},
+       "query": "active=true"
+      }
+     }
+    }
+   ],
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen. The ranking by execution count is not available (no per-rule execution log)."
+   }
+  },
+  "PLT-037": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "collection",
+      "collection",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_customer_where",
+    "args": {
+     "table": "sys_script",
+     "fields": [
+      "collection"
+     ],
+     "query": "active=true",
+     "where": {
+      "collection": [
+       "task",
+       "cmdb_ci"
+      ]
+     }
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Rules on task and cmdb_ci (the two base tables the workbook names) are flagged; \"other significant parents\" are not defined, and the child-class volume is not attached."
+   }
+  },
+  "PLT-038": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "condition",
+      "filter_condition",
+      "action_insert",
+      "action_update",
+      "condition",
+      "filter_condition",
+      "action_insert",
+      "action_update",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_customer_where",
+    "args": {
+     "table": "sys_script",
+     "fields": [
+      "condition",
+      "filter_condition",
+      "action_insert",
+      "action_update"
+     ],
+     "query": "active=true",
+     "where": {
+      "condition": null,
+      "filter_condition": null,
+      "action_insert": "true",
+      "action_update": "true"
+     }
+    }
+   }
+  },
+  "PLT-039": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_unbounded_queries",
+    "args": {
+     "sources": [
+      [
+       "sys_script",
+       "script"
+      ],
+      [
+       "sys_script_include",
+       "script"
+      ]
+     ],
+     "min_rows": {
+      "$param": "min_rows"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer scripts: a GlideRecord on a literal table that is queried with no setLimit, no get() and no condition at all, where the table holds at least the threshold of rows (D-037). A query with any condition is taken as restrictive (the guard); a table named at run time is not seen."
+   }
+  },
+  "PLT-040": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "query_depth",
+     "fields": [],
+     "where": {},
+     "args": {
+      "max_depth": {
+       "$param": "max_depth"
+      }
+     },
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-041": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "collection",
+      "when",
+      "order",
+      "script",
+      "condition",
+      "action_insert",
+      "action_update",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_rule_ordering",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Before rules on one table (at least one customer-authored), sharing an operation: a rule that reads a current field another rule writes later in order (D-037). Field use is lexical (current.field, getValue / setValue); dependencies through other records, after rules and flows are not analysed."
+   }
+  },
+  "PLT-042": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active",
+      "when",
+      "when"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "writes",
+     "fields": [
+      "when"
+     ],
+     "where": {
+      "when": {
+       "$choice": {
+        "table": "sys_script",
+        "element": "when",
+        "label": "display"
+       }
+      }
+     },
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-044": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "set_workflow_unjustified",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-045": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "collection",
+      "when",
+      "script",
+      "condition",
+      "filter_condition",
+      "action_update",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_rule_recursion",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer after / async update rules that call current.update() without setWorkflow(false), with no condition or a condition naming a field they write (D-037). A guard inside the script (the workbook's) is not recognised beyond setWorkflow(false)."
+   }
+  },
+  "PLT-046": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "sys_id_literal",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-047": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "credentials",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-048": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "sleep",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-049": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active",
+      "when",
+      "when"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "outbound_http",
+     "fields": [
+      "when"
+     ],
+     "where": {
+      "when": [
+       {
+        "$choice": {
+         "table": "sys_script",
+         "element": "when",
+         "label": "before"
+        }
+       },
+       {
+        "$choice": {
+         "table": "sys_script",
+         "element": "when",
+         "label": "after"
+        }
+       },
+       {
+        "$choice": {
+         "table": "sys_script",
+         "element": "when",
+         "label": "display"
+        }
+       }
+      ]
+     },
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-050": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script",
+     "check": "empty_body",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-051": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "description",
+      "description",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_customer_where",
+    "args": {
+     "table": "sys_script",
+     "fields": [
+      "description"
+     ],
+     "query": "active=true",
+     "where": {
+      "description": null
+     }
+    }
+   }
+  },
+  "PLT-052": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_script_pattern",
+     "fields": [
+      "script_source",
+      "script_source_table",
+      "count",
+      "average",
+      "total"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_script_pattern",
+    "fields": [
+     "script_source"
+    ],
+    "query": "script_source_table=sys_script"
+   },
+   "compare": {
+    "name": "plt_slow_scripts",
+    "args": {
+     "source_table": "sys_script",
+     "percentile": {
+      "$param": "percentile"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Script time is ServiceNow's Slow Scripts log (sys_script_pattern, D-033): the business rules whose total time is at or above the 95th percentile of every logged script. A rule the log has not seen is not ranked."
+   }
+  },
+  "PLT-055": {
+   "build_pending": "table volume and update frequency per table (both thresholds \"configurable\")"
+  },
+  "PLT-058": {
+   "undefined_dependencies": [
+    "\"ownership inference\" of a table by a scoped application — not defined"
+   ]
+  },
+  "PLT-059": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "collection",
+      "sys_scope",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_metadata_customization",
+    "fields": [
+     "author_type"
+    ],
+    "query": "author_type=Custom^sys_update_nameSTARTSWITHsys_script_"
+   },
+   "compare": {
+    "name": "plt_custom_rules_on_oob_tables",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer-created = author_type \"Custom\" in ServiceNow's customization register (sys_metadata_customization, D-033); a ServiceNow table is one not named u_ / x_."
+   }
+  },
+  "PLT-060": {
+   "undefined_dependencies": [
+    "the \"deployment windows\" a creation timestamp falls outside — not defined"
+   ]
+  },
+  "PLT-061": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "sys_created_by"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script"
+   },
+   "compare": {
+    "name": "plt_creator_inactive",
+    "args": {
+     "table": "sys_script",
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "sys_script has no owner field on the platform (verified, Phase 6): the creator is judged; \"no owner\" cannot be."
+   }
+  },
+  "PLT-063": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "name",
+      "collection"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_metadata_customization",
+    "fields": [
+     "author_type"
+    ],
+    "query": "author_type=Custom^sys_update_nameSTARTSWITHsys_script_"
+   },
+   "compare": {
+    "name": "plt_custom_shadowing_oob",
+    "args": {
+     "table": "sys_script",
+     "also": "collection"
+    }
+   }
+  },
+  "PLT-064": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "collection",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_rule_count_trend",
+    "args": {
+     "min_windows": {
+      "$param": "min_windows"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Active customer business rules per table, one reading per scan of this instance, trended when at least two scans exist (D-037). Active development (the guard) is charged."
+   }
+  },
+  "PLT-065": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "api_name",
+      "client_callable",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "type",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script_include"
+   },
+   "compare": {
+    "name": "plt_callable_unprotected",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "An ACL named for the include is looked for; a role restriction inside the include's own script is not recognised, and the escalation for includes that query or write is not applied."
+   }
+  },
+  "PLT-066": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "api_name",
+      "access",
+      "script",
+      "client_callable",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sys_ui_action",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sysauto_script",
+     "fields": [
+      "script"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_include_scope_callers",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer-authored active includes; a caller is a script that names the include as a word in any of the platform's script fields (business rules, includes, client scripts, UI actions, jobs, scripted REST, UI pages and macros, widgets, ACLs, fix scripts, processors, transforms, script actions, UI scripts, catalog client scripts) — static and by-name use (GlideAjax) alike (D-037). Flows and workflows are not read; a field that cannot be read is listed."
+   }
+  },
+  "PLT-068": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_include_similarity",
+    "args": {
+     "similarity": {
+      "$param": "similarity"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Every pair of customer includes with a body, compared on 5-token shingles of their code with comments removed (Jaccard, D-037). Versioned copies during a migration (the guard) are charged."
+   }
+  },
+  "PLT-069": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sys_ui_action",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sysauto_script",
+     "fields": [
+      "script"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_include_unreferenced",
+    "args": {
+     "min_age": {
+      "$param": "min_age"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer-authored active includes; a caller is a script that names the include as a word in any of the platform's script fields (business rules, includes, client scripts, UI actions, jobs, scripted REST, UI pages and macros, widgets, ACLs, fix scripts, processors, transforms, script actions, UI scripts, catalog client scripts) — static and by-name use (GlideAjax) alike (D-037). Flows and workflows are not read; a field that cannot be read is listed."
+   }
+  },
+  "PLT-070": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script_include"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script_include",
+     "check": "too_long",
+     "fields": [],
+     "where": {},
+     "args": {
+      "max_lines": {
+       "$param": "max_lines"
+      }
+     },
+     "query": "active=true"
+    }
+   }
+  },
+  "PLT-071": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_include_graph",
+    "args": {
+     "max_depth": {
+      "$param": "max_depth"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer-authored active includes; a caller is a script that names the include as a word in any of the platform's script fields (business rules, includes, client scripts, UI actions, jobs, scripted REST, UI pages and macros, widgets, ACLs, fix scripts, processors, transforms, script actions, UI scripts, catalog client scripts) — static and by-name use (GlideAjax) alike (D-037). Flows and workflows are not read; a field that cannot be read is listed."
+   }
+  },
+  "PLT-072": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script_include"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script_include",
+     "check": "credentials",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-074": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_metadata_customization",
+    "fields": [
+     "author_type"
+    ],
+    "query": "author_type=Custom^sys_update_nameSTARTSWITHsys_script_include_"
+   },
+   "compare": {
+    "name": "plt_custom_shadowing_oob",
+    "args": {
+     "table": "sys_script_include"
+    }
+   }
+  },
+  "PLT-075": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script_client"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script_client",
+     "check": "sync_ajax",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-076": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script_client"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script_client",
+     "check": "dom_access",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen."
+   }
+  },
+  "PLT-077": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "name",
+      "script",
+      "active",
+      "type",
+      "type"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script_client"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_script_client",
+     "check": "server_call",
+     "fields": [
+      "type"
+     ],
+     "where": {
+      "type": {
+       "$choice": {
+        "table": "sys_script_client",
+        "element": "type",
+        "label": "onLoad"
+       }
+      }
+     },
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen. The ranking by form view volume is not available."
+   }
+  },
+  "PLT-079": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "name",
+      "table",
+      "field",
+      "type",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_script_client",
+    "fields": [
+     "name",
+     "table",
+     "field"
+    ],
+    "query": [
+     "active=true",
+     {
+      "$clause": {
+       "template": "type={}",
+       "value": {
+        "$choice": {
+         "table": "sys_script_client",
+         "element": "type",
+         "label": "onChange"
+        }
+       }
+      }
+     }
+    ]
+   },
+   "compare": {
+    "name": "plt_duplicate_onchange",
+    "args": {}
+   }
+  },
+  "PLT-080": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "name",
+      "type",
+      "condition",
+      "type",
+      "condition",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_script_client"
+   },
+   "compare": {
+    "name": "plt_customer_where",
+    "args": {
+     "table": "sys_script_client",
+     "fields": [
+      "type",
+      "condition"
+     ],
+     "query": "active=true",
+     "where": {
+      "type": {
+       "$choice": {
+        "table": "sys_script_client",
+        "element": "type",
+        "label": "onLoad"
+       }
+      },
+      "condition": null
+     }
+    }
+   }
+  },
+  "PLT-081": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "name",
+      "table",
+      "type",
+      "field",
+      "script",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_ui_section",
+     "fields": [
+      "name",
+      "view"
+     ]
+    },
+    {
+     "table": "sys_ui_element",
+     "fields": [
+      "sys_ui_section",
+      "element"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_client_fields_off_form",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Fields a customer client script names through g_form, against every view of the form layout of its table or the nearest table it extends (D-037). A field on any view is present (the guard). Variables, dot-walks and fields added by script are not judged."
+   }
+  },
+  "PLT-083": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_script_client",
+     "fields": [
+      "name",
+      "table",
+      "type",
+      "script",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_data_policy_rule",
+     "fields": [
+      "table",
+      "field",
+      "mandatory",
+      "disabled"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "collection",
+      "when",
+      "script",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_client_validation_unenforced",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A customer onSubmit script that can return false validates the fields it reads; each is enforced on the server when a data policy rule makes it mandatory or read-only, or a before rule naming it calls setAbortAction(true) (D-037). Server validation in flows or script includes is not seen."
+   }
+  },
+  "PLT-084": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_ui_policy_action",
+     "fields": [
+      "table",
+      "field",
+      "mandatory",
+      "ui_policy"
+     ]
+    },
+    {
+     "table": "sys_data_policy_rule",
+     "fields": [
+      "table",
+      "field",
+      "mandatory"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_ui_policy_action",
+    "fields": [
+     "table",
+     "field",
+     "mandatory",
+     "ui_policy"
+    ],
+    "query": "mandatory=true^ui_policy.active=true"
+   },
+   "compare": {
+    "name": "plt_mandatory_without_data_policy",
+    "args": {
+     "dictionary_optional": false
+    }
+   }
+  },
+  "PLT-085": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_ui_policy",
+     "fields": [
+      "table",
+      "short_description",
+      "ui_type",
+      "global",
+      "view",
+      "conditions",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_ui_policy_action",
+     "fields": [
+      "ui_policy",
+      "field",
+      "visible",
+      "mandatory",
+      "disabled"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_ui_policy",
+    "fields": [
+     "table",
+     "short_description",
+     "ui_type",
+     "global",
+     "view",
+     "conditions"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_ui_policy_conflicts",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The conflict matrix the workbook gives (visible vs hidden, mandatory vs read-only) over the actions of active policies that meet on table, UI type and view and hold at the same time: equal conditions, or either unconditioned (D-035). Different conditions that can both hold are not analysed, nor reverse-if-false actions."
+   }
+  },
+  "PLT-086": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_data_policy2",
+     "fields": [
+      "short_description",
+      "apply_import_set",
+      "apply_soap",
+      "short_description",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_data_policy2"
+   },
+   "compare": {
+    "name": "plt_customer_where",
+    "args": {
+     "table": "sys_data_policy2",
+     "fields": [
+      "apply_import_set",
+      "apply_soap",
+      "short_description"
+     ],
+     "query": "active=true",
+     "where": {}
+    }
+   },
+   "variants": [
+    {
+     "variant": "import sets",
+     "compare": {
+      "name": "plt_customer_where",
+      "args": {
+       "table": "sys_data_policy2",
+       "fields": [
+        "apply_import_set",
+        "apply_soap",
+        "short_description"
+       ],
+       "query": "active=true",
+       "where": {
+        "apply_import_set": "false"
+       }
+      }
+     }
+    },
+    {
+     "variant": "web services",
+     "compare": {
+      "name": "plt_customer_where",
+      "args": {
+       "table": "sys_data_policy2",
+       "fields": [
+        "apply_import_set",
+        "apply_soap",
+        "short_description"
+       ],
+       "query": "active=true",
+       "where": {
+        "apply_soap": "false"
+       }
+      }
+     }
+    }
+   ],
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "\"Where those paths carry volume\" is not measured: every customer-authored policy not applied to a path is flagged."
+   }
+  },
+  "PLT-087": {
+   "undefined_dependencies": [
+    "an operation classification (async-appropriate operations, UI-policy-expressible actions, privileged operations) — \"configurable\", no default"
+   ]
+  },
+  "PLT-088": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_ui_policy",
+     "fields": [
+      "short_description",
+      "conditions",
+      "short_description",
+      "conditions",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_ui_policy"
+   },
+   "compare": {
+    "name": "plt_customer_where",
+    "args": {
+     "table": "sys_ui_policy",
+     "fields": [
+      "conditions",
+      "short_description"
+     ],
+     "query": "active=true",
+     "where": {
+      "conditions": null
+     }
+    }
+   }
+  },
+  "PLT-089": {
+   "undefined_dependencies": [
+    "process documentation or a control register that references a data policy — not established"
+   ]
+  },
+  "PLT-090": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_ui_policy_action",
+     "fields": [
+      "table",
+      "field",
+      "mandatory",
+      "ui_policy"
+     ]
+    },
+    {
+     "table": "sys_data_policy_rule",
+     "fields": [
+      "table",
+      "field",
+      "mandatory"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element",
+      "mandatory"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_ui_policy_action",
+    "fields": [
+     "table",
+     "field",
+     "mandatory",
+     "ui_policy"
+    ],
+    "query": "mandatory=true^ui_policy.active=true"
+   },
+   "compare": {
+    "name": "plt_mandatory_without_data_policy",
+    "args": {
+     "dictionary_optional": true
+    }
+   }
+  },
+  "PLT-092": {
+   "undefined_dependencies": [
+    "the \"equivalence assessment by function and trigger\" between a workflow and a flow — not defined"
+   ]
+  },
+  "PLT-093": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "wf_workflow_version",
+     "fields": [
+      "name",
+      "table",
+      "condition",
+      "active",
+      "published"
+     ]
+    },
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name",
+      "internal_name",
+      "type",
+      "master_snapshot",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_hub_sub_flow_instance_v2",
+     "fields": [
+      "flow",
+      "subflow"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_snapshot",
+     "fields": [
+      "parent_flow"
+     ]
+    },
+    {
+     "table": "sys_hub_trigger_instance_v2",
+     "fields": [
+      "flow",
+      "trigger_type",
+      "trigger_inputs"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "wf_workflow_version",
+    "fields": [
+     "name",
+     "table",
+     "condition"
+    ],
+    "query": "active=true^published=true"
+   },
+   "compare": {
+    "name": "plt_flow_workflow_overlap",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A flow's record trigger (create / update) is read from its current snapshot's trigger inputs (D-035). Overlap is the same table with equal conditions, or either unconditioned; conditions that differ but intersect are not analysed."
+   }
+  },
+  "PLT-094": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name",
+      "internal_name",
+      "type",
+      "master_snapshot",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_hub_sub_flow_instance_v2",
+     "fields": [
+      "flow",
+      "subflow"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_snapshot",
+     "fields": [
+      "parent_flow"
+     ]
+    },
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_logic_definition",
+     "fields": [
+      "type"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_logic_instance_v2",
+     "fields": [
+      "flow",
+      "logic_definition"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_flow_error_handling",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer-created active flows and subflows (author \"Custom\", as PLT-102): error handling is a Try / Catch block or the flow-level error handler in the current version's flow logic (D-037). Trivial flows (the guard) are charged."
+   }
+  },
+  "PLT-095": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name",
+      "internal_name",
+      "type",
+      "master_snapshot",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_hub_sub_flow_instance_v2",
+     "fields": [
+      "flow",
+      "subflow"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_snapshot",
+     "fields": [
+      "parent_flow"
+     ]
+    },
+    {
+     "table": "sys_hub_action_instance_v2",
+     "fields": [
+      "flow",
+      "action_type"
+     ]
+    },
+    {
+     "table": "sys_hub_action_type_snapshot",
+     "fields": [
+      "parent_action"
+     ]
+    },
+    {
+     "table": "sys_hub_action_type_definition",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_flow_dead_references",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Actions and subflows a current snapshot calls, resolved to their definitions: missing or inactive is charged (D-035). Records, tables and fields named inside step inputs are not resolved."
+   }
+  },
+  "PLT-098": {
+   "build_pending": "reading record-created triggers and their conditions (sys_hub_trigger_instance)"
+  },
+  "PLT-099": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name",
+      "internal_name",
+      "type",
+      "master_snapshot",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_hub_sub_flow_instance_v2",
+     "fields": [
+      "flow",
+      "subflow"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_snapshot",
+     "fields": [
+      "parent_flow"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_subflow_cycles",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The call graph of active flows' current snapshots (subflow steps, callees resolved to their flow, D-035); a subflow started from a script is not an edge."
+   }
+  },
+  "PLT-100": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name",
+      "internal_name",
+      "type",
+      "master_snapshot",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_hub_sub_flow_instance_v2",
+     "fields": [
+      "flow",
+      "subflow"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_snapshot",
+     "fields": [
+      "parent_flow"
+     ]
+    },
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    },
+    {
+     "table": "sys_hub_action_instance_v2",
+     "fields": [
+      "flow",
+      "values"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_flow_hardcoded",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The step inputs of the current version of customer-created active flows: credential-named or password inputs holding a literal, Basic / Bearer values, URLs with embedded credentials, literal endpoints in URL inputs, and script steps (the script rules' credential set, PLT-047) (D-037). Data pills are not literals."
+   }
+  },
+  "PLT-101": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name",
+      "sys_created_by"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_hub_flow"
+   },
+   "compare": {
+    "name": "plt_creator_inactive",
+    "args": {
+     "table": "sys_hub_flow",
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "sys_hub_flow has no owner field on the platform (verified, Phase 6): the creator is judged; \"no owner\" cannot be."
+   }
+  },
+  "PLT-102": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name",
+      "internal_name",
+      "type",
+      "master_snapshot",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_hub_sub_flow_instance_v2",
+     "fields": [
+      "flow",
+      "subflow"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_snapshot",
+     "fields": [
+      "parent_flow"
+     ]
+    },
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    },
+    {
+     "table": "sys_hub_trigger_instance_v2",
+     "fields": [
+      "flow"
+     ]
+    },
+    {
+     "table": "contract_sla",
+     "fields": [
+      "flow"
+     ]
+    },
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "flow_designer_flow"
+     ]
+    },
+    {
+     "table": "sys_script_include",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sys_script",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sys_ui_action",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sysauto_script",
+     "fields": [
+      "script"
+     ]
+    },
+    {
+     "table": "sys_ws_operation",
+     "fields": [
+      "operation_script"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_flow_orphans",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer-created flows and subflows only (author \"Custom\", D-033 register): ServiceNow ships subflows its own code calls. Callers read: triggers, subflow steps of active flows, SLA definitions, catalog items and scripts naming the flow (D-035). Virtual Agent topics, playbooks and AI agent tools are not read."
+   }
+  },
+  "PLT-103": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "wf_workflow_version",
+     "fields": [
+      "workflow"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "wf_workflow_version",
+    "fields": [
+     "workflow"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_group_count",
+    "args": {
+     "table": "wf_workflow_version",
+     "group_field": "workflow",
+     "max": {
+      "$param": "max_versions"
+     }
+    }
+   }
+  },
+  "PLT-104": {
+   "undefined_dependencies": [
+    "flow step types and execution mode, and which triggers are \"user-facing\" — not established"
+   ]
+  },
+  "PLT-105": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_flow_context",
+     "fields": [
+      "state"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_flow_context_accumulation",
+    "args": {
+     "max_age": {
+      "$param": "max_age"
+     },
+     "growth": {
+      "$param": "growth"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Contexts not Complete, Cancelled or Error, by age; and the context table's count against the previous scan of this instance (D-037). Long-running approval flows (the guard) are charged."
+   }
+  },
+  "PLT-106": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sysauto",
+     "fields": [
+      "name",
+      "active",
+      "run_type",
+      "run_period"
+     ]
+    },
+    {
+     "table": "sys_trigger",
+     "fields": [
+      "document_key",
+      "processing_duration"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysauto",
+    "fields": [
+     "name",
+     "run_type",
+     "run_period"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_job_overrun",
+    "args": {
+     "periodic": {
+      "$choice": {
+       "table": "sysauto",
+       "element": "run_type",
+       "label": "Periodically"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The trigger keeps the LAST run's duration, not a history: that run is compared with the interval; the average is not available."
+   }
+  },
+  "PLT-108": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sysauto_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_unbounded_queries",
+    "args": {
+     "sources": [
+      [
+       "sysauto_script",
+       "script"
+      ]
+     ],
+     "min_rows": {
+      "$param": "min_rows"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Customer scripts: a GlideRecord on a literal table that is queried with no setLimit, no get() and no condition at all, where the table holds at least the threshold of rows (D-037). A query with any condition is taken as restrictive (the guard); a table named at run time is not seen."
+   }
+  },
+  "PLT-110": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_trigger",
+     "fields": [
+      "name",
+      "error_count",
+      "run_count"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_trigger",
+    "fields": [
+     "name",
+     "error_count",
+     "run_count"
+    ],
+    "query": "run_count>0"
+   },
+   "compare": {
+    "name": "plt_job_failure_rate",
+    "args": {
+     "failure_rate": {
+      "$param": "failure_rate"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The failure share is judged; \"no failure alerting\" cannot be read, so a job that alerts is flagged too — the rule can fail but never pass."
+   }
+  },
+  "PLT-111": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sysauto",
+     "fields": [
+      "name",
+      "active",
+      "run_type"
+     ]
+    },
+    {
+     "table": "sys_trigger",
+     "fields": [
+      "document_key",
+      "run_count"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysauto",
+    "fields": [
+     "name",
+     "sys_created_on"
+    ],
+    "query": [
+     "active=true",
+     {
+      "$clause": {
+       "template": "run_type!={}",
+       "value": {
+        "$choice": {
+         "table": "sysauto",
+         "element": "run_type",
+         "label": "On Demand"
+        }
+       }
+      }
+     }
+    ]
+   },
+   "compare": {
+    "name": "plt_job_never_ran",
+    "args": {
+     "min_age": {
+      "$param": "min_age",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"Or 3 intervals, whichever is longer\" is not applied: the 30-day age is."
+   }
+  },
+  "PLT-112": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sysauto_script",
+     "fields": [
+      "name",
+      "script",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sysauto_script"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sysauto_script",
+     "check": "deletes",
+     "fields": [],
+     "where": {},
+     "args": {},
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Static, lexical analysis of customer-authored scripts: comments and string contents are set aside before a pattern is tested; code built dynamically (eval, strings assembled at run time) is not seen. An archival step elsewhere cannot be seen, so every deleting job is flagged."
+   }
+  },
+  "PLT-113": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sysauto",
+     "fields": [
+      "name",
+      "sys_created_by"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sysauto"
+   },
+   "compare": {
+    "name": "plt_creator_inactive",
+    "args": {
+     "table": "sysauto",
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "sysauto has no owner field on the platform (verified, Phase 6): the creator is judged; \"no owner\" cannot be."
+   }
+  },
+  "PLT-114": {
+   "undefined_dependencies": [
+    "a job's output consumption (\"depends on the job type; state the method\") — no method is given"
+   ]
+  },
+  "PLT-116": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sysevent_register",
+     "fields": [
+      "event_name"
+     ]
+    },
+    {
+     "table": "sysevent_script_action",
+     "fields": [
+      "event_name",
+      "active"
+     ]
+    },
+    {
+     "table": "sysevent_email_action",
+     "fields": [
+      "event_name",
+      "active"
+     ]
+    },
+    {
+     "table": "sysevent",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysevent_register",
+    "fields": [
+     "event_name",
+     "table"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_events_unconsumed",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Fire volume is the event log as retained (sysevent is rotated). An event consumed by a flow trigger is not seen."
+   }
+  },
+  "PLT-119": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_trigger",
+     "fields": [
+      "name",
+      "next_action",
+      "state"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_trigger",
+    "fields": [
+     "name",
+     "next_action",
+     "state"
+    ],
+    "query": "nameSTARTSWITHASYNC^state=0"
+   },
+   "compare": {
+    "name": "plt_async_lag",
+    "args": {
+     "max_lag": {
+      "$param": "max_lag"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The async queue is the scheduler's \"ASYNC: …\" jobs (async business rules and events) waiting in state ready; lag is how far their next action is in the past."
+   }
+  },
+  "PLT-120": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "user",
+      "role",
+      "state"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user_has_role",
+    "fields": [
+     "user"
+    ],
+    "query": "role.name=admin^user.active=true^state=active"
+   },
+   "compare": {
+    "name": "plt_admin_count",
+    "args": {
+     "max": {
+      "$param": "max_admins"
+     },
+     "role": "admin"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"1% of fulfillers, whichever is lower\" needs a fulfiller definition the workbook does not give; the count is judged against 10, so a pass is not conclusive."
+   }
+  },
+  "PLT-121": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "operation",
+      "condition",
+      "script",
+      "advanced",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_security_acl_role",
+     "fields": [
+      "sys_security_acl"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_security_acl"
+   },
+   "compare": {
+    "name": "plt_open_acls",
+    "args": {}
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "An ACL grants unconditionally only when it has NO role requirement as well as no condition and no (or an always-true) script — a role-only ACL is not \"open\"; the escalation on sensitive tables needs a classification the workbook does not give."
+   }
+  },
+  "PLT-122": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_db_object",
+    "fields": [
+     "name"
+    ],
+    "query": "nameSTARTSWITHu_^ORnameSTARTSWITHx_"
+   },
+   "compare": {
+    "name": "plt_tables_without_acl",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Custom tables (u_ / x_) with no table-level ACL (table or table.*) on themselves or any table they extend — the inheritance the workbook requires."
+   }
+  },
+  "PLT-125": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "script",
+      "active",
+      "advanced",
+      "advanced"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_security_acl"
+   },
+   "compare": {
+    "name": "plt_script_scan",
+    "args": {
+     "table": "sys_security_acl",
+     "check": "returns_true",
+     "fields": [
+      "advanced"
+     ],
+     "where": {
+      "advanced": "true"
+     },
+     "args": {},
+     "query": "active=true"
+    }
+   }
+  },
+  "PLT-126": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "m2m_dictionary_dataclass",
+     "fields": [
+      "data_class",
+      "sys_dictionary"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "operation",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "data_classification",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_personal_data_acls",
+    "args": {
+     "classes": [
+      "Personally identifiable information",
+      "HR PII",
+      "Master data PII",
+      "Transactional Data PII",
+      "Contact information",
+      "Identification information",
+      "Demographic information"
+     ],
+     "mode": "write_absent"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Sensitive tables are the ones holding fields the instance classifies as personal data (m2m_dictionary_dataclass, D-032 / D-033). Table-level ACLs are read; ACLs inherited from a parent table are not credited."
+   }
+  },
+  "PLT-127": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "m2m_dictionary_dataclass",
+     "fields": [
+      "data_class",
+      "sys_dictionary"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "operation",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "data_classification",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_personal_data_acls",
+    "args": {
+     "classes": [
+      "Personally identifiable information",
+      "HR PII",
+      "Master data PII",
+      "Transactional Data PII",
+      "Contact information",
+      "Identification information",
+      "Demographic information"
+     ],
+     "mode": "field_absent"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The sensitive fields are those the instance classifies as personal data (D-032). Financial and credential fields are judged only when the instance classifies them."
+   }
+  },
+  "PLT-128": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "m2m_dictionary_dataclass",
+     "fields": [
+      "data_class",
+      "sys_dictionary"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "operation",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_security_acl_role",
+     "fields": [
+      "sys_security_acl",
+      "sys_user_role"
+     ]
+    },
+    {
+     "table": "sys_user_role",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "data_classification",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_personal_data_acls",
+    "args": {
+     "classes": [
+      "Personally identifiable information",
+      "HR PII",
+      "Master data PII",
+      "Transactional Data PII",
+      "Contact information",
+      "Identification information",
+      "Demographic information"
+     ],
+     "mode": "broad_read"
+    }
+   }
+  },
+  "PLT-132": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user_role",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "role"
+     ]
+    },
+    {
+     "table": "sys_user_role_contains",
+     "fields": [
+      "role"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_user_role"
+   },
+   "compare": {
+    "name": "plt_roles_unheld",
+    "args": {}
+   }
+  },
+  "PLT-133": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_group_has_role",
+     "fields": [
+      "group",
+      "role"
+     ]
+    },
+    {
+     "table": "sys_user_role",
+     "fields": [
+      "name",
+      "elevated_privilege"
+     ]
+    },
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_group_has_role",
+    "fields": [
+     "group",
+     "role"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_empty_elevated_groups",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The elevated role set is the platform's own elevated_privilege flag; a customer-defined set is not configured."
+   }
+  },
+  "PLT-134": {
+   "undefined_dependencies": [
+    "recertification or attestation records for role and group grants, and the review period \"from policy\" — not established"
+   ]
+  },
+  "PLT-135": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    },
+    {
+     "table": "sys_security_acl",
+     "fields": [
+      "name",
+      "operation",
+      "condition",
+      "script",
+      "advanced",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_security_acl_role",
+     "fields": [
+      "sys_security_acl"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_metadata_customization",
+    "fields": [
+     "author_type"
+    ],
+    "query": "author_type=Custom^sys_update_nameSTARTSWITHsys_security_acl_"
+   },
+   "compare": {
+    "name": "plt_custom_acl_weaker_than_oob",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Weaker = no role, no condition and no script, where the ServiceNow ACL on the same object and operation has at least one. A weaker condition than another condition is not compared."
+   }
+  },
+  "PLT-136": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sysevent",
+     "fields": [
+      "name",
+      "parm1",
+      "parm2"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysevent",
+    "fields": [
+     "name",
+     "parm1",
+     "parm2"
+    ],
+    "query": "name=impersonation.start"
+   },
+   "compare": {
+    "name": "plt_impersonation_by_user",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Impersonations are ServiceNow's impersonation.start events (parm1 the impersonator, parm2 the user, D-033), as retained — sysevent is rotated after about a week. Whether one was reviewed is not recorded."
+   }
+  },
+  "PLT-137": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active",
+      "web_service_access_only",
+      "internal_integration_user"
+     ]
+    },
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "user",
+      "role"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user",
+    "fields": [
+     "user_name"
+    ],
+    "query": "active=true^web_service_access_only=true^ORinternal_integration_user=true"
+   },
+   "compare": {
+    "name": "plt_integration_admins",
+    "args": {
+     "role": "admin"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Integration accounts are those the platform flags; classification by naming and usage is not applied, and \"admin or equivalent\" is the admin role."
+   }
+  },
+  "PLT-140": {
+   "undefined_dependencies": [
+    "inbound integration write paths (which inbound API writes which table, through IRE or not) — not established"
+   ]
+  },
+  "PLT-141": {
+   "undefined_dependencies": [
+    "integration retry and error-handling configuration — not a platform field of REST or SOAP messages; ownership OWN-009 has no owner yet"
+   ]
+  },
+  "PLT-142": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_outbound_http_log",
+     "fields": [
+      "url",
+      "hostname",
+      "response_status"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_outbound_http_log",
+    "fields": [
+     "url",
+     "hostname",
+     "response_status"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_outbound_failure_rate",
+    "args": {
+     "rate": {
+      "$param": "failure_rate"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Outbound calls as retained in sys_outbound_http_log, by host; a failure is no status or HTTP 400 and above. Inbound integrations are not read."
+   }
+  },
+  "PLT-143": {
+   "undefined_dependencies": [
+    "which rate-limit rule covers which inbound integration — rate limits match by resource and user, and the matching is not defined"
+   ]
+  },
+  "PLT-145": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "oauth_entity",
+     "fields": [
+      "name",
+      "active",
+      "refresh_token_lifespan"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "oauth_entity",
+    "fields": [
+     "name",
+     "refresh_token_lifespan"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_oauth_lifetime",
+    "args": {
+     "max_days": {
+      "$param": "max_days"
+     }
+    }
+   }
+  },
+  "PLT-146": {
+   "undefined_dependencies": [
+    "integration write paths and workflow suppression per integration — not established"
+   ]
+  },
+  "PLT-148": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_rest_message_fn",
+     "fields": [
+      "rest_message",
+      "rest_endpoint",
+      "http_method"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_rest_message_fn",
+    "fields": [
+     "rest_message",
+     "rest_endpoint",
+     "http_method",
+     "function_name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_duplicate_endpoints",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "REST functions are compared on method and normalised URL; payload comparison and SOAP functions are not."
+   }
+  },
+  "PLT-150": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_transform_map",
+     "fields": [
+      "name",
+      "active",
+      "target_table"
+     ]
+    },
+    {
+     "table": "sys_transform_entry",
+     "fields": [
+      "map",
+      "coalesce"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_transform_map",
+    "fields": [
+     "name",
+     "target_table"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "plt_transform_no_coalesce",
+    "args": {}
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Every active map without coalesce is flagged; whether its import recurs, and the duplicate counts on its target, are not attached."
+   }
+  },
+  "PLT-152": {
+   "undefined_dependencies": [
+    "data-source credential expiry and authentication outcomes — not fields of sys_data_source (verified, Phase 6)"
+   ]
+  },
+  "PLT-153": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_xml",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_rest_message",
+     "fields": [
+      "name",
+      "sys_created_by"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active"
+     ]
+    }
+   ],
+   "reader": "customer_updates",
+   "args": {
+    "table": "sys_rest_message"
+   },
+   "compare": {
+    "name": "plt_creator_inactive",
+    "args": {
+     "table": "sys_rest_message",
+     "query": ""
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "sys_rest_message has no owner field on the platform (verified, Phase 6): the creator is judged; \"no owner\" cannot be."
+   }
+  },
+  "PLT-154": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_upgrade_history",
+     "fields": [
+      "to_version",
+      "upgrade_started"
+     ]
+    },
+    {
+     "table": "sys_upgrade_history_log",
+     "fields": [
+      "upgrade_history",
+      "disposition",
+      "resolution_status"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_upgrade_history",
+    "fields": [
+     "to_version",
+     "upgrade_started"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_unreviewed_skips",
+    "args": {
+     "skipped_values": [
+      {
+       "$choice": {
+        "table": "sys_upgrade_history_log",
+        "element": "disposition",
+        "label": [
+         "Skipped",
+         "skipped"
+        ]
+       }
+      }
+     ]
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Unreviewed skips of the latest upgrade are found; the ranking by execution volume and criticality is not available."
+   }
+  },
+  "PLT-155": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_metadata_customization",
+     "fields": [
+      "sys_update_name",
+      "author_type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_metadata_customization",
+    "fields": [
+     "author_type"
+    ],
+    "query": "author_type=ServiceNow"
+   },
+   "compare": {
+    "name": "plt_oob_modifications_by_type",
+    "args": {}
+   }
+  },
+  "PLT-156": {
+   "undefined_dependencies": [
+    "ServiceNow's own change frequency per object across releases — external reference data"
+   ]
+  },
+  "PLT-157": {
+   "undefined_dependencies": [
+    "the CURRENT ServiceNow release family — external reference data"
+   ]
+  },
+  "PLT-158": {
+   "undefined_dependencies": [
+    "a \"coherent functional group suitable for a scoped application\" — not defined"
+   ]
+  },
+  "PLT-159": {
+   "undefined_dependencies": [
+    "\"usage that exercises the inherited capabilities\" — not defined"
+   ]
+  },
+  "PLT-160": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_dictionary",
+    "fields": [
+     "name",
+     "element"
+    ],
+    "query": "elementSTARTSWITHu_"
+   },
+   "compare": {
+    "name": "plt_custom_field_population",
+    "args": {
+     "min_population": {
+      "$param": "min_population"
+     }
+    }
+   }
+  },
+  "PLT-161": {
+   "undefined_dependencies": [
+    "semantic matching of a custom field with an OOB field \"from name, type and population correlation\" — no method is given"
+   ]
+  },
+  "PLT-164": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_update_version",
+     "fields": [
+      "name",
+      "source_table"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_update_version",
+    "fields": [
+     "name"
+    ],
+    "query": "sys_idISEMPTY"
+   },
+   "compare": {
+    "name": "plt_hotspots",
+    "args": {
+     "max": {
+      "$param": "max_changes"
+     },
+     "window": {
+      "$param": "window",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Customer versions (source: an update set) per object in the window are counted; the trend is not."
+   }
+  },
+  "PLT-166": {
+   "undefined_dependencies": [
+    "the creation window and instance indicators that separate a production change from a deployment — not defined"
+   ]
+  },
+  "PLT-167": {
+   "undefined_dependencies": [
+    "\"breadth assessment from actual usage\" of a cross-scope privilege — not defined"
+   ]
+  },
+  "PLT-168": {
+   "undefined_dependencies": [
+    "a custom application's owner and source-control link — neither is a field of sys_app (verified, Phase 6)"
+   ]
+  },
+  "PLT-169": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_db_object",
+    "fields": [
+     "name",
+     "sys_created_on"
+    ],
+    "query": "nameSTARTSWITHu_^ORnameSTARTSWITHx_"
+   },
+   "compare": {
+    "name": "plt_sparse_custom_tables",
+    "args": {
+     "max_rows": {
+      "$param": "max_rows"
+     },
+     "min_age": {
+      "$param": "min_age"
+     }
+    }
+   }
+  },
+  "PLT-171": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "syslog_transaction",
+     "fields": [
+      "response_time",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "syslog_transaction",
+    "fields": [
+     "response_time",
+     "type"
+    ],
+    "query": [
+     {
+      "$window": {
+       "param": "window",
+       "field": "sys_created_on",
+       "edge": "within"
+      }
+     }
+    ]
+   },
+   "compare": {
+    "name": "plt_p95_response",
+    "args": {
+     "max_seconds": {
+      "$param": "max_seconds"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The overall 95th percentile is judged; the per-transaction-type breakdown is not, and \"interactive\" is every transaction in the window."
+   }
+  },
+  "PLT-172": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "syslog_transaction",
+     "fields": [
+      "response_time"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "plt_slow_transaction_trend",
+    "args": {
+     "min_windows": {
+      "$param": "min_windows"
+     },
+     "max_seconds": {
+      "$param": "max_seconds"
+     },
+     "period": {
+      "$param": "period"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The share of transactions slower than PLT-171's threshold per window, over the retained transaction log (normalised by all transactions in the window, as the workbook requires), trended by least squares (D-037)."
+   }
+  },
+  "PLT-173": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_script_pattern",
+     "fields": [
+      "script_source",
+      "script_source_table",
+      "count",
+      "average",
+      "total"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_script_pattern",
+    "fields": [
+     "script_source"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_slow_scripts",
+    "args": {
+     "top": 25
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "A measure: ServiceNow's Slow Scripts log ranked by total time and frequency (D-033); the workbook gives no threshold, so nothing is judged."
+   }
+  },
+  "PLT-175": {
+   "undefined_dependencies": [
+    "script attribution in slow transactions and per-query cost — syslog_transaction records a transaction, not which rule or widget spent its time"
+   ]
+  },
+  "PLT-180": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "syslog_cancellation",
+     "fields": [
+      "url"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "syslog_cancellation",
+    "fields": [
+     "url",
+     "sys_created_on"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "plt_cancelled_transactions",
+    "args": {}
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Cancelled transactions are ServiceNow's cancellation log (syslog_cancellation, D-033), as retained; the trend needs stored history and is not reported."
+   }
+  }
+ }
+}

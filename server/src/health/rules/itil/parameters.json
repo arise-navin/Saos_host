@@ -1,0 +1,778 @@
+{
+ "version": "1.0.0",
+ "phase": "Health Assist Phase 10",
+ "source": {
+  "workbook": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+  "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+  "bytes": 323662
+ },
+ "rule_count": 148,
+ "conventions": {
+  "default": "the workbook's stated default, or null with status UNDEFINED — never an invented value (DECISION 3)"
+ },
+ "declarations": {
+  "ITIL-001": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-002": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-003": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-004": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-005": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "open request age by type — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-006": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "fulfilment task age — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-007": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-008": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "similarity",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "description similarity — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-009": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-010": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "rate",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "reopen / rework rate — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-011": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-012": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-013": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-014": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "top",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "how many top request types — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-015": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-016": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-017": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-018": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-019": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-020": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-021": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-022": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-023": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-024": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-025": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-026": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-027": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "min_share",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "article-linkage share — UNDEFINED (\"near zero\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-028": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-029": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-030": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-031": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-032": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "min_rate",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "article creation rate — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-033": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "article age — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-034": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-035": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "similarity",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "content similarity — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-036": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "volume",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "incident volume — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-037": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-038": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-039": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-040": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-041": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-042": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-043": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-044": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-045": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-046": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-047": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-048": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-049": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-050": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-051": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-052": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "variance",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "target variance — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-053": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-054": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-055": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-056": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-057": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "rate",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "release-induced incident rate — UNDEFINED",
+     "status": "UNDEFINED"
+    },
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "post-deployment window — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-058": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-059": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-060": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-061": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-062": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-063": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-064": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-065": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-066": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "how many releases form the trend — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-067": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-068": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-069": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-070": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-071": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-072": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "max_changes",
+     "type": "number",
+     "unit": null,
+     "default": 5,
+     "description": "modifications that make a hotspot (PLT-164's)",
+     "status": "DEFINED",
+     "source": "D-037"
+    },
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "months",
+     "default": 12,
+     "description": "hotspot window (PLT-164's)",
+     "status": "DEFINED",
+     "source": "D-037"
+    }
+   ]
+  },
+  "ITIL-073": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-074": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-075": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-076": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-077": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-078": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-079": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-080": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-081": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-082": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-083": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-084": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-085": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-086": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-087": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-088": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-089": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-090": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-091": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-092": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-093": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-094": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-095": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-096": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-097": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-098": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-099": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-100": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-101": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-102": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-103": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-104": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-105": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-106": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-107": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-108": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "notice_period",
+     "type": "duration",
+     "unit": "days",
+     "default": null,
+     "description": "notice period before expiry — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-109": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-110": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-111": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-112": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-113": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "share",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "dependency concentration — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-114": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-115": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-116": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-117": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-118": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-119": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-120": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-121": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-122": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "margin",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "acceptable confidence margin — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "ITIL-123": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-124": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-125": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-126": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-127": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-128": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-129": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-130": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-131": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-132": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-133": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-134": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-135": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-136": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-137": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-138": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-139": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-140": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-141": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-142": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-143": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-144": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-145": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-146": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-147": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  },
+  "ITIL-148": {
+   "workbook_text": "Not stated separately in the supplied ITIL workbook — see Detection Logic.",
+   "parameters": []
+  }
+ }
+}

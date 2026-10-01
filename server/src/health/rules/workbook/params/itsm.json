@@ -1,0 +1,1028 @@
+{
+ "params_version": "0.1.0",
+ "sheet": "ITSM",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Parameter declaration skeleton, one entry per workbook rule. The typed declarations (type, unit, default, status DEFINED/UNDEFINED) are written in Phase 1 with the generalised registry; ITSM already has them in health/rules/itsm/parameters.json.",
+ "rules": {
+  "ITSM-001": {
+   "workbook_text": "Default 70% in one band. Window default 90 days.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "dominance_share",
+    "window"
+   ]
+  },
+  "ITSM-002": {
+   "workbook_text": "Unused = zero use in 180 days. Dominance threshold default 40%.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "unused_window",
+    "dominance_share"
+   ]
+  },
+  "ITSM-003": {
+   "workbook_text": "Any band with non-zero volume and no SLA",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-004": {
+   "workbook_text": "Report as a ratio of total volume",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-005": {
+   "workbook_text": "Report as a ratio and by group",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-006": {
+   "workbook_text": "Any invalid pair with non-zero volume",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-007": {
+   "workbook_text": "Default minimum 3 business days. Compare against the reopen timing distribution.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "minimum_autoclose_days"
+   ]
+  },
+  "ITSM-008": {
+   "workbook_text": "Default 30% in one generic value",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "catchall_share",
+    "generic_values"
+   ]
+  },
+  "ITSM-009": {
+   "workbook_text": "Age threshold default 30 days for dead-end detection",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "deadend_age"
+   ]
+  },
+  "ITSM-010": {
+   "workbook_text": "Field-to-stage value mapping configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "field_stage_mapping"
+   ]
+  },
+  "ITSM-011": {
+   "workbook_text": "Active membership resolved live",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-012": {
+   "workbook_text": "Compare against the service commitment where one exists",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-013": {
+   "workbook_text": "Any custom state absent from SLA conditions",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "standard_state_values"
+   ]
+  },
+  "ITSM-014": {
+   "workbook_text": "Default 5% populated",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "population_rate"
+   ]
+  },
+  "ITSM-015": {
+   "workbook_text": "Fires only where published articles exist",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-016": {
+   "workbook_text": "Default threshold 40%. Window default 90 days.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold",
+    "window"
+   ]
+  },
+  "ITSM-017": {
+   "workbook_text": "Default threshold 50%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-018": {
+   "workbook_text": "Active membership resolved live",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-019": {
+   "workbook_text": "Report the two cases separately",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-020": {
+   "workbook_text": "Length threshold default 20 characters after trimming",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "min_length"
+   ]
+  },
+  "ITSM-021": {
+   "workbook_text": "Similarity threshold default 0.9",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "similarity"
+   ]
+  },
+  "ITSM-022": {
+   "workbook_text": "Volume threshold configurable; service account detection from naming and role pattern",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "volume_threshold",
+    "service_account_pattern"
+   ]
+  },
+  "ITSM-023": {
+   "workbook_text": "Volume threshold configurable relative to total volume",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "volume_share"
+   ]
+  },
+  "ITSM-024": {
+   "workbook_text": "Expected distribution derived from the estate's own data, minimum volume per category required",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "minimum_volume_per_category",
+    "anomaly_share"
+   ]
+  },
+  "ITSM-025": {
+   "workbook_text": "Consistency rules per close code, derived from the estate's own dominant patterns",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "consistency_rules"
+   ]
+  },
+  "ITSM-026": {
+   "workbook_text": "Any occurrence; report by group and priority",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-027": {
+   "workbook_text": "Timing window configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "timing_window"
+   ]
+  },
+  "ITSM-028": {
+   "workbook_text": "Pattern set per identifier type, with checksum validation where the format supports it",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "identifier_patterns"
+   ]
+  },
+  "ITSM-029": {
+   "workbook_text": "Fires only where routing rules reference the fields",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-030": {
+   "workbook_text": "Default threshold 8%. Escalate above 15%.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "reopen_rate",
+    "escalate_rate"
+   ]
+  },
+  "ITSM-031": {
+   "workbook_text": "Default threshold 70%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-032": {
+   "workbook_text": "Tail threshold default 4 reassignments",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "tail_threshold"
+   ]
+  },
+  "ITSM-033": {
+   "workbook_text": "Threshold from the customer's own commitment; default 10%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "breach_rate"
+   ]
+  },
+  "ITSM-034": {
+   "workbook_text": "Default flag at 2x the estate mean rate",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "multiple_of_mean"
+   ]
+  },
+  "ITSM-035": {
+   "workbook_text": "Spike threshold default 2x the expected density for that interval",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "spike_multiple",
+    "interval"
+   ]
+  },
+  "ITSM-036": {
+   "workbook_text": "Default threshold 60 seconds",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-037": {
+   "workbook_text": "Age thresholds per priority; defaults 2 days P1, 5 days P2, 15 days P3",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "p1_age",
+    "p2_age",
+    "p3_age",
+    "p4_age",
+    "p5_age"
+   ]
+  },
+  "ITSM-038": {
+   "workbook_text": "Correlation window configurable, default 30 minutes",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "correlation_window",
+    "manual_creation_query"
+   ]
+  },
+  "ITSM-039": {
+   "workbook_text": "Default threshold 30%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-040": {
+   "workbook_text": "Similarity threshold and repeat count configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "similarity",
+    "repeat_count"
+   ]
+  },
+  "ITSM-041": {
+   "workbook_text": "Requires at least 3 windows",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "min_windows"
+   ]
+  },
+  "ITSM-042": {
+   "workbook_text": "Report as a ratio and by individual",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-043": {
+   "workbook_text": "Any occurrence; report as a ratio",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-044": {
+   "workbook_text": "Report separately for callers with and without fulfiller roles",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-045": {
+   "workbook_text": "P1 volume threshold configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "p1_volume_threshold"
+   ]
+  },
+  "ITSM-046": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-047": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-048": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-049": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-050": {
+   "workbook_text": "Gap threshold default 30 minutes during an active major incident",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "gap_threshold"
+   ]
+  },
+  "ITSM-051": {
+   "workbook_text": "Any occurrence with qualifying P1s present",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-052": {
+   "workbook_text": "Age threshold default 90 days",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "age_threshold"
+   ]
+  },
+  "ITSM-053": {
+   "workbook_text": "Default threshold 0.5%. Escalate below 0.1%.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold",
+    "escalate_below"
+   ]
+  },
+  "ITSM-054": {
+   "workbook_text": "Cluster volume threshold and similarity threshold configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "cluster_volume",
+    "similarity"
+   ]
+  },
+  "ITSM-055": {
+   "workbook_text": "Any occurrence; report as a ratio",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-056": {
+   "workbook_text": "Age threshold default 30 days",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "age_threshold"
+   ]
+  },
+  "ITSM-057": {
+   "workbook_text": "Report by Problem state; no single threshold",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-058": {
+   "workbook_text": "N default 10; effort derived from resolution time",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "top_n",
+    "similarity"
+   ]
+  },
+  "ITSM-059": {
+   "workbook_text": "Flag where Problem creation concentration far exceeds incident concentration",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "concentration_ratio"
+   ]
+  },
+  "ITSM-060": {
+   "workbook_text": "Any occurrence; report by state",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-061": {
+   "workbook_text": "Age threshold default 90 days",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "age_threshold"
+   ]
+  },
+  "ITSM-062": {
+   "workbook_text": "Any occurrence; report as a ratio",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-063": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-064": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-065": {
+   "workbook_text": "Active membership resolved live",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-066": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-067": {
+   "workbook_text": "Any occurrence; report as a ratio",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-068": {
+   "workbook_text": "Age threshold default 60 days",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "age_threshold"
+   ]
+  },
+  "ITSM-069": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-070": {
+   "workbook_text": "Length threshold default 40 characters; similarity threshold 0.85",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "min_length",
+    "similarity"
+   ]
+  },
+  "ITSM-071": {
+   "workbook_text": "Root cause classification from close code and text pattern",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "root_cause_classification"
+   ]
+  },
+  "ITSM-072": {
+   "workbook_text": "Default 2 backward transitions",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "backward_transitions"
+   ]
+  },
+  "ITSM-073": {
+   "workbook_text": "Alignment matrix configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "alignment_matrix"
+   ]
+  },
+  "ITSM-074": {
+   "workbook_text": "Window default 90 days either side. Flag where the decline is below threshold.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "window",
+    "decline_threshold"
+   ]
+  },
+  "ITSM-075": {
+   "workbook_text": "Similarity threshold default 0.8, minimum cluster size 2",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "similarity",
+    "min_cluster_size"
+   ]
+  },
+  "ITSM-076": {
+   "workbook_text": "Window default 90 days",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "window"
+   ]
+  },
+  "ITSM-077": {
+   "workbook_text": "Report distribution, not a single threshold",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-078": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-079": {
+   "workbook_text": "Default threshold 20%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-080": {
+   "workbook_text": "Default threshold 20% of changes as standard for a mature estate",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-081": {
+   "workbook_text": "Any type with non-zero volume",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-082": {
+   "workbook_text": "Window default 90 days",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "window"
+   ]
+  },
+  "ITSM-083": {
+   "workbook_text": "Default 80% in one risk value",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "dominance_share"
+   ]
+  },
+  "ITSM-084": {
+   "workbook_text": "Report both cases; the second is ITSM-138",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-085": {
+   "workbook_text": "Any absence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-086": {
+   "workbook_text": "Flag where emergency approval burden is not materially lighter",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-087": {
+   "workbook_text": "Any model permitting evidenceless closure",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-088": {
+   "workbook_text": "Active delegation records only",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-089": {
+   "workbook_text": "Review period from policy; default 12 months",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "review_period"
+   ]
+  },
+  "ITSM-090": {
+   "workbook_text": "Population threshold default 80%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "population_threshold"
+   ]
+  },
+  "ITSM-091": {
+   "workbook_text": "Any custom type with non-zero volume",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "standard_types"
+   ]
+  },
+  "ITSM-092": {
+   "workbook_text": "Risk bands configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "risk_bands"
+   ]
+  },
+  "ITSM-093": {
+   "workbook_text": "Access threshold where log data is available",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-094": {
+   "workbook_text": "Default threshold 30%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-095": {
+   "workbook_text": "Report the two cases separately",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-096": {
+   "workbook_text": "Any occurrence; report by type and risk band",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-097": {
+   "workbook_text": "Any occurrence; escalate for high-risk and production changes",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-098": {
+   "workbook_text": "Risk bands configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "risk_bands"
+   ]
+  },
+  "ITSM-099": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-100": {
+   "workbook_text": "Report the two cases separately; the second feeds ITSM-108",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-101": {
+   "workbook_text": "Active membership resolved live",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-102": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-103": {
+   "workbook_text": "Report the two cases separately",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-104": {
+   "workbook_text": "Volume threshold configurable relative to change volume",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "volume_share"
+   ]
+  },
+  "ITSM-105": {
+   "workbook_text": "Scope inference from change type and CI relationship depth",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "scope_depth"
+   ]
+  },
+  "ITSM-106": {
+   "workbook_text": "Scope to change-controlled object classes; correlation window configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "correlation_window",
+    "object_classes"
+   ]
+  },
+  "ITSM-107": {
+   "workbook_text": "Default threshold 10%. Escalate above 25%.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold",
+    "escalate_at"
+   ]
+  },
+  "ITSM-108": {
+   "workbook_text": "Correlation against CI audit where available; otherwise against actual start field",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-109": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-110": {
+   "workbook_text": "Authority matrix from the customer's own delegation policy",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "authority_matrix"
+   ]
+  },
+  "ITSM-111": {
+   "workbook_text": "Tolerance configurable, default 1 hour",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "tolerance"
+   ]
+  },
+  "ITSM-112": {
+   "workbook_text": "Requires blackout windows to be defined; report ITSM-085 where they are not",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-113": {
+   "workbook_text": "Default threshold 90%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-114": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "backout_task_type"
+   ]
+  },
+  "ITSM-115": {
+   "workbook_text": "Window default 72 hours. CI correlation includes dependent CIs where relationships exist.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "window",
+    "dependency_depth"
+   ]
+  },
+  "ITSM-116": {
+   "workbook_text": "Default threshold 120 seconds. Report the distribution, not only the outliers.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-117": {
+   "workbook_text": "Template scope from the template definition",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-118": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-119": {
+   "workbook_text": "All three absent",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-120": {
+   "workbook_text": "Default 3 reschedules",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "reschedules"
+   ]
+  },
+  "ITSM-121": {
+   "workbook_text": "Default 25% of total approvals",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "share"
+   ]
+  },
+  "ITSM-122": {
+   "workbook_text": "Risk bands requiring PIR configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "risk_bands"
+   ]
+  },
+  "ITSM-123": {
+   "workbook_text": "Window default 72 hours. Dependent CI traversal depth default 2.",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "window",
+    "depth"
+   ]
+  },
+  "ITSM-124": {
+   "workbook_text": "Same window and traversal parameters as ITSM-123",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-125": {
+   "workbook_text": "Default 3 occurrences",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "occurrences"
+   ]
+  },
+  "ITSM-126": {
+   "workbook_text": "Traversal depth configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "depth",
+    "critical_values"
+   ]
+  },
+  "ITSM-127": {
+   "workbook_text": "Requires freeze periods to be defined",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "freeze_schedule_type"
+   ]
+  },
+  "ITSM-128": {
+   "workbook_text": "Close code set configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "close_codes"
+   ]
+  },
+  "ITSM-129": {
+   "workbook_text": "Per-process thresholds; fires only when all three breach",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "problem_reference_threshold"
+   ]
+  },
+  "ITSM-130": {
+   "workbook_text": "Default threshold 25%",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "threshold"
+   ]
+  },
+  "ITSM-131": {
+   "workbook_text": "Depth threshold configurable",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "depth_threshold"
+   ]
+  },
+  "ITSM-132": {
+   "workbook_text": "Requires the ITOM cause to be identified; links to ITOM-147",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-133": {
+   "workbook_text": "Volume threshold relative to the service population",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "volume_threshold"
+   ]
+  },
+  "ITSM-134": {
+   "workbook_text": "Active membership resolved live",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-135": {
+   "workbook_text": "Dominance threshold configurable; requires minimum incident volume per CI",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": [
+    "dominance_share",
+    "minimum_volume_per_ci"
+   ]
+  },
+  "ITSM-136": {
+   "workbook_text": "Includes free-text and legacy service fields where present",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-137": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-138": {
+   "workbook_text": "Requires evidence that conflicts existed to be found",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  },
+  "ITSM-139": {
+   "workbook_text": "Any occurrence",
+   "status": "DECLARED",
+   "declared_in": "health/rules/itsm/parameters.json",
+   "parameters": []
+  }
+ }
+}

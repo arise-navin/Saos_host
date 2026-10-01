@@ -1,0 +1,6810 @@
+{
+ "map_version": "1.0.0",
+ "phase": "Health Assist Phase 6",
+ "catalogue": "platform",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "rule_count": 183,
+ "vocabularies": {
+  "archetypes": {
+   "record_predicate": "Per-record field-state or timestamp predicate on one task table",
+   "aggregate_distribution": "Count, ratio, share, distribution, dominance or trend over a slice, judged against a threshold",
+   "configuration_inspection": "Reads platform configuration objects and compares them with usage",
+   "reference_integrity": "A reference field must resolve to an existing, active or valid-state target",
+   "cross_record_linkage": "Existence or state of RELATED records in another ITSM table (incident↔problem↔change↔KB, approvals, tasks)",
+   "relationship_graph": "Needs the CMDB relationship graph: degree, traversal to a service, dependent CIs",
+   "audit_history": "Needs sys_audit, journal or task_sla event history to reconstruct transitions or timing",
+   "text_analysis": "Similarity, clustering, normalised-frequency, semantic consistency or pattern (regex) analysis over free text",
+   "temporal_correlation": "Correlates events across records or tables by CI and time window",
+   "composite": "Derives from other rules’ outputs or needs three or more distinct mechanisms in sequence"
+  },
+  "engines": {
+   "record_predicate": "Record Predicate Engine",
+   "aggregate": "Aggregate & Distribution Engine",
+   "configuration": "Configuration Inspection Engine",
+   "reference_integrity": "Reference Integrity Engine",
+   "linkage": "Cross-Record Linkage Engine",
+   "relationship_graph": "Relationship Graph Engine",
+   "audit_history": "Audit & Journal History Engine",
+   "text_analysis": "Text Analysis Engine",
+   "temporal_correlation": "Temporal Correlation Engine",
+   "composite": "Composite / Rule-Dependency Engine"
+  },
+  "archetype_to_engine": {
+   "record_predicate": "record_predicate",
+   "aggregate_distribution": "aggregate",
+   "configuration_inspection": "configuration",
+   "reference_integrity": "reference_integrity",
+   "cross_record_linkage": "linkage",
+   "relationship_graph": "relationship_graph",
+   "audit_history": "audit_history",
+   "text_analysis": "text_analysis",
+   "temporal_correlation": "temporal_correlation",
+   "composite": "composite"
+  },
+  "products": {
+   "sla_engineering": "SLA engineering (definitions, runtime, commitment linkage)",
+   "server_logic": "Server-side logic (business rules, script includes)",
+   "client_logic": "Client and form logic (client scripts, UI and data policies)",
+   "automation": "Flows, workflows and automation",
+   "jobs_events": "Scheduled jobs and events",
+   "access_security": "ACLs, roles and access",
+   "integrations": "Integrations and inbound",
+   "customisation_debt": "Customisation and upgrade debt",
+   "performance": "Performance and platform health"
+  },
+  "states": {
+   "executable": "runs once its tables are verified on the instance",
+   "unconfigured": "runs once a threshold the workbook leaves open is set",
+   "undefined": "the workbook leaves part of the detection undefined",
+   "specification_gap": "the workbook does not say enough to evaluate deterministically",
+   "object_unverified": "needs a platform object whose table is not established",
+   "not_built": "fully defined; evaluator not built in this stage",
+   "equivalent": "the same condition as another module's rule, evaluated there",
+   "derived": "the measure IS the module score (Phase 9, CSDM-072)"
+  }
+ },
+ "conventions": {
+  "tables": "the candidate tables a read-only instance validation found present and readable (rules/platform/instance-validation.json). Every table a config reads is also in its requires_tables, which the runner verifies on EACH instance before any read.",
+  "verified_on": "techsnitchpvtltddemo2.service-now.com 2026-09-27",
+  "product": "from the workbook overlay: the Platform area (profile dimension) the rule scores in"
+ },
+ "entries": [
+  {
+   "slot": 1,
+   "rule_id": "PLT-001",
+   "excel_row": 2,
+   "group": "1A. Definition and design",
+   "base_severity": "Systemic",
+   "rule": "SLA definitions with no schedule attached (24x7 applied unintentionally)",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 2,
+   "rule_id": "PLT-002",
+   "excel_row": 3,
+   "group": "1A. Definition and design",
+   "base_severity": "Systemic",
+   "rule": "Priority bands with no SLA definition at all",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "incident"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-003",
+   "notes": "The same condition as ITSM-003 Ownership OWN-003 is AGREED with ITSM-003 as owner (D-025): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  {
+   "slot": 3,
+   "rule_id": "PLT-003",
+   "excel_row": 4,
+   "group": "1A. Definition and design",
+   "base_severity": "Systemic",
+   "rule": "SLA definitions where start, pause and stop conditions can never be simultaneously satisfiable",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 4,
+   "rule_id": "PLT-004",
+   "excel_row": 5,
+   "group": "1A. Definition and design",
+   "base_severity": "Systemic",
+   "rule": "Overlapping SLA definitions attaching multiple SLAs to the same record",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.name",
+    "contract_sla.type",
+    "task_sla.active",
+    "task_sla.sla",
+    "task_sla.task"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 5,
+   "rule_id": "PLT-005",
+   "excel_row": 6,
+   "group": "1A. Definition and design",
+   "base_severity": "Critical",
+   "rule": "SLA definition inactive but still referenced by a commitment or offering",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "service_commitment.name",
+    "service_commitment.sla"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 6,
+   "rule_id": "PLT-006",
+   "excel_row": 7,
+   "group": "1A. Definition and design",
+   "base_severity": "Critical",
+   "rule": "Start condition matching on insert only, missing records that qualify later",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 7,
+   "rule_id": "PLT-007",
+   "excel_row": 8,
+   "group": "1A. Definition and design",
+   "base_severity": "Critical",
+   "rule": "Stop condition not covering all resolution or closure states",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.collection",
+    "contract_sla.name",
+    "contract_sla.stop_condition"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 8,
+   "rule_id": "PLT-008",
+   "excel_row": 9,
+   "group": "1A. Definition and design",
+   "base_severity": "Critical",
+   "rule": "Pause condition with no corresponding resume path (SLA pauses permanently)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 9,
+   "rule_id": "PLT-009",
+   "excel_row": 10,
+   "group": "1A. Definition and design",
+   "base_severity": "Critical",
+   "rule": "Duration defined in calendar time where business time was intended",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 10,
+   "rule_id": "PLT-010",
+   "excel_row": 11,
+   "group": "1A. Definition and design",
+   "base_severity": "High",
+   "rule": "Retroactive start not configured where the process requires it",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 11,
+   "rule_id": "PLT-011",
+   "excel_row": 12,
+   "group": "1A. Definition and design",
+   "base_severity": "Critical",
+   "rule": "SLA workflow attached but never executing",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "sys_flow_context",
+    "wf_context"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "sys_flow_context",
+    "wf_context"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 12,
+   "rule_id": "PLT-012",
+   "excel_row": 13,
+   "group": "1A. Definition and design",
+   "base_severity": "High",
+   "rule": "SLA definition with no notification or escalation at breach threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.flow",
+    "contract_sla.name",
+    "contract_sla.workflow"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 13,
+   "rule_id": "PLT-013",
+   "excel_row": 14,
+   "group": "1A. Definition and design",
+   "base_severity": "High",
+   "rule": "Duplicate SLA definitions differing only in name",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.cancel_condition",
+    "contract_sla.collection",
+    "contract_sla.duration",
+    "contract_sla.duration_type",
+    "contract_sla.name",
+    "contract_sla.pause_condition",
+    "contract_sla.relative_duration_works_on",
+    "contract_sla.reset_condition",
+    "contract_sla.schedule",
+    "contract_sla.start_condition",
+    "contract_sla.stop_condition",
+    "contract_sla.target",
+    "contract_sla.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 14,
+   "rule_id": "PLT-014",
+   "excel_row": 15,
+   "group": "1A. Definition and design",
+   "base_severity": "Critical",
+   "rule": "SLA conditions referencing fields that no longer exist or have been renamed",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "sys_dictionary"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "sys_dictionary"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.cancel_condition",
+    "contract_sla.collection",
+    "contract_sla.name",
+    "contract_sla.pause_condition",
+    "contract_sla.reset_condition",
+    "contract_sla.resume_condition",
+    "contract_sla.start_condition",
+    "contract_sla.stop_condition"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 15,
+   "rule_id": "PLT-015",
+   "excel_row": 16,
+   "group": "1A. Definition and design",
+   "base_severity": "High",
+   "rule": "Timezone handling inconsistent between schedule and duration",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 16,
+   "rule_id": "PLT-016",
+   "excel_row": 17,
+   "group": "1A. Definition and design",
+   "base_severity": "Moderate",
+   "rule": "SLA definition never reviewed since creation date",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 17,
+   "rule_id": "PLT-017",
+   "excel_row": 18,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "Critical",
+   "rule": "Task SLA records stuck in In Progress beyond maximum possible duration",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "sla_engineering",
+   "tables": [
+    "cmn_schedule",
+    "contract_sla",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "cmn_schedule",
+    "contract_sla",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "task_sla.has_breached",
+    "task_sla.planned_end_time",
+    "task_sla.sla",
+    "task_sla.stage",
+    "task_sla.task"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 18,
+   "rule_id": "PLT-018",
+   "excel_row": 19,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "Critical",
+   "rule": "High volume of SLA records in Cancelled state (conditions misfiring)",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "task_sla.sla",
+    "task_sla.stage"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 19,
+   "rule_id": "PLT-019",
+   "excel_row": 20,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "Critical",
+   "rule": "SLA attached to records it should not apply to",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 20,
+   "rule_id": "PLT-020",
+   "excel_row": 21,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "Critical",
+   "rule": "Records that should carry an SLA carrying none",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.collection",
+    "contract_sla.name",
+    "contract_sla.start_condition",
+    "task_sla.sla",
+    "task_sla.task"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 21,
+   "rule_id": "PLT-021",
+   "excel_row": 22,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "Critical",
+   "rule": "Pause duration exceeding active duration at scale (gaming or misconfiguration)",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "sla_engineering",
+   "tables": [
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "task_sla.duration",
+    "task_sla.pause_duration",
+    "task_sla.sla"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 22,
+   "rule_id": "PLT-022",
+   "excel_row": 23,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "High",
+   "rule": "SLA repair or recalculation jobs run manually and frequently",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 23,
+   "rule_id": "PLT-023",
+   "excel_row": 24,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "High",
+   "rule": "task\\_sla table growth disproportionate to task volume",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 24,
+   "rule_id": "PLT-024",
+   "excel_row": 25,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "High",
+   "rule": "SLA breach notifications firing to inactive users or empty groups",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "sysevent_email_action"
+   ],
+   "candidate_tables": [
+    "sysevent_email_action"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-011",
+   "notes": "The same condition as ITSM-011 Ownership OWN-010 is AGREED with ITSM-011 as owner (D-025): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  {
+   "slot": 25,
+   "rule_id": "PLT-025",
+   "excel_row": 26,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "High",
+   "rule": "SLA percentage calculation producing values outside expected range",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "task_sla.percentage",
+    "task_sla.sla"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 26,
+   "rule_id": "PLT-026",
+   "excel_row": 27,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "Moderate",
+   "rule": "SLA attached to closed records still updating",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "task",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "task",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 27,
+   "rule_id": "PLT-027",
+   "excel_row": 28,
+   "group": "1B. Runtime behaviour",
+   "base_severity": "Moderate",
+   "rule": "Orphaned task\\_sla records pointing to deleted tasks",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "task",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "task",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "task_sla.sla",
+    "task_sla.task"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 28,
+   "rule_id": "PLT-028",
+   "excel_row": 29,
+   "group": "1C. Commitment linkage",
+   "base_severity": "Systemic",
+   "rule": "Service offerings with commitments but no underlying SLA definition",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "service_commitment.name",
+    "service_commitment.sla",
+    "service_commitment.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 29,
+   "rule_id": "PLT-029",
+   "excel_row": 30,
+   "group": "1C. Commitment linkage",
+   "base_severity": "Systemic",
+   "rule": "SLA definitions not traceable to any service commitment (unaccountable targets)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.name",
+    "contract_sla.service_commitment",
+    "service_commitment.sla"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 30,
+   "rule_id": "PLT-030",
+   "excel_row": 31,
+   "group": "1C. Commitment linkage",
+   "base_severity": "Critical",
+   "rule": "Commitment targets inconsistent with the SLA duration configured to enforce them",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "sla_engineering",
+   "tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.duration",
+    "contract_sla.name",
+    "contract_sla.schedule",
+    "service_commitment.name",
+    "service_commitment.schedule",
+    "service_commitment.sla",
+    "service_commitment.time_amount"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 31,
+   "rule_id": "PLT-031",
+   "excel_row": 32,
+   "group": "1C. Commitment linkage",
+   "base_severity": "Critical",
+   "rule": "Business Critical services with no SLA coverage on any priority",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "cmdb_ci_service",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.busines_criticality",
+    "cmdb_ci_service.name",
+    "task_sla.task"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 32,
+   "rule_id": "PLT-032",
+   "excel_row": 33,
+   "group": "1C. Commitment linkage",
+   "base_severity": "Critical",
+   "rule": "SLA reporting based on a different definition than the one contractually committed",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "sla_engineering",
+   "tables": [
+    "sys_report"
+   ],
+   "candidate_tables": [
+    "sys_report"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 33,
+   "rule_id": "PLT-033",
+   "excel_row": 34,
+   "group": "2A. Design and placement",
+   "base_severity": "Systemic",
+   "rule": "Business rules on high-volume tables with no condition (fire on every operation)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 34,
+   "rule_id": "PLT-034",
+   "excel_row": 35,
+   "group": "2A. Design and placement",
+   "base_severity": "Systemic",
+   "rule": "current.update() inside a before rule",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_script.when",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 35,
+   "rule_id": "PLT-035",
+   "excel_row": 36,
+   "group": "2A. Design and placement",
+   "base_severity": "Systemic",
+   "rule": "GlideRecord query inside a loop",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_script_include",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_script_include",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_script_include.active",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 36,
+   "rule_id": "PLT-036",
+   "excel_row": 37,
+   "group": "2A. Design and placement",
+   "base_severity": "Systemic",
+   "rule": "Synchronous processing that should be asynchronous (before/after where async fits)",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 37,
+   "rule_id": "PLT-037",
+   "excel_row": 38,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Business rules on task or cmdb\\_ci base table cascading to all children",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_db_object",
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_db_object",
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.collection",
+    "sys_script.name",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 38,
+   "rule_id": "PLT-038",
+   "excel_row": 39,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Rule with no condition and no filter, running on insert and update",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.action_insert",
+    "sys_script.action_update",
+    "sys_script.active",
+    "sys_script.condition",
+    "sys_script.filter_condition",
+    "sys_script.name",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 39,
+   "rule_id": "PLT-039",
+   "excel_row": 40,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Query with no setLimit on an unbounded table",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_script_include",
+    "sysauto_script"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_script_include",
+    "sysauto_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_script_include.active",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 40,
+   "rule_id": "PLT-040",
+   "excel_row": 41,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Nested GlideRecord traversal beyond two levels",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 41,
+   "rule_id": "PLT-041",
+   "excel_row": 42,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Rule ordering causing dependent rules to execute before their prerequisite",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script.action_insert",
+    "sys_script.action_update",
+    "sys_script.active",
+    "sys_script.collection",
+    "sys_script.condition",
+    "sys_script.name",
+    "sys_script.order",
+    "sys_script.script",
+    "sys_script.when",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 42,
+   "rule_id": "PLT-042",
+   "excel_row": 43,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Display rules performing writes",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_script.when",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 43,
+   "rule_id": "PLT-043",
+   "excel_row": 44,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Business rule duplicating logic already in a flow, workflow, or another rule",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_hub_flow",
+    "sys_script",
+    "wf_workflow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow",
+    "sys_script",
+    "wf_workflow"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 44,
+   "rule_id": "PLT-044",
+   "excel_row": 45,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Rule using setWorkflow(false) to suppress downstream logic without justification",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 45,
+   "rule_id": "PLT-045",
+   "excel_row": 46,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Recursive rule triggering itself through its own update",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script.action_update",
+    "sys_script.active",
+    "sys_script.collection",
+    "sys_script.condition",
+    "sys_script.filter_condition",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_script.when",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 46,
+   "rule_id": "PLT-046",
+   "excel_row": 47,
+   "group": "2A. Design and placement",
+   "base_severity": "High",
+   "rule": "Rule with hardcoded sys\\_ids",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 47,
+   "rule_id": "PLT-047",
+   "excel_row": 48,
+   "group": "2A. Design and placement",
+   "base_severity": "Systemic",
+   "rule": "Rule with hardcoded credentials, endpoints or tokens",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 48,
+   "rule_id": "PLT-048",
+   "excel_row": 49,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "gs.sleep() or synchronous wait in a rule",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 49,
+   "rule_id": "PLT-049",
+   "excel_row": 50,
+   "group": "2A. Design and placement",
+   "base_severity": "Critical",
+   "rule": "Rule performing an outbound HTTP call synchronously",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_script.when",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 50,
+   "rule_id": "PLT-050",
+   "excel_row": 51,
+   "group": "2A. Design and placement",
+   "base_severity": "Moderate",
+   "rule": "Rule with empty or commented-out script body but still active",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.name",
+    "sys_script.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 51,
+   "rule_id": "PLT-051",
+   "excel_row": 52,
+   "group": "2A. Design and placement",
+   "base_severity": "Low",
+   "rule": "Rule with no description",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.active",
+    "sys_script.description",
+    "sys_script.name",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 52,
+   "rule_id": "PLT-052",
+   "excel_row": 53,
+   "group": "2B. Execution and impact",
+   "base_severity": "Systemic",
+   "rule": "Rules contributing measurably to slow transactions, ranked by total time",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_pattern"
+   ],
+   "candidate_tables": [
+    "sys_script_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_pattern.average",
+    "sys_script_pattern.count",
+    "sys_script_pattern.script_source",
+    "sys_script_pattern.script_source_table",
+    "sys_script_pattern.total"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 53,
+   "rule_id": "PLT-053",
+   "excel_row": 54,
+   "group": "2B. Execution and impact",
+   "base_severity": "Critical",
+   "rule": "Rule execution count disproportionate to table activity",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_audit",
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_audit",
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 54,
+   "rule_id": "PLT-054",
+   "excel_row": 55,
+   "group": "2B. Execution and impact",
+   "base_severity": "Critical",
+   "rule": "Rules throwing errors in the log, by frequency",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "syslog"
+   ],
+   "candidate_tables": [
+    "syslog"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 55,
+   "rule_id": "PLT-055",
+   "excel_row": 56,
+   "group": "2B. Execution and impact",
+   "base_severity": "High",
+   "rule": "Rules on tables with high record volume and high update frequency",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 56,
+   "rule_id": "PLT-056",
+   "excel_row": 57,
+   "group": "2B. Execution and impact",
+   "base_severity": "Moderate",
+   "rule": "Rules active but with zero execution in the observation window",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 57,
+   "rule_id": "PLT-057",
+   "excel_row": 58,
+   "group": "2B. Execution and impact",
+   "base_severity": "Critical",
+   "rule": "Rules modified within the last N days correlating with performance degradation",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "syslog_transaction"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "syslog_transaction"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 58,
+   "rule_id": "PLT-058",
+   "excel_row": 59,
+   "group": "2C. Governance",
+   "base_severity": "Critical",
+   "rule": "Business rules created in global scope where a scoped app exists",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_scope",
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_scope",
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 59,
+   "rule_id": "PLT-059",
+   "excel_row": 60,
+   "group": "2C. Governance",
+   "base_severity": "Critical",
+   "rule": "Rules modifying OOB tables without a scoped application boundary",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_metadata_customization",
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_metadata_customization",
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name",
+    "sys_script.active",
+    "sys_script.collection",
+    "sys_script.name",
+    "sys_script.sys_scope"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 60,
+   "rule_id": "PLT-060",
+   "excel_row": 61,
+   "group": "2C. Governance",
+   "base_severity": "Systemic",
+   "rule": "Rules created directly in production (no update set lineage)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 61,
+   "rule_id": "PLT-061",
+   "excel_row": 62,
+   "group": "2C. Governance",
+   "base_severity": "High",
+   "rule": "Rules with no owner, or owner is an inactive user",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script.name",
+    "sys_script.sys_created_by",
+    "sys_update_xml.name",
+    "sys_user.active",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 62,
+   "rule_id": "PLT-062",
+   "excel_row": 63,
+   "group": "2C. Governance",
+   "base_severity": "High",
+   "rule": "Rules with no linked change record",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "change_request",
+    "sys_update_set"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "sys_update_set"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 63,
+   "rule_id": "PLT-063",
+   "excel_row": 64,
+   "group": "2C. Governance",
+   "base_severity": "Critical",
+   "rule": "Rules overriding OOB rules of the same name",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_metadata_customization",
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_metadata_customization",
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name",
+    "sys_script.collection",
+    "sys_script.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 64,
+   "rule_id": "PLT-064",
+   "excel_row": 65,
+   "group": "2C. Governance",
+   "base_severity": "Moderate",
+   "rule": "Rule count growth trend per table",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script"
+   ],
+   "candidate_tables": [
+    "sys_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script.active",
+    "sys_script.collection",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 65,
+   "rule_id": "PLT-065",
+   "excel_row": 66,
+   "group": "3A. Script Includes",
+   "base_severity": "Systemic",
+   "rule": "Client-callable Script Includes with no ACL protection",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include",
+    "sys_security_acl",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script_include",
+    "sys_security_acl",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_include.active",
+    "sys_script_include.api_name",
+    "sys_script_include.client_callable",
+    "sys_script_include.name",
+    "sys_security_acl.active",
+    "sys_security_acl.name",
+    "sys_security_acl.type",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 66,
+   "rule_id": "PLT-066",
+   "excel_row": 67,
+   "group": "3A. Script Includes",
+   "base_severity": "Critical",
+   "rule": "Script Include accessible from all application scopes unnecessarily",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include"
+   ],
+   "candidate_tables": [
+    "sys_script_include"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script.script",
+    "sys_script_client.script",
+    "sys_script_include.access",
+    "sys_script_include.active",
+    "sys_script_include.api_name",
+    "sys_script_include.client_callable",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_ui_action.script",
+    "sys_update_xml.name",
+    "sysauto_script.script"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 67,
+   "rule_id": "PLT-067",
+   "excel_row": 68,
+   "group": "3A. Script Includes",
+   "base_severity": "Systemic",
+   "rule": "Script Include with no access restriction performing privileged operations",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include"
+   ],
+   "candidate_tables": [
+    "sys_script_include"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 68,
+   "rule_id": "PLT-068",
+   "excel_row": 69,
+   "group": "3A. Script Includes",
+   "base_severity": "High",
+   "rule": "Duplicate Script Includes with near-identical logic",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include"
+   ],
+   "candidate_tables": [
+    "sys_script_include"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script_include.active",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 69,
+   "rule_id": "PLT-069",
+   "excel_row": 70,
+   "group": "3A. Script Includes",
+   "base_severity": "Moderate",
+   "rule": "Script Include never referenced by anything",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include"
+   ],
+   "candidate_tables": [
+    "sys_script_include"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script.script",
+    "sys_script_client.script",
+    "sys_script_include.active",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_ui_action.script",
+    "sys_update_xml.name",
+    "sysauto_script.script"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 70,
+   "rule_id": "PLT-070",
+   "excel_row": 71,
+   "group": "3A. Script Includes",
+   "base_severity": "Moderate",
+   "rule": "Script Include exceeding a size threshold (unmaintainable)",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script_include",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_include.active",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 71,
+   "rule_id": "PLT-071",
+   "excel_row": 72,
+   "group": "3A. Script Includes",
+   "base_severity": "High",
+   "rule": "Recursive or deeply nested include chains",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include"
+   ],
+   "candidate_tables": [
+    "sys_script_include"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_script_include.active",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 72,
+   "rule_id": "PLT-072",
+   "excel_row": 73,
+   "group": "3A. Script Includes",
+   "base_severity": "Systemic",
+   "rule": "Hardcoded credentials or endpoints",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script_include",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_include.active",
+    "sys_script_include.name",
+    "sys_script_include.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 73,
+   "rule_id": "PLT-073",
+   "excel_row": 74,
+   "group": "3A. Script Includes",
+   "base_severity": "High",
+   "rule": "Script Include throwing uncaught exceptions",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_script_include",
+    "syslog"
+   ],
+   "candidate_tables": [
+    "sys_script_include",
+    "syslog"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 74,
+   "rule_id": "PLT-074",
+   "excel_row": 75,
+   "group": "3A. Script Includes",
+   "base_severity": "Critical",
+   "rule": "Overriding an OOB Script Include",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "server_logic",
+   "tables": [
+    "sys_metadata_customization",
+    "sys_script_include"
+   ],
+   "candidate_tables": [
+    "sys_metadata_customization",
+    "sys_script_include"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name",
+    "sys_script_include.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 75,
+   "rule_id": "PLT-075",
+   "excel_row": 76,
+   "group": "3B. Client Scripts",
+   "base_severity": "Systemic",
+   "rule": "Synchronous GlideAjax or getReference without callback",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_client.active",
+    "sys_script_client.name",
+    "sys_script_client.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 76,
+   "rule_id": "PLT-076",
+   "excel_row": 77,
+   "group": "3B. Client Scripts",
+   "base_severity": "Critical",
+   "rule": "DOM manipulation (document.getElementById, jQuery)",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_client.active",
+    "sys_script_client.name",
+    "sys_script_client.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 77,
+   "rule_id": "PLT-077",
+   "excel_row": 78,
+   "group": "3B. Client Scripts",
+   "base_severity": "Critical",
+   "rule": "Client script running on load performing server round-trips",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_client.active",
+    "sys_script_client.name",
+    "sys_script_client.script",
+    "sys_script_client.type",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 78,
+   "rule_id": "PLT-078",
+   "excel_row": 79,
+   "group": "3B. Client Scripts",
+   "base_severity": "High",
+   "rule": "Client script duplicating logic available in a UI Policy",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client"
+   ],
+   "candidate_tables": [
+    "sys_script_client"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 79,
+   "rule_id": "PLT-079",
+   "excel_row": 80,
+   "group": "3B. Client Scripts",
+   "base_severity": "High",
+   "rule": "Multiple onChange scripts on the same field",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client"
+   ],
+   "candidate_tables": [
+    "sys_script_client"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_client.active",
+    "sys_script_client.field",
+    "sys_script_client.name",
+    "sys_script_client.table",
+    "sys_script_client.type",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 80,
+   "rule_id": "PLT-080",
+   "excel_row": 81,
+   "group": "3B. Client Scripts",
+   "base_severity": "High",
+   "rule": "Client script with no condition, running on every form load",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_script_client",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_client.active",
+    "sys_script_client.condition",
+    "sys_script_client.name",
+    "sys_script_client.type",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 81,
+   "rule_id": "PLT-081",
+   "excel_row": 82,
+   "group": "3B. Client Scripts",
+   "base_severity": "Moderate",
+   "rule": "Client script referencing fields not present on the form",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client",
+    "sys_ui_section"
+   ],
+   "candidate_tables": [
+    "sys_script_client",
+    "sys_ui_section"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_properties.name",
+    "sys_script_client.active",
+    "sys_script_client.field",
+    "sys_script_client.name",
+    "sys_script_client.script",
+    "sys_script_client.table",
+    "sys_script_client.type",
+    "sys_ui_element.element",
+    "sys_ui_element.sys_ui_section",
+    "sys_ui_section.name",
+    "sys_ui_section.view",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 82,
+   "rule_id": "PLT-082",
+   "excel_row": 83,
+   "group": "3B. Client Scripts",
+   "base_severity": "High",
+   "rule": "Client script not compatible with the current UI framework",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "client_logic",
+   "tables": [
+    "sys_script_client"
+   ],
+   "candidate_tables": [
+    "sys_script_client"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 83,
+   "rule_id": "PLT-083",
+   "excel_row": 84,
+   "group": "3B. Client Scripts",
+   "base_severity": "Systemic",
+   "rule": "Client-side validation with no matching server-side enforcement",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_data_policy2",
+    "sys_script_client"
+   ],
+   "candidate_tables": [
+    "sys_data_policy2",
+    "sys_script_client"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_data_policy_rule.disabled",
+    "sys_data_policy_rule.field",
+    "sys_data_policy_rule.mandatory",
+    "sys_data_policy_rule.table",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_properties.name",
+    "sys_script.active",
+    "sys_script.collection",
+    "sys_script.script",
+    "sys_script.when",
+    "sys_script_client.active",
+    "sys_script_client.name",
+    "sys_script_client.script",
+    "sys_script_client.table",
+    "sys_script_client.type",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 84,
+   "rule_id": "PLT-084",
+   "excel_row": 85,
+   "group": "3C. UI Policies and Data Policies",
+   "base_severity": "Systemic",
+   "rule": "UI Policy enforcing mandatory fields with no corresponding Data Policy (API bypass)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "client_logic",
+   "tables": [
+    "sys_data_policy_rule",
+    "sys_ui_policy_action"
+   ],
+   "candidate_tables": [
+    "sys_data_policy_rule",
+    "sys_ui_policy_action"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_data_policy_rule.field",
+    "sys_data_policy_rule.mandatory",
+    "sys_data_policy_rule.table",
+    "sys_ui_policy_action.field",
+    "sys_ui_policy_action.mandatory",
+    "sys_ui_policy_action.table",
+    "sys_ui_policy_action.ui_policy",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 85,
+   "rule_id": "PLT-085",
+   "excel_row": 86,
+   "group": "3C. UI Policies and Data Policies",
+   "base_severity": "Critical",
+   "rule": "Conflicting UI Policies on the same field",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_ui_policy_action"
+   ],
+   "candidate_tables": [
+    "sys_ui_policy_action"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_ui_policy.active",
+    "sys_ui_policy.conditions",
+    "sys_ui_policy.global",
+    "sys_ui_policy.short_description",
+    "sys_ui_policy.table",
+    "sys_ui_policy.ui_type",
+    "sys_ui_policy.view",
+    "sys_ui_policy_action.disabled",
+    "sys_ui_policy_action.field",
+    "sys_ui_policy_action.mandatory",
+    "sys_ui_policy_action.ui_policy",
+    "sys_ui_policy_action.visible"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 86,
+   "rule_id": "PLT-086",
+   "excel_row": 87,
+   "group": "3C. UI Policies and Data Policies",
+   "base_severity": "Critical",
+   "rule": "Data Policy not applied to import sets or web services where it should be",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_data_policy2",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_data_policy2",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_data_policy2.active",
+    "sys_data_policy2.apply_import_set",
+    "sys_data_policy2.apply_soap",
+    "sys_data_policy2.short_description",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 87,
+   "rule_id": "PLT-087",
+   "excel_row": 88,
+   "group": "3C. UI Policies and Data Policies",
+   "base_severity": "Moderate",
+   "rule": "UI Policy with a script where declarative configuration suffices",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "client_logic",
+   "tables": [
+    "sys_ui_policy"
+   ],
+   "candidate_tables": [
+    "sys_ui_policy"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 88,
+   "rule_id": "PLT-088",
+   "excel_row": 89,
+   "group": "3C. UI Policies and Data Policies",
+   "base_severity": "Moderate",
+   "rule": "UI Policy with no condition",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "client_logic",
+   "tables": [
+    "sys_ui_policy",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_ui_policy",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_ui_policy.active",
+    "sys_ui_policy.conditions",
+    "sys_ui_policy.short_description",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 89,
+   "rule_id": "PLT-089",
+   "excel_row": 90,
+   "group": "3C. UI Policies and Data Policies",
+   "base_severity": "Critical",
+   "rule": "Data Policy inactive but relied upon by process documentation",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "client_logic",
+   "tables": [
+    "sys_data_policy2"
+   ],
+   "candidate_tables": [
+    "sys_data_policy2"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 90,
+   "rule_id": "PLT-090",
+   "excel_row": 91,
+   "group": "3C. UI Policies and Data Policies",
+   "base_severity": "High",
+   "rule": "Field mandatory in UI Policy but nullable in dictionary",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "client_logic",
+   "tables": [
+    "sys_data_policy_rule",
+    "sys_dictionary",
+    "sys_ui_policy_action"
+   ],
+   "candidate_tables": [
+    "sys_data_policy_rule",
+    "sys_dictionary",
+    "sys_ui_policy_action"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_data_policy_rule.field",
+    "sys_data_policy_rule.mandatory",
+    "sys_data_policy_rule.table",
+    "sys_dictionary.element",
+    "sys_dictionary.mandatory",
+    "sys_dictionary.name",
+    "sys_ui_policy_action.field",
+    "sys_ui_policy_action.mandatory",
+    "sys_ui_policy_action.table",
+    "sys_ui_policy_action.ui_policy",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 91,
+   "rule_id": "PLT-091",
+   "excel_row": 92,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Systemic",
+   "rule": "Three generations of automation (business rule, workflow, flow) performing the same function",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow",
+    "sys_script",
+    "wf_workflow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow",
+    "sys_script",
+    "wf_workflow"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 92,
+   "rule_id": "PLT-092",
+   "excel_row": 93,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Systemic",
+   "rule": "Legacy Workflow still active where Flow Designer equivalents exist",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow",
+    "wf_workflow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow",
+    "wf_workflow"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 93,
+   "rule_id": "PLT-093",
+   "excel_row": 94,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Systemic",
+   "rule": "Flows and workflows both triggering on the same table and condition",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow",
+    "wf_workflow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow",
+    "wf_workflow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_hub_flow.active",
+    "sys_hub_flow.internal_name",
+    "sys_hub_flow.master_snapshot",
+    "sys_hub_flow.name",
+    "sys_hub_flow.type",
+    "sys_hub_flow_snapshot.parent_flow",
+    "sys_hub_sub_flow_instance_v2.flow",
+    "sys_hub_sub_flow_instance_v2.subflow",
+    "sys_hub_trigger_instance_v2.flow",
+    "sys_hub_trigger_instance_v2.trigger_inputs",
+    "sys_hub_trigger_instance_v2.trigger_type",
+    "sys_properties.name",
+    "wf_workflow_version.active",
+    "wf_workflow_version.condition",
+    "wf_workflow_version.name",
+    "wf_workflow_version.published",
+    "wf_workflow_version.table"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 94,
+   "rule_id": "PLT-094",
+   "excel_row": 95,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Critical",
+   "rule": "Flow with no error handling path",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_hub_flow.active",
+    "sys_hub_flow.internal_name",
+    "sys_hub_flow.master_snapshot",
+    "sys_hub_flow.name",
+    "sys_hub_flow.type",
+    "sys_hub_flow_logic_definition.type",
+    "sys_hub_flow_logic_instance_v2.flow",
+    "sys_hub_flow_logic_instance_v2.logic_definition",
+    "sys_hub_flow_snapshot.parent_flow",
+    "sys_hub_sub_flow_instance_v2.flow",
+    "sys_hub_sub_flow_instance_v2.subflow",
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name",
+    "sys_properties.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 95,
+   "rule_id": "PLT-095",
+   "excel_row": 96,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Critical",
+   "rule": "Flow referencing a deleted or inactive object",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_hub_action_instance_v2.action_type",
+    "sys_hub_action_instance_v2.flow",
+    "sys_hub_action_type_definition.active",
+    "sys_hub_action_type_snapshot.parent_action",
+    "sys_hub_flow.active",
+    "sys_hub_flow.internal_name",
+    "sys_hub_flow.master_snapshot",
+    "sys_hub_flow.name",
+    "sys_hub_flow.type",
+    "sys_hub_flow_snapshot.parent_flow",
+    "sys_hub_sub_flow_instance_v2.flow",
+    "sys_hub_sub_flow_instance_v2.subflow",
+    "sys_properties.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 96,
+   "rule_id": "PLT-096",
+   "excel_row": 97,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Critical",
+   "rule": "Flow stuck in an executing state beyond threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "automation",
+   "tables": [
+    "sys_flow_context"
+   ],
+   "candidate_tables": [
+    "sys_flow_context"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_flow_context.flow",
+    "sys_flow_context.name",
+    "sys_flow_context.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 97,
+   "rule_id": "PLT-097",
+   "excel_row": 98,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Critical",
+   "rule": "Flow execution failure rate above threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "automation",
+   "tables": [
+    "sys_flow_context"
+   ],
+   "candidate_tables": [
+    "sys_flow_context"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_flow_context.flow",
+    "sys_flow_context.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 98,
+   "rule_id": "PLT-098",
+   "excel_row": 99,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Critical",
+   "rule": "Flow triggered on every insert with no condition",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 99,
+   "rule_id": "PLT-099",
+   "excel_row": 100,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Critical",
+   "rule": "Subflow recursion",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_hub_flow.active",
+    "sys_hub_flow.internal_name",
+    "sys_hub_flow.master_snapshot",
+    "sys_hub_flow.name",
+    "sys_hub_flow.type",
+    "sys_hub_flow_snapshot.parent_flow",
+    "sys_hub_sub_flow_instance_v2.flow",
+    "sys_hub_sub_flow_instance_v2.subflow",
+    "sys_properties.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 100,
+   "rule_id": "PLT-100",
+   "excel_row": 101,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Systemic",
+   "rule": "Flow with hardcoded credentials or endpoints",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_hub_action_instance_v2.flow",
+    "sys_hub_action_instance_v2.values",
+    "sys_hub_flow.active",
+    "sys_hub_flow.internal_name",
+    "sys_hub_flow.master_snapshot",
+    "sys_hub_flow.name",
+    "sys_hub_flow.type",
+    "sys_hub_flow_snapshot.parent_flow",
+    "sys_hub_sub_flow_instance_v2.flow",
+    "sys_hub_sub_flow_instance_v2.subflow",
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name",
+    "sys_properties.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 101,
+   "rule_id": "PLT-101",
+   "excel_row": 102,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "High",
+   "rule": "Flow with no owner or inactive owner",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_hub_flow.name",
+    "sys_hub_flow.sys_created_by",
+    "sys_update_xml.name",
+    "sys_user.active",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 102,
+   "rule_id": "PLT-102",
+   "excel_row": 103,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Moderate",
+   "rule": "Orphaned flows with no trigger and no caller",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.flow",
+    "sc_cat_item.flow_designer_flow",
+    "sys_hub_flow.active",
+    "sys_hub_flow.internal_name",
+    "sys_hub_flow.master_snapshot",
+    "sys_hub_flow.name",
+    "sys_hub_flow.type",
+    "sys_hub_flow_snapshot.parent_flow",
+    "sys_hub_sub_flow_instance_v2.flow",
+    "sys_hub_sub_flow_instance_v2.subflow",
+    "sys_hub_trigger_instance_v2.flow",
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name",
+    "sys_properties.name",
+    "sys_script.script",
+    "sys_script_include.script",
+    "sys_ui_action.script",
+    "sys_ws_operation.operation_script",
+    "sysauto_script.script"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 103,
+   "rule_id": "PLT-103",
+   "excel_row": 104,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Moderate",
+   "rule": "Workflow versions accumulating without cleanup",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "wf_workflow_version"
+   ],
+   "candidate_tables": [
+    "wf_workflow_version"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "wf_workflow_version.workflow"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 104,
+   "rule_id": "PLT-104",
+   "excel_row": 105,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "Critical",
+   "rule": "Flow performing synchronous integration calls in a user-facing path",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "automation",
+   "tables": [
+    "sys_hub_flow"
+   ],
+   "candidate_tables": [
+    "sys_hub_flow"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 105,
+   "rule_id": "PLT-105",
+   "excel_row": 106,
+   "group": "Flows, Workflows and Automation",
+   "base_severity": "High",
+   "rule": "Long-running flow contexts accumulating in the context table",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "automation",
+   "tables": [
+    "sys_flow_context"
+   ],
+   "candidate_tables": [
+    "sys_flow_context"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_flow_context.state",
+    "sys_properties.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 106,
+   "rule_id": "PLT-106",
+   "excel_row": 107,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Systemic",
+   "rule": "Scheduled jobs overlapping their own next execution (never completing)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "jobs_events",
+   "tables": [
+    "sys_trigger",
+    "sysauto"
+   ],
+   "candidate_tables": [
+    "sys_trigger",
+    "sysauto"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_trigger.document_key",
+    "sys_trigger.processing_duration",
+    "sysauto.active",
+    "sysauto.name",
+    "sysauto.run_period",
+    "sysauto.run_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 107,
+   "rule_id": "PLT-107",
+   "excel_row": 108,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Systemic",
+   "rule": "Jobs clustered in the same window causing contention",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "jobs_events",
+   "tables": [
+    "sys_trigger",
+    "sysauto"
+   ],
+   "candidate_tables": [
+    "sys_trigger",
+    "sysauto"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 108,
+   "rule_id": "PLT-108",
+   "excel_row": 109,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "Job with a query that scans an unbounded table",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "jobs_events",
+   "tables": [
+    "sysauto_script"
+   ],
+   "candidate_tables": [
+    "sysauto_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "sys_update_xml.name",
+    "sysauto_script.active",
+    "sysauto_script.name",
+    "sysauto_script.script"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 109,
+   "rule_id": "PLT-109",
+   "excel_row": 110,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "Job execution duration trending upward toward its interval",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "jobs_events",
+   "tables": [
+    "sys_trigger"
+   ],
+   "candidate_tables": [
+    "sys_trigger"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 110,
+   "rule_id": "PLT-110",
+   "excel_row": 111,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "Job failing repeatedly with no alerting",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "jobs_events",
+   "tables": [
+    "sys_trigger"
+   ],
+   "candidate_tables": [
+    "sys_trigger"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_trigger.error_count",
+    "sys_trigger.name",
+    "sys_trigger.run_count"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 111,
+   "rule_id": "PLT-111",
+   "excel_row": 112,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "Job active but with no execution record",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "jobs_events",
+   "tables": [
+    "sys_trigger",
+    "sysauto"
+   ],
+   "candidate_tables": [
+    "sys_trigger",
+    "sysauto"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_trigger.document_key",
+    "sys_trigger.run_count",
+    "sysauto.active",
+    "sysauto.name",
+    "sysauto.run_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 112,
+   "rule_id": "PLT-112",
+   "excel_row": 113,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "Job performing record deletion with no archival",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "jobs_events",
+   "tables": [
+    "sys_update_xml",
+    "sysauto_script"
+   ],
+   "candidate_tables": [
+    "sys_update_xml",
+    "sysauto_script"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_update_xml.name",
+    "sysauto_script.active",
+    "sysauto_script.name",
+    "sysauto_script.script"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 113,
+   "rule_id": "PLT-113",
+   "excel_row": 114,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "High",
+   "rule": "Job with no owner or inactive owner",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "jobs_events",
+   "tables": [
+    "sys_user",
+    "sysauto"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sysauto"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_update_xml.name",
+    "sys_user.active",
+    "sys_user.user_name",
+    "sysauto.name",
+    "sysauto.sys_created_by"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 114,
+   "rule_id": "PLT-114",
+   "excel_row": 115,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Moderate",
+   "rule": "Job running more frequently than its output is consumed",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "jobs_events",
+   "tables": [
+    "sysauto"
+   ],
+   "candidate_tables": [
+    "sysauto"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 115,
+   "rule_id": "PLT-115",
+   "excel_row": 116,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "Event queue depth beyond threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "jobs_events",
+   "tables": [
+    "sysevent"
+   ],
+   "candidate_tables": [
+    "sysevent"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sysevent.name",
+    "sysevent.queue",
+    "sysevent.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 116,
+   "rule_id": "PLT-116",
+   "excel_row": 117,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Moderate",
+   "rule": "Events registered with no script action or notification consuming them",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "jobs_events",
+   "tables": [
+    "sysevent_email_action",
+    "sysevent_register",
+    "sysevent_script_action"
+   ],
+   "candidate_tables": [
+    "sysevent_email_action",
+    "sysevent_register",
+    "sysevent_script_action"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sysevent.name",
+    "sysevent_email_action.active",
+    "sysevent_email_action.event_name",
+    "sysevent_register.event_name",
+    "sysevent_script_action.active",
+    "sysevent_script_action.event_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 117,
+   "rule_id": "PLT-117",
+   "excel_row": 118,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "High",
+   "rule": "Event flooding from a single source",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "jobs_events",
+   "tables": [
+    "sysevent"
+   ],
+   "candidate_tables": [
+    "sysevent"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sysevent.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 118,
+   "rule_id": "PLT-118",
+   "excel_row": 119,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "sys\\_trigger backlog growing",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "jobs_events",
+   "tables": [
+    "sys_trigger"
+   ],
+   "candidate_tables": [
+    "sys_trigger"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_trigger.next_action"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 119,
+   "rule_id": "PLT-119",
+   "excel_row": 120,
+   "group": "Scheduled Jobs and Events",
+   "base_severity": "Critical",
+   "rule": "Async job queue processing lag",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "jobs_events",
+   "tables": [
+    "sys_trigger"
+   ],
+   "candidate_tables": [
+    "sys_trigger"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_trigger.name",
+    "sys_trigger.next_action",
+    "sys_trigger.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 120,
+   "rule_id": "PLT-120",
+   "excel_row": 121,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Systemic",
+   "rule": "Admin role count above threshold or trending up",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "access_security",
+   "tables": [
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user_has_role.role",
+    "sys_user_has_role.state",
+    "sys_user_has_role.user"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 121,
+   "rule_id": "PLT-121",
+   "excel_row": 122,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Systemic",
+   "rule": "ACLs with true as the condition or no condition at all",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_security_acl",
+    "sys_security_acl_role",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_security_acl",
+    "sys_security_acl_role",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_security_acl.active",
+    "sys_security_acl.advanced",
+    "sys_security_acl.condition",
+    "sys_security_acl.name",
+    "sys_security_acl.operation",
+    "sys_security_acl.script",
+    "sys_security_acl_role.sys_security_acl",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 122,
+   "rule_id": "PLT-122",
+   "excel_row": 123,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Systemic",
+   "rule": "Tables with no ACL coverage at all",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_db_object",
+    "sys_security_acl"
+   ],
+   "candidate_tables": [
+    "sys_db_object",
+    "sys_security_acl"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_security_acl.active",
+    "sys_security_acl.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 123,
+   "rule_id": "PLT-123",
+   "excel_row": 124,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Systemic",
+   "rule": "Elevated privilege granted with no approval or change trail",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "change_request",
+    "sys_audit",
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "sys_audit",
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 124,
+   "rule_id": "PLT-124",
+   "excel_row": 125,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Systemic",
+   "rule": "Role nesting producing unintended effective permissions",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_user_role_contains"
+   ],
+   "candidate_tables": [
+    "sys_user_role_contains"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 125,
+   "rule_id": "PLT-125",
+   "excel_row": 126,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "ACL script returning true unconditionally",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "access_security",
+   "tables": [
+    "sys_security_acl",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_security_acl",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_security_acl.active",
+    "sys_security_acl.advanced",
+    "sys_security_acl.name",
+    "sys_security_acl.script",
+    "sys_update_xml.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 126,
+   "rule_id": "PLT-126",
+   "excel_row": 127,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "Write ACL absent where read ACL exists on sensitive tables",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "candidate_tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "data_classification.name",
+    "m2m_dictionary_dataclass.data_class",
+    "m2m_dictionary_dataclass.sys_dictionary",
+    "sys_security_acl.active",
+    "sys_security_acl.name",
+    "sys_security_acl.operation"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 127,
+   "rule_id": "PLT-127",
+   "excel_row": 128,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "ACLs on sensitive fields (financial, personal, credential) missing",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "candidate_tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "data_classification.name",
+    "m2m_dictionary_dataclass.data_class",
+    "m2m_dictionary_dataclass.sys_dictionary",
+    "sys_security_acl.active",
+    "sys_security_acl.name",
+    "sys_security_acl.operation"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 128,
+   "rule_id": "PLT-128",
+   "excel_row": 129,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "snc\\_internal or public-facing access on tables holding personal data",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "candidate_tables": [
+    "m2m_dictionary_dataclass",
+    "sys_security_acl"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "data_classification.name",
+    "m2m_dictionary_dataclass.data_class",
+    "m2m_dictionary_dataclass.sys_dictionary",
+    "sys_security_acl.active",
+    "sys_security_acl.name",
+    "sys_security_acl.operation",
+    "sys_security_acl_role.sys_security_acl",
+    "sys_security_acl_role.sys_user_role",
+    "sys_user_role.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 129,
+   "rule_id": "PLT-129",
+   "excel_row": 130,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "Inactive users still holding roles",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_user",
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user_has_role.role",
+    "sys_user_has_role.user"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 130,
+   "rule_id": "PLT-130",
+   "excel_row": 131,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "Service accounts with interactive login enabled",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.internal_integration_user",
+    "sys_user.user_name",
+    "sys_user.web_service_access_only"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 131,
+   "rule_id": "PLT-131",
+   "excel_row": 132,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "High",
+   "rule": "Roles granted directly to users rather than via groups",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user_has_role.inherited"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 132,
+   "rule_id": "PLT-132",
+   "excel_row": 133,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Moderate",
+   "rule": "Roles with no users assigned",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "access_security",
+   "tables": [
+    "sys_update_xml",
+    "sys_user_has_role",
+    "sys_user_role",
+    "sys_user_role_contains"
+   ],
+   "candidate_tables": [
+    "sys_update_xml",
+    "sys_user_has_role",
+    "sys_user_role",
+    "sys_user_role_contains"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_update_xml.name",
+    "sys_user_has_role.role",
+    "sys_user_role.name",
+    "sys_user_role_contains.role"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 133,
+   "rule_id": "PLT-133",
+   "excel_row": 134,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "Groups with no members holding elevated roles",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_group_has_role",
+    "sys_user_grmember",
+    "sys_user_role"
+   ],
+   "candidate_tables": [
+    "sys_group_has_role",
+    "sys_user_grmember",
+    "sys_user_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_group_has_role.group",
+    "sys_group_has_role.role",
+    "sys_user_grmember.group",
+    "sys_user_grmember.user",
+    "sys_user_role.elevated_privilege",
+    "sys_user_role.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 134,
+   "rule_id": "PLT-134",
+   "excel_row": 135,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Systemic",
+   "rule": "No access recertification or review process evidenced",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 135,
+   "rule_id": "PLT-135",
+   "excel_row": 136,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "Critical",
+   "rule": "ACL overriding an OOB ACL with weaker conditions",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "access_security",
+   "tables": [
+    "sys_metadata_customization",
+    "sys_security_acl"
+   ],
+   "candidate_tables": [
+    "sys_metadata_customization",
+    "sys_security_acl"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name",
+    "sys_security_acl.active",
+    "sys_security_acl.advanced",
+    "sys_security_acl.condition",
+    "sys_security_acl.name",
+    "sys_security_acl.operation",
+    "sys_security_acl.script",
+    "sys_security_acl_role.sys_security_acl"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 136,
+   "rule_id": "PLT-136",
+   "excel_row": 137,
+   "group": "ACLs, Roles and Access",
+   "base_severity": "High",
+   "rule": "Impersonation used in production with no audit review",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "access_security",
+   "tables": [
+    "sysevent"
+   ],
+   "candidate_tables": [
+    "sysevent"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sysevent.name",
+    "sysevent.parm1",
+    "sysevent.parm2"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 137,
+   "rule_id": "PLT-137",
+   "excel_row": 138,
+   "group": "Integrations and Inbound",
+   "base_severity": "Systemic",
+   "rule": "Integration user holding admin role",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_user",
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user.internal_integration_user",
+    "sys_user.user_name",
+    "sys_user.web_service_access_only",
+    "sys_user_has_role.role",
+    "sys_user_has_role.user"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 138,
+   "rule_id": "PLT-138",
+   "excel_row": 139,
+   "group": "Integrations and Inbound",
+   "base_severity": "Systemic",
+   "rule": "Basic authentication in use on any inbound or outbound integration",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_rest_message",
+    "sys_rest_message_fn",
+    "sys_soap_message"
+   ],
+   "candidate_tables": [
+    "sys_rest_message",
+    "sys_rest_message_fn",
+    "sys_soap_message"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_rest_message.authentication_type",
+    "sys_rest_message.name",
+    "sys_rest_message_fn.authentication_type",
+    "sys_rest_message_fn.function_name",
+    "sys_soap_message.name",
+    "sys_soap_message.use_basic_auth"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 139,
+   "rule_id": "PLT-139",
+   "excel_row": 140,
+   "group": "Integrations and Inbound",
+   "base_severity": "Systemic",
+   "rule": "Credentials stored outside the credential vault",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_rest_message",
+    "sys_rest_message_fn",
+    "sys_soap_message"
+   ],
+   "candidate_tables": [
+    "sys_rest_message",
+    "sys_rest_message_fn",
+    "sys_soap_message"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_rest_message.basic_auth_password",
+    "sys_rest_message.basic_auth_profile",
+    "sys_rest_message.name",
+    "sys_rest_message.use_basic_auth",
+    "sys_rest_message_fn.basic_auth_password",
+    "sys_rest_message_fn.basic_auth_profile",
+    "sys_rest_message_fn.function_name",
+    "sys_rest_message_fn.use_basic_auth",
+    "sys_soap_message.basic_auth_password",
+    "sys_soap_message.basic_auth_profile",
+    "sys_soap_message.name",
+    "sys_soap_message.use_basic_auth"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 140,
+   "rule_id": "PLT-140",
+   "excel_row": 141,
+   "group": "Integrations and Inbound",
+   "base_severity": "Systemic",
+   "rule": "Inbound integration bypassing IRE or Data Policy",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 141,
+   "rule_id": "PLT-141",
+   "excel_row": 142,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "Integration with no error handling or retry",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 142,
+   "rule_id": "PLT-142",
+   "excel_row": 143,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "Integration failure rate above threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "integrations",
+   "tables": [
+    "sys_outbound_http_log"
+   ],
+   "candidate_tables": [
+    "sys_outbound_http_log"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_outbound_http_log.hostname",
+    "sys_outbound_http_log.response_status",
+    "sys_outbound_http_log.url"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 143,
+   "rule_id": "PLT-143",
+   "excel_row": 144,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "Integration with no rate limiting configured",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_rate_limit_rules",
+    "sys_ws_definition"
+   ],
+   "candidate_tables": [
+    "sys_rate_limit_rules",
+    "sys_ws_definition"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 144,
+   "rule_id": "PLT-144",
+   "excel_row": 145,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "Endpoints using HTTP rather than HTTPS",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_rest_message",
+    "sys_rest_message_fn",
+    "sys_soap_message"
+   ],
+   "candidate_tables": [
+    "sys_rest_message",
+    "sys_rest_message_fn",
+    "sys_soap_message"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_rest_message.name",
+    "sys_rest_message.rest_endpoint",
+    "sys_rest_message_fn.function_name",
+    "sys_rest_message_fn.rest_endpoint",
+    "sys_soap_message.name",
+    "sys_soap_message.wsdl"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 145,
+   "rule_id": "PLT-145",
+   "excel_row": 146,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "OAuth tokens with no expiry or excessive lifetime",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "oauth_entity"
+   ],
+   "candidate_tables": [
+    "oauth_entity"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "oauth_entity.active",
+    "oauth_entity.name",
+    "oauth_entity.refresh_token_lifespan"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 146,
+   "rule_id": "PLT-146",
+   "excel_row": 147,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "Integration writing directly to tables, bypassing business logic",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 147,
+   "rule_id": "PLT-147",
+   "excel_row": 148,
+   "group": "Integrations and Inbound",
+   "base_severity": "Moderate",
+   "rule": "Orphaned integrations with no execution in the window",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_outbound_http_log"
+   ],
+   "candidate_tables": [
+    "sys_outbound_http_log"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 148,
+   "rule_id": "PLT-148",
+   "excel_row": 149,
+   "group": "Integrations and Inbound",
+   "base_severity": "High",
+   "rule": "Duplicate integrations to the same endpoint",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_rest_message_fn"
+   ],
+   "candidate_tables": [
+    "sys_rest_message_fn"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_rest_message_fn.http_method",
+    "sys_rest_message_fn.rest_endpoint",
+    "sys_rest_message_fn.rest_message"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 149,
+   "rule_id": "PLT-149",
+   "excel_row": 150,
+   "group": "Integrations and Inbound",
+   "base_severity": "Moderate",
+   "rule": "Import sets accumulating without cleanup",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_import_set"
+   ],
+   "candidate_tables": [
+    "sys_import_set"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 150,
+   "rule_id": "PLT-150",
+   "excel_row": 151,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "Transform maps with no coalesce, generating duplicates",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_transform_entry",
+    "sys_transform_map"
+   ],
+   "candidate_tables": [
+    "sys_transform_entry",
+    "sys_transform_map"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_transform_entry.coalesce",
+    "sys_transform_entry.map",
+    "sys_transform_map.active",
+    "sys_transform_map.name",
+    "sys_transform_map.target_table"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 151,
+   "rule_id": "PLT-151",
+   "excel_row": 152,
+   "group": "Integrations and Inbound",
+   "base_severity": "High",
+   "rule": "Transform scripts with unhandled errors",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_import_set_row"
+   ],
+   "candidate_tables": [
+    "sys_import_set_row"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 152,
+   "rule_id": "PLT-152",
+   "excel_row": 153,
+   "group": "Integrations and Inbound",
+   "base_severity": "Critical",
+   "rule": "Data source credentials expired",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "integrations",
+   "tables": [
+    "sys_data_source"
+   ],
+   "candidate_tables": [
+    "sys_data_source"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 153,
+   "rule_id": "PLT-153",
+   "excel_row": 154,
+   "group": "Integrations and Inbound",
+   "base_severity": "High",
+   "rule": "Integration with no documented owner",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "integrations",
+   "tables": [
+    "sys_rest_message",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "sys_rest_message",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_rest_message.name",
+    "sys_rest_message.sys_created_by",
+    "sys_update_xml.name",
+    "sys_user.active",
+    "sys_user.user_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 154,
+   "rule_id": "PLT-154",
+   "excel_row": 155,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Systemic",
+   "rule": "Skipped updates from the last upgrade never reviewed",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_upgrade_history"
+   ],
+   "candidate_tables": [
+    "sys_upgrade_history",
+    "sys_upgrade_history_log"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_upgrade_history.to_version",
+    "sys_upgrade_history.upgrade_started",
+    "sys_upgrade_history_log.disposition",
+    "sys_upgrade_history_log.resolution_status",
+    "sys_upgrade_history_log.upgrade_history"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 155,
+   "rule_id": "PLT-155",
+   "excel_row": 156,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Systemic",
+   "rule": "Modified OOB records count and trend",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_metadata_customization"
+   ],
+   "candidate_tables": [
+    "sys_metadata_customization"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_metadata_customization.author_type",
+    "sys_metadata_customization.sys_update_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 156,
+   "rule_id": "PLT-156",
+   "excel_row": 157,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Systemic",
+   "rule": "Customization concentrated in objects ServiceNow actively develops",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_update_version"
+   ],
+   "candidate_tables": [
+    "sys_update_version"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 157,
+   "rule_id": "PLT-157",
+   "excel_row": 158,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Systemic",
+   "rule": "Instance more than two families behind current",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_properties"
+   ],
+   "candidate_tables": [
+    "sys_properties"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 158,
+   "rule_id": "PLT-158",
+   "excel_row": 159,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Critical",
+   "rule": "Global scope customization where scoped apps should be used",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_metadata"
+   ],
+   "candidate_tables": [
+    "sys_metadata"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 159,
+   "rule_id": "PLT-159",
+   "excel_row": 160,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Critical",
+   "rule": "Custom tables extending task or cmdb\\_ci without justification",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_db_object"
+   ],
+   "candidate_tables": [
+    "sys_db_object"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 160,
+   "rule_id": "PLT-160",
+   "excel_row": 161,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Moderate",
+   "rule": "Custom fields on OOB tables, unpopulated",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_dictionary"
+   ],
+   "candidate_tables": [
+    "sys_dictionary"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_dictionary.element",
+    "sys_dictionary.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 161,
+   "rule_id": "PLT-161",
+   "excel_row": 162,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "High",
+   "rule": "Custom fields duplicating OOB field function",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_dictionary"
+   ],
+   "candidate_tables": [
+    "sys_dictionary"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 162,
+   "rule_id": "PLT-162",
+   "excel_row": 163,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Critical",
+   "rule": "Deprecated API usage in scripts",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_script",
+    "sys_script_include"
+   ],
+   "candidate_tables": [
+    "sys_script",
+    "sys_script_include"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 163,
+   "rule_id": "PLT-163",
+   "excel_row": 164,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "High",
+   "rule": "Deprecated plugin still active",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "v_plugin"
+   ],
+   "candidate_tables": [
+    "v_plugin"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 164,
+   "rule_id": "PLT-164",
+   "excel_row": 165,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "High",
+   "rule": "Customization hotspots — objects modified repeatedly",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_update_version"
+   ],
+   "candidate_tables": [
+    "sys_update_version"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_update_version.name",
+    "sys_update_version.source_table"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 165,
+   "rule_id": "PLT-165",
+   "excel_row": 166,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Critical",
+   "rule": "Update sets unclosed, stuck in preview, or with collisions",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_remote_update_set",
+    "sys_update_set"
+   ],
+   "candidate_tables": [
+    "sys_remote_update_set",
+    "sys_update_set"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_remote_update_set.name",
+    "sys_remote_update_set.state",
+    "sys_update_set.is_default",
+    "sys_update_set.name",
+    "sys_update_set.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 166,
+   "rule_id": "PLT-166",
+   "excel_row": 167,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Systemic",
+   "rule": "Changes made directly in production with no update set lineage",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_metadata",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sys_metadata",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 167,
+   "rule_id": "PLT-167",
+   "excel_row": 168,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Critical",
+   "rule": "Cross-scope access requests granted broadly",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_scope_privilege"
+   ],
+   "candidate_tables": [
+    "sys_scope_privilege"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 168,
+   "rule_id": "PLT-168",
+   "excel_row": 169,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "High",
+   "rule": "Custom application with no owner or no source control",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_app"
+   ],
+   "candidate_tables": [
+    "sys_app"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 169,
+   "rule_id": "PLT-169",
+   "excel_row": 170,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Moderate",
+   "rule": "Table sprawl — custom tables with zero or near-zero records",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_db_object"
+   ],
+   "candidate_tables": [
+    "sys_db_object"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_db_object.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 170,
+   "rule_id": "PLT-170",
+   "excel_row": 171,
+   "group": "Customization and Upgrade Debt",
+   "base_severity": "Moderate",
+   "rule": "Extension depth beyond recommended",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "customisation_debt",
+   "tables": [
+    "sys_db_object"
+   ],
+   "candidate_tables": [
+    "sys_db_object"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-120",
+   "notes": "The same condition as CMDB-120 Ownership OWN-007 is AGREED with CMDB-120 as owner (D-025): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 171,
+   "rule_id": "PLT-171",
+   "excel_row": 172,
+   "group": "Performance and Platform Health",
+   "base_severity": "Critical",
+   "rule": "Transaction response time 95th percentile beyond threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "performance",
+   "tables": [
+    "syslog_transaction"
+   ],
+   "candidate_tables": [
+    "syslog_transaction"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "syslog_transaction.response_time",
+    "syslog_transaction.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 172,
+   "rule_id": "PLT-172",
+   "excel_row": 173,
+   "group": "Performance and Platform Health",
+   "base_severity": "Critical",
+   "rule": "Slow transaction count trending up",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "performance",
+   "tables": [
+    "syslog_transaction"
+   ],
+   "candidate_tables": [
+    "syslog_transaction"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_properties.name",
+    "syslog_transaction.response_time"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 173,
+   "rule_id": "PLT-173",
+   "excel_row": 174,
+   "group": "Performance and Platform Health",
+   "base_severity": "Systemic",
+   "rule": "Specific scripts appearing repeatedly in slow transaction traces",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "performance",
+   "tables": [
+    "sys_script_pattern"
+   ],
+   "candidate_tables": [
+    "sys_script_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_script_pattern.average",
+    "sys_script_pattern.count",
+    "sys_script_pattern.script_source",
+    "sys_script_pattern.script_source_table",
+    "sys_script_pattern.total"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 174,
+   "rule_id": "PLT-174",
+   "excel_row": 175,
+   "group": "Performance and Platform Health",
+   "base_severity": "Systemic",
+   "rule": "Tables above size threshold with no rotation or archival",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_db_object"
+   ],
+   "candidate_tables": [
+    "sys_db_object"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 175,
+   "rule_id": "PLT-175",
+   "excel_row": 176,
+   "group": "Performance and Platform Health",
+   "base_severity": "Critical",
+   "rule": "Queries on large tables without supporting indexes",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_db_object"
+   ],
+   "candidate_tables": [
+    "sys_db_object"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 176,
+   "rule_id": "PLT-176",
+   "excel_row": 177,
+   "group": "Performance and Platform Health",
+   "base_severity": "Critical",
+   "rule": "sys\\_audit and history tables growing without rotation",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_audit",
+    "sys_history_line"
+   ],
+   "candidate_tables": [
+    "sys_audit",
+    "sys_history_line"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 177,
+   "rule_id": "PLT-177",
+   "excel_row": 178,
+   "group": "Performance and Platform Health",
+   "base_severity": "High",
+   "rule": "Attachment storage growth beyond threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_attachment"
+   ],
+   "candidate_tables": [
+    "sys_attachment"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 178,
+   "rule_id": "PLT-178",
+   "excel_row": 179,
+   "group": "Performance and Platform Health",
+   "base_severity": "High",
+   "rule": "Email queue backlog",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_email"
+   ],
+   "candidate_tables": [
+    "sys_email"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_email.state",
+    "sys_email.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 179,
+   "rule_id": "PLT-179",
+   "excel_row": 180,
+   "group": "Performance and Platform Health",
+   "base_severity": "Critical",
+   "rule": "Semaphore exhaustion indicators",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_semaphore"
+   ],
+   "candidate_tables": [
+    "sys_semaphore"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 180,
+   "rule_id": "PLT-180",
+   "excel_row": 181,
+   "group": "Performance and Platform Health",
+   "base_severity": "Critical",
+   "rule": "Long-running transactions cancelled by the platform",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "performance",
+   "tables": [
+    "syslog_cancellation"
+   ],
+   "candidate_tables": [
+    "syslog_cancellation"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "syslog_cancellation.url"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 181,
+   "rule_id": "PLT-181",
+   "excel_row": 182,
+   "group": "Performance and Platform Health",
+   "base_severity": "High",
+   "rule": "List and report queries returning excessive row counts",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "syslog_transaction"
+   ],
+   "candidate_tables": [
+    "syslog_transaction"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 182,
+   "rule_id": "PLT-182",
+   "excel_row": 183,
+   "group": "Performance and Platform Health",
+   "base_severity": "Moderate",
+   "rule": "Homepages and dashboards with expensive widgets",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_portal_page"
+   ],
+   "candidate_tables": [
+    "sys_portal_page"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 183,
+   "rule_id": "PLT-183",
+   "excel_row": 184,
+   "group": "Performance and Platform Health",
+   "base_severity": "Moderate",
+   "rule": "Scheduled reports running during peak hours",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "performance",
+   "tables": [
+    "sys_report",
+    "syslog_transaction"
+   ],
+   "candidate_tables": [
+    "sys_report",
+    "syslog_transaction"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  }
+ ]
+}

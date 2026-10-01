@@ -1,0 +1,3719 @@
+{
+ "map_version": "1.0.0",
+ "phase": "Health Assist Phase 9",
+ "catalogue": "csdm",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "rule_count": 80,
+ "vocabularies": {
+  "archetypes": {
+   "record_predicate": "Per-record field-state or timestamp predicate on one task table",
+   "aggregate_distribution": "Count, ratio, share, distribution, dominance or trend over a slice, judged against a threshold",
+   "configuration_inspection": "Reads platform configuration objects and compares them with usage",
+   "reference_integrity": "A reference field must resolve to an existing, active or valid-state target",
+   "cross_record_linkage": "Existence or state of RELATED records in another ITSM table (incident↔problem↔change↔KB, approvals, tasks)",
+   "relationship_graph": "Needs the CMDB relationship graph: degree, traversal to a service, dependent CIs",
+   "audit_history": "Needs sys_audit, journal or task_sla event history to reconstruct transitions or timing",
+   "text_analysis": "Similarity, clustering, normalised-frequency, semantic consistency or pattern (regex) analysis over free text",
+   "temporal_correlation": "Correlates events across records or tables by CI and time window",
+   "composite": "Derives from other rules’ outputs or needs three or more distinct mechanisms in sequence"
+  },
+  "engines": {
+   "record_predicate": "Record Predicate Engine",
+   "aggregate": "Aggregate & Distribution Engine",
+   "configuration": "Configuration Inspection Engine",
+   "reference_integrity": "Reference Integrity Engine",
+   "linkage": "Cross-Record Linkage Engine",
+   "relationship_graph": "Relationship Graph Engine",
+   "audit_history": "Audit & Journal History Engine",
+   "text_analysis": "Text Analysis Engine",
+   "temporal_correlation": "Temporal Correlation Engine",
+   "composite": "Composite / Rule-Dependency Engine"
+  },
+  "archetype_to_engine": {
+   "record_predicate": "record_predicate",
+   "aggregate_distribution": "aggregate",
+   "configuration_inspection": "configuration",
+   "reference_integrity": "reference_integrity",
+   "cross_record_linkage": "linkage",
+   "relationship_graph": "relationship_graph",
+   "audit_history": "audit_history",
+   "text_analysis": "text_analysis",
+   "temporal_correlation": "temporal_correlation",
+   "composite": "composite"
+  },
+  "products": {
+   "taxonomy": "Taxonomy conformance",
+   "lifecycle": "Lifecycle integrity",
+   "ownership": "Ownership",
+   "environment": "Environment discipline",
+   "relationships": "Relationship correctness",
+   "offerings": "Offering and commitment structure",
+   "maturity": "Maturity and adoption",
+   "cross_domain": "Cross-domain (correlation, not scored)"
+  },
+  "states": {
+   "executable": "runs once its tables are verified on the instance",
+   "unconfigured": "runs once a threshold the workbook leaves open is set",
+   "undefined": "the workbook leaves part of the detection undefined",
+   "specification_gap": "the workbook does not say enough to evaluate deterministically",
+   "object_unverified": "needs a platform object whose table is not established",
+   "not_built": "fully defined; evaluator not built in this stage",
+   "equivalent": "the same condition as another module's rule, evaluated there",
+   "derived": "the measure IS the module score (Phase 9, CSDM-072)"
+  }
+ },
+ "conventions": {
+  "tables": "the candidate tables a read-only instance validation found present and readable (rules/csdm/instance-validation.json). Every table a config reads is also in its requires_tables, which the runner verifies on EACH instance before any read.",
+  "verified_on": "techsnitchpvtltddemo2.service-now.com 2026-09-27",
+  "product": "from the workbook overlay: the CSDM group (profile dimension) the rule scores in"
+ },
+ "entries": [
+  {
+   "slot": 1,
+   "rule_id": "CSDM-001",
+   "excel_row": 2,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Systemic",
+   "rule": "Business Capability layer entirely unpopulated",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_business_capability"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_capability"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_capability.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 2,
+   "rule_id": "CSDM-002",
+   "excel_row": 3,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Business Capability with no Business Application beneath it",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 3,
+   "rule_id": "CSDM-003",
+   "excel_row": 4,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Business Application with no Application Service",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_service_auto",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_service_auto",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 4,
+   "rule_id": "CSDM-004",
+   "excel_row": 5,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Business Service with no Service Offering",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 5,
+   "rule_id": "CSDM-005",
+   "excel_row": 6,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Service Offering with no commitment or SLA",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "contract_sla",
+    "service_offering",
+    "service_offering_commitment"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "service_offering",
+    "service_offering_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "service_offering.name",
+    "service_offering.sla",
+    "service_offering_commitment.service_commitment",
+    "service_offering_commitment.service_offering",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 6,
+   "rule_id": "CSDM-006",
+   "excel_row": 7,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Application Service with no supporting CIs",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_service_auto",
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_auto",
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-110",
+   "notes": "The same condition as CMDB-110 (\"Application Service with no supporting CIs\", the same detection over both mechanisms): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 7,
+   "rule_id": "CSDM-007",
+   "excel_row": 8,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "Technical Service disconnected from any Application",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_service_technical",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_technical",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 8,
+   "rule_id": "CSDM-008",
+   "excel_row": 9,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "Service classification inconsistent with the record's class",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 9,
+   "rule_id": "CSDM-009",
+   "excel_row": 10,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "CI placed at the wrong CSDM layer",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 10,
+   "rule_id": "CSDM-010",
+   "excel_row": 11,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Duplicate service constructs representing the same thing at two layers",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_service",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 11,
+   "rule_id": "CSDM-011",
+   "excel_row": 12,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "Cross-layer shortcuts skipping a required layer",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_information_object.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 12,
+   "rule_id": "CSDM-012",
+   "excel_row": 13,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "Service hierarchy depth below the estate's own standard",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 13,
+   "rule_id": "CSDM-013",
+   "excel_row": 14,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "Business Application with no Business Capability parent",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 14,
+   "rule_id": "CSDM-014",
+   "excel_row": 15,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "Information Object layer unpopulated where data classification is required",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_information_object",
+    "m2m_dictionary_dataclass"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_information_object",
+    "m2m_dictionary_dataclass"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_information_object.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "data_classification.name",
+    "m2m_dictionary_dataclass.data_class",
+    "m2m_dictionary_dataclass.sys_dictionary",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_dictionary.element",
+    "sys_dictionary.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "DQ-139"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 15,
+   "rule_id": "CSDM-015",
+   "excel_row": 16,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "High",
+   "rule": "Service records created outside the CSDM class tree",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "taxonomy",
+   "tables": [
+    "cmdb_ci_service",
+    "incident"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "incident.business_service",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 16,
+   "rule_id": "CSDM-016",
+   "excel_row": 17,
+   "group": "Group 1 — Taxonomy Conformance (CSDM-001 to 016)",
+   "base_severity": "Moderate",
+   "rule": "Service portfolio count inconsistent with the business's own service catalogue",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "taxonomy",
+   "tables": [
+    "sc_cat_item",
+    "spm_service_portfolio"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "spm_service_portfolio"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 17,
+   "rule_id": "CSDM-017",
+   "excel_row": 18,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Lifecycle stage empty",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 18,
+   "rule_id": "CSDM-018",
+   "excel_row": 19,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Lifecycle status empty while stage is populated",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 19,
+   "rule_id": "CSDM-019",
+   "excel_row": 20,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Stage and status combination not in the permitted set",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "life_cycle_control"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "life_cycle_control"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "life_cycle_control.active",
+    "life_cycle_control.life_cycle_stage",
+    "life_cycle_control.life_cycle_stage_status",
+    "life_cycle_control.table",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 20,
+   "rule_id": "CSDM-020",
+   "excel_row": 21,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Lifecycle contradicting operational_status",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "life_cycle_control",
+    "life_cycle_mapping"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "life_cycle_control",
+    "life_cycle_mapping"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "life_cycle_control.life_cycle_stage",
+    "life_cycle_control.life_cycle_stage_status",
+    "life_cycle_mapping.legacy_field_name",
+    "life_cycle_mapping.legacy_field_value",
+    "life_cycle_mapping.life_cycle_control",
+    "life_cycle_mapping.table",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 21,
+   "rule_id": "CSDM-021",
+   "excel_row": 22,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Service Operational whose supporting CIs are all Retired",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_ci_service",
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_ci_service",
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.install_status",
+    "cmdb_ci.operational_status",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 22,
+   "rule_id": "CSDM-022",
+   "excel_row": 23,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Service Retired still consumed by open incidents",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "incident",
+    "life_cycle_stage"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "incident",
+    "life_cycle_stage"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "incident.active",
+    "incident.business_service",
+    "life_cycle_stage.name",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 23,
+   "rule_id": "CSDM-023",
+   "excel_row": 24,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Service in End of Life with active SLAs",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "contract_sla",
+    "service_commitment",
+    "service_offering",
+    "service_offering_commitment"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "contract_sla",
+    "service_commitment",
+    "service_offering",
+    "service_offering_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "contract_sla.active",
+    "life_cycle_stage.name",
+    "service_commitment.sla",
+    "service_offering_commitment.service_commitment",
+    "service_offering_commitment.service_offering",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 24,
+   "rule_id": "CSDM-024",
+   "excel_row": 25,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "End of Life with live supporting CIs and recent incident volume",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_ci_service",
+    "incident",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_ci_service",
+    "incident",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.operational_status",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "incident.business_service",
+    "incident.sys_created_on",
+    "life_cycle_stage.name",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 25,
+   "rule_id": "CSDM-025",
+   "excel_row": 26,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Moderate",
+   "rule": "Lifecycle never updated since creation",
+   "archetype": "audit_history",
+   "recommended_engine": "audit_history",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "sys_audit"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "sys_audit"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_audit.documentkey",
+    "sys_audit.fieldname",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_dictionary.audit",
+    "sys_dictionary.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 26,
+   "rule_id": "CSDM-026",
+   "excel_row": 27,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Systemic",
+   "rule": "Entire class sitting at the default lifecycle value",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "sys_dictionary"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "sys_dictionary"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_dictionary.default_value",
+    "sys_dictionary.element",
+    "sys_dictionary.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 27,
+   "rule_id": "CSDM-027",
+   "excel_row": 28,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "High",
+   "rule": "Lifecycle transitions occurring with no corresponding change record",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "lifecycle",
+   "tables": [
+    "change_request",
+    "sys_audit"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "sys_audit"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITSM-106"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 28,
+   "rule_id": "CSDM-028",
+   "excel_row": 29,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "High",
+   "rule": "Service lifecycle inconsistent with its parent's lifecycle",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "life_cycle_stage"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "life_cycle_stage"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "life_cycle_stage.name",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 29,
+   "rule_id": "CSDM-029",
+   "excel_row": 30,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Critical",
+   "rule": "Service in a planning stage with production incidents",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "incident",
+    "life_cycle_stage"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "incident",
+    "life_cycle_stage"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "incident.business_service",
+    "life_cycle_stage.name",
+    "life_cycle_stage_status.name",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 30,
+   "rule_id": "CSDM-030",
+   "excel_row": 31,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "High",
+   "rule": "Lifecycle stage populated with a free-text or non-choice value",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "lifecycle",
+   "tables": [
+    "cmdb_ci_service",
+    "life_cycle_stage"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "life_cycle_stage"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.name",
+    "life_cycle_stage.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 31,
+   "rule_id": "CSDM-031",
+   "excel_row": 32,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Systemic",
+   "rule": "No validation preventing invalid lifecycle combinations",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "lifecycle",
+   "tables": [
+    "sys_data_policy2",
+    "sys_script",
+    "sys_ui_policy"
+   ],
+   "candidate_tables": [
+    "sys_data_policy2",
+    "sys_script",
+    "sys_ui_policy"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 32,
+   "rule_id": "CSDM-032",
+   "excel_row": 33,
+   "group": "Group 2 — Lifecycle Integrity (CSDM-017 to 032)",
+   "base_severity": "Systemic",
+   "rule": "Lifecycle model not configured at all",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "lifecycle",
+   "tables": [
+    "life_cycle_control",
+    "life_cycle_stage"
+   ],
+   "candidate_tables": [
+    "life_cycle_control",
+    "life_cycle_stage"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "life_cycle_control.active",
+    "life_cycle_control.life_cycle_stage",
+    "life_cycle_control.life_cycle_stage_status"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 33,
+   "rule_id": "CSDM-033",
+   "excel_row": 34,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "High",
+   "rule": "Service has no owner",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 34,
+   "rule_id": "CSDM-034",
+   "excel_row": 35,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "Critical",
+   "rule": "Service owner is an inactive user",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_service",
+    "sys_user"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "sys_user"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-103",
+   "notes": "Contained in CMDB-103 (\"Owner is an inactive user\", every CI including service records): evaluated and counted in CMDB, shown here as an equivalent so the service records are not charged twice."
+  },
+  {
+   "slot": 35,
+   "rule_id": "CSDM-035",
+   "excel_row": 36,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "Critical",
+   "rule": "Support group has zero active members",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_service",
+    "sys_user_grmember"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "sys_user_grmember"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-102",
+   "notes": "Contained in CMDB-102 (\"Support group has zero active members\", every CI including service records): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 36,
+   "rule_id": "CSDM-036",
+   "excel_row": 37,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "High",
+   "rule": "Business Service with no business relationship manager",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 37,
+   "rule_id": "CSDM-037",
+   "excel_row": 38,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "High",
+   "rule": "Ownership inconsistent between a Business Application and its Application Services",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_service_auto",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_service_auto",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_app.owned_by",
+    "cmdb_ci_business_app.support_group",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 38,
+   "rule_id": "CSDM-038",
+   "excel_row": 39,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "Moderate",
+   "rule": "Single owner holding a disproportionate share of the service portfolio",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 39,
+   "rule_id": "CSDM-039",
+   "excel_row": 40,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "Moderate",
+   "rule": "Service ownership never changed since creation despite organisational change",
+   "archetype": "audit_history",
+   "recommended_engine": "audit_history",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_service",
+    "sys_audit"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "sys_audit"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_audit.documentkey",
+    "sys_audit.fieldname",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_dictionary.audit",
+    "sys_dictionary.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 40,
+   "rule_id": "CSDM-040",
+   "excel_row": 41,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "Critical",
+   "rule": "Service with no data owner where it processes personal data",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_information_object",
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_information_object",
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 41,
+   "rule_id": "CSDM-041",
+   "excel_row": 42,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "Moderate",
+   "rule": "Offering owner differs from parent service owner with no documented rationale",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "ownership",
+   "tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 42,
+   "rule_id": "CSDM-042",
+   "excel_row": 43,
+   "group": "Group 3 — Ownership (CSDM-033 to 042)",
+   "base_severity": "Systemic",
+   "rule": "No service ownership review or attestation process evidenced",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "ownership",
+   "tables": [
+    "cert_audit",
+    "cert_filter"
+   ],
+   "candidate_tables": [
+    "cert_audit",
+    "cert_filter"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 43,
+   "rule_id": "CSDM-043",
+   "excel_row": 44,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "High",
+   "rule": "used_for empty on application services",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "environment",
+   "tables": [
+    "cmdb_ci_service_auto"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_auto"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 44,
+   "rule_id": "CSDM-044",
+   "excel_row": 45,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "Critical",
+   "rule": "Production and non-production services under one parent",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "environment",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 45,
+   "rule_id": "CSDM-045",
+   "excel_row": 46,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "Critical",
+   "rule": "Non-production services carrying production SLAs",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "environment",
+   "tables": [
+    "cmdb_ci_service",
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "contract_sla.active",
+    "contract_sla.name",
+    "contract_sla.start_condition"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 46,
+   "rule_id": "CSDM-046",
+   "excel_row": 47,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "Critical",
+   "rule": "Business Service supported only by non-production application services",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "environment",
+   "tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 47,
+   "rule_id": "CSDM-047",
+   "excel_row": 48,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "Critical",
+   "rule": "Production service supported by non-production CIs",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "environment",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-111",
+   "notes": "The same condition as CMDB-111 (\"CI supporting production service but tagged non-production\"): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 48,
+   "rule_id": "CSDM-048",
+   "excel_row": 49,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "High",
+   "rule": "Environment values inconsistent between a service and its CIs",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "environment",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_ci_service",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_ci_service",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.environment",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 49,
+   "rule_id": "CSDM-049",
+   "excel_row": 50,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "High",
+   "rule": "Non-production services counted in production service portfolio reporting",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "environment",
+   "tables": [
+    "sys_report"
+   ],
+   "candidate_tables": [
+    "sys_report"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 50,
+   "rule_id": "CSDM-050",
+   "excel_row": 51,
+   "group": "Group 4 — Environment Discipline (CSDM-043 to 050)",
+   "base_severity": "Systemic",
+   "rule": "No environment value set defined or enforced",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "environment",
+   "tables": [
+    "sys_choice"
+   ],
+   "candidate_tables": [
+    "sys_choice"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_choice.element",
+    "sys_choice.inactive",
+    "sys_choice.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 51,
+   "rule_id": "CSDM-051",
+   "excel_row": 52,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "High",
+   "rule": "CSDM edge type not valid for the layer pair",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "relationships",
+   "tables": [
+    "cmdb_rel_ci",
+    "cmdb_rel_type_suggest"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "cmdb_rel_type_suggest"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.sys_class_name",
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_information_object.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "cmdb_rel_type_suggest.base_class",
+    "cmdb_rel_type_suggest.child",
+    "cmdb_rel_type_suggest.cmdb_rel_type",
+    "cmdb_rel_type_suggest.dependent_class",
+    "cmdb_rel_type_suggest.parent",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 52,
+   "rule_id": "CSDM-052",
+   "excel_row": 53,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "High",
+   "rule": "Relationship direction reversed between layers",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "relationships",
+   "tables": [
+    "cmdb_rel_ci",
+    "cmdb_rel_type_suggest"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "cmdb_rel_type_suggest"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.sys_class_name",
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_information_object.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "cmdb_rel_type_suggest.base_class",
+    "cmdb_rel_type_suggest.child",
+    "cmdb_rel_type_suggest.cmdb_rel_type",
+    "cmdb_rel_type_suggest.dependent_class",
+    "cmdb_rel_type_suggest.parent",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 53,
+   "rule_id": "CSDM-053",
+   "excel_row": 54,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "High",
+   "rule": "svc_ci_assoc present without a corresponding cmdb_rel_ci edge",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "relationships",
+   "tables": [
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-113",
+   "notes": "The same condition as CMDB-113 (\"CI associated to service with no relationship path\"): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 54,
+   "rule_id": "CSDM-054",
+   "excel_row": 55,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "High",
+   "rule": "cmdb_rel_ci service edge present without the association",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "relationships",
+   "tables": [
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-114",
+   "notes": "The same condition as CMDB-114 (\"svc_ci_assoc and cmdb_rel_ci disagreeing\", the symmetric difference per service): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 55,
+   "rule_id": "CSDM-055",
+   "excel_row": 56,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "Moderate",
+   "rule": "Application service containing CIs of a class that shouldn't be directly contained",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "relationships",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_rel_ci",
+    "cmdb_rel_type_suggest"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_rel_ci",
+    "cmdb_rel_type_suggest"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.sys_class_name",
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_information_object.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "cmdb_rel_type_suggest.base_class",
+    "cmdb_rel_type_suggest.child",
+    "cmdb_rel_type_suggest.cmdb_rel_type",
+    "cmdb_rel_type_suggest.dependent_class",
+    "cmdb_rel_type_suggest.parent",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 56,
+   "rule_id": "CSDM-056",
+   "excel_row": 57,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "Critical",
+   "rule": "Circular relationships within the service hierarchy",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "relationships",
+   "tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "cmdb_rel_type.child_descriptor",
+    "cmdb_rel_type.parent_descriptor",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 57,
+   "rule_id": "CSDM-057",
+   "excel_row": 58,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "Critical",
+   "rule": "Service relationships pointing at retired CIs",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "relationships",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-080",
+   "notes": "Contained in CMDB-080 (\"Retired CI still holding active relationships\", every edge of a retired CI, service edges included): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 58,
+   "rule_id": "CSDM-058",
+   "excel_row": 59,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "Systemic",
+   "rule": "No relationship path from any service to the network tier",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "relationships",
+   "tables": [
+    "cmdb_ci_netgear",
+    "cmdb_rel_ci",
+    "sys_properties"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_netgear",
+    "cmdb_rel_ci",
+    "sys_properties"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.sys_class_name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_properties.name",
+    "sys_properties.value"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITOM-077"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 59,
+   "rule_id": "CSDM-059",
+   "excel_row": 60,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "High",
+   "rule": "Service dependency edges created manually and never corroborated",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "relationships",
+   "tables": [
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 60,
+   "rule_id": "CSDM-060",
+   "excel_row": 61,
+   "group": "Group 5 — Relationship Correctness (CSDM-051 to 060)",
+   "base_severity": "Moderate",
+   "rule": "Duplicate edges of the same type between the same service pair",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "relationships",
+   "tables": [
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 61,
+   "rule_id": "CSDM-061",
+   "excel_row": 62,
+   "group": "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)",
+   "base_severity": "High",
+   "rule": "Offering with no defined consumer or channel",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "offerings",
+   "tables": [
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "service_offering.consumer_type",
+    "service_offering.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 62,
+   "rule_id": "CSDM-062",
+   "excel_row": 63,
+   "group": "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)",
+   "base_severity": "Systemic",
+   "rule": "Offering layer not used at all across the estate",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "offerings",
+   "tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 63,
+   "rule_id": "CSDM-063",
+   "excel_row": 64,
+   "group": "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)",
+   "base_severity": "Moderate",
+   "rule": "Offerings not covering the full consumption surface of their parent service",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "offerings",
+   "tables": [
+    "incident",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "incident",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 64,
+   "rule_id": "CSDM-064",
+   "excel_row": 65,
+   "group": "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)",
+   "base_severity": "Moderate",
+   "rule": "Commitment targets inconsistent across offerings of the same service",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "offerings",
+   "tables": [
+    "service_commitment",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "service_commitment",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 65,
+   "rule_id": "CSDM-065",
+   "excel_row": 66,
+   "group": "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)",
+   "base_severity": "High",
+   "rule": "Offering inactive while its parent service is Operational",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "offerings",
+   "tables": [
+    "incident",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "incident",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 66,
+   "rule_id": "CSDM-066",
+   "excel_row": 67,
+   "group": "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)",
+   "base_severity": "Moderate",
+   "rule": "Offering with no price or cost model where chargeback is in use",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "offerings",
+   "tables": [
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 67,
+   "rule_id": "CSDM-067",
+   "excel_row": 68,
+   "group": "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)",
+   "base_severity": "High",
+   "rule": "SLA attached to a service rather than to its offering",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "offerings",
+   "tables": [
+    "contract_sla",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "contract_sla.active",
+    "contract_sla.name",
+    "contract_sla.start_condition",
+    "service_offering.parent"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITSM-137"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 68,
+   "rule_id": "CSDM-068",
+   "excel_row": 69,
+   "group": "Group 7 — Maturity and Adoption (CSDM-068 to 074)",
+   "base_severity": "Systemic",
+   "rule": "Percentage of CIs reachable from a Business Capability",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "maturity",
+   "tables": [
+    "cmdb_ci_business_capability",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_capability",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-112",
+   "notes": "The same measure as CMDB-112 (\"Percentage of principal CIs reachable from a Business Capability\", the same traversal): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 69,
+   "rule_id": "CSDM-069",
+   "excel_row": 70,
+   "group": "Group 7 — Maturity and Adoption (CSDM-068 to 074)",
+   "base_severity": "High",
+   "rule": "Percentage of incidents landing on a service rather than a bare CI",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "maturity",
+   "tables": [
+    "incident"
+   ],
+   "candidate_tables": [
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-017",
+   "notes": "The complement of ITSM-017 (\"Percentage of incidents referencing a bare CI rather than a Business Service\", over incidents with either reference): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  {
+   "slot": 70,
+   "rule_id": "CSDM-070",
+   "excel_row": 71,
+   "group": "Group 7 — Maturity and Adoption (CSDM-068 to 074)",
+   "base_severity": "Systemic",
+   "rule": "Percentage of services with a complete hierarchy from capability to CI",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "maturity",
+   "tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "not_built"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 71,
+   "rule_id": "CSDM-071",
+   "excel_row": 72,
+   "group": "Group 7 — Maturity and Adoption (CSDM-068 to 074)",
+   "base_severity": "High",
+   "rule": "Offering coverage ratio",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "maturity",
+   "tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CSDM-004",
+   "notes": "The ratio of CSDM-004 over the same business services (with at least one offering ÷ all): CSDM-004 reports it as its measure and is charged once."
+  },
+  {
+   "slot": 72,
+   "rule_id": "CSDM-072",
+   "excel_row": 73,
+   "group": "Group 7 — Maturity and Adoption (CSDM-068 to 074)",
+   "base_severity": null,
+   "rule": "CSDM Maturity Score with band placement",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "maturity",
+   "tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_ci_information_object",
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_business_app",
+    "cmdb_ci_business_capability",
+    "cmdb_ci_information_object",
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_information_object.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_model.name",
+    "cmn_department.name",
+    "cmn_location.name",
+    "core_company.name",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_user.user_name",
+    "sys_user_group.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": "The weighted composite of Groups 1 to 6 is the module score, csdm-quality/2. This rule REPORTS the stage reached, by ServiceNow's staged approach (D-032): never scored."
+  },
+  {
+   "slot": 73,
+   "rule_id": "CSDM-073",
+   "excel_row": 74,
+   "group": "Group 7 — Maturity and Adoption (CSDM-068 to 074)",
+   "base_severity": "Critical",
+   "rule": "CSDM maturity declining across assessments",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "maturity",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_business_app.name",
+    "cmdb_ci_business_capability.name",
+    "cmdb_ci_information_object.name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_model.name",
+    "cmn_department.name",
+    "cmn_location.name",
+    "core_company.name",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_user.user_name",
+    "sys_user_group.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 74,
+   "rule_id": "CSDM-074",
+   "excel_row": 75,
+   "group": "Group 7 — Maturity and Adoption (CSDM-068 to 074)",
+   "base_severity": "Systemic",
+   "rule": "New services created without CSDM conformance",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "maturity",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 75,
+   "rule_id": "CSDM-075",
+   "excel_row": 76,
+   "group": "Group 8 — Cross-Domain (CSDM-075 to 080)",
+   "base_severity": "Systemic",
+   "rule": "Business Critical service whose impact calculation cannot return a result, with the CSDM structural cause traced",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.sys_class_name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "em_impact_graph.business_service",
+    "service_offering.parent",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITOM-152"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 76,
+   "rule_id": "CSDM-076",
+   "excel_row": 77,
+   "group": "Group 8 — Cross-Domain (CSDM-075 to 080)",
+   "base_severity": "Critical",
+   "rule": "Service referenced in incidents but absent from the CSDM model",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci_service",
+    "incident"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-136",
+   "notes": "The same condition as ITSM-136 (\"Service referenced in incidents but absent from the CSDM model\"): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  {
+   "slot": 77,
+   "rule_id": "CSDM-077",
+   "excel_row": 78,
+   "group": "Group 8 — Cross-Domain (CSDM-075 to 080)",
+   "base_severity": "High",
+   "rule": "CSDM completeness overstated by CMDB ownership defects",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci_service",
+    "sys_user_grmember"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "sys_user_grmember"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-102",
+   "notes": "The same records as CMDB-102 (support group resolving to zero active members, service records included): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 78,
+   "rule_id": "CSDM-078",
+   "excel_row": 79,
+   "group": "Group 8 — Cross-Domain (CSDM-075 to 080)",
+   "base_severity": "Systemic",
+   "rule": "Service model completeness capped by discovery coverage",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_rel_ci",
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.sys_class_name",
+    "cmdb_ci_service.business_relation_manager",
+    "cmdb_ci_service.life_cycle_stage",
+    "cmdb_ci_service.life_cycle_stage_status",
+    "cmdb_ci_service.managed_by",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_ci_service.owned_by",
+    "cmdb_ci_service.parent",
+    "cmdb_ci_service.service_classification",
+    "cmdb_ci_service.support_group",
+    "cmdb_ci_service.sys_class_name",
+    "cmdb_ci_service.used_for",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type",
+    "discovery_device_history.classified_as",
+    "discovery_device_history.issues",
+    "discovery_device_history.last_state",
+    "service_offering.parent",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITOM-147",
+     "ITOM-151"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 79,
+   "rule_id": "CSDM-079",
+   "excel_row": 80,
+   "group": "Group 8 — Cross-Domain (CSDM-075 to 080)",
+   "base_severity": "Systemic",
+   "rule": "Change risk assessed without service context because the CI has no service path",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "relationship_graph"
+   ],
+   "product": "cross_domain",
+   "tables": [
+    "change_request",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "change_request.cmdb_ci",
+    "change_request.number",
+    "change_request.risk",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "cmdb_rel_ci.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITSM-126",
+     "ITSM-131"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 80,
+   "rule_id": "CSDM-080",
+   "excel_row": 81,
+   "group": "Group 8 — Cross-Domain (CSDM-075 to 080)",
+   "base_severity": "Systemic",
+   "rule": "Personal data processing not traceable to an accountable service",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci_information_object",
+    "m2m_dictionary_dataclass"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_information_object",
+    "m2m_dictionary_dataclass"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  }
+ ]
+}

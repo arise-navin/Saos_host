@@ -1,0 +1,54 @@
+{
+ "version": "1.0.0",
+ "decision": "D-029",
+ "rules": {
+  "CSDM-006": {
+   "equivalent_of": "CMDB-110",
+   "note": "The same condition as CMDB-110 (\"Application Service with no supporting CIs\", the same detection over both mechanisms): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "CSDM-034": {
+   "equivalent_of": "CMDB-103",
+   "note": "Contained in CMDB-103 (\"Owner is an inactive user\", every CI including service records): evaluated and counted in CMDB, shown here as an equivalent so the service records are not charged twice."
+  },
+  "CSDM-035": {
+   "equivalent_of": "CMDB-102",
+   "note": "Contained in CMDB-102 (\"Support group has zero active members\", every CI including service records): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "CSDM-047": {
+   "equivalent_of": "CMDB-111",
+   "note": "The same condition as CMDB-111 (\"CI supporting production service but tagged non-production\"): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "CSDM-053": {
+   "equivalent_of": "CMDB-113",
+   "note": "The same condition as CMDB-113 (\"CI associated to service with no relationship path\"): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "CSDM-054": {
+   "equivalent_of": "CMDB-114",
+   "note": "The same condition as CMDB-114 (\"svc_ci_assoc and cmdb_rel_ci disagreeing\", the symmetric difference per service): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "CSDM-057": {
+   "equivalent_of": "CMDB-080",
+   "note": "Contained in CMDB-080 (\"Retired CI still holding active relationships\", every edge of a retired CI, service edges included): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "CSDM-068": {
+   "equivalent_of": "CMDB-112",
+   "note": "The same measure as CMDB-112 (\"Percentage of principal CIs reachable from a Business Capability\", the same traversal): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  "CSDM-069": {
+   "equivalent_of": "ITSM-017",
+   "note": "The complement of ITSM-017 (\"Percentage of incidents referencing a bare CI rather than a Business Service\", over incidents with either reference): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  "CSDM-071": {
+   "equivalent_of": "CSDM-004",
+   "note": "The ratio of CSDM-004 over the same business services (with at least one offering ÷ all): CSDM-004 reports it as its measure and is charged once."
+  },
+  "CSDM-076": {
+   "equivalent_of": "ITSM-136",
+   "note": "The same condition as ITSM-136 (\"Service referenced in incidents but absent from the CSDM model\"): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  "CSDM-077": {
+   "equivalent_of": "CMDB-102",
+   "note": "The same records as CMDB-102 (support group resolving to zero active members, service records included): evaluated and counted in CMDB, shown here as an equivalent."
+  }
+ }
+}

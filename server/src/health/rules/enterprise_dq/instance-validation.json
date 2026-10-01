@@ -1,0 +1,1566 @@
+{
+ "pack": "enterprise_dq",
+ "instance": "techsnitchpvtltddemo2.service-now.com",
+ "generated": "2026-09-27T05:28:38.569Z",
+ "read_only": true,
+ "contents_recorded": false,
+ "tables": {
+  "alm_asset": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 5593,
+   "reason": null
+  },
+  "alm_asset_ci_state_mapping": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 47,
+   "reason": null
+  },
+  "alm_hardware": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1001,
+   "reason": null
+  },
+  "alm_hardware_state_mapping": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 59,
+   "reason": null
+  },
+  "cmdb_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3550,
+   "reason": null
+  },
+  "cmdb_ci_hardware": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 918,
+   "reason": null
+  },
+  "cmdb_model": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2997,
+   "reason": null
+  },
+  "cmdb_model_lifecycle": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 50,
+   "reason": null
+  },
+  "cmn_cost_center": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 8,
+   "reason": null
+  },
+  "cmn_department": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 9,
+   "reason": null
+  },
+  "cmn_location": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 469,
+   "reason": null
+  },
+  "contract_sla": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 215,
+   "reason": null
+  },
+  "core_company": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 325,
+   "reason": null
+  },
+  "data_classification": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 28,
+   "reason": null
+  },
+  "io_set_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 188,
+   "reason": null
+  },
+  "item_option_new_set": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 106,
+   "reason": null
+  },
+  "kb_knowledge": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 146,
+   "reason": null
+  },
+  "m2m_dictionary_dataclass": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 126,
+   "reason": null
+  },
+  "m2m_kb_task": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1,
+   "reason": null
+  },
+  "sc_cat_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 469,
+   "reason": null
+  },
+  "sc_req_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 124,
+   "reason": null
+  },
+  "sys_attachment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 9416,
+   "reason": null
+  },
+  "sys_choice": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 36533,
+   "reason": null
+  },
+  "sys_data_source": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 93,
+   "reason": null
+  },
+  "sys_db_object": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 12135,
+   "reason": null
+  },
+  "sys_db_view": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 579,
+   "reason": null
+  },
+  "sys_dictionary": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 369371,
+   "reason": null
+  },
+  "sys_import_set_run": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 869,
+   "reason": null
+  },
+  "sys_properties": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6571,
+   "reason": null
+  },
+  "sys_report": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1480,
+   "reason": null
+  },
+  "sys_security_acl": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 88059,
+   "reason": null
+  },
+  "sys_security_acl_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 104654,
+   "reason": null
+  },
+  "sys_user": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 969,
+   "reason": null
+  },
+  "sys_user_delegate": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "sys_user_grmember": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 984,
+   "reason": null
+  },
+  "sys_user_group": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 250,
+   "reason": null
+  },
+  "sysapproval_approver": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2532,
+   "reason": null
+  },
+  "sysapproval_group": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 973,
+   "reason": null
+  },
+  "sysevent_email_action": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1244,
+   "reason": null
+  },
+  "sysrule_assignment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 63,
+   "reason": null
+  },
+  "task": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 13644,
+   "reason": null
+  },
+  "wf_workflow": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  }
+ },
+ "fields": {
+  "alm_asset": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "assigned_to",
+    "ci",
+    "display_name",
+    "install_status",
+    "model",
+    "serial_number",
+    "substatus",
+    "sys_class_name"
+   ]
+  },
+  "alm_asset_ci_state_mapping": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "asset_state",
+    "configuration_item_status"
+   ]
+  },
+  "alm_hardware_state_mapping": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "asset_state",
+    "hardware_ci_status"
+   ]
+  },
+  "cmdb_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "asset",
+    "assigned_to",
+    "install_status",
+    "location",
+    "model_id",
+    "name",
+    "sys_class_name"
+   ]
+  },
+  "cmdb_ci_hardware": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "hardware_status"
+   ]
+  },
+  "cmdb_model": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cmdb_ci_class",
+    "manufacturer",
+    "model_number",
+    "name",
+    "status"
+   ]
+  },
+  "cmdb_model_lifecycle": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "lifecycle_phase",
+    "model",
+    "start_date"
+   ]
+  },
+  "cmn_department": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "company"
+   ]
+  },
+  "cmn_location": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "city",
+    "country",
+    "name",
+    "parent",
+    "street",
+    "time_zone",
+    "zip"
+   ]
+  },
+  "contract_sla": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "start_condition",
+    "stop_condition"
+   ]
+  },
+  "core_company": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "data_classification": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "io_set_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "sc_cat_item",
+    "variable_set"
+   ]
+  },
+  "item_option_new_set": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "kb_knowledge": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "number",
+    "ownership_group",
+    "sys_view_count",
+    "valid_to",
+    "workflow_state"
+   ]
+  },
+  "m2m_dictionary_dataclass": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "data_class",
+    "sys_dictionary"
+   ]
+  },
+  "sc_cat_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "group",
+    "name",
+    "owner",
+    "sys_class_name",
+    "sys_created_on",
+    "workflow"
+   ]
+  },
+  "sc_req_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cat_item"
+   ]
+  },
+  "sys_choice": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "element",
+    "inactive",
+    "name",
+    "value"
+   ]
+  },
+  "sys_db_object": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "super_class"
+   ]
+  },
+  "sys_db_view": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "sys_dictionary": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "choice",
+    "choice_table",
+    "element",
+    "internal_type",
+    "name"
+   ]
+  },
+  "sys_properties": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "sys_report": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "column",
+    "field",
+    "field_list",
+    "filter",
+    "row",
+    "sumfield",
+    "table",
+    "title",
+    "trend_field"
+   ]
+  },
+  "sys_security_acl": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "advanced",
+    "condition",
+    "name",
+    "operation",
+    "script"
+   ]
+  },
+  "sys_security_acl_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "sys_security_acl"
+   ]
+  },
+  "sys_user": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "company",
+    "department",
+    "email",
+    "employee_number",
+    "internal_integration_user",
+    "last_login_time",
+    "location",
+    "manager",
+    "sys_created_on",
+    "user_name",
+    "web_service_access_only"
+   ]
+  },
+  "sys_user_grmember": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "group",
+    "sys_created_on",
+    "user"
+   ]
+  },
+  "sys_user_group": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "email",
+    "manager",
+    "name",
+    "sys_created_on",
+    "type"
+   ]
+  },
+  "sysapproval_approver": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "approver",
+    "state"
+   ]
+  },
+  "sysapproval_group": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "assignment_group"
+   ]
+  },
+  "sysevent_email_action": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "event_parm_1",
+    "event_parm_2",
+    "recipient_fields",
+    "recipient_groups",
+    "recipient_users",
+    "subscribable"
+   ]
+  },
+  "sysrule_assignment": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "condition"
+   ]
+  },
+  "task": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "assignment_group",
+    "number"
+   ]
+  },
+  "wf_workflow": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  }
+ },
+ "choices": {
+  "cmdb_model.status.Retired": {
+   "found": true,
+   "value": "Retired",
+   "defined_on": "cmdb_model",
+   "available_labels": [
+    "Build",
+    "In Production",
+    "Retired",
+    "Sold"
+   ]
+  },
+  "sysapproval_approver.state.Requested": {
+   "found": true,
+   "value": "requested",
+   "defined_on": "sysapproval_approver",
+   "available_labels": [
+    "Not Yet Requested",
+    "Requested",
+    "Approved",
+    "Rejected",
+    "Cancelled",
+    "No Longer Required",
+    "More Information Required",
+    "Duplicate"
+   ]
+  }
+ },
+ "run": {
+  "elapsed_ms": 519865,
+  "summary": {
+   "evaluated": 40,
+   "unavailable": 13,
+   "unconfigured": 2
+  },
+  "verdicts": {
+   "fail": 26,
+   "inconclusive": 8,
+   "none": 15,
+   "pass": 6
+  },
+  "rules": {
+   "DQ-084": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 250,
+     "judged": 250,
+     "unit": "sys_user_group records"
+    },
+    "undetermined": null,
+    "ms": 2426
+   },
+   "DQ-085": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 469,
+     "judged": 0,
+     "unit": "locations"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 7573
+   },
+   "DQ-086": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 2,
+    "blocker": null,
+    "population": {
+     "total": 6594,
+     "judged": 6594,
+     "unit": "alm_asset records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 3709
+   },
+   "DQ-087": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 540,
+     "judged": 540,
+     "unit": "sys_user records"
+    },
+    "undetermined": null,
+    "ms": 3150
+   },
+   "DQ-088": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "DQ-089": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 3,
+    "blocker": null,
+    "population": {
+     "total": 1620,
+     "judged": 1620,
+     "unit": "sys_user records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 2971
+   },
+   "DQ-090": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 250,
+     "judged": 250,
+     "unit": "active groups"
+    },
+    "undetermined": null,
+    "ms": 412
+   },
+   "DQ-091": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 2,
+    "blocker": null,
+    "population": {
+     "total": 342,
+     "judged": 342,
+     "unit": "sc_cat_item records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 3583
+   },
+   "DQ-092": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "DQ-093": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 2995,
+     "judged": 2995,
+     "unit": "cmdb_model records"
+    },
+    "undetermined": null,
+    "ms": 8390
+   },
+   "DQ-094": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 2,
+    "blocker": null,
+    "population": {
+     "total": 256,
+     "judged": 256,
+     "unit": "kb_knowledge records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 3444
+   },
+   "DQ-095": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 105,
+     "judged": 105,
+     "unit": "sys_user records"
+    },
+    "undetermined": null,
+    "ms": 1576
+   },
+   "DQ-096": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 428,
+     "judged": 428,
+     "unit": "sysapproval_group records"
+    },
+    "undetermined": null,
+    "ms": 6089
+   },
+   "DQ-097": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 21,
+     "judged": 3,
+     "unit": "notification recipients with an email"
+    },
+    "undetermined": null,
+    "ms": 5320
+   },
+   "DQ-098": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 100,
+     "judged": 91,
+     "unit": "choice fields"
+    },
+    "undetermined": null,
+    "ms": 142463
+   },
+   "DQ-099": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1052,
+     "judged": 807,
+     "unit": "assets linked to a CI"
+    },
+    "undetermined": null,
+    "ms": 26701
+   },
+   "DQ-100": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 105,
+     "judged": 105,
+     "unit": "sys_user records"
+    },
+    "undetermined": null,
+    "ms": 875
+   },
+   "DQ-101": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "DQ-102": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "CIs whose model states a CI class"
+    },
+    "undetermined": "empty_population",
+    "ms": 2901
+   },
+   "DQ-103": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 105,
+     "judged": 105,
+     "unit": "users with a manager"
+    },
+    "undetermined": null,
+    "ms": 478
+   },
+   "DQ-104": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 427,
+     "judged": 427,
+     "unit": "locations with a parent"
+    },
+    "undetermined": null,
+    "ms": 821
+   },
+   "DQ-105": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 559,
+     "judged": 0,
+     "unit": "active users with a company and a department"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 3366
+   },
+   "DQ-106": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-107": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 777,
+     "judged": 773,
+     "unit": "assets linked to a CI, both assigned"
+    },
+    "undetermined": null,
+    "ms": 6776
+   },
+   "DQ-108": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "DQ-109": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-110": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-111": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 969,
+     "judged": 969,
+     "unit": "users"
+    },
+    "undetermined": null,
+    "ms": 2143
+   },
+   "DQ-112": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 195,
+     "judged": 106,
+     "unit": "active groups with active members"
+    },
+    "undetermined": null,
+    "ms": 1154
+   },
+   "DQ-113": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 234,
+     "judged": 234,
+     "unit": "locations with a street address"
+    },
+    "undetermined": null,
+    "ms": 764
+   },
+   "DQ-114": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 324,
+     "judged": 324,
+     "unit": "companies"
+    },
+    "undetermined": null,
+    "ms": 2195
+   },
+   "DQ-115": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 125,
+     "judged": 125,
+     "unit": "models with a manufacturer and part number"
+    },
+    "undetermined": null,
+    "ms": 667
+   },
+   "DQ-116": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 171,
+     "judged": 171,
+     "unit": "active requestable items"
+    },
+    "undetermined": null,
+    "ms": 364
+   },
+   "DQ-117": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-118": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-119": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 962,
+     "judged": 962,
+     "unit": "sys_user records"
+    },
+    "undetermined": null,
+    "ms": 2117
+   },
+   "DQ-120": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 250,
+     "judged": 113,
+     "unit": "active groups with active members"
+    },
+    "undetermined": null,
+    "ms": 1799
+   },
+   "DQ-121": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1007,
+     "judged": 1007,
+     "unit": "assets in use with a model"
+    },
+    "undetermined": null,
+    "ms": 3742
+   },
+   "DQ-122": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 87,
+     "judged": 87,
+     "unit": "published articles with a review date"
+    },
+    "undetermined": null,
+    "ms": 600
+   },
+   "DQ-123": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 171,
+     "judged": 132,
+     "unit": "active requestable items"
+    },
+    "undetermined": null,
+    "ms": 2342
+   },
+   "DQ-124": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 469,
+     "judged": 469,
+     "unit": "locations"
+    },
+    "undetermined": null,
+    "ms": 1390
+   },
+   "DQ-125": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 4832,
+     "judged": 4832,
+     "unit": "task records"
+    },
+    "undetermined": null,
+    "ms": 23730
+   },
+   "DQ-126": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1365,
+     "judged": 1365,
+     "unit": "sysapproval_approver records"
+    },
+    "undetermined": null,
+    "ms": 4944
+   },
+   "DQ-127": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 404,
+     "judged": 404,
+     "unit": "active catalog items"
+    },
+    "undetermined": null,
+    "ms": 10657
+   },
+   "DQ-128": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-129": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 2454,
+     "judged": 2454,
+     "unit": "asset–CI links"
+    },
+    "undetermined": null,
+    "ms": 3441
+   },
+   "DQ-130": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1139,
+     "judged": 22,
+     "unit": "active notifications"
+    },
+    "undetermined": null,
+    "ms": 3180
+   },
+   "DQ-132": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 500,
+     "judged": 471,
+     "unit": "active reports"
+    },
+    "undetermined": null,
+    "ms": 62931
+   },
+   "DQ-133": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "fields"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1693
+   },
+   "DQ-134": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 52,
+     "judged": 52,
+     "unit": "personal-data fields"
+    },
+    "undetermined": null,
+    "ms": 12851
+   },
+   "DQ-135": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-136": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "DQ-137": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 200,
+     "judged": 196,
+     "unit": "unclassified custom string fields"
+    },
+    "undetermined": null,
+    "ms": 144123
+   },
+   "DQ-138": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "DQ-139": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "fields"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   }
+  }
+ },
+ "requests": {
+  "query": 922,
+  "count": 567,
+  "aggregate": 109,
+  "byTable": {
+   "sys_db_object": 636,
+   "alm_asset": 30,
+   "alm_asset_ci_state_mapping": 5,
+   "alm_hardware": 2,
+   "alm_hardware_state_mapping": 5,
+   "cmdb_ci": 58,
+   "cmdb_ci_hardware": 34,
+   "cmdb_model": 31,
+   "cmdb_model_lifecycle": 5,
+   "cmn_cost_center": 2,
+   "cmn_department": 5,
+   "cmn_location": 14,
+   "contract_sla": 14,
+   "core_company": 8,
+   "data_classification": 5,
+   "io_set_item": 13,
+   "item_option_new_set": 5,
+   "kb_knowledge": 14,
+   "m2m_dictionary_dataclass": 6,
+   "m2m_kb_task": 2,
+   "sc_cat_item": 22,
+   "sc_req_item": 4,
+   "sys_attachment": 2,
+   "sys_choice": 12,
+   "sys_data_source": 2,
+   "sys_db_view": 5,
+   "sys_dictionary": 93,
+   "sys_import_set_run": 2,
+   "sys_properties": 5,
+   "sys_report": 5,
+   "sys_security_acl": 5,
+   "sys_security_acl_role": 4,
+   "sys_user": 53,
+   "sys_user_delegate": 2,
+   "sys_user_grmember": 13,
+   "sys_user_group": 14,
+   "sysapproval_approver": 9,
+   "sysapproval_group": 5,
+   "sysevent_email_action": 10,
+   "sysrule_assignment": 5,
+   "task": 27,
+   "wf_workflow": 5,
+   "sn_sforce_ai_disc_ai_models_import": 2,
+   "sn_fcms_intg_supplier_legal_entity_inbound": 10,
+   "sn_spend_intg_imp_invoice_tax_line": 26,
+   "u_complaint_case": 4,
+   "u_loan_application": 8,
+   "sn_fcms_intg_supplier_contact_inbound": 26,
+   "x_tepv_ts_dms_dms_parts_import": 4,
+   "u_bfsi_customer": 2,
+   "sn_azure_sg_foundry_subcomponent": 2,
+   "sn_msft_copilot_ai_agent_asset_staging": 2,
+   "sn_fcms_intg_imp_supplier": 16,
+   "u_cmdb_qb_result_a4baf5d35a707070df863b62b7954a1a228acd23": 10,
+   "var__m_sys_decision_multi_result_element_f3179c460f4acb507e34bec300d1b214": 2,
+   "sn_fcms_intg_erp_plant_address_mapping_stage": 6,
+   "sn_spend_intg_purchase_line": 16,
+   "sn_sforce_ai_disc_ai_agents_import": 4,
+   "sn_sforce_ai_disc_ai_agents_usage_import": 4,
+   "var__m_b888fb9eeb6311006a668c505206fec5": 2,
+   "u_loan_product": 4,
+   "x_tepv_oas_oas_request": 12,
+   "u_bfsi_kyc_doc": 4,
+   "x_tepv_oas_oas_doa_matrix": 2,
+   "sn_ia_config_additional_knowledge": 4,
+   "u_x_org_guest_house__history": 4,
+   "ast_contract": 4,
+   "x_tepv_aros_aros_test_lead_import": 6,
+   "u_x_org_guest_house__x_gh_expense": 10,
+   "sn_fcms_intg_imp_order": 2,
+   "x_org_srms_x_srms_customer": 4,
+   "u_bfsi_verificiation_status": 2,
+   "sn_kg_iset_triplet_picker_description": 4,
+   "x_tepv_oas_oas_audit_event": 4,
+   "x_tepv_nwforge_asset": 4,
+   "u_x_org_trialbase_activity": 2,
+   "sn_ac_rpa_import": 2,
+   "x_org_srms_task": 2,
+   "x_tepv_ts_dms_dms_product_model_import": 2,
+   "x_org_srms_x_srms_inventory": 2,
+   "x_tepv_oas_oas_notification": 2,
+   "sn_msft_copilot_ai_agent_prompt_staging": 2,
+   "sn_fcms_intg_imp_receipt": 8,
+   "x_org_srms_x_srms_branch": 2,
+   "sn_spend_intg_invoice_integration_log": 2,
+   "sn_ai_disc_ai_asset_additional_attributes_staging": 2,
+   "sn_fcms_intg_shipment_stage": 2,
+   "sn_now_assist_for_code_user_feedback": 2,
+   "x_tepv_oas_oas_clarification": 6,
+   "sn_spend_intg_imp_invoice_line": 2,
+   "u_credit_decision": 2,
+   "x_tepv_oas_oas_approval_task": 4,
+   "x_tepv_oas_oas_notification_preference": 2,
+   "experimentation_executor_client_staging": 2,
+   "experiment": 2,
+   "var__m_sys_decision_input_a51d9efd5b0ed110235d85cced81c7ce": 2,
+   "x_tepv_ts_dms_dealer_document": 2,
+   "sn_sforce_ai_disc_ai_tools_import": 6,
+   "sn_itom_licensing_event_bus": 2,
+   "u_bfsi_account": 2,
+   "var__m_sys_hub_step_ext_output_45514f73dbcf1b00a9c7594e5e961915": 2,
+   "sn_fcms_intg_supplier_payment_inbound_stage": 14,
+   "x_tepv_nwforge_test_demo": 4,
+   "sn_fcms_intg_payment_term_stage": 6,
+   "imp_sn_gf_goal": 10,
+   "x_tepv_nowforge_u_lap_req": 12,
+   "sn_sforce_ai_disc_ai_agent_topics": 2,
+   "sn_sforce_ai_disc_ai_prompts_import": 6,
+   "sn_fcms_intg_fx_currency_stage": 2,
+   "sn_uxc_gen_ai_work_plan_task": 2,
+   "x_org_srms_item": 4,
+   "x_tepv_oas_oas_workflow_participant": 4,
+   "v_interaction_context": 10,
+   "u_disbursement": 2,
+   "sn_uxc_gen_ai_work_plan": 2,
+   "u_x_org_guest_house__x_gh_booking": 2,
+   "x_tepv_nwforge_employee_equ": 2,
+   "sn_cmdb_int_util_mac_software_bundleid_lookup": 4,
+   "var__m_sys_hub_step_ext_output_5a7d76fbdb475b00dd14596e5e961916": 2,
+   "sn_fcms_intg_imp_cost_center": 2,
+   "sn_ai_disc_aws_sgc_sg_awssagemaker_model": 2,
+   "x_tepv_oas_oas_sla_configuration": 2,
+   "sn_risk_advanced_risk_event_configuration": 2,
+   "x_tepv_oas_oas_expense_category_master": 4,
+   "sn_itsm_gen_ai_overdue_incident_sla": 2,
+   "u_vendor_management": 2,
+   "var__m_479d4643bf111100c7e39058ff073994": 2,
+   "sn_n8n_integ_sg_n8n_ai_model": 2,
+   "var__m_sys_decision_input_5c351b66b7392510ff00f203ae11a94e": 2,
+   "sn_fcms_intg_supplier_remit_to_loc_stage": 2,
+   "sn_csm_om_order": 2
+  }
+ },
+ "elapsed_ms": 597002
+}

@@ -1,0 +1,3809 @@
+{
+ "overlay_version": "0.1.0",
+ "sheet": "ITOM",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Hand-maintained engineering overlay (decision D-007). Seeded by server/scripts/health-workbook-overlays.mjs. `proposed` names the basis of every auto-proposed value; nothing is an engineering decision until `reviewed` is true.",
+ "rules": {
+  "ITOM-001": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [
+    "OWN-001"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-071",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-071 (D-019)"
+   }
+  },
+  "ITOM-002": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [
+    "OWN-002"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-070",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-070 (D-019)"
+   }
+  },
+  "ITOM-003": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-003",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-004": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [
+    "rule:ITOM-003"
+   ],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: threshold \"Any empty location on an active schedule\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any empty location on an active schedule\" — pass/fail (approach §8.1)",
+    "blocks": "DEP-006: ITOM-003 confidence_basis \"depends on ITOM-004 being clean\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-004",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-005": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-005",
+    "engine": "configuration",
+    "classification": "specification_gap",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-006": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-006",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-STALE"
+    ]
+   }
+  },
+  "ITOM-007": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-007",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-008": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-008",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-009": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-009",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-010": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-010",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-011": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-011",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-012": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-012",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-013": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-013",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-014": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Schedule configuration\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: threshold \"Both fields empty\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Both fields empty\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-014",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-015": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-015",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-016": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-016",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "CRED-NONE",
+     "CRED-ALL-INACTIVE"
+    ]
+   }
+  },
+  "ITOM-017": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-017",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-018": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-018",
+    "engine": "reference_integrity",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "CRED-INACTIVE",
+     "CRED-ALL-INACTIVE"
+    ]
+   }
+  },
+  "ITOM-019": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-019",
+    "engine": "configuration",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-020": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-020",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-021": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-021",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-022": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-022",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-023": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-023",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-024": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [
+    "OWN-005"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-024",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-025": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-025",
+    "engine": "record_predicate",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-026": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: threshold \"Any unrestricted credential\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any unrestricted credential\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-026",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-027": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Credentials\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-027",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-028": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-028",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-029": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a trend (\"Requires at least 5 runs\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"Requires at least 5 runs\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-029",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-030": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-030",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-DEVICE-ISSUE"
+    ]
+   }
+  },
+  "ITOM-031": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-031",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-DEVICE-ISSUE"
+    ]
+   }
+  },
+  "ITOM-032": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-032",
+    "engine": "configuration",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-FAILED"
+    ]
+   }
+  },
+  "ITOM-033": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: threshold \"Any occurrence; report frequency\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; report frequency\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-033",
+    "engine": "configuration",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-FAILED"
+    ]
+   }
+  },
+  "ITOM-034": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-034",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-035": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-035",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-DEVICE-ISSUE"
+    ]
+   }
+  },
+  "ITOM-036": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-036",
+    "engine": "record_predicate",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "PERF-ECC-AGE"
+    ]
+   }
+  },
+  "ITOM-037": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-037",
+    "engine": "record_predicate",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-038": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a trend (\"Requires at least 5 runs\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"Requires at least 5 runs\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-038",
+    "engine": "aggregate",
+    "classification": "specification_gap",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-LOG-ERROR"
+    ]
+   }
+  },
+  "ITOM-039": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-039",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "DISC-FAILED"
+    ]
+   }
+  },
+  "ITOM-040": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Execution outcome\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-040",
+    "engine": "aggregate",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-041": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-041",
+    "engine": "aggregate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-042": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-042",
+    "engine": "aggregate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-043": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-043",
+    "engine": "aggregate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-044": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-044",
+    "engine": "aggregate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-045": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-045",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-046": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-046",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-047": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery",
+    "kind": "wording: threshold \"All three absent\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"All three absent\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-047",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-048": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-048",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-049": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-049",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-050": {
+   "module": "itom",
+   "dimension": "discovery",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "discovery",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Patterns, probes and sensors\"",
+    "applicability": "profile: dimension discovery"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-050",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-051": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-051",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-052": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-052",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-053": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-053",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "MID-DOWN"
+    ]
+   }
+  },
+  "ITOM-054": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-054",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-055": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-055",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "MID-NOT-VALIDATED"
+    ]
+   }
+  },
+  "ITOM-056": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-056",
+    "engine": "record_predicate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-057": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-057",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-058": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-058",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-059": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server",
+    "kind": "wording: a trend (\"Requires at least 3 observation points\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"Requires at least 3 observation points\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-059",
+    "engine": "aggregate",
+    "classification": "specification_gap",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "MID-ISSUE"
+    ]
+   }
+  },
+  "ITOM-060": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-060",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-061": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-061",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-062": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-062",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "MID-NO-CAPABILITY"
+    ]
+   }
+  },
+  "ITOM-063": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-063",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-064": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-064",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-065": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server",
+    "kind": "wording: threshold \"Any unconfigured MID; escalate where disk utilisation is tre\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any unconfigured MID; escalate where disk utilisation is tre\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-065",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-066": {
+   "module": "itom",
+   "dimension": "mid_server",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "mid_server",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"MID Server\"",
+    "applicability": "profile: dimension mid_server"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-066",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-067": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-067",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "SM-NOT-IN-USE",
+     "SM-UNMAPPED"
+    ]
+   }
+  },
+  "ITOM-068": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-068",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "SM-NOT-IN-USE"
+    ]
+   }
+  },
+  "ITOM-069": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-069",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-070": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-070",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-071": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-071",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-072": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-072",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-073": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-073",
+    "engine": "relationship_graph",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-074": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-074",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "SM-UNMAPPED"
+    ]
+   }
+  },
+  "ITOM-075": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-075",
+    "engine": "linkage",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-076": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-076",
+    "engine": "relationship_graph",
+    "classification": "specification_gap",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-077": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-077",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-078": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-078",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-079": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping",
+    "kind": "wording: threshold \"Any unscheduled definition\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any unscheduled definition\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-079",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-080": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-080",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-081": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-081",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-082": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-082",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-083": {
+   "module": "itom",
+   "dimension": "service_mapping",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "service_mapping",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Service Mapping\"",
+    "applicability": "profile: dimension service_mapping"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-083",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-084": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-084",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-085": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-085",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-086": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-086",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-087": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-087",
+    "engine": "aggregate",
+    "classification": "specification_gap",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-088": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-088",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-089": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-089",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-090": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-090",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-091": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-091",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-092": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-092",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-093": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [
+    "OWN-009"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4A. Connectors and ingestion\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: threshold \"Any unconfigured connector\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any unconfigured connector\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-093",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-094": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-094",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-095": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-095",
+    "engine": "aggregate",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "EVENT-UNBOUND"
+    ]
+   }
+  },
+  "ITOM-096": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-096",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-097": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-097",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-098": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-098",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json",
+    "replaces_legacy": [
+     "EVENT-UNBOUND"
+    ]
+   }
+  },
+  "ITOM-099": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: threshold \"Any occurrence within a detected duplicate set\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence within a detected duplicate set\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-099",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-100": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-100",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-101": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-101",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-102": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-102",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-103": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-103",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-104": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-104",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-105": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4B. CI binding — the router demo core\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: threshold \"Any disabled rule with live event volume in its class set\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any disabled rule with live event volume in its class set\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-105",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-106": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-106",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-107": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-107",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-108": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: threshold \"Both absent\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Both absent\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-108",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-109": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-109",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-110": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-110",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-111": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-111",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-112": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: threshold \"Any occurrence with non-zero firing count\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence with non-zero firing count\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-112",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-113": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-113",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-114": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-114",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-115": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-115",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-116": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-116",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-117": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-117",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-118": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-118",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-119": {
+   "module": "itom",
+   "dimension": "event_management",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "event_management",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"4C. Alerts and impact\"",
+    "applicability": "profile: dimension event_management"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-119",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-120": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "rule:ITOM-121"
+   ],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-008: ITOM-121 confidence_basis \"depends on ITOM-120\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-120",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-121": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "rule:ITOM-135"
+   ],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-009: ITOM-135 threshold_parameter \"guard on ITOM-121 coverage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-121",
+    "engine": "aggregate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-122": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-122",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-123": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-123",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-124": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-124",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-125": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-125",
+    "engine": "configuration",
+    "classification": "unconfigured",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-126": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-126",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-127": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: threshold \"Any exclusion without a registered justification\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any exclusion without a registered justification\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-127",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-128": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-128",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-129": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-129",
+    "engine": "temporal_correlation",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-130": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-130",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-131": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-131",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-132": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-132",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-133": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5A. Cloud discovery\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-133",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-134": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: threshold \"Any path without registration\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any path without registration\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-134",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-135": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-135",
+    "engine": "linkage",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-136": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: threshold \"Any path with zero enforcement\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any path with zero enforcement\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-136",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-137": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: threshold \"Both absent\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Both absent\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-137",
+    "engine": "record_predicate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-138": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-138",
+    "engine": "temporal_correlation",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-139": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-139",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-140": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-140",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-141": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: threshold \"Any defined-but-unenforced policy\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any defined-but-unenforced policy\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-141",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-142": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [
+    "OWN-008"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-142",
+    "engine": "reference_integrity",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-143": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-143",
+    "engine": "configuration",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-144": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-144",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-145": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-145",
+    "engine": "record_predicate",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-146": {
+   "module": "itom",
+   "dimension": "cloud",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": "cloud",
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"5B. Cloud provisioning and governance\"",
+    "applicability": "profile: dimension cloud",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-146",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-147": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-147",
+    "engine": "composite",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-148": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-148",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-149": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-149",
+    "engine": "composite",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-150": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-150",
+    "engine": "composite",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-151": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-151",
+    "engine": "composite",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-152": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-152",
+    "engine": "composite",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-153": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-153",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-154": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-154",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-155": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-155",
+    "engine": "composite",
+    "classification": "object_unverified",
+    "source": "health/itom/rules/*.json"
+   }
+  },
+  "ITOM-156": {
+   "module": "itom",
+   "dimension": "cross_domain",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Domain ITOM\"",
+    "kind": "profile: dimension cross_domain is not scored",
+    "attainment": "profile: dimension cross_domain is not scored — correlation feeds root-cause links, not the score"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITOM-156",
+    "engine": "composite",
+    "classification": "executable",
+    "source": "health/itom/rules/*.json"
+   }
+  }
+ }
+}

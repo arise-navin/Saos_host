@@ -1,0 +1,26 @@
+{
+  "name": "nowhelpassist-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env scripts/watch.mjs",
+    "start": "node --env-file-if-exists=.env src/index.js",
+    "doctor": "node scripts/flow-doctor.mjs",
+    "flow:readback": "node scripts/flow-readback.mjs"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.9",
+    "@tesseract.js-data/eng": "^1.0.0",
+    "cors": "^2.8.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.19.2",
+    "jszip": "^3.10.2",
+    "mammoth": "^1.12.3",
+    "pdfjs-dist": "^6.3.289",
+    "tesseract.js": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}

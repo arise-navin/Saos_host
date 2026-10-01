@@ -1,0 +1,75 @@
+{
+ "version": "1.0.0",
+ "decision": "D-034",
+ "rules": {
+  "ITIL-004": {
+   "equivalent_of": "DQ-095",
+   "note": "The same condition as DQ-095 (approvers resolving to inactive users) and DQ-096 (approver groups with zero active members), which the supplied rule joins: evaluated and counted in Enterprise Data Quality, shown here as an equivalent."
+  },
+  "ITIL-009": {
+   "equivalent_of": "DQ-091",
+   "note": "The same condition as DQ-091 (catalog item with no owner or fulfilment group), which the supplied rule joins: evaluated and counted in Enterprise Data Quality, shown here as an equivalent."
+  },
+  "ITIL-013": {
+   "equivalent_of": "DQ-123",
+   "note": "The same condition as DQ-123 (catalog item never ordered), which the supplied rule joins: evaluated and counted in Enterprise Data Quality."
+  },
+  "ITIL-017": {
+   "equivalent_of": "CSDM-016",
+   "note": "The same condition as CSDM-016 (service portfolio against the catalogue), which the supplied rule joins: counted once, in CSDM."
+  },
+  "ITIL-024": {
+   "equivalent_of": "DQ-116",
+   "note": "The same condition as DQ-116 (duplicate catalog items), which the supplied rule joins: counted once, in Enterprise Data Quality."
+  },
+  "ITIL-029": {
+   "equivalent_of": "DQ-122",
+   "note": "The same condition as DQ-122 (article past its review date), which the supplied rule joins: counted once, in Enterprise Data Quality."
+  },
+  "ITIL-031": {
+   "equivalent_of": "ITSM-066",
+   "note": "The same condition as ITSM-066, which the supplied rule joins: counted once, in ITSM."
+  },
+  "ITIL-039": {
+   "equivalent_of": "ITSM-139",
+   "note": "The same condition as ITSM-139 (and DQ-131), which the supplied rule joins: counted once, in ITSM."
+  },
+  "ITIL-042": {
+   "equivalent_of": "PLT-016",
+   "note": "The same condition as PLT-016 (SLA definition never reviewed since creation), which the supplied rule joins: counted once, in Platform."
+  },
+  "ITIL-051": {
+   "equivalent_of": "ITSM-054",
+   "note": "The same condition as ITSM-054 (recurring incident patterns with no Problem), which the supplied rule joins: counted once, in ITSM."
+  },
+  "ITIL-068": {
+   "equivalent_of": "ITSM-098",
+   "note": "The same condition as ITSM-098 (test plan empty on high-risk changes): counted once, in ITSM."
+  },
+  "ITIL-110": {
+   "equivalent_of": "PLT-134",
+   "note": "The same condition as PLT-134 (no access recertification evidenced), which the supplied rule joins: counted once, in Platform."
+  },
+  "ITIL-111": {
+   "equivalent_of": "PLT-153",
+   "note": "The same condition as PLT-153 (integration with no documented owner), which the supplied rule joins: counted once, in Platform."
+  },
+  "ITIL-124": {
+   "equivalent_of": "ITSM-046",
+   "note": "The same condition as ITSM-046 (major incident with no communication plan or task), which the supplied rule joins: counted once, in ITSM."
+  },
+  "ITIL-143": {
+   "equivalent_of": "ITSM-129",
+   "note": "The same condition as ITSM-129 (the processes not referencing the CMDB / a shared service model), which the supplied rule joins: counted once, in ITSM."
+  },
+  "ITIL-144": {
+   "equivalent_of": "ITOM-134",
+   "note": "The same condition as ITOM-134 (a provisioning path bypassing CMDB registration), which the supplied rule joins: counted once, in ITOM."
+  },
+  "ITIL-147": {
+   "equivalent_of": "itil-quality/2",
+   "derived": true,
+   "note": "The practice-level profile IS the ITIL module score by group (itil-quality/2 reports one score per practice group): shown as a row of its own, never scored twice."
+  }
+ }
+}

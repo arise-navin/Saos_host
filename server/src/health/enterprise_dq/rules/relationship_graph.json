@@ -1,0 +1,10 @@
+{
+ "engine": "relationship_graph",
+ "rules": {
+  "DQ-109": {
+   "undefined_dependencies": [
+    "the depth-variance threshold — \"configurable\", no default"
+   ]
+  }
+ }
+}

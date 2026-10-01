@@ -1,0 +1,3243 @@
+{
+ "declarations_version": "0.1.0",
+ "module": "cmdb",
+ "note": "CMDB parameter declarations (docs/HEALTH-ASSIST-APPROACH.md §4.3). The DEFAULT VALUE lives in code (the pack's *_DEFAULTS); this file declares its type, unit, bounds, class and the rules it tunes. `default` is a snapshot the test suite compares with the code. These are SAOS defaults, not workbook values, unless a rule's workbook threshold states the same number.",
+ "classes": {
+  "rule_threshold": "a number a rule compares against; engine key",
+  "rule_scope": "which classes, fields, types or values a rule judges; engine key",
+  "estate_fact": "a fact about this customer's estate; no customer-specific default is assumed; engine key",
+  "model_constant": "a constant that computes confidence, not whether a rule fires; engine key"
+ },
+ "scopes": {
+  "signals": {
+   "label": "Severity signals and materiality",
+   "file": "cmdb-signals.js",
+   "keys": {
+    "bcDepth": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 6
+    },
+    "bcCriticality": {
+     "type": "regex",
+     "class": "estate_fact",
+     "overridable": false,
+     "not_overridable_because": "A pattern override is a code-execution surface (catastrophic backtracking) and needs its own review; not overridable in Phase 1.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "$regex": "^1\\b",
+      "flags": ""
+     }
+    },
+    "sharedInfrastructure": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_netgear",
+      "cmdb_ci_ip_router",
+      "cmdb_ci_ip_switch",
+      "cmdb_ci_ip_firewall",
+      "cmdb_ci_lb",
+      "cmdb_ci_directory",
+      "cmdb_ci_ldap_server",
+      "cmdb_ci_db_instance"
+     ]
+    },
+    "nonProduction": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "development",
+      "test",
+      "qa",
+      "staging",
+      "lab",
+      "training",
+      "demonstration",
+      "uat",
+      "sandbox"
+     ]
+    },
+    "retiring": {
+     "type": "regex",
+     "class": "estate_fact",
+     "overridable": false,
+     "not_overridable_because": "A pattern override is a code-execution surface (catastrophic backtracking) and needs its own review; not overridable in Phase 1.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "$regex": "retir",
+      "flags": "i"
+     }
+    },
+    "productionCidrs": {
+     "type": "cidr_list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": []
+    },
+    "productionDiscoverySources": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": []
+    },
+    "materiality": {
+     "type": "number_map",
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "escalateRatePct": 20,
+      "escalateMinCount": 10,
+      "floorCount": 5,
+      "floorRatePct": 1
+     }
+    }
+   }
+  },
+  "gate": {
+   "label": "Health configuration meta (Group 1)",
+   "file": "cmdb-gate.js",
+   "keys": {
+    "coverageFloorPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-003"
+     ],
+     "note": "CMDB-003",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-003\""
+     },
+     "reviewed": false,
+     "default": 60
+    },
+    "coverageEscalatePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-003"
+     ],
+     "note": "CMDB-003: escalate below",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-003: escalate below\""
+     },
+     "reviewed": false,
+     "default": 40
+    },
+    "staleUpdatedPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-009"
+     ],
+     "note": "CMDB-009",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-009\""
+     },
+     "reviewed": false,
+     "default": 10
+    },
+    "jobTolerance": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-007"
+     ],
+     "note": "CMDB-007: × the job's own interval",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-007: × the job's own interval\""
+     },
+     "reviewed": false,
+     "default": 1.5
+    },
+    "healthJobName": {
+     "type": "string",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": "CMDB Health"
+    }
+   }
+  },
+  "completeness": {
+   "label": "Completeness D1 (Group 2)",
+   "file": "cmdb-completeness.js",
+   "keys": {
+    "placeholders": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "unknown",
+      "n/a",
+      "na",
+      "tbd",
+      "none",
+      "-",
+      "null",
+      "0",
+      "default",
+      "to be filled by o.e.m.",
+      "0.0.0.0",
+      "00:00:00:00:00:00"
+     ]
+    },
+    "placeholderPrefixes": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "to be filled"
+     ]
+    },
+    "networkClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_netgear",
+      "cmdb_ci_computer",
+      "cmdb_ci_appl"
+     ]
+    },
+    "physicalClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_hardware"
+     ]
+    },
+    "financialClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_hardware"
+     ]
+    },
+    "locationMinDepth": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 3
+    },
+    "defaultChoiceRatio": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-021"
+     ],
+     "note": "CMDB-021 — confirmed 17 Sep",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-021 — confirmed 17 Sep\""
+     },
+     "reviewed": false,
+     "default": 80
+    },
+    "descriptiveAttributes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "name"
+     ]
+    },
+    "impactThresholdPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-141"
+     ],
+     "note": "CMDB-141 — confirmed 17 Sep",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-141 — confirmed 17 Sep\""
+     },
+     "reviewed": false,
+     "default": 70
+    },
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    }
+   }
+  },
+  "correctness": {
+   "label": "Correctness D2 (Group 3)",
+   "file": "cmdb-correctness.js",
+   "keys": {
+    "dependencyTypes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "Depends on::Used by",
+      "Runs on::Runs",
+      "Hosted on::Hosts",
+      "Uses::Used by",
+      "Consumes::Consumed by",
+      "Virtualized by::Virtualizes",
+      "Provided By::Provides",
+      "Cluster of::Cluster"
+     ]
+    },
+    "liveStages": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "Operational"
+     ]
+    },
+    "deadStages": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "End of Life",
+      "Missing"
+     ]
+    },
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "sourceLagHours": {
+     "type": "duration",
+     "unit": "hours",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-025"
+     ],
+     "note": "CMDB-025",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (hours)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-025\""
+     },
+     "reviewed": false,
+     "default": 24
+    },
+    "churnChanges": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-026"
+     ],
+     "note": "CMDB-026: more than this many",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-026: more than this many\""
+     },
+     "reviewed": false,
+     "default": 3
+    },
+    "churnWindowDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 90
+    },
+    "signatureMinClass": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-028"
+     ],
+     "note": "CMDB-028",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-028\""
+     },
+     "reviewed": false,
+     "default": 20
+    },
+    "signatureMargin": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "signatureBestMin": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.5
+    },
+    "signatureCurrentMax": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.25
+    },
+    "numericRanges": {
+     "type": "map",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A nested structure (class tiers, ranges, seeds): not overridable until it has a typed shape.",
+     "rules": [
+      "CMDB-031"
+     ],
+     "note": "CMDB-031, per attribute: [exclusive-min, max]",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-031, per attribute: [exclusive-min, max]\""
+     },
+     "reviewed": false,
+     "default": {
+      "ram": [
+       0,
+       67108864
+      ],
+      "cpu_count": [
+       0,
+       4096
+      ],
+      "cpu_core_count": [
+       0,
+       65536
+      ],
+      "disk_space": [
+       0,
+       1000000
+      ]
+     }
+    },
+    "numericClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_computer"
+     ]
+    },
+    "nameMinClass": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-032"
+     ],
+     "note": "CMDB-032",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-032\""
+     },
+     "reviewed": false,
+     "default": 10
+    },
+    "nameDominantPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 60
+    }
+   }
+  },
+  "uniqueness": {
+   "label": "Uniqueness D3 (Group 4)",
+   "file": "cmdb-uniqueness.js",
+   "keys": {
+    "inactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "serialMaxFrequency": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-035"
+     ],
+     "note": "CMDB-035: above this, a bad default value",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-035: above this, a bad default value\""
+     },
+     "reviewed": false,
+     "default": 10
+    },
+    "nameMaxFrequency": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-034"
+     ],
+     "note": "CMDB-034/040: above this, a generic name",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-034/040: above this, a generic name\""
+     },
+     "reviewed": false,
+     "default": 5
+    },
+    "genericNames": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "localhost"
+     ]
+    },
+    "excludedCidrs": {
+     "type": "cidr_list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "127.0.0.0/8",
+      "169.254.0.0/16",
+      "0.0.0.0/32"
+     ]
+    },
+    "vipCidrs": {
+     "type": "cidr_list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": "an estate states its own VIP ranges",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": []
+    },
+    "sharedIdentityClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_cluster",
+      "cmdb_ci_cluster_node",
+      "cmdb_ci_cluster_vip",
+      "cmdb_ci_lb",
+      "cmdb_ci_lb_service",
+      "cmdb_ci_vm_instance",
+      "cmdb_ci_vmware_instance",
+      "cmdb_ci_nat"
+     ]
+    },
+    "permittedClassPairs": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": "e.g. 'cmdb_ci_appl|cmdb_ci_service', sorted, '|'-joined",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": []
+    },
+    "sameBranchConfidence": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "model_constant",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a confidence constant",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.9
+    },
+    "crossBranchConfidence": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "model_constant",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a confidence constant",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.75
+    },
+    "independentKeySpaces": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": []
+    },
+    "crossSourceConfidence": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "model_constant",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a confidence constant",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.7
+    },
+    "fuzzyThreshold": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-041"
+     ],
+     "note": "CMDB-041",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-041\""
+     },
+     "reviewed": false,
+     "default": 0.85
+    },
+    "dedupTaskAgeDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-042"
+     ],
+     "note": "CMDB-042",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-042\""
+     },
+     "reviewed": false,
+     "default": 90
+    },
+    "trendMinSnapshots": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-038"
+     ],
+     "note": "CMDB-038",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-038\""
+     },
+     "reviewed": false,
+     "default": 3
+    },
+    "trendNoisePerWeek": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.5
+    },
+    "identityConfidence": {
+     "type": "number_map",
+     "class": "model_constant",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a confidence constant",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "correlation_id": 0.98,
+      "serial_number": 0.97,
+      "mac_address": 0.95,
+      "fqdn": 0.93,
+      "ip_address": 0.88
+     }
+    }
+   }
+  },
+  "identification": {
+   "label": "Identification and reconciliation D4/D5 (Group 5)",
+   "file": "cmdb-identification.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "identityAttributes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "serial_number",
+      "correlation_id",
+      "asset_tag",
+      "uuid",
+      "bios_uuid",
+      "object_id"
+     ]
+    },
+    "networkAttributes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "ip_address",
+      "mac_address",
+      "fqdn",
+      "host_name",
+      "dns_domain",
+      "model_id"
+     ]
+    },
+    "structuralComposite": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "structuralAttributes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "host",
+      "container",
+      "install_directory",
+      "directory",
+      "config_file",
+      "path",
+      "port",
+      "tcp_port",
+      "url",
+      "sid",
+      "instance",
+      "instance_name",
+      "instance_number",
+      "server_name",
+      "farm",
+      "cluster_id",
+      "queue",
+      "cim_object_path",
+      "zone",
+      "partition"
+     ]
+    },
+    "referenceAttributes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "host",
+      "container",
+      "server_name",
+      "farm",
+      "cluster_id",
+      "zone"
+     ]
+    },
+    "descriptiveAttributes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "name",
+      "display_name",
+      "short_description",
+      "label",
+      "comments",
+      "location",
+      "company",
+      "manufacturer"
+     ]
+    },
+    "ireBypassThresholdPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-046"
+     ],
+     "note": "CMDB-046 — catalogue default",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-046 — catalogue default\""
+     },
+     "reviewed": false,
+     "default": 20
+    },
+    "ireBypassEscalatePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": "above this the finding escalates",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 40
+    },
+    "creationWindowDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-046"
+     ],
+     "note": "the window CMDB-046/050 measure over",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"the window CMDB-046/050 measure over\""
+     },
+     "reviewed": false,
+     "default": 90
+    },
+    "deadSourceDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-049"
+     ],
+     "note": "CMDB-049 — catalogue default, per-source overrides honoured",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-049 — catalogue default, per-source overrides honoured\""
+     },
+     "reviewed": false,
+     "default": 30
+    },
+    "ireErrorPerCreatePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-053"
+     ],
+     "note": "CMDB-053 — errors as a share of creates in the window",
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-053 — errors as a share of creates in the window\""
+     },
+     "reviewed": false,
+     "default": 5
+    },
+    "minTrendRuns": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [
+      "CMDB-053"
+     ],
+     "note": "CMDB-053 — a trend needs runs to be a trend",
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "the code comment on this key: \"CMDB-053 — a trend needs runs to be a trend\""
+     },
+     "reviewed": false,
+     "default": 3
+    }
+   }
+  },
+  "relationships": {
+   "label": "Relationships D6 (Group 6)",
+   "file": "cmdb-relationships.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "collapseDropPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 15
+    },
+    "collapseWindowDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 30
+    },
+    "minSnapshots": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "traversalDepth": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 8
+    },
+    "reachThresholdPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 60
+    },
+    "minServiceMapSize": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 5
+    },
+    "hostClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_server",
+      "cmdb_ci_virtualization_server"
+     ]
+    },
+    "endpointClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_pc_hardware",
+      "cmdb_ci_printer",
+      "cmdb_ci_phone",
+      "cmdb_ci_mobile_device",
+      "cmdb_ci_monitor",
+      "cmdb_ci_peripheral",
+      "cmdb_ci_kvm",
+      "cmdb_ci_scanner"
+     ]
+    },
+    "endpointFallbackClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_computer"
+     ]
+    },
+    "infrastructureClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_ups",
+      "cmdb_ci_rack",
+      "cmdb_ci_zone",
+      "cmdb_ci_netgear",
+      "cmdb_ci_storage_device",
+      "cmdb_ci_datacenter"
+     ]
+    },
+    "endpointOrphanBand": {
+     "type": "string",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": "LOW"
+    },
+    "applicationClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_appl",
+      "cmdb_ci_app_server",
+      "cmdb_ci_web_server",
+      "cmdb_ci_db_instance",
+      "cmdb_ci_message_queue"
+     ]
+    },
+    "hostingTypes": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "Runs on::Runs",
+      "Hosted on::Hosts",
+      "Virtualized by::Virtualizes",
+      "Instantiates::Instantiated by"
+     ]
+    },
+    "discoveryMaintainedTypes": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": []
+    },
+    "edgeStaleDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 30
+    },
+    "depthBenchmarkPercentile": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 75
+    },
+    "depthPassPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 60
+    },
+    "minBenchmarkServices": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 5
+    },
+    "minBenchmarkSpread": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 1
+    },
+    "outlierSigma": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 3
+    },
+    "minClassPopulation": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 30
+    },
+    "minRelatedShare": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.1
+    },
+    "hubClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_netgear",
+      "cmdb_ci_ip_switch",
+      "cmdb_ci_ip_router",
+      "cmdb_ci_lb",
+      "cmdb_ci_esx_server",
+      "cmdb_ci_db_instance",
+      "cmdb_ci_cluster"
+     ]
+    }
+   }
+  },
+  "freshness": {
+   "label": "Freshness D7 (Group 7)",
+   "file": "cmdb-freshness.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "discoveryCoveragePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 85
+    },
+    "discoverableClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_hardware",
+      "cmdb_ci_computer",
+      "cmdb_ci_server",
+      "cmdb_ci_netgear",
+      "cmdb_ci_appl",
+      "cmdb_ci_storage_device"
+     ]
+    },
+    "scheduleTolerance": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "untouchedDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 180
+    },
+    "singleSourcePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 60
+    },
+    "manualOnlyPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 25
+    },
+    "importOnlyPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 25
+    },
+    "scriptOnlyDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 180
+    },
+    "bulkTouchSharePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 20
+    },
+    "bulkTouchCeilingPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 25
+    },
+    "bulkTouchMinCis": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 25
+    },
+    "activeDiscoveryDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 30
+    },
+    "scriptAccountSeed": {
+     "type": "map",
+     "class": "estate_fact",
+     "overridable": false,
+     "not_overridable_because": "A nested structure (class tiers, ranges, seeds): not overridable until it has a typed shape.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "names": [
+       "system",
+       "glide.maint",
+       "guest"
+      ],
+      "patterns": [
+       {
+        "$regex": "\\.maint$",
+        "flags": "i"
+       },
+       {
+        "$regex": "^svc[_.]",
+        "flags": "i"
+       },
+       {
+        "$regex": "^ws[_.]",
+        "flags": "i"
+       },
+       {
+        "$regex": "integration",
+        "flags": "i"
+       },
+       {
+        "$regex": "_service$",
+        "flags": "i"
+       },
+       {
+        "$regex": "^sys_",
+        "flags": "i"
+       },
+       {
+        "$regex": "^admin\\.svc",
+        "flags": "i"
+       }
+      ]
+     }
+    },
+    "manualSourceValues": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "Manual",
+      "Duplicate",
+      "Duplicate CI"
+     ]
+    }
+   }
+  },
+  "lifecycle": {
+   "label": "Lifecycle D8 (Group 8)",
+   "file": "cmdb-lifecycle.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "retirementBacklogDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 180
+    },
+    "lifecycleAgeDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 365
+    },
+    "retentionDays": {
+     "type": "duration",
+     "unit": "days",
+     "nullable": true,
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": null
+    },
+    "freshnessUnverifiablePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 25
+    },
+    "taskTables": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "incident",
+      "change_request",
+      "problem"
+     ]
+    },
+    "deadStatePatterns": {
+     "type": "regex_list",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A pattern override is a code-execution surface (catastrophic backtracking) and needs its own review; not overridable in Phase 1.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      {
+       "$regex": "retir",
+       "flags": "i"
+      },
+      {
+       "$regex": "dispos",
+       "flags": "i"
+      },
+      {
+       "$regex": "decommission",
+       "flags": "i"
+      },
+      {
+       "$regex": "consumed",
+       "flags": "i"
+      },
+      {
+       "$regex": "missing",
+       "flags": "i"
+      },
+      {
+       "$regex": "stolen",
+       "flags": "i"
+      },
+      {
+       "$regex": "absent",
+       "flags": "i"
+      },
+      {
+       "$regex": "scrapp",
+       "flags": "i"
+      },
+      {
+       "$regex": "sold",
+       "flags": "i"
+      }
+     ]
+    }
+   }
+  },
+  "governance": {
+   "label": "Data Manager and attestation (Group 9)",
+   "file": "cmdb-governance.js",
+   "keys": {
+    "governanceCoveragePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 50
+    },
+    "growthDecile": {
+     "type": "number",
+     "min": 0,
+     "max": 1,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.1
+    },
+    "minGrowthCis": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 25
+    },
+    "minGrowthSnapshots": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "certTaskAgeDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 60
+    },
+    "attestationWindowDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 365
+    },
+    "failedResultPattern": {
+     "type": "regex",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A pattern override is a code-execution surface (catastrophic backtracking) and needs its own review; not overridable in Phase 1.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "$regex": "fail|reject|non.?complian|discrepan|breach",
+      "flags": "i"
+     }
+    },
+    "certifiedResultPattern": {
+     "type": "regex",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A pattern override is a code-execution surface (catastrophic backtracking) and needs its own review; not overridable in Phase 1.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "$regex": "certif|pass|complian|approv|accept",
+      "flags": "i"
+     }
+    }
+   }
+  },
+  "ownership": {
+   "label": "Ownership D9 (Group 10)",
+   "file": "cmdb-ownership.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "ownershipFields": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "owned_by",
+      "managed_by",
+      "support_group"
+     ]
+    },
+    "inferableFields": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "assigned_to"
+     ]
+    },
+    "concentrationPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 20
+    },
+    "serviceDivergenceMinCis": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 3
+    },
+    "ownershipAgeDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 365
+    },
+    "selfDiscloseAbovePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 80
+    },
+    "classTiers": {
+     "type": "map",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A nested structure (class tiers, ranges, seeds): not overridable until it has a typed shape.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "host": [
+       "cmdb_ci_server",
+       "cmdb_ci_virtualization_server"
+      ],
+      "application": [
+       "cmdb_ci_appl",
+       "cmdb_ci_app_server",
+       "cmdb_ci_web_server",
+       "cmdb_ci_db_instance",
+       "cmdb_ci_message_queue"
+      ],
+      "hub": [
+       "cmdb_ci_netgear",
+       "cmdb_ci_ip_switch",
+       "cmdb_ci_ip_router",
+       "cmdb_ci_lb",
+       "cmdb_ci_esx_server",
+       "cmdb_ci_db_instance",
+       "cmdb_ci_cluster"
+      ],
+      "infrastructure": [
+       "cmdb_ci_ups",
+       "cmdb_ci_rack",
+       "cmdb_ci_zone",
+       "cmdb_ci_netgear",
+       "cmdb_ci_storage_device",
+       "cmdb_ci_datacenter"
+      ],
+      "endpoint": [
+       "cmdb_ci_pc_hardware",
+       "cmdb_ci_printer",
+       "cmdb_ci_phone",
+       "cmdb_ci_mobile_device",
+       "cmdb_ci_monitor",
+       "cmdb_ci_peripheral",
+       "cmdb_ci_kvm",
+       "cmdb_ci_scanner"
+      ],
+      "endpointFallback": [
+       "cmdb_ci_computer"
+      ],
+      "discoverable": [
+       "cmdb_ci_hardware",
+       "cmdb_ci_computer",
+       "cmdb_ci_server",
+       "cmdb_ci_netgear",
+       "cmdb_ci_appl",
+       "cmdb_ci_storage_device"
+      ]
+     }
+    }
+   }
+  },
+  "csdm": {
+   "label": "CSDM linkage (Group 11)",
+   "file": "cmdb-csdm.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "businessServiceClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_service_business"
+     ]
+    },
+    "applicationServiceClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_service_auto",
+      "cmdb_ci_service_discovered"
+     ]
+    },
+    "capabilityClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_business_capability"
+     ]
+    },
+    "baseServiceClasses": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "cmdb_ci_service"
+     ]
+    },
+    "traversalDepth": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 8
+    },
+    "minLayerCis": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 1
+    },
+    "capabilityReachPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 40
+    },
+    "classTiers": {
+     "type": "map",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A nested structure (class tiers, ranges, seeds): not overridable until it has a typed shape.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "host": [
+       "cmdb_ci_server",
+       "cmdb_ci_virtualization_server"
+      ],
+      "application": [
+       "cmdb_ci_appl",
+       "cmdb_ci_app_server",
+       "cmdb_ci_web_server",
+       "cmdb_ci_db_instance",
+       "cmdb_ci_message_queue"
+      ],
+      "hub": [
+       "cmdb_ci_netgear",
+       "cmdb_ci_ip_switch",
+       "cmdb_ci_ip_router",
+       "cmdb_ci_lb",
+       "cmdb_ci_esx_server",
+       "cmdb_ci_db_instance",
+       "cmdb_ci_cluster"
+      ],
+      "infrastructure": [
+       "cmdb_ci_ups",
+       "cmdb_ci_rack",
+       "cmdb_ci_zone",
+       "cmdb_ci_netgear",
+       "cmdb_ci_storage_device",
+       "cmdb_ci_datacenter"
+      ],
+      "endpoint": [
+       "cmdb_ci_pc_hardware",
+       "cmdb_ci_printer",
+       "cmdb_ci_phone",
+       "cmdb_ci_mobile_device",
+       "cmdb_ci_monitor",
+       "cmdb_ci_peripheral",
+       "cmdb_ci_kvm",
+       "cmdb_ci_scanner"
+      ],
+      "endpointFallback": [
+       "cmdb_ci_computer"
+      ],
+      "discoverable": [
+       "cmdb_ci_hardware",
+       "cmdb_ci_computer",
+       "cmdb_ci_server",
+       "cmdb_ci_netgear",
+       "cmdb_ci_appl",
+       "cmdb_ci_storage_device"
+      ]
+     }
+    }
+   }
+  },
+  "consumption": {
+   "label": "Consumption and trust D10 (Group 12)",
+   "file": "cmdb-consumption.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "incidentServicePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 60
+    },
+    "incidentCiPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 50
+    },
+    "consumptionWindowDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 90
+    },
+    "minConsumptionVolume": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 30
+    },
+    "taskWindowDays": {
+     "type": "duration",
+     "unit": "days",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (days)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 365
+    },
+    "taskTables": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "incident",
+      "change_request",
+      "problem"
+     ]
+    },
+    "maxClassDepth": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 6
+    },
+    "sparseClassMax": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 5
+    },
+    "customFieldPopulatedPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 5
+    },
+    "classOverlapPct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 70
+    },
+    "classTiers": {
+     "type": "map",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A nested structure (class tiers, ranges, seeds): not overridable until it has a typed shape.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "host": [
+       "cmdb_ci_server",
+       "cmdb_ci_virtualization_server"
+      ],
+      "application": [
+       "cmdb_ci_appl",
+       "cmdb_ci_app_server",
+       "cmdb_ci_web_server",
+       "cmdb_ci_db_instance",
+       "cmdb_ci_message_queue"
+      ],
+      "hub": [
+       "cmdb_ci_netgear",
+       "cmdb_ci_ip_switch",
+       "cmdb_ci_ip_router",
+       "cmdb_ci_lb",
+       "cmdb_ci_esx_server",
+       "cmdb_ci_db_instance",
+       "cmdb_ci_cluster"
+      ],
+      "infrastructure": [
+       "cmdb_ci_ups",
+       "cmdb_ci_rack",
+       "cmdb_ci_zone",
+       "cmdb_ci_netgear",
+       "cmdb_ci_storage_device",
+       "cmdb_ci_datacenter"
+      ],
+      "endpoint": [
+       "cmdb_ci_pc_hardware",
+       "cmdb_ci_printer",
+       "cmdb_ci_phone",
+       "cmdb_ci_mobile_device",
+       "cmdb_ci_monitor",
+       "cmdb_ci_peripheral",
+       "cmdb_ci_kvm",
+       "cmdb_ci_scanner"
+      ],
+      "endpointFallback": [
+       "cmdb_ci_computer"
+      ],
+      "discoverable": [
+       "cmdb_ci_hardware",
+       "cmdb_ci_computer",
+       "cmdb_ci_server",
+       "cmdb_ci_netgear",
+       "cmdb_ci_appl",
+       "cmdb_ci_storage_device"
+      ]
+     }
+    }
+   }
+  },
+  "scale": {
+   "label": "Scale and platform impact (Group 13)",
+   "file": "cmdb-scale.js",
+   "keys": {
+    "dqInactiveInstallStatus": {
+     "type": "list",
+     "class": "estate_fact",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "a fact about the customer estate (approach §4.3)",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "7",
+      "8",
+      "100"
+     ]
+    },
+    "edgesPerCiByTier": {
+     "type": "number_map",
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "hub": 6,
+      "host": 3,
+      "application": 3,
+      "infrastructure": 2,
+      "endpoint": 0,
+      "software": 0,
+      "other": 1
+     }
+    },
+    "scaleTierClasses": {
+     "type": "map",
+     "class": "rule_scope",
+     "overridable": false,
+     "not_overridable_because": "A nested structure (class tiers, ranges, seeds): not overridable until it has a typed shape.",
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": {
+      "hub": [
+       "cmdb_ci_netgear",
+       "cmdb_ci_ip_switch",
+       "cmdb_ci_ip_router",
+       "cmdb_ci_lb",
+       "cmdb_ci_cluster"
+      ],
+      "host": [
+       "cmdb_ci_server",
+       "cmdb_ci_virtualization_server"
+      ],
+      "application": [
+       "cmdb_ci_appl",
+       "cmdb_ci_db_instance",
+       "cmdb_ci_web_server"
+      ],
+      "infrastructure": [
+       "cmdb_ci_ups",
+       "cmdb_ci_rack",
+       "cmdb_ci_zone",
+       "cmdb_ci_storage_device"
+      ],
+      "endpoint": [
+       "cmdb_ci_pc_hardware",
+       "cmdb_ci_printer",
+       "cmdb_ci_phone",
+       "cmdb_ci_computer"
+      ],
+      "software": [
+       "cmdb_ci_spkg",
+       "cmdb_ci_software_instance",
+       "cmdb_ci_licence",
+       "cmdb_ci_license",
+       "cmdb_ci_config_file",
+       "cmdb_ci_config_file_tracked"
+      ]
+     }
+    },
+    "ratioTolerance": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 0.5
+    },
+    "minCisForRatio": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 50
+    },
+    "minGrowthSnapshots": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "minTrendSnapshots": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 3
+    },
+    "slowTransactionMs": {
+     "type": "duration",
+     "unit": "ms",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (ms)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2000
+    },
+    "slowPercentile": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 95
+    },
+    "largeClassRows": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 10000
+    },
+    "historyTables": {
+     "type": "list",
+     "class": "rule_scope",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": [
+      "sys_audit",
+      "sys_history_line",
+      "sys_history_set",
+      "sys_audit_delete"
+     ]
+    }
+   }
+  },
+  "drift": {
+   "label": "Drift and regression (Group 14)",
+   "file": "cmdb-drift.js",
+   "keys": {
+    "minRecurrenceSnapshots": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "minTrendPoints": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 3
+    },
+    "scoreNoisePoints": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 1
+    },
+    "bypassNoisePoints": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 2
+    },
+    "relationshipDeclinePct": {
+     "type": "percent",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value and the key suffix (%)",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 5
+    },
+    "attestationCycles": {
+     "type": "number",
+     "min": 0,
+     "class": "rule_threshold",
+     "overridable": true,
+     "rules": [],
+     "note": null,
+     "proposed": {
+      "type": "inferred from the default value",
+      "class": "default by type",
+      "rules": "no rule named in the code; pending review"
+     },
+     "reviewed": false,
+     "default": 3
+    }
+   }
+  }
+ }
+}

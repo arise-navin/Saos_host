@@ -1,0 +1,21 @@
+{
+ "engine": "linkage",
+ "rules": {
+  "CSDM-016": {
+   "undefined_dependencies": [
+    "which \"published catalogue\" the service list is compared with (service catalog items, the service portfolio, an external catalogue), and how entries are matched"
+   ]
+  },
+  "CSDM-040": {
+   "undefined_dependencies": [
+    "which service processes which personal data — the fields are classified (m2m_dictionary_dataclass, D-032), but no information object links them to a business application or service on the instance",
+    "a data owner — cmdb_ci_service has no data-owner field (verified, Phase 9); which field stands for it (the information object's owned_by, a role) is not given"
+   ]
+  },
+  "CSDM-065": {
+   "specification_gap": {
+    "missing": "what makes an offering \"inactive\" (operational_status, install_status or service_status all exist) and an incident \"on that channel\""
+   }
+  }
+ }
+}

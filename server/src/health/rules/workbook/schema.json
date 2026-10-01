@@ -1,0 +1,161 @@
+{
+ "source": {
+  "workbook": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+  "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+  "bytes": 323662
+ },
+ "title": "SAOS Rule Articulation Schema",
+ "preamble": "Every rule carries all ten articulation fields before it is built. Confidence Basis and False Positive Guard determine accuracy: a rule with an asserted confidence number gets discredited on first challenge, and a rule with no false-positive guard floods the estate.",
+ "fields": [
+  {
+   "excel_row": 5,
+   "header": "Rule ID",
+   "purpose": "Stable identifier referenced by findings, evidence and remediation plans.",
+   "fill_rule": "Never reuse or renumber. A retired rule keeps its ID."
+  },
+  {
+   "excel_row": 6,
+   "header": "Group",
+   "purpose": "Dimension the rule contributes to.",
+   "fill_rule": "Must match a defined scoring dimension."
+  },
+  {
+   "excel_row": 7,
+   "header": "Rule (Exact Wording)",
+   "purpose": "The finding title the user sees.",
+   "fill_rule": "State the defect, not the fix. No thresholds in the title."
+  },
+  {
+   "excel_row": 8,
+   "header": "Base Severity",
+   "purpose": "Starting severity before context modifiers.",
+   "fill_rule": "Systemic > Critical > High > Moderate > Low. Systemic = the governance mechanism itself is broken."
+  },
+  {
+   "excel_row": 9,
+   "header": "What It Means",
+   "purpose": "The mechanism, in plain language.",
+   "fill_rule": "Explain how the defect arises. Never restate the rule title."
+  },
+  {
+   "excel_row": 10,
+   "header": "Why It Matters",
+   "purpose": "Operational consequence.",
+   "fill_rule": "What breaks, for whom, and when. If you cannot name a consequence, the rule does not belong in the catalogue."
+  },
+  {
+   "excel_row": 11,
+   "header": "Source Tables / Fields",
+   "purpose": "Exact provenance.",
+   "fill_rule": "Name real tables and fields. This is the field that survives cross-examination in the demo."
+  },
+  {
+   "excel_row": 12,
+   "header": "Detection Logic",
+   "purpose": "The query or comparison.",
+   "fill_rule": "Pseudo-query form. Must be re-runnable by the customer in their own instance."
+  },
+  {
+   "excel_row": 13,
+   "header": "Threshold / Parameter",
+   "purpose": "What is configurable and the default.",
+   "fill_rule": "Every threshold is configurable. State the default and the unit."
+  },
+  {
+   "excel_row": 14,
+   "header": "Confidence Basis",
+   "purpose": "How the confidence number is computed.",
+   "fill_rule": "MUST be a formula or a stated structural certainty. An asserted percentage is an automatic reject."
+  },
+  {
+   "excel_row": 15,
+   "header": "Evidence to Show",
+   "purpose": "The drill-down the user sees.",
+   "fill_rule": "Records, counts, timestamps. A finding with no drill-down does not ship."
+  },
+  {
+   "excel_row": 16,
+   "header": "False Positive Guard",
+   "purpose": "When this rule is wrong.",
+   "fill_rule": "Every rule has a wrong case. If you cannot name one, you have not tested it."
+  },
+  {
+   "excel_row": 17,
+   "header": "Remediation Lane",
+   "purpose": "How it gets fixed.",
+   "fill_rule": "Lane 1 direct apply (reversible data). Lane 2 staged update set. Lane 3 guided human decision."
+  },
+  {
+   "excel_row": 18,
+   "header": "Cross-Domain Link",
+   "purpose": "Causal connection to other domains.",
+   "fill_rule": "Which domain causes this, or which this causes. The input to root-cause clustering."
+  },
+  {
+   "excel_row": 19,
+   "header": "Implementation Status",
+   "purpose": "Build tracking.",
+   "fill_rule": "Not Started / In Progress / Built / Deferred."
+  },
+  {
+   "excel_row": 20,
+   "header": "Validation Status",
+   "purpose": "Test tracking.",
+   "fill_rule": "Not Tested / Tested on PDI / Tested on Customer / Failed."
+  }
+ ],
+ "severity_bands": [
+  {
+   "excel_row": 24,
+   "band": "Systemic",
+   "description": "The governance mechanism that should prevent defects is itself broken. One finding explains thousands. Weight 100.",
+   "weight": 100
+  },
+  {
+   "excel_row": 25,
+   "band": "Critical",
+   "description": "Causes operational blindness, silently corrupts data, or makes a dependent capability return a wrong answer. Weight 40.",
+   "weight": 40
+  },
+  {
+   "excel_row": 26,
+   "band": "High",
+   "description": "Materially degrades trust or blocks a capability. The system does not lie, it cannot help. Weight 15.",
+   "weight": 15
+  },
+  {
+   "excel_row": 27,
+   "band": "Moderate",
+   "description": "Real defect, contained blast radius, bulk-fixable, no immediate operational consequence. Weight 5.",
+   "weight": 5
+  },
+  {
+   "excel_row": 28,
+   "band": "Low",
+   "description": "Hygiene and completeness. Matters in aggregate, not individually. Weight 1.",
+   "weight": 1
+  }
+ ],
+ "severity_modifiers": [
+  {
+   "excel_row": 32,
+   "modifier": "Escalate one band (cap Systemic)",
+   "conditions": "Supports a Business Critical service | production environment | traced cause of downstream findings in another domain | duration beyond 30 days | shared infrastructure (network core, auth, shared DB) | silent failure (reports success, wrong result) | recurred after prior remediation | defect rate in class exceeds materiality threshold (pattern, not exception) | involves an approval, authorisation or segregation-of-duties control"
+  },
+  {
+   "excel_row": 33,
+   "modifier": "De-escalate one band",
+   "conditions": "Non-production and correctly tagged | class not consumed by any process | approved exception on file | below materiality floor for the class | compensating control evidenced | already flagged for retirement"
+  }
+ ],
+ "worked_examples": [
+  {
+   "excel_row": 37,
+   "text": "CMDB-105 \"CI with no owner, manager or support group\" is base High. On a dev server nothing references: de-escalate twice to Low. On a core router supporting three Business Critical services: escalate twice to Systemic. Same rule, same data, two correct answers."
+  },
+  {
+   "excel_row": 38,
+   "text": "ITOM-017 \"Credential authentication failing\" is base Critical. On a lab subnet for two days: de-escalate twice to Moderate. On a production range for 31 days, causing 380 stale CIs, 1,847 lost relationships and zero-impact calculation on three Business Critical services: escalate past Critical to Systemic. This is the answer to \"your tool will flood us with criticals\"."
+  }
+ ]
+}

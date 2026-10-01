@@ -1,0 +1,708 @@
+{
+ "engine": "record_predicate",
+ "rules": {
+  "PLT-001": {
+   "specification_gap": {
+    "missing": "\"business-hours intent\" — an empty schedule means 24x7, and whether 24x7 was intended is not recorded on the definition"
+   }
+  },
+  "PLT-012": {
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "active",
+      "workflow",
+      "flow"
+     ]
+    }
+   ],
+   "table": "contract_sla",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "workflow",
+     "op": "empty"
+    },
+    {
+     "field": "flow",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "collection",
+    "type"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Breach escalation runs through the definition's workflow or flow; a definition with neither is flagged. A notification on task_sla itself would escalate without them and is not read."
+   }
+  },
+  "PLT-016": {
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "active"
+     ]
+    }
+   ],
+   "table": "contract_sla",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "min_age",
+      "as": "window"
+     }
+    },
+    {
+     "field": "sys_updated_on",
+     "field2": "sys_created_on",
+     "op": "same_as"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "sys_created_on",
+    "sys_updated_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "\"No review\" is read as an update time equal to the creation time; a review that changed nothing reads as none."
+   }
+  },
+  "PLT-025": {
+   "requires_tables": [
+    {
+     "table": "task_sla",
+     "fields": [
+      "sla",
+      "percentage"
+     ]
+    }
+   ],
+   "table": "task_sla",
+   "evidence_fields": [
+    "sla",
+    "task",
+    "percentage",
+    "stage"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "below zero",
+     "scope": "percentage<0",
+     "predicates": [
+      {
+       "field": "percentage",
+       "op": "not_empty"
+      }
+     ]
+    },
+    {
+     "variant": "above the ceiling",
+     "scope": [
+      {
+       "$clause": {
+        "template": "percentage>{}",
+        "value": {
+         "$param": "ceiling"
+        }
+       }
+      }
+     ],
+     "predicates": [
+      {
+       "field": "percentage",
+       "op": "not_empty"
+      }
+     ]
+    }
+   ]
+  },
+  "PLT-028": {
+   "requires_tables": [
+    {
+     "table": "service_commitment",
+     "fields": [
+      "name",
+      "sla",
+      "type"
+     ]
+    }
+   ],
+   "table": "service_commitment",
+   "predicates": [
+    {
+     "field": "sla",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "type"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A commitment with no LINKED definition is flagged; a \"condition-matching\" definition cannot be recognised (no condition evaluator)."
+   }
+  },
+  "PLT-096": {
+   "requires_tables": [
+    {
+     "table": "sys_flow_context",
+     "fields": [
+      "name",
+      "state",
+      "flow"
+     ]
+    }
+   ],
+   "table": "sys_flow_context",
+   "scope": [
+    {
+     "$clause": {
+      "template": "state={}",
+      "value": {
+       "$choice": {
+        "table": "sys_flow_context",
+        "element": "state",
+        "label": [
+         "In Progress",
+         "In progress"
+        ]
+       }
+      }
+     }
+    }
+   ],
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "max_age",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "flow",
+    "state",
+    "sys_created_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Contexts in progress (not waiting) are judged; a flow whose running step is itself a wait is not recognised."
+   }
+  },
+  "PLT-115": {
+   "requires_tables": [
+    {
+     "table": "sysevent",
+     "fields": [
+      "name",
+      "state",
+      "queue"
+     ]
+    }
+   ],
+   "table": "sysevent",
+   "scope": [
+    {
+     "$clause": {
+      "template": "state={}",
+      "value": {
+       "$choice": {
+        "table": "sysevent",
+        "element": "state",
+        "label": [
+         "Ready",
+         "ready"
+        ]
+       }
+      }
+     }
+    }
+   ],
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "max_age",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "queue",
+    "sys_created_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The age half (the workbook calls it the more meaningful); the depth threshold is not given."
+   }
+  },
+  "PLT-130": {
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active",
+      "internal_integration_user",
+      "web_service_access_only"
+     ]
+    }
+   ],
+   "table": "sys_user",
+   "scope": "active=true^internal_integration_user=true",
+   "predicates": [
+    {
+     "field": "web_service_access_only",
+     "op": "not_equals",
+     "value": "true"
+    }
+   ],
+   "evidence_fields": [
+    "user_name",
+    "last_login_time"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A service account is one the platform flags internal_integration_user; classification \"from naming, roles and usage\" is not applied."
+   }
+  },
+  "PLT-138": {
+   "requires_tables": [
+    {
+     "table": "sys_rest_message",
+     "fields": [
+      "name",
+      "authentication_type"
+     ]
+    },
+    {
+     "table": "sys_rest_message_fn",
+     "fields": [
+      "function_name",
+      "authentication_type"
+     ]
+    },
+    {
+     "table": "sys_soap_message",
+     "fields": [
+      "name",
+      "use_basic_auth"
+     ]
+    }
+   ],
+   "table": "sys_rest_message",
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "REST messages",
+     "table": "sys_rest_message",
+     "scope": [
+      {
+       "$clause": {
+        "template": "authentication_type={}",
+        "value": {
+         "$choice": {
+          "table": "sys_rest_message",
+          "element": "authentication_type",
+          "label": "Basic"
+         }
+        }
+       }
+      }
+     ],
+     "predicates": [
+      {
+       "field": "authentication_type",
+       "op": "not_empty"
+      }
+     ],
+     "evidence_fields": [
+      "name",
+      "rest_endpoint"
+     ]
+    },
+    {
+     "variant": "REST methods",
+     "table": "sys_rest_message_fn",
+     "scope": [
+      {
+       "$clause": {
+        "template": "authentication_type={}",
+        "value": {
+         "$choice": {
+          "table": "sys_rest_message_fn",
+          "element": "authentication_type",
+          "label": "Basic"
+         }
+        }
+       }
+      }
+     ],
+     "predicates": [
+      {
+       "field": "authentication_type",
+       "op": "not_empty"
+      }
+     ],
+     "evidence_fields": [
+      "function_name",
+      "rest_endpoint"
+     ]
+    },
+    {
+     "variant": "SOAP messages",
+     "table": "sys_soap_message",
+     "scope": "use_basic_auth=true",
+     "predicates": [
+      {
+       "field": "use_basic_auth",
+       "op": "equals",
+       "value": "true"
+      }
+     ],
+     "evidence_fields": [
+      "name"
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Outbound integrations are judged; inbound basic authentication is an instance-wide setting, not per integration, and is not reported separately."
+   }
+  },
+  "PLT-139": {
+   "requires_tables": [
+    {
+     "table": "sys_rest_message",
+     "fields": [
+      "name",
+      "use_basic_auth",
+      "basic_auth_profile",
+      "basic_auth_password"
+     ]
+    },
+    {
+     "table": "sys_rest_message_fn",
+     "fields": [
+      "function_name",
+      "use_basic_auth",
+      "basic_auth_profile",
+      "basic_auth_password"
+     ]
+    },
+    {
+     "table": "sys_soap_message",
+     "fields": [
+      "name",
+      "use_basic_auth",
+      "basic_auth_profile",
+      "basic_auth_password"
+     ]
+    }
+   ],
+   "table": "sys_rest_message",
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "REST messages",
+     "table": "sys_rest_message",
+     "scope": "use_basic_auth=true",
+     "predicates": [
+      {
+       "field": "basic_auth_password",
+       "op": "not_empty"
+      },
+      {
+       "field": "basic_auth_profile",
+       "op": "empty"
+      }
+     ],
+     "evidence_fields": [
+      "name"
+     ]
+    },
+    {
+     "variant": "REST methods",
+     "table": "sys_rest_message_fn",
+     "scope": "use_basic_auth=true",
+     "predicates": [
+      {
+       "field": "basic_auth_password",
+       "op": "not_empty"
+      },
+      {
+       "field": "basic_auth_profile",
+       "op": "empty"
+      }
+     ],
+     "evidence_fields": [
+      "function_name"
+     ]
+    },
+    {
+     "variant": "SOAP messages",
+     "table": "sys_soap_message",
+     "scope": "use_basic_auth=true",
+     "predicates": [
+      {
+       "field": "basic_auth_password",
+       "op": "not_empty"
+      },
+      {
+       "field": "basic_auth_profile",
+       "op": "empty"
+      }
+     ],
+     "evidence_fields": [
+      "name"
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "An inline password with no authentication profile (the platform's credential alias) is flagged; other credential-bearing integrations (data sources, spokes) are not read. Owner of OWN-005 (ITOM-024 defers here)."
+   }
+  },
+  "PLT-144": {
+   "requires_tables": [
+    {
+     "table": "sys_rest_message",
+     "fields": [
+      "name",
+      "rest_endpoint"
+     ]
+    },
+    {
+     "table": "sys_rest_message_fn",
+     "fields": [
+      "function_name",
+      "rest_endpoint"
+     ]
+    },
+    {
+     "table": "sys_soap_message",
+     "fields": [
+      "name",
+      "wsdl"
+     ]
+    }
+   ],
+   "table": "sys_rest_message",
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "REST messages",
+     "table": "sys_rest_message",
+     "scope": "rest_endpointSTARTSWITHhttp://",
+     "predicates": [
+      {
+       "field": "rest_endpoint",
+       "op": "not_empty"
+      }
+     ],
+     "evidence_fields": [
+      "name",
+      "rest_endpoint"
+     ]
+    },
+    {
+     "variant": "REST methods",
+     "table": "sys_rest_message_fn",
+     "scope": "rest_endpointSTARTSWITHhttp://",
+     "predicates": [
+      {
+       "field": "rest_endpoint",
+       "op": "not_empty"
+      }
+     ],
+     "evidence_fields": [
+      "function_name",
+      "rest_endpoint"
+     ]
+    },
+    {
+     "variant": "SOAP messages",
+     "table": "sys_soap_message",
+     "scope": "wsdlSTARTSWITHhttp://",
+     "predicates": [
+      {
+       "field": "wsdl",
+       "op": "not_empty"
+      }
+     ],
+     "evidence_fields": [
+      "name",
+      "wsdl"
+     ]
+    }
+   ]
+  },
+  "PLT-163": {
+   "undefined_dependencies": [
+    "plugin deprecation status — v_plugin has no deprecation field on a verified instance (Phase 6)"
+   ]
+  },
+  "PLT-165": {
+   "requires_tables": [
+    {
+     "table": "sys_update_set",
+     "fields": [
+      "name",
+      "state",
+      "is_default"
+     ]
+    },
+    {
+     "table": "sys_remote_update_set",
+     "fields": [
+      "name",
+      "state"
+     ]
+    }
+   ],
+   "table": "sys_update_set",
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "open",
+     "table": "sys_update_set",
+     "scope": [
+      {
+       "$clause": {
+        "template": "state={}",
+        "value": {
+         "$choice": {
+          "table": "sys_update_set",
+          "element": "state",
+          "label": "In progress"
+         }
+        }
+       }
+      },
+      "is_default=false"
+     ],
+     "predicates": [
+      {
+       "field": "sys_created_on",
+       "op": "date_before",
+       "window": {
+        "$param": "open_age",
+        "as": "window"
+       }
+      }
+     ],
+     "evidence_fields": [
+      "name",
+      "sys_created_by"
+     ]
+    },
+    {
+     "variant": "preview",
+     "table": "sys_remote_update_set",
+     "scope": [
+      {
+       "$clause": {
+        "template": "state={}",
+        "value": {
+         "$choice": {
+          "table": "sys_remote_update_set",
+          "element": "state",
+          "label": "Previewed"
+         }
+        }
+       }
+      }
+     ],
+     "predicates": [
+      {
+       "field": "sys_created_on",
+       "op": "date_before",
+       "window": {
+        "$param": "preview_age",
+        "as": "window"
+       }
+      }
+     ],
+     "evidence_fields": [
+      "name"
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The open and preview cases are judged; unresolved collisions are not read."
+   }
+  },
+  "PLT-178": {
+   "requires_tables": [
+    {
+     "table": "sys_email",
+     "fields": [
+      "type",
+      "state"
+     ]
+    }
+   ],
+   "table": "sys_email",
+   "scope": [
+    {
+     "$clause": {
+      "template": "type={}",
+      "value": {
+       "$choice": {
+        "table": "sys_email",
+        "element": "type",
+        "label": [
+         "send-ready",
+         "Send-ready"
+        ]
+       }
+      }
+     }
+    }
+   ],
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "max_age",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "subject",
+    "sys_created_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The age half (the workbook's own default); the depth threshold is not given."
+   }
+  }
+ }
+}

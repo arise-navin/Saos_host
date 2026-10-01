@@ -1,0 +1,15 @@
+{
+ "engine": "linkage",
+ "rules": {
+  "PLT-011": {
+   "undefined_dependencies": [
+    "the platform does not keep every execution of an SLA flow: on the validation instance half the SLAs created since the oldest retained flow context have no context at all, so a flow that never ran cannot be told from a purged context (D-035)"
+   ]
+  },
+  "PLT-062": {
+   "undefined_dependencies": [
+    "the link from an update set to its change request — not a platform field"
+   ]
+  }
+ }
+}

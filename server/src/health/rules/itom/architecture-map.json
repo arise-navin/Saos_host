@@ -1,0 +1,5609 @@
+{
+ "map_version": "1.0.0",
+ "phase": "Health Assist Phase 5",
+ "catalogue": "itom",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "rule_count": 156,
+ "vocabularies": {
+  "archetypes": {
+   "record_predicate": "Per-record field-state or timestamp predicate on one task table",
+   "aggregate_distribution": "Count, ratio, share, distribution, dominance or trend over a slice, judged against a threshold",
+   "configuration_inspection": "Reads platform configuration objects and compares them with usage",
+   "reference_integrity": "A reference field must resolve to an existing, active or valid-state target",
+   "cross_record_linkage": "Existence or state of RELATED records in another ITSM table (incident↔problem↔change↔KB, approvals, tasks)",
+   "relationship_graph": "Needs the CMDB relationship graph: degree, traversal to a service, dependent CIs",
+   "audit_history": "Needs sys_audit, journal or task_sla event history to reconstruct transitions or timing",
+   "text_analysis": "Similarity, clustering, normalised-frequency, semantic consistency or pattern (regex) analysis over free text",
+   "temporal_correlation": "Correlates events across records or tables by CI and time window",
+   "composite": "Derives from other rules’ outputs or needs three or more distinct mechanisms in sequence"
+  },
+  "engines": {
+   "record_predicate": "Record Predicate Engine",
+   "aggregate": "Aggregate & Distribution Engine",
+   "configuration": "Configuration Inspection Engine",
+   "reference_integrity": "Reference Integrity Engine",
+   "linkage": "Cross-Record Linkage Engine",
+   "relationship_graph": "Relationship Graph Engine",
+   "audit_history": "Audit & Journal History Engine",
+   "text_analysis": "Text Analysis Engine",
+   "temporal_correlation": "Temporal Correlation Engine",
+   "composite": "Composite / Rule-Dependency Engine"
+  },
+  "archetype_to_engine": {
+   "record_predicate": "record_predicate",
+   "aggregate_distribution": "aggregate",
+   "configuration_inspection": "configuration",
+   "reference_integrity": "reference_integrity",
+   "cross_record_linkage": "linkage",
+   "relationship_graph": "relationship_graph",
+   "audit_history": "audit_history",
+   "text_analysis": "text_analysis",
+   "temporal_correlation": "temporal_correlation",
+   "composite": "composite"
+  },
+  "products": {
+   "discovery": "Discovery (schedules, credentials, execution, patterns)",
+   "mid_server": "MID Server",
+   "service_mapping": "Service Mapping",
+   "event_management": "Event Management (connectors, binding, alerts, impact)",
+   "cloud": "Cloud discovery, provisioning and governance",
+   "cross_domain": "Cross-domain ITOM correlation (not scored)"
+  },
+  "states": {
+   "executable": "runs once its tables are verified on the instance",
+   "unconfigured": "runs once a threshold the workbook leaves open is set",
+   "undefined": "the workbook leaves part of the detection undefined",
+   "specification_gap": "the workbook does not say enough to evaluate deterministically",
+   "object_unverified": "needs a platform object whose table is not established",
+   "not_built": "fully defined; evaluator not built in this stage",
+   "equivalent": "the same condition as another module's rule, evaluated there",
+   "derived": "the measure IS the module score (Phase 9, CSDM-072)"
+  }
+ },
+ "conventions": {
+  "tables": "the candidate tables a read-only instance validation found present and readable (Phase 5E, rules/itom/instance-validation.json). Every table a config reads is also in its requires_tables, which the runner verifies on EACH instance before any read.",
+  "verified_on": "techsnitchpvtltddemo2.service-now.com 2026-09-27",
+  "product": "from the workbook overlay (applicability): the ITOM product whose presence the rule assumes"
+ },
+ "entries": [
+  {
+   "slot": 1,
+   "rule_id": "ITOM-001",
+   "excel_row": 2,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Systemic",
+   "rule": "IP ranges exist in network CIs with no matching discovery schedule (coverage gap)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "discovery_range_item"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_range_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-071",
+   "notes": "The same condition as CMDB-071. Ownership OWN-001 is AGREED with CMDB-071 as owner (D-023): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 2,
+   "rule_id": "ITOM-002",
+   "excel_row": 3,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Systemic",
+   "rule": "Discovery coverage ratio below threshold — devices found vs. devices expected from topology",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_device_history",
+    "discovery_range_item"
+   ],
+   "candidate_tables": [
+    "discovery_device_history",
+    "discovery_range_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CMDB-070",
+   "notes": "The same condition as CMDB-070. Ownership OWN-002 is AGREED with CMDB-070 as owner (D-023): evaluated and counted in CMDB, shown here as an equivalent."
+  },
+  {
+   "slot": 3,
+   "rule_id": "ITOM-003",
+   "excel_row": 4,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Systemic",
+   "rule": "No discovery schedule exists for a datacentre or region present in CMDB",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.location",
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "ITOM-004"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 4,
+   "rule_id": "ITOM-004",
+   "excel_row": 5,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Critical",
+   "rule": "Location not defined on discovery schedule",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 5,
+   "rule_id": "ITOM-005",
+   "excel_row": 6,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Critical",
+   "rule": "Schedule inactive but never deleted, with its range still live",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "discovery_range_item",
+    "discovery_schedule",
+    "em_event",
+    "incident"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_range_item",
+    "discovery_schedule",
+    "em_event",
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 6,
+   "rule_id": "ITOM-006",
+   "excel_row": 7,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Critical",
+   "rule": "Schedule last successful run beyond its own interval",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type",
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 7,
+   "rule_id": "ITOM-007",
+   "excel_row": 8,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Critical",
+   "rule": "Schedule interval longer than CI staleness threshold (guaranteed stale data)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_health_staleness_rule",
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_health_staleness_rule",
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_health_staleness_rule.applies_to",
+    "cmdb_health_staleness_rule.duration",
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 8,
+   "rule_id": "ITOM-008",
+   "excel_row": 9,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Critical",
+   "rule": "Schedule assigned to a MID with no network route to its range",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_device_history",
+    "discovery_schedule",
+    "ecc_agent"
+   ],
+   "candidate_tables": [
+    "discovery_device_history",
+    "discovery_schedule",
+    "ecc_agent"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 9,
+   "rule_id": "ITOM-009",
+   "excel_row": 10,
+   "group": "1A. Schedule configuration",
+   "base_severity": "High",
+   "rule": "Schedule running against decommissioned or re-allocated ranges",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "discovery_device_history",
+    "discovery_range_item"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_device_history",
+    "discovery_range_item"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.ip_address",
+    "discovery_device_history.source",
+    "discovery_device_history.status",
+    "discovery_range_item.active",
+    "discovery_range_item.end_ip_address",
+    "discovery_range_item.name",
+    "discovery_range_item.netmask",
+    "discovery_range_item.network_ip",
+    "discovery_range_item.parent",
+    "discovery_range_item.schedule",
+    "discovery_range_item.start_ip_address",
+    "discovery_range_item.type",
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 10,
+   "rule_id": "ITOM-010",
+   "excel_row": 11,
+   "group": "1A. Schedule configuration",
+   "base_severity": "High",
+   "rule": "Overlapping ranges across schedules causing duplicate scanning and reclassification churn",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_range_item",
+    "sys_audit"
+   ],
+   "candidate_tables": [
+    "discovery_range_item",
+    "sys_audit"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_range_item.active",
+    "discovery_range_item.end_ip_address",
+    "discovery_range_item.name",
+    "discovery_range_item.netmask",
+    "discovery_range_item.network_ip",
+    "discovery_range_item.parent",
+    "discovery_range_item.schedule",
+    "discovery_range_item.start_ip_address",
+    "discovery_range_item.type",
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 11,
+   "rule_id": "ITOM-011",
+   "excel_row": 12,
+   "group": "1A. Schedule configuration",
+   "base_severity": "High",
+   "rule": "Schedule with no MID cluster or failover MID",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_schedule",
+    "ecc_agent_cluster_member_m2m"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "ecc_agent_cluster_member_m2m"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type",
+    "ecc_agent_cluster_member_m2m.agent",
+    "ecc_agent_cluster_member_m2m.cluster"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 12,
+   "rule_id": "ITOM-012",
+   "excel_row": 13,
+   "group": "1A. Schedule configuration",
+   "base_severity": "High",
+   "rule": "Shazzam batch size or concurrency tuned beyond safe limits for the MID",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_schedule",
+    "ecc_agent"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "ecc_agent"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 13,
+   "rule_id": "ITOM-013",
+   "excel_row": 14,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Moderate",
+   "rule": "Schedule window colliding with backup or change-freeze window",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmn_schedule_blackout",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "cmn_schedule_blackout",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmn_schedule_span.all_day",
+    "cmn_schedule_span.days_of_week",
+    "cmn_schedule_span.end_date_time",
+    "cmn_schedule_span.repeat_count",
+    "cmn_schedule_span.repeat_type",
+    "cmn_schedule_span.repeat_until",
+    "cmn_schedule_span.schedule",
+    "cmn_schedule_span.start_date_time",
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 14,
+   "rule_id": "ITOM-014",
+   "excel_row": 15,
+   "group": "1A. Schedule configuration",
+   "base_severity": "Low",
+   "rule": "Schedule with no owner or description",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.active",
+    "discovery_schedule.description",
+    "discovery_schedule.name",
+    "discovery_schedule.owner"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 15,
+   "rule_id": "ITOM-015",
+   "excel_row": 16,
+   "group": "1B. Credentials",
+   "base_severity": "Systemic",
+   "rule": "Credential failure rate above threshold on a range for N consecutive days",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "discovery_device_history",
+    "discovery_log"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "discovery_device_history",
+    "discovery_log"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 16,
+   "rule_id": "ITOM-016",
+   "excel_row": 17,
+   "group": "1B. Credentials",
+   "base_severity": "Systemic",
+   "rule": "No credential of the required type exists for a range containing devices of that type",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 17,
+   "rule_id": "ITOM-017",
+   "excel_row": 18,
+   "group": "1B. Credentials",
+   "base_severity": "Critical",
+   "rule": "Credential authentication failing (the rotation case)",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "discovery_device_history",
+    "dscy_credentials_affinity"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "discovery_device_history",
+    "dscy_credentials_affinity"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 18,
+   "rule_id": "ITOM-018",
+   "excel_row": 19,
+   "group": "1B. Credentials",
+   "base_severity": "Critical",
+   "rule": "Credential expired or inactive but still referenced by a schedule",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 19,
+   "rule_id": "ITOM-019",
+   "excel_row": 20,
+   "group": "1B. Credentials",
+   "base_severity": "Critical",
+   "rule": "Credential affinity absent for a range, so every run re-tries the full ladder",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_device_history",
+    "discovery_range_item",
+    "dscy_credentials_affinity"
+   ],
+   "candidate_tables": [
+    "discovery_device_history",
+    "discovery_range_item",
+    "dscy_credentials_affinity"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.last_discovered",
+    "discovery_device_history.source",
+    "discovery_device_history.status",
+    "discovery_range_item.active",
+    "discovery_range_item.end_ip_address",
+    "discovery_range_item.name",
+    "discovery_range_item.netmask",
+    "discovery_range_item.network_ip",
+    "discovery_range_item.parent",
+    "discovery_range_item.schedule",
+    "discovery_range_item.start_ip_address",
+    "discovery_range_item.type",
+    "dscy_credentials_affinity.credential_id",
+    "dscy_credentials_affinity.ip_address"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 20,
+   "rule_id": "ITOM-020",
+   "excel_row": 21,
+   "group": "1B. Credentials",
+   "base_severity": "Critical",
+   "rule": "Credential with zero successful uses since creation",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "dscy_credentials_affinity"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "dscy_credentials_affinity"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.last_discovered",
+    "discovery_credentials.active",
+    "discovery_credentials.name",
+    "discovery_credentials.sys_created_on",
+    "discovery_credentials.sys_updated_on",
+    "discovery_credentials.type",
+    "dscy_credentials_affinity.credential_id",
+    "dscy_credentials_affinity.ip_address"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 21,
+   "rule_id": "ITOM-021",
+   "excel_row": 22,
+   "group": "1B. Credentials",
+   "base_severity": "High",
+   "rule": "Credential order causing high-privilege credentials to be tried first",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials"
+   ],
+   "candidate_tables": [
+    "discovery_credentials"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 22,
+   "rule_id": "ITOM-022",
+   "excel_row": 23,
+   "group": "1B. Credentials",
+   "base_severity": "High",
+   "rule": "Single credential scoped far wider than necessary (blast radius on compromise)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "dscy_credentials_affinity"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "dscy_credentials_affinity"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 23,
+   "rule_id": "ITOM-023",
+   "excel_row": 24,
+   "group": "1B. Credentials",
+   "base_severity": "High",
+   "rule": "Credential type mismatched to the devices in range (SSH credential on a Windows range)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 24,
+   "rule_id": "ITOM-024",
+   "excel_row": 25,
+   "group": "1B. Credentials",
+   "base_severity": "High",
+   "rule": "Credential stored outside the credential vault or with vault integration disabled",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials"
+   ],
+   "candidate_tables": [
+    "discovery_credentials"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 25,
+   "rule_id": "ITOM-025",
+   "excel_row": 26,
+   "group": "1B. Credentials",
+   "base_severity": "Moderate",
+   "rule": "Credential last updated beyond the organisation's rotation policy",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials"
+   ],
+   "candidate_tables": [
+    "discovery_credentials"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_credentials.active",
+    "discovery_credentials.name",
+    "discovery_credentials.sys_created_on",
+    "discovery_credentials.sys_updated_on",
+    "discovery_credentials.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 26,
+   "rule_id": "ITOM-026",
+   "excel_row": 27,
+   "group": "1B. Credentials",
+   "base_severity": "Moderate",
+   "rule": "Credential with no applies-to restriction",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials"
+   ],
+   "candidate_tables": [
+    "discovery_credentials"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_credentials.active",
+    "discovery_credentials.applies_to",
+    "discovery_credentials.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 27,
+   "rule_id": "ITOM-027",
+   "excel_row": 28,
+   "group": "1B. Credentials",
+   "base_severity": "Low",
+   "rule": "Unused credentials never cleaned up",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_credentials",
+    "dscy_credentials_affinity"
+   ],
+   "candidate_tables": [
+    "discovery_credentials",
+    "dscy_credentials_affinity"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.last_discovered",
+    "discovery_credentials.active",
+    "discovery_credentials.name",
+    "discovery_credentials.sys_created_on",
+    "discovery_credentials.sys_updated_on",
+    "discovery_credentials.type",
+    "dscy_credentials_affinity.credential_id",
+    "dscy_credentials_affinity.sys_updated_on"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 28,
+   "rule_id": "ITOM-028",
+   "excel_row": 29,
+   "group": "1C. Execution outcome",
+   "base_severity": "Systemic",
+   "rule": "Percentage of devices completing full classification below threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_device_history.classified_as",
+    "discovery_device_history.cmdb_ci",
+    "discovery_device_history.source",
+    "discovery_device_history.status"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 29,
+   "rule_id": "ITOM-029",
+   "excel_row": 30,
+   "group": "1C. Execution outcome",
+   "base_severity": "Critical",
+   "rule": "Discovery run duration growing run over run (approaching window overrun)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type",
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 30,
+   "rule_id": "ITOM-030",
+   "excel_row": 31,
+   "group": "1C. Execution outcome",
+   "base_severity": "Critical",
+   "rule": "Devices halting at port-scan phase, never classified",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_device_history.classified_as",
+    "discovery_device_history.cmdb_ci",
+    "discovery_device_history.source",
+    "discovery_device_history.status"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 31,
+   "rule_id": "ITOM-031",
+   "excel_row": 32,
+   "group": "1C. Execution outcome",
+   "base_severity": "Critical",
+   "rule": "Devices classified but never explored",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_rel_ci",
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_rel_ci",
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_device_history.classified_as",
+    "discovery_device_history.cmdb_ci",
+    "discovery_device_history.source",
+    "discovery_device_history.status"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 32,
+   "rule_id": "ITOM-032",
+   "excel_row": 33,
+   "group": "1C. Execution outcome",
+   "base_severity": "Critical",
+   "rule": "Run completing with error count above threshold",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_device_history",
+    "discovery_log",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_device_history",
+    "discovery_log",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_device_history.source",
+    "discovery_device_history.status",
+    "discovery_log.level",
+    "discovery_log.source",
+    "discovery_log.status",
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 33,
+   "rule_id": "ITOM-033",
+   "excel_row": 34,
+   "group": "1C. Execution outcome",
+   "base_severity": "Critical",
+   "rule": "Run not completing within its window",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.max_run",
+    "discovery_schedule.name",
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 34,
+   "rule_id": "ITOM-034",
+   "excel_row": 35,
+   "group": "1C. Execution outcome",
+   "base_severity": "High",
+   "rule": "Timeouts clustered on a specific MID or subnet",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_device_history",
+    "discovery_log"
+   ],
+   "candidate_tables": [
+    "discovery_device_history",
+    "discovery_log"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 35,
+   "rule_id": "ITOM-035",
+   "excel_row": 36,
+   "group": "1C. Execution outcome",
+   "base_severity": "High",
+   "rule": "Devices discovered but producing no CI (sensor failure)",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 36,
+   "rule_id": "ITOM-036",
+   "excel_row": 37,
+   "group": "1C. Execution outcome",
+   "base_severity": "High",
+   "rule": "ECC queue input backlog beyond threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "ecc_queue"
+   ],
+   "candidate_tables": [
+    "ecc_queue"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_queue.queue",
+    "ecc_queue.state",
+    "ecc_queue.sys_created_on"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 37,
+   "rule_id": "ITOM-037",
+   "excel_row": 38,
+   "group": "1C. Execution outcome",
+   "base_severity": "High",
+   "rule": "ECC queue output processing lag",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "ecc_queue"
+   ],
+   "candidate_tables": [
+    "ecc_queue"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_queue.agent",
+    "ecc_queue.queue",
+    "ecc_queue.state",
+    "ecc_queue.sys_created_on"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 38,
+   "rule_id": "ITOM-038",
+   "excel_row": 39,
+   "group": "1C. Execution outcome",
+   "base_severity": "Moderate",
+   "rule": "Discovery log error volume trending up",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_log",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_log",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 39,
+   "rule_id": "ITOM-039",
+   "excel_row": 40,
+   "group": "1C. Execution outcome",
+   "base_severity": "Moderate",
+   "rule": "Runs cancelled manually and never re-run",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 40,
+   "rule_id": "ITOM-040",
+   "excel_row": 41,
+   "group": "1C. Execution outcome",
+   "base_severity": "Low",
+   "rule": "Discovery status records accumulating without cleanup",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 41,
+   "rule_id": "ITOM-041",
+   "excel_row": 42,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "Systemic",
+   "rule": "Custom pattern overriding OOB with lower success rate",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "sa_pattern"
+   ],
+   "candidate_tables": [
+    "sa_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 42,
+   "rule_id": "ITOM-042",
+   "excel_row": 43,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "Critical",
+   "rule": "Pattern with zero successful executions in the window",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "sa_pattern"
+   ],
+   "candidate_tables": [
+    "sa_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 43,
+   "rule_id": "ITOM-043",
+   "excel_row": 44,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "Critical",
+   "rule": "Pattern failing repeatedly on the same device class",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "sa_pattern"
+   ],
+   "candidate_tables": [
+    "sa_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 44,
+   "rule_id": "ITOM-044",
+   "excel_row": 45,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "High",
+   "rule": "Pattern steps timing out consistently",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "sa_pattern"
+   ],
+   "candidate_tables": [
+    "sa_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 45,
+   "rule_id": "ITOM-045",
+   "excel_row": 46,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "High",
+   "rule": "Deprecated probes still referenced by active schedules",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_probes",
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "discovery_probes",
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 46,
+   "rule_id": "ITOM-046",
+   "excel_row": 47,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "High",
+   "rule": "Pattern version behind the instance version after upgrade",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "sa_pattern"
+   ],
+   "candidate_tables": [
+    "sa_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 47,
+   "rule_id": "ITOM-047",
+   "excel_row": 48,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "Moderate",
+   "rule": "Custom pattern with no version control or documentation",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "sa_pattern",
+    "sys_update_xml"
+   ],
+   "candidate_tables": [
+    "sa_pattern",
+    "sys_update_xml"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 48,
+   "rule_id": "ITOM-048",
+   "excel_row": 49,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "Critical",
+   "rule": "Pattern producing CIs that IRE then duplicates",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "cmdb_ci",
+    "sa_pattern"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "sa_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 49,
+   "rule_id": "ITOM-049",
+   "excel_row": 50,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "Moderate",
+   "rule": "Sensor script errors",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "discovery_log"
+   ],
+   "candidate_tables": [
+    "discovery_log"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 50,
+   "rule_id": "ITOM-050",
+   "excel_row": 51,
+   "group": "1D. Patterns, probes and sensors",
+   "base_severity": "Low",
+   "rule": "Unused custom patterns never retired",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "discovery",
+   "tables": [
+    "sa_pattern"
+   ],
+   "candidate_tables": [
+    "sa_pattern"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 51,
+   "rule_id": "ITOM-051",
+   "excel_row": 52,
+   "group": "MID Server",
+   "base_severity": "Systemic",
+   "rule": "Single MID with no cluster carrying a production-critical range",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "relationship_graph"
+   ],
+   "product": "mid_server",
+   "tables": [
+    "cmdb_ci_service",
+    "discovery_range_item",
+    "discovery_schedule",
+    "ecc_agent",
+    "ecc_agent_cluster_member_m2m",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "discovery_range_item",
+    "discovery_schedule",
+    "ecc_agent",
+    "ecc_agent_cluster_member_m2m",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.ip_address",
+    "cmdb_ci_service.busines_criticality",
+    "cmdb_ci_service.name",
+    "discovery_range_item.active",
+    "discovery_range_item.end_ip_address",
+    "discovery_range_item.name",
+    "discovery_range_item.netmask",
+    "discovery_range_item.network_ip",
+    "discovery_range_item.parent",
+    "discovery_range_item.schedule",
+    "discovery_range_item.start_ip_address",
+    "discovery_range_item.type",
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type",
+    "ecc_agent_cluster_member_m2m.agent",
+    "ecc_agent_cluster_member_m2m.cluster",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITOM-011"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 52,
+   "rule_id": "ITOM-052",
+   "excel_row": 53,
+   "group": "MID Server",
+   "base_severity": "Systemic",
+   "rule": "All MIDs in a cluster on the same host or hypervisor (false redundancy)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "cmdb_rel_ci",
+    "ecc_agent",
+    "ecc_agent_cluster_member_m2m"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "ecc_agent",
+    "ecc_agent_cluster_member_m2m"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_agent.host_name",
+    "ecc_agent.name",
+    "ecc_agent_cluster_member_m2m.agent",
+    "ecc_agent_cluster_member_m2m.cluster"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "CMDB-059"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 53,
+   "rule_id": "ITOM-053",
+   "excel_row": 54,
+   "group": "MID Server",
+   "base_severity": "Critical",
+   "rule": "MID down or in a degraded state",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent",
+    "ecc_agent_issue"
+   ],
+   "candidate_tables": [
+    "ecc_agent",
+    "ecc_agent_issue"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_agent.host_name",
+    "ecc_agent.last_refreshed",
+    "ecc_agent.name",
+    "ecc_agent.status",
+    "ecc_agent.user_name",
+    "ecc_agent.validated",
+    "ecc_agent.version"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 54,
+   "rule_id": "ITOM-054",
+   "excel_row": 55,
+   "group": "MID Server",
+   "base_severity": "Critical",
+   "rule": "MID version behind instance version after upgrade",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent",
+    "sys_properties"
+   ],
+   "candidate_tables": [
+    "ecc_agent",
+    "sys_properties"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_agent.name",
+    "ecc_agent.version"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 55,
+   "rule_id": "ITOM-055",
+   "excel_row": 56,
+   "group": "MID Server",
+   "base_severity": "Critical",
+   "rule": "MID validation not completed",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent"
+   ],
+   "candidate_tables": [
+    "ecc_agent"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_agent.host_name",
+    "ecc_agent.last_refreshed",
+    "ecc_agent.name",
+    "ecc_agent.status",
+    "ecc_agent.user_name",
+    "ecc_agent.validated",
+    "ecc_agent.version"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 56,
+   "rule_id": "ITOM-056",
+   "excel_row": 57,
+   "group": "MID Server",
+   "base_severity": "Critical",
+   "rule": "MID certificate expired or expiring within 30 days",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent"
+   ],
+   "candidate_tables": [
+    "ecc_agent"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 57,
+   "rule_id": "ITOM-057",
+   "excel_row": 58,
+   "group": "MID Server",
+   "base_severity": "High",
+   "rule": "MID capability mismatched to assigned work",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "discovery_schedule",
+    "ecc_agent_capability"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "ecc_agent_capability"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 58,
+   "rule_id": "ITOM-058",
+   "excel_row": 59,
+   "group": "MID Server",
+   "base_severity": "High",
+   "rule": "Single MID carrying a disproportionate share of total load",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent",
+    "ecc_agent_cluster_member_m2m",
+    "ecc_queue"
+   ],
+   "candidate_tables": [
+    "ecc_agent",
+    "ecc_agent_cluster_member_m2m",
+    "ecc_queue"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_agent.name",
+    "ecc_agent_cluster_member_m2m.agent",
+    "ecc_agent_cluster_member_m2m.cluster",
+    "ecc_queue.agent"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 59,
+   "rule_id": "ITOM-059",
+   "excel_row": 60,
+   "group": "MID Server",
+   "base_severity": "High",
+   "rule": "MID issue count rising",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent_issue"
+   ],
+   "candidate_tables": [
+    "ecc_agent_issue"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 60,
+   "rule_id": "ITOM-060",
+   "excel_row": 61,
+   "group": "MID Server",
+   "base_severity": "High",
+   "rule": "MID host resource exhaustion indicators (heap, thread, disk)",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent",
+    "ecc_agent_issue"
+   ],
+   "candidate_tables": [
+    "ecc_agent",
+    "ecc_agent_issue"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 61,
+   "rule_id": "ITOM-061",
+   "excel_row": 62,
+   "group": "MID Server",
+   "base_severity": "High",
+   "rule": "MID last refreshed beyond threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent"
+   ],
+   "candidate_tables": [
+    "ecc_agent"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_agent.host_name",
+    "ecc_agent.last_refreshed",
+    "ecc_agent.name",
+    "ecc_agent.status",
+    "ecc_agent.user_name",
+    "ecc_agent.validated",
+    "ecc_agent.version"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 62,
+   "rule_id": "ITOM-062",
+   "excel_row": 63,
+   "group": "MID Server",
+   "base_severity": "High",
+   "rule": "MID with no assigned capabilities but referenced by schedules",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "discovery_schedule",
+    "ecc_agent_capability_m2m"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "ecc_agent_capability_m2m"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type",
+    "ecc_agent_capability_m2m.agent"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 63,
+   "rule_id": "ITOM-063",
+   "excel_row": 64,
+   "group": "MID Server",
+   "base_severity": "High",
+   "rule": "MID user account over-privileged on the instance side",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent",
+    "sys_user",
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "ecc_agent",
+    "sys_user",
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ecc_agent.name",
+    "ecc_agent.user_name",
+    "sys_user.user_name",
+    "sys_user_has_role.role",
+    "sys_user_has_role.user"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 64,
+   "rule_id": "ITOM-064",
+   "excel_row": 65,
+   "group": "MID Server",
+   "base_severity": "Moderate",
+   "rule": "MID not on a supported JVM or OS version",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent"
+   ],
+   "candidate_tables": [
+    "ecc_agent"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 65,
+   "rule_id": "ITOM-065",
+   "excel_row": 66,
+   "group": "MID Server",
+   "base_severity": "Moderate",
+   "rule": "MID log rotation not configured",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "ecc_agent_config"
+   ],
+   "candidate_tables": [
+    "ecc_agent_config"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 66,
+   "rule_id": "ITOM-066",
+   "excel_row": 67,
+   "group": "MID Server",
+   "base_severity": "Low",
+   "rule": "Orphaned MID records for decommissioned hosts",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "mid_server",
+   "tables": [
+    "cmdb_ci",
+    "ecc_agent"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "ecc_agent"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.install_status",
+    "cmdb_ci.name",
+    "ecc_agent.host_name",
+    "ecc_agent.last_refreshed",
+    "ecc_agent.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 67,
+   "rule_id": "ITOM-067",
+   "excel_row": 68,
+   "group": "Service Mapping",
+   "base_severity": "Systemic",
+   "rule": "Percentage of Business Critical services with no map at all",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci_service",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.busines_criticality",
+    "cmdb_ci_service.name",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 68,
+   "rule_id": "ITOM-068",
+   "excel_row": 69,
+   "group": "Service Mapping",
+   "base_severity": "Systemic",
+   "rule": "Map coverage ratio across the application service estate below threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci_service_discovered",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_discovered",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service_discovered.name",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 69,
+   "rule_id": "ITOM-069",
+   "excel_row": 70,
+   "group": "Service Mapping",
+   "base_severity": "Systemic",
+   "rule": "Maps built manually where automated mapping is available and licensed",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci_service_discovered"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_discovered"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 70,
+   "rule_id": "ITOM-070",
+   "excel_row": 71,
+   "group": "Service Mapping",
+   "base_severity": "Critical",
+   "rule": "Entry point unreachable or failing",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "sa_m2m_service_entry_point"
+   ],
+   "candidate_tables": [
+    "sa_m2m_service_entry_point"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 71,
+   "rule_id": "ITOM-071",
+   "excel_row": 72,
+   "group": "Service Mapping",
+   "base_severity": "Critical",
+   "rule": "Map last refreshed beyond interval",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci_service_discovered"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_discovered"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 72,
+   "rule_id": "ITOM-072",
+   "excel_row": 73,
+   "group": "Service Mapping",
+   "base_severity": "Critical",
+   "rule": "Map returning fewer CIs than the previous run (silent map collapse)",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 73,
+   "rule_id": "ITOM-073",
+   "excel_row": 74,
+   "group": "Service Mapping",
+   "base_severity": "Critical",
+   "rule": "Map contradicting cmdb\\_rel\\_ci relationships",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 74,
+   "rule_id": "ITOM-074",
+   "excel_row": 75,
+   "group": "Service Mapping",
+   "base_severity": "Critical",
+   "rule": "Application service with an entry point but zero mapped CIs",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "service_mapping",
+   "tables": [
+    "sa_m2m_service_entry_point",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "sa_m2m_service_entry_point",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sa_m2m_service_entry_point.cmdb_ci_endpoint",
+    "sa_m2m_service_entry_point.cmdb_ci_service",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 75,
+   "rule_id": "ITOM-075",
+   "excel_row": 76,
+   "group": "Service Mapping",
+   "base_severity": "Critical",
+   "rule": "Map producing CIs that IRE then duplicates",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.discovery_source",
+    "cmdb_ci.duplicate_of"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 76,
+   "rule_id": "ITOM-076",
+   "excel_row": 77,
+   "group": "Service Mapping",
+   "base_severity": "High",
+   "rule": "Map incomplete — traversal terminating before reaching infrastructure tier",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 77,
+   "rule_id": "ITOM-077",
+   "excel_row": 78,
+   "group": "Service Mapping",
+   "base_severity": "High",
+   "rule": "Map not reaching the network tier (the router demo gap)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci_service_discovered",
+    "svc_ci_assoc",
+    "sys_db_object"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_discovered",
+    "svc_ci_assoc",
+    "sys_db_object"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service_discovered.name",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id",
+    "sys_db_object.name",
+    "sys_db_object.super_class"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 78,
+   "rule_id": "ITOM-078",
+   "excel_row": 79,
+   "group": "Service Mapping",
+   "base_severity": "High",
+   "rule": "Map with unresolved or unmatched CIs",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 79,
+   "rule_id": "ITOM-079",
+   "excel_row": 80,
+   "group": "Service Mapping",
+   "base_severity": "High",
+   "rule": "Tag-based service definitions with no refresh schedule",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [
+    "cmdb_ci_service_by_tags"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service_by_tags"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 80,
+   "rule_id": "ITOM-080",
+   "excel_row": 81,
+   "group": "Service Mapping",
+   "base_severity": "Moderate",
+   "rule": "Manual map with no review since creation",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 81,
+   "rule_id": "ITOM-081",
+   "excel_row": 82,
+   "group": "Service Mapping",
+   "base_severity": "High",
+   "rule": "Map discovery credentials failing for mapping-specific access",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 82,
+   "rule_id": "ITOM-082",
+   "excel_row": 83,
+   "group": "Service Mapping",
+   "base_severity": "Moderate",
+   "rule": "Entry point defined but no corresponding traffic-based validation",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_mapping",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 83,
+   "rule_id": "ITOM-083",
+   "excel_row": 84,
+   "group": "Service Mapping",
+   "base_severity": "Moderate",
+   "rule": "Duplicate application services mapping the same entry point",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "service_mapping",
+   "tables": [
+    "sa_m2m_service_entry_point"
+   ],
+   "candidate_tables": [
+    "sa_m2m_service_entry_point"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sa_m2m_service_entry_point.cmdb_ci_endpoint",
+    "sa_m2m_service_entry_point.cmdb_ci_service"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 84,
+   "rule_id": "ITOM-084",
+   "excel_row": 85,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "Systemic",
+   "rule": "Connector erroring or not run within its interval",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_connector_instance"
+   ],
+   "candidate_tables": [
+    "em_connector_instance"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_connector_instance.active",
+    "em_connector_instance.last_error_message",
+    "em_connector_instance.last_run_time",
+    "em_connector_instance.last_status",
+    "em_connector_instance.name",
+    "em_connector_instance.schedule"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 85,
+   "rule_id": "ITOM-085",
+   "excel_row": 86,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "Systemic",
+   "rule": "Monitoring tool in the estate with no connector at all (blind spot)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_connector_instance"
+   ],
+   "candidate_tables": [
+    "em_connector_instance"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 86,
+   "rule_id": "ITOM-086",
+   "excel_row": 87,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "Critical",
+   "rule": "Connector last successful pull beyond threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_connector_instance"
+   ],
+   "candidate_tables": [
+    "em_connector_instance"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_connector_instance.active",
+    "em_connector_instance.last_error_message",
+    "em_connector_instance.last_run_time",
+    "em_connector_instance.last_status",
+    "em_connector_instance.name",
+    "em_connector_instance.schedule"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 87,
+   "rule_id": "ITOM-087",
+   "excel_row": 88,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "Critical",
+   "rule": "Event ingestion volume dropped sharply (source silently stopped)",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 88,
+   "rule_id": "ITOM-088",
+   "excel_row": 89,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "Critical",
+   "rule": "Event ingestion volume spiking beyond processing capacity",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 89,
+   "rule_id": "ITOM-089",
+   "excel_row": 90,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "Critical",
+   "rule": "Connector credentials failing",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_connector_instance"
+   ],
+   "candidate_tables": [
+    "em_connector_instance"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 90,
+   "rule_id": "ITOM-090",
+   "excel_row": 91,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "High",
+   "rule": "Connector instance inactive but source still live",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_connector_instance"
+   ],
+   "candidate_tables": [
+    "em_connector_instance"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 91,
+   "rule_id": "ITOM-091",
+   "excel_row": 92,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "High",
+   "rule": "Event queue backlog beyond threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_event.cmdb_ci",
+    "em_event.message_key",
+    "em_event.node",
+    "em_event.severity",
+    "em_event.source",
+    "em_event.state",
+    "em_event.time_of_event"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 92,
+   "rule_id": "ITOM-092",
+   "excel_row": 93,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "High",
+   "rule": "Events discarded due to processing limits",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 93,
+   "rule_id": "ITOM-093",
+   "excel_row": 94,
+   "group": "4A. Connectors and ingestion",
+   "base_severity": "Moderate",
+   "rule": "Connector with no error handling or retry configuration",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_connector_instance"
+   ],
+   "candidate_tables": [
+    "em_connector_instance"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 94,
+   "rule_id": "ITOM-094",
+   "excel_row": 95,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Systemic",
+   "rule": "No match rule exists for a CI class set receiving events",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event",
+    "em_match_rule"
+   ],
+   "candidate_tables": [
+    "em_event",
+    "em_match_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_event.cmdb_ci",
+    "em_match_rule.active",
+    "em_match_rule.ci_type",
+    "em_match_rule.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 95,
+   "rule_id": "ITOM-095",
+   "excel_row": 96,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Systemic",
+   "rule": "Overall CI binding success rate below threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_event.cmdb_ci",
+    "em_event.message_key",
+    "em_event.node",
+    "em_event.severity",
+    "em_event.source",
+    "em_event.state",
+    "em_event.time_of_event"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 96,
+   "rule_id": "ITOM-096",
+   "excel_row": 97,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Systemic",
+   "rule": "Percentage of alerts binding to a CI with zero relationships",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "relationship_graph"
+   ],
+   "product": "event_management",
+   "tables": [
+    "cmdb_rel_ci",
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "em_alert.acknowledged",
+    "em_alert.cmdb_ci",
+    "em_alert.message_key",
+    "em_alert.node",
+    "em_alert.number",
+    "em_alert.severity",
+    "em_alert.source",
+    "em_alert.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 97,
+   "rule_id": "ITOM-097",
+   "excel_row": 98,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Critical",
+   "rule": "Match rule using name-only criteria with no class filter",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_match_rule"
+   ],
+   "candidate_tables": [
+    "em_match_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 98,
+   "rule_id": "ITOM-098",
+   "excel_row": 99,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Critical",
+   "rule": "Events failing to bind to any CI",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_event.cmdb_ci",
+    "em_event.message_key",
+    "em_event.node",
+    "em_event.severity",
+    "em_event.source",
+    "em_event.state",
+    "em_event.time_of_event"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 99,
+   "rule_id": "ITOM-099",
+   "excel_row": 100,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Critical",
+   "rule": "Events binding to the wrong CI of a duplicate pair",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "cmdb_ci",
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.duplicate_of",
+    "em_alert.cmdb_ci",
+    "em_alert.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 100,
+   "rule_id": "ITOM-100",
+   "excel_row": 101,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Critical",
+   "rule": "Match rule with no precedence between multiple candidates",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_match_rule"
+   ],
+   "candidate_tables": [
+    "em_match_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 101,
+   "rule_id": "ITOM-101",
+   "excel_row": 102,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Critical",
+   "rule": "Binding resolving to a retired CI",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "cmdb_ci",
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.acknowledged",
+    "em_alert.cmdb_ci",
+    "em_alert.message_key",
+    "em_alert.node",
+    "em_alert.number",
+    "em_alert.severity",
+    "em_alert.source",
+    "em_alert.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 102,
+   "rule_id": "ITOM-102",
+   "excel_row": 103,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "High",
+   "rule": "Match rule order producing weak matches first",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_match_rule"
+   ],
+   "candidate_tables": [
+    "em_match_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 103,
+   "rule_id": "ITOM-103",
+   "excel_row": 104,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "High",
+   "rule": "Node values arriving in a format no match rule handles",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event",
+    "em_match_rule"
+   ],
+   "candidate_tables": [
+    "em_event",
+    "em_match_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 104,
+   "rule_id": "ITOM-104",
+   "excel_row": 105,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "High",
+   "rule": "Bound CI in a class that cannot participate in impact calculation",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 105,
+   "rule_id": "ITOM-105",
+   "excel_row": 106,
+   "group": "4B. CI binding — the router demo core",
+   "base_severity": "Moderate",
+   "rule": "Match rule defined but disabled",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event",
+    "em_match_rule"
+   ],
+   "candidate_tables": [
+    "em_event",
+    "em_match_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_event.cmdb_ci",
+    "em_match_rule.active",
+    "em_match_rule.ci_type",
+    "em_match_rule.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 106,
+   "rule_id": "ITOM-106",
+   "excel_row": 107,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Systemic",
+   "rule": "Impact calculation returning zero affected services on Critical alerts",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_alert",
+    "em_impact_status"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "em_impact_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.cmdb_ci",
+    "em_alert.number",
+    "em_alert.severity",
+    "em_impact_status.business_service",
+    "em_impact_status.element_id"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 107,
+   "rule_id": "ITOM-107",
+   "excel_row": 108,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Systemic",
+   "rule": "Business service impact never populated on any alert",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_alert",
+    "em_impact_status"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "em_impact_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.number",
+    "em_impact_status.business_service"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 108,
+   "rule_id": "ITOM-108",
+   "excel_row": 109,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Critical",
+   "rule": "Alert with no assignment and no notification path",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_alert",
+    "sysevent_email_action"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "sysevent_email_action"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.assigned_to",
+    "em_alert.assignment_group",
+    "em_alert.number",
+    "sysevent_email_action.active",
+    "sysevent_email_action.collection",
+    "sysevent_email_action.condition"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 109,
+   "rule_id": "ITOM-109",
+   "excel_row": 110,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Critical",
+   "rule": "Alerts ageing beyond threshold with no acknowledgement",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.acknowledged",
+    "em_alert.number",
+    "em_alert.severity",
+    "em_alert.state",
+    "em_alert.sys_created_on"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 110,
+   "rule_id": "ITOM-110",
+   "excel_row": 111,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Critical",
+   "rule": "Severity distribution skewed so nearly everything is Critical",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.severity",
+    "em_alert.source"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 111,
+   "rule_id": "ITOM-111",
+   "excel_row": 112,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Critical",
+   "rule": "Alerts with no matching alert rule, so no action ever fires",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_alert",
+    "em_alert_management_rule"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "em_alert_management_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.number",
+    "em_alert_management_rule.active",
+    "em_alert_management_rule.alert_filter",
+    "em_alert_management_rule.name",
+    "em_alert_management_rule.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 112,
+   "rule_id": "ITOM-112",
+   "excel_row": 113,
+   "group": "4C. Alerts and impact",
+   "base_severity": "High",
+   "rule": "Alert rules firing but with no configured action",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_alert_management_action",
+    "em_alert_management_execution",
+    "em_alert_management_rule"
+   ],
+   "candidate_tables": [
+    "em_alert_management_action",
+    "em_alert_management_execution",
+    "em_alert_management_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert_management_action.active",
+    "em_alert_management_action.management_rule",
+    "em_alert_management_execution.management_rule",
+    "em_alert_management_rule.active",
+    "em_alert_management_rule.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 113,
+   "rule_id": "ITOM-113",
+   "excel_row": 114,
+   "group": "4C. Alerts and impact",
+   "base_severity": "High",
+   "rule": "Deduplication not occurring — alert count tracking event count one to one",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_alert",
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.event_count",
+    "em_alert.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 114,
+   "rule_id": "ITOM-114",
+   "excel_row": 115,
+   "group": "4C. Alerts and impact",
+   "base_severity": "High",
+   "rule": "Alert correlation rules absent for known parent-child device patterns",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 115,
+   "rule_id": "ITOM-115",
+   "excel_row": 116,
+   "group": "4C. Alerts and impact",
+   "base_severity": "High",
+   "rule": "Event flood from a single source or node",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_event.node",
+    "em_event.source"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 116,
+   "rule_id": "ITOM-116",
+   "excel_row": 117,
+   "group": "4C. Alerts and impact",
+   "base_severity": "High",
+   "rule": "Alert-to-incident creation not configured for Critical severities",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_alert",
+    "em_alert_management_rule"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "em_alert_management_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.number",
+    "em_alert.severity",
+    "em_alert_management_rule.active",
+    "em_alert_management_rule.alert_filter",
+    "em_alert_management_rule.name",
+    "em_alert_management_rule.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 117,
+   "rule_id": "ITOM-117",
+   "excel_row": 118,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Moderate",
+   "rule": "Alert closure not tied to event resolution (manual close backlog)",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_alert",
+    "em_event"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "em_event"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert.acknowledged",
+    "em_alert.cmdb_ci",
+    "em_alert.message_key",
+    "em_alert.node",
+    "em_alert.number",
+    "em_alert.severity",
+    "em_alert.source",
+    "em_alert.state",
+    "em_event.cmdb_ci",
+    "em_event.message_key",
+    "em_event.node",
+    "em_event.severity",
+    "em_event.source",
+    "em_event.state",
+    "em_event.time_of_event"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 118,
+   "rule_id": "ITOM-118",
+   "excel_row": 119,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Moderate",
+   "rule": "Alert rule conditions never reviewed since creation",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "record_predicate"
+   ],
+   "product": "event_management",
+   "tables": [
+    "em_alert_management_rule"
+   ],
+   "candidate_tables": [
+    "em_alert_management_rule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "em_alert_management_rule.active",
+    "em_alert_management_rule.name",
+    "em_alert_management_rule.submit_counter"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 119,
+   "rule_id": "ITOM-119",
+   "excel_row": 120,
+   "group": "4C. Alerts and impact",
+   "base_severity": "Moderate",
+   "rule": "Alerts never actioned and auto-closed by age",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "event_management",
+   "tables": [
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 120,
+   "rule_id": "ITOM-120",
+   "excel_row": 121,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Systemic",
+   "rule": "Cloud account present in the organisation with no service account registered",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "cmdb_ci_cloud_service_account"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_cloud_service_account"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITOM-121"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 121,
+   "rule_id": "ITOM-121",
+   "excel_row": 122,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Systemic",
+   "rule": "Cloud discovery coverage below threshold vs. known subscriptions or accounts",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "cmdb_ci_cloud_service_account"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_cloud_service_account"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 122,
+   "rule_id": "ITOM-122",
+   "excel_row": 123,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Systemic",
+   "rule": "Cloud CIs and on-prem CIs modelled in inconsistent classes",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 123,
+   "rule_id": "ITOM-123",
+   "excel_row": 124,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Critical",
+   "rule": "Cloud service account credentials failing or expired",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "cmdb_ci_cloud_service_account"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_cloud_service_account"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 124,
+   "rule_id": "ITOM-124",
+   "excel_row": 125,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Critical",
+   "rule": "Cloud discovery schedule inactive or failing",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "discovery_schedule",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type",
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 125,
+   "rule_id": "ITOM-125",
+   "excel_row": 126,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Critical",
+   "rule": "Cloud resources discovered but not linked to any application service",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "cmdb_ci",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.name",
+    "cmdb_ci.sys_class_name",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "unconfigured"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 126,
+   "rule_id": "ITOM-126",
+   "excel_row": 127,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Critical",
+   "rule": "Cloud API rate limiting causing incomplete collection",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "discovery_log"
+   ],
+   "candidate_tables": [
+    "discovery_log"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 127,
+   "rule_id": "ITOM-127",
+   "excel_row": 128,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Critical",
+   "rule": "Regions or subscriptions excluded from the schedule without justification",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 128,
+   "rule_id": "ITOM-128",
+   "excel_row": 129,
+   "group": "5A. Cloud discovery",
+   "base_severity": "High",
+   "rule": "Cloud service account with excessive IAM permissions",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 129,
+   "rule_id": "ITOM-129",
+   "excel_row": 130,
+   "group": "5A. Cloud discovery",
+   "base_severity": "High",
+   "rule": "Cloud CIs going stale — resource terminated in cloud, still Operational in CMDB",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "cmdb_ci",
+    "discovery_status"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_status"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "ITOM-124"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 130,
+   "rule_id": "ITOM-130",
+   "excel_row": 131,
+   "group": "5A. Cloud discovery",
+   "base_severity": "High",
+   "rule": "Tag-based classification failing or tags missing on cloud resources",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "cmdb_key_value"
+   ],
+   "candidate_tables": [
+    "cmdb_key_value"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 131,
+   "rule_id": "ITOM-131",
+   "excel_row": 132,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Moderate",
+   "rule": "Cloud resource cost attributes not collected",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 132,
+   "rule_id": "ITOM-132",
+   "excel_row": 133,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Moderate",
+   "rule": "Multi-cloud accounts with inconsistent discovery intervals",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 133,
+   "rule_id": "ITOM-133",
+   "excel_row": 134,
+   "group": "5A. Cloud discovery",
+   "base_severity": "Critical",
+   "rule": "Cloud discovery duplicating CIs already found by agent-based discovery",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "cmdb_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 134,
+   "rule_id": "ITOM-134",
+   "excel_row": 135,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Systemic",
+   "rule": "Provisioning path exists that bypasses CMDB registration entirely",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 135,
+   "rule_id": "ITOM-135",
+   "excel_row": 136,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Systemic",
+   "rule": "Resources provisioned outside ServiceNow with no reconciliation back (shadow estate)",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "ITOM-121"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 136,
+   "rule_id": "ITOM-136",
+   "excel_row": 137,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Systemic",
+   "rule": "No policy enforcement on provisioning requests",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 137,
+   "rule_id": "ITOM-137",
+   "excel_row": 138,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Critical",
+   "rule": "Provisioned resources with no owner or cost centre",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 138,
+   "rule_id": "ITOM-138",
+   "excel_row": 139,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Critical",
+   "rule": "Provisioning failures with orphaned partial resources left running",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 139,
+   "rule_id": "ITOM-139",
+   "excel_row": 140,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "High",
+   "rule": "Blueprints or templates referencing deprecated images or sizes",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 140,
+   "rule_id": "ITOM-140",
+   "excel_row": 141,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Critical",
+   "rule": "Decommission workflow not retiring the corresponding CI",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 141,
+   "rule_id": "ITOM-141",
+   "excel_row": 142,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "High",
+   "rule": "Quota or budget policy defined but not enforced",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 142,
+   "rule_id": "ITOM-142",
+   "excel_row": 143,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "High",
+   "rule": "Provisioning approvals routed to inactive users or empty groups",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "sys_user",
+    "sys_user_grmember"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sys_user_grmember"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 143,
+   "rule_id": "ITOM-143",
+   "excel_row": 144,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "High",
+   "rule": "Untagged resources not blocked at provisioning time",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 144,
+   "rule_id": "ITOM-144",
+   "excel_row": 145,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "High",
+   "rule": "Blueprint drift — deployed configuration differing from the template",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 145,
+   "rule_id": "ITOM-145",
+   "excel_row": 146,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Moderate",
+   "rule": "No lease or expiry on non-production provisioned resources",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 146,
+   "rule_id": "ITOM-146",
+   "excel_row": 147,
+   "group": "5B. Cloud provisioning and governance",
+   "base_severity": "Low",
+   "rule": "Provisioning catalogue items with no owner",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "cloud",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 147,
+   "rule_id": "ITOM-147",
+   "excel_row": 148,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Systemic",
+   "rule": "Credential failure on a range directly causing CI staleness, with the affected CI count attached",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci",
+    "discovery_device_history"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_device_history"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITOM-015"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 148,
+   "rule_id": "ITOM-148",
+   "excel_row": 149,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Systemic",
+   "rule": "Discovery failure causing relationship collapse, quantified",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_domain",
+   "tables": [
+    "discovery_status",
+    "sys_audit_delete"
+   ],
+   "candidate_tables": [
+    "discovery_status",
+    "sys_audit_delete"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state",
+    "sys_audit_delete.documentkey",
+    "sys_audit_delete.tablename"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 149,
+   "rule_id": "ITOM-149",
+   "excel_row": 150,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Systemic",
+   "rule": "Weak identification rule plus a monitoring integration jointly producing duplicates",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci",
+    "cmdb_identifier"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "cmdb_identifier"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 150,
+   "rule_id": "ITOM-150",
+   "excel_row": 151,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Systemic",
+   "rule": "Alert binding to the duplicate CI that carries no relationships",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_rel_ci",
+    "em_alert"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "em_alert"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.duplicate_of",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "em_alert.cmdb_ci",
+    "em_alert.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 151,
+   "rule_id": "ITOM-151",
+   "excel_row": 152,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Critical",
+   "rule": "Service map incomplete because the underlying discovery failed on that tier",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 152,
+   "rule_id": "ITOM-152",
+   "excel_row": 153,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Critical",
+   "rule": "Business Critical service whose impact calculation cannot return a result, traced to a specific ITOM cause",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_domain",
+   "tables": [
+    "em_alert",
+    "em_impact_status"
+   ],
+   "candidate_tables": [
+    "em_alert",
+    "em_impact_status"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.discovery_source",
+    "cmdb_ci.sys_class_name",
+    "cmdb_ci_service.busines_criticality",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.service_classification",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "discovery_device_history.cmdb_ci",
+    "discovery_device_history.issues",
+    "em_impact_graph.business_service",
+    "service_offering.parent",
+    "svc_ci_assoc.ci_id",
+    "svc_ci_assoc.service_id",
+    "sys_db_object.name",
+    "sys_db_object.super_class",
+    "sys_properties.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "CSDM-075"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 153,
+   "rule_id": "ITOM-153",
+   "excel_row": 154,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Critical",
+   "rule": "MID outage window correlating with a relationship deletion window",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "ecc_agent",
+    "sys_audit"
+   ],
+   "candidate_tables": [
+    "ecc_agent",
+    "sys_audit"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 154,
+   "rule_id": "ITOM-154",
+   "excel_row": 155,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "High",
+   "rule": "Event flood correlating with a discovery reclassification loop",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "em_event",
+    "sys_audit"
+   ],
+   "candidate_tables": [
+    "em_event",
+    "sys_audit"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 155,
+   "rule_id": "ITOM-155",
+   "excel_row": 156,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Critical",
+   "rule": "Cloud resource terminated but CI still Operational and still on a service map",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci",
+    "svc_ci_assoc"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "svc_ci_assoc"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [
+     "ITOM-124"
+    ],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "object_unverified"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 156,
+   "rule_id": "ITOM-156",
+   "excel_row": 157,
+   "group": "Cross-Domain ITOM",
+   "base_severity": "Critical",
+   "rule": "Discovery schedule missing location, causing N CIs to have no location, breaking M routing rules",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_domain",
+   "tables": [
+    "cmdb_ci",
+    "discovery_schedule"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "discovery_schedule"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.location",
+    "discovery_device_history.cmdb_ci",
+    "discovery_device_history.status",
+    "discovery_schedule.active",
+    "discovery_schedule.discover",
+    "discovery_schedule.location",
+    "discovery_schedule.max_run",
+    "discovery_schedule.mid_select_method",
+    "discovery_schedule.mid_server",
+    "discovery_schedule.name",
+    "discovery_schedule.run_period",
+    "discovery_schedule.run_type",
+    "discovery_status.completed",
+    "discovery_status.dscheduler",
+    "discovery_status.started",
+    "discovery_status.state",
+    "sysrule_assignment.active",
+    "sysrule_assignment.condition",
+    "sysrule_assignment.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [
+     "ITOM-004"
+    ],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  }
+ ]
+}

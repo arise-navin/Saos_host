@@ -1,0 +1,3328 @@
+{
+ "overlay_version": "0.1.0",
+ "sheet": "ITSM",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Hand-maintained engineering overlay (decision D-007). Seeded by server/scripts/health-workbook-overlays.mjs. `proposed` names the basis of every auto-proposed value; nothing is an engineering decision until `reviewed` is true.",
+ "rules": {
+  "ITSM-001": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-001",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-002": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "rule:ITSM-054"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-010: ITSM-002 cross_domain_link \"Blocks ITSM-054 recurring pattern detection\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-002",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-003": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-003"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "attainment": "wording: threshold \"Any band with non-zero volume and no SLA\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-003",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-004": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-004",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-005": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-005",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-006": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-006",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-007": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "engine \"composite\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-007",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-008": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-008",
+    "engine": "aggregate",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-009": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-009",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-010": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-010",
+    "engine": "configuration",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-011": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-010"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-011",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-012": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-012",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-013": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-013",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-014": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-014",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-015": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Configuration and design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-015",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-016": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-006"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-016",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-017": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-006"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-017",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-018": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-008"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-018",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-019": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-019",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-020": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-020",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-021": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-021",
+    "engine": "text_analysis",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-022": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-022",
+    "engine": "reference_integrity",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-023": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [
+    "rule:ITSM-058"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"text_analysis\"",
+    "blocks": "DEP-011: ITSM-023 cross_domain_link \"Blocks ITSM-058 clustering\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-023",
+    "engine": "text_analysis",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-024": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"aggregate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-024",
+    "engine": "aggregate",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-025": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-025",
+    "engine": "text_analysis",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-026": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"audit_history\"",
+    "attainment": "wording: threshold \"Any occurrence; report by group and priority\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-026",
+    "engine": "audit_history",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-027": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "engine \"temporal_correlation\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-027",
+    "engine": "temporal_correlation",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-028": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-028",
+    "engine": "text_analysis",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-029": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Data quality on records\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-029",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-030": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-030",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-031": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-031",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-032": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-032",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-033": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-033",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-034": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"audit_history\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-034",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-035": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "engine \"temporal_correlation\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-035",
+    "engine": "temporal_correlation",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-036": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-036",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-037": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-037",
+    "engine": "record_predicate",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-038": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "engine \"temporal_correlation\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-038",
+    "engine": "temporal_correlation",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-039": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-039",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-040": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-040",
+    "engine": "text_analysis",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-041": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "wording: a trend (\"Requires at least 3 windows\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"Requires at least 3 windows\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-041",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-042": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-042",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-043": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence; report as a ratio\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-043",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-044": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Process behaviour\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-044",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-045": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"configuration\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-045",
+    "engine": "configuration",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-046": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-046",
+    "engine": "linkage",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-047": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-047",
+    "engine": "linkage",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-048": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-048",
+    "engine": "linkage",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-049": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-049",
+    "engine": "record_predicate",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-050": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"audit_history\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-050",
+    "engine": "audit_history",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-051": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "configuration",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"configuration\"",
+    "attainment": "wording: threshold \"Any occurrence with qualifying P1s present\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-051",
+    "engine": "configuration",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-052": {
+   "module": "itsm",
+   "dimension": "incident",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1D. Major incident\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-052",
+    "engine": "record_predicate",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-053": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-053",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-054": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"text_analysis\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-054",
+    "engine": "text_analysis",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-055": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence; report as a ratio\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-055",
+    "engine": "linkage",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-056": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"audit_history\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-056",
+    "engine": "audit_history",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-057": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-057",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-058": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-058",
+    "engine": "text_analysis",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-059": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"aggregate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-059",
+    "engine": "aggregate",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-060": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Existence and coverage\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence; report by state\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-060",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-061": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"audit_history\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-061",
+    "engine": "audit_history",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-062": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence; report as a ratio\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-062",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-063": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-063",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-064": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-064",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-065": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-065",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-066": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-066",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-067": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence; report as a ratio\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-067",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-068": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-068",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-069": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-069",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-070": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-070",
+    "engine": "text_analysis",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-071": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-071",
+    "engine": "text_analysis",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-072": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"audit_history\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-072",
+    "engine": "audit_history",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-073": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Quality and progression\"",
+    "kind": "implementation: engine \"linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-073",
+    "engine": "linkage",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-074": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Effectiveness\"",
+    "kind": "engine \"temporal_correlation\" does not decide the kind; pending review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-074",
+    "engine": "temporal_correlation",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-075": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Effectiveness\"",
+    "kind": "implementation: engine \"text_analysis\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-075",
+    "engine": "text_analysis",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-076": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Effectiveness\"",
+    "kind": "implementation: engine \"linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-076",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-077": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Effectiveness\"",
+    "kind": "engine \"composite\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-077",
+    "engine": "composite",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-078": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Effectiveness\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-078",
+    "engine": "linkage",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-079": {
+   "module": "itsm",
+   "dimension": "problem",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Effectiveness\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-079",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-080": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-080",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-081": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-081",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-082": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-082",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-083": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-083",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-084": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "engine \"composite\" does not decide the kind; pending review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-084",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-085": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [
+    "rule:ITSM-112",
+    "rule:ITSM-127"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "blocks": "DEP-012: ITSM-085 cross_domain_link \"Precondition for ITSM-112 and ITSM-127\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-085",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-086": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-086",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-087": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-087",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-088": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-088",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-089": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-089",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-090": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-090",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-091": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-091",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-092": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-092",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-093": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "configuration",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Configuration and control design\"",
+    "kind": "implementation: engine \"configuration\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-093",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-094": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [
+    "rule:ITSM-123"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-015: ITSM-123 false_positive_guard \"Requires ITSM-094 to be low, or the denominator is unreliable\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-094",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-095": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-095",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-096": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence; report by type and risk band\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-096",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-097": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence; escalate for high-risk and production change\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-097",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-098": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-098",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-099": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-099",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-100": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-100",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-101": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-008"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-101",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-102": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-102",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-103": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [
+    "rule:ITSM-113"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "blocks": "DEP-013: ITSM-113 cross_domain_link \"Requires ITSM-103 and ITSM-115 to interpret\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-103",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-104": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"text_analysis\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-104",
+    "engine": "text_analysis",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-105": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Data quality on records\"",
+    "kind": "implementation: engine \"relationship_graph\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-105",
+    "engine": "relationship_graph",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-106": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-106",
+    "engine": "temporal_correlation",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-107": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-107",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-108": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-108",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-109": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-109",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-110": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-110",
+    "engine": "linkage",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-111": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"record_predicate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-111",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-112": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "engine \"temporal_correlation\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-112",
+    "engine": "temporal_correlation",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-113": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-113",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-114": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-114",
+    "engine": "linkage",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-115": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [
+    "rule:ITSM-113"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "engine \"temporal_correlation\" does not decide the kind; pending review",
+    "blocks": "DEP-014: ITSM-113 cross_domain_link \"Requires ITSM-103 and ITSM-115 to interpret\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-115",
+    "engine": "temporal_correlation",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-116": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-116",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-117": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "engine \"composite\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-117",
+    "engine": "composite",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-118": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-118",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-119": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"record_predicate\"",
+    "attainment": "wording: threshold \"All three absent\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-119",
+    "engine": "record_predicate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-120": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"audit_history\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-120",
+    "engine": "audit_history",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-121": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"aggregate\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-121",
+    "engine": "aggregate",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-122": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. Process behaviour and control integrity\"",
+    "kind": "implementation: engine \"linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-122",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-123": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3D. Change–incident correlation\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-123",
+    "engine": "temporal_correlation",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-124": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3D. Change–incident correlation\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-124",
+    "engine": "composite",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-125": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3D. Change–incident correlation\"",
+    "kind": "engine \"composite\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-125",
+    "engine": "composite",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-126": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3D. Change–incident correlation\"",
+    "kind": "implementation: engine \"relationship_graph\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-126",
+    "engine": "relationship_graph",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-127": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3D. Change–incident correlation\"",
+    "kind": "engine \"temporal_correlation\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-127",
+    "engine": "temporal_correlation",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-128": {
+   "module": "itsm",
+   "dimension": "change",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3D. Change–incident correlation\"",
+    "kind": "implementation: engine \"linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-128",
+    "engine": "linkage",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-129": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "engine \"composite\" does not decide the kind; pending review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-129",
+    "engine": "composite",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-130": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "implementation: engine \"relationship_graph\"",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-130",
+    "engine": "relationship_graph",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-131": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "implementation: engine \"relationship_graph\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-131",
+    "engine": "relationship_graph",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-132": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "wording: a cross-domain rule that attributes a cause (\"traced to\") — explains other findings, not scored (approach §8.2)",
+    "attainment": "correlation: not scored",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-132",
+    "engine": "composite",
+    "classification": "UNAVAILABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-133": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "implementation: engine \"linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-133",
+    "engine": "linkage",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-134": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-008"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "engine \"composite\" does not decide the kind; pending review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-134",
+    "engine": "composite",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-135": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "implementation: engine \"aggregate\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-135",
+    "engine": "aggregate",
+    "classification": "UNCONFIGURED",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-136": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "record",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "implementation: engine \"reference_integrity\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-136",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-137": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "implementation: engine \"linkage\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-137",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-138": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "correlation",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "wording: a cross-domain rule that attributes a cause (\"because\") — explains other findings, not scored (approach §8.2)",
+    "attainment": "correlation: not scored",
+    "systemic_role": "correlation rule: role decided in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-138",
+    "engine": "configuration",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  },
+  "ITSM-139": {
+   "module": "itsm",
+   "dimension": "cross_process",
+   "kind": "record",
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-004"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Cross-Process and Cross-Domain\"",
+    "kind": "implementation: engine \"reference_integrity\"",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-139",
+    "engine": "reference_integrity",
+    "classification": "EXECUTABLE",
+    "source": "health/itsm/rules/*.json"
+   }
+  }
+ }
+}

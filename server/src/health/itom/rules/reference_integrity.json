@@ -1,0 +1,74 @@
+{
+ "engine": "reference_integrity",
+ "rules": {
+  "ITOM-018": {
+   "undefined_dependencies": [
+    "\"schedule credential references\" — a discovery schedule does not reference credentials on the platform (credentials apply by type, tag and MID), and the workbook defines no other reference"
+   ]
+  },
+  "ITOM-101": {
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "cmdb_ci",
+      "severity",
+      "state",
+      "source",
+      "node",
+      "acknowledged",
+      "message_key"
+     ]
+    }
+   ],
+   "table": "em_alert",
+   "scope": [
+    {
+     "$clause": {
+      "template": "state!={}",
+      "value": {
+       "$choice": {
+        "table": "em_alert",
+        "element": "state",
+        "label": "Closed"
+       }
+      }
+     }
+    },
+    "cmdb_ciISNOTEMPTY"
+   ],
+   "field": "cmdb_ci",
+   "target": "cmdb_ci",
+   "check": "state",
+   "state_field": "install_status",
+   "invalid_states": [
+    {
+     "$choice": {
+      "table": "cmdb_ci",
+      "element": "install_status",
+      "label": "Retired"
+     }
+    }
+   ],
+   "report": [
+    "invalid_state"
+   ],
+   "evidence_fields": [
+    "number",
+    "cmdb_ci",
+    "severity",
+    "source"
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Open alerts only (a closed alert bound before its CI retired is not a binding defect). The retired set is install_status \"Retired\" from the instance choice list; life_cycle_stage_status is not consulted."
+   }
+  },
+  "ITOM-142": {
+   "undefined_dependencies": [
+    "ownership OWN-008 (with CMDB-102, ITSM-018 and others) has no owner yet — \"groups with zero active members\" is evaluated once, by its owner"
+   ]
+  }
+ }
+}

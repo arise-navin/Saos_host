@@ -1,0 +1,10 @@
+{
+ "version": "1.0.0",
+ "decision": "D-026",
+ "rules": {
+  "DQ-131": {
+   "equivalent_of": "ITSM-139",
+   "note": "The same condition as ITSM-139 Ownership OWN-004 is AGREED with ITSM-139 as owner (D-027): evaluated and counted in ITSM, shown here as an equivalent."
+  }
+ }
+}

@@ -1,0 +1,3118 @@
+{
+ "overlay_version": "0.1.0",
+ "sheet": "data quality",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Hand-maintained engineering overlay (decision D-007). Seeded by server/scripts/health-workbook-overlays.mjs. `proposed` names the basis of every auto-proposed value; nothing is an engineering decision until `reviewed` is true.",
+ "rules": {
+  "DQ-001": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-012",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-012",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-002": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-013",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-013",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-003": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-140",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-140",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-004": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-015",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-015",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-005": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-016",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-016",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-006": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-017",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-017",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-007": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-014",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-014",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-008": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-018",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-018",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-009": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-020",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-020",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-010": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-019",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-019",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-011": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-021",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-021",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-012": {
+   "module": "cmdb",
+   "dimension": "D1",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-022",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-022",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-013": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-025",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-025",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-014": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-023",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-023",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-015": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-026",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-026",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-016": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-028",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-028",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-017": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-027",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-027",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-018": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-029",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-029",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-019": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-030",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-030",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-020": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-031",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-031",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-021": {
+   "module": "cmdb",
+   "dimension": "D2",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-032",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-032",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-022": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-033",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-033",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-023": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-035",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-035",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-024": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-036",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-036",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-025": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-037",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-037",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-026": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-034",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-034",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-027": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-038",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-038",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-028": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-039",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-039",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-029": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-040",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-040",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-030": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-041",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-041",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-031": {
+   "module": "cmdb",
+   "dimension": "D3",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-042",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-042",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-032": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-044",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-044",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-033": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-045",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-045",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-034": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-046",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-046",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-035": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-047",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-047",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-036": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-050",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-050",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-037": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-053",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-053",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-038": {
+   "module": "cmdb",
+   "dimension": "D4",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-054",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-054",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-039": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-049",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-049",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-040": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-048",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-048",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-041": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-052",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-052",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-042": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-051",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-051",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-043": {
+   "module": "cmdb",
+   "dimension": "D5",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-055",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-055",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-044": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-056",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-056",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-045": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-057",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-057",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-046": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-058",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-058",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-047": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-059",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-059",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-048": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-060",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-060",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-049": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-061",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-061",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-050": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-062",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-062",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-051": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-063",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-063",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-052": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-064",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-064",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-053": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-065",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-065",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-054": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-066",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-066",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-055": {
+   "module": "cmdb",
+   "dimension": "D6",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-069",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-069",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-056": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-002"
+   ],
+   "equivalent_of": "CMDB-070",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-070",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-057": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-072",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-072",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-058": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-073",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-073",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-059": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-001"
+   ],
+   "equivalent_of": "CMDB-071",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-071",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-060": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-074",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-074",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-061": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-075",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-075",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-062": {
+   "module": "cmdb",
+   "dimension": "D7",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-077",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-077",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-063": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-080",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-080",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-064": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-081",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-081",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-065": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-082",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-082",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-066": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-083",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-083",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-067": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-084",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-084",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-068": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-086",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-086",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-069": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-088",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-088",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-070": {
+   "module": "cmdb",
+   "dimension": "D8",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-089",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-089",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-071": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-008"
+   ],
+   "equivalent_of": "CMDB-102",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-102",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-072": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-103",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-103",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-073": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-104",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-104",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-074": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-105",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-105",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-075": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-106",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-106",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-076": {
+   "module": "cmdb",
+   "dimension": "D9",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-107",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-107",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-077": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-141",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-141",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-078": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-006"
+   ],
+   "equivalent_of": "CMDB-117",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-117",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-079": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-118",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-118",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-080": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-119",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-119",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-081": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-121",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-121",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-082": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": "CMDB-122",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-122",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-083": {
+   "module": "cmdb",
+   "dimension": "D10",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-007"
+   ],
+   "equivalent_of": "CMDB-120",
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "equivalent_of": "implementation: catalogue/cmdb.json `dq` link"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-120",
+    "source": "health/catalogue/cmdb.json (dq link)"
+   }
+  },
+  "DQ-084": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-084",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-085": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-085",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-086": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-086",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-087": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-087",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-088": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-088",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-089": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-089",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-090": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-090",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-091": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-091",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-092": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-092",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-093": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [
+    "rule:DQ-115"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)",
+    "blocks": "DEP-004: DQ-115 cross_domain_link \"Gated by DQ-093\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-093",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-094": {
+   "module": "enterprise_dq",
+   "dimension": "Q1",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-094",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-095": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-095",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-096": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-008"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-096",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-097": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-097",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-098": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-098",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-099": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-099",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-100": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-100",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-101": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-101",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-102": {
+   "module": "enterprise_dq",
+   "dimension": "Q2",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-102",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-103": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-103",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-104": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-104",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-105": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-105",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-106": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-106",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-107": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-107",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-108": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-108",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-109": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-109",
+    "engine": "relationship_graph",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-110": {
+   "module": "enterprise_dq",
+   "dimension": "Q3",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-110",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-111": {
+   "module": "enterprise_dq",
+   "dimension": "Q4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-111",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-112": {
+   "module": "enterprise_dq",
+   "dimension": "Q4",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-112",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-113": {
+   "module": "enterprise_dq",
+   "dimension": "Q4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-113",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-114": {
+   "module": "enterprise_dq",
+   "dimension": "Q4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-114",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-115": {
+   "module": "enterprise_dq",
+   "dimension": "Q4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-115",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-116": {
+   "module": "enterprise_dq",
+   "dimension": "Q4",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-116",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-117": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-117",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-118": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "defect",
+   "blocks": [
+    "rule:DQ-117"
+   ],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review",
+    "blocks": "DEP-005: DQ-117 threshold_parameter \"guard on DQ-118\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-118",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-119": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-119",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-120": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-120",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-121": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-121",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-122": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-122",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-123": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-123",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-124": {
+   "module": "enterprise_dq",
+   "dimension": "Q5",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-124",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-125": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-125",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-126": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-126",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-127": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-127",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-128": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-128",
+    "engine": "reference_integrity",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-129": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-129",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-130": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-130",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-131": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-004"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-139",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-139 (D-019)"
+   }
+  },
+  "DQ-132": {
+   "module": "enterprise_dq",
+   "dimension": "Q6",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-132",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-133": {
+   "module": "enterprise_dq",
+   "dimension": "Q7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-133",
+    "engine": "text_analysis",
+    "classification": "unconfigured",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-134": {
+   "module": "enterprise_dq",
+   "dimension": "Q7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-134",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-135": {
+   "module": "enterprise_dq",
+   "dimension": "Q7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-135",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-136": {
+   "module": "enterprise_dq",
+   "dimension": "Q7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-136",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-137": {
+   "module": "enterprise_dq",
+   "dimension": "Q7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-137",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-138": {
+   "module": "enterprise_dq",
+   "dimension": "Q7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-138",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  },
+  "DQ-139": {
+   "module": "enterprise_dq",
+   "dimension": "Q7",
+   "kind": "record",
+   "attainment": "record_deduction",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "workbook: data-quality \"Dimension / Group\"",
+    "kind": "module profile: Enterprise DQ rules judge records (Method R, approach §8.2) — review configuration-type rules",
+    "attainment": "module profile: record rule → per-record deduction (Method R)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "DQ-139",
+    "engine": "configuration",
+    "classification": "unconfigured",
+    "source": "health/enterprise_dq/rules/*.json"
+   }
+  }
+ }
+}

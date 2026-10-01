@@ -1,0 +1,620 @@
+{
+ "engine": "record_predicate",
+ "rules": {
+  "ITOM-004": {
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    }
+   ],
+   "table": "discovery_schedule",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "location",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "discover",
+    "mid_server"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The count of CIs each schedule created or updated is not attached (no creating-schedule attribution is established)."
+   }
+  },
+  "ITOM-014": {
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "owner",
+      "description"
+     ]
+    }
+   ],
+   "table": "discovery_schedule",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "owner",
+     "op": "empty"
+    },
+    {
+     "field": "description",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "discover"
+   ],
+   "report_ratio": true
+  },
+  "ITOM-025": {
+   "requires_tables": [
+    {
+     "table": "discovery_credentials",
+     "fields": [
+      "name",
+      "active",
+      "type",
+      "sys_created_on",
+      "sys_updated_on"
+     ]
+    }
+   ],
+   "table": "discovery_credentials",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "sys_updated_on",
+     "op": "date_before",
+     "window": {
+      "$param": "rotation_period",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "type",
+    "sys_updated_on"
+   ],
+   "report_ratio": true
+  },
+  "ITOM-026": {
+   "requires_tables": [
+    {
+     "table": "discovery_credentials",
+     "fields": [
+      "name",
+      "active",
+      "applies_to"
+     ]
+    }
+   ],
+   "table": "discovery_credentials",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "applies_to",
+     "op": "equals",
+     "value": {
+      "$choice": {
+       "table": "discovery_credentials",
+       "element": "applies_to",
+       "label": "All MID servers"
+      }
+     }
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "type",
+    "applies_to"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"Empty applies-to\" is read as the platform's \"All MID servers\"; a scope that covers every range by tag is not derived."
+   }
+  },
+  "ITOM-036": {
+   "requires_tables": [
+    {
+     "table": "ecc_queue",
+     "fields": [
+      "queue",
+      "state",
+      "sys_created_on"
+     ]
+    }
+   ],
+   "table": "ecc_queue",
+   "scope": [
+    {
+     "$clause": {
+      "template": "queue={}",
+      "value": {
+       "$choice": {
+        "table": "ecc_queue",
+        "element": "queue",
+        "label": "Input"
+       }
+      }
+     }
+    },
+    {
+     "$clause": {
+      "template": "state={}",
+      "value": {
+       "$choice": {
+        "table": "ecc_queue",
+        "element": "state",
+        "label": "Ready"
+       }
+      }
+     }
+    }
+   ],
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "max_age",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "topic",
+    "agent",
+    "sys_created_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The age half only (the workbook calls it the more meaningful); the depth threshold is UNDEFINED and not evaluated."
+   }
+  },
+  "ITOM-037": {
+   "requires_tables": [
+    {
+     "table": "ecc_queue",
+     "fields": [
+      "queue",
+      "state",
+      "agent",
+      "sys_created_on"
+     ]
+    }
+   ],
+   "table": "ecc_queue",
+   "scope": [
+    {
+     "$clause": {
+      "template": "queue={}",
+      "value": {
+       "$choice": {
+        "table": "ecc_queue",
+        "element": "queue",
+        "label": "Output"
+       }
+      }
+     }
+    },
+    {
+     "$clause": {
+      "template": "state={}",
+      "value": {
+       "$choice": {
+        "table": "ecc_queue",
+        "element": "state",
+        "label": "Ready"
+       }
+      }
+     }
+    }
+   ],
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "max_lag",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "topic",
+    "agent",
+    "sys_created_on"
+   ],
+   "report_ratio": true
+  },
+  "ITOM-047": {
+   "undefined_dependencies": [
+    "sa_pattern has no description or owner field (verified on a real instance, Phase 5E) — two of the three absences the rule tests cannot be read"
+   ]
+  },
+  "ITOM-053": {
+   "requires_tables": [
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name",
+      "status",
+      "validated",
+      "last_refreshed",
+      "version",
+      "host_name",
+      "user_name"
+     ]
+    }
+   ],
+   "table": "ecc_agent",
+   "evidence_fields": [
+    "name",
+    "status",
+    "last_refreshed",
+    "host_name"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "status not Up",
+     "predicates": [
+      {
+       "field": "status",
+       "op": "not_equals",
+       "value": "Up"
+      }
+     ]
+    },
+    {
+     "variant": "heartbeat late",
+     "predicates": [
+      {
+       "field": "last_refreshed",
+       "op": "date_before",
+       "window": {
+        "$param": "heartbeat_interval",
+        "as": "window"
+       }
+      }
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A MID is late when last_refreshed is older than 3 × ServiceNow's 5-minute heartbeat (D-033). A MID the instance has already marked Down is caught by the status variant."
+   }
+  },
+  "ITOM-055": {
+   "requires_tables": [
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name",
+      "status",
+      "validated",
+      "last_refreshed",
+      "version",
+      "host_name",
+      "user_name"
+     ]
+    }
+   ],
+   "table": "ecc_agent",
+   "scope": [],
+   "predicates": [
+    {
+     "field": "validated",
+     "op": "not_equals",
+     "value": "true"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "status",
+    "validated"
+   ],
+   "report_ratio": true
+  },
+  "ITOM-056": {
+   "requires_objects": [
+    "mid_certificate"
+   ]
+  },
+  "ITOM-060": {
+   "undefined_dependencies": [
+    "resource limits \"from MID configuration where available\" — none named, and no resource-class issue taxonomy"
+   ]
+  },
+  "ITOM-061": {
+   "requires_tables": [
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name",
+      "status",
+      "validated",
+      "last_refreshed",
+      "version",
+      "host_name",
+      "user_name"
+     ]
+    }
+   ],
+   "table": "ecc_agent",
+   "predicates": [
+    {
+     "field": "status",
+     "op": "equals",
+     "value": "Up"
+    },
+    {
+     "field": "last_refreshed",
+     "op": "date_before",
+     "window": {
+      "$param": "heartbeat_interval",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "status",
+    "last_refreshed"
+   ],
+   "report_ratio": true
+  },
+  "ITOM-064": {
+   "undefined_dependencies": [
+    "the supported JVM / OS matrix per instance family — external reference data"
+   ]
+  },
+  "ITOM-080": {
+   "undefined_dependencies": [
+    "the map creation method (manual vs discovered) and its review history — not established"
+   ]
+  },
+  "ITOM-091": {
+   "requires_tables": [
+    {
+     "table": "em_event",
+     "fields": [
+      "source",
+      "node",
+      "cmdb_ci",
+      "severity",
+      "state",
+      "message_key",
+      "time_of_event"
+     ]
+    }
+   ],
+   "table": "em_event",
+   "scope": [
+    {
+     "$clause": {
+      "template": "state={}",
+      "value": {
+       "$choice": {
+        "table": "em_event",
+        "element": "state",
+        "label": "Ready"
+       }
+      }
+     }
+    }
+   ],
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "max_age",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "source",
+    "node",
+    "type",
+    "sys_created_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The age half (the workbook's own default); the depth threshold is not given."
+   }
+  },
+  "ITOM-109": {
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "severity",
+      "state",
+      "acknowledged",
+      "sys_created_on"
+     ]
+    }
+   ],
+   "table": "em_alert",
+   "evidence_fields": [
+    "number",
+    "severity",
+    "source",
+    "node",
+    "sys_created_on"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "Critical",
+     "scope": [
+      {
+       "$clause": {
+        "template": "severity={}",
+        "value": {
+         "$choice": {
+          "table": "em_alert",
+          "element": "severity",
+          "label": "Critical"
+         }
+        }
+       }
+      },
+      {
+       "$clause": {
+        "template": "state!={}",
+        "value": {
+         "$choice": {
+          "table": "em_alert",
+          "element": "state",
+          "label": "Closed"
+         }
+        }
+       }
+      },
+      "acknowledged=false"
+     ],
+     "predicates": [
+      {
+       "field": "sys_created_on",
+       "op": "date_before",
+       "window": {
+        "$param": "critical_age",
+        "as": "window"
+       }
+      }
+     ]
+    },
+    {
+     "variant": "Major",
+     "scope": [
+      {
+       "$clause": {
+        "template": "severity={}",
+        "value": {
+         "$choice": {
+          "table": "em_alert",
+          "element": "severity",
+          "label": "Major"
+         }
+        }
+       }
+      },
+      {
+       "$clause": {
+        "template": "state!={}",
+        "value": {
+         "$choice": {
+          "table": "em_alert",
+          "element": "state",
+          "label": "Closed"
+         }
+        }
+       }
+      },
+      "acknowledged=false"
+     ],
+     "predicates": [
+      {
+       "field": "sys_created_on",
+       "op": "date_before",
+       "window": {
+        "$param": "major_age",
+        "as": "window"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "ITOM-118": {
+   "engine": "record_predicate",
+   "requires_tables": [
+    {
+     "table": "em_alert_management_rule",
+     "fields": [
+      "name",
+      "active",
+      "submit_counter"
+     ]
+    }
+   ],
+   "table": "em_alert_management_rule",
+   "scope": [
+    "active=true",
+    "submit_counter>0"
+   ],
+   "predicates": [
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "min_age",
+      "as": "window"
+     }
+    },
+    {
+     "field": "sys_updated_on",
+     "field2": "sys_created_on",
+     "op": "same_as"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "submit_counter",
+    "sys_created_on",
+    "sys_updated_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Firing volume is read as submit_counter and \"no review\" as an update time equal to the creation time; a rule reviewed without saving a change reads as unreviewed."
+   }
+  },
+  "ITOM-137": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-145": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-146": {
+   "undefined_dependencies": [
+    "which catalogue items are \"provisioning\" items — not defined"
+   ]
+  }
+ }
+}

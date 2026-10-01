@@ -1,0 +1,25 @@
+{
+ "engine": "linkage",
+ "rules": {
+  "ITOM-035": {
+   "undefined_dependencies": [
+    "\"completing exploration\" apart from the CI it produces — verified on a real instance (Phase 5E): exploration is recorded only by the CI written (cmdb_ci), so \"explored but no CI\" cannot be told apart from \"not explored\""
+   ]
+  },
+  "ITOM-048": {
+   "undefined_dependencies": [
+    "duplicate-set membership with the source that created each member — owned by the CMDB duplicate rules; consumed here once the cross-domain link is built"
+   ]
+  },
+  "ITOM-133": {
+   "undefined_dependencies": [
+    "duplicate-set membership with the source that created each member — owned by the CMDB duplicate rules; consumed here once the cross-domain link is built"
+   ]
+  },
+  "ITOM-135": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  }
+ }
+}

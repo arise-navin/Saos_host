@@ -1,0 +1,5015 @@
+{
+ "map_version": "1.0.0",
+ "phase": "Health Assist Phase 10",
+ "catalogue": "itil",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "rule_count": 148,
+ "vocabularies": {
+  "archetypes": {
+   "record_predicate": "Per-record field-state or timestamp predicate on one task table",
+   "aggregate_distribution": "Count, ratio, share, distribution, dominance or trend over a slice, judged against a threshold",
+   "configuration_inspection": "Reads platform configuration objects and compares them with usage",
+   "reference_integrity": "A reference field must resolve to an existing, active or valid-state target",
+   "cross_record_linkage": "Existence or state of RELATED records in another ITSM table (incident↔problem↔change↔KB, approvals, tasks)",
+   "relationship_graph": "Needs the CMDB relationship graph: degree, traversal to a service, dependent CIs",
+   "audit_history": "Needs sys_audit, journal or task_sla event history to reconstruct transitions or timing",
+   "text_analysis": "Similarity, clustering, normalised-frequency, semantic consistency or pattern (regex) analysis over free text",
+   "temporal_correlation": "Correlates events across records or tables by CI and time window",
+   "composite": "Derives from other rules’ outputs or needs three or more distinct mechanisms in sequence"
+  },
+  "engines": {
+   "record_predicate": "Record Predicate Engine",
+   "aggregate": "Aggregate & Distribution Engine",
+   "configuration": "Configuration Inspection Engine",
+   "reference_integrity": "Reference Integrity Engine",
+   "linkage": "Cross-Record Linkage Engine",
+   "relationship_graph": "Relationship Graph Engine",
+   "audit_history": "Audit & Journal History Engine",
+   "text_analysis": "Text Analysis Engine",
+   "temporal_correlation": "Temporal Correlation Engine",
+   "composite": "Composite / Rule-Dependency Engine"
+  },
+  "archetype_to_engine": {
+   "record_predicate": "record_predicate",
+   "aggregate_distribution": "aggregate",
+   "configuration_inspection": "configuration",
+   "reference_integrity": "reference_integrity",
+   "cross_record_linkage": "linkage",
+   "relationship_graph": "relationship_graph",
+   "audit_history": "audit_history",
+   "text_analysis": "text_analysis",
+   "temporal_correlation": "temporal_correlation",
+   "composite": "composite"
+  },
+  "products": {
+   "request": "Request Fulfilment",
+   "catalogue": "Service Catalogue Management",
+   "knowledge": "Knowledge Management",
+   "service_level": "Service Level Management as a Practice",
+   "release": "Release and Deployment Management",
+   "testing": "Service Validation and Testing",
+   "capacity": "Capacity and Performance Management",
+   "availability": "Availability Management",
+   "continuity": "Service Continuity Management",
+   "supplier": "Supplier Management",
+   "service_desk": "Service Desk",
+   "portfolio": "Portfolio, Demand and Financial Management",
+   "improvement": "Continual Improvement",
+   "cross_practice": "Cross-Practice"
+  },
+  "states": {
+   "executable": "runs once its tables are verified on the instance",
+   "unconfigured": "runs once a threshold the workbook leaves open is set",
+   "undefined": "the workbook leaves part of the detection undefined",
+   "specification_gap": "the workbook does not say enough to evaluate deterministically",
+   "object_unverified": "needs a platform object whose table is not established",
+   "not_built": "fully defined; evaluator not built in this stage",
+   "equivalent": "the same condition as another module's rule, evaluated there",
+   "derived": "the measure IS the module score (Phase 9, CSDM-072)"
+  }
+ },
+ "conventions": {
+  "tables": "the candidate tables a read-only instance validation found present and readable (rules/itil/instance-validation.json). Every table a config reads is also in its requires_tables, which the runner verifies on EACH instance before any read.",
+  "verified_on": "techsnitchpvtltddemo2.service-now.com 2026-09-27",
+  "product": "from the workbook overlay: the ITIL practice group (profile dimension) the rule scores in"
+ },
+ "entries": [
+  {
+   "slot": 1,
+   "rule_id": "ITIL-001",
+   "excel_row": 2,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Systemic",
+   "rule": "Request volume routed through Incident",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "incident"
+   ],
+   "candidate_tables": [
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "incident.category",
+    "incident.close_code",
+    "incident.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 2,
+   "rule_id": "ITIL-002",
+   "excel_row": 3,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Catalogue items with no fulfilment workflow",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_cat_item.active",
+    "sc_cat_item.delivery_plan",
+    "sc_cat_item.flow_designer_flow",
+    "sc_cat_item.name",
+    "sc_cat_item.workflow"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 3,
+   "rule_id": "ITIL-003",
+   "excel_row": 4,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Request fulfilment with no target or SLA",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_req_item",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "sc_req_item",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_req_item.cat_item",
+    "sc_req_item.number",
+    "task_sla.task"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 4,
+   "rule_id": "ITIL-004",
+   "excel_row": 5,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Request approval routed to inactive users or empty groups",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sys_user",
+    "sysapproval_approver"
+   ],
+   "candidate_tables": [
+    "sys_user",
+    "sysapproval_approver"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "DQ-095",
+   "notes": "The same condition as DQ-095 (approvers resolving to inactive users) and DQ-096 (approver groups with zero active members), which the supplied rule joins: evaluated and counted in Enterprise Data Quality, shown here as an equivalent."
+  },
+  {
+   "slot": 5,
+   "rule_id": "ITIL-005",
+   "excel_row": 6,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Request backlog ageing beyond threshold",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_req_item"
+   ],
+   "candidate_tables": [
+    "sc_req_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 6,
+   "rule_id": "ITIL-006",
+   "excel_row": 7,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Fulfilment tasks created and never completed",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_task"
+   ],
+   "candidate_tables": [
+    "sc_task"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 7,
+   "rule_id": "ITIL-007",
+   "excel_row": 8,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "High",
+   "rule": "Requests closed with no fulfilment evidence",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "request",
+   "tables": [
+    "sc_req_item",
+    "sc_task"
+   ],
+   "candidate_tables": [
+    "sc_req_item",
+    "sc_task"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_req_item.active",
+    "sc_req_item.close_notes",
+    "sc_req_item.number",
+    "sc_task.request_item",
+    "sc_task.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 8,
+   "rule_id": "ITIL-008",
+   "excel_row": 9,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "High",
+   "rule": "Standard request types handled as ad-hoc",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "incident",
+    "sc_req_item"
+   ],
+   "candidate_tables": [
+    "incident",
+    "sc_req_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 9,
+   "rule_id": "ITIL-009",
+   "excel_row": 10,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "High",
+   "rule": "Catalogue items with no owner",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "DQ-091",
+   "notes": "The same condition as DQ-091 (catalog item with no owner or fulfilment group), which the supplied rule joins: evaluated and counted in Enterprise Data Quality, shown here as an equivalent."
+  },
+  {
+   "slot": 10,
+   "rule_id": "ITIL-010",
+   "excel_row": 11,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "High",
+   "rule": "Request reopen or rework rate above threshold",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_req_item"
+   ],
+   "candidate_tables": [
+    "sc_req_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 11,
+   "rule_id": "ITIL-011",
+   "excel_row": 12,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Moderate",
+   "rule": "Variables collected but never used by fulfilment",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "request",
+   "tables": [
+    "item_option_new",
+    "sys_hub_flow",
+    "wf_workflow"
+   ],
+   "candidate_tables": [
+    "item_option_new",
+    "sys_hub_flow",
+    "wf_workflow"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "io_set_item.sc_cat_item",
+    "io_set_item.variable_set",
+    "item_option_new.active",
+    "item_option_new.cat_item",
+    "item_option_new.name",
+    "item_option_new.type",
+    "item_option_new.variable_set",
+    "sc_cat_item.active",
+    "sc_cat_item.flow_designer_flow",
+    "sc_cat_item.name",
+    "sc_cat_item.workflow",
+    "sys_hub_action_instance_v2.flow",
+    "sys_hub_action_instance_v2.values",
+    "sys_hub_flow.master_snapshot",
+    "sys_hub_flow_logic_instance_v2.flow",
+    "sys_hub_flow_logic_instance_v2.values",
+    "sys_variable_value.document",
+    "sys_variable_value.document_key",
+    "sys_variable_value.value",
+    "wf_activity.workflow_version",
+    "wf_workflow_version.published",
+    "wf_workflow_version.workflow"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 12,
+   "rule_id": "ITIL-012",
+   "excel_row": 13,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Critical",
+   "rule": "Fulfilment groups with zero active members",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "request",
+   "tables": [
+    "sc_cat_item",
+    "sc_task",
+    "sys_user_grmember"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "sc_task",
+    "sys_user_grmember"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_cat_item.group",
+    "sc_task.active",
+    "sc_task.assignment_group",
+    "sys_user.active",
+    "sys_user_grmember.group",
+    "sys_user_grmember.user"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 13,
+   "rule_id": "ITIL-013",
+   "excel_row": 14,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Low",
+   "rule": "Request items never ordered",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "DQ-123",
+   "notes": "The same condition as DQ-123 (catalog item never ordered), which the supplied rule joins: evaluated and counted in Enterprise Data Quality."
+  },
+  {
+   "slot": 14,
+   "rule_id": "ITIL-014",
+   "excel_row": 15,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "High",
+   "rule": "No self-service fulfilment for high-volume repeatable requests",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 15,
+   "rule_id": "ITIL-015",
+   "excel_row": 16,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Moderate",
+   "rule": "Request-to-fulfilment handoff losing requester context",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_task"
+   ],
+   "candidate_tables": [
+    "sc_task"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_task.active",
+    "sc_task.description",
+    "sc_task.number",
+    "sc_task.short_description"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 16,
+   "rule_id": "ITIL-016",
+   "excel_row": 17,
+   "group": "Group 1 — Request Fulfilment (ITIL-001 to 016)",
+   "base_severity": "Moderate",
+   "rule": "No distinction between request and service request in the data model",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "request",
+   "tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "sc_req_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 17,
+   "rule_id": "ITIL-017",
+   "excel_row": 18,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "Systemic",
+   "rule": "Catalogue not aligned to the CSDM service model",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "cmdb_ci_service",
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "CSDM-016",
+   "notes": "The same condition as CSDM-016 (service portfolio against the catalogue), which the supplied rule joins: counted once, in CSDM."
+  },
+  {
+   "slot": 18,
+   "rule_id": "ITIL-018",
+   "excel_row": 19,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "Critical",
+   "rule": "Items not mapped to a service or offering",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_cat_item",
+    "sc_cat_item_service"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "sc_cat_item_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 19,
+   "rule_id": "ITIL-019",
+   "excel_row": 20,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "High",
+   "rule": "Business and technical catalogue not separated",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_catalog",
+    "user_criteria"
+   ],
+   "candidate_tables": [
+    "sc_catalog",
+    "user_criteria"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 20,
+   "rule_id": "ITIL-020",
+   "excel_row": 21,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "High",
+   "rule": "Items with no review date or expired review",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 21,
+   "rule_id": "ITIL-021",
+   "excel_row": 22,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "High",
+   "rule": "User criteria absent, so all items are visible to everyone",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_cat_item",
+    "sc_cat_item_user_criteria_mtom"
+   ],
+   "candidate_tables": [
+    "sc_cat_item",
+    "sc_cat_item_user_criteria_mtom"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_cat_item.active",
+    "sc_cat_item.name",
+    "sc_cat_item.roles",
+    "sc_cat_item_user_criteria_mtom.sc_cat_item",
+    "sc_cat_item_user_criteria_mtom.user_criteria"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 22,
+   "rule_id": "ITIL-022",
+   "excel_row": 23,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "Moderate",
+   "rule": "Item descriptions that do not state what the requester receives",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sc_cat_item.active",
+    "sc_cat_item.description",
+    "sc_cat_item.name",
+    "sc_cat_item.short_description"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 23,
+   "rule_id": "ITIL-023",
+   "excel_row": 24,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "Moderate",
+   "rule": "Pricing or cost absent where showback is in use",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 24,
+   "rule_id": "ITIL-024",
+   "excel_row": 25,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "High",
+   "rule": "Catalogue items duplicating one another",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "DQ-116",
+   "notes": "The same condition as DQ-116 (duplicate catalog items), which the supplied rule joins: counted once, in Enterprise Data Quality."
+  },
+  {
+   "slot": 25,
+   "rule_id": "ITIL-025",
+   "excel_row": 26,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "Systemic",
+   "rule": "No catalogue governance or publication approval",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 26,
+   "rule_id": "ITIL-026",
+   "excel_row": 27,
+   "group": "Group 2 — Service Catalogue Management (ITIL-017 to 026)",
+   "base_severity": "Moderate",
+   "rule": "Catalogue availability not measured",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "catalogue",
+   "tables": [
+    "service_availability"
+   ],
+   "candidate_tables": [
+    "service_availability"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 27,
+   "rule_id": "ITIL-027",
+   "excel_row": 28,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Systemic",
+   "rule": "Knowledge base effectively unused — article-to-incident linkage near zero",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "incident",
+    "kb_knowledge",
+    "m2m_kb_task"
+   ],
+   "candidate_tables": [
+    "incident",
+    "kb_knowledge",
+    "m2m_kb_task"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 28,
+   "rule_id": "ITIL-028",
+   "excel_row": 29,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Critical",
+   "rule": "Knowledge suggestion not enabled on incident or request",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "cxs_table_config",
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "cxs_table_config",
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cxs_table_config.active",
+    "cxs_table_config.table"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 29,
+   "rule_id": "ITIL-029",
+   "excel_row": 30,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "High",
+   "rule": "Articles past review date still published",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "DQ-122",
+   "notes": "The same condition as DQ-122 (article past its review date), which the supplied rule joins: counted once, in Enterprise Data Quality."
+  },
+  {
+   "slot": 30,
+   "rule_id": "ITIL-030",
+   "excel_row": 31,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "High",
+   "rule": "Articles with no owner",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge",
+    "sys_user_grmember"
+   ],
+   "candidate_tables": [
+    "kb_knowledge",
+    "sys_user_grmember"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "kb_knowledge.author",
+    "kb_knowledge.number",
+    "kb_knowledge.ownership_group",
+    "kb_knowledge.workflow_state",
+    "sys_user.active",
+    "sys_user_grmember.group",
+    "sys_user_grmember.user"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 31,
+   "rule_id": "ITIL-031",
+   "excel_row": 32,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "High",
+   "rule": "Known Errors not published to knowledge",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge",
+    "problem"
+   ],
+   "candidate_tables": [
+    "kb_knowledge",
+    "problem"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-066",
+   "notes": "The same condition as ITSM-066, which the supplied rule joins: counted once, in ITSM."
+  },
+  {
+   "slot": 32,
+   "rule_id": "ITIL-032",
+   "excel_row": 33,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Systemic",
+   "rule": "No knowledge creation from incident resolution",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "incident",
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "incident",
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 33,
+   "rule_id": "ITIL-033",
+   "excel_row": 34,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Moderate",
+   "rule": "Articles with zero views since publication",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 34,
+   "rule_id": "ITIL-034",
+   "excel_row": 35,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Moderate",
+   "rule": "Article feedback captured and never actioned",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "knowledge",
+   "tables": [
+    "kb_feedback",
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "kb_feedback",
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "kb_feedback.article",
+    "kb_feedback.comments",
+    "kb_feedback.flagged",
+    "kb_feedback.useful",
+    "kb_knowledge.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 35,
+   "rule_id": "ITIL-035",
+   "excel_row": 36,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "High",
+   "rule": "Duplicate articles covering the same topic",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 36,
+   "rule_id": "ITIL-036",
+   "excel_row": 37,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "High",
+   "rule": "No knowledge base for a service with high incident volume",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "incident",
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "incident",
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 37,
+   "rule_id": "ITIL-037",
+   "excel_row": 38,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Critical",
+   "rule": "Articles containing personal identifiers in free text",
+   "archetype": "text_analysis",
+   "recommended_engine": "text_analysis",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge"
+   ],
+   "candidate_tables": [
+    "kb_knowledge"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "data_classification.name",
+    "kb_knowledge.text"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 38,
+   "rule_id": "ITIL-038",
+   "excel_row": 39,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "High",
+   "rule": "Knowledge workflow with no approval before publication",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge_base"
+   ],
+   "candidate_tables": [
+    "kb_knowledge_base"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "kb_knowledge_base.active",
+    "kb_knowledge_base.kb_publish_flow",
+    "kb_knowledge_base.title",
+    "kb_knowledge_base.workflow",
+    "sys_hub_flow.name",
+    "wf_workflow.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 39,
+   "rule_id": "ITIL-039",
+   "excel_row": 40,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Moderate",
+   "rule": "Retired articles still referenced from incident resolutions",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "kb_knowledge",
+    "m2m_kb_task"
+   ],
+   "candidate_tables": [
+    "kb_knowledge",
+    "m2m_kb_task"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-139",
+   "notes": "The same condition as ITSM-139 (and DQ-131), which the supplied rule joins: counted once, in ITSM."
+  },
+  {
+   "slot": 40,
+   "rule_id": "ITIL-040",
+   "excel_row": 41,
+   "group": "Group 3 — Knowledge Management (ITIL-027 to 040)",
+   "base_severity": "Moderate",
+   "rule": "No knowledge effectiveness measurement",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "knowledge",
+   "tables": [
+    "pa_indicators",
+    "ssa_deflection_metric"
+   ],
+   "candidate_tables": [
+    "pa_indicators",
+    "ssa_deflection_metric"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 41,
+   "rule_id": "ITIL-041",
+   "excel_row": 42,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "Systemic",
+   "rule": "No service level review cycle evidenced",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 42,
+   "rule_id": "ITIL-042",
+   "excel_row": 43,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "High",
+   "rule": "SLA targets never renegotiated since implementation",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "PLT-016",
+   "notes": "The same condition as PLT-016 (SLA definition never reviewed since creation), which the supplied rule joins: counted once, in Platform."
+  },
+  {
+   "slot": 43,
+   "rule_id": "ITIL-043",
+   "excel_row": 44,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "High",
+   "rule": "Breach reporting produced and never acted upon",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "change_request",
+    "problem",
+    "sysauto_report"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "problem",
+    "sysauto_report"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 44,
+   "rule_id": "ITIL-044",
+   "excel_row": 45,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "Systemic",
+   "rule": "No operational level agreements underpinning customer SLAs",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.name",
+    "contract_sla.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 45,
+   "rule_id": "ITIL-045",
+   "excel_row": 46,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "Critical",
+   "rule": "Underpinning contracts not linked to the SLAs they support",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "contract_sla"
+   ],
+   "candidate_tables": [
+    "contract_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "contract_sla.active",
+    "contract_sla.name",
+    "contract_sla.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 46,
+   "rule_id": "ITIL-046",
+   "excel_row": 47,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "Critical",
+   "rule": "Underpinning contract terms weaker than the customer SLA they support",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "contract_sla",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "specification_gap"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 47,
+   "rule_id": "ITIL-047",
+   "excel_row": 48,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "Moderate",
+   "rule": "Service reports produced with no customer distribution",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "sys_report",
+    "sysauto_report"
+   ],
+   "candidate_tables": [
+    "sys_report",
+    "sysauto_report"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_report.table",
+    "sys_report.title",
+    "sysauto_report.active",
+    "sysauto_report.address_list",
+    "sysauto_report.report"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 48,
+   "rule_id": "ITIL-048",
+   "excel_row": 49,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "High",
+   "rule": "Service level achievement reported without stating exclusions",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "sys_report"
+   ],
+   "candidate_tables": [
+    "sys_report"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 49,
+   "rule_id": "ITIL-049",
+   "excel_row": 50,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "High",
+   "rule": "No service level manager or accountable owner for SLM",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user_has_role.role",
+    "sys_user_has_role.user",
+    "sys_user_role.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 50,
+   "rule_id": "ITIL-050",
+   "excel_row": 51,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "Moderate",
+   "rule": "Customer satisfaction not measured against service level performance",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "asmt_assessment_instance",
+    "asmt_metric_type"
+   ],
+   "candidate_tables": [
+    "asmt_assessment_instance",
+    "asmt_metric_type"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "asmt_assessment_instance.metric_type",
+    "asmt_assessment_instance.state",
+    "asmt_metric_type.active",
+    "asmt_metric_type.evaluation_method",
+    "asmt_metric_type.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 51,
+   "rule_id": "ITIL-051",
+   "excel_row": 52,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "High",
+   "rule": "Service level breaches with no root cause analysis",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "problem",
+    "task_sla"
+   ],
+   "candidate_tables": [
+    "problem",
+    "task_sla"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-054",
+   "notes": "The same condition as ITSM-054 (recurring incident patterns with no Problem), which the supplied rule joins: counted once, in ITSM."
+  },
+  {
+   "slot": 52,
+   "rule_id": "ITIL-052",
+   "excel_row": 53,
+   "group": "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)",
+   "base_severity": "Moderate",
+   "rule": "Service level targets inconsistent across comparable services",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "service_level",
+   "tables": [
+    "cmdb_ci_service",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 53,
+   "rule_id": "ITIL-053",
+   "excel_row": 54,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "Systemic",
+   "rule": "No release practice distinct from change",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "change_request",
+    "release_project"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "release_project"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "release_project.active",
+    "release_project.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 54,
+   "rule_id": "ITIL-054",
+   "excel_row": 55,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "High",
+   "rule": "Releases with no linked changes",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "release_project",
+    "release_rfcs"
+   ],
+   "candidate_tables": [
+    "release_project",
+    "release_rfcs"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "release_project.number",
+    "release_project.short_description",
+    "release_rfcs.release",
+    "release_rfcs.rfc"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 55,
+   "rule_id": "ITIL-055",
+   "excel_row": 56,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "Critical",
+   "rule": "Deployment with no rollback plan at release level",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "release_project"
+   ],
+   "candidate_tables": [
+    "release_project"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 56,
+   "rule_id": "ITIL-056",
+   "excel_row": 57,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "Critical",
+   "rule": "Release closed with no deployment verification",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "release_project",
+    "release_task"
+   ],
+   "candidate_tables": [
+    "release_project",
+    "release_task"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 57,
+   "rule_id": "ITIL-057",
+   "excel_row": 58,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "Systemic",
+   "rule": "Release-induced incident rate above threshold",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "incident",
+    "release_project"
+   ],
+   "candidate_tables": [
+    "incident",
+    "release_project"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 58,
+   "rule_id": "ITIL-058",
+   "excel_row": 59,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "Critical",
+   "rule": "Deployments outside defined release windows",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "change_request"
+   ],
+   "candidate_tables": [
+    "change_request"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "change_request.number",
+    "change_request.outside_maintenance_schedule",
+    "change_request.state"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 59,
+   "rule_id": "ITIL-059",
+   "excel_row": 60,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "High",
+   "rule": "No definitive media library or artefact registry",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "release",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 60,
+   "rule_id": "ITIL-060",
+   "excel_row": 61,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "High",
+   "rule": "Releases not traceable to demand, problem or change origin",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "release_project"
+   ],
+   "candidate_tables": [
+    "release_project"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 61,
+   "rule_id": "ITIL-061",
+   "excel_row": 62,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "High",
+   "rule": "Update sets promoted without release linkage",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "sys_update_set"
+   ],
+   "candidate_tables": [
+    "sys_update_set"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 62,
+   "rule_id": "ITIL-062",
+   "excel_row": 63,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "Systemic",
+   "rule": "No environment promotion path defined",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "sys_remote_update_set",
+    "sys_update_set"
+   ],
+   "candidate_tables": [
+    "sys_remote_update_set",
+    "sys_update_set"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 63,
+   "rule_id": "ITIL-063",
+   "excel_row": 64,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "High",
+   "rule": "Release approval separate from change approval is absent",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "release",
+   "tables": [
+    "release_project",
+    "sysapproval_approver"
+   ],
+   "candidate_tables": [
+    "release_project",
+    "sysapproval_approver"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "release_project.number",
+    "sysapproval_approver.sysapproval"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 64,
+   "rule_id": "ITIL-064",
+   "excel_row": 65,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "Moderate",
+   "rule": "Release notes or deployment documentation absent",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "release_project"
+   ],
+   "candidate_tables": [
+    "release_project"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "release_project.description",
+    "release_project.notes",
+    "release_project.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 65,
+   "rule_id": "ITIL-065",
+   "excel_row": 66,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "High",
+   "rule": "Failed releases with no post-implementation review",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "release_project"
+   ],
+   "candidate_tables": [
+    "release_project"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 66,
+   "rule_id": "ITIL-066",
+   "excel_row": 67,
+   "group": "Group 5 — Release and Deployment Management (ITIL-053 to 066)",
+   "base_severity": "High",
+   "rule": "Release frequency and batch size trending upward together",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "release",
+   "tables": [
+    "release_project",
+    "release_rfcs"
+   ],
+   "candidate_tables": [
+    "release_project",
+    "release_rfcs"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 67,
+   "rule_id": "ITIL-067",
+   "excel_row": 68,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "Systemic",
+   "rule": "No test evidence captured for changes or releases",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "testing",
+   "tables": [
+    "change_request",
+    "change_task"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "change_task"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "change_request.number",
+    "change_request.state",
+    "change_request.test_plan",
+    "change_task.change_request",
+    "change_task.change_task_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 68,
+   "rule_id": "ITIL-068",
+   "excel_row": 69,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "Critical",
+   "rule": "Test plans absent on high-risk changes",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "testing",
+   "tables": [
+    "change_request"
+   ],
+   "candidate_tables": [
+    "change_request"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-098",
+   "notes": "The same condition as ITSM-098 (test plan empty on high-risk changes): counted once, in ITSM."
+  },
+  {
+   "slot": 69,
+   "rule_id": "ITIL-069",
+   "excel_row": 70,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "High",
+   "rule": "No acceptance criteria defined before implementation",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "testing",
+   "tables": [
+    "change_request"
+   ],
+   "candidate_tables": [
+    "change_request"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 70,
+   "rule_id": "ITIL-070",
+   "excel_row": 71,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "High",
+   "rule": "Testing performed in an environment materially divergent from production",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "testing",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 71,
+   "rule_id": "ITIL-071",
+   "excel_row": 72,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "Critical",
+   "rule": "No regression testing after platform upgrade",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "testing",
+   "tables": [
+    "sys_atf_test_suite_result",
+    "sys_upgrade_history"
+   ],
+   "candidate_tables": [
+    "sys_atf_test_suite_result",
+    "sys_upgrade_history"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_atf_test_result.start_time",
+    "sys_atf_test_suite_result.start_time",
+    "sys_upgrade_history.to_version",
+    "sys_upgrade_history.upgrade_started"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 72,
+   "rule_id": "ITIL-072",
+   "excel_row": 73,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "High",
+   "rule": "Automated test coverage absent on high-modification objects",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "testing",
+   "tables": [
+    "sys_atf_test",
+    "sys_update_version"
+   ],
+   "candidate_tables": [
+    "sys_atf_test",
+    "sys_update_version"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_atf_step.active",
+    "sys_atf_step.table",
+    "sys_atf_step.test",
+    "sys_atf_test.active",
+    "sys_properties.name",
+    "sys_update_version.name",
+    "sys_update_version.source_table",
+    "sys_variable_value.document",
+    "sys_variable_value.document_key",
+    "sys_variable_value.value"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 73,
+   "rule_id": "ITIL-073",
+   "excel_row": 74,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "High",
+   "rule": "Test failures overridden with no justification",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "testing",
+   "tables": [
+    "sys_atf_test_result"
+   ],
+   "candidate_tables": [
+    "sys_atf_test_result"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 74,
+   "rule_id": "ITIL-074",
+   "excel_row": 75,
+   "group": "Group 6 — Service Validation and Testing (ITIL-067 to 074)",
+   "base_severity": "High",
+   "rule": "No validation that the change achieved its stated objective",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "testing",
+   "tables": [
+    "change_request"
+   ],
+   "candidate_tables": [
+    "change_request"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 75,
+   "rule_id": "ITIL-075",
+   "excel_row": 76,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "Systemic",
+   "rule": "No capacity plan or forecast for any service",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 76,
+   "rule_id": "ITIL-076",
+   "excel_row": 77,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "Critical",
+   "rule": "Capacity thresholds defined but not monitored",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 77,
+   "rule_id": "ITIL-077",
+   "excel_row": 78,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "Critical",
+   "rule": "Platform growth trending toward a known limit",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [
+    "sys_physical_table_stats"
+   ],
+   "candidate_tables": [
+    "sys_physical_table_stats"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 78,
+   "rule_id": "ITIL-078",
+   "excel_row": 79,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "High",
+   "rule": "Capacity-related incidents not linked to capacity management",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [
+    "incident",
+    "problem"
+   ],
+   "candidate_tables": [
+    "incident",
+    "problem"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 79,
+   "rule_id": "ITIL-079",
+   "excel_row": 80,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "High",
+   "rule": "No demand forecasting feeding capacity",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [
+    "dmn_demand"
+   ],
+   "candidate_tables": [
+    "dmn_demand"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 80,
+   "rule_id": "ITIL-080",
+   "excel_row": 81,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "High",
+   "rule": "Performance baselines not established",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 81,
+   "rule_id": "ITIL-081",
+   "excel_row": 82,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "Moderate",
+   "rule": "Capacity reporting produced with no action threshold",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [
+    "sys_report"
+   ],
+   "candidate_tables": [
+    "sys_report"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 82,
+   "rule_id": "ITIL-082",
+   "excel_row": 83,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "Critical",
+   "rule": "Licence and subscription consumption not monitored against entitlement",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "capacity",
+   "tables": [
+    "subscription_detail"
+   ],
+   "candidate_tables": [
+    "subscription_detail"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "subscription_detail.allocated_count",
+    "subscription_detail.is_latest",
+    "subscription_detail.status",
+    "subscription_detail.subscription_name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 83,
+   "rule_id": "ITIL-083",
+   "excel_row": 84,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "High",
+   "rule": "Capacity not considered in change risk assessment",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [
+    "risk_conditions"
+   ],
+   "candidate_tables": [
+    "risk_conditions"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 84,
+   "rule_id": "ITIL-084",
+   "excel_row": 85,
+   "group": "Group 7 — Capacity and Performance Management (ITIL-075 to 084)",
+   "base_severity": "Moderate",
+   "rule": "No capacity owner or accountable role",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "capacity",
+   "tables": [
+    "sys_user_role"
+   ],
+   "candidate_tables": [
+    "sys_user_role"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 85,
+   "rule_id": "ITIL-085",
+   "excel_row": 86,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "Systemic",
+   "rule": "Availability not measured for any service",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "cmdb_ci_outage",
+    "service_availability"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_outage",
+    "service_availability"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "service_availability.cmdb_ci"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 86,
+   "rule_id": "ITIL-086",
+   "excel_row": 87,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "Critical",
+   "rule": "Outage records not created for major incidents",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "incident",
+    "task_outage"
+   ],
+   "candidate_tables": [
+    "incident",
+    "task_outage"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 87,
+   "rule_id": "ITIL-087",
+   "excel_row": 88,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "Critical",
+   "rule": "Availability targets not defined per service",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "availability",
+   "tables": [
+    "cmdb_ci_service",
+    "service_commitment",
+    "service_offering"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "service_commitment",
+    "service_offering"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "service_commitment.type",
+    "service_offering.parent",
+    "service_offering_commitment.service_commitment",
+    "service_offering_commitment.service_offering"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 88,
+   "rule_id": "ITIL-088",
+   "excel_row": 89,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "High",
+   "rule": "Planned maintenance counted as unplanned downtime, or excluded without disclosure",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "cmdb_ci_outage"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_outage"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_outage.cmdb_ci",
+    "cmdb_ci_outage.number",
+    "cmdb_ci_outage.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 89,
+   "rule_id": "ITIL-089",
+   "excel_row": 90,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "Critical",
+   "rule": "Single points of failure not identified for critical services",
+   "archetype": "relationship_graph",
+   "recommended_engine": "relationship_graph",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "cmdb_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 90,
+   "rule_id": "ITIL-090",
+   "excel_row": 91,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "High",
+   "rule": "Availability not considered in change risk",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "risk_conditions"
+   ],
+   "candidate_tables": [
+    "risk_conditions"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 91,
+   "rule_id": "ITIL-091",
+   "excel_row": 92,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "Moderate",
+   "rule": "Mean time between failures not tracked per service or CI",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "service_availability"
+   ],
+   "candidate_tables": [
+    "service_availability"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "service_availability.cmdb_ci",
+    "service_availability.mtbf"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 92,
+   "rule_id": "ITIL-092",
+   "excel_row": 93,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "High",
+   "rule": "Availability reporting excludes services with no monitoring",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "em_connector_instance",
+    "service_availability"
+   ],
+   "candidate_tables": [
+    "em_connector_instance",
+    "service_availability"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 93,
+   "rule_id": "ITIL-093",
+   "excel_row": 94,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "Moderate",
+   "rule": "Vital business function not identified within services",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 94,
+   "rule_id": "ITIL-094",
+   "excel_row": 95,
+   "group": "Group 8 — Availability Management (ITIL-085 to 094)",
+   "base_severity": "Moderate",
+   "rule": "No availability owner or accountable role",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "availability",
+   "tables": [
+    "sys_user_role"
+   ],
+   "candidate_tables": [
+    "sys_user_role"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 95,
+   "rule_id": "ITIL-095",
+   "excel_row": 96,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "Systemic",
+   "rule": "No continuity plan for Business Critical services",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 96,
+   "rule_id": "ITIL-096",
+   "excel_row": 97,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "Critical",
+   "rule": "Recovery time and recovery point objectives not defined",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "continuity",
+   "tables": [
+    "cmdb_ci_service",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.busines_criticality",
+    "cmdb_ci_service.name",
+    "service_commitment.type",
+    "service_offering.parent",
+    "service_offering_commitment.service_commitment",
+    "service_offering_commitment.service_offering"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 97,
+   "rule_id": "ITIL-097",
+   "excel_row": 98,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "Critical",
+   "rule": "RTO inconsistent with the supporting infrastructure's actual recovery capability",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [
+    "cmdb_ci",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "cmdb_ci",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 98,
+   "rule_id": "ITIL-098",
+   "excel_row": 99,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "Critical",
+   "rule": "Continuity plans never tested",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 99,
+   "rule_id": "ITIL-099",
+   "excel_row": 100,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "High",
+   "rule": "Continuity plans not updated after significant change",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 100,
+   "rule_id": "ITIL-100",
+   "excel_row": 101,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "High",
+   "rule": "DR environment not represented in the CMDB",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [
+    "cmdb_ci"
+   ],
+   "candidate_tables": [
+    "cmdb_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 101,
+   "rule_id": "ITIL-101",
+   "excel_row": 102,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "Critical",
+   "rule": "Production and DR configuration divergence",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 102,
+   "rule_id": "ITIL-102",
+   "excel_row": 103,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "Critical",
+   "rule": "Continuity dependencies on suppliers not documented",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 103,
+   "rule_id": "ITIL-103",
+   "excel_row": 104,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "High",
+   "rule": "Continuity test findings not remediated",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 104,
+   "rule_id": "ITIL-104",
+   "excel_row": 105,
+   "group": "Group 9 — Service Continuity Management (ITIL-095 to 104)",
+   "base_severity": "Critical",
+   "rule": "No continuity owner or invocation authority defined",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "continuity",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 105,
+   "rule_id": "ITIL-105",
+   "excel_row": 106,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "Systemic",
+   "rule": "Suppliers supporting critical services not registered",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [
+    "cmdb_ci_service",
+    "core_company"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "core_company"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 106,
+   "rule_id": "ITIL-106",
+   "excel_row": 107,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "Critical",
+   "rule": "Contracts not linked to the services they support",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "supplier",
+   "tables": [
+    "ast_contract",
+    "contract_rel_ci"
+   ],
+   "candidate_tables": [
+    "ast_contract",
+    "contract_rel_ci"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ast_contract.active",
+    "ast_contract.number",
+    "ast_contract.vendor",
+    "contract_rel_ci.ci_item",
+    "contract_rel_ci.contract"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 107,
+   "rule_id": "ITIL-107",
+   "excel_row": 108,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "High",
+   "rule": "Supplier performance not measured",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [
+    "ast_contract"
+   ],
+   "candidate_tables": [
+    "ast_contract"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 108,
+   "rule_id": "ITIL-108",
+   "excel_row": 109,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "Critical",
+   "rule": "Contracts expiring within the notice period with no renewal action",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [
+    "ast_contract"
+   ],
+   "candidate_tables": [
+    "ast_contract"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 109,
+   "rule_id": "ITIL-109",
+   "excel_row": 110,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "High",
+   "rule": "Supplier-caused incidents not attributed",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [
+    "incident"
+   ],
+   "candidate_tables": [
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 110,
+   "rule_id": "ITIL-110",
+   "excel_row": 111,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "Critical",
+   "rule": "Supplier access to the platform not reviewed",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "PLT-134",
+   "notes": "The same condition as PLT-134 (no access recertification evidenced), which the supplied rule joins: counted once, in Platform."
+  },
+  {
+   "slot": 111,
+   "rule_id": "ITIL-111",
+   "excel_row": 112,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "High",
+   "rule": "Supplier integrations with no documented owner or contract linkage",
+   "archetype": "reference_integrity",
+   "recommended_engine": "reference_integrity",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [
+    "sys_rest_message"
+   ],
+   "candidate_tables": [
+    "sys_rest_message"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "PLT-153",
+   "notes": "The same condition as PLT-153 (integration with no documented owner), which the supplied rule joins: counted once, in Platform."
+  },
+  {
+   "slot": 112,
+   "rule_id": "ITIL-112",
+   "excel_row": 113,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "Critical",
+   "rule": "Underpinning contract terms not reconciled to service commitments",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 113,
+   "rule_id": "ITIL-113",
+   "excel_row": 114,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "High",
+   "rule": "Supplier concentration risk not assessed",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [
+    "ast_contract",
+    "core_company"
+   ],
+   "candidate_tables": [
+    "ast_contract",
+    "core_company"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 114,
+   "rule_id": "ITIL-114",
+   "excel_row": 115,
+   "group": "Group 10 — Supplier Management (ITIL-105 to 114)",
+   "base_severity": "High",
+   "rule": "Supplier exit or transition plans absent for critical dependencies",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "supplier",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 115,
+   "rule_id": "ITIL-115",
+   "excel_row": 116,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "High",
+   "rule": "Contact channel volume not measured or differentiated",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "service_desk",
+   "tables": [
+    "incident",
+    "sc_request"
+   ],
+   "candidate_tables": [
+    "incident",
+    "sc_request"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "incident.contact_type",
+    "sc_request.contact_type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 116,
+   "rule_id": "ITIL-116",
+   "excel_row": 117,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "High",
+   "rule": "Self-service deflection not measured",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [
+    "ssa_deflection_configuration",
+    "ssa_deflection_metric"
+   ],
+   "candidate_tables": [
+    "ssa_deflection_configuration",
+    "ssa_deflection_metric"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "ssa_deflection_metric.type"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 117,
+   "rule_id": "ITIL-117",
+   "excel_row": 118,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "High",
+   "rule": "First contact resolution not measured or measured inconsistently",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [
+    "pa_indicators"
+   ],
+   "candidate_tables": [
+    "pa_indicators"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 118,
+   "rule_id": "ITIL-118",
+   "excel_row": 119,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "High",
+   "rule": "Abandonment or drop-off not measured on any channel",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 119,
+   "rule_id": "ITIL-119",
+   "excel_row": 120,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "Moderate",
+   "rule": "Service desk operating with no defined scope or service hours",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 120,
+   "rule_id": "ITIL-120",
+   "excel_row": 121,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "Critical",
+   "rule": "Escalation paths not defined or resolving to nobody",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "service_desk",
+   "tables": [
+    "cmn_rota",
+    "cmn_rota_escalation_set"
+   ],
+   "candidate_tables": [
+    "cmn_rota",
+    "cmn_rota_escalation_set"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmn_rota.active",
+    "cmn_rota.group",
+    "cmn_rota.name",
+    "cmn_rota.use_custom_escalation",
+    "cmn_rota_esc_step_def.cmn_rota_rosters",
+    "cmn_rota_esc_step_def.escalation_set",
+    "cmn_rota_esc_step_def.group_manager",
+    "cmn_rota_esc_step_def.sys_user_groups",
+    "cmn_rota_esc_step_def.sys_users",
+    "cmn_rota_escalation_set.active",
+    "cmn_rota_escalation_set.cmn_rota",
+    "cmn_rota_member.member",
+    "cmn_rota_member.roster",
+    "cmn_rota_roster.active",
+    "cmn_rota_roster.rota",
+    "sys_user.active",
+    "sys_user_grmember.group",
+    "sys_user_grmember.user",
+    "sys_user_group.manager"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 121,
+   "rule_id": "ITIL-121",
+   "excel_row": 122,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "Moderate",
+   "rule": "Agent capacity not measured against demand",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [
+    "awa_agent_capacity"
+   ],
+   "candidate_tables": [
+    "awa_agent_capacity"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 122,
+   "rule_id": "ITIL-122",
+   "excel_row": 123,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "Moderate",
+   "rule": "Satisfaction survey response rate below the level that supports inference",
+   "archetype": "aggregate_distribution",
+   "recommended_engine": "aggregate",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [
+    "asmt_assessment_instance"
+   ],
+   "candidate_tables": [
+    "asmt_assessment_instance"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 123,
+   "rule_id": "ITIL-123",
+   "excel_row": 124,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "Moderate",
+   "rule": "No differentiation between service desk and technical queues in reporting",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [
+    "sys_report"
+   ],
+   "candidate_tables": [
+    "sys_report"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 124,
+   "rule_id": "ITIL-124",
+   "excel_row": 125,
+   "group": "Group 11 — Service Desk (ITIL-115 to 124)",
+   "base_severity": "High",
+   "rule": "Major incident communication not routed through the service desk",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [],
+   "product": "service_desk",
+   "tables": [
+    "incident"
+   ],
+   "candidate_tables": [
+    "incident"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-046",
+   "notes": "The same condition as ITSM-046 (major incident with no communication plan or task), which the supplied rule joins: counted once, in ITSM."
+  },
+  {
+   "slot": 125,
+   "rule_id": "ITIL-125",
+   "excel_row": 126,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "Systemic",
+   "rule": "No service portfolio distinct from the service catalogue",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "cmdb_ci_service",
+    "life_cycle_stage"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "life_cycle_stage"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 126,
+   "rule_id": "ITIL-126",
+   "excel_row": 127,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "High",
+   "rule": "Demand not captured as records",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "change_request",
+    "dmn_demand"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "dmn_demand"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "dmn_demand.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 127,
+   "rule_id": "ITIL-127",
+   "excel_row": 128,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "High",
+   "rule": "Demand not linked to the services it affects",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "dmn_demand"
+   ],
+   "candidate_tables": [
+    "dmn_demand"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "dmn_demand.business_applications",
+    "dmn_demand.business_capabilities",
+    "dmn_demand.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 128,
+   "rule_id": "ITIL-128",
+   "excel_row": 129,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "High",
+   "rule": "Service costs not attributed to services",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "portfolio",
+   "tables": [
+    "cmdb_ci_service",
+    "fm_expense_line"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "fm_expense_line"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "fm_expense_line.ci"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 129,
+   "rule_id": "ITIL-129",
+   "excel_row": 130,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "Moderate",
+   "rule": "No chargeback or showback despite cost data being present",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "fm_expense_line"
+   ],
+   "candidate_tables": [
+    "fm_expense_line"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 130,
+   "rule_id": "ITIL-130",
+   "excel_row": 131,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "Moderate",
+   "rule": "Budget or funding not linked to services",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "cost_plan"
+   ],
+   "candidate_tables": [
+    "cost_plan"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 131,
+   "rule_id": "ITIL-131",
+   "excel_row": 132,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "High",
+   "rule": "Retired services still consuming cost",
+   "archetype": "cross_record_linkage",
+   "recommended_engine": "linkage",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "portfolio",
+   "tables": [
+    "cmdb_ci_service",
+    "fm_expense_line"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service",
+    "fm_expense_line"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "cmdb_ci.operational_status",
+    "cmdb_ci_service.install_status",
+    "cmdb_ci_service.name",
+    "cmdb_ci_service.operational_status",
+    "cmdb_rel_ci.child",
+    "cmdb_rel_ci.parent",
+    "fm_expense_line.ci"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 132,
+   "rule_id": "ITIL-132",
+   "excel_row": 133,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "Moderate",
+   "rule": "Service investment not traceable to business outcome",
+   "archetype": "record_predicate",
+   "recommended_engine": "record_predicate",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "dmn_demand"
+   ],
+   "candidate_tables": [
+    "dmn_demand"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "dmn_demand.financial_benefit",
+    "dmn_demand.goal",
+    "dmn_demand.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 133,
+   "rule_id": "ITIL-133",
+   "excel_row": 134,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "Moderate",
+   "rule": "Portfolio decisions made with no service performance data",
+   "archetype": "temporal_correlation",
+   "recommended_engine": "temporal_correlation",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "cmdb_ci_service"
+   ],
+   "candidate_tables": [
+    "cmdb_ci_service"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 134,
+   "rule_id": "ITIL-134",
+   "excel_row": 135,
+   "group": "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)",
+   "base_severity": "Moderate",
+   "rule": "No accountable owner for the service portfolio",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "portfolio",
+   "tables": [
+    "sys_user_has_role"
+   ],
+   "candidate_tables": [
+    "sys_user_has_role"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "sys_user.active",
+    "sys_user_has_role.role",
+    "sys_user_has_role.user",
+    "sys_user_role.name"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 135,
+   "rule_id": "ITIL-135",
+   "excel_row": 136,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "Systemic",
+   "rule": "No improvement register or backlog",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 136,
+   "rule_id": "ITIL-136",
+   "excel_row": 137,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "Critical",
+   "rule": "Improvement items registered and never progressed",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 137,
+   "rule_id": "ITIL-137",
+   "excel_row": 138,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "High",
+   "rule": "Improvements not traceable to a measurement or finding",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 138,
+   "rule_id": "ITIL-138",
+   "excel_row": 139,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "Critical",
+   "rule": "Improvements closed with no measured outcome",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 139,
+   "rule_id": "ITIL-139",
+   "excel_row": 140,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "High",
+   "rule": "Post-incident review actions not feeding the improvement register",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 140,
+   "rule_id": "ITIL-140",
+   "excel_row": 141,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "High",
+   "rule": "No baseline captured before an improvement initiative",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 141,
+   "rule_id": "ITIL-141",
+   "excel_row": 142,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "Moderate",
+   "rule": "Improvement activity concentrated in one area while defects concentrate elsewhere",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 142,
+   "rule_id": "ITIL-142",
+   "excel_row": 143,
+   "group": "Group 13 — Continual Improvement (ITIL-135 to 142)",
+   "base_severity": "Moderate",
+   "rule": "No accountable owner for continual improvement",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [],
+   "product": "improvement",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 143,
+   "rule_id": "ITIL-143",
+   "excel_row": 144,
+   "group": "Group 14 — Cross-Practice (ITIL-143 to 148)",
+   "base_severity": "Systemic",
+   "rule": "Practices operating with no shared service model",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_practice",
+   "tables": [
+    "change_request",
+    "incident",
+    "problem"
+   ],
+   "candidate_tables": [
+    "change_request",
+    "incident",
+    "problem"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITSM-129",
+   "notes": "The same condition as ITSM-129 (the processes not referencing the CMDB / a shared service model), which the supplied rule joins: counted once, in ITSM."
+  },
+  {
+   "slot": 144,
+   "rule_id": "ITIL-144",
+   "excel_row": 145,
+   "group": "Group 14 — Cross-Practice (ITIL-143 to 148)",
+   "base_severity": "Critical",
+   "rule": "Request fulfilment creating CIs outside the configuration practice",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_practice",
+   "tables": [
+    "sc_cat_item"
+   ],
+   "candidate_tables": [
+    "sc_cat_item"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "equivalent"
+   },
+   "equivalent_of": "ITOM-134",
+   "notes": "The same condition as ITOM-134 (a provisioning path bypassing CMDB registration), which the supplied rule joins: counted once, in ITOM."
+  },
+  {
+   "slot": 145,
+   "rule_id": "ITIL-145",
+   "excel_row": 146,
+   "group": "Group 14 — Cross-Practice (ITIL-143 to 148)",
+   "base_severity": "Systemic",
+   "rule": "Knowledge, Problem and Incident not forming a closed loop",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_practice",
+   "tables": [
+    "incident",
+    "kb_knowledge",
+    "m2m_kb_task",
+    "problem"
+   ],
+   "candidate_tables": [
+    "incident",
+    "kb_knowledge",
+    "m2m_kb_task",
+    "problem"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "incident.problem_id",
+    "kb_knowledge.source",
+    "kb_knowledge.workflow_state",
+    "m2m_kb_task.task",
+    "problem.known_error",
+    "problem.number"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 146,
+   "rule_id": "ITIL-146",
+   "excel_row": 147,
+   "group": "Group 14 — Cross-Practice (ITIL-143 to 148)",
+   "base_severity": "Systemic",
+   "rule": "Availability and continuity commitments not reconciled to infrastructure reality",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_practice",
+   "tables": [
+    "cmdb_rel_ci",
+    "service_commitment"
+   ],
+   "candidate_tables": [
+    "cmdb_rel_ci",
+    "service_commitment"
+   ],
+   "tables_undefined": false,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "undefined"
+   },
+   "equivalent_of": null,
+   "notes": null
+  },
+  {
+   "slot": 147,
+   "rule_id": "ITIL-147",
+   "excel_row": 148,
+   "group": "Group 14 — Cross-Practice (ITIL-143 to 148)",
+   "base_severity": "High",
+   "rule": "Practice maturity inconsistent across the service lifecycle",
+   "archetype": "composite",
+   "recommended_engine": "composite",
+   "also_requires": [],
+   "product": "cross_practice",
+   "tables": [],
+   "candidate_tables": [],
+   "tables_undefined": true,
+   "fields": [],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "derived"
+   },
+   "equivalent_of": "itil-quality/2",
+   "notes": "The practice-level profile IS the ITIL module score by group (itil-quality/2 reports one score per practice group): shown as a row of its own, never scored twice."
+  },
+  {
+   "slot": 148,
+   "rule_id": "ITIL-148",
+   "excel_row": 149,
+   "group": "Group 14 — Cross-Practice (ITIL-143 to 148)",
+   "base_severity": "Systemic",
+   "rule": "Practices measured but not governed — metrics with no owner and no action threshold",
+   "archetype": "configuration_inspection",
+   "recommended_engine": "configuration",
+   "also_requires": [
+    "configuration"
+   ],
+   "product": "cross_practice",
+   "tables": [
+    "pa_indicators",
+    "pa_job_indicators",
+    "pa_targets",
+    "pa_thresholds"
+   ],
+   "candidate_tables": [
+    "pa_indicators",
+    "pa_job_indicators",
+    "pa_targets",
+    "pa_thresholds"
+   ],
+   "tables_undefined": false,
+   "fields": [
+    "pa_indicators.name",
+    "pa_job_indicators.active",
+    "pa_job_indicators.indicator",
+    "pa_job_indicators.job",
+    "pa_targets.active",
+    "pa_targets.indicator",
+    "pa_targets.owner",
+    "pa_thresholds.active",
+    "pa_thresholds.indicator",
+    "pa_thresholds.owner"
+   ],
+   "dependencies": {
+    "consumes_output_of": [],
+    "interpret_with": [],
+    "related": [],
+    "external": []
+   },
+   "result": {
+    "state": "executable"
+   },
+   "equivalent_of": null,
+   "notes": null
+  }
+ ]
+}

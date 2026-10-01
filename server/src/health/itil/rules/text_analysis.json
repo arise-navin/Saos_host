@@ -1,0 +1,15 @@
+{
+ "engine": "text_analysis",
+ "rules": {
+  "ITIL-008": {
+   "undefined_dependencies": [
+    "the similarity that makes descriptions \"the same request\" — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-035": {
+   "undefined_dependencies": [
+    "the content similarity above which two articles are duplicates — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  }
+ }
+}

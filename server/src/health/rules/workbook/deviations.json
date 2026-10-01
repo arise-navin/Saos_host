@@ -1,0 +1,1170 @@
+{
+ "register_version": "0.1.0",
+ "workbook": {
+  "file": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+  "sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b"
+ },
+ "generator": "server/scripts/health-workbook-audit.mjs",
+ "resolutions": {
+  "conform": "the code changes to match the workbook",
+  "ratify": "the workbook is updated to match what the code verified (the code is right)",
+  "retire": "the code rule is removed (decision D-009)",
+  "keep": "the difference is an identity, not a defect (decision D-010)",
+  "review": "undecided: conform or ratify, per rule"
+ },
+ "summary": {
+  "implementation_only_rules": 5,
+  "retire": [
+   "CMDB-139",
+   "CMDB-142",
+   "CMDB-143"
+  ],
+  "workbook_identity": [
+   "CMDB-140 ≡ DQ-003",
+   "CMDB-141 ≡ DQ-077"
+  ],
+  "cmdb_text_differences": 37,
+  "cmdb_text_differences_by_cause": {
+   "platform_correction": 15,
+   "code_extension": 8,
+   "v3_principal_class_fallback": 14
+  },
+  "cmdb_escaping_only_ignored": 7,
+  "itsm_field_differences": 0,
+  "workbook_internal_severity_conflicts": 0,
+  "legacy_rules": 43,
+  "code_workbook_claims_disputed": [
+   "MID-NONE → ITOM-051",
+   "SM-UNMAPPED → ITOM-076",
+   "OUTAGE-OPEN → ITOM-117"
+  ],
+  "ownership_conditions_open": 4,
+  "build_coverage": {
+   "cmdb (cmdb sheet)": {
+    "workbook_rules": 138,
+    "built": 138,
+    "not_built": 0
+   },
+   "itsm (itsm sheet)": {
+    "workbook_rules": 139,
+    "built": 139,
+    "not_built": 0
+   },
+   "itom (itom sheet)": {
+    "workbook_rules": 156,
+    "built": 156,
+    "not_built": 0
+   },
+   "platform (platform sheet)": {
+    "workbook_rules": 183,
+    "built": 174,
+    "not_built": 9
+   },
+   "cmdb (data-quality sheet)": {
+    "workbook_rules": 83,
+    "built": 83,
+    "not_built": 0
+   },
+   "enterprise_dq (data-quality sheet)": {
+    "workbook_rules": 56,
+    "built": 56,
+    "not_built": 0
+   },
+   "csdm (csdm sheet)": {
+    "workbook_rules": 80,
+    "built": 79,
+    "not_built": 1
+   },
+   "itil (itil sheet)": {
+    "workbook_rules": 148,
+    "built": 148,
+    "not_built": 0
+   }
+  }
+ },
+ "implementation_only_rules": [
+  {
+   "rule_id": "CMDB-139",
+   "title": "No principal classes designated",
+   "type": "unratified_extension",
+   "note": "Implemented, and in no workbook sheet.",
+   "resolution": "retire",
+   "decision": "D-009",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CMDB-140",
+   "title": "Identity attributes missing on classes whose identification rule uses them",
+   "type": "workbook_identity",
+   "workbook_identity": "DQ-003",
+   "workbook_sheet": "data quality",
+   "workbook_model": "CMDB Quality",
+   "note": "Implements workbook rule DQ-003 (\"Identity attributes missing on classes with an identification rule that uses them\"); the code gave it a CMDB id.",
+   "resolution": "keep",
+   "decision": "D-010"
+  },
+  {
+   "rule_id": "CMDB-141",
+   "title": "Impact analysis returning no affected services",
+   "type": "workbook_identity",
+   "workbook_identity": "DQ-077",
+   "workbook_sheet": "data quality",
+   "workbook_model": "CMDB Quality",
+   "note": "Implements workbook rule DQ-077 (\"Impact analysis success rate below threshold\"); the code gave it a CMDB id.",
+   "resolution": "keep",
+   "decision": "D-010"
+  },
+  {
+   "rule_id": "CMDB-142",
+   "title": "Mass write presented as freshness",
+   "type": "unratified_extension",
+   "note": "Implemented, and in no workbook sheet.",
+   "resolution": "retire",
+   "decision": "D-009",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CMDB-143",
+   "title": "Percentage of CIs whose most recent write is a bulk touch",
+   "type": "unratified_extension",
+   "note": "Implemented, and in no workbook sheet.",
+   "resolution": "retire",
+   "decision": "D-009",
+   "effective_phase": 4
+  }
+ ],
+ "cmdb_text_differences": [
+  {
+   "rule_id": "CMDB-001",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_health_inclusion_rule (active), cmdb_health_result",
+   "code": "cmdb_health_config (active), cmdb_health_result. Inclusion rules live in cmdb_health_config (inclusion rules: applies_to, active_record_condition, metric → cmdb_health_metric; weights in cmdb_health_metric_pref); cmdb_health_inclusion_rule does not exist.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-001",
+   "field": "detection_logic",
+   "workbook": "COUNT(cmdb_health_inclusion_rule WHERE active=true) = 0",
+   "code": "COUNT(cmdb_health_config) = 0 on a complete read. cmdb_health_config has no active field, so every row is an inclusion rule.",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-002",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_health_inclusion_rule.filter, target class record counts via Aggregate API",
+   "code": "cmdb_health_config.active_record_condition, target class record counts via Aggregate API. Inclusion rules live in cmdb_health_config (inclusion rules: applies_to, active_record_condition, metric → cmdb_health_metric; weights in cmdb_health_metric_pref); cmdb_health_inclusion_rule does not exist.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-003",
+   "field": "source_tables_fields",
+   "workbook": "sys_db_object (CMDB tree), Aggregate API counts, cmdb_health_inclusion_rule",
+   "code": "sys_db_object (CMDB tree), Aggregate API counts, cmdb_health_config. Inclusion rules live in cmdb_health_config (inclusion rules: applies_to, active_record_condition, metric → cmdb_health_metric; weights in cmdb_health_metric_pref); cmdb_health_inclusion_rule does not exist.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-004",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_health_inclusion_rule.filter, cmdb_class_info principal flag",
+   "code": "cmdb_health_config.applies_to + active_record_condition, cmdb_class_info.principal_class. Inclusion rules live in cmdb_health_config (inclusion rules: applies_to, active_record_condition, metric → cmdb_health_metric; weights in cmdb_health_metric_pref).",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-004",
+   "field": "threshold_parameter",
+   "workbook": "Fixed: absence of principal predicate",
+   "code": "Fixed: absence of principal predicate Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-005",
+   "field": "source_tables_fields",
+   "workbook": "sys_db_object filtered to CMDB tree, Aggregate API row counts, cmdb_health_inclusion_rule with hierarchy expansion",
+   "code": "sys_db_object filtered to CMDB tree, Aggregate API row counts, cmdb_health_config with hierarchy expansion. Inclusion rules live in cmdb_health_config (inclusion rules: applies_to, active_record_condition, metric → cmdb_health_metric; weights in cmdb_health_metric_pref); cmdb_health_inclusion_rule does not exist.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-005",
+   "field": "threshold_parameter",
+   "workbook": "Any non-empty difference. Escalate to Systemic if excluded set contains principal classes or CIs supporting Business Critical services.",
+   "code": "Any non-empty difference. Escalate to Systemic if excluded set contains principal classes or CIs supporting Business Critical services. Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-006",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_health_inclusion_rule attribute config, class dictionary required flags",
+   "code": "cmdb_recommended_fields (table, recommended, active) for configured required/recommended attributes; sys_dictionary.mandatory for class dictionary required flags; cmdb_class_info.principal_class.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-006",
+   "field": "threshold_parameter",
+   "workbook": "Fixed: zero required attributes defined",
+   "code": "Fixed: zero required attributes defined Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-007",
+   "field": "source_tables_fields",
+   "workbook": "sysauto / sysauto_script for the health job, sys_trigger, cmdb_health_result timestamps",
+   "code": "sysauto_script WHERE name LIKE 'CMDB Health' (the 'CMDB Health Dashboard - … Score Calculation' jobs: active, run_type, run_period, run_time), sys_trigger.document_key → job (state, next_action), cmdb_health_result.sys_updated_on, cmdb_health_processor_status.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-008",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_health_inclusion_rule, class overlap analysis",
+   "code": "cmdb_health_config, class overlap analysis. Inclusion rules live in cmdb_health_config (inclusion rules: applies_to, active_record_condition, metric → cmdb_health_metric; weights in cmdb_health_metric_pref); cmdb_health_inclusion_rule does not exist.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-010",
+   "field": "source_tables_fields",
+   "workbook": "Data Manager audit/remediation rule tables, execution history",
+   "code": "cmdb_data_management_policy (policy_execution_job → cmdb_policy_scheduled_job.active), cmdb_data_management_policy_execution (cmdb_policy).",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-010",
+   "field": "detection_logic",
+   "workbook": "Rules with active=true AND zero execution records",
+   "code": "Policies whose policy_execution_job is active AND COUNT(cmdb_data_management_policy_execution WHERE cmdb_policy = policy) = 0. A policy with no execution job is an unscheduled template, not an active rule.",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-011",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_health_inclusion_rule weight fields, sys_audit on those fields",
+   "code": "cmdb_health_metric_pref.weighted_average_contribution; sys_audit (tablename=cmdb_health_metric_pref, fieldname=weighted_average_contribution) — only meaningful when the table is audited (sys_dictionary collection audit=true).",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-014",
+   "field": "source_tables_fields",
+   "workbook": "sys_dictionary mandatory flags per class, cmdb_health_inclusion_rule required attribute config, CI records",
+   "code": "sys_dictionary mandatory flags per class, cmdb_recommended_fields (configured required attributes), CI records, cmdb_class_info.principal_class.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-014",
+   "field": "threshold_parameter",
+   "workbook": "Per-class attribute list from config. Identity attributes weighted 3x.",
+   "code": "Per-class attribute list from config. Identity attributes weighted 3x. Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-017",
+   "field": "threshold_parameter",
+   "workbook": "Placeholder set configurable per estate. Default 12 patterns including 0.0.0.0 and 00:00:00:00:00:00.",
+   "code": "Placeholder set configurable per estate. Default 12 patterns including 0.0.0.0 and 00:00:00:00:00:00. Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-019",
+   "field": "threshold_parameter",
+   "workbook": "Per-class list from health config",
+   "code": "Per-class list from health config Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-021",
+   "field": "threshold_parameter",
+   "workbook": "Applies to choice fields only",
+   "code": "Applies to choice fields only. Fires when at least 80% of a class (5 or more CIs) sits at an unchanged default (confirmed 17 Sep, configurable). Low, shown as a ratio — deducts nothing.",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-023",
+   "field": "detection_logic",
+   "workbook": "CIs where the (install_status, operational_status) pair is not in the permitted set",
+   "code": "CIs whose install_status and operational_status map, through the instance's life_cycle_mapping, to contradictory stages: one RUNNING (Operational) and the other NOT RUNNING (Inventory, End of Life, Missing, Purchase). Installed + Non-Operational is valid — installed but down / in outage (18 Sep).",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-023",
+   "field": "threshold_parameter",
+   "workbook": "Permitted set read from the instance configuration, not hardcoded",
+   "code": "Running and not-running stage sets configurable (defaults: Operational; Inventory, End of Life, Missing, Purchase). The pair set is derived from the instance's life_cycle_mapping, never hardcoded.",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-025",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_metadata / last-seen data per attribute, reconciliation precedence config, discovery payloads",
+   "code": "cmdb_datasource_last_update (class, record, attribute, discovery_source, updated_on), cmdb_reconciliation_definition (precedence), discovery payloads. cmdb_metadata does not exist on this version.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-045",
+   "field": "threshold_parameter",
+   "workbook": "Must account for inheritance — a parent class rule may cover the child",
+   "code": "Must account for inheritance — a parent class rule may cover the child Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-046",
+   "field": "confidence_basis",
+   "workbook": "Computed ratio. Attribution to specific bypass paths at 90%.",
+   "code": "INFERRED, not observed: ServiceNow keeps no per-CI 'processed by IRE' record. Bypass is inferred from source attribution (sys_object_source rows, discovery_source, cmdb_ire_output_target_item for the run). Computed ratio. Attribution to specific bypass paths at 90%. Verified 20 Sep: on an instance where sys_object_source is EMPTY the rule is NOT MEASURED — an empty attribution table is ambiguous, and 'every create bypassed IRE' must not be inferred from it. Needs a populated instance to validate.",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-047",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_identifier_entry, independent flag per entry",
+   "code": "cmdb_identifier (independent, applies_to, active); cmdb_identifier_entry (identifier, attributes); cmdb_metadata_hosting / cmdb_metadata_containment for dependent-by-design classes.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-047",
+   "field": "detection_logic",
+   "workbook": "Rules where no entry is marked independent",
+   "code": "Active cmdb_identifier rows WHERE independent=false AND applies_to is not a dependent class under the hosting/containment metadata rules.",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-050",
+   "field": "confidence_basis",
+   "workbook": "100% on processing record absence.",
+   "code": "INFERRED, not observed: ServiceNow keeps no per-CI 'processed by IRE' record. Bypass is inferred from source attribution (sys_object_source rows, discovery_source, cmdb_ire_output_target_item for the run). 100% on processing record absence.",
+   "cause": "code_extension",
+   "resolution": "ratify",
+   "decision": "D-018"
+  },
+  {
+   "rule_id": "CMDB-053",
+   "field": "source_tables_fields",
+   "workbook": "IRE error table, grouped by error type and class",
+   "code": "IRE error records — VERSION-DEPENDENT: `cmdb_ire_error` on versions that ship it; on this instance (dev424910, verified 20 Sep) that table does not exist and the per-run counters live in `cmdb_ire_output_aggregate_stats` (errors, warnings, distinct_error_codes, run_id). Health Assist reads whichever the instance has.",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-057",
+   "field": "threshold_parameter",
+   "workbook": "Depth limit default 8. Threshold default 60%.",
+   "code": "Depth limit default 8. Threshold default 60%. Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-058",
+   "field": "threshold_parameter",
+   "workbook": "Scope to classes expected to have relationships",
+   "code": "Scope to classes expected to have relationships Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-085",
+   "field": "source_tables_fields",
+   "workbook": "cmdb_ci lifecycle, principal class list, inclusion rule filters",
+   "code": "cmdb_ci lifecycle (install_status, life_cycle_stage/_status), cmdb_class_info.principal_class, cmdb_health_config (inclusion rules: applies_to, active_record_condition, metric → cmdb_health_metric; weights in cmdb_health_metric_pref).",
+   "cause": "platform_correction",
+   "resolution": "ratify",
+   "decision": "D-001"
+  },
+  {
+   "rule_id": "CMDB-085",
+   "field": "threshold_parameter",
+   "workbook": "Depends on inclusion rule filter construction",
+   "code": "Depends on inclusion rule filter construction Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-091",
+   "field": "threshold_parameter",
+   "workbook": "Default threshold 50%",
+   "code": "Default threshold 50% Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-104",
+   "field": "threshold_parameter",
+   "workbook": "Fixed: absence of configuration",
+   "code": "Fixed: absence of configuration Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-112",
+   "field": "threshold_parameter",
+   "workbook": "Depth limit and threshold configurable; default threshold 40%",
+   "code": "Depth limit and threshold configurable; default threshold 40% Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  },
+  {
+   "rule_id": "CMDB-115",
+   "field": "threshold_parameter",
+   "workbook": "Scope to classes expected to participate in the service model",
+   "code": "Scope to classes expected to participate in the service model Fallback (v3): when no principal classes are designated (see CMDB-139), evaluate all populated CMDB classes and name the fallback in the finding.",
+   "cause": "v3_principal_class_fallback",
+   "resolution": "ratify",
+   "decision": "D-017"
+  }
+ ],
+ "itsm_field_differences": [],
+ "workbook_internal": [],
+ "legacy_rules": [
+  {
+   "rule_id": "CMDB-OWNER",
+   "module": "cmdb",
+   "workbook": [
+    "CMDB-105",
+    "CMDB-103"
+   ],
+   "relation": "different_condition",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "High",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CMDB-STALE",
+   "module": "cmdb",
+   "workbook": [
+    "CMDB-075",
+    "CMDB-072"
+   ],
+   "relation": "different_condition",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "High / Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CMDB-DUPLICATE",
+   "module": "cmdb",
+   "workbook": [
+    "CMDB-035"
+   ],
+   "relation": "subset",
+   "code_severity": "HIGH",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CMDB-UNRELATED",
+   "module": "cmdb",
+   "workbook": [
+    "CMDB-058"
+   ],
+   "relation": "superset",
+   "code_severity": "LOW",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "REL-SELF",
+   "module": "cmdb",
+   "workbook": [
+    "CMDB-062"
+   ],
+   "relation": "subset",
+   "code_severity": "HIGH",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "REL-DUPLICATE",
+   "module": "cmdb",
+   "workbook": [
+    "CMDB-069"
+   ],
+   "relation": "duplicate",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Moderate",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CSDM-OWNER",
+   "module": "cmdb",
+   "workbook": [
+    "CMDB-105"
+   ],
+   "relation": "different_condition",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "High",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CSDM-LIFECYCLE",
+   "module": "cmdb",
+   "workbook": [],
+   "relation": "none",
+   "code_severity": "MEDIUM",
+   "workbook_severity": null,
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "CSDM-OFFERING",
+   "module": "cmdb",
+   "workbook": [],
+   "relation": "none",
+   "code_severity": "MEDIUM",
+   "workbook_severity": null,
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-INC-UNASSIGNED",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-042",
+    "ITSM-004"
+   ],
+   "relation": "different_condition",
+   "code_severity": "HIGH (P1/P2) / MEDIUM",
+   "workbook_severity": "Moderate / Systemic",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-INC-P1-AGED",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-037"
+   ],
+   "relation": "subset",
+   "code_severity": "HIGH",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-INC-STALE",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-037"
+   ],
+   "relation": "different_condition",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-INC-NO-CI",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-016"
+   ],
+   "relation": "per_record_of_rate",
+   "code_severity": "LOW",
+   "workbook_severity": "Systemic",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-INC-REOPENED",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-030"
+   ],
+   "relation": "per_record_of_rate",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Systemic",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-CHG-STALE",
+   "module": "itsm",
+   "workbook": [],
+   "relation": "none",
+   "code_severity": "MEDIUM",
+   "workbook_severity": null,
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-CHG-NO-CI",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-094"
+   ],
+   "relation": "per_record_of_rate",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Systemic",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-CHG-OVERDUE",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-111"
+   ],
+   "relation": "different_condition",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-CHG-FAILED",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-113",
+    "ITSM-114"
+   ],
+   "relation": "per_record_of_rate",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-PRB-UNASSIGNED",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-065"
+   ],
+   "relation": "subset",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Critical",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "ITSM-PRB-STALE",
+   "module": "itsm",
+   "workbook": [
+    "ITSM-061",
+    "ITSM-056"
+   ],
+   "relation": "different_condition",
+   "code_severity": "LOW",
+   "workbook_severity": "Critical / Systemic",
+   "disposition": "retire_from_scoring",
+   "effective_phase": 4
+  },
+  {
+   "rule_id": "MID-NONE",
+   "module": "itom",
+   "workbook": [],
+   "relation": "none",
+   "code_severity": "CRITICAL",
+   "workbook_severity": null,
+   "disposition": "applicability_evidence",
+   "effective_phase": 2
+  },
+  {
+   "rule_id": "MID-DOWN",
+   "module": "itom",
+   "workbook": [
+    "ITOM-053"
+   ],
+   "relation": "subset",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Critical",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "MID-NOT-VALIDATED",
+   "module": "itom",
+   "workbook": [
+    "ITOM-055"
+   ],
+   "relation": "superset",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Critical",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "MID-NO-CAPABILITY",
+   "module": "itom",
+   "workbook": [
+    "ITOM-062"
+   ],
+   "relation": "superset",
+   "code_severity": "HIGH",
+   "workbook_severity": "High",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "MID-ISSUE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-059"
+   ],
+   "relation": "different_condition",
+   "code_severity": "HIGH",
+   "workbook_severity": "High",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "DISC-NEVER-RAN",
+   "module": "itom",
+   "workbook": [
+    "ITOM-003"
+   ],
+   "relation": "different_condition",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Systemic",
+   "disposition": "applicability_evidence",
+   "effective_phase": 2
+  },
+  {
+   "rule_id": "DISC-FAILED",
+   "module": "itom",
+   "workbook": [
+    "ITOM-032",
+    "ITOM-033",
+    "ITOM-039"
+   ],
+   "relation": "superset",
+   "code_severity": "CRITICAL (error) / MEDIUM (cancelled)",
+   "workbook_severity": "Critical / Critical / Moderate",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "DISC-STALE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-006"
+   ],
+   "relation": "different_condition",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Critical",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "DISC-DEVICE-ISSUE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-030",
+    "ITOM-031",
+    "ITOM-035"
+   ],
+   "relation": "different_condition",
+   "code_severity": "HIGH",
+   "workbook_severity": "Critical / Critical / High",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "DISC-LOG-ERROR",
+   "module": "itom",
+   "workbook": [
+    "ITOM-038"
+   ],
+   "relation": "different_condition",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Moderate",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "CRED-NONE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-016"
+   ],
+   "relation": "different_condition",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Systemic",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "CRED-INACTIVE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-018"
+   ],
+   "relation": "superset",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Critical",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "CRED-ALL-INACTIVE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-018",
+    "ITOM-016"
+   ],
+   "relation": "different_condition",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Critical / Systemic",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "SM-NOT-IN-USE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-068",
+    "ITOM-067"
+   ],
+   "relation": "different_condition",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Systemic",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "SM-UNMAPPED",
+   "module": "itom",
+   "workbook": [
+    "ITOM-074",
+    "ITOM-067"
+   ],
+   "relation": "different_condition",
+   "code_severity": "HIGH",
+   "workbook_severity": "Critical / Systemic",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "EVENT-UNBOUND",
+   "module": "itom",
+   "workbook": [
+    "ITOM-098",
+    "ITOM-095"
+   ],
+   "relation": "different_condition",
+   "code_severity": "CRITICAL",
+   "workbook_severity": "Critical / Systemic",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "OUTAGE-OPEN",
+   "module": "itom",
+   "workbook": [],
+   "relation": "none",
+   "code_severity": "MEDIUM",
+   "workbook_severity": null,
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "PERF-ECC-AGE",
+   "module": "itom",
+   "workbook": [
+    "ITOM-036"
+   ],
+   "relation": "subset",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "High",
+   "disposition": "replace_when_built",
+   "effective_phase": 5
+  },
+  {
+   "rule_id": "CUSTOM-BEFORE-UPDATE",
+   "module": "platform",
+   "workbook": [
+    "PLT-034"
+   ],
+   "relation": "duplicate",
+   "code_severity": "HIGH",
+   "workbook_severity": "Systemic",
+   "disposition": "replace_when_built",
+   "effective_phase": 6
+  },
+  {
+   "rule_id": "INT-HTTP",
+   "module": "platform",
+   "workbook": [
+    "PLT-144"
+   ],
+   "relation": "duplicate",
+   "code_severity": "HIGH",
+   "workbook_severity": "Critical",
+   "disposition": "replace_when_built",
+   "effective_phase": 6
+  },
+  {
+   "rule_id": "PERF-JOB-ERROR",
+   "module": "platform",
+   "workbook": [
+    "PLT-110"
+   ],
+   "relation": "different_condition",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Critical",
+   "disposition": "replace_when_built",
+   "effective_phase": 6
+  },
+  {
+   "rule_id": "UPGRADE-SKIPPED",
+   "module": "platform",
+   "workbook": [
+    "PLT-154"
+   ],
+   "relation": "superset",
+   "code_severity": "MEDIUM",
+   "workbook_severity": "Systemic",
+   "disposition": "replace_when_built",
+   "effective_phase": 6
+  },
+  {
+   "rule_id": "SEC-INACTIVE-ROLE",
+   "module": "platform",
+   "workbook": [
+    "PLT-129"
+   ],
+   "relation": "duplicate",
+   "code_severity": "HIGH (admin) / MEDIUM",
+   "workbook_severity": "Critical",
+   "disposition": "replace_when_built",
+   "effective_phase": 6
+  }
+ ],
+ "code_workbook_claims": [
+  {
+   "rule_id": "DISC-NEVER-RAN",
+   "code_claims": "ITOM-003",
+   "code_claim_title": "No discovery schedule exists for a datacentre or region present in CMDB",
+   "legacy_map_workbook": [
+    "ITOM-003"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "DISC-FAILED",
+   "code_claims": "ITOM-032",
+   "code_claim_title": "Run completing with error count above threshold",
+   "legacy_map_workbook": [
+    "ITOM-032",
+    "ITOM-033",
+    "ITOM-039"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "DISC-STALE",
+   "code_claims": "ITOM-006",
+   "code_claim_title": "Schedule last successful run beyond its own interval",
+   "legacy_map_workbook": [
+    "ITOM-006"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "DISC-DEVICE-ISSUE",
+   "code_claims": "ITOM-035",
+   "code_claim_title": "Devices discovered but producing no CI (sensor failure)",
+   "legacy_map_workbook": [
+    "ITOM-030",
+    "ITOM-031",
+    "ITOM-035"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "DISC-LOG-ERROR",
+   "code_claims": "ITOM-038",
+   "code_claim_title": "Discovery log error volume trending up",
+   "legacy_map_workbook": [
+    "ITOM-038"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "CRED-NONE",
+   "code_claims": "ITOM-016",
+   "code_claim_title": "No credential of the required type exists for a range containing devices of that type",
+   "legacy_map_workbook": [
+    "ITOM-016"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "CRED-INACTIVE",
+   "code_claims": "ITOM-018",
+   "code_claim_title": "Credential expired or inactive but still referenced by a schedule",
+   "legacy_map_workbook": [
+    "ITOM-018"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "CRED-ALL-INACTIVE",
+   "code_claims": "ITOM-016",
+   "code_claim_title": "No credential of the required type exists for a range containing devices of that type",
+   "legacy_map_workbook": [
+    "ITOM-018",
+    "ITOM-016"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "MID-NONE",
+   "code_claims": "ITOM-051",
+   "code_claim_title": "Single MID with no cluster carrying a production-critical range",
+   "legacy_map_workbook": [],
+   "agrees": false,
+   "resolution": "review"
+  },
+  {
+   "rule_id": "MID-DOWN",
+   "code_claims": "ITOM-053",
+   "code_claim_title": "MID down or in a degraded state",
+   "legacy_map_workbook": [
+    "ITOM-053"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "MID-NOT-VALIDATED",
+   "code_claims": "ITOM-055",
+   "code_claim_title": "MID validation not completed",
+   "legacy_map_workbook": [
+    "ITOM-055"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "MID-NO-CAPABILITY",
+   "code_claims": "ITOM-062",
+   "code_claim_title": "MID with no assigned capabilities but referenced by schedules",
+   "legacy_map_workbook": [
+    "ITOM-062"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "MID-ISSUE",
+   "code_claims": "ITOM-059",
+   "code_claim_title": "MID issue count rising",
+   "legacy_map_workbook": [
+    "ITOM-059"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "SM-NOT-IN-USE",
+   "code_claims": "ITOM-067",
+   "code_claim_title": "Percentage of Business Critical services with no map at all",
+   "legacy_map_workbook": [
+    "ITOM-068",
+    "ITOM-067"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "SM-UNMAPPED",
+   "code_claims": "ITOM-076",
+   "code_claim_title": "Map incomplete — traversal terminating before reaching infrastructure tier",
+   "legacy_map_workbook": [
+    "ITOM-074",
+    "ITOM-067"
+   ],
+   "agrees": false,
+   "resolution": "review"
+  },
+  {
+   "rule_id": "EVENT-UNBOUND",
+   "code_claims": "ITOM-098",
+   "code_claim_title": "Events failing to bind to any CI",
+   "legacy_map_workbook": [
+    "ITOM-098",
+    "ITOM-095"
+   ],
+   "agrees": true,
+   "resolution": "keep"
+  },
+  {
+   "rule_id": "OUTAGE-OPEN",
+   "code_claims": "ITOM-117",
+   "code_claim_title": "Alert closure not tied to event resolution (manual close backlog)",
+   "legacy_map_workbook": [],
+   "agrees": false,
+   "resolution": "review"
+  }
+ ]
+}

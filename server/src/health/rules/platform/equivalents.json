@@ -1,0 +1,18 @@
+{
+ "version": "1.0.0",
+ "decision": "D-024",
+ "rules": {
+  "PLT-002": {
+   "equivalent_of": "ITSM-003",
+   "note": "The same condition as ITSM-003 Ownership OWN-003 is AGREED with ITSM-003 as owner (D-025): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  "PLT-024": {
+   "equivalent_of": "ITSM-011",
+   "note": "The same condition as ITSM-011 Ownership OWN-010 is AGREED with ITSM-011 as owner (D-025): evaluated and counted in ITSM, shown here as an equivalent."
+  },
+  "PLT-170": {
+   "equivalent_of": "CMDB-120",
+   "note": "The same condition as CMDB-120 Ownership OWN-007 is AGREED with CMDB-120 as owner (D-025): evaluated and counted in CMDB, shown here as an equivalent."
+  }
+ }
+}

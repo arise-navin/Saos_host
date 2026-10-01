@@ -1,0 +1,451 @@
+{
+ "profiles_version": "0.1.0",
+ "phase": "Phase 0 — declared, not yet read by the running engine. The module registry of docs/HEALTH-ASSIST-APPROACH.md §4.5 is built from this file in Phase 1.",
+ "note": "Hand-maintained. Every workbook Group of every module maps to exactly one dimension here; the loader refuses a group with no mapping. Dimension weights come from the workbook where the workbook states them (data quality sheet). Where it does not, `weights` is null, `weights_status` says so, and the provisional policy is recorded. No weight is invented in this file.",
+ "modules": [
+  {
+   "key": "cmdb",
+   "label": "CMDB",
+   "sheets": [
+    {
+     "sheet": "cmdb"
+    },
+    {
+     "sheet": "data-quality",
+     "model": "CMDB Quality"
+    }
+   ],
+   "dimension_source": {
+    "sheet": "data-quality",
+    "model": "CMDB Quality"
+   },
+   "dimension_assignment": "per_rule",
+   "dimension_assignment_note": "The CMDB sheet's Groups 1–14 are rule families, not scoring dimensions. The workbook's CMDB scoring dimensions are D1–D10 of the data-quality sheet's \"CMDB Quality\" model. The workbook does not link a DQ D-rule to a CMDB rule id; that link is recorded per rule in overlays/cmdb.json and overlays/data-quality.json (`equivalent_of`).",
+   "weights_status": "workbook",
+   "groups": [
+    "Group 1 — Health configuration meta",
+    "Group 2 — Completeness",
+    "Group 3 — Correctness and validity",
+    "Group 4 — Uniqueness",
+    "Group 5 — Identification and reconciliation",
+    "Group 6 — Relationships",
+    "Group 7 — Freshness and source coverage",
+    "Group 8 — Lifecycle and retirement",
+    "Group 9 — Data Manager and attestation",
+    "Group 10 — Ownership",
+    "Group 11 — CSDM linkage",
+    "Group 12 — Consumption and trust",
+    "Group 13 — Scale and platform impact",
+    "Group 14 — Drift and regression"
+   ]
+  },
+  {
+   "key": "itsm",
+   "label": "ITSM",
+   "sheets": [
+    {
+     "sheet": "itsm"
+    }
+   ],
+   "dimension_assignment": "by_group",
+   "weights": null,
+   "weights_status": "undefined_in_workbook",
+   "provisional_policy": "equal weights over applicable dimensions, labelled \"Weights not reviewed by SAOS\", configurable (decision 4, 24 Sep 2026)",
+   "dimensions": [
+    {
+     "key": "incident",
+     "label": "Incident",
+     "groups": [
+      "1A. Configuration and design",
+      "1B. Data quality on records",
+      "1C. Process behaviour",
+      "1D. Major incident"
+     ]
+    },
+    {
+     "key": "problem",
+     "label": "Problem",
+     "groups": [
+      "2A. Existence and coverage",
+      "2B. Quality and progression",
+      "2C. Effectiveness"
+     ]
+    },
+    {
+     "key": "change",
+     "label": "Change",
+     "groups": [
+      "3A. Configuration and control design",
+      "3B. Data quality on records",
+      "3C. Process behaviour and control integrity",
+      "3D. Change–incident correlation"
+     ]
+    },
+    {
+     "key": "cross_process",
+     "label": "Cross-process and cross-domain",
+     "groups": [
+      "Cross-Process and Cross-Domain"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "itom",
+   "label": "ITOM",
+   "sheets": [
+    {
+     "sheet": "itom"
+    }
+   ],
+   "dimension_assignment": "by_group",
+   "weights": null,
+   "weights_status": "undefined_in_workbook",
+   "provisional_policy": "equal weights over applicable dimensions, labelled \"Weights not reviewed by SAOS\", configurable (decision 4, 24 Sep 2026)",
+   "dimensions": [
+    {
+     "key": "discovery",
+     "label": "Discovery",
+     "groups": [
+      "1A. Schedule configuration",
+      "1B. Credentials",
+      "1C. Execution outcome",
+      "1D. Patterns, probes and sensors"
+     ],
+     "applicability": "discovery"
+    },
+    {
+     "key": "mid_server",
+     "label": "MID Server",
+     "groups": [
+      "MID Server"
+     ],
+     "applicability": "mid_server"
+    },
+    {
+     "key": "service_mapping",
+     "label": "Service Mapping",
+     "groups": [
+      "Service Mapping"
+     ],
+     "applicability": "service_mapping"
+    },
+    {
+     "key": "event_management",
+     "label": "Event Management",
+     "groups": [
+      "4A. Connectors and ingestion",
+      "4B. CI binding — the router demo core",
+      "4C. Alerts and impact"
+     ],
+     "applicability": "event_management"
+    },
+    {
+     "key": "cloud",
+     "label": "Cloud",
+     "groups": [
+      "5A. Cloud discovery",
+      "5B. Cloud provisioning and governance"
+     ],
+     "applicability": "cloud"
+    },
+    {
+     "key": "cross_domain",
+     "label": "Cross-domain ITOM",
+     "groups": [
+      "Cross-Domain ITOM"
+     ],
+     "scored": false,
+     "scored_note": "Correlation rules: they explain why CMDB and ITSM findings exist. Scoring them would count the downstream consequence twice (approach §8.2)."
+    }
+   ]
+  },
+  {
+   "key": "platform",
+   "label": "Platform",
+   "sheets": [
+    {
+     "sheet": "platform"
+    }
+   ],
+   "dimension_assignment": "by_group",
+   "weights": null,
+   "weights_status": "undefined_in_workbook",
+   "provisional_policy": "equal weights over applicable dimensions, labelled \"Weights not reviewed by SAOS\", configurable (decision 4, 24 Sep 2026)",
+   "dimensions": [
+    {
+     "key": "sla_engineering",
+     "label": "SLA engineering",
+     "groups": [
+      "1A. Definition and design",
+      "1B. Runtime behaviour",
+      "1C. Commitment linkage"
+     ]
+    },
+    {
+     "key": "server_logic",
+     "label": "Server-side logic",
+     "groups": [
+      "2A. Design and placement",
+      "2B. Execution and impact",
+      "2C. Governance",
+      "3A. Script Includes"
+     ]
+    },
+    {
+     "key": "client_logic",
+     "label": "Client-side and form logic",
+     "groups": [
+      "3B. Client Scripts",
+      "3C. UI Policies and Data Policies"
+     ]
+    },
+    {
+     "key": "automation",
+     "label": "Automation",
+     "groups": [
+      "Flows, Workflows and Automation"
+     ]
+    },
+    {
+     "key": "jobs_events",
+     "label": "Scheduled jobs and events",
+     "groups": [
+      "Scheduled Jobs and Events"
+     ]
+    },
+    {
+     "key": "access_security",
+     "label": "Access and security",
+     "groups": [
+      "ACLs, Roles and Access"
+     ]
+    },
+    {
+     "key": "integrations",
+     "label": "Integrations",
+     "groups": [
+      "Integrations and Inbound"
+     ]
+    },
+    {
+     "key": "customisation_debt",
+     "label": "Customisation and upgrade debt",
+     "groups": [
+      "Customization and Upgrade Debt"
+     ]
+    },
+    {
+     "key": "performance",
+     "label": "Performance",
+     "groups": [
+      "Performance and Platform Health"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "enterprise_dq",
+   "label": "Enterprise Data Quality",
+   "sheets": [
+    {
+     "sheet": "data-quality",
+     "model": "Enterprise Data Quality"
+    }
+   ],
+   "dimension_source": {
+    "sheet": "data-quality",
+    "model": "Enterprise Data Quality"
+   },
+   "dimension_assignment": "by_workbook_dimension",
+   "weights_status": "workbook",
+   "decision": "Own module (decision 2, 24 Sep 2026)."
+  },
+  {
+   "key": "csdm",
+   "label": "CSDM",
+   "sheets": [
+    {
+     "sheet": "csdm"
+    }
+   ],
+   "dimension_assignment": "by_group",
+   "weights": null,
+   "weights_status": "undefined_in_workbook",
+   "dimensions": [
+    {
+     "key": "taxonomy",
+     "label": "Taxonomy conformance",
+     "groups": [
+      "Group 1 — Taxonomy Conformance (CSDM-001 to 016)"
+     ]
+    },
+    {
+     "key": "lifecycle",
+     "label": "Lifecycle integrity",
+     "groups": [
+      "Group 2 — Lifecycle Integrity (CSDM-017 to 032)"
+     ]
+    },
+    {
+     "key": "ownership",
+     "label": "Ownership",
+     "groups": [
+      "Group 3 — Ownership (CSDM-033 to 042)"
+     ]
+    },
+    {
+     "key": "environment",
+     "label": "Environment discipline",
+     "groups": [
+      "Group 4 — Environment Discipline (CSDM-043 to 050)"
+     ]
+    },
+    {
+     "key": "relationships",
+     "label": "Relationship correctness",
+     "groups": [
+      "Group 5 — Relationship Correctness (CSDM-051 to 060)"
+     ]
+    },
+    {
+     "key": "offerings",
+     "label": "Offering and commitment structure",
+     "groups": [
+      "Group 6 — Offering and Commitment Structure (CSDM-061 to 067)"
+     ]
+    },
+    {
+     "key": "maturity",
+     "label": "Maturity and adoption",
+     "groups": [
+      "Group 7 — Maturity and Adoption (CSDM-068 to 074)"
+     ]
+    },
+    {
+     "key": "cross_domain",
+     "label": "Cross-domain",
+     "groups": [
+      "Group 8 — Cross-Domain (CSDM-075 to 080)"
+     ],
+     "scored": false,
+     "scored_note": "Correlation rules, the same principle as the ITOM cross-domain block (the supplied catalogue says so): they feed root-cause links and are not scored."
+    }
+   ],
+   "provisional_policy": "equal weights over applicable dimensions, labelled \"Weights not reviewed by SAOS\", configurable (decision 4); CSDM-072 names configurable weights and gives none"
+  },
+  {
+   "key": "itil",
+   "label": "ITIL",
+   "sheets": [
+    {
+     "sheet": "itil"
+    }
+   ],
+   "dimension_assignment": "by_group",
+   "weights": null,
+   "weights_status": "undefined_in_workbook",
+   "dimensions": [
+    {
+     "key": "request",
+     "label": "Request Fulfilment",
+     "groups": [
+      "Group 1 — Request Fulfilment (ITIL-001 to 016)"
+     ]
+    },
+    {
+     "key": "catalogue",
+     "label": "Service Catalogue Management",
+     "groups": [
+      "Group 2 — Service Catalogue Management (ITIL-017 to 026)"
+     ]
+    },
+    {
+     "key": "knowledge",
+     "label": "Knowledge Management",
+     "groups": [
+      "Group 3 — Knowledge Management (ITIL-027 to 040)"
+     ]
+    },
+    {
+     "key": "service_level",
+     "label": "Service Level Management as a Practice",
+     "groups": [
+      "Group 4 — Service Level Management as a Practice (ITIL-041 to 052)"
+     ]
+    },
+    {
+     "key": "release",
+     "label": "Release and Deployment Management",
+     "groups": [
+      "Group 5 — Release and Deployment Management (ITIL-053 to 066)"
+     ]
+    },
+    {
+     "key": "testing",
+     "label": "Service Validation and Testing",
+     "groups": [
+      "Group 6 — Service Validation and Testing (ITIL-067 to 074)"
+     ]
+    },
+    {
+     "key": "capacity",
+     "label": "Capacity and Performance Management",
+     "groups": [
+      "Group 7 — Capacity and Performance Management (ITIL-075 to 084)"
+     ]
+    },
+    {
+     "key": "availability",
+     "label": "Availability Management",
+     "groups": [
+      "Group 8 — Availability Management (ITIL-085 to 094)"
+     ]
+    },
+    {
+     "key": "continuity",
+     "label": "Service Continuity Management",
+     "groups": [
+      "Group 9 — Service Continuity Management (ITIL-095 to 104)"
+     ]
+    },
+    {
+     "key": "supplier",
+     "label": "Supplier Management",
+     "groups": [
+      "Group 10 — Supplier Management (ITIL-105 to 114)"
+     ]
+    },
+    {
+     "key": "service_desk",
+     "label": "Service Desk",
+     "groups": [
+      "Group 11 — Service Desk (ITIL-115 to 124)"
+     ]
+    },
+    {
+     "key": "portfolio",
+     "label": "Portfolio, Demand and Financial Management",
+     "groups": [
+      "Group 12 — Portfolio, Demand and Financial Management (ITIL-125 to 134)"
+     ]
+    },
+    {
+     "key": "improvement",
+     "label": "Continual Improvement",
+     "groups": [
+      "Group 13 — Continual Improvement (ITIL-135 to 142)"
+     ]
+    },
+    {
+     "key": "cross_practice",
+     "label": "Cross-Practice",
+     "groups": [
+      "Group 14 — Cross-Practice (ITIL-143 to 148)"
+     ]
+    }
+   ],
+   "provisional_policy": "equal weights over applicable practice groups, labelled \"Weights not reviewed by SAOS\", configurable (decision 4); the supplied ITIL workbook gives no weights. ITIL-147 (the practice profile) is this module score by group."
+  }
+ ]
+}

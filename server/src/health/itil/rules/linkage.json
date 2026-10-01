@@ -1,0 +1,162 @@
+{
+ "engine": "linkage",
+ "rules": {
+  "ITIL-003": {
+   "requires_tables": [
+    {
+     "table": "sc_req_item",
+     "fields": [
+      "number",
+      "cat_item"
+     ]
+    },
+    {
+     "table": "task_sla",
+     "fields": [
+      "task"
+     ]
+    }
+   ],
+   "from": {
+    "table": "sc_req_item",
+    "query": "active=true",
+    "fields": [
+     "number",
+     "cat_item"
+    ]
+   },
+   "to": {
+    "table": "task_sla",
+    "query": "",
+    "fields": []
+   },
+   "link": {
+    "kind": "reference",
+    "field": "task",
+    "direction": "inbound"
+   },
+   "expect": "absent",
+   "report_ratio": true,
+   "evidence_fields": [
+    "number",
+    "cat_item"
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Coverage is judged by what ran: an open request item no SLA has attached to."
+   }
+  },
+  "ITIL-018": {
+   "undefined_dependencies": [
+    "the platform records no general catalog item → service or offering reference (only the Service catalog item class, sc_cat_item_service, names a service) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-054": {
+   "requires_tables": [
+    {
+     "table": "release_project",
+     "fields": [
+      "number",
+      "short_description"
+     ]
+    },
+    {
+     "table": "release_rfcs",
+     "fields": [
+      "release",
+      "rfc"
+     ]
+    }
+   ],
+   "from": {
+    "table": "release_project",
+    "query": "",
+    "fields": [
+     "number",
+     "short_description"
+    ]
+   },
+   "to": {
+    "table": "release_rfcs",
+    "query": "",
+    "fields": []
+   },
+   "link": {
+    "kind": "reference",
+    "field": "release",
+    "direction": "inbound"
+   },
+   "expect": "absent",
+   "report_ratio": true,
+   "evidence_fields": [
+    "number",
+    "short_description"
+   ]
+  },
+  "ITIL-056": {
+   "undefined_dependencies": [
+    "the platform records no a deployment-verification task type on release_task — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-060": {
+   "undefined_dependencies": [
+    "the platform records no a release's demand or problem origin (release_project has no such reference) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-061": {
+   "undefined_dependencies": [
+    "the platform records no a link from an update set to a release or change — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-065": {
+   "undefined_dependencies": [
+    "the platform records no a release outcome (unsuccessful) and a release review record — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-078": {
+   "undefined_dependencies": [
+    "which close codes mean \"capacity-related\" — the customer's to state"
+   ]
+  },
+  "ITIL-086": {
+   "undefined_dependencies": [
+    "Major Incident Management is not installed on the validation instance (plugin com.snc.incident.mim inactive) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-092": {
+   "undefined_dependencies": [
+    "how a service's monitoring coverage is recognised (the ITOM-085 question) — the customer's to state"
+   ]
+  },
+  "ITIL-095": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no sn_bcm_* tables) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-097": {
+   "undefined_dependencies": [
+    "the platform records no the recovery characteristics of supporting CIs — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-100": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no continuity requirement is recorded on services, and no DR environment value on CIs (the environment choices are Development, Test, Production)) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-102": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no sn_bcm_* tables) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-105": {
+   "undefined_dependencies": [
+    "which services have external (supplier) dependencies — the customer's to state"
+   ]
+  },
+  "ITIL-109": {
+   "undefined_dependencies": [
+    "which close codes mean \"vendor-related\" — the customer's to state"
+   ]
+  }
+ }
+}

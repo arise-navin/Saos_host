@@ -1,0 +1,44 @@
+{
+ "engine": "reference_integrity",
+ "rules": {
+  "CSDM-030": {
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "life_cycle_stage"
+     ]
+    },
+    {
+     "table": "life_cycle_stage",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "table": "cmdb_ci_service",
+   "scope": "life_cycle_stageISNOTEMPTY",
+   "field": "life_cycle_stage",
+   "target": "life_cycle_stage",
+   "check": "exists",
+   "report": [
+    "missing"
+   ],
+   "evidence_fields": [
+    "name",
+    "sys_class_name"
+   ],
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ],
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Stage is a reference on the platform, so a \"non-choice value\" is a reference to no configured stage. The validation gap (Lane 2) is CSDM-031."
+   }
+  }
+ }
+}

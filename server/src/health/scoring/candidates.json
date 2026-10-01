@@ -1,0 +1,266 @@
+{
+ "candidates_version": "0.3.0",
+ "status": "candidate — none of these is a default (decision D-008)",
+ "note": "Every number below is a DESIGN ASSUMPTION to be tested by calibration.js, not a value the workbook states. The workbook states only the severity weights (100/40/15/5/1) and the CMDB (D1–D10) and Enterprise DQ (Q1–Q7) dimension weights; those are read from the workbook, never listed here. Module and ITSM/ITOM/Platform dimension weights are provisional equal and 'not reviewed' (decision D-004).",
+ "axes": {
+  "record_aggregation": {
+   "question": "How does a Method R dimension aggregate its records' scores?",
+   "options": [
+    {
+     "id": "R1",
+     "aggregation": "record_mean",
+     "tier_weights": null,
+     "note": "today's CMDB: every record counts once"
+    },
+    {
+     "id": "R2",
+     "aggregation": "consequence_weighted",
+     "tier_weights": {
+      "bc": 2,
+      "core": 1.5,
+      "other": 1,
+      "endpoint": 0.75
+     }
+    },
+    {
+     "id": "R3",
+     "aggregation": "consequence_weighted",
+     "tier_weights": {
+      "bc": 4,
+      "core": 2,
+      "other": 1,
+      "endpoint": 0.5
+     },
+     "note": "the tiers floated in the proposal"
+    },
+    {
+     "id": "R4",
+     "aggregation": "consequence_weighted",
+     "tier_weights": {
+      "bc": 8,
+      "core": 3,
+      "other": 1,
+      "endpoint": 0.25
+     }
+    },
+    {
+     "id": "R5",
+     "aggregation": "tier_stratified",
+     "tier_weights": {
+      "bc": 4,
+      "core": 2,
+      "other": 1,
+      "endpoint": 0.5
+     }
+    },
+    {
+     "id": "R6",
+     "aggregation": "tier_stratified",
+     "tier_weights": {
+      "bc": 2,
+      "core": 1.5,
+      "other": 1,
+      "endpoint": 0.75
+     },
+     "preferred": "D-013: consequence is already charged by the Schema escalation; R6 only stops tail dilution"
+    }
+   ]
+  },
+  "attainment_curve": {
+   "question": "How does a graded rate or share become attainment?",
+   "options": [
+    {
+     "id": "A1",
+     "curve": "linear"
+    },
+    {
+     "id": "A2",
+     "curve": "step",
+     "note": "pass/fail at the threshold: today's ITSM rule part"
+    },
+    {
+     "id": "A3",
+     "curve": "convex"
+    }
+   ]
+  },
+  "control_aggregation": {
+   "question": "How do a dimension's controls (Method C) aggregate? (Added in the Phase 3 investigation: the weight share dilutes a failure by the number of rules written.)",
+   "options": [
+    {
+     "id": "C1",
+     "aggregation": "weight_share",
+     "note": "Phase 3 baseline: a failure costs its weight's share of every rule written"
+    },
+    {
+     "id": "C2",
+     "aggregation": "severity_stratified",
+     "note": "each severity band weighs once, whatever its rule count"
+    },
+    {
+     "id": "C3",
+     "aggregation": "deduction_additive",
+     "note": "the workbook's record semantics applied to a dimension: start at 100, lose each failure's weight",
+     "preferred": "D-014: the workbook's own record formula"
+    },
+    {
+     "id": "C4",
+     "aggregation": "deduction_multiplicative",
+     "note": "the same weights; each failure removes its weight as a share of the health that remains"
+    }
+   ]
+  },
+  "overall": {
+   "question": "How do module scores become the Overall?",
+   "options": [
+    {
+     "id": "O1",
+     "kind": "weighted_mean",
+     "params": {},
+     "note": "overall-health/1 today"
+    },
+    {
+     "id": "O2",
+     "kind": "band_cap",
+     "params": {
+      "k": 1
+     }
+    },
+    {
+     "id": "O3",
+     "kind": "penalised_mean",
+     "params": {
+      "lambda": 0.5,
+      "threshold": 50
+     }
+    },
+    {
+     "id": "O4",
+     "kind": "penalised_mean",
+     "params": {
+      "lambda": 1,
+      "threshold": 50
+     }
+    },
+    {
+     "id": "O5",
+     "kind": "power_mean",
+     "params": {
+      "p": 0.5
+     }
+    },
+    {
+     "id": "O6",
+     "kind": "power_mean",
+     "params": {
+      "p": 0
+     }
+    },
+    {
+     "id": "O7",
+     "kind": "power_mean",
+     "params": {
+      "p": -1
+     }
+    },
+    {
+     "id": "O8",
+     "kind": "min_blend",
+     "params": {
+      "lambda": 0.5
+     }
+    },
+    {
+     "id": "O9",
+     "kind": "min_blend",
+     "params": {
+      "lambda": 0.7
+     }
+    }
+   ]
+  },
+  "systemic_treatment": {
+   "question": "Does a standing Systemic defect cap the score, and where? (Added after the first run showed passing controls dilute a Systemic failure.)",
+   "options": [
+    {
+     "id": "T1",
+     "cap": null,
+     "note": "no cap: Systemic is only its weight (100)"
+    },
+    {
+     "id": "T2",
+     "cap": {
+      "level": "dimension",
+      "at": 74.9
+     },
+     "note": "a dimension with a standing Systemic defect reads at most Needs attention",
+     "mechanism": true
+    },
+    {
+     "id": "T3",
+     "cap": {
+      "level": "module",
+      "at": 89.9
+     },
+     "note": "a module with a standing Systemic defect is never Healthy",
+     "mechanism": true
+    },
+    {
+     "id": "T4",
+     "cap": {
+      "level": "module",
+      "at": 74.9
+     },
+     "note": "a module with a standing Systemic defect reads at most Needs attention",
+     "mechanism": true
+    }
+   ],
+   "cap_note": "The cap values are the tops of the product's existing bands (Needs attention < 75, Mostly healthy < 90), not new numbers. A Systemic defect 'stands' when a base-Systemic rule has attainment below 1, or a record carries an effective-Systemic charge."
+  },
+  "coverage_floor": {
+   "question": "Below what assessment coverage does a module leave the Overall?",
+   "options": [
+    {
+     "id": "F1",
+     "floor": 0.25
+    },
+    {
+     "id": "F2",
+     "floor": 0.4
+    },
+    {
+     "id": "F3",
+     "floor": 0.5
+    },
+    {
+     "id": "F4",
+     "floor": 0.6
+    }
+   ]
+  }
+ },
+ "held_constant_while_other_axes_vary": {
+  "record_aggregation": "R1",
+  "attainment_curve": "A1",
+  "overall": "O1",
+  "systemic_treatment": "T1",
+  "coverage_floor": "F2",
+  "blends": {
+   "record": 0.7,
+   "mixed": 0.6,
+   "estate": 0.3
+  },
+  "blends_note": "Today's CMDB blends (cmdb-quality.js BLEND_BY_KIND); swept in the sensitivity analysis, not an axis of their own.",
+  "control_aggregation": "C1"
+ },
+ "acceptance": {
+  "unhealthy_below": 50,
+  "unhealthy_note": "'Materially unhealthy' = the product's existing Needs work band (< 50, overall-health.js HEALTH_BANDS). An assumption: review it with the result.",
+  "dilution_tolerance_points": 5,
+  "stability_tolerance_points": 5,
+  "stability_perturbation": 0.1,
+  "masking_band_slack": 1,
+  "masking_note": "No masking: with one module materially unhealthy, the Overall band may be at most `masking_band_slack` band better than that module's band, AND the Overall number must lie inside the band it is shown in."
+ },
+ "tie_break": "Among options that pass everything an axis decides: prefer one that adds no mechanism (a cap or penalty exists only to move a score), then one a recorded decision prefers (with its reason), then the option already held, then the most scenarios passed, then the most stable, then list order."
+}

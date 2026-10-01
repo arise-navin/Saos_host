@@ -1,0 +1,4390 @@
+{
+ "pack": "platform",
+ "instance": "techsnitchpvtltddemo2.service-now.com",
+ "generated": "2026-09-27T05:43:36.597Z",
+ "read_only": true,
+ "contents_recorded": false,
+ "tables": {
+  "change_request": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 107,
+   "reason": null
+  },
+  "cmdb_ci_service": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 319,
+   "reason": null
+  },
+  "cmn_schedule": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 116,
+   "reason": null
+  },
+  "contract_sla": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 215,
+   "reason": null
+  },
+  "data_classification": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 28,
+   "reason": null
+  },
+  "incident": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 98,
+   "reason": null
+  },
+  "m2m_dictionary_dataclass": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 126,
+   "reason": null
+  },
+  "oauth_entity": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 54,
+   "reason": null
+  },
+  "sc_cat_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 469,
+   "reason": null
+  },
+  "service_commitment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 119,
+   "reason": null
+  },
+  "sys_app": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 18,
+   "reason": null
+  },
+  "sys_attachment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 9416,
+   "reason": null
+  },
+  "sys_audit": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1036580,
+   "reason": null
+  },
+  "sys_data_policy2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 285,
+   "reason": null
+  },
+  "sys_data_policy_rule": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 582,
+   "reason": null
+  },
+  "sys_data_source": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 93,
+   "reason": null
+  },
+  "sys_db_object": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 12135,
+   "reason": null
+  },
+  "sys_dictionary": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 369371,
+   "reason": null
+  },
+  "sys_email": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6650,
+   "reason": null
+  },
+  "sys_flow_context": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 77709,
+   "reason": null
+  },
+  "sys_group_has_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 959,
+   "reason": null
+  },
+  "sys_history_line": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 23732,
+   "reason": null
+  },
+  "sys_hub_action_instance_v2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 26262,
+   "reason": null
+  },
+  "sys_hub_action_type_definition": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2403,
+   "reason": null
+  },
+  "sys_hub_action_type_snapshot": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2917,
+   "reason": null
+  },
+  "sys_hub_flow": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1625,
+   "reason": null
+  },
+  "sys_hub_flow_logic_definition": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 26,
+   "reason": null
+  },
+  "sys_hub_flow_logic_instance_v2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 63521,
+   "reason": null
+  },
+  "sys_hub_flow_snapshot": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3641,
+   "reason": null
+  },
+  "sys_hub_sub_flow_instance_v2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 5565,
+   "reason": null
+  },
+  "sys_hub_trigger_instance_v2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2326,
+   "reason": null
+  },
+  "sys_import_set": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 8,
+   "reason": null
+  },
+  "sys_import_set_row": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 861,
+   "reason": null
+  },
+  "sys_metadata": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1498042,
+   "reason": null
+  },
+  "sys_metadata_customization": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 96304,
+   "reason": null
+  },
+  "sys_outbound_http_log": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 97134,
+   "reason": null
+  },
+  "sys_portal_page": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 122,
+   "reason": null
+  },
+  "sys_properties": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6571,
+   "reason": null
+  },
+  "sys_rate_limit_rules": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 168,
+   "reason": null
+  },
+  "sys_remote_update_set": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  },
+  "sys_report": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1480,
+   "reason": null
+  },
+  "sys_rest_message": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 35,
+   "reason": null
+  },
+  "sys_rest_message_fn": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 103,
+   "reason": null
+  },
+  "sys_scope": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1236,
+   "reason": null
+  },
+  "sys_scope_privilege": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 5043,
+   "reason": null
+  },
+  "sys_script": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 14655,
+   "reason": null
+  },
+  "sys_script_client": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6710,
+   "reason": null
+  },
+  "sys_script_include": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 16502,
+   "reason": null
+  },
+  "sys_script_pattern": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 15999,
+   "reason": null
+  },
+  "sys_security_acl": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 88059,
+   "reason": null
+  },
+  "sys_security_acl_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 104654,
+   "reason": null
+  },
+  "sys_semaphore": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 10,
+   "reason": null
+  },
+  "sys_soap_message": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 13,
+   "reason": null
+  },
+  "sys_transform_entry": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1727,
+   "reason": null
+  },
+  "sys_transform_map": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 189,
+   "reason": null
+  },
+  "sys_trigger": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2236,
+   "reason": null
+  },
+  "sys_ui_action": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 5356,
+   "reason": null
+  },
+  "sys_ui_element": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 142636,
+   "reason": null
+  },
+  "sys_ui_policy": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6209,
+   "reason": null
+  },
+  "sys_ui_policy_action": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 10484,
+   "reason": null
+  },
+  "sys_ui_section": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 14780,
+   "reason": null
+  },
+  "sys_update_set": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 193,
+   "reason": null
+  },
+  "sys_update_version": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 145959,
+   "reason": null
+  },
+  "sys_update_xml": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 359651,
+   "reason": null
+  },
+  "sys_upgrade_history": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 112,
+   "reason": null
+  },
+  "sys_upgrade_history_log": {
+   "exists": "AVAILABLE",
+   "readable": "UNAVAILABLE",
+   "rows": null,
+   "reason": "sys_upgrade_history_log is not readable by this account (forbidden)"
+  },
+  "sys_user": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 969,
+   "reason": null
+  },
+  "sys_user_grmember": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 984,
+   "reason": null
+  },
+  "sys_user_has_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 47953,
+   "reason": null
+  },
+  "sys_user_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1936,
+   "reason": null
+  },
+  "sys_user_role_contains": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3410,
+   "reason": null
+  },
+  "sys_ws_definition": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 529,
+   "reason": null
+  },
+  "sys_ws_operation": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2804,
+   "reason": null
+  },
+  "sysauto": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1717,
+   "reason": null
+  },
+  "sysauto_script": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1433,
+   "reason": null
+  },
+  "sysevent": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 389928,
+   "reason": null
+  },
+  "sysevent_email_action": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1244,
+   "reason": null
+  },
+  "sysevent_register": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1616,
+   "reason": null
+  },
+  "sysevent_script_action": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 915,
+   "reason": null
+  },
+  "syslog": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 4536871,
+   "reason": null
+  },
+  "syslog_cancellation": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 105,
+   "reason": null
+  },
+  "syslog_transaction": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 983731,
+   "reason": null
+  },
+  "task": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 13644,
+   "reason": null
+  },
+  "task_sla": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 511,
+   "reason": null
+  },
+  "v_plugin": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1424,
+   "reason": null
+  },
+  "wf_context": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 4,
+   "reason": null
+  },
+  "wf_workflow": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  },
+  "wf_workflow_version": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  }
+ },
+ "fields": {
+  "cmdb_ci_service": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "busines_criticality",
+    "name"
+   ]
+  },
+  "contract_sla": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "cancel_condition",
+    "collection",
+    "duration",
+    "duration_type",
+    "flow",
+    "name",
+    "pause_condition",
+    "relative_duration_works_on",
+    "reset_condition",
+    "resume_condition",
+    "schedule",
+    "service_commitment",
+    "start_condition",
+    "stop_condition",
+    "target",
+    "type",
+    "workflow"
+   ]
+  },
+  "data_classification": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "m2m_dictionary_dataclass": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "data_class",
+    "sys_dictionary"
+   ]
+  },
+  "oauth_entity": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "name",
+    "refresh_token_lifespan"
+   ]
+  },
+  "sc_cat_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "flow_designer_flow"
+   ]
+  },
+  "service_commitment": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "schedule",
+    "sla",
+    "time_amount",
+    "type"
+   ]
+  },
+  "sys_data_policy2": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "apply_import_set",
+    "apply_soap",
+    "short_description"
+   ]
+  },
+  "sys_data_policy_rule": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "disabled",
+    "field",
+    "mandatory",
+    "table"
+   ]
+  },
+  "sys_db_object": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "super_class"
+   ]
+  },
+  "sys_dictionary": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "element",
+    "mandatory",
+    "name"
+   ]
+  },
+  "sys_email": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "state",
+    "type"
+   ]
+  },
+  "sys_flow_context": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "flow",
+    "name",
+    "state"
+   ]
+  },
+  "sys_group_has_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "group",
+    "role"
+   ]
+  },
+  "sys_hub_action_instance_v2": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "action_type",
+    "flow",
+    "values"
+   ]
+  },
+  "sys_hub_action_type_definition": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active"
+   ]
+  },
+  "sys_hub_action_type_snapshot": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "parent_action"
+   ]
+  },
+  "sys_hub_flow": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "internal_name",
+    "master_snapshot",
+    "name",
+    "sys_created_by",
+    "type"
+   ]
+  },
+  "sys_hub_flow_logic_definition": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "type"
+   ]
+  },
+  "sys_hub_flow_logic_instance_v2": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "flow",
+    "logic_definition"
+   ]
+  },
+  "sys_hub_flow_snapshot": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "parent_flow"
+   ]
+  },
+  "sys_hub_sub_flow_instance_v2": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "flow",
+    "subflow"
+   ]
+  },
+  "sys_hub_trigger_instance_v2": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "flow",
+    "trigger_inputs",
+    "trigger_type"
+   ]
+  },
+  "sys_metadata_customization": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "author_type",
+    "sys_update_name"
+   ]
+  },
+  "sys_outbound_http_log": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "hostname",
+    "response_status",
+    "sys_created_on",
+    "url"
+   ]
+  },
+  "sys_properties": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "sys_remote_update_set": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "state"
+   ]
+  },
+  "sys_rest_message": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "authentication_type",
+    "basic_auth_password",
+    "basic_auth_profile",
+    "name",
+    "rest_endpoint",
+    "sys_created_by",
+    "use_basic_auth"
+   ]
+  },
+  "sys_rest_message_fn": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "authentication_type",
+    "basic_auth_password",
+    "basic_auth_profile",
+    "function_name",
+    "http_method",
+    "rest_endpoint",
+    "rest_message",
+    "use_basic_auth"
+   ]
+  },
+  "sys_script": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "action_insert",
+    "action_update",
+    "active",
+    "collection",
+    "condition",
+    "description",
+    "filter_condition",
+    "name",
+    "order",
+    "script",
+    "sys_created_by",
+    "sys_scope",
+    "when"
+   ]
+  },
+  "sys_script_client": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "condition",
+    "field",
+    "name",
+    "script",
+    "table",
+    "type"
+   ]
+  },
+  "sys_script_include": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "access",
+    "active",
+    "api_name",
+    "client_callable",
+    "name",
+    "script"
+   ]
+  },
+  "sys_script_pattern": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "average",
+    "count",
+    "script_source",
+    "script_source_table",
+    "total"
+   ]
+  },
+  "sys_security_acl": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "advanced",
+    "condition",
+    "name",
+    "operation",
+    "script",
+    "type"
+   ]
+  },
+  "sys_security_acl_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "sys_security_acl",
+    "sys_user_role"
+   ]
+  },
+  "sys_soap_message": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "basic_auth_password",
+    "basic_auth_profile",
+    "name",
+    "use_basic_auth",
+    "wsdl"
+   ]
+  },
+  "sys_transform_entry": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "coalesce",
+    "map"
+   ]
+  },
+  "sys_transform_map": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "name",
+    "target_table"
+   ]
+  },
+  "sys_trigger": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "document_key",
+    "error_count",
+    "name",
+    "next_action",
+    "processing_duration",
+    "run_count",
+    "state"
+   ]
+  },
+  "sys_ui_action": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "script"
+   ]
+  },
+  "sys_ui_element": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "element",
+    "sys_ui_section"
+   ]
+  },
+  "sys_ui_policy": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "conditions",
+    "global",
+    "short_description",
+    "table",
+    "ui_type",
+    "view"
+   ]
+  },
+  "sys_ui_policy_action": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "disabled",
+    "field",
+    "mandatory",
+    "table",
+    "ui_policy",
+    "visible"
+   ]
+  },
+  "sys_ui_section": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "view"
+   ]
+  },
+  "sys_update_set": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "is_default",
+    "name",
+    "state"
+   ]
+  },
+  "sys_update_version": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "source_table"
+   ]
+  },
+  "sys_update_xml": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "sys_upgrade_history": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "to_version",
+    "upgrade_started"
+   ]
+  },
+  "sys_upgrade_history_log": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "disposition",
+    "resolution_status",
+    "upgrade_history"
+   ]
+  },
+  "sys_user": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "internal_integration_user",
+    "user_name",
+    "web_service_access_only"
+   ]
+  },
+  "sys_user_grmember": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "group",
+    "user"
+   ]
+  },
+  "sys_user_has_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "inherited",
+    "role",
+    "state",
+    "user"
+   ]
+  },
+  "sys_user_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "elevated_privilege",
+    "name"
+   ]
+  },
+  "sys_user_role_contains": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "role"
+   ]
+  },
+  "sys_ws_operation": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "operation_script"
+   ]
+  },
+  "sysauto": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "name",
+    "run_period",
+    "run_type",
+    "sys_created_by"
+   ]
+  },
+  "sysauto_script": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "name",
+    "script"
+   ]
+  },
+  "sysevent": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "parm1",
+    "parm2",
+    "queue",
+    "state"
+   ]
+  },
+  "sysevent_email_action": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "event_name"
+   ]
+  },
+  "sysevent_register": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "event_name"
+   ]
+  },
+  "sysevent_script_action": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "event_name"
+   ]
+  },
+  "syslog_cancellation": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "url"
+   ]
+  },
+  "syslog_transaction": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "response_time",
+    "type"
+   ]
+  },
+  "task_sla": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "duration",
+    "has_breached",
+    "pause_duration",
+    "percentage",
+    "planned_end_time",
+    "sla",
+    "stage",
+    "task"
+   ]
+  },
+  "wf_workflow_version": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "condition",
+    "name",
+    "published",
+    "table",
+    "workflow"
+   ]
+  }
+ },
+ "choices": {
+  "sys_email.type.send-ready,Send-ready": {
+   "found": true,
+   "value": "send-ready",
+   "defined_on": "sys_email",
+   "available_labels": [
+    "sent",
+    "send-translation-ready",
+    "send-ready",
+    "received-ignored",
+    "send-ignored",
+    "received",
+    "send-failed"
+   ]
+  },
+  "sys_flow_context.state.Error": {
+   "found": true,
+   "value": "ERROR",
+   "defined_on": "sys_flow_context",
+   "available_labels": [
+    "Waiting",
+    "Complete",
+    "Error",
+    "Cancelled",
+    "In Progress",
+    "Queued",
+    "Continue Sync",
+    "Presumed Interrupted",
+    "Paused",
+    "Debugging"
+   ]
+  },
+  "sys_flow_context.state.In Progress,In progress": {
+   "found": true,
+   "value": "IN_PROGRESS",
+   "defined_on": "sys_flow_context",
+   "available_labels": [
+    "Waiting",
+    "Complete",
+    "Error",
+    "Cancelled",
+    "In Progress",
+    "Queued",
+    "Continue Sync",
+    "Presumed Interrupted",
+    "Paused",
+    "Debugging"
+   ]
+  },
+  "sys_remote_update_set.state.Previewed": {
+   "found": true,
+   "value": "previewed",
+   "defined_on": "sys_remote_update_set",
+   "available_labels": [
+    "Loading",
+    "Loaded",
+    "Previewed",
+    "Committed",
+    "Partially Committed",
+    "Backed Out",
+    "Stashed",
+    "Previewed Stash",
+    "Committed Stash",
+    "Backed Out Stash",
+    "Loaded (In Batch)",
+    "Previewed (In Batch)",
+    "Previewing",
+    "Committing",
+    "Backed Out (In Batch)"
+   ]
+  },
+  "sys_rest_message.authentication_type.Basic": {
+   "found": true,
+   "value": "basic",
+   "defined_on": "sys_rest_message",
+   "available_labels": [
+    "No authentication",
+    "Basic",
+    "Basic (simple)",
+    "OAuth 2.0"
+   ]
+  },
+  "sys_rest_message_fn.authentication_type.Basic": {
+   "found": true,
+   "value": "basic",
+   "defined_on": "sys_rest_message_fn",
+   "available_labels": [
+    "Inherit from parent",
+    "No authentication",
+    "Basic",
+    "Basic (simple)",
+    "OAuth 2.0"
+   ]
+  },
+  "sys_script.when.after": {
+   "found": true,
+   "value": "after",
+   "defined_on": "sys_script",
+   "available_labels": [
+    "before",
+    "after",
+    "async",
+    "display"
+   ]
+  },
+  "sys_script.when.before": {
+   "found": true,
+   "value": "before",
+   "defined_on": "sys_script",
+   "available_labels": [
+    "before",
+    "after",
+    "async",
+    "display"
+   ]
+  },
+  "sys_script.when.display": {
+   "found": true,
+   "value": "before_display",
+   "defined_on": "sys_script",
+   "available_labels": [
+    "before",
+    "after",
+    "async",
+    "display"
+   ]
+  },
+  "sys_script_client.type.onChange": {
+   "found": true,
+   "value": "onChange",
+   "defined_on": "sys_script_client",
+   "available_labels": [
+    "onSubmit",
+    "onCellEdit",
+    "onChange",
+    "onLoad"
+   ]
+  },
+  "sys_script_client.type.onLoad": {
+   "found": true,
+   "value": "onLoad",
+   "defined_on": "sys_script_client",
+   "available_labels": [
+    "onSubmit",
+    "onCellEdit",
+    "onChange",
+    "onLoad"
+   ]
+  },
+  "sys_update_set.state.In progress": {
+   "found": true,
+   "value": "in progress",
+   "defined_on": "sys_update_set",
+   "available_labels": [
+    "In progress",
+    "Complete",
+    "Ignore"
+   ]
+  },
+  "sys_upgrade_history_log.disposition.Skipped,skipped": {
+   "found": true,
+   "value": "4",
+   "defined_on": "sys_upgrade_history_log",
+   "available_labels": [
+    "Inserted",
+    "Updated",
+    "Deleted",
+    "Skipped",
+    "Reverted",
+    "Table Not Found",
+    "Unchanged",
+    "Inserted (second pass)",
+    "Updated (second pass)",
+    "Deleted (second pass)",
+    "Skipped (second pass)",
+    "Reverted (second pass)",
+    "Table Not Found (second pass)",
+    "Unchanged (second pass)",
+    "Skipped Error",
+    "Skipped Manual Merge",
+    "Skipped Apply Once",
+    "Not Latest",
+    "Base Inserted",
+    "Base Updated",
+    "Base Deleted",
+    "Fatal Error",
+    "Not Loaded",
+    "Sanitized"
+   ]
+  },
+  "sysauto.run_type.On Demand": {
+   "found": true,
+   "value": "on_demand",
+   "defined_on": "sysauto",
+   "available_labels": [
+    "Daily",
+    "Day and Month in Year",
+    "Weekly",
+    "Monthly",
+    "Day in Week in Month in Year",
+    "Periodically",
+    "Once",
+    "On Demand",
+    "Week in Month",
+    "Business Calendar: Entry Start",
+    "Business Calendar: Entry End"
+   ]
+  },
+  "sysauto.run_type.Periodically": {
+   "found": true,
+   "value": "periodically",
+   "defined_on": "sysauto",
+   "available_labels": [
+    "Daily",
+    "Day and Month in Year",
+    "Weekly",
+    "Monthly",
+    "Day in Week in Month in Year",
+    "Periodically",
+    "Once",
+    "On Demand",
+    "Week in Month",
+    "Business Calendar: Entry Start",
+    "Business Calendar: Entry End"
+   ]
+  },
+  "sysevent.state.Ready,ready": {
+   "found": true,
+   "value": "ready",
+   "defined_on": "sysevent",
+   "available_labels": [
+    "ready",
+    "processed",
+    "error",
+    "transferred"
+   ]
+  },
+  "task_sla.stage.Cancelled,Canceled": {
+   "found": true,
+   "value": "cancelled",
+   "defined_on": "task_sla",
+   "available_labels": [
+    "In progress",
+    "Achieved",
+    "Breached",
+    "Cancelled",
+    "Paused",
+    "Completed"
+   ]
+  },
+  "task_sla.stage.In progress,In Progress": {
+   "found": true,
+   "value": "in_progress",
+   "defined_on": "task_sla",
+   "available_labels": [
+    "In progress",
+    "Achieved",
+    "Breached",
+    "Cancelled",
+    "Paused",
+    "Completed"
+   ]
+  }
+ },
+ "run": {
+  "elapsed_ms": 1769344,
+  "summary": {
+   "unconfigured": 8,
+   "unavailable": 65,
+   "evaluated": 107
+  },
+  "verdicts": {
+   "none": 73,
+   "fail": 66,
+   "pass": 19,
+   "inconclusive": 22
+  },
+  "rules": {
+   "PLT-001": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 4
+   },
+   "PLT-003": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-004": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 216,
+     "judged": 216,
+     "unit": "tasks with an active SLA"
+    },
+    "undetermined": null,
+    "ms": 4964
+   },
+   "PLT-005": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 22,
+     "judged": 22,
+     "unit": "service_commitment records"
+    },
+    "undetermined": null,
+    "ms": 2703
+   },
+   "PLT-006": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-007": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 36,
+     "judged": 36,
+     "unit": "active SLA definitions on incident, problem and change"
+    },
+    "undetermined": null,
+    "ms": 5328
+   },
+   "PLT-008": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-009": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-010": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-011": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-012": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 206,
+     "judged": 206,
+     "unit": "contract_sla records"
+    },
+    "undetermined": null,
+    "ms": 1016
+   },
+   "PLT-013": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 206,
+     "judged": 206,
+     "unit": "SLA definitions"
+    },
+    "undetermined": null,
+    "ms": 597
+   },
+   "PLT-014": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 206,
+     "judged": 203,
+     "unit": "SLA definitions"
+    },
+    "undetermined": null,
+    "ms": 88503
+   },
+   "PLT-015": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-016": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 206,
+     "judged": 206,
+     "unit": "contract_sla records"
+    },
+    "undetermined": null,
+    "ms": 739
+   },
+   "PLT-017": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 259,
+     "judged": 258,
+     "unit": "SLAs in progress"
+    },
+    "undetermined": null,
+    "ms": 2281
+   },
+   "PLT-018": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 6,
+    "blocker": null,
+    "population": {
+     "total": 511,
+     "judged": 511,
+     "unit": "task_sla records"
+    },
+    "undetermined": null,
+    "ms": 941
+   },
+   "PLT-019": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-020": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 835,
+     "judged": 835,
+     "unit": "active records a start condition matches"
+    },
+    "undetermined": null,
+    "ms": 166486
+   },
+   "PLT-021": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 28,
+     "judged": 28,
+     "unit": "SLA records"
+    },
+    "undetermined": null,
+    "ms": 706
+   },
+   "PLT-022": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-023": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-025": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 242,
+     "judged": 242,
+     "unit": "task_sla records (summed over variants)"
+    },
+    "undetermined": "empty_population",
+    "ms": 2046
+   },
+   "PLT-026": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-027": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 511,
+     "judged": 511,
+     "unit": "task_sla records"
+    },
+    "undetermined": null,
+    "ms": 7433
+   },
+   "PLT-028": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 119,
+     "judged": 119,
+     "unit": "service_commitment records"
+    },
+    "undetermined": null,
+    "ms": 1014
+   },
+   "PLT-029": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 206,
+     "judged": 206,
+     "unit": "SLA definitions"
+    },
+    "undetermined": null,
+    "ms": 672
+   },
+   "PLT-030": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "commitments stating a duration for an SLA"
+    },
+    "undetermined": null,
+    "ms": 367
+   },
+   "PLT-031": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 55,
+     "judged": 55,
+     "unit": "Business Critical services"
+    },
+    "undetermined": null,
+    "ms": 3210
+   },
+   "PLT-032": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-033": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-034": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 109,
+     "judged": 109,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 8556
+   },
+   "PLT-035": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 2,
+    "blocker": null,
+    "population": {
+     "total": 328,
+     "judged": 328,
+     "unit": "customer-authored sys_script records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 5643
+   },
+   "PLT-036": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-037": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 1773
+   },
+   "PLT-038": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 1368
+   },
+   "PLT-039": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 328,
+     "judged": 328,
+     "unit": "active customer-authored scripts"
+    },
+    "undetermined": null,
+    "ms": 7140
+   },
+   "PLT-040": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 23
+   },
+   "PLT-041": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 73,
+     "judged": 73,
+     "unit": "tables with a customer before rule"
+    },
+    "undetermined": null,
+    "ms": 3587
+   },
+   "PLT-042": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 5
+   },
+   "PLT-043": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-044": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 23
+   },
+   "PLT-045": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 56,
+     "judged": 56,
+     "unit": "active customer after / async update rules"
+    },
+    "undetermined": null,
+    "ms": 2712
+   },
+   "PLT-046": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 14
+   },
+   "PLT-047": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 32
+   },
+   "PLT-048": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 21
+   },
+   "PLT-049": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 207,
+     "judged": 207,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 21
+   },
+   "PLT-050": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 16
+   },
+   "PLT-051": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 1354
+   },
+   "PLT-052": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 374,
+     "judged": 374,
+     "unit": "sys_script scripts in the Slow Scripts log"
+    },
+    "undetermined": null,
+    "ms": 23247
+   },
+   "PLT-053": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-054": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-055": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-056": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-057": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-058": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-059": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 197,
+     "judged": 197,
+     "unit": "active customer-created business rules"
+    },
+    "undetermined": null,
+    "ms": 5949
+   },
+   "PLT-060": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-061": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 212,
+     "judged": 212,
+     "unit": "customer-authored sys_script records"
+    },
+    "undetermined": null,
+    "ms": 3677
+   },
+   "PLT-062": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-063": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 213,
+     "judged": 213,
+     "unit": "customer-created sys_script records"
+    },
+    "undetermined": null,
+    "ms": 5825
+   },
+   "PLT-064": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 91,
+     "judged": 0,
+     "unit": "tables with customer business rules"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 1427
+   },
+   "PLT-065": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 39,
+     "judged": 39,
+     "unit": "customer-authored client-callable includes"
+    },
+    "undetermined": null,
+    "ms": 3866
+   },
+   "PLT-066": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 24,
+     "judged": 16,
+     "unit": "customer includes accessible from all scopes"
+    },
+    "undetermined": null,
+    "ms": 392404
+   },
+   "PLT-067": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-068": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 116,
+     "judged": 116,
+     "unit": "customer includes with a body"
+    },
+    "undetermined": null,
+    "ms": 643
+   },
+   "PLT-069": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 14,
+     "judged": 14,
+     "unit": "customer includes older than 180 days"
+    },
+    "undetermined": null,
+    "ms": 3
+   },
+   "PLT-070": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 116,
+     "judged": 116,
+     "unit": "customer-authored sys_script_include records"
+    },
+    "undetermined": null,
+    "ms": 43
+   },
+   "PLT-071": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 116,
+     "judged": 116,
+     "unit": "customer includes"
+    },
+    "undetermined": null,
+    "ms": 6
+   },
+   "PLT-072": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 116,
+     "judged": 116,
+     "unit": "customer-authored sys_script_include records"
+    },
+    "undetermined": null,
+    "ms": 105
+   },
+   "PLT-073": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-074": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 118,
+     "judged": 118,
+     "unit": "customer-created sys_script_include records"
+    },
+    "undetermined": null,
+    "ms": 4634
+   },
+   "PLT-075": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 55,
+     "judged": 55,
+     "unit": "customer-authored sys_script_client records"
+    },
+    "undetermined": null,
+    "ms": 1028
+   },
+   "PLT-076": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 55,
+     "judged": 55,
+     "unit": "customer-authored sys_script_client records"
+    },
+    "undetermined": null,
+    "ms": 6
+   },
+   "PLT-077": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 9,
+     "judged": 9,
+     "unit": "customer-authored sys_script_client records"
+    },
+    "undetermined": null,
+    "ms": 1674
+   },
+   "PLT-078": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-079": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 25,
+     "judged": 25,
+     "unit": "table fields with a customer-authored onChange script"
+    },
+    "undetermined": null,
+    "ms": 7161
+   },
+   "PLT-080": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 55,
+     "judged": 55,
+     "unit": "customer-authored sys_script_client records"
+    },
+    "undetermined": null,
+    "ms": 353
+   },
+   "PLT-081": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 54,
+     "judged": 42,
+     "unit": "active customer client scripts"
+    },
+    "undetermined": null,
+    "ms": 26118
+   },
+   "PLT-082": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-083": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 6,
+     "judged": 6,
+     "unit": "customer onSubmit validations"
+    },
+    "undetermined": null,
+    "ms": 3800
+   },
+   "PLT-084": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 30,
+     "judged": 30,
+     "unit": "fields made mandatory by a customer-authored UI policy"
+    },
+    "undetermined": null,
+    "ms": 8554
+   },
+   "PLT-085": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 7082,
+     "judged": 7082,
+     "unit": "fields with active UI policy actions"
+    },
+    "undetermined": null,
+    "ms": 34660
+   },
+   "PLT-086": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 24,
+     "judged": 24,
+     "unit": "customer-authored sys_data_policy2 records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 2809
+   },
+   "PLT-087": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-088": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 60,
+     "judged": 60,
+     "unit": "customer-authored sys_ui_policy records"
+    },
+    "undetermined": null,
+    "ms": 718
+   },
+   "PLT-089": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-090": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 30,
+     "judged": 30,
+     "unit": "fields made mandatory by a customer-authored UI policy"
+    },
+    "undetermined": null,
+    "ms": 2557
+   },
+   "PLT-091": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-092": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-093": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 3,
+     "judged": 3,
+     "unit": "active workflows on a table"
+    },
+    "undetermined": null,
+    "ms": 38204
+   },
+   "PLT-094": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 97,
+     "judged": 97,
+     "unit": "active customer-created flows and subflows"
+    },
+    "undetermined": null,
+    "ms": 6082
+   },
+   "PLT-095": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1371,
+     "judged": 1371,
+     "unit": "active flows"
+    },
+    "undetermined": null,
+    "ms": 98784
+   },
+   "PLT-096": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "sys_flow_context records"
+    },
+    "undetermined": "empty_population",
+    "ms": 4065
+   },
+   "PLT-097": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 41,
+    "blocker": null,
+    "population": {
+     "total": 78076,
+     "judged": 78076,
+     "unit": "sys_flow_context records"
+    },
+    "undetermined": null,
+    "ms": 1546
+   },
+   "PLT-098": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-099": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 253,
+     "judged": 253,
+     "unit": "flows that call a subflow"
+    },
+    "undetermined": null,
+    "ms": 12
+   },
+   "PLT-100": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 97,
+     "judged": 97,
+     "unit": "active customer-created flows and subflows"
+    },
+    "undetermined": null,
+    "ms": 14761
+   },
+   "PLT-101": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 110,
+     "judged": 110,
+     "unit": "customer-authored sys_hub_flow records"
+    },
+    "undetermined": null,
+    "ms": 4367
+   },
+   "PLT-102": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 102,
+     "judged": 102,
+     "unit": "customer-created active flows and subflows"
+    },
+    "undetermined": null,
+    "ms": 41884
+   },
+   "PLT-103": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 3,
+     "judged": 3,
+     "unit": "workflow groups"
+    },
+    "undetermined": null,
+    "ms": 1042
+   },
+   "PLT-104": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-105": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "max_age",
+      "growth"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-106": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 473,
+     "judged": 473,
+     "unit": "periodic jobs"
+    },
+    "undetermined": null,
+    "ms": 14464
+   },
+   "PLT-107": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-108": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 21,
+     "judged": 21,
+     "unit": "active customer-authored scripts"
+    },
+    "undetermined": null,
+    "ms": 986
+   },
+   "PLT-109": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-110": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1504,
+     "judged": 1504,
+     "unit": "job triggers"
+    },
+    "undetermined": null,
+    "ms": 3606
+   },
+   "PLT-111": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1119,
+     "judged": 1081,
+     "unit": "scheduled jobs"
+    },
+    "undetermined": null,
+    "ms": 12203
+   },
+   "PLT-112": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 21,
+     "judged": 21,
+     "unit": "customer-authored sysauto_script records"
+    },
+    "undetermined": null,
+    "ms": 705
+   },
+   "PLT-113": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 2,
+     "judged": 2,
+     "unit": "customer-authored sysauto records"
+    },
+    "undetermined": null,
+    "ms": 1701
+   },
+   "PLT-114": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-115": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 367,
+     "judged": 367,
+     "unit": "sysevent records"
+    },
+    "undetermined": null,
+    "ms": 4204
+   },
+   "PLT-116": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 128,
+     "judged": 128,
+     "unit": "registered events that fired"
+    },
+    "undetermined": null,
+    "ms": 9987
+   },
+   "PLT-117": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 392245,
+     "judged": 392245,
+     "unit": "sysevent records"
+    },
+    "undetermined": null,
+    "ms": 4
+   },
+   "PLT-118": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "max_backlog"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-119": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "queued async jobs"
+    },
+    "undetermined": "empty_population",
+    "ms": 684
+   },
+   "PLT-120": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 2731
+   },
+   "PLT-121": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 791,
+     "judged": 791,
+     "unit": "customer-authored ACLs"
+    },
+    "undetermined": null,
+    "ms": 17038
+   },
+   "PLT-122": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 190,
+     "judged": 190,
+     "unit": "custom tables"
+    },
+    "undetermined": null,
+    "ms": 131861
+   },
+   "PLT-123": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-124": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-125": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 330,
+     "judged": 330,
+     "unit": "customer-authored sys_security_acl records"
+    },
+    "undetermined": null,
+    "ms": 5733
+   },
+   "PLT-126": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 7,
+     "judged": 7,
+     "unit": "tables holding classified personal data"
+    },
+    "undetermined": null,
+    "ms": 6860
+   },
+   "PLT-127": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 52,
+     "judged": 52,
+     "unit": "personal-data fields"
+    },
+    "undetermined": null,
+    "ms": 730
+   },
+   "PLT-128": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 29,
+     "judged": 29,
+     "unit": "table-level read ACLs on tables holding personal data"
+    },
+    "undetermined": null,
+    "ms": 3056
+   },
+   "PLT-129": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 95906,
+     "judged": 95906,
+     "unit": "sys_user_has_role records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 1392
+   },
+   "PLT-130": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 14,
+     "judged": 14,
+     "unit": "sys_user records"
+    },
+    "undetermined": null,
+    "ms": 1008
+   },
+   "PLT-131": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "direct_share"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-132": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 99,
+     "judged": 86,
+     "unit": "customer-authored roles"
+    },
+    "undetermined": null,
+    "ms": 5134
+   },
+   "PLT-133": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "groups granting an elevated role"
+    },
+    "undetermined": null,
+    "ms": 5861
+   },
+   "PLT-134": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-135": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 635,
+     "judged": 635,
+     "unit": "active customer-created ACLs"
+    },
+    "undetermined": null,
+    "ms": 27794
+   },
+   "PLT-136": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 23,
+     "judged": 23,
+     "unit": "impersonation.start events"
+    },
+    "undetermined": null,
+    "ms": 696
+   },
+   "PLT-137": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 22,
+     "judged": 22,
+     "unit": "integration accounts"
+    },
+    "undetermined": null,
+    "ms": 1019
+   },
+   "PLT-138": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 2,
+    "blocker": null,
+    "population": {
+     "total": 21,
+     "judged": 21,
+     "unit": "sys_rest_message records (summed over variants)"
+    },
+    "undetermined": "empty_population",
+    "ms": 10838
+   },
+   "PLT-139": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "sys_rest_message records (summed over variants)"
+    },
+    "undetermined": "empty_population",
+    "ms": 2660
+   },
+   "PLT-140": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-141": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-142": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 15,
+     "judged": 15,
+     "unit": "integrations (outbound hosts)"
+    },
+    "undetermined": null,
+    "ms": 109065
+   },
+   "PLT-143": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-144": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 3,
+    "blocker": null,
+    "population": {
+     "total": 11,
+     "judged": 11,
+     "unit": "sys_rest_message records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 3720
+   },
+   "PLT-145": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 51,
+     "judged": 51,
+     "unit": "OAuth configurations"
+    },
+    "undetermined": null,
+    "ms": 2712
+   },
+   "PLT-146": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-147": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "reader",
+     "table": "sys_outbound_http_log",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-148": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 101,
+     "judged": 91,
+     "unit": "REST message functions"
+    },
+    "undetermined": null,
+    "ms": 1126
+   },
+   "PLT-149": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-150": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 182,
+     "judged": 182,
+     "unit": "transform maps"
+    },
+    "undetermined": null,
+    "ms": 4755
+   },
+   "PLT-151": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-152": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-153": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 11,
+     "judged": 11,
+     "unit": "customer-authored sys_rest_message records"
+    },
+    "undetermined": null,
+    "ms": 1636
+   },
+   "PLT-154": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_table",
+     "step": "capability_confirmation",
+     "table": "sys_upgrade_history_log",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 2725
+   },
+   "PLT-155": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 75192,
+     "judged": 0,
+     "unit": "modified ServiceNow records"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 139448
+   },
+   "PLT-156": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "PLT-157": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-158": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-159": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-160": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1234,
+     "judged": 33,
+     "unit": "custom fields on ServiceNow tables"
+    },
+    "undetermined": null,
+    "ms": 84212
+   },
+   "PLT-161": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-162": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-163": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-164": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 94009,
+     "judged": 94009,
+     "unit": "customer-changed objects"
+    },
+    "undetermined": null,
+    "ms": 15208
+   },
+   "PLT-165": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "open_age"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 2842
+   },
+   "PLT-166": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-167": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-168": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-169": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 27,
+     "judged": 27,
+     "unit": "custom tables older than 180 days"
+    },
+    "undetermined": null,
+    "ms": 25122
+   },
+   "PLT-171": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "window"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 2128
+   },
+   "PLT-172": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "period"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-173": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 16033,
+     "judged": 0,
+     "unit": "scripts in the Slow Scripts log"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 16117
+   },
+   "PLT-174": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-175": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-176": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-177": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-178": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 6526,
+     "judged": 6526,
+     "unit": "sys_email records"
+    },
+    "undetermined": null,
+    "ms": 20140
+   },
+   "PLT-179": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-180": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 105,
+     "judged": 105,
+     "unit": "cancelled transactions"
+    },
+    "undetermined": null,
+    "ms": 2091
+   },
+   "PLT-181": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-182": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "PLT-183": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   }
+  }
+ },
+ "requests": {
+  "query": 2629,
+  "count": 1341,
+  "aggregate": 56,
+  "byTable": {
+   "sys_db_object": 1034,
+   "change_request": 2,
+   "cmdb_ci_service": 5,
+   "cmn_schedule": 2,
+   "contract_sla": 19,
+   "data_classification": 5,
+   "incident": 46,
+   "m2m_dictionary_dataclass": 5,
+   "oauth_entity": 5,
+   "sc_cat_item": 4,
+   "service_commitment": 10,
+   "sys_app": 2,
+   "sys_attachment": 2,
+   "sys_audit": 2,
+   "sys_data_policy2": 5,
+   "sys_data_policy_rule": 7,
+   "sys_data_source": 2,
+   "sys_dictionary": 194,
+   "sys_email": 19,
+   "sys_flow_context": 8,
+   "sys_group_has_role": 6,
+   "sys_history_line": 2,
+   "sys_hub_action_instance_v2": 51,
+   "sys_hub_action_type_definition": 31,
+   "sys_hub_action_type_snapshot": 31,
+   "sys_hub_flow": 16,
+   "sys_hub_flow_logic_definition": 5,
+   "sys_hub_flow_logic_instance_v2": 5,
+   "sys_hub_flow_snapshot": 7,
+   "sys_hub_sub_flow_instance_v2": 31,
+   "sys_hub_trigger_instance_v2": 32,
+   "sys_import_set": 2,
+   "sys_import_set_row": 2,
+   "sys_metadata": 2,
+   "sys_metadata_customization": 339,
+   "sys_outbound_http_log": 200,
+   "sys_portal_page": 2,
+   "sys_properties": 5,
+   "sys_rate_limit_rules": 2,
+   "sys_remote_update_set": 3,
+   "sys_report": 2,
+   "sys_rest_message": 14,
+   "sys_rest_message_fn": 16,
+   "sys_scope": 2,
+   "sys_scope_privilege": 2,
+   "sys_script": 105,
+   "sys_script_client": 37,
+   "sys_script_include": 47,
+   "sys_script_pattern": 72,
+   "sys_security_acl": 123,
+   "sys_security_acl_role": 20,
+   "sys_semaphore": 2,
+   "sys_soap_message": 11,
+   "sys_transform_entry": 5,
+   "sys_transform_map": 21,
+   "sys_trigger": 43,
+   "sys_ui_action": 23,
+   "sys_ui_element": 8,
+   "sys_ui_policy": 20,
+   "sys_ui_policy_action": 32,
+   "sys_ui_section": 5,
+   "sys_update_set": 3,
+   "sys_update_version": 6,
+   "sys_update_xml": 15,
+   "sys_upgrade_history": 3,
+   "sys_upgrade_history_log": 2,
+   "sys_user": 16,
+   "sys_user_grmember": 3,
+   "sys_user_has_role": 11,
+   "sys_user_role": 13,
+   "sys_user_role_contains": 4,
+   "sys_ws_definition": 2,
+   "sys_ws_operation": 23,
+   "sysauto": 15,
+   "sysauto_script": 27,
+   "sysevent": 9,
+   "sysevent_email_action": 4,
+   "sysevent_register": 9,
+   "sysevent_script_action": 20,
+   "syslog": 2,
+   "syslog_cancellation": 5,
+   "syslog_transaction": 3,
+   "task": 17,
+   "task_sla": 135,
+   "v_plugin": 2,
+   "wf_context": 2,
+   "wf_workflow": 2,
+   "wf_workflow_version": 8,
+   "sys_choice": 30,
+   "sn_compliance_policy_exception": 10,
+   "sn_spend_psd_procurement_request": 26,
+   "sn_customerservice_case": 26,
+   "sn_bom_loan_b2b_task": 8,
+   "sn_csm_invoice_case": 6,
+   "x_org_guest_house__x_gh_expense": 4,
+   "sn_bom_credit_asmt_task": 8,
+   "x_tepv_oas_oas_approval_task": 2,
+   "sn_hr_core_case_talent_management": 4,
+   "sn_bom_loan_service": 12,
+   "x_org_guest_house__x_gh_booking": 6,
+   "sn_bom_credit_asmt_b2b_task": 8,
+   "x_org_srms_x_srms_order": 5,
+   "sn_slm_case": 12,
+   "sn_bom_loan_b2b_service": 16,
+   "sn_customerservice_escalation": 4,
+   "sn_shop_sourcing_task": 8,
+   "sn_complaint_case": 10,
+   "sn_hr_core_case_operations": 4,
+   "sn_customerservice_task": 8,
+   "sn_shop_erp_error_task": 2,
+   "x_org_trialbase_activity": 4,
+   "x_tepv_ts_dms_breakdown_request": 6,
+   "sn_hr_er_case": 5,
+   "sn_hr_core_case_workforce_admin": 4,
+   "sn_hr_core_case": 5,
+   "x_tepv_aros_lead": 6,
+   "wm_order": 6,
+   "sn_shop_delivery_address_task": 4,
+   "sn_shop_sourcing_activity": 4,
+   "x_tepv_ts_dms_sla_escalation_task": 14,
+   "sn_grc_issue": 2,
+   "x_org_srms_x_srms_reservation": 5,
+   "sn_bom_credit_asmt_loan_service": 4,
+   "sn_bom_loan_task": 6,
+   "x_org_srms_x_srms_payment": 2,
+   "sn_shop_approval_reminder_task": 2,
+   "sn_bom_credit_asmt_loan_b2b_service": 4,
+   "sn_shop_task": 2,
+   "x_tepv_ts_dms_lead": 8,
+   "x_tepv_ts_dms_loan_application": 2,
+   "x_tepv_ts_dms_test_drive_booking": 2,
+   "sn_slm_task": 4,
+   "sn_hr_core_case_payroll": 4,
+   "sn_shop_negotiation": 8,
+   "x_tepv_ts_dms_service_job": 4,
+   "sn_hr_core_case_total_rewards": 4,
+   "x_tepv_ts_dms_second_life_disposition": 2,
+   "sn_shop_invoice_task": 2,
+   "sn_shop_purchase_requisition": 2,
+   "sn_shop_negotiation_event": 2,
+   "x_tepv_ts_dms_trade_in_appraisal": 2,
+   "x_tepv_ts_dms_service_appointment": 2,
+   "sn_spend_sdc_service_request": 2,
+   "sys_ui_page": 32,
+   "sys_ui_macro": 16,
+   "sp_widget": 32,
+   "sys_script_fix": 16,
+   "sys_processor": 16,
+   "sys_transform_script": 16,
+   "sys_ui_script": 16,
+   "catalog_script_client": 16,
+   "sys_hub_trigger_instance": 29,
+   "sys_hub_action_instance": 48,
+   "sys_hub_action_type_base": 28,
+   "sys_hub_sub_flow_instance": 28,
+   "sys_security_operation": 2,
+   "sn_sforce_ai_disc_ai_models_import": 1,
+   "sn_fcms_intg_supplier_legal_entity_inbound": 1,
+   "sn_spend_intg_imp_invoice_tax_line": 1,
+   "sn_fcms_intg_supplier_contact_inbound": 1,
+   "sn_azure_sg_foundry_subcomponent": 1,
+   "sn_msft_copilot_ai_agent_asset_staging": 1,
+   "sn_fcms_intg_imp_supplier": 1,
+   "var__m_sys_decision_multi_result_element_f3179c460f4acb507e34bec300d1b214": 1,
+   "sn_fcms_intg_erp_plant_address_mapping_stage": 1,
+   "sn_spend_intg_purchase_line": 1,
+   "sn_sforce_ai_disc_ai_agents_import": 1,
+   "sn_sforce_ai_disc_ai_agents_usage_import": 1,
+   "var__m_b888fb9eeb6311006a668c505206fec5": 1,
+   "sn_ia_config_additional_knowledge": 6,
+   "ast_contract": 6,
+   "sn_fcms_intg_imp_order": 1,
+   "sn_kg_iset_triplet_picker_description": 1,
+   "sn_ac_rpa_import": 1,
+   "sn_msft_copilot_ai_agent_prompt_staging": 1,
+   "sn_fcms_intg_imp_receipt": 1,
+   "sn_spend_intg_invoice_integration_log": 1,
+   "sn_ai_disc_ai_asset_additional_attributes_staging": 1,
+   "sn_fcms_intg_shipment_stage": 1,
+   "sn_now_assist_for_code_user_feedback": 1,
+   "sn_spend_intg_imp_invoice_line": 1,
+   "experimentation_executor_client_staging": 2,
+   "experiment": 2,
+   "var__m_sys_decision_input_a51d9efd5b0ed110235d85cced81c7ce": 1,
+   "sn_sforce_ai_disc_ai_tools_import": 1,
+   "sn_itom_licensing_event_bus": 1,
+   "var__m_sys_hub_step_ext_output_45514f73dbcf1b00a9c7594e5e961915": 1,
+   "sn_fcms_intg_supplier_payment_inbound_stage": 1,
+   "sn_fcms_intg_payment_term_stage": 1,
+   "imp_sn_gf_goal": 1,
+   "sn_sforce_ai_disc_ai_agent_topics": 1,
+   "sn_sforce_ai_disc_ai_prompts_import": 1,
+   "sn_fcms_intg_fx_currency_stage": 1,
+   "sn_uxc_gen_ai_work_plan_task": 1,
+   "v_interaction_context": 1,
+   "sn_uxc_gen_ai_work_plan": 1,
+   "sn_cmdb_int_util_mac_software_bundleid_lookup": 1,
+   "var__m_sys_hub_step_ext_output_5a7d76fbdb475b00dd14596e5e961916": 1,
+   "sn_fcms_intg_imp_cost_center": 1,
+   "sn_ai_disc_aws_sgc_sg_awssagemaker_model": 1,
+   "sn_risk_advanced_risk_event_configuration": 3,
+   "sn_itsm_gen_ai_overdue_incident_sla": 2,
+   "var__m_479d4643bf111100c7e39058ff073994": 1,
+   "sn_n8n_integ_sg_n8n_ai_model": 1,
+   "var__m_sys_decision_input_5c351b66b7392510ff00f203ae11a94e": 1,
+   "sn_fcms_intg_supplier_remit_to_loc_stage": 1,
+   "sn_csm_om_order": 1,
+   "var__m_sys_decision_input_21554d865b286110235d85cced81c7bc": 1,
+   "sn_spend_ftp_intg_order_ack_stage": 1,
+   "sn_fcms_intg_gl_group_load_data": 1,
+   "sn_msft_copilot_ai_agent_tool_staging": 1,
+   "sn_ai_disc_ai_model_asset_staging": 1,
+   "sn_employee_position_stg": 1,
+   "sn_wsd_core_space_staging": 1,
+   "sn_fcms_intg_imp_order_line": 1,
+   "sn_ai_disc_ai_asset_subcomponent_m2m_staging": 1,
+   "sn_fcms_intg_cmdb_model_category_stage": 1,
+   "sn_kg_iset_table_picker_description": 1,
+   "imp_cost_plan": 1,
+   "sn_cmdb_int_util_remove_record": 1,
+   "sn_fcms_intg_legal_entity_stage": 1,
+   "sn_spend_intg_purchase_requisition": 1,
+   "sn_azure_sg_foundry_tool": 1,
+   "sn_uxc_gen_ai_work_plan_queue": 1,
+   "sn_fcms_intg_supplier_location_inbound": 1,
+   "sn_kg_iset_choice_picker_description": 1,
+   "sn_ai_disc_ai_agent_asset_staging": 1,
+   "imp_sn_gf_goal_target": 1,
+   "sn_ai_disc_ai_prompt_asset_staging": 1,
+   "sn_fcms_intg_org_tax_detail_inbound": 1,
+   "sn_spend_intg_invoice_intg_field_mapping": 8,
+   "sn_ai_disc_aws_sgc_bedrock_ai_tool": 1,
+   "var__m_sys_decision_multi_result_element_15825b62b7312510ff00f203ae11a9d2": 1,
+   "sn_spend_intg_imp_invoice_payment_detail": 1,
+   "var__m_sys_decision_multi_result_element_0f9fd4ce77e12110b249c39dbd5a99ff": 1,
+   "sn_ai_disc_ai_agent_usage_staging": 1,
+   "sn_vsc_updated_settings": 1,
+   "sn_cloud_access_la_api_response": 1,
+   "sn_fin_supplier": 2,
+   "sn_ai_disc_aws_sgc_bedrock_ai_asset": 1,
+   "var__m_sys_decision_multi_result_element_ba1b3578b7b6e110ff00f203ae11a99e": 1,
+   "var__m_sys_decision_input_a75466a0c3a111109684db85a840ddbb": 1,
+   "sn_spend_intg_pricing_stage": 1,
+   "csm_consumer": 9,
+   "var__m_sys_decision_multi_result_element_1d5df6c8431e21105cf7d1529ab8f298": 1,
+   "sn_spend_ftp_intg_invoice_stage": 1,
+   "var__m_sys_decision_input_afca1ac84f8269101bb8fe29f7c71492": 1,
+   "sn_fcms_intg_gl_group_mapping_load_data": 1,
+   "sn_spend_ftp_intg_catalog_stage": 1,
+   "sn_fcms_intg_buyer_group_stage": 1,
+   "sn_azure_sg_foundry_ai_system": 1,
+   "sn_fcms_intg_contract_stage": 1,
+   "sn_fcms_intg_cmdb_model_stage": 1,
+   "sn_spend_intg_inbound_sourcing_request": 1,
+   "var__m_sys_decision_multi_result_element_afca1ac84f8269101bb8fe29f7c71492": 1,
+   "var__m_sys_decision_input_e7472c15dbd990104bb33764e29619f6": 1,
+   "var__m_sys_hub_step_ext_output_9ab22037dbfed300a9c7594e5e961954": 1,
+   "sn_ai_disc_aws_sgc_agentcore_ai_tool": 1,
+   "sn_spend_ftp_intg_shipment_stage": 1,
+   "sn_azure_sg_foundry_model": 1,
+   "var__m_sys_hub_step_ext_output_a01d9125db761300868f5404ce9619dc": 1,
+   "sn_ai_disc_gcp_sgc_sg_gcp_ai_system_subcomponent_m2m": 1,
+   "sn_ai_disc_gcp_sgc_sg_gcp_ai_tool": 1,
+   "sn_spend_intg_imp_invoice": 1,
+   "sn_fcms_intg_department_stage": 1,
+   "var__m_sys_decision_input_ba1b3578b7b6e110ff00f203ae11a99e": 1,
+   "imp_planned_task": 1,
+   "sn_cloud_access_la_response_callback_handler": 1,
+   "sn_fcms_intg_cmn_location_stage": 1,
+   "var__m_atf_input_variable_b8ea9163db557300988aa08a48961948": 1,
+   "sn_ai_disc_ai_tool_asset_staging": 1,
+   "sn_langgraph_integ_agents": 1,
+   "var__m_sys_decision_input_9fb467925beda110235d85cced81c723": 1,
+   "sn_opty_mgmt_core_opportunity": 1,
+   "var__m_1bcbfe1bbf111100c7e39058ff07390f": 1,
+   "var__m_6ac8de43bf111100c7e39058ff0739b3": 1,
+   "sn_fcms_intg_imp_cost_allocation": 1,
+   "var__m_sys_decision_input_1d5df6c8431e21105cf7d1529ab8f298": 1,
+   "imp_json_event_sink": 1,
+   "sn_kg_iset_column_picker_description": 1,
+   "sn_fcms_intg_office_location_stage": 1,
+   "ml_solution": 2,
+   "information_session_tab_workspace_setting": 1,
+   "var__m_sys_hub_step_ext_output_b2e3a392dbb25300a9c7594e5e96191b": 1,
+   "var__m_sys_decision_input_54aa86b71b34701009cbea48624bcbfd": 1,
+   "sn_ai_disc_gcp_sgc_sg_gcp_ai_asset": 1,
+   "sn_ai_disc_gcp_sgc_sg_gcp_ai_model": 1,
+   "sn_azure_sg_foundry_agent": 1,
+   "sn_ai_disc_aws_sgc_agentcore_ai_system": 1,
+   "var__m_sys_decision_input_2e9c1a395b0ed110235d85cced81c707": 1,
+   "var__m_sys_decision_multi_result_element_0d8d9ec84f8269101bb8fe29f7c714e3": 1,
+   "sn_fcms_intg_gl_account_stage": 1,
+   "var__m_sys_decision_multi_result_element_a75466a0c3a111109684db85a840ddbb": 1,
+   "sn_spend_intg_supplier_product_stage": 1,
+   "sn_ai_disc_aws_sgc_bedrock_sbcomp_m2m": 1,
+   "imp_rate_model_line": 1,
+   "var__m_sys_decision_input_1edc5afd5b0ed110235d85cced81c777": 1,
+   "var__m_sys_decision_input_0b0ee6f4c3fd2110ee4f73ce3640ddd7": 1,
+   "var__m_sys_decision_multi_result_element_0b0ee6f4c3fd2110ee4f73ce3640ddd7": 1,
+   "sn_ai_disc_gcp_sgc_sg_gcp_ai_prompt": 1,
+   "var__m_sys_decision_multi_result_element_9fb467925beda110235d85cced81c723": 1,
+   "var__m_sys_decision_multi_result_element_5c351b66b7392510ff00f203ae11a94e": 1,
+   "sn_spend_intg_price_break_stage": 1,
+   "var__m_sys_hub_step_ext_output_576bf6fbdb8f1b00a9c7594e5e961942": 1,
+   "var__m_sys_decision_input_c0eafca45be56110235d85cced81c743": 1,
+   "var__m_a5974473eb2311006a668c505206fe84": 1,
+   "var__m_4b8ac703eb210100c3346f5ca206feca": 1,
+   "sn_msft_copilot_ai_agent_sbcomp_m2m_staging": 1,
+   "sn_n8n_integ_sg_n8n_ai_tool": 1,
+   "sn_fcms_intg_gl_account_load_data": 1,
+   "sn_azure_sg_foundry_execution": 1,
+   "var__m_sys_decision_input_0f9fd4ce77e12110b249c39dbd5a99ff": 1,
+   "sn_fcms_intg_fx_rate_stage": 1,
+   "var__m_sys_decision_multi_result_element_2e9c1a395b0ed110235d85cced81c707": 1,
+   "sn_fcms_intg_cmdb_service_model_stage": 1,
+   "sn_text2flow_prompt": 1,
+   "sn_fcms_intg_imp_purchase_entity": 1,
+   "sn_ai_disc_gcp_sgc_sg_gcp_execution": 1,
+   "sn_msft_copilot_ai_agent_staging": 1,
+   "var__m_23226622cb200200ac021228634c9c7e": 1,
+   "var__m_b4887ebbbf020100710071a7bf07398c": 1,
+   "sn_ai_disc_aws_sgc_bedrock_ai_model": 1,
+   "sn_n8n_integ_sg_n8n_ai_system": 1,
+   "sn_azure_sg_foundry_prompt": 1,
+   "var__m_sys_decision_input_4dac18b80f5447107e34bec300d1b2e4": 1,
+   "sn_ai_disc_aws_sgc_bedrock_ai_usage": 1,
+   "var__m_sys_decision_input_0d8d9ec84f8269101bb8fe29f7c714e3": 1,
+   "sn_n8n_integ_sg_n8n_execution": 1,
+   "var__m_sys_decision_multi_result_element_a51d9efd5b0ed110235d85cced81c7ce": 1,
+   "var__m_sys_decision_multi_result_element_4dac18b80f5447107e34bec300d1b2e4": 1,
+   "var__m_sys_decision_multi_result_element_c0eafca45be56110235d85cced81c743": 1,
+   "var__m_sn_nowassist_skill_config_var_3cce2ee60fd343507e34bec300d1b2f2": 1,
+   "sn_msft_copilot_ai_agent_usage_staging": 1,
+   "var__m_sys_decision_multi_result_element_1edc5afd5b0ed110235d85cced81c777": 1,
+   "sn_n8n_integ_sg_n8n_sbcomp_m2m": 1,
+   "sn_ai_disc_aws_sgc_agentcore_ai_usage": 1,
+   "var__m_5350b61bbf111100c7e39058ff0739d6": 1,
+   "alm_asset": 2,
+   "sys_cs_bot_to_bot_control": 1,
+   "sn_n8n_integ_sg_n8n_ai_prompt": 1,
+   "sn_msft_copilot_ai_agent_model_staging": 1,
+   "var__m_sys_hub_trigger_input_778cf3bf37232110aba6473174924b7c": 1,
+   "sn_vsc_hardening_baseline_result": 1,
+   "var__m_sys_decision_multi_result_element_21554d865b286110235d85cced81c7bc": 1,
+   "sn_ai_disc_aws_sgc_bedrock_ai_prompt": 1,
+   "var__m_sys_decision_input_189d9efd5b0ed110235d85cced81c7d5": 1,
+   "var__m_sys_hub_step_ext_output_f2508e90db0f1300dd14596e5e9619d4": 1,
+   "var__m_sys_decision_input_15825b62b7312510ff00f203ae11a9d2": 1,
+   "sn_ai_disc_gcp_sgc_sg_gcp_ai_system": 1,
+   "var__m_sys_decision_multi_result_element_189d9efd5b0ed110235d85cced81c7d5": 1,
+   "var__m_sys_hub_step_ext_output_695d84eddb721300bea7ff561d9619d5": 1,
+   "sn_ai_disc_aws_sgc_bedrock_ai_system": 1,
+   "x_org_srms_x_srms_customer": 1,
+   "x_org_srms_task": 1,
+   "x_tepv_source_to_0_rfp": 1,
+   "x_org_srms_x_srms_inventory": 1,
+   "x_org_srms_category": 1,
+   "u_x_org_guest_house__history": 1,
+   "u_cmdb_qb_result_1859dc7fe9d74abd9844d8a3be7019d78c1705b0": 1,
+   "u_cmdb_qb_result_917e91fecfba01ca08f922d6e68deae68a03c0dc": 1,
+   "x_org_srms_x_srms_branch": 1,
+   "u_cmdb_qb_result_10955e68f1796f4fedb3d3b26ffa9f95ccafa0dd": 1,
+   "x_tepv_source_to_0_supplier_intelligence": 1,
+   "u_cmdb_qb_result_a4baf5d35a707070df863b62b7954a1a228acd23": 1,
+   "u_x_org_guest_house__x_gh_booking": 1,
+   "u_x_org_trialbase_activity": 1,
+   "x_tepv_source_to_0_market_benchmark": 1,
+   "u_cmdb_qb_result_b00b22494898682e88f2afc87b19e98790d548d6": 1,
+   "x_org_srms_item": 1,
+   "x_org_srms_x_srms_table": 1,
+   "x_tepv_source_to_0_negotiation_intelligence": 1,
+   "u_cmdb_qb_result_d3bda2a94c2c358b33baadf23f7d36b956043856": 1,
+   "x_tepv_source_to_0_market_intelligence_feed": 1,
+   "x_tepv_source_to_0_rfp_supplier_reco": 1,
+   "x_tepv_source_to_0_rfp_strategy": 1,
+   "u_x_org_guest_house__x_gh_expense": 1,
+   "u_cmdb_qb_result_9a270798bac9295a427ea2f23828e832e265a7bb": 1
+  }
+ },
+ "elapsed_ms": 1945246
+}

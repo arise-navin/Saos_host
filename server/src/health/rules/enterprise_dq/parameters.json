@@ -1,0 +1,328 @@
+{
+ "version": "1.0.0",
+ "phase": "Health Assist Phase 7",
+ "source": {
+  "workbook": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+  "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+  "bytes": 323662
+ },
+ "rule_count": 56,
+ "conventions": {
+  "default": "the workbook's stated default, or null with status UNDEFINED — never an invented value (DECISION 3)"
+ },
+ "declarations": {
+  "DQ-084": {
+   "workbook_text": "Both absent; escalate where the group is referenced by open tasks",
+   "parameters": []
+  },
+  "DQ-085": {
+   "workbook_text": "Fires only where rules reference the field",
+   "parameters": []
+  },
+  "DQ-086": {
+   "workbook_text": "Report the two cases separately; escalate where both are absent",
+   "parameters": []
+  },
+  "DQ-087": {
+   "workbook_text": "Escalate for users who submit requests requiring manager approval",
+   "parameters": []
+  },
+  "DQ-088": {
+   "workbook_text": "Any occurrence where financial integration exists",
+   "parameters": []
+  },
+  "DQ-089": {
+   "workbook_text": "Report per field; escalate where all three are absent",
+   "parameters": []
+  },
+  "DQ-090": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "DQ-091": {
+   "workbook_text": "Report the two separately; escalate on fulfilment group",
+   "parameters": []
+  },
+  "DQ-092": {
+   "workbook_text": "Root locations identified by configuration or by depth",
+   "parameters": []
+  },
+  "DQ-093": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "DQ-094": {
+   "workbook_text": "Report the two separately",
+   "parameters": []
+  },
+  "DQ-095": {
+   "workbook_text": "Evaluate across approval definitions, delegations and manager chains",
+   "parameters": []
+  },
+  "DQ-096": {
+   "workbook_text": "Active membership resolved live at evaluation time",
+   "parameters": []
+  },
+  "DQ-097": {
+   "workbook_text": "Scope to notification-referenced records",
+   "parameters": []
+  },
+  "DQ-098": {
+   "workbook_text": "Include inactive choices as a separate case",
+   "parameters": []
+  },
+  "DQ-099": {
+   "workbook_text": "Mapping table between asset and CI state models, configurable",
+   "parameters": []
+  },
+  "DQ-100": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "DQ-101": {
+   "workbook_text": "Pattern set per region; for India include the standard mobile and landline formats",
+   "parameters": []
+  },
+  "DQ-102": {
+   "workbook_text": "Mapping configurable",
+   "parameters": []
+  },
+  "DQ-103": {
+   "workbook_text": "Depth limit configurable as a safety bound",
+   "parameters": []
+  },
+  "DQ-104": {
+   "workbook_text": "Depth limit as a safety bound",
+   "parameters": []
+  },
+  "DQ-105": {
+   "workbook_text": "Fires only on multi-company instances",
+   "parameters": []
+  },
+  "DQ-106": {
+   "workbook_text": "Fires only on multi-company instances with group company scoping in use",
+   "parameters": []
+  },
+  "DQ-107": {
+   "workbook_text": "Both populated and different",
+   "parameters": []
+  },
+  "DQ-108": {
+   "workbook_text": "Requires a dominant pattern in at least one population",
+   "parameters": [
+    {
+     "key": "divergence",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "divergence threshold — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "DQ-109": {
+   "workbook_text": "Variance threshold configurable",
+   "parameters": [
+    {
+     "key": "variance",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "depth variance threshold — UNDEFINED (\"configurable\")",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "DQ-110": {
+   "workbook_text": "Fires only on multi-company instances",
+   "parameters": []
+  },
+  "DQ-111": {
+   "workbook_text": "Report active-active pairs separately from active-inactive",
+   "parameters": []
+  },
+  "DQ-112": {
+   "workbook_text": "Overlap threshold default 90%; minimum membership 3",
+   "parameters": [
+    {
+     "key": "overlap",
+     "type": "percent",
+     "unit": null,
+     "default": 90,
+     "description": "membership overlap",
+     "status": "DEFINED"
+    },
+    {
+     "key": "min_members",
+     "type": "number",
+     "unit": null,
+     "default": 3,
+     "description": "minimum membership",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "DQ-113": {
+   "workbook_text": "Address normalisation configurable; include postcode where available",
+   "parameters": []
+  },
+  "DQ-114": {
+   "workbook_text": "Include registration number where populated",
+   "parameters": []
+  },
+  "DQ-115": {
+   "workbook_text": "Requires manufacturer populated; DQ-093 gates this rule",
+   "parameters": []
+  },
+  "DQ-116": {
+   "workbook_text": "Name normalisation plus variable set comparison",
+   "parameters": []
+  },
+  "DQ-117": {
+   "workbook_text": "Requires a successful recent HR import; guard on DQ-118",
+   "parameters": []
+  },
+  "DQ-118": {
+   "workbook_text": "Tolerance default 2x interval",
+   "parameters": [
+    {
+     "key": "tolerance",
+     "type": "number",
+     "unit": null,
+     "default": 2,
+     "description": "tolerance, as a multiple of the feed interval",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "DQ-119": {
+   "workbook_text": "Age threshold default 90 days",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "account age",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "DQ-120": {
+   "workbook_text": "Age threshold default 730 days",
+   "parameters": [
+    {
+     "key": "max_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 730,
+     "description": "age threshold",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "DQ-121": {
+   "workbook_text": "Requires end-of-life data to be populated",
+   "parameters": []
+  },
+  "DQ-122": {
+   "workbook_text": "Report by days overdue and by view volume",
+   "parameters": []
+  },
+  "DQ-123": {
+   "workbook_text": "Age threshold default 365 days",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 365,
+     "description": "item age",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "DQ-124": {
+   "workbook_text": "Exclude parent nodes with populated children",
+   "parameters": []
+  },
+  "DQ-125": {
+   "workbook_text": "Any occurrence across all task tables",
+   "parameters": []
+  },
+  "DQ-126": {
+   "workbook_text": "Report deleted and inactive separately",
+   "parameters": []
+  },
+  "DQ-127": {
+   "workbook_text": "Any occurrence on active items",
+   "parameters": []
+  },
+  "DQ-128": {
+   "workbook_text": "Scope to operationally significant reference fields; the full scan is expensive",
+   "parameters": []
+  },
+  "DQ-129": {
+   "workbook_text": "Report each direction separately",
+   "parameters": []
+  },
+  "DQ-130": {
+   "workbook_text": "Resolution evaluated live",
+   "parameters": []
+  },
+  "DQ-131": {
+   "workbook_text": "Any occurrence",
+   "parameters": []
+  },
+  "DQ-132": {
+   "workbook_text": "Any occurrence on active reports",
+   "parameters": []
+  },
+  "DQ-133": {
+   "workbook_text": "Pattern set per identifier. PAN and Aadhaar support checksum validation; apply it and report validated matches separately.",
+   "parameters": [
+    {
+     "key": "fields",
+     "type": "list",
+     "unit": null,
+     "default": null,
+     "description": "the free-text fields to scan, as table.field — UNDEFINED: named by the customer (SAOS_Health_Rules_Open_Questions.xlsx)",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "DQ-134": {
+   "workbook_text": "Personal data field set from classification where it exists, otherwise from DQ-133 detection",
+   "parameters": []
+  },
+  "DQ-135": {
+   "workbook_text": "Content classification method must be stated; metadata-only detection is weaker than content scanning",
+   "parameters": []
+  },
+  "DQ-136": {
+   "workbook_text": "Retention periods from the customer's policy; report the absence of a policy as DQ-139",
+   "parameters": []
+  },
+  "DQ-137": {
+   "workbook_text": "Fires where a classification framework exists on the instance",
+   "parameters": []
+  },
+  "DQ-138": {
+   "workbook_text": "Requires access to the non-production instance, or evidence from the clone configuration",
+   "parameters": []
+  },
+  "DQ-139": {
+   "workbook_text": "Personal data identification from DQ-133 detection and from field semantics",
+   "parameters": [
+    {
+     "key": "fields",
+     "type": "list",
+     "unit": null,
+     "default": null,
+     "description": "the free-text fields to scan, as table.field — UNDEFINED: named by the customer (SAOS_Health_Rules_Open_Questions.xlsx)",
+     "status": "UNDEFINED"
+    }
+   ]
+  }
+ }
+}

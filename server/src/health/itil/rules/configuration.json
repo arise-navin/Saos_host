@@ -1,0 +1,1631 @@
+{
+ "engine": "configuration",
+ "rules": {
+  "ITIL-007": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sc_req_item",
+     "fields": [
+      "number",
+      "close_notes",
+      "active"
+     ]
+    },
+    {
+     "table": "sc_task",
+     "fields": [
+      "request_item",
+      "state"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sc_req_item",
+    "fields": [
+     "number",
+     "close_notes"
+    ],
+    "query": "active=false^close_notesISEMPTY"
+   },
+   "compare": {
+    "name": "itil_requests_without_evidence",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Closed request items with empty close notes and no fulfilment task in Closed Complete (3). Evidence held in a workflow context is not read (the guard)."
+   }
+  },
+  "ITIL-011": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "flow_designer_flow",
+      "workflow",
+      "active"
+     ]
+    },
+    {
+     "table": "item_option_new",
+     "fields": [
+      "name",
+      "type",
+      "cat_item",
+      "variable_set",
+      "active"
+     ]
+    },
+    {
+     "table": "io_set_item",
+     "fields": [
+      "sc_cat_item",
+      "variable_set"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "master_snapshot"
+     ]
+    },
+    {
+     "table": "sys_hub_action_instance_v2",
+     "fields": [
+      "flow",
+      "values"
+     ]
+    },
+    {
+     "table": "sys_hub_flow_logic_instance_v2",
+     "fields": [
+      "flow",
+      "values"
+     ]
+    },
+    {
+     "table": "wf_workflow_version",
+     "fields": [
+      "workflow",
+      "published"
+     ]
+    },
+    {
+     "table": "wf_activity",
+     "fields": [
+      "workflow_version"
+     ]
+    },
+    {
+     "table": "sys_variable_value",
+     "fields": [
+      "document",
+      "document_key",
+      "value"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sc_cat_item",
+    "fields": [
+     "name",
+     "flow_designer_flow",
+     "workflow"
+    ],
+    "query": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item^flow_designer_flowISNOTEMPTY^ORworkflowISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itil_variables_unused",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "An input variable of an item (its own and its variable sets', labels and containers aside) is used when the current version of the item's flow names it or points to it by sys_id in a step input (Get Catalog Variables included), or its published workflow's activity settings name it (D-037). A flow or workflow shared by several items is generic fulfilment and is not judged: it cannot name one item's variables, and its fulfillers read them on the task form (the guard). Task descriptions and variables read by a fulfiller on the task form (the guard) are not seen."
+   }
+  },
+  "ITIL-012": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "group"
+     ]
+    },
+    {
+     "table": "sc_task",
+     "fields": [
+      "assignment_group",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sc_cat_item",
+    "fields": [
+     "name",
+     "group"
+    ],
+    "query": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item^groupISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itil_fulfilment_groups_empty",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Fulfilment groups are the catalog items' groups and the assignment groups of open fulfilment tasks. A group in transition is charged (the guard)."
+   }
+  },
+  "ITIL-019": {
+   "specification_gap": {
+    "missing": "what separates a business from a technical catalogue (\"audience or user-criteria differentiation\")"
+   }
+  },
+  "ITIL-021": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "roles",
+      "active"
+     ]
+    },
+    {
+     "table": "sc_cat_item_user_criteria_mtom",
+     "fields": [
+      "sc_cat_item",
+      "user_criteria"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sc_cat_item",
+    "fields": [
+     "name",
+     "roles"
+    ],
+    "query": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item"
+   },
+   "compare": {
+    "name": "itil_items_without_criteria",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Judged only where entitlement differentiation exists elsewhere (some item has user criteria, the rule's guard): items with no \"Available for\" user criteria and no roles."
+   }
+  },
+  "ITIL-025": {
+   "undefined_dependencies": [
+    "the platform records no publication approval of catalog items outside Catalog Builder review — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-026": {
+   "undefined_dependencies": [
+    "which service record is the catalogue / portal whose availability is measured — the customer's to state"
+   ]
+  },
+  "ITIL-028": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cxs_table_config",
+     "fields": [
+      "table",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cxs_table_config",
+    "fields": [
+     "table",
+     "active"
+    ],
+    "query": "active=true^tableINsc_request,sc_req_item,sc_cat_item"
+   },
+   "compare": {
+    "name": "absent_despite_volume",
+    "args": {
+     "volume_table": "kb_knowledge",
+     "query": "workflow_state=published"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The request half: a Contextual Search configuration for the request tables where articles are published (D-034). The incident half is ITSM-015."
+   }
+  },
+  "ITIL-030": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "kb_knowledge",
+     "fields": [
+      "number",
+      "ownership_group",
+      "author",
+      "workflow_state"
+     ]
+    },
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "kb_knowledge",
+    "fields": [
+     "number",
+     "ownership_group",
+     "author"
+    ],
+    "query": "workflow_state=published"
+   },
+   "compare": {
+    "name": "itil_articles_without_owner",
+    "args": {}
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The owner is the ownership group (D-033); an article with none, or whose group has no active member, is charged. A knowledge base that owns articles at base level is charged (the guard)."
+   }
+  },
+  "ITIL-034": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "kb_feedback",
+     "fields": [
+      "article",
+      "flagged",
+      "useful",
+      "comments"
+     ]
+    },
+    {
+     "table": "kb_knowledge",
+     "fields": [
+      "number"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "kb_feedback",
+    "fields": [
+     "article",
+     "flagged",
+     "useful",
+     "comments",
+     "sys_created_on"
+    ],
+    "query": "flagged=true^ORuseful=no^ORcommentsISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itil_feedback_not_actioned",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Feedback that flags an article, marks it not useful or comments on it, where the article has not been updated since (D-034). Feedback actioned outside the record is charged (the guard)."
+   }
+  },
+  "ITIL-037": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "kb_knowledge",
+     "fields": [
+      "text"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "data_classification",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "dq_identifiers_in_text",
+    "args": {
+     "fields": [
+      "kb_knowledge.text"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "PAN and Aadhaar in article text, in the formats the product owner approved (D-033; Aadhaar checksum-validated and reported separately), values masked."
+   }
+  },
+  "ITIL-038": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "kb_knowledge_base",
+     "fields": [
+      "title",
+      "kb_publish_flow",
+      "workflow",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_hub_flow",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "wf_workflow",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "kb_knowledge_base",
+    "fields": [
+     "title",
+     "kb_publish_flow",
+     "workflow"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itil_kb_without_publish_approval",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A knowledge base publishing through ServiceNow's \"Knowledge - Instant Publish\" flow or workflow has no approval step (D-034). A custom publish flow is not read."
+   }
+  },
+  "ITIL-040": {
+   "undefined_dependencies": [
+    "which measurement counts as knowledge effectiveness (deflection, resolution time with an article, self-service success) — the customer's to state"
+   ]
+  },
+  "ITIL-041": {
+   "undefined_dependencies": [
+    "the platform records no service review records, meetings or tasks as a record type — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-044": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "type",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "type",
+     "collection"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itil_agreement_type_absent",
+    "args": {
+     "base": "SLA",
+     "missing": "OLA"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "SLA, OLA and Underpinning contract are ServiceNow's own SLA-definition types (D-034): SLAs in use with no OLA defined at all. Coverage of each contributing group is not traced."
+   }
+  },
+  "ITIL-045": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "type",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "type",
+     "collection"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itil_agreement_type_absent",
+    "args": {
+     "base": "SLA",
+     "missing": "Underpinning contract"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "SLAs in use with no Underpinning contract definition at all (D-034). Which services depend on a third party is not recorded, so per-service linkage is not traced."
+   }
+  },
+  "ITIL-046": {
+   "specification_gap": {
+    "missing": "how an underpinning contract is matched to \"the customer SLA it supports\" for the same service chain"
+   }
+  },
+  "ITIL-047": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sysauto_report",
+     "fields": [
+      "report",
+      "address_list",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_report",
+     "fields": [
+      "table",
+      "title"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysauto_report",
+    "fields": [
+     "name",
+     "active",
+     "report",
+     "address_list",
+     "user_list",
+     "group_list"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itil_service_reports_without_distribution",
+    "args": {
+     "tables": [
+      "task_sla",
+      "contract_sla",
+      "service_availability",
+      "service_sla_result"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Scheduled reports on SLA and availability data with no external e-mail address (address_list). Distribution through a portal is charged (the guard)."
+   }
+  },
+  "ITIL-048": {
+   "undefined_dependencies": [
+    "the platform records no what a report discloses about its excluded population — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-049": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user_role",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "user",
+      "role"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user_role",
+    "fields": [
+     "name"
+    ],
+    "query": "name=sla_manager"
+   },
+   "compare": {
+    "name": "itil_role_unheld",
+    "args": {
+     "role": "sla_manager"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The SLM owner is ServiceNow's own sla_manager role (D-034): absent when no active user holds it. A broader role holding the responsibility is charged (the guard)."
+   }
+  },
+  "ITIL-050": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "asmt_metric_type",
+     "fields": [
+      "name",
+      "evaluation_method",
+      "active"
+     ]
+    },
+    {
+     "table": "asmt_assessment_instance",
+     "fields": [
+      "metric_type",
+      "state"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "asmt_metric_type",
+    "fields": [
+     "name",
+     "evaluation_method",
+     "active"
+    ],
+    "query": "active=true^evaluation_method=survey"
+   },
+   "compare": {
+    "name": "itil_surveys_in_use",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Satisfaction measurement is an active survey (asmt_metric_type, survey) with assessments sent. Its correlation to service or SLA performance is not judged."
+   }
+  },
+  "ITIL-053": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "release_project",
+     "fields": [
+      "number",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "release_project",
+    "fields": [
+     "number",
+     "active"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "absent_despite_volume",
+    "args": {
+     "volume_table": "change_request",
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The release practice is ServiceNow's Release Management (release_project, D-034): no release while changes are open. A release pipeline outside the platform is charged (the guard)."
+   }
+  },
+  "ITIL-059": {
+   "undefined_dependencies": [
+    "the platform records no an artefact / definitive media library linked to releases — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-062": {
+   "undefined_dependencies": [
+    "the platform records no the environment promotion path (it spans instances) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-063": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "release_project",
+     "fields": [
+      "number"
+     ]
+    },
+    {
+     "table": "sysapproval_approver",
+     "fields": [
+      "sysapproval"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "release_project",
+    "fields": [
+     "number"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itil_records_without_approval",
+    "args": {}
+   }
+  },
+  "ITIL-067": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "change_request",
+     "fields": [
+      "number",
+      "test_plan",
+      "state"
+     ]
+    },
+    {
+     "table": "change_task",
+     "fields": [
+      "change_request",
+      "change_task_type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "change_request",
+    "fields": [
+     "number",
+     "test_plan"
+    ],
+    "query": "state=3^test_planISEMPTY"
+   },
+   "compare": {
+    "name": "itil_changes_without_test_evidence",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Closed changes with no test plan and no Testing task (change_task_type testing, ServiceNow's own value, D-034). Attachments and releases are not read."
+   }
+  },
+  "ITIL-070": {
+   "undefined_dependencies": [
+    "the platform records no the test instance's configuration (it is another instance) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-071": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_upgrade_history",
+     "fields": [
+      "to_version",
+      "upgrade_started"
+     ]
+    },
+    {
+     "table": "sys_atf_test_suite_result",
+     "fields": [
+      "start_time"
+     ]
+    },
+    {
+     "table": "sys_atf_test_result",
+     "fields": [
+      "start_time"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_upgrade_history",
+    "fields": [
+     "to_version",
+     "upgrade_started"
+    ],
+    "query": "to_versionSTARTSWITHglide-"
+   },
+   "compare": {
+    "name": "itil_upgrades_without_regression",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Platform upgrades (sys_upgrade_history, to a glide- build) after which no Automated Test Framework result was recorded (D-034). A regression suite run outside ATF is charged (the guard)."
+   }
+  },
+  "ITIL-072": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_update_version",
+     "fields": [
+      "name",
+      "source_table"
+     ]
+    },
+    {
+     "table": "sys_atf_step",
+     "fields": [
+      "test",
+      "table",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_atf_test",
+     "fields": [
+      "active"
+     ]
+    },
+    {
+     "table": "sys_variable_value",
+     "fields": [
+      "document",
+      "document_key",
+      "value"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "itil_hotspots_untested",
+    "args": {
+     "max": {
+      "$param": "max_changes"
+     },
+     "window": {
+      "$param": "window",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Hotspots are PLT-164's (more than 5 customer versions in 12 months); an object is covered when an active ATF step runs on its table, or a step input names the object or the catalog item it belongs to (D-037). Tests in an external framework (the guard) are not seen."
+   }
+  },
+  "ITIL-075": {
+   "undefined_dependencies": [
+    "the platform records no capacity plans or forecasts (no capacity management product on the instance) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-076": {
+   "undefined_dependencies": [
+    "the platform records no capacity thresholds as records — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-079": {
+   "undefined_dependencies": [
+    "the platform records no a demand forecast linked to capacity planning — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-080": {
+   "undefined_dependencies": [
+    "the platform records no performance baselines as records — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-081": {
+   "undefined_dependencies": [
+    "the platform records no an action threshold on a capacity report — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-082": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "subscription_detail",
+     "fields": [
+      "subscription_name",
+      "status",
+      "allocated_count",
+      "is_latest"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "subscription_detail",
+    "fields": [
+     "subscription_name",
+     "status",
+     "allocated_count"
+    ],
+    "query": "is_latest=true"
+   },
+   "compare": {
+    "name": "itil_subscriptions_over",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Consumption against entitlement is Subscription Management's own status on its latest calculation: Over-allocated is charged, Near capacity reported (D-034); no calculation at all is the absence. The trend and the projected renewal position are not computed (no horizon is given). Entitlement managed outside the platform is charged (the guard)."
+   }
+  },
+  "ITIL-083": {
+   "undefined_dependencies": [
+    "which change risk condition counts as a capacity dimension — the customer's to state"
+   ]
+  },
+  "ITIL-084": {
+   "undefined_dependencies": [
+    "the platform records no a capacity management role (ServiceNow ships none) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-085": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "service_availability",
+     "fields": [
+      "cmdb_ci"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "service_availability",
+    "fields": [
+     "cmdb_ci"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "absent_despite_volume",
+    "args": {
+     "volume_table": "cmdb_ci_service",
+     "query": "operational_status=1"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Availability measurement is ServiceNow's service availability record (service_availability, D-034): none at all while services are operational. External monitoring is charged (the guard)."
+   }
+  },
+  "ITIL-087": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "operational_status"
+     ]
+    },
+    {
+     "table": "service_offering",
+     "fields": [
+      "parent"
+     ]
+    },
+    {
+     "table": "service_offering_commitment",
+     "fields": [
+      "service_offering",
+      "service_commitment"
+     ]
+    },
+    {
+     "table": "service_commitment",
+     "fields": [
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "busines_criticality",
+     "operational_status"
+    ],
+    "query": "operational_status=1"
+   },
+   "compare": {
+    "name": "itil_services_without_commitment",
+    "args": {
+     "types": [
+      "availability",
+      "SLA"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A service's targets are the commitments (type Availability or SLA, ServiceNow's own types, D-034) of its offerings. A target held only in a contract is charged (the guard)."
+   }
+  },
+  "ITIL-090": {
+   "undefined_dependencies": [
+    "which change risk condition counts as an availability / redundancy dimension — the customer's to state"
+   ]
+  },
+  "ITIL-093": {
+   "undefined_dependencies": [
+    "the platform records no a vital business function on a service — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-094": {
+   "undefined_dependencies": [
+    "the platform records no an availability management role (ServiceNow ships none) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-096": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "busines_criticality"
+     ]
+    },
+    {
+     "table": "service_offering",
+     "fields": [
+      "parent"
+     ]
+    },
+    {
+     "table": "service_offering_commitment",
+     "fields": [
+      "service_offering",
+      "service_commitment"
+     ]
+    },
+    {
+     "table": "service_commitment",
+     "fields": [
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "busines_criticality",
+     "operational_status"
+    ],
+    "query": "busines_criticality=1 - most critical"
+   },
+   "compare": {
+    "name": "itil_services_without_commitment",
+    "args": {
+     "types": [
+      "recovery_time_objective",
+      "recovery_point_objective"
+     ],
+     "all": true
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "RTO and RPO are ServiceNow's own commitment types (Recovery time objective, Recovery point objective, D-034); a Business Critical service (busines_criticality \"1 - most critical\") is charged unless its offerings carry both. A register held outside the platform is charged (the guard)."
+   }
+  },
+  "ITIL-101": {
+   "undefined_dependencies": [
+    "Business Continuity Management is not installed on the validation instance (no DR CI set is recorded) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-106": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "ast_contract",
+     "fields": [
+      "number",
+      "vendor",
+      "active"
+     ]
+    },
+    {
+     "table": "contract_rel_ci",
+     "fields": [
+      "contract",
+      "ci_item"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "ast_contract",
+    "fields": [
+     "number",
+     "short_description",
+     "vendor",
+     "state"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itil_contracts_unlinked",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The contract → CI / service link is contract_rel_ci (ci_item), and the contract → asset link is clm_m2m_contract_asset where Contract Management is present (D-034): an active contract with neither is charged. The reverse half — services with a supplier dependency and no contract — needs the dependency, which is not recorded."
+   }
+  },
+  "ITIL-107": {
+   "undefined_dependencies": [
+    "the platform records no supplier performance measurements against contract terms — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-112": {
+   "undefined_dependencies": [
+    "the platform records no a recurring contract ↔ commitment reconciliation activity — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-115": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "incident",
+     "fields": [
+      "contact_type"
+     ]
+    },
+    {
+     "table": "sc_request",
+     "fields": [
+      "contact_type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "itil_channel_distribution",
+    "args": {
+     "tables": [
+      "incident",
+      "sc_request"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "A measure: the contact type (channel) distribution of incidents and requests, with the share left empty. The rule gives no threshold, so nothing is judged."
+   }
+  },
+  "ITIL-116": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "ssa_deflection_metric",
+     "fields": [
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "ssa_deflection_metric",
+    "fields": [
+     "type"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "absent_despite_volume",
+    "args": {
+     "volume_table": "kb_use"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Deflection measurement is ServiceNow's self-service deflection metric (ssa_deflection_metric, D-034): none recorded while articles are used. External measurement is charged (the guard)."
+   }
+  },
+  "ITIL-117": {
+   "undefined_dependencies": [
+    "which measurement is first contact resolution — the customer's to state"
+   ]
+  },
+  "ITIL-118": {
+   "undefined_dependencies": [
+    "the platform records no call or portal abandonment (telephony data) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-119": {
+   "undefined_dependencies": [
+    "which service record is the service desk — the customer's to state"
+   ]
+  },
+  "ITIL-120": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmn_rota",
+     "fields": [
+      "name",
+      "group",
+      "use_custom_escalation",
+      "active"
+     ]
+    },
+    {
+     "table": "cmn_rota_escalation_set",
+     "fields": [
+      "cmn_rota",
+      "active"
+     ]
+    },
+    {
+     "table": "cmn_rota_esc_step_def",
+     "fields": [
+      "escalation_set",
+      "sys_users",
+      "sys_user_groups",
+      "cmn_rota_rosters",
+      "group_manager"
+     ]
+    },
+    {
+     "table": "cmn_rota_roster",
+     "fields": [
+      "rota",
+      "active"
+     ]
+    },
+    {
+     "table": "cmn_rota_member",
+     "fields": [
+      "roster",
+      "member"
+     ]
+    },
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "manager"
+     ]
+    },
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmn_rota",
+    "fields": [
+     "name",
+     "group",
+     "use_custom_escalation"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itil_escalation_unresolved",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Escalation is On-Call Scheduling's own configuration (D-034): a custom escalation's active sets and steps (users, groups, rosters, group manager), or the default escalation through the rota's active rosters, resolved to active users. Roster member date windows and catch-all settings are not judged; escalation by convention is charged (the guard)."
+   }
+  },
+  "ITIL-121": {
+   "undefined_dependencies": [
+    "the platform records no agent workload against capacity (Advanced Work Assignment capacity is not in use) — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-123": {
+   "undefined_dependencies": [
+    "the platform records no tier or queue type in reporting — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-125": {
+   "undefined_dependencies": [
+    "which life cycle stages are the portfolio's \"pipeline\" and \"retired\" stages — the customer's to state"
+   ]
+  },
+  "ITIL-126": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "dmn_demand",
+     "fields": [
+      "number"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "dmn_demand",
+    "fields": [
+     "number"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "absent_despite_volume",
+    "args": {
+     "volume_table": "change_request",
+     "query": "active=true"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Demand is ServiceNow's Demand Management record (dmn_demand, D-034): none while changes are open. A backlog outside the platform is charged (the guard)."
+   }
+  },
+  "ITIL-128": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "operational_status"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child"
+     ]
+    },
+    {
+     "table": "fm_expense_line",
+     "fields": [
+      "ci"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name"
+    ],
+    "query": "operational_status=1"
+   },
+   "compare": {
+    "name": "itil_service_cost",
+    "args": {
+     "mode": "unattributed"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Cost attribution is an expense line (fm_expense_line) on the service; the cost data available is expense lines on its direct supporting CIs (cmdb_rel_ci children), D-034. Deeper dependencies and costing in a finance system (the guard) are not seen."
+   }
+  },
+  "ITIL-129": {
+   "undefined_dependencies": [
+    "whether a chargeback or showback model is in use — the customer's to state"
+   ]
+  },
+  "ITIL-130": {
+   "undefined_dependencies": [
+    "the platform records no a budget linked to a service record — the rule cannot be read from any instance as worded"
+   ]
+  },
+  "ITIL-131": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "operational_status",
+      "install_status"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "operational_status"
+     ]
+    },
+    {
+     "table": "fm_expense_line",
+     "fields": [
+      "ci"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name"
+    ],
+    "query": "operational_status=6^ORinstall_status=7"
+   },
+   "compare": {
+    "name": "itil_service_cost",
+    "args": {
+     "mode": "retired"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A retired service is operational status Retired (6) or install status Retired (7); its supporting CIs are its direct cmdb_rel_ci children in operational status Operational (1) with expense lines (D-034). A wind-down period (the guard) is charged."
+   }
+  },
+  "ITIL-134": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_user_role",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "user",
+      "role"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_user_role",
+    "fields": [
+     "name"
+    ],
+    "query": "name=portfolio_manager"
+   },
+   "compare": {
+    "name": "itil_role_unheld",
+    "args": {
+     "role": "portfolio_manager"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The portfolio owner is ServiceNow's portfolio_manager role (D-034): absent when no active user holds it."
+   }
+  },
+  "ITIL-135": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-136": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-137": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-138": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-139": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-140": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-141": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-142": {
+   "undefined_dependencies": [
+    "Continual Improvement Management is not installed on the validation instance (no improvement register) — the rule runs where the product is in use"
+   ]
+  },
+  "ITIL-145": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "incident",
+     "fields": [
+      "problem_id"
+     ]
+    },
+    {
+     "table": "problem",
+     "fields": [
+      "number",
+      "known_error"
+     ]
+    },
+    {
+     "table": "kb_knowledge",
+     "fields": [
+      "source",
+      "workflow_state"
+     ]
+    },
+    {
+     "table": "m2m_kb_task",
+     "fields": [
+      "task"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "itil_loop_ratios",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A measure, reported and never judged (no threshold is given): incident recurrence (incidents on a problem with more than one incident), problem creation, known-error publication (as ITSM-066) and article consumption (as ITIL-027), D-034."
+   }
+  },
+  "ITIL-148": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "pa_job_indicators",
+     "fields": [
+      "indicator",
+      "job",
+      "active"
+     ]
+    },
+    {
+     "table": "pa_thresholds",
+     "fields": [
+      "indicator",
+      "owner",
+      "active"
+     ]
+    },
+    {
+     "table": "pa_targets",
+     "fields": [
+      "indicator",
+      "owner",
+      "active"
+     ]
+    },
+    {
+     "table": "pa_indicators",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "pa_job_indicators",
+    "fields": [
+     "indicator"
+    ],
+    "query": "active=true^job.active=true"
+   },
+   "compare": {
+    "name": "itil_indicators_ungoverned",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A reported metric is a Performance Analytics indicator collected by an active job; its owner and action threshold are an active threshold (pa_thresholds) or target (pa_targets), which carry the owner (D-034). Correlated action records are not recorded; governance outside the platform is charged (the guard)."
+   }
+  }
+ }
+}

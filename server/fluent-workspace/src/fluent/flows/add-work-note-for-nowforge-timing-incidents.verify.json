@@ -1,0 +1,33 @@
+{
+  "setup": {
+    "table": "incident",
+    "payload": {
+      "short_description": "Test nowforge-timing incident"
+    }
+  },
+  "wait": {
+    "flowName": "Add Work Note for nowforge-timing Incidents",
+    "timeoutSec": 90
+  },
+  "assert": [
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      },
+      "field": "work_notes",
+      "expect": {
+        "value": "Nowforge timing detected. Added work note automatically."
+      },
+      "note": "adds a work note to the incident"
+    }
+  ],
+  "cleanup": [
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      }
+    }
+  ]
+}

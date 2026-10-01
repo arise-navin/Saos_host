@@ -1,0 +1,3309 @@
+{
+ "pack": "itom",
+ "instance": "techsnitchpvtltddemo2.service-now.com",
+ "generated": "2026-09-27T05:38:36.874Z",
+ "read_only": true,
+ "contents_recorded": false,
+ "tables": {
+  "cmdb_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3550,
+   "reason": null
+  },
+  "cmdb_ci_cloud_service_account": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "cmdb_ci_service": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 319,
+   "reason": null
+  },
+  "cmdb_ci_service_by_tags": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "cmdb_ci_service_discovered": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 5,
+   "reason": null
+  },
+  "cmdb_health_staleness_rule": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1,
+   "reason": null
+  },
+  "cmdb_identifier": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 648,
+   "reason": null
+  },
+  "cmdb_key_value": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "cmdb_rel_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 345,
+   "reason": null
+  },
+  "cmn_schedule_blackout": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2,
+   "reason": null
+  },
+  "cmn_schedule_span": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 168,
+   "reason": null
+  },
+  "discovery_credentials": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 31,
+   "reason": null
+  },
+  "discovery_device_history": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 58,
+   "reason": null
+  },
+  "discovery_log": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 405,
+   "reason": null
+  },
+  "discovery_probes": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 331,
+   "reason": null
+  },
+  "discovery_range_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 4,
+   "reason": null
+  },
+  "discovery_schedule": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 4,
+   "reason": null
+  },
+  "discovery_status": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 83,
+   "reason": null
+  },
+  "dscy_credentials_affinity": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "ecc_agent": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2,
+   "reason": null
+  },
+  "ecc_agent_capability": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 34,
+   "reason": null
+  },
+  "ecc_agent_capability_m2m": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2,
+   "reason": null
+  },
+  "ecc_agent_cluster_member_m2m": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "ecc_agent_config": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 20,
+   "reason": null
+  },
+  "ecc_agent_issue": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 32,
+   "reason": null
+  },
+  "ecc_queue": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 4303,
+   "reason": null
+  },
+  "em_alert": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 40,
+   "reason": null
+  },
+  "em_alert_management_action": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 39,
+   "reason": null
+  },
+  "em_alert_management_execution": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 40,
+   "reason": null
+  },
+  "em_alert_management_rule": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 24,
+   "reason": null
+  },
+  "em_connector_instance": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1,
+   "reason": null
+  },
+  "em_event": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 43,
+   "reason": null
+  },
+  "em_impact_graph": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 52,
+   "reason": null
+  },
+  "em_impact_status": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 265,
+   "reason": null
+  },
+  "em_match_rule": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 188,
+   "reason": null
+  },
+  "incident": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 98,
+   "reason": null
+  },
+  "sa_m2m_service_entry_point": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 5,
+   "reason": null
+  },
+  "sa_pattern": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1252,
+   "reason": null
+  },
+  "sc_cat_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 469,
+   "reason": null
+  },
+  "service_offering": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 158,
+   "reason": null
+  },
+  "svc_ci_assoc": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 34,
+   "reason": null
+  },
+  "sys_audit": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1036541,
+   "reason": null
+  },
+  "sys_audit_delete": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 89288,
+   "reason": null
+  },
+  "sys_db_object": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 12135,
+   "reason": null
+  },
+  "sys_properties": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6571,
+   "reason": null
+  },
+  "sys_update_xml": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 359531,
+   "reason": null
+  },
+  "sys_user": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 969,
+   "reason": null
+  },
+  "sys_user_grmember": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 984,
+   "reason": null
+  },
+  "sys_user_has_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 47953,
+   "reason": null
+  },
+  "sysevent_email_action": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1244,
+   "reason": null
+  },
+  "sysrule_assignment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 63,
+   "reason": null
+  }
+ },
+ "fields": {
+  "cmdb_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "discovery_source",
+    "duplicate_of",
+    "install_status",
+    "ip_address",
+    "last_discovered",
+    "location",
+    "name",
+    "sys_class_name"
+   ]
+  },
+  "cmdb_ci_service": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "busines_criticality",
+    "name",
+    "service_classification"
+   ]
+  },
+  "cmdb_ci_service_discovered": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "cmdb_health_staleness_rule": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "applies_to",
+    "duration"
+   ]
+  },
+  "cmdb_rel_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "child",
+    "parent"
+   ]
+  },
+  "cmn_schedule_span": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "all_day",
+    "days_of_week",
+    "end_date_time",
+    "repeat_count",
+    "repeat_type",
+    "repeat_until",
+    "schedule",
+    "start_date_time"
+   ]
+  },
+  "discovery_credentials": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "applies_to",
+    "name",
+    "sys_created_on",
+    "sys_updated_on",
+    "type"
+   ]
+  },
+  "discovery_device_history": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "classified_as",
+    "cmdb_ci",
+    "issues",
+    "source",
+    "status"
+   ]
+  },
+  "discovery_log": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "level",
+    "source",
+    "status"
+   ]
+  },
+  "discovery_range_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "end_ip_address",
+    "name",
+    "netmask",
+    "network_ip",
+    "parent",
+    "schedule",
+    "start_ip_address",
+    "type"
+   ]
+  },
+  "discovery_schedule": {
+   "checked": true,
+   "state": "PARTIAL",
+   "missing": [
+    "owner"
+   ],
+   "wanted": [
+    "active",
+    "description",
+    "discover",
+    "location",
+    "max_run",
+    "mid_select_method",
+    "mid_server",
+    "name",
+    "owner",
+    "run_period",
+    "run_type"
+   ]
+  },
+  "discovery_status": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "completed",
+    "dscheduler",
+    "started",
+    "state"
+   ]
+  },
+  "dscy_credentials_affinity": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "credential_id",
+    "ip_address",
+    "sys_updated_on"
+   ]
+  },
+  "ecc_agent": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "host_name",
+    "last_refreshed",
+    "name",
+    "status",
+    "user_name",
+    "validated",
+    "version"
+   ]
+  },
+  "ecc_agent_capability_m2m": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "agent"
+   ]
+  },
+  "ecc_agent_cluster_member_m2m": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "agent",
+    "cluster"
+   ]
+  },
+  "ecc_queue": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "agent",
+    "queue",
+    "state",
+    "sys_created_on"
+   ]
+  },
+  "em_alert": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "acknowledged",
+    "assigned_to",
+    "assignment_group",
+    "cmdb_ci",
+    "event_count",
+    "message_key",
+    "node",
+    "number",
+    "severity",
+    "source",
+    "state",
+    "sys_created_on"
+   ]
+  },
+  "em_alert_management_action": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "management_rule"
+   ]
+  },
+  "em_alert_management_execution": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "management_rule"
+   ]
+  },
+  "em_alert_management_rule": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "alert_filter",
+    "name",
+    "submit_counter",
+    "type"
+   ]
+  },
+  "em_connector_instance": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "last_error_message",
+    "last_run_time",
+    "last_status",
+    "name",
+    "schedule"
+   ]
+  },
+  "em_event": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cmdb_ci",
+    "message_key",
+    "node",
+    "severity",
+    "source",
+    "state",
+    "time_of_event"
+   ]
+  },
+  "em_impact_graph": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "business_service"
+   ]
+  },
+  "em_impact_status": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "business_service",
+    "element_id"
+   ]
+  },
+  "em_match_rule": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "ci_type",
+    "name"
+   ]
+  },
+  "sa_m2m_service_entry_point": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cmdb_ci_endpoint",
+    "cmdb_ci_service"
+   ]
+  },
+  "service_offering": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "parent"
+   ]
+  },
+  "svc_ci_assoc": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "ci_id",
+    "service_id"
+   ]
+  },
+  "sys_audit_delete": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "documentkey",
+    "tablename"
+   ]
+  },
+  "sys_db_object": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "super_class"
+   ]
+  },
+  "sys_properties": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "sys_user": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "user_name"
+   ]
+  },
+  "sys_user_has_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "role",
+    "user"
+   ]
+  },
+  "sysevent_email_action": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "collection",
+    "condition"
+   ]
+  },
+  "sysrule_assignment": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "condition",
+    "name"
+   ]
+  }
+ },
+ "choices": {
+  "cmdb_ci.install_status.Retired": {
+   "found": true,
+   "value": "7",
+   "defined_on": "cmdb_ci",
+   "available_labels": [
+    "Installed",
+    "Pending Repair",
+    "Pending Install",
+    "On Order",
+    "In Maintenance",
+    "Retired",
+    "Stolen",
+    "In Stock",
+    "Absent"
+   ]
+  },
+  "cmdb_ci_service.busines_criticality.1 - most critical": {
+   "found": true,
+   "value": "1 - most critical",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "1 - most critical",
+    "2 - somewhat critical",
+    "3 - less critical",
+    "4 - not critical"
+   ]
+  },
+  "cmdb_ci_service.service_classification.Application Service": {
+   "found": true,
+   "value": "Application Service",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "Business Service",
+    "Technology Management Service",
+    "Application Service"
+   ]
+  },
+  "cmdb_ci_service.service_classification.Business Service": {
+   "found": true,
+   "value": "Business Service",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "Business Service",
+    "Technology Management Service",
+    "Application Service"
+   ]
+  },
+  "cmdb_ci_service.service_classification.Technology Management Service": {
+   "found": true,
+   "value": "Technical Service",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "Business Service",
+    "Technology Management Service",
+    "Application Service"
+   ]
+  },
+  "discovery_credentials.applies_to.All MID servers": {
+   "found": true,
+   "value": "all",
+   "defined_on": "discovery_credentials",
+   "available_labels": [
+    "All MID servers",
+    "Specific MID servers"
+   ]
+  },
+  "discovery_log.level.Error": {
+   "found": true,
+   "value": "2",
+   "defined_on": "syslog",
+   "available_labels": [
+    "Information",
+    "Warning",
+    "Error",
+    "Debug",
+    "Trace",
+    "Fatal"
+   ]
+  },
+  "discovery_schedule.discover.Cloud Resources": {
+   "found": true,
+   "value": "Cloud Resources",
+   "defined_on": "discovery_schedule",
+   "available_labels": [
+    "Configuration items",
+    "IP addresses",
+    "Networks",
+    "Cloud Application",
+    "Cloud Resources",
+    "Serverless",
+    "Service",
+    "Certificates"
+   ]
+  },
+  "discovery_schedule.mid_select_method.Specific MID Server": {
+   "found": true,
+   "value": "specific_mid",
+   "defined_on": "discovery_schedule",
+   "available_labels": [
+    "Auto-Select Mid Server",
+    "Specific MID Cluster",
+    "Specific MID Server",
+    "Use Behavior"
+   ]
+  },
+  "discovery_schedule.run_type.Daily": {
+   "found": true,
+   "value": "daily",
+   "defined_on": "sysauto",
+   "available_labels": [
+    "Daily",
+    "Day and Month in Year",
+    "Weekly",
+    "Monthly",
+    "Day in Week in Month in Year",
+    "Periodically",
+    "Once",
+    "On Demand",
+    "Week in Month",
+    "Business Calendar: Entry Start",
+    "Business Calendar: Entry End"
+   ]
+  },
+  "discovery_schedule.run_type.Monthly": {
+   "found": true,
+   "value": "monthly",
+   "defined_on": "sysauto",
+   "available_labels": [
+    "Daily",
+    "Day and Month in Year",
+    "Weekly",
+    "Monthly",
+    "Day in Week in Month in Year",
+    "Periodically",
+    "Once",
+    "On Demand",
+    "Week in Month",
+    "Business Calendar: Entry Start",
+    "Business Calendar: Entry End"
+   ]
+  },
+  "discovery_schedule.run_type.Periodically": {
+   "found": true,
+   "value": "periodically",
+   "defined_on": "sysauto",
+   "available_labels": [
+    "Daily",
+    "Day and Month in Year",
+    "Weekly",
+    "Monthly",
+    "Day in Week in Month in Year",
+    "Periodically",
+    "Once",
+    "On Demand",
+    "Week in Month",
+    "Business Calendar: Entry Start",
+    "Business Calendar: Entry End"
+   ]
+  },
+  "discovery_schedule.run_type.Weekly": {
+   "found": true,
+   "value": "weekly",
+   "defined_on": "sysauto",
+   "available_labels": [
+    "Daily",
+    "Day and Month in Year",
+    "Weekly",
+    "Monthly",
+    "Day in Week in Month in Year",
+    "Periodically",
+    "Once",
+    "On Demand",
+    "Week in Month",
+    "Business Calendar: Entry Start",
+    "Business Calendar: Entry End"
+   ]
+  },
+  "discovery_status.state.Canceled,Cancelled": {
+   "found": true,
+   "value": "Canceled",
+   "defined_on": "discovery_status",
+   "available_labels": [
+    "Starting",
+    "Active",
+    "Completed",
+    "Canceled"
+   ]
+  },
+  "discovery_status.state.Completed": {
+   "found": true,
+   "value": "Completed",
+   "defined_on": "discovery_status",
+   "available_labels": [
+    "Starting",
+    "Active",
+    "Completed",
+    "Canceled"
+   ]
+  },
+  "ecc_queue.queue.Input": {
+   "found": true,
+   "value": "input",
+   "defined_on": "ecc_queue",
+   "available_labels": [
+    "input",
+    "output"
+   ]
+  },
+  "ecc_queue.queue.Output": {
+   "found": true,
+   "value": "output",
+   "defined_on": "ecc_queue",
+   "available_labels": [
+    "input",
+    "output"
+   ]
+  },
+  "ecc_queue.state.Ready": {
+   "found": true,
+   "value": "ready",
+   "defined_on": "ecc_queue",
+   "available_labels": [
+    "ready",
+    "processed",
+    "error",
+    "processing"
+   ]
+  },
+  "em_alert.severity.Critical": {
+   "found": true,
+   "value": "1",
+   "defined_on": "em_alert",
+   "available_labels": [
+    "Critical",
+    "Major",
+    "Minor",
+    "Warning",
+    "OK",
+    "Clear"
+   ]
+  },
+  "em_alert.severity.Major": {
+   "found": true,
+   "value": "2",
+   "defined_on": "em_alert",
+   "available_labels": [
+    "Critical",
+    "Major",
+    "Minor",
+    "Warning",
+    "OK",
+    "Clear"
+   ]
+  },
+  "em_alert.state.Closed": {
+   "found": true,
+   "value": "Closed",
+   "defined_on": "em_alert",
+   "available_labels": [
+    "Open",
+    "Reopen",
+    "Flapping",
+    "Closed"
+   ]
+  },
+  "em_connector_instance.last_status.Error": {
+   "found": true,
+   "value": "Error",
+   "defined_on": "em_connector_instance",
+   "available_labels": [
+    "Success",
+    "Error"
+   ]
+  },
+  "em_event.severity.Clear": {
+   "found": true,
+   "value": "0",
+   "defined_on": "em_event",
+   "available_labels": [
+    "Critical",
+    "Major",
+    "Minor",
+    "Warning",
+    "OK",
+    "Clear"
+   ]
+  },
+  "em_event.state.Ready": {
+   "found": true,
+   "value": "Ready",
+   "defined_on": "em_event",
+   "available_labels": [
+    "Ready",
+    "Processed",
+    "Ignored",
+    "Error"
+   ]
+  }
+ },
+ "run": {
+  "elapsed_ms": 200164,
+  "summary": {
+   "evaluated": 54,
+   "unconfigured": 15,
+   "unavailable": 85
+  },
+  "verdicts": {
+   "fail": 22,
+   "none": 100,
+   "pass": 14,
+   "inconclusive": 18
+  },
+  "rules": {
+   "ITOM-003": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 84,
+     "judged": 84,
+     "unit": "locations"
+    },
+    "undetermined": null,
+    "ms": 5934
+   },
+   "ITOM-004": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 4,
+     "unit": "discovery_schedule records"
+    },
+    "undetermined": null,
+    "ms": 753
+   },
+   "ITOM-005": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-006": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 3,
+     "unit": "schedules"
+    },
+    "undetermined": null,
+    "ms": 9893
+   },
+   "ITOM-007": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 3,
+     "unit": "schedules"
+    },
+    "undetermined": null,
+    "ms": 3069
+   },
+   "ITOM-008": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-009": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "discovery ranges"
+    },
+    "undetermined": null,
+    "ms": 8456
+   },
+   "ITOM-010": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "ranges on active schedules"
+    },
+    "undetermined": null,
+    "ms": 2
+   },
+   "ITOM-011": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 4,
+     "unit": "active schedules"
+    },
+    "undetermined": null,
+    "ms": 3200
+   },
+   "ITOM-012": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-013": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "capability",
+     "step": null,
+     "table": "cmn_schedule",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 5052
+   },
+   "ITOM-014": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_table",
+     "step": "schema_verification",
+     "table": "discovery_schedule",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-015": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-016": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-017": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-018": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-019": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "window"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1601
+   },
+   "ITOM-020": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "read",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 3585
+   },
+   "ITOM-021": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-022": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-023": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-024": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-025": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "rotation_period"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-026": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 27,
+     "judged": 27,
+     "unit": "discovery_credentials records"
+    },
+    "undetermined": null,
+    "ms": 2356
+   },
+   "ITOM-027": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "read",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 716
+   },
+   "ITOM-028": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 58,
+     "judged": 58,
+     "unit": "discovery_device_history records"
+    },
+    "undetermined": null,
+    "ms": 957
+   },
+   "ITOM-029": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 3,
+     "judged": 3,
+     "unit": "schedules"
+    },
+    "undetermined": null,
+    "ms": 1502
+   },
+   "ITOM-030": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 58,
+     "judged": 58,
+     "unit": "discovery_device_history records"
+    },
+    "undetermined": null,
+    "ms": 407
+   },
+   "ITOM-031": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 58,
+     "judged": 58,
+     "unit": "discovery_device_history records"
+    },
+    "undetermined": null,
+    "ms": 410
+   },
+   "ITOM-032": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "window"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1968
+   },
+   "ITOM-033": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "window"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-034": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-035": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-036": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "max_age"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 2126
+   },
+   "ITOM-037": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "max_lag"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-038": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-039": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 5,
+     "judged": 5,
+     "unit": "cancelled runs"
+    },
+    "undetermined": null,
+    "ms": 719
+   },
+   "ITOM-040": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "max_rows"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-041": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-042": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-043": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-044": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-045": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-046": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-047": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-048": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-049": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-050": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-051": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "single-MID schedules"
+    },
+    "undetermined": null,
+    "ms": 8646
+   },
+   "ITOM-052": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "MID clusters"
+    },
+    "undetermined": "empty_population",
+    "ms": 2103
+   },
+   "ITOM-053": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 2,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 4,
+     "unit": "ecc_agent records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 1433
+   },
+   "ITOM-054": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 2,
+     "judged": 2,
+     "unit": "MID servers"
+    },
+    "undetermined": null,
+    "ms": 1021
+   },
+   "ITOM-055": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 2,
+     "judged": 2,
+     "unit": "ecc_agent records"
+    },
+    "undetermined": null,
+    "ms": 641
+   },
+   "ITOM-056": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-057": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-058": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "MID clusters"
+    },
+    "undetermined": "empty_population",
+    "ms": 719
+   },
+   "ITOM-059": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-060": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-061": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 2,
+     "judged": 2,
+     "unit": "ecc_agent records"
+    },
+    "undetermined": null,
+    "ms": 688
+   },
+   "ITOM-062": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "MIDs referenced by active schedules"
+    },
+    "undetermined": null,
+    "ms": 2700
+   },
+   "ITOM-063": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "MID accounts"
+    },
+    "undetermined": null,
+    "ms": 4572
+   },
+   "ITOM-064": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-065": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-066": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 2,
+     "judged": 2,
+     "unit": "MID servers"
+    },
+    "undetermined": null,
+    "ms": 998
+   },
+   "ITOM-067": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 55,
+     "judged": 55,
+     "unit": "services"
+    },
+    "undetermined": null,
+    "ms": 1048
+   },
+   "ITOM-068": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 5,
+     "judged": 5,
+     "unit": "services"
+    },
+    "undetermined": null,
+    "ms": 3893
+   },
+   "ITOM-069": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-070": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-071": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-072": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-073": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-074": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 4,
+     "unit": "services with an entry point"
+    },
+    "undetermined": null,
+    "ms": 2383
+   },
+   "ITOM-075": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "min_count"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-076": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-077": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 5,
+     "judged": 4,
+     "unit": "mapped services"
+    },
+    "undetermined": null,
+    "ms": 4797
+   },
+   "ITOM-078": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-079": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-080": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-081": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-082": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-083": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 5,
+     "judged": 5,
+     "unit": "entry points"
+    },
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-084": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "active connectors"
+    },
+    "undetermined": "empty_population",
+    "ms": 3564
+   },
+   "ITOM-085": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-086": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "active connectors"
+    },
+    "undetermined": "empty_population",
+    "ms": 421
+   },
+   "ITOM-087": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-088": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-089": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-090": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-091": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "em_event records"
+    },
+    "undetermined": "empty_population",
+    "ms": 4302
+   },
+   "ITOM-092": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-093": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-094": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "CI classes receiving events"
+    },
+    "undetermined": null,
+    "ms": 3643
+   },
+   "ITOM-095": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "window"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-096": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "alerts with a bound CI"
+    },
+    "undetermined": null,
+    "ms": 4151
+   },
+   "ITOM-097": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-098": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 4,
+    "blocker": null,
+    "population": {
+     "total": 43,
+     "judged": 43,
+     "unit": "em_event records"
+    },
+    "undetermined": null,
+    "ms": 970
+   },
+   "ITOM-099": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "alerts bound to a CI"
+    },
+    "undetermined": null,
+    "ms": 682
+   },
+   "ITOM-100": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-101": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 9,
+     "judged": 9,
+     "unit": "em_alert records"
+    },
+    "undetermined": null,
+    "ms": 2739
+   },
+   "ITOM-102": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-103": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-104": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-105": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 13,
+     "judged": 13,
+     "unit": "disabled event rules"
+    },
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-106": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 6,
+     "judged": 6,
+     "unit": "Critical alerts with a bound CI"
+    },
+    "undetermined": null,
+    "ms": 3097
+   },
+   "ITOM-107": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "alerts"
+    },
+    "undetermined": null,
+    "ms": 1015
+   },
+   "ITOM-108": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "unassigned alerts"
+    },
+    "undetermined": null,
+    "ms": 4178
+   },
+   "ITOM-109": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 5,
+     "judged": 5,
+     "unit": "em_alert records (summed over variants)"
+    },
+    "undetermined": "empty_population",
+    "ms": 2285
+   },
+   "ITOM-110": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "em_alert records"
+    },
+    "undetermined": null,
+    "ms": 380
+   },
+   "ITOM-111": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "alerts"
+    },
+    "undetermined": null,
+    "ms": 15585
+   },
+   "ITOM-112": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 19,
+     "judged": 1,
+     "unit": "active alert management rules that fired"
+    },
+    "undetermined": null,
+    "ms": 4195
+   },
+   "ITOM-113": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "alerts"
+    },
+    "undetermined": null,
+    "ms": 712
+   },
+   "ITOM-114": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-115": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 43,
+     "judged": 43,
+     "unit": "em_event records"
+    },
+    "undetermined": null,
+    "ms": 323
+   },
+   "ITOM-116": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 6,
+     "judged": 6,
+     "unit": "alerts"
+    },
+    "undetermined": null,
+    "ms": 13208
+   },
+   "ITOM-117": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 9,
+     "judged": 9,
+     "unit": "open alerts"
+    },
+    "undetermined": null,
+    "ms": 2060
+   },
+   "ITOM-118": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 19,
+     "judged": 19,
+     "unit": "em_alert_management_rule records"
+    },
+    "undetermined": null,
+    "ms": 1019
+   },
+   "ITOM-119": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-120": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-121": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "reader",
+     "table": "cmdb_ci_cloud_service_account",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 2423
+   },
+   "ITOM-122": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-123": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "reader",
+     "table": "cmdb_ci_cloud_service_account",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-124": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "schedules"
+    },
+    "undetermined": "empty_population",
+    "ms": 1316
+   },
+   "ITOM-125": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "unconfigured_parameter",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": [
+      "cloud_classes"
+     ]
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-126": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-127": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "reader",
+     "table": "cmdb_ci_cloud_service_account",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-128": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-129": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "reader",
+     "table": "cmdb_ci_cloud_service_account",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-130": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-131": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-132": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-133": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-134": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-135": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-136": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-137": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-138": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-139": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-140": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-141": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-142": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-143": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-144": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-145": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "candidate",
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-146": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-147": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-148": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 6,
+     "judged": 6,
+     "unit": "discovery runs that did not complete"
+    },
+    "undetermined": null,
+    "ms": 3422
+   },
+   "ITOM-149": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-150": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 40,
+     "judged": 40,
+     "unit": "alerts bound to a CI"
+    },
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-151": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-152": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 50,
+     "judged": 38,
+     "unit": "Business Critical services with no impact tree"
+    },
+    "undetermined": null,
+    "ms": 25244
+   },
+   "ITOM-153": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITOM-154": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-155": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_object",
+     "step": "reader",
+     "table": "cmdb_ci_cloud_service_account",
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITOM-156": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 4,
+     "unit": "active schedules without a location"
+    },
+    "undetermined": null,
+    "ms": 10852
+   }
+  }
+ },
+ "requests": {
+  "query": 582,
+  "count": 219,
+  "aggregate": 22,
+  "byTable": {
+   "sys_db_object": 263,
+   "cmdb_ci": 22,
+   "cmdb_ci_cloud_service_account": 3,
+   "cmdb_ci_service": 18,
+   "cmdb_ci_service_by_tags": 2,
+   "cmdb_ci_service_discovered": 6,
+   "cmdb_health_staleness_rule": 5,
+   "cmdb_identifier": 2,
+   "cmdb_key_value": 2,
+   "cmdb_rel_ci": 15,
+   "cmn_schedule_blackout": 5,
+   "cmn_schedule_span": 5,
+   "discovery_credentials": 9,
+   "discovery_device_history": 19,
+   "discovery_log": 3,
+   "discovery_probes": 2,
+   "discovery_range_item": 5,
+   "discovery_schedule": 16,
+   "discovery_status": 23,
+   "dscy_credentials_affinity": 5,
+   "ecc_agent": 17,
+   "ecc_agent_capability": 2,
+   "ecc_agent_capability_m2m": 5,
+   "ecc_agent_cluster_member_m2m": 6,
+   "ecc_agent_config": 2,
+   "ecc_agent_issue": 2,
+   "ecc_queue": 4,
+   "em_alert": 99,
+   "em_alert_management_action": 4,
+   "em_alert_management_execution": 4,
+   "em_alert_management_rule": 13,
+   "em_connector_instance": 6,
+   "em_event": 12,
+   "em_impact_graph": 5,
+   "em_impact_status": 5,
+   "em_match_rule": 7,
+   "incident": 2,
+   "sa_m2m_service_entry_point": 5,
+   "sa_pattern": 2,
+   "sc_cat_item": 2,
+   "service_offering": 13,
+   "svc_ci_assoc": 12,
+   "sys_audit": 2,
+   "sys_audit_delete": 5,
+   "sys_properties": 7,
+   "sys_update_xml": 2,
+   "sys_user": 5,
+   "sys_user_grmember": 2,
+   "sys_user_has_role": 5,
+   "sysevent_email_action": 5,
+   "sysrule_assignment": 5,
+   "sys_dictionary": 73,
+   "sys_choice": 49,
+   "discovery_schedule_range": 2,
+   "discovery_range_item_ip": 2
+  }
+ },
+ "elapsed_ms": 298551
+}

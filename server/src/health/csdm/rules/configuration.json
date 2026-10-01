@@ -1,0 +1,4673 @@
+{
+ "engine": "configuration",
+ "rules": {
+  "CSDM-001": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_business_capability",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_absent",
+    "args": {
+     "what": "Business Capability layer (cmdb_ci_business_capability)"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "\"Where the CSDM plugin is active\" is read as the class existing on the instance. An estate that deliberately starts at Business Service (a lower target band) is still charged: the target band is not recorded."
+   }
+  },
+  "CSDM-002": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_unlinked",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "from": {
+      "table": "cmdb_ci_business_capability"
+     },
+     "to": {
+      "table": "cmdb_ci_business_app"
+     },
+     "unit": "business capabilities"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A relationship of any type, in either direction, counts as the link. Capabilities created ahead of a mapping programme are counted."
+   }
+  },
+  "CSDM-003": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_unlinked",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "from": {
+      "table": "cmdb_ci_business_app"
+     },
+     "to": {
+      "layers": [
+       "application"
+      ]
+     },
+     "unit": "business applications"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A relationship of any type, in either direction, counts. Applications kept for portfolio purposes only are counted."
+   }
+  },
+  "CSDM-004": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_no_offering",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-062",
+     "reason": "the offering layer is not used at all"
+    }
+   ]
+  },
+  "CSDM-005": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "service_offering",
+     "fields": [
+      "name",
+      "sla"
+     ]
+    },
+    {
+     "table": "service_offering_commitment",
+     "fields": [
+      "service_offering",
+      "service_commitment"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_offering_no_commitment",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A commitment (service_offering_commitment) or the offering's own SLA field counts; an SLA definition covering the offering through its conditions is not evaluated (no condition evaluator). Commitments held in a contract system are not seen."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-062",
+     "reason": "the offering layer is not used at all"
+    }
+   ]
+  },
+  "CSDM-007": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_unlinked",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "from": {
+      "layers": [
+       "technical"
+      ]
+     },
+     "to": {
+      "layers": [
+       "application"
+      ]
+     },
+     "unit": "technical services"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A relationship to an application service (either direction, any type) counts; a relationship to a business application directly is not read."
+   }
+  },
+  "CSDM-008": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_classification_mismatch",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   }
+  },
+  "CSDM-011": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_information_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_layer_skip",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The shortcut judged is a business service or offering related directly to an infrastructure CI (the catalogue's example). Other non-adjacent layer pairs are not defined and not judged; whether shortcuts are the dominant pattern is not assessed."
+   }
+  },
+  "CSDM-013": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_unlinked",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "from": {
+      "table": "cmdb_ci_business_app"
+     },
+     "to": {
+      "table": "cmdb_ci_business_capability"
+     },
+     "unit": "business applications"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A relationship of any type, in either direction, counts. Where the capability layer is not in use every application is charged (the guard is CSDM-001's finding)."
+   }
+  },
+  "CSDM-014": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "data_classification",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "m2m_dictionary_dataclass",
+     "fields": [
+      "data_class",
+      "sys_dictionary"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element"
+     ]
+    },
+    {
+     "table": "cmdb_ci_information_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_information_object_layer",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "classes": [
+      "Personally identifiable information",
+      "HR PII",
+      "Master data PII",
+      "Transactional Data PII",
+      "Contact information",
+      "Identification information",
+      "Demographic information"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Personal data holdings are the fields the instance classifies with a personal-data class (m2m_dictionary_dataclass, D-032); unclassified personal data is not seen. \"Negligible\" is not defined: zero information objects is judged. Classification kept outside CSDM is not recognised."
+   }
+  },
+  "CSDM-015": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "incident",
+     "fields": [
+      "business_service"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_unlayered_referenced",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Service records incidents reference are judged; a record in no layer is a base-class service with no classification, or a class outside the CSDM tree. SLA references resolve through conditions and are not read."
+   }
+  },
+  "CSDM-017": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_services_where",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "empty": [
+      "life_cycle_stage"
+     ],
+     "unit": "service records"
+    }
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    },
+    {
+     "rule": "CSDM-026",
+     "reason": "a service class sits entirely at the default lifecycle value — CSDM-026 reports it once, in place of one finding per record"
+    }
+   ]
+  },
+  "CSDM-018": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_services_where",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "present": [
+      "life_cycle_stage"
+     ],
+     "empty": [
+      "life_cycle_stage_status"
+     ],
+     "unit": "service records with a stage"
+    }
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-019": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "life_cycle_control",
+     "fields": [
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "table",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_lifecycle_combination",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-020": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "life_cycle_mapping",
+     "fields": [
+      "table",
+      "legacy_field_name",
+      "legacy_field_value",
+      "life_cycle_control"
+     ]
+    },
+    {
+     "table": "life_cycle_control",
+     "fields": [
+      "life_cycle_stage",
+      "life_cycle_stage_status"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_lifecycle_vs_operational",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The mapping is the platform's own life cycle mapping (life_cycle_mapping: operational_status value of the class or an ancestor → life_cycle_control, D-033). A value the mapping does not cover is not judged."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-021": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "install_status",
+      "operational_status"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_operational_all_retired",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "operational": {
+      "$choice": {
+       "table": "cmdb_ci",
+       "element": "operational_status",
+       "label": "Operational"
+      }
+     },
+     "retired_install": {
+      "$choice": {
+       "table": "cmdb_ci",
+       "element": "install_status",
+       "label": "Retired"
+      }
+     },
+     "retired_operational": {
+      "$choice": {
+       "table": "cmdb_ci",
+       "element": "operational_status",
+       "label": "Retired"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "\"Operational\" is the service's operational_status. A migration with new CIs not yet associated is counted."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-022": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "life_cycle_stage",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "incident",
+     "fields": [
+      "business_service",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_stage_contradiction",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "stage": "Retired",
+     "check": "open_incidents"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Incidents raised to complete the retirement are counted."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-023": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "life_cycle_stage",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "service_offering_commitment",
+     "fields": [
+      "service_offering",
+      "service_commitment"
+     ]
+    },
+    {
+     "table": "service_commitment",
+     "fields": [
+      "sla"
+     ]
+    },
+    {
+     "table": "contract_sla",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_stage_contradiction",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "stage": "End of Life",
+     "check": "active_sla"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Active SLA definitions reached through the service's offerings and their commitments are found; a definition covering the service through its conditions is not evaluated."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-024": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "life_cycle_stage",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "operational_status"
+     ]
+    },
+    {
+     "table": "incident",
+     "fields": [
+      "business_service",
+      "sys_created_on"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_stage_contradiction",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "stage": "End of Life",
+     "check": "live_cis_recent_incidents",
+     "operational": {
+      "$choice": {
+       "table": "cmdb_ci",
+       "element": "operational_status",
+       "label": "Operational"
+      }
+     },
+     "window": {
+      "$param": "window",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The finding is the ambiguity: detection is certain, remediation confidence is low — never bulk-apply. Both interpretations are for the reviewer."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-025": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "sys_audit",
+     "fields": [
+      "documentkey",
+      "fieldname"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "audit"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent",
+     "sys_created_on"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_fields_never_changed",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "fields": [
+      "life_cycle_stage",
+      "life_cycle_stage_status"
+     ],
+     "min_age": {
+      "$param": "min_age"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Field history is sys_audit; a service is judged only where its class table is audited (sys_dictionary audit=true) — elsewhere \"no entry\" would prove nothing (D-033)."
+   }
+  },
+  "CSDM-026": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "element",
+      "default_value"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_default_lifecycle",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "share": {
+      "$param": "share"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The default is the dictionary default of life_cycle_stage (empty when none is set). Whether any record has ever deviated is not read (no audit)."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-028": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "life_cycle_stage",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_parent_child_lifecycle",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "parent_stage": "End of Life",
+     "child_stage": "Operational"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "ServiceNow publishes no parent-child lifecycle matrix (D-032): the one conflict judged is a parent at End of Life with a child still Operational, through the parent field. A staged, bottom-up retirement is counted."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-029": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "life_cycle_stage",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "life_cycle_stage_status",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "incident",
+     "fields": [
+      "business_service"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_stage_contradiction",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "stage": [
+      "Ideation",
+      "Purchase",
+      "Inventory",
+      "Design",
+      "Deploy"
+     ],
+     "check": "any_incidents",
+     "exclude_statuses": [
+      "Pilot"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The planning stages are ServiceNow's pre-operational stages for logical items (Ideation, Purchase, Inventory, Design, Deploy — CSDM 5, D-032); a service in Pilot is excluded (the guard: incidents raised during a pilot). Any incident on the service counts."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-032",
+     "reason": "the lifecycle model is not configured (no permitted stage / status set)"
+    }
+   ]
+  },
+  "CSDM-031": {
+   "undefined_dependencies": [
+    "what counts as enforcement of the permitted combinations — a data policy, a UI policy, a dependent reference qualifier or a business rule — not stated; the platform's own dependency between stage and status is itself a qualifier"
+   ]
+  },
+  "CSDM-032": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "life_cycle_control",
+     "fields": [
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "life_cycle_control",
+    "fields": [
+     "life_cycle_stage",
+     "life_cycle_stage_status"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "csdm_absent",
+    "args": {
+     "what": "active lifecycle stage / status combinations (life_cycle_control)"
+    }
+   }
+  },
+  "CSDM-033": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_services_where",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "layers": [
+      "business",
+      "technical",
+      "application"
+     ],
+     "empty": [
+      "owned_by",
+      "managed_by"
+     ],
+     "unit": "services"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Business, technical and application services are judged (offerings are CSDM-041). Ownership held at the offering level is counted."
+   }
+  },
+  "CSDM-036": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_services_where",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "layers": [
+      "business"
+     ],
+     "empty": [
+      "business_relation_manager"
+     ],
+     "unit": "business services"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "An organisation that does not use the role is still charged: its use is not recorded."
+   }
+  },
+  "CSDM-037": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name",
+      "owned_by",
+      "support_group"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_app_ownership",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Divergence is a signal, not proof: deliberate separation of portfolio and operational ownership is counted."
+   }
+  },
+  "CSDM-038": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_owner_share",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "max_share": {
+      "$param": "max_share"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The judgement is advisory: a genuinely centralised service management function is counted."
+   }
+  },
+  "CSDM-039": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "sys_audit",
+     "fields": [
+      "documentkey",
+      "fieldname"
+     ]
+    },
+    {
+     "table": "sys_dictionary",
+     "fields": [
+      "name",
+      "audit"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent",
+     "sys_created_on"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_fields_never_changed",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "fields": [
+      "owned_by",
+      "managed_by"
+     ],
+     "min_age": {
+      "$param": "min_age"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Ownership never changed is judged from sys_audit on owned_by and managed_by, for audited class tables only; \"despite organisational change\" is not established."
+   }
+  },
+  "CSDM-041": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_offering_owner",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A documented rationale is not recorded on the platform: every divergence is counted."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-062",
+     "reason": "the offering layer is not used at all"
+    }
+   ]
+  },
+  "CSDM-042": {
+   "undefined_dependencies": [
+    "the review period, and which attestation records cover service ownership (cert_filter / cert_audit attest any attribute) — not given"
+   ]
+  },
+  "CSDM-043": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_services_where",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "layers": [
+      "application"
+     ],
+     "empty": [
+      "used_for"
+     ],
+     "unit": "application services"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Environment expressed through a naming convention instead is not recognised."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-050",
+     "reason": "no environment value set is defined"
+    }
+   ]
+  },
+  "CSDM-044": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_mixed_environment",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "production": {
+      "$choice": {
+       "table": "cmdb_ci_service",
+       "element": "used_for",
+       "label": "Production"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Children through the parent field are judged, with used_for set (records without it are CSDM-043). Deliberate combined modelling is counted."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-050",
+     "reason": "no environment value set is defined"
+    }
+   ]
+  },
+  "CSDM-045": {
+   "engine": "configuration",
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "start_condition",
+     "pause_condition",
+     "stop_condition"
+    ],
+    "query": "active=true"
+   },
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "start_condition",
+      "active"
+     ]
+    },
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    }
+   ],
+   "compare": {
+    "name": "csdm_sla_named_services",
+    "args": {
+     "mode": "non_production",
+     "production": {
+      "$choice": {
+       "table": "cmdb_ci_service",
+       "element": "used_for",
+       "label": "Production"
+      }
+     }
+    }
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-050",
+     "reason": "no environment value set is defined"
+    }
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "An SLA covers a service when its conditions name the service (business_service / cmdb_ci / service_offering = its sys_id, D-033); a service outside Production (used_for) named that way is charged."
+   }
+  },
+  "CSDM-046": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_business_nonprod_only",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "production": {
+      "$choice": {
+       "table": "cmdb_ci_service",
+       "element": "used_for",
+       "label": "Production"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Only business services whose related application services ALL have used_for set are judged; often the symptom of CSDM-043 rather than an architecture problem."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-050",
+     "reason": "no environment value set is defined"
+    }
+   ]
+  },
+  "CSDM-048": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "environment"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_nonprod_service_prod_cis",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "production": {
+      "$choice": {
+       "table": "cmdb_ci_service",
+       "element": "used_for",
+       "label": "Production"
+      }
+     },
+     "ci_production": {
+      "$choice": {
+       "table": "cmdb_ci",
+       "element": "environment",
+       "label": "Production"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The mismatch judged is a non-production service on production CIs; the other direction is CSDM-047 (≡ CMDB-111), counted there. Service used_for and CI environment use different value sets, so only production against non-production is compared."
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-050",
+     "reason": "no environment value set is defined"
+    }
+   ]
+  },
+  "CSDM-049": {
+   "undefined_dependencies": [
+    "which reports are \"portfolio reports\", and what counts as an environment filter in them"
+   ]
+  },
+  "CSDM-050": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_choice",
+     "fields": [
+      "name",
+      "element",
+      "inactive"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_choice",
+    "fields": [
+     "value"
+    ],
+    "query": "name=cmdb_ci_service^element=used_for^inactive=false"
+   },
+   "compare": {
+    "name": "csdm_absent",
+    "args": {
+     "what": "environment values (cmdb_ci_service.used_for choice list)"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The value set is judged; its enforcement is not (\"or enforced\" — what counts as enforcement is not stated)."
+   }
+  },
+  "CSDM-051": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_rel_type_suggest",
+     "fields": [
+      "base_class",
+      "dependent_class",
+      "cmdb_rel_type",
+      "parent",
+      "child"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "sys_class_name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_information_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_suggested_relationships",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "mode": "types"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Relationships BETWEEN layers are judged (a service hierarchy inside one layer is not a layer pair). The permitted types are the instance's own suggested relationships (CI Class Manager, cmdb_rel_type_suggest, D-032), ancestors included; a class pair the list does not cover is not judged (the guard: type scoping not configured)."
+   }
+  },
+  "CSDM-052": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_rel_type_suggest",
+     "fields": [
+      "base_class",
+      "dependent_class",
+      "cmdb_rel_type",
+      "parent",
+      "child"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "sys_class_name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_information_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_suggested_relationships",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "mode": "direction"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The direction a class pair strongly indicates is the instance's own suggested relationships (cmdb_rel_type_suggest, parent / child, D-033); a pair suggested only the other way is reversed. A pair it does not cover is not judged."
+   }
+  },
+  "CSDM-055": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_rel_type_suggest",
+     "fields": [
+      "base_class",
+      "dependent_class",
+      "cmdb_rel_type",
+      "parent",
+      "child"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "sys_class_name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_information_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_suggested_relationships",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "mode": "containment"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The permitted containment set is the dependent classes the instance suggests for the application-service class (cmdb_rel_type_suggest, D-032 — \"what would discovery do\"). Application services whose class has no suggestion are not judged. Deliberate flattened modelling is counted."
+   }
+  },
+  "CSDM-056": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_rel_type",
+     "fields": [
+      "parent_descriptor",
+      "child_descriptor"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_service_cycles",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   }
+  },
+  "CSDM-058": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "sys_class_name"
+     ]
+    },
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name",
+      "value"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_network_reach_platform_depth",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "property": "glide.relationship.max_depth",
+     "platform_default": 10
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The depth is the instance's own impact depth, glide.relationship.max_depth, or ServiceNow's default of 10 when it is not set (D-032). Downward traversal follows relationships from parent to child. Network modelled outside CSDM with another impact mechanism is counted."
+   }
+  },
+  "CSDM-060": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_duplicate_edges",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   }
+  },
+  "CSDM-062": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_offering_layer",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"Zero or negligible\": zero is judged; \"negligible\" is not defined. A deliberately simplified model (a lower target band) is counted."
+   }
+  },
+  "CSDM-066": {
+   "undefined_dependencies": [
+    "whether a chargeback model is in use — not recorded"
+   ]
+  },
+  "CSDM-067": {
+   "engine": "configuration",
+   "reader": "table_rows",
+   "args": {
+    "table": "contract_sla",
+    "fields": [
+     "name",
+     "start_condition",
+     "pause_condition",
+     "stop_condition"
+    ],
+    "query": "active=true"
+   },
+   "requires_tables": [
+    {
+     "table": "contract_sla",
+     "fields": [
+      "name",
+      "start_condition",
+      "active"
+     ]
+    },
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "service_offering",
+     "fields": [
+      "parent"
+     ]
+    }
+   ],
+   "compare": {
+    "name": "csdm_sla_named_services",
+    "args": {
+     "mode": "with_offerings"
+    }
+   },
+   "gated_by": [
+    {
+     "rule": "CSDM-062",
+     "reason": "the offering layer is not used at all"
+    }
+   ]
+  },
+  "CSDM-072": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "core_company",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmn_department",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmn_location",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name"
+     ]
+    },
+    {
+     "table": "cmdb_model",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_information_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_maturity_stage",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "foundation": [
+      "core_company",
+      "cmn_department",
+      "cmn_location",
+      "sys_user_group",
+      "sys_user",
+      "cmdb_model"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "A stage is reached when its tables hold records and every earlier stage is reached — ServiceNow gives no percentage thresholds (CSDM 5). Contracts, business units and CMDB groups (also Foundation data) are not read. The number is csdm-quality/2."
+   }
+  },
+  "CSDM-073": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "core_company",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmn_department",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmn_location",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name"
+     ]
+    },
+    {
+     "table": "cmdb_model",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_app",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_business_capability",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_information_object",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_maturity_trend",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "foundation": [
+      "core_company",
+      "cmn_department",
+      "cmn_location",
+      "sys_user_group",
+      "sys_user",
+      "cmdb_model"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The stage CSDM-072 reports (ServiceNow's staged approach), one reading per scan of this instance; a fall below the previous scan names the stages lost (D-037). Readings under a different rule configuration are never compared (the guard)."
+   }
+  },
+  "CSDM-075": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "em_impact_graph",
+     "fields": [
+      "business_service"
+     ]
+    },
+    {
+     "table": "service_offering",
+     "fields": [
+      "parent"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "sys_class_name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_critical_impact_break",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "critical": [
+      "1 - most critical"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A Business Critical service (busines_criticality \"1 - most critical\", D-033) with no impact tree (em_impact_graph), walked down its model — offerings, relationships, mapped CIs, to depth 10 — to the layer where it ends (D-037). Where no impact tree exists at all, impact calculation is not in use and nothing is judged. A service deliberately outside the impact model (the guard) is charged."
+   }
+  },
+  "CSDM-078": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "sys_class_name",
+      "service_classification",
+      "used_for",
+      "life_cycle_stage",
+      "life_cycle_stage_status",
+      "owned_by",
+      "managed_by",
+      "support_group",
+      "business_relation_manager",
+      "operational_status",
+      "parent"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child",
+      "type"
+     ]
+    },
+    {
+     "table": "service_offering",
+     "fields": [
+      "parent"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "sys_class_name"
+     ]
+    },
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "classified_as",
+      "issues",
+      "last_state"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "service_classification",
+     "used_for",
+     "life_cycle_stage",
+     "life_cycle_stage_status",
+     "owned_by",
+     "managed_by",
+     "support_group",
+     "business_relation_manager",
+     "operational_status",
+     "parent"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "csdm_traversal_vs_discovery",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Each service model walked to where it ends (as CSDM-075); models ending at the application tier are set against devices discovery could not classify, and models ending at CIs of a class against discovery failures on that class (discovery_device_history issues) (D-037). A tier deliberately excluded (the guard) is charged."
+   }
+  }
+ }
+}

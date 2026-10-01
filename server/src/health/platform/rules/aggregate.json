@@ -1,0 +1,263 @@
+{
+ "engine": "aggregate",
+ "rules": {
+  "PLT-018": {
+   "requires_tables": [
+    {
+     "table": "task_sla",
+     "fields": [
+      "sla",
+      "stage"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "task_sla",
+   "numerator_query": [
+    {
+     "$clause": {
+      "template": "stage={}",
+      "value": {
+       "$choice": {
+        "table": "task_sla",
+        "element": "stage",
+        "label": [
+         "Cancelled",
+         "Canceled"
+        ]
+       }
+      }
+     }
+    }
+   ],
+   "denominator_query": "",
+   "group_by": [
+    "sla"
+   ],
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "share"
+    }
+   },
+   "basis": "cancelled SLA records / SLA records, by definition",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The share by definition is judged; cancellation within seconds of attachment is not measured."
+   }
+  },
+  "PLT-022": {
+   "undefined_dependencies": [
+    "manual SLA repair executions — no execution record of the repair jobs is established"
+   ]
+  },
+  "PLT-023": {
+   "undefined_dependencies": [
+    "the expected SLA-per-task ratio \"derived from active definition count and coverage\" — the derivation is not given"
+   ]
+  },
+  "PLT-053": {
+   "undefined_dependencies": [
+    "per-rule execution counts and error attribution — the platform keeps no per-rule execution log the workbook names, and syslog entries are not attributed to their rule"
+   ]
+  },
+  "PLT-054": {
+   "undefined_dependencies": [
+    "per-rule execution counts and error attribution — the platform keeps no per-rule execution log the workbook names, and syslog entries are not attributed to their rule"
+   ]
+  },
+  "PLT-056": {
+   "undefined_dependencies": [
+    "per-rule execution counts and error attribution — the platform keeps no per-rule execution log the workbook names, and syslog entries are not attributed to their rule"
+   ]
+  },
+  "PLT-097": {
+   "requires_tables": [
+    {
+     "table": "sys_flow_context",
+     "fields": [
+      "flow",
+      "state"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "sys_flow_context",
+   "numerator_query": [
+    {
+     "$clause": {
+      "template": "state={}",
+      "value": {
+       "$choice": {
+        "table": "sys_flow_context",
+        "element": "state",
+        "label": "Error"
+       }
+      }
+     }
+    }
+   ],
+   "denominator_query": "",
+   "group_by": [
+    "flow"
+   ],
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "failure_rate"
+    }
+   },
+   "basis": "contexts in error / contexts, by flow"
+  },
+  "PLT-109": {
+   "undefined_dependencies": [
+    "a job's run-duration history — sys_trigger keeps the last run only (verified, Phase 6)"
+   ]
+  },
+  "PLT-117": {
+   "requires_tables": [
+    {
+     "table": "sysevent",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "sysevent",
+   "group_by": [
+    "name"
+   ],
+   "measure": "share",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "share"
+    }
+   },
+   "basis": "share of event volume from the largest event name",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "By event name; the originating source is not reported."
+   }
+  },
+  "PLT-118": {
+   "requires_tables": [
+    {
+     "table": "sys_trigger",
+     "fields": [
+      "next_action"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "sys_trigger",
+   "query": {
+    "$now": {
+     "field": "next_action",
+     "op": "<"
+    }
+   },
+   "measure": "count",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "max_backlog"
+    }
+   },
+   "basis": "triggers whose next action is in the past",
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The backlog count is judged; its trend is not."
+   }
+  },
+  "PLT-129": {
+   "requires_tables": [
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "user",
+      "role"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "sys_user_has_role",
+   "denominator_query": "",
+   "threshold": {
+    "op": "gt",
+    "value": 0
+   },
+   "variants": [
+    {
+     "variant": "all roles",
+     "numerator_query": "user.active=false",
+     "basis": "role grants held by inactive users / role grants"
+    },
+    {
+     "variant": "elevated roles",
+     "numerator_query": "user.active=false^role.elevated_privilege=true",
+     "basis": "elevated role grants held by inactive users / role grants"
+    }
+   ]
+  },
+  "PLT-131": {
+   "requires_tables": [
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "inherited"
+     ]
+    }
+   ],
+   "engine": "aggregate",
+   "table": "sys_user_has_role",
+   "numerator_query": "inherited=false",
+   "denominator_query": "",
+   "threshold": {
+    "op": "gt",
+    "value": {
+     "$param": "direct_share"
+    }
+   },
+   "basis": "direct role grants / role grants"
+  },
+  "PLT-147": {
+   "requires_objects": [
+    "integration_outcomes"
+   ]
+  },
+  "PLT-149": {
+   "build_pending": "row counts per import set table and the cleanup job configuration"
+  },
+  "PLT-151": {
+   "undefined_dependencies": [
+    "transform script errors attributed to their map, relative to row volume — not established"
+   ]
+  },
+  "PLT-174": {
+   "build_pending": "row counts across tables and their rotation / archival configuration"
+  },
+  "PLT-176": {
+   "build_pending": "audit and history table sizes against their rotation configuration"
+  },
+  "PLT-177": {
+   "build_pending": "attachment storage volume and growth rate"
+  },
+  "PLT-179": {
+   "undefined_dependencies": [
+    "semaphore exhaustion events or utilisation — \"where available\", and none is established"
+   ]
+  },
+  "PLT-181": {
+   "undefined_dependencies": [
+    "rows returned per list or report query — not a field of the transaction log"
+   ]
+  },
+  "PLT-182": {
+   "undefined_dependencies": [
+    "script attribution in slow transactions and per-query cost — syslog_transaction records a transaction, not which rule or widget spent its time"
+   ]
+  }
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "engine": "composite",
+ "rules": {
+  "ITIL-146": {
+   "undefined_dependencies": [
+    "the platform records no the recorded recovery characteristics of the infrastructure — the rule cannot be read from any instance as worded"
+   ]
+  }
+ }
+}

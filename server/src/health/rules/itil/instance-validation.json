@@ -1,0 +1,3189 @@
+{
+ "pack": "itil",
+ "instance": "techsnitchpvtltddemo2.service-now.com",
+ "generated": "2026-09-27T05:16:20.592Z",
+ "read_only": true,
+ "contents_recorded": false,
+ "tables": {
+  "asmt_assessment_instance": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 145,
+   "reason": null
+  },
+  "asmt_metric_type": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 45,
+   "reason": null
+  },
+  "ast_contract": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 161,
+   "reason": null
+  },
+  "awa_agent_capacity": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 31,
+   "reason": null
+  },
+  "change_request": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 107,
+   "reason": null
+  },
+  "change_task": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 10,
+   "reason": null
+  },
+  "cmdb_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3550,
+   "reason": null
+  },
+  "cmdb_ci_outage": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 13193,
+   "reason": null
+  },
+  "cmdb_ci_service": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 319,
+   "reason": null
+  },
+  "cmdb_rel_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 345,
+   "reason": null
+  },
+  "cmn_rota": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 12,
+   "reason": null
+  },
+  "cmn_rota_esc_step_def": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 9,
+   "reason": null
+  },
+  "cmn_rota_escalation_set": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  },
+  "cmn_rota_member": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 59,
+   "reason": null
+  },
+  "cmn_rota_roster": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 21,
+   "reason": null
+  },
+  "contract_rel_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "contract_sla": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 215,
+   "reason": null
+  },
+  "core_company": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 325,
+   "reason": null
+  },
+  "cost_plan": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "cxs_table_config": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 87,
+   "reason": null
+  },
+  "data_classification": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 28,
+   "reason": null
+  },
+  "dmn_demand": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "em_connector_instance": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1,
+   "reason": null
+  },
+  "fm_expense_line": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 5472,
+   "reason": null
+  },
+  "incident": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 98,
+   "reason": null
+  },
+  "io_set_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 188,
+   "reason": null
+  },
+  "item_option_new": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3196,
+   "reason": null
+  },
+  "kb_feedback": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 24,
+   "reason": null
+  },
+  "kb_knowledge": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 146,
+   "reason": null
+  },
+  "kb_knowledge_base": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 15,
+   "reason": null
+  },
+  "life_cycle_stage": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 18,
+   "reason": null
+  },
+  "m2m_kb_task": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1,
+   "reason": null
+  },
+  "pa_indicators": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1217,
+   "reason": null
+  },
+  "pa_job_indicators": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1544,
+   "reason": null
+  },
+  "pa_targets": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 92,
+   "reason": null
+  },
+  "pa_thresholds": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2,
+   "reason": null
+  },
+  "problem": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 28,
+   "reason": null
+  },
+  "release_project": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "release_rfcs": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "release_task": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "risk_conditions": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 4,
+   "reason": null
+  },
+  "sc_cat_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 469,
+   "reason": null
+  },
+  "sc_cat_item_service": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "sc_cat_item_user_criteria_mtom": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 407,
+   "reason": null
+  },
+  "sc_catalog": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 14,
+   "reason": null
+  },
+  "sc_req_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 124,
+   "reason": null
+  },
+  "sc_request": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 146,
+   "reason": null
+  },
+  "sc_task": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1592,
+   "reason": null
+  },
+  "service_availability": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 46560,
+   "reason": null
+  },
+  "service_commitment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 119,
+   "reason": null
+  },
+  "service_offering": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 158,
+   "reason": null
+  },
+  "service_offering_commitment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 349,
+   "reason": null
+  },
+  "ssa_deflection_configuration": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  },
+  "ssa_deflection_metric": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "subscription_detail": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 108,
+   "reason": null
+  },
+  "sys_atf_step": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6126,
+   "reason": null
+  },
+  "sys_atf_test": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 524,
+   "reason": null
+  },
+  "sys_atf_test_result": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "sys_atf_test_suite_result": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "sys_hub_action_instance_v2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 26262,
+   "reason": null
+  },
+  "sys_hub_flow": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1625,
+   "reason": null
+  },
+  "sys_hub_flow_logic_instance_v2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 63521,
+   "reason": null
+  },
+  "sys_physical_table_stats": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "sys_properties": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6571,
+   "reason": null
+  },
+  "sys_remote_update_set": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  },
+  "sys_report": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1480,
+   "reason": null
+  },
+  "sys_rest_message": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 35,
+   "reason": null
+  },
+  "sys_update_set": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 193,
+   "reason": null
+  },
+  "sys_update_version": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 145720,
+   "reason": null
+  },
+  "sys_upgrade_history": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 112,
+   "reason": null
+  },
+  "sys_user": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 969,
+   "reason": null
+  },
+  "sys_user_grmember": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 984,
+   "reason": null
+  },
+  "sys_user_group": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 250,
+   "reason": null
+  },
+  "sys_user_has_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 47953,
+   "reason": null
+  },
+  "sys_user_role": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1936,
+   "reason": null
+  },
+  "sys_variable_value": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 106802,
+   "reason": null
+  },
+  "sysapproval_approver": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2532,
+   "reason": null
+  },
+  "sysauto_report": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1,
+   "reason": null
+  },
+  "task_outage": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "task_sla": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 511,
+   "reason": null
+  },
+  "user_criteria": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 153,
+   "reason": null
+  },
+  "wf_activity": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 53,
+   "reason": null
+  },
+  "wf_workflow": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  },
+  "wf_workflow_version": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  }
+ },
+ "fields": {
+  "asmt_assessment_instance": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "metric_type",
+    "state"
+   ]
+  },
+  "asmt_metric_type": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "evaluation_method",
+    "name"
+   ]
+  },
+  "ast_contract": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "number",
+    "vendor"
+   ]
+  },
+  "change_request": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "number",
+    "outside_maintenance_schedule",
+    "state",
+    "test_plan"
+   ]
+  },
+  "change_task": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "change_request",
+    "change_task_type"
+   ]
+  },
+  "cmdb_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "operational_status"
+   ]
+  },
+  "cmdb_ci_outage": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cmdb_ci",
+    "number",
+    "type"
+   ]
+  },
+  "cmdb_ci_service": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "busines_criticality",
+    "install_status",
+    "name",
+    "operational_status"
+   ]
+  },
+  "cmdb_rel_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "child",
+    "parent"
+   ]
+  },
+  "cmn_rota": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "group",
+    "name",
+    "use_custom_escalation"
+   ]
+  },
+  "cmn_rota_esc_step_def": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cmn_rota_rosters",
+    "escalation_set",
+    "group_manager",
+    "sys_user_groups",
+    "sys_users"
+   ]
+  },
+  "cmn_rota_escalation_set": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "cmn_rota"
+   ]
+  },
+  "cmn_rota_member": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "member",
+    "roster"
+   ]
+  },
+  "cmn_rota_roster": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "rota"
+   ]
+  },
+  "contract_rel_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "ci_item",
+    "contract"
+   ]
+  },
+  "contract_sla": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "name",
+    "type"
+   ]
+  },
+  "cxs_table_config": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "table"
+   ]
+  },
+  "data_classification": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "dmn_demand": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "business_applications",
+    "business_capabilities",
+    "financial_benefit",
+    "goal",
+    "number"
+   ]
+  },
+  "fm_expense_line": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "ci"
+   ]
+  },
+  "incident": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "category",
+    "close_code",
+    "contact_type",
+    "number",
+    "problem_id"
+   ]
+  },
+  "io_set_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "sc_cat_item",
+    "variable_set"
+   ]
+  },
+  "item_option_new": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "cat_item",
+    "name",
+    "type",
+    "variable_set"
+   ]
+  },
+  "kb_feedback": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "article",
+    "comments",
+    "flagged",
+    "useful"
+   ]
+  },
+  "kb_knowledge": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "author",
+    "number",
+    "ownership_group",
+    "source",
+    "text",
+    "workflow_state"
+   ]
+  },
+  "kb_knowledge_base": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "kb_publish_flow",
+    "title",
+    "workflow"
+   ]
+  },
+  "m2m_kb_task": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "task"
+   ]
+  },
+  "pa_indicators": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "pa_job_indicators": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "indicator",
+    "job"
+   ]
+  },
+  "pa_targets": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "indicator",
+    "owner"
+   ]
+  },
+  "pa_thresholds": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "indicator",
+    "owner"
+   ]
+  },
+  "problem": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "known_error",
+    "number"
+   ]
+  },
+  "release_project": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "description",
+    "notes",
+    "number",
+    "short_description"
+   ]
+  },
+  "release_rfcs": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "release",
+    "rfc"
+   ]
+  },
+  "sc_cat_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "delivery_plan",
+    "description",
+    "flow_designer_flow",
+    "group",
+    "name",
+    "roles",
+    "short_description",
+    "workflow"
+   ]
+  },
+  "sc_cat_item_user_criteria_mtom": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "sc_cat_item",
+    "user_criteria"
+   ]
+  },
+  "sc_req_item": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "cat_item",
+    "close_notes",
+    "number"
+   ]
+  },
+  "sc_request": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "contact_type"
+   ]
+  },
+  "sc_task": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "assignment_group",
+    "description",
+    "number",
+    "request_item",
+    "short_description",
+    "state"
+   ]
+  },
+  "service_availability": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cmdb_ci",
+    "mtbf"
+   ]
+  },
+  "service_commitment": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "type"
+   ]
+  },
+  "service_offering": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "parent"
+   ]
+  },
+  "service_offering_commitment": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "service_commitment",
+    "service_offering"
+   ]
+  },
+  "ssa_deflection_metric": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "type"
+   ]
+  },
+  "subscription_detail": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "allocated_count",
+    "is_latest",
+    "status",
+    "subscription_name"
+   ]
+  },
+  "sys_atf_step": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "table",
+    "test"
+   ]
+  },
+  "sys_atf_test": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active"
+   ]
+  },
+  "sys_atf_test_result": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "start_time"
+   ]
+  },
+  "sys_atf_test_suite_result": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "start_time"
+   ]
+  },
+  "sys_hub_action_instance_v2": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "flow",
+    "values"
+   ]
+  },
+  "sys_hub_flow": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "master_snapshot",
+    "name"
+   ]
+  },
+  "sys_hub_flow_logic_instance_v2": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "flow",
+    "values"
+   ]
+  },
+  "sys_properties": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "sys_report": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "table",
+    "title"
+   ]
+  },
+  "sys_update_version": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "source_table"
+   ]
+  },
+  "sys_upgrade_history": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "to_version",
+    "upgrade_started"
+   ]
+  },
+  "sys_user": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active"
+   ]
+  },
+  "sys_user_grmember": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "group",
+    "user"
+   ]
+  },
+  "sys_user_group": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "manager"
+   ]
+  },
+  "sys_user_has_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "role",
+    "user"
+   ]
+  },
+  "sys_user_role": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "sys_variable_value": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "document",
+    "document_key",
+    "value"
+   ]
+  },
+  "sysapproval_approver": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "sysapproval"
+   ]
+  },
+  "sysauto_report": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "address_list",
+    "report"
+   ]
+  },
+  "task_sla": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "task"
+   ]
+  },
+  "wf_activity": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "workflow_version"
+   ]
+  },
+  "wf_workflow": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "wf_workflow_version": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "published",
+    "workflow"
+   ]
+  }
+ },
+ "choices": {},
+ "run": {
+  "elapsed_ms": 314259,
+  "summary": {
+   "evaluated": 45,
+   "unavailable": 83,
+   "unconfigured": 3
+  },
+  "verdicts": {
+   "inconclusive": 21,
+   "fail": 24,
+   "none": 86
+  },
+  "rules": {
+   "ITIL-001": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 32,
+     "judged": 32,
+     "unit": "incident records"
+    },
+    "undetermined": null,
+    "ms": 2723
+   },
+   "ITIL-002": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 171,
+     "judged": 171,
+     "unit": "sc_cat_item records"
+    },
+    "undetermined": null,
+    "ms": 2750
+   },
+   "ITIL-003": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 87,
+     "judged": 87,
+     "unit": "sc_req_item records"
+    },
+    "undetermined": null,
+    "ms": 4858
+   },
+   "ITIL-005": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 2
+   },
+   "ITIL-006": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-007": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 37,
+     "judged": 37,
+     "unit": "closed request items with no close notes"
+    },
+    "undetermined": null,
+    "ms": 2713
+   },
+   "ITIL-008": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-010": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-011": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 90,
+     "judged": 3,
+     "unit": "items fulfilled by a flow or workflow"
+    },
+    "undetermined": null,
+    "ms": 20942
+   },
+   "ITIL-012": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 6,
+     "judged": 6,
+     "unit": "fulfilment groups"
+    },
+    "undetermined": null,
+    "ms": 4991
+   },
+   "ITIL-014": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-015": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 521,
+     "judged": 521,
+     "unit": "sc_task records"
+    },
+    "undetermined": null,
+    "ms": 976
+   },
+   "ITIL-016": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-018": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-019": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-020": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-021": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 171,
+     "judged": 171,
+     "unit": "active catalog items"
+    },
+    "undetermined": null,
+    "ms": 2536
+   },
+   "ITIL-022": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 2,
+    "blocker": null,
+    "population": {
+     "total": 342,
+     "judged": 342,
+     "unit": "sc_cat_item records (summed over variants)"
+    },
+    "undetermined": null,
+    "ms": 1075
+   },
+   "ITIL-023": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-025": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-026": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-027": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-028": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 128,
+     "judged": 128,
+     "unit": "kb_knowledge records"
+    },
+    "undetermined": null,
+    "ms": 2994
+   },
+   "ITIL-030": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 128,
+     "judged": 128,
+     "unit": "published articles"
+    },
+    "undetermined": null,
+    "ms": 2095
+   },
+   "ITIL-032": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-033": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-034": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 12,
+     "judged": 12,
+     "unit": "actionable feedback"
+    },
+    "undetermined": null,
+    "ms": 3035
+   },
+   "ITIL-035": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-036": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-037": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 131,
+     "judged": 131,
+     "unit": "records with text in the scanned fields"
+    },
+    "undetermined": null,
+    "ms": 3531
+   },
+   "ITIL-038": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 15,
+     "judged": 15,
+     "unit": "active knowledge bases"
+    },
+    "undetermined": null,
+    "ms": 5844
+   },
+   "ITIL-040": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-041": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-043": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-044": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "presence check"
+    },
+    "undetermined": null,
+    "ms": 2438
+   },
+   "ITIL-045": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "presence check"
+    },
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-046": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-047": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "scheduled service reports"
+    },
+    "undetermined": "empty_population",
+    "ms": 4995
+   },
+   "ITIL-048": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-049": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "presence check"
+    },
+    "undetermined": null,
+    "ms": 4980
+   },
+   "ITIL-050": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "presence check"
+    },
+    "undetermined": null,
+    "ms": 3971
+   },
+   "ITIL-052": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-053": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 94,
+     "judged": 94,
+     "unit": "change_request records"
+    },
+    "undetermined": null,
+    "ms": 2293
+   },
+   "ITIL-054": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "release_project records"
+    },
+    "undetermined": "empty_population",
+    "ms": 2337
+   },
+   "ITIL-055": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-056": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-057": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-058": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 14,
+     "judged": 14,
+     "unit": "change_request records"
+    },
+    "undetermined": null,
+    "ms": 2565
+   },
+   "ITIL-059": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-060": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-061": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-062": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-063": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "releases"
+    },
+    "undetermined": "empty_population",
+    "ms": 1708
+   },
+   "ITIL-064": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "release_project records"
+    },
+    "undetermined": "empty_population",
+    "ms": 817
+   },
+   "ITIL-065": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-066": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-067": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 3,
+     "judged": 3,
+     "unit": "closed changes with no test plan"
+    },
+    "undetermined": null,
+    "ms": 2600
+   },
+   "ITIL-069": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-070": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-071": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 11,
+     "judged": 11,
+     "unit": "platform upgrades"
+    },
+    "undetermined": null,
+    "ms": 12043
+   },
+   "ITIL-072": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 840,
+     "judged": 840,
+     "unit": "customisation hotspots"
+    },
+    "undetermined": null,
+    "ms": 83068
+   },
+   "ITIL-073": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-074": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-075": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-076": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-077": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-078": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-079": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-080": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-081": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-082": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "subscriptions"
+    },
+    "undetermined": null,
+    "ms": 2221
+   },
+   "ITIL-083": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-084": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-085": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "presence check"
+    },
+    "undetermined": null,
+    "ms": 48663
+   },
+   "ITIL-086": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-087": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 316,
+     "judged": 316,
+     "unit": "services"
+    },
+    "undetermined": null,
+    "ms": 13317
+   },
+   "ITIL-088": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 13193,
+     "judged": 13193,
+     "unit": "cmdb_ci_outage records"
+    },
+    "undetermined": null,
+    "ms": 2368
+   },
+   "ITIL-089": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-090": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-091": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 46560,
+     "judged": 46560,
+     "unit": "service_availability records"
+    },
+    "undetermined": null,
+    "ms": 682
+   },
+   "ITIL-092": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-093": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-094": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-095": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-096": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 55,
+     "judged": 55,
+     "unit": "services"
+    },
+    "undetermined": null,
+    "ms": 2857
+   },
+   "ITIL-097": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-098": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-099": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-100": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-101": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "ITIL-102": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-103": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-104": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-105": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-106": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 161,
+     "judged": 161,
+     "unit": "active contracts"
+    },
+    "undetermined": null,
+    "ms": 4918
+   },
+   "ITIL-107": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-108": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-109": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-112": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-113": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-114": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-115": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 2,
+     "judged": 0,
+     "unit": "tables"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 2355
+   },
+   "ITIL-116": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 10,
+     "judged": 10,
+     "unit": "kb_use records"
+    },
+    "undetermined": null,
+    "ms": 2404
+   },
+   "ITIL-117": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-118": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-119": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-120": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 12,
+     "judged": 12,
+     "unit": "active on-call rotas"
+    },
+    "undetermined": null,
+    "ms": 13190
+   },
+   "ITIL-121": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-122": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-123": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-125": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-126": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 94,
+     "judged": 94,
+     "unit": "change_request records"
+    },
+    "undetermined": null,
+    "ms": 2408
+   },
+   "ITIL-127": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "dmn_demand records"
+    },
+    "undetermined": "empty_population",
+    "ms": 717
+   },
+   "ITIL-128": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 316,
+     "judged": 24,
+     "unit": "operational services"
+    },
+    "undetermined": null,
+    "ms": 7272
+   },
+   "ITIL-129": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-130": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-131": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "retired services"
+    },
+    "undetermined": "empty_population",
+    "ms": 2410
+   },
+   "ITIL-132": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "dmn_demand records"
+    },
+    "undetermined": "empty_population",
+    "ms": 687
+   },
+   "ITIL-133": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-134": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "presence check"
+    },
+    "undetermined": null,
+    "ms": 1406
+   },
+   "ITIL-135": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-136": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-137": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-138": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-139": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-140": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-141": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-142": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-145": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 4,
+     "judged": 0,
+     "unit": "loop ratios"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 5263
+   },
+   "ITIL-146": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "ITIL-148": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 706,
+     "judged": 706,
+     "unit": "collected indicators"
+    },
+    "undetermined": null,
+    "ms": 16218
+   }
+  }
+ },
+ "requests": {
+  "query": 896,
+  "count": 251,
+  "aggregate": 75,
+  "byTable": {
+   "sys_db_object": 372,
+   "asmt_assessment_instance": 4,
+   "asmt_metric_type": 5,
+   "ast_contract": 5,
+   "awa_agent_capacity": 2,
+   "change_request": 9,
+   "change_task": 4,
+   "cmdb_ci": 3,
+   "cmdb_ci_outage": 6,
+   "cmdb_ci_service": 10,
+   "cmdb_rel_ci": 11,
+   "cmn_rota": 5,
+   "cmn_rota_esc_step_def": 5,
+   "cmn_rota_escalation_set": 5,
+   "cmn_rota_member": 5,
+   "cmn_rota_roster": 5,
+   "contract_rel_ci": 5,
+   "contract_sla": 5,
+   "core_company": 2,
+   "cost_plan": 2,
+   "cxs_table_config": 5,
+   "data_classification": 5,
+   "dmn_demand": 9,
+   "em_connector_instance": 2,
+   "fm_expense_line": 6,
+   "incident": 9,
+   "io_set_item": 5,
+   "item_option_new": 9,
+   "kb_feedback": 6,
+   "kb_knowledge": 10,
+   "kb_knowledge_base": 5,
+   "life_cycle_stage": 2,
+   "m2m_kb_task": 4,
+   "pa_indicators": 19,
+   "pa_job_indicators": 6,
+   "pa_targets": 5,
+   "pa_thresholds": 5,
+   "problem": 5,
+   "release_project": 9,
+   "release_rfcs": 5,
+   "release_task": 2,
+   "risk_conditions": 2,
+   "sc_cat_item": 16,
+   "sc_cat_item_service": 2,
+   "sc_cat_item_user_criteria_mtom": 4,
+   "sc_catalog": 2,
+   "sc_req_item": 7,
+   "sc_request": 4,
+   "sc_task": 8,
+   "service_availability": 100,
+   "service_commitment": 7,
+   "service_offering": 13,
+   "service_offering_commitment": 9,
+   "ssa_deflection_configuration": 2,
+   "ssa_deflection_metric": 5,
+   "subscription_detail": 5,
+   "sys_atf_step": 4,
+   "sys_atf_test": 3,
+   "sys_atf_test_result": 14,
+   "sys_atf_test_suite_result": 14,
+   "sys_hub_action_instance_v2": 7,
+   "sys_hub_flow": 13,
+   "sys_hub_flow_logic_instance_v2": 7,
+   "sys_physical_table_stats": 2,
+   "sys_properties": 7,
+   "sys_remote_update_set": 2,
+   "sys_report": 5,
+   "sys_rest_message": 2,
+   "sys_update_set": 2,
+   "sys_update_version": 4,
+   "sys_upgrade_history": 5,
+   "sys_user": 9,
+   "sys_user_grmember": 5,
+   "sys_user_group": 5,
+   "sys_user_has_role": 7,
+   "sys_user_role": 7,
+   "sys_variable_value": 59,
+   "sysapproval_approver": 3,
+   "sysauto_report": 5,
+   "task_outage": 2,
+   "task_sla": 6,
+   "user_criteria": 2,
+   "wf_activity": 3,
+   "wf_workflow": 5,
+   "wf_workflow_version": 5,
+   "sys_dictionary": 136,
+   "catalog_script_client": 2,
+   "catalog_ui_policy_action": 2,
+   "catalog_ui_policy": 2,
+   "discovery_range_item": 2,
+   "item_option_new_set": 2,
+   "par_dashboard_canvas": 2,
+   "par_dashboard_user_metadata": 2,
+   "par_dashboard_widget": 2,
+   "question_choice": 2,
+   "sc_cat_item_producer": 2,
+   "sn_aia_agent": 2,
+   "sn_aia_agent_tool_m2m": 2,
+   "sn_aia_tool": 2,
+   "sn_aia_version": 2,
+   "sn_employee_app": 2,
+   "sn_nowassist_skill_config": 2,
+   "sn_risk_advanced_automated_scripted_factor": 2,
+   "sp_widget": 2,
+   "sysevent_email_action": 2,
+   "sys_declarative_action_assignment": 2,
+   "sys_generative_ai_config": 2,
+   "sys_hub_action_type_definition": 2,
+   "sys_one_extend_capability": 2,
+   "sys_one_extend_resource_attribute_mapping": 2,
+   "sys_relationship": 2,
+   "sys_script": 2,
+   "sys_script_client": 2,
+   "sys_script_email": 2,
+   "sys_script_include": 2,
+   "sys_security_acl": 2,
+   "sys_ui_action": 2,
+   "sys_ui_form_sections": 2,
+   "sys_ui_page": 2,
+   "sys_ui_section": 2,
+   "sys_ux_form_action": 2,
+   "sys_ux_list_category": 2,
+   "sys_ux_macroponent": 2,
+   "sys_ux_page_property": 2,
+   "sys_ux_unified_cache_version": 2,
+   "ticket_configuration": 2,
+   "clm_m2m_contract_asset": 2,
+   "kb_use": 1
+  }
+ },
+ "elapsed_ms": 464990
+}

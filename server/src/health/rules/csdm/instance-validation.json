@@ -1,0 +1,1699 @@
+{
+ "pack": "csdm",
+ "instance": "techsnitchpvtltddemo2.service-now.com",
+ "generated": "2026-09-27T05:24:06.803Z",
+ "read_only": true,
+ "contents_recorded": false,
+ "tables": {
+  "cert_audit": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 10,
+   "reason": null
+  },
+  "cert_filter": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 9,
+   "reason": null
+  },
+  "change_request": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 107,
+   "reason": null
+  },
+  "cmdb_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3550,
+   "reason": null
+  },
+  "cmdb_ci_business_app": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "cmdb_ci_business_capability": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "cmdb_ci_information_object": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 0,
+   "reason": null
+  },
+  "cmdb_ci_netgear": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 11,
+   "reason": null
+  },
+  "cmdb_ci_service": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 319,
+   "reason": null
+  },
+  "cmdb_ci_service_auto": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 7,
+   "reason": null
+  },
+  "cmdb_ci_service_technical": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 12,
+   "reason": null
+  },
+  "cmdb_model": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 2997,
+   "reason": null
+  },
+  "cmdb_rel_ci": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 345,
+   "reason": null
+  },
+  "cmdb_rel_type": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 52,
+   "reason": null
+  },
+  "cmdb_rel_type_suggest": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1433,
+   "reason": null
+  },
+  "cmn_department": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 9,
+   "reason": null
+  },
+  "cmn_location": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 469,
+   "reason": null
+  },
+  "contract_sla": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 215,
+   "reason": null
+  },
+  "core_company": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 325,
+   "reason": null
+  },
+  "data_classification": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 28,
+   "reason": null
+  },
+  "discovery_device_history": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 58,
+   "reason": null
+  },
+  "em_impact_graph": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 52,
+   "reason": null
+  },
+  "incident": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 98,
+   "reason": null
+  },
+  "life_cycle_control": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 202,
+   "reason": null
+  },
+  "life_cycle_mapping": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 202,
+   "reason": null
+  },
+  "life_cycle_stage": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 18,
+   "reason": null
+  },
+  "life_cycle_stage_status": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 57,
+   "reason": null
+  },
+  "m2m_dictionary_dataclass": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 126,
+   "reason": null
+  },
+  "sc_cat_item": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 469,
+   "reason": null
+  },
+  "service_commitment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 119,
+   "reason": null
+  },
+  "service_offering": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 158,
+   "reason": null
+  },
+  "service_offering_commitment": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 349,
+   "reason": null
+  },
+  "spm_service_portfolio": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 3,
+   "reason": null
+  },
+  "svc_ci_assoc": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 34,
+   "reason": null
+  },
+  "sys_audit": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1036501,
+   "reason": null
+  },
+  "sys_choice": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 36533,
+   "reason": null
+  },
+  "sys_data_policy2": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 285,
+   "reason": null
+  },
+  "sys_db_object": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 12135,
+   "reason": null
+  },
+  "sys_dictionary": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 369371,
+   "reason": null
+  },
+  "sys_properties": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6571,
+   "reason": null
+  },
+  "sys_report": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 1480,
+   "reason": null
+  },
+  "sys_script": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 14655,
+   "reason": null
+  },
+  "sys_ui_policy": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 6209,
+   "reason": null
+  },
+  "sys_user": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 969,
+   "reason": null
+  },
+  "sys_user_grmember": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 984,
+   "reason": null
+  },
+  "sys_user_group": {
+   "exists": "AVAILABLE",
+   "readable": "AVAILABLE",
+   "rows": 250,
+   "reason": null
+  }
+ },
+ "fields": {
+  "change_request": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "cmdb_ci",
+    "number",
+    "risk"
+   ]
+  },
+  "cmdb_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "environment",
+    "install_status",
+    "operational_status",
+    "sys_class_name"
+   ]
+  },
+  "cmdb_ci_business_app": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "owned_by",
+    "support_group"
+   ]
+  },
+  "cmdb_ci_business_capability": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "cmdb_ci_information_object": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "cmdb_ci_service": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "business_relation_manager",
+    "life_cycle_stage",
+    "life_cycle_stage_status",
+    "managed_by",
+    "name",
+    "operational_status",
+    "owned_by",
+    "parent",
+    "service_classification",
+    "support_group",
+    "sys_class_name",
+    "used_for"
+   ]
+  },
+  "cmdb_model": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "cmdb_rel_ci": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "child",
+    "parent",
+    "type"
+   ]
+  },
+  "cmdb_rel_type": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "child_descriptor",
+    "parent_descriptor"
+   ]
+  },
+  "cmdb_rel_type_suggest": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "base_class",
+    "child",
+    "cmdb_rel_type",
+    "dependent_class",
+    "parent"
+   ]
+  },
+  "cmn_department": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "cmn_location": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "contract_sla": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "name",
+    "start_condition"
+   ]
+  },
+  "core_company": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "data_classification": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "discovery_device_history": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "classified_as",
+    "issues",
+    "last_state"
+   ]
+  },
+  "em_impact_graph": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "business_service"
+   ]
+  },
+  "incident": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "business_service",
+    "sys_created_on"
+   ]
+  },
+  "life_cycle_control": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "active",
+    "life_cycle_stage",
+    "life_cycle_stage_status",
+    "table"
+   ]
+  },
+  "life_cycle_mapping": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "legacy_field_name",
+    "legacy_field_value",
+    "life_cycle_control",
+    "table"
+   ]
+  },
+  "life_cycle_stage": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "life_cycle_stage_status": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  },
+  "m2m_dictionary_dataclass": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "data_class",
+    "sys_dictionary"
+   ]
+  },
+  "service_commitment": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "sla"
+   ]
+  },
+  "service_offering": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "consumer_type",
+    "name",
+    "parent",
+    "sla"
+   ]
+  },
+  "service_offering_commitment": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "service_commitment",
+    "service_offering"
+   ]
+  },
+  "svc_ci_assoc": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "ci_id",
+    "service_id"
+   ]
+  },
+  "sys_audit": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "documentkey",
+    "fieldname"
+   ]
+  },
+  "sys_choice": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "element",
+    "inactive",
+    "name"
+   ]
+  },
+  "sys_db_object": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "super_class"
+   ]
+  },
+  "sys_dictionary": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "audit",
+    "default_value",
+    "element",
+    "name"
+   ]
+  },
+  "sys_properties": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name",
+    "value"
+   ]
+  },
+  "sys_user": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "user_name"
+   ]
+  },
+  "sys_user_group": {
+   "checked": true,
+   "state": "AVAILABLE",
+   "missing": [],
+   "wanted": [
+    "name"
+   ]
+  }
+ },
+ "choices": {
+  "cmdb_ci.environment.Production": {
+   "found": true,
+   "value": "Production",
+   "defined_on": "cmdb_ci",
+   "available_labels": [
+    "Development",
+    "Test",
+    "Production"
+   ]
+  },
+  "cmdb_ci.install_status.Retired": {
+   "found": true,
+   "value": "7",
+   "defined_on": "cmdb_ci",
+   "available_labels": [
+    "Installed",
+    "Pending Repair",
+    "Pending Install",
+    "On Order",
+    "In Maintenance",
+    "Retired",
+    "Stolen",
+    "In Stock",
+    "Absent"
+   ]
+  },
+  "cmdb_ci.operational_status.Operational": {
+   "found": true,
+   "value": "1",
+   "defined_on": "cmdb_ci",
+   "available_labels": [
+    "Operational",
+    "Non-Operational",
+    "Repair in Progress",
+    "DR Standby",
+    "Ready",
+    "Retired"
+   ]
+  },
+  "cmdb_ci.operational_status.Retired": {
+   "found": true,
+   "value": "6",
+   "defined_on": "cmdb_ci",
+   "available_labels": [
+    "Operational",
+    "Non-Operational",
+    "Repair in Progress",
+    "DR Standby",
+    "Ready",
+    "Retired"
+   ]
+  },
+  "cmdb_ci_service.service_classification.Application Service": {
+   "found": true,
+   "value": "Application Service",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "Business Service",
+    "Technology Management Service",
+    "Application Service"
+   ]
+  },
+  "cmdb_ci_service.service_classification.Business Service": {
+   "found": true,
+   "value": "Business Service",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "Business Service",
+    "Technology Management Service",
+    "Application Service"
+   ]
+  },
+  "cmdb_ci_service.service_classification.Technology Management Service": {
+   "found": true,
+   "value": "Technical Service",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "Business Service",
+    "Technology Management Service",
+    "Application Service"
+   ]
+  },
+  "cmdb_ci_service.used_for.Production": {
+   "found": true,
+   "value": "Production",
+   "defined_on": "cmdb_ci_service",
+   "available_labels": [
+    "Production",
+    "Staging",
+    "QA",
+    "Test",
+    "Development",
+    "Demonstration",
+    "Training",
+    "Disaster recovery"
+   ]
+  }
+ },
+ "run": {
+  "elapsed_ms": 185089,
+  "summary": {
+   "evaluated": 50,
+   "unconfigured": 4,
+   "unavailable": 14
+  },
+  "verdicts": {
+   "fail": 18,
+   "inconclusive": 23,
+   "none": 18,
+   "pass": 9
+  },
+  "rules": {
+   "CSDM-001": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 2756
+   },
+   "CSDM-002": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "business capabilities"
+    },
+    "undetermined": "empty_population",
+    "ms": 15123
+   },
+   "CSDM-003": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "business applications"
+    },
+    "undetermined": "empty_population",
+    "ms": 2
+   },
+   "CSDM-004": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 77,
+     "judged": 77,
+     "unit": "business services"
+    },
+    "undetermined": null,
+    "ms": 2
+   },
+   "CSDM-005": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 158,
+     "judged": 158,
+     "unit": "service offerings"
+    },
+    "undetermined": null,
+    "ms": 4839
+   },
+   "CSDM-007": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 12,
+     "judged": 12,
+     "unit": "technical services"
+    },
+    "undetermined": null,
+    "ms": 1345
+   },
+   "CSDM-008": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 319,
+     "judged": 49,
+     "unit": "service records"
+    },
+    "undetermined": null,
+    "ms": 2
+   },
+   "CSDM-009": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "CSDM-010": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-011": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 235,
+     "judged": 235,
+     "unit": "business services and offerings"
+    },
+    "undetermined": null,
+    "ms": 6746
+   },
+   "CSDM-012": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-013": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "business applications"
+    },
+    "undetermined": "empty_population",
+    "ms": 1
+   },
+   "CSDM-014": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 7201
+   },
+   "CSDM-015": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "service records incidents reference"
+    },
+    "undetermined": null,
+    "ms": 2015
+   },
+   "CSDM-016": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "CSDM-017": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "gated",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "CSDM-018": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "service records with a stage"
+    },
+    "undetermined": "empty_population",
+    "ms": 1
+   },
+   "CSDM-019": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "service records with a stage and status"
+    },
+    "undetermined": "empty_population",
+    "ms": 1079
+   },
+   "CSDM-020": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "CSDM services with both fields set"
+    },
+    "undetermined": "empty_population",
+    "ms": 3101
+   },
+   "CSDM-021": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 158,
+     "judged": 49,
+     "unit": "operational services with supporting CIs"
+    },
+    "undetermined": null,
+    "ms": 10091
+   },
+   "CSDM-022": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "services at Retired"
+    },
+    "undetermined": "empty_population",
+    "ms": 3045
+   },
+   "CSDM-023": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "services at End of Life"
+    },
+    "undetermined": "empty_population",
+    "ms": 5134
+   },
+   "CSDM-024": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "services at End of Life"
+    },
+    "undetermined": "empty_population",
+    "ms": 1
+   },
+   "CSDM-025": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 171,
+     "judged": 171,
+     "unit": "CSDM services older than 365 days"
+    },
+    "undetermined": null,
+    "ms": 4966
+   },
+   "CSDM-026": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 8,
+     "judged": 8,
+     "unit": "service classes"
+    },
+    "undetermined": null,
+    "ms": 687
+   },
+   "CSDM-027": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-028": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "parent-child service pairs with both stages set"
+    },
+    "undetermined": "empty_population",
+    "ms": 755
+   },
+   "CSDM-029": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "services at Ideation / Purchase / Inventory / Design / Deploy"
+    },
+    "undetermined": "empty_population",
+    "ms": 3215
+   },
+   "CSDM-030": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "cmdb_ci_service records"
+    },
+    "undetermined": "empty_population",
+    "ms": 681
+   },
+   "CSDM-031": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-032": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 2433
+   },
+   "CSDM-033": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 105,
+     "judged": 105,
+     "unit": "services"
+    },
+    "undetermined": null,
+    "ms": 1
+   },
+   "CSDM-036": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 77,
+     "judged": 77,
+     "unit": "business services"
+    },
+    "undetermined": null,
+    "ms": 4
+   },
+   "CSDM-037": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "business applications"
+    },
+    "undetermined": "empty_population",
+    "ms": 335
+   },
+   "CSDM-038": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 44,
+     "judged": 44,
+     "unit": "owned services"
+    },
+    "undetermined": null,
+    "ms": 2
+   },
+   "CSDM-039": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 171,
+     "judged": 171,
+     "unit": "CSDM services older than 365 days"
+    },
+    "undetermined": null,
+    "ms": 1366
+   },
+   "CSDM-040": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-041": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 90,
+     "judged": 90,
+     "unit": "offerings with an owner under an owned service"
+    },
+    "undetermined": null,
+    "ms": 2
+   },
+   "CSDM-042": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-043": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 16,
+     "judged": 16,
+     "unit": "application services"
+    },
+    "undetermined": null,
+    "ms": 1
+   },
+   "CSDM-044": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 53,
+     "judged": 53,
+     "unit": "parent services with two or more classified children"
+    },
+    "undetermined": null,
+    "ms": 698
+   },
+   "CSDM-045": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "services an SLA definition names"
+    },
+    "undetermined": "empty_population",
+    "ms": 1590
+   },
+   "CSDM-046": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 77,
+     "judged": 5,
+     "unit": "business services with classified application services"
+    },
+    "undetermined": null,
+    "ms": 1477
+   },
+   "CSDM-048": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "non-production services"
+    },
+    "undetermined": "empty_population",
+    "ms": 701
+   },
+   "CSDM-049": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-050": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 2038
+   },
+   "CSDM-051": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 7,
+     "judged": 7,
+     "unit": "relationships between CSDM-layer records"
+    },
+    "undetermined": null,
+    "ms": 13776
+   },
+   "CSDM-052": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 7,
+     "judged": 7,
+     "unit": "relationships between CSDM-layer records"
+    },
+    "undetermined": null,
+    "ms": 9
+   },
+   "CSDM-055": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 7,
+     "judged": 7,
+     "unit": "application-service relationships to CIs"
+    },
+    "undetermined": null,
+    "ms": 4214
+   },
+   "CSDM-056": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 319,
+     "judged": 319,
+     "unit": "service records"
+    },
+    "undetermined": null,
+    "ms": 8230
+   },
+   "CSDM-058": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 12518
+   },
+   "CSDM-059": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-060": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 74,
+     "judged": 74,
+     "unit": "relationships between service records"
+    },
+    "undetermined": null,
+    "ms": 6
+   },
+   "CSDM-061": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 158,
+     "judged": 158,
+     "unit": "service_offering records"
+    },
+    "undetermined": null,
+    "ms": 784
+   },
+   "CSDM-062": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 2
+   },
+   "CSDM-063": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-064": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "CSDM-065": {
+    "status": "unconfigured",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "specification_gap",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-066": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-067": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 0,
+     "judged": 0,
+     "unit": "services an SLA definition names"
+    },
+    "undetermined": "empty_population",
+    "ms": 2
+   },
+   "CSDM-070": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "not_built",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 0
+   },
+   "CSDM-072": {
+    "status": "evaluated",
+    "verdict": "pass",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 1,
+     "unit": "estate"
+    },
+    "undetermined": null,
+    "ms": 11294
+   },
+   "CSDM-073": {
+    "status": "evaluated",
+    "verdict": "inconclusive",
+    "findings": 0,
+    "blocker": null,
+    "population": {
+     "total": 1,
+     "judged": 0,
+     "unit": "estate"
+    },
+    "undetermined": "nothing_judgeable",
+    "ms": 6
+   },
+   "CSDM-074": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   },
+   "CSDM-075": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 55,
+     "judged": 55,
+     "unit": "Business Critical services"
+    },
+    "undetermined": null,
+    "ms": 16948
+   },
+   "CSDM-078": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 1,
+    "blocker": null,
+    "population": {
+     "total": 161,
+     "judged": 161,
+     "unit": "services"
+    },
+    "undetermined": null,
+    "ms": 19102
+   },
+   "CSDM-079": {
+    "status": "evaluated",
+    "verdict": "fail",
+    "findings": 23,
+    "blocker": null,
+    "population": {
+     "total": 79,
+     "judged": 79,
+     "unit": "change_request records referencing a CI"
+    },
+    "undetermined": null,
+    "ms": 14745
+   },
+   "CSDM-080": {
+    "status": "unavailable",
+    "verdict": null,
+    "findings": 0,
+    "blocker": {
+     "kind": "undefined_dependency",
+     "step": null,
+     "table": null,
+     "fields": null,
+     "parameters": null
+    },
+    "population": null,
+    "undetermined": null,
+    "ms": 1
+   }
+  }
+ },
+ "requests": {
+  "query": 528,
+  "count": 220,
+  "aggregate": 3,
+  "byTable": {
+   "sys_db_object": 250,
+   "cert_audit": 2,
+   "cert_filter": 2,
+   "change_request": 5,
+   "cmdb_ci": 27,
+   "cmdb_ci_business_app": 6,
+   "cmdb_ci_business_capability": 5,
+   "cmdb_ci_information_object": 5,
+   "cmdb_ci_netgear": 2,
+   "cmdb_ci_service": 44,
+   "cmdb_ci_service_auto": 2,
+   "cmdb_ci_service_technical": 2,
+   "cmdb_model": 4,
+   "cmdb_rel_ci": 127,
+   "cmdb_rel_type": 5,
+   "cmdb_rel_type_suggest": 7,
+   "cmn_department": 4,
+   "cmn_location": 4,
+   "contract_sla": 5,
+   "core_company": 4,
+   "data_classification": 5,
+   "discovery_device_history": 4,
+   "em_impact_graph": 5,
+   "incident": 4,
+   "life_cycle_control": 8,
+   "life_cycle_mapping": 5,
+   "life_cycle_stage": 11,
+   "life_cycle_stage_status": 5,
+   "m2m_dictionary_dataclass": 5,
+   "sc_cat_item": 2,
+   "service_commitment": 3,
+   "service_offering": 31,
+   "service_offering_commitment": 7,
+   "spm_service_portfolio": 2,
+   "svc_ci_assoc": 11,
+   "sys_audit": 11,
+   "sys_choice": 20,
+   "sys_data_policy2": 2,
+   "sys_dictionary": 77,
+   "sys_properties": 5,
+   "sys_report": 2,
+   "sys_script": 2,
+   "sys_ui_policy": 2,
+   "sys_user": 4,
+   "sys_user_grmember": 2,
+   "sys_user_group": 4
+  }
+ },
+ "elapsed_ms": 270470
+}

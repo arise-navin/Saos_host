@@ -1,0 +1,136 @@
+{
+ "engine": "reference_integrity",
+ "rules": {
+  "DQ-095": {
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active",
+      "manager"
+     ]
+    }
+   ],
+   "table": "sys_user",
+   "scope": "active=true^managerISNOTEMPTY",
+   "field": "manager",
+   "target": "sys_user",
+   "check": "active",
+   "report": [
+    "missing",
+    "inactive"
+   ],
+   "evidence_fields": [
+    "user_name"
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Manager references are judged; approval definitions (workflow and flow logic) are not readable as data, open approvals to inactive approvers are DQ-126, and the delegate grace-period guard is not applied."
+   }
+  },
+  "DQ-096": {
+   "requires_tables": [
+    {
+     "table": "sysapproval_group",
+     "fields": [
+      "assignment_group",
+      "active"
+     ]
+    },
+    {
+     "table": "sys_user_grmember",
+     "fields": [
+      "group",
+      "user"
+     ]
+    }
+   ],
+   "table": "sysapproval_group",
+   "scope": "active=true^assignment_groupISNOTEMPTY",
+   "field": "assignment_group",
+   "target": "sys_user_group",
+   "check": "members_active",
+   "report": [
+    "inactive"
+   ],
+   "evidence_fields": [
+    "number"
+   ],
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Open group approvals are judged against the group's active members now; approval configuration in workflows and flows is not readable as data. Overlap OWN-008: scoped to approver groups only."
+   }
+  },
+  "DQ-125": {
+   "requires_tables": [
+    {
+     "table": "task",
+     "fields": [
+      "number",
+      "assignment_group"
+     ]
+    }
+   ],
+   "table": "task",
+   "scope": "assignment_groupISNOTEMPTY",
+   "field": "assignment_group",
+   "target": "sys_user_group",
+   "check": "exists",
+   "report": [
+    "missing"
+   ],
+   "evidence_fields": [
+    "number",
+    "sys_class_name"
+   ]
+  },
+  "DQ-126": {
+   "requires_tables": [
+    {
+     "table": "sysapproval_approver",
+     "fields": [
+      "approver",
+      "state"
+     ]
+    }
+   ],
+   "table": "sysapproval_approver",
+   "scope": [
+    "approverISNOTEMPTY",
+    {
+     "$clause": {
+      "template": "state={}",
+      "value": {
+       "$choice": {
+        "table": "sysapproval_approver",
+        "element": "state",
+        "label": "Requested"
+       }
+      }
+     }
+    }
+   ],
+   "field": "approver",
+   "target": "sys_user",
+   "check": "active",
+   "report": [
+    "missing",
+    "inactive"
+   ],
+   "evidence_fields": [
+    "sysapproval",
+    "source_table"
+   ],
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Open (requested) approvals are judged; approval configuration is not readable as data. An inactive approver with a configured delegate is counted."
+   }
+  },
+  "DQ-128": {
+   "undefined_dependencies": [
+    "the \"operationally significant reference fields\" the scan is scoped to — not named"
+   ]
+  }
+ }
+}

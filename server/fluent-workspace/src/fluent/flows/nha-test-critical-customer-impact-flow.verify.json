@@ -1,0 +1,53 @@
+{
+  "setup": {
+    "table": "incident",
+    "payload": {
+      "active": true,
+      "impact": "1",
+      "urgency": "1",
+      "short_description": "NHA TEST trigger incident"
+    }
+  },
+  "wait": {
+    "flowName": "NHA TEST - Critical Customer Impact Flow",
+    "timeoutSec": 90
+  },
+  "assert": [
+    {
+      "table": "task",
+      "locate": {
+        "byQuery": "parent={{setup.sys_id}}^short_description=NHA TEST Escalation - {{setup.number}}"
+      },
+      "field": "description",
+      "expect": {
+        "value": "Automatically generated for a critical customer-impact Incident."
+      },
+      "note": "creates a child task linked to the incident"
+    },
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      },
+      "field": "work_notes",
+      "expect": {
+        "value": "NHA TEST critical escalation initiated."
+      },
+      "note": "adds a work note to the incident"
+    }
+  ],
+  "cleanup": [
+    {
+      "table": "task",
+      "locate": {
+        "byQuery": "parent={{setup.sys_id}}^short_description=NHA TEST Escalation - {{setup.number}}"
+      }
+    },
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      }
+    }
+  ]
+}

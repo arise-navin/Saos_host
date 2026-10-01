@@ -1,0 +1,17 @@
+{
+ "engine": "temporal_correlation",
+ "rules": {
+  "CSDM-027": {
+   "undefined_dependencies": [
+    "sys_audit history of the lifecycle and ownership fields per service — sys_audit is opt-in for the scan and no field-level audit reading is built",
+    "the correlation window between a lifecycle change and its change record — not given"
+   ]
+  },
+  "CSDM-059": {
+   "undefined_dependencies": [
+    "an edge's creation source and source confirmation — cmdb_rel_ci carries no discovery source or last-discovered field (verified, Phase 9)",
+    "the freshness window — not given"
+   ]
+  }
+ }
+}

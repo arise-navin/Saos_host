@@ -1,0 +1,15 @@
+{
+ "engine": "text_analysis",
+ "rules": {
+  "CSDM-009": {
+   "specification_gap": {
+    "missing": "each layer's \"attribute signature and relationship pattern\" profile, and the margin by which a record must match another layer's"
+   }
+  },
+  "CSDM-010": {
+   "specification_gap": {
+    "missing": "what counts as name and consumer overlap, and how much the supporting CI sets must overlap"
+   }
+  }
+ }
+}

@@ -1,0 +1,219 @@
+{
+ "dependencies_version": "0.1.0",
+ "status": "proposed — for review",
+ "note": "Measurement dependencies the WORKBOOK ITSELF states (Phase 2, docs/HEALTH-ASSIST-APPROACH.md §5). Each entry quotes the workbook text it rests on; the suite checks every quote is present in that rule's field. `blocker` is the rule whose failure (or non-assessment) makes `blocks` provisional; `blocks` is a rule (`rule:ID`), a module (`cmdb`) or a module dimension (`cmdb:D7`). Causal links that are NOT measurement dependencies are deliberately left out — e.g. DQ-102 \"gates class inconsistency into CMDB-028\" describes a cause flowing into CMDB-028, not a precondition for measuring it.",
+ "semantics": "A target is PROVISIONAL on a run when its blocker failed, or when its blocker could not be assessed (a precondition that was not established is not a precondition that held). The target is still evaluated and shown; its result carries the blocker, and a module-level target marks the module's validity.",
+ "dependencies": [
+  {
+   "id": "DEP-001",
+   "blocker": "CMDB-001",
+   "blocks": [
+    "cmdb"
+   ],
+   "source_rule": "CMDB-001",
+   "field": "cross_domain_link",
+   "quote": "Invalidates all Group 1-14 scoring until fixed"
+  },
+  {
+   "id": "DEP-002",
+   "blocker": "CMDB-049",
+   "blocks": [
+    "rule:CMDB-025"
+   ],
+   "source_rule": "CMDB-049",
+   "field": "cross_domain_link",
+   "quote": "Blocks correction of CMDB-025 findings"
+  },
+  {
+   "id": "DEP-003",
+   "blocker": "CMDB-016",
+   "blocks": [
+    "rule:CMDB-111"
+   ],
+   "source_rule": "CMDB-111",
+   "field": "confidence_basis",
+   "quote": "depends on environment tagging accuracy, which is itself CMDB-016"
+  },
+  {
+   "id": "DEP-004",
+   "blocker": "DQ-093",
+   "blocks": [
+    "rule:DQ-115"
+   ],
+   "source_rule": "DQ-115",
+   "field": "cross_domain_link",
+   "quote": "Gated by DQ-093"
+  },
+  {
+   "id": "DEP-005",
+   "blocker": "DQ-118",
+   "blocks": [
+    "rule:DQ-117"
+   ],
+   "source_rule": "DQ-117",
+   "field": "threshold_parameter",
+   "quote": "guard on DQ-118"
+  },
+  {
+   "id": "DEP-006",
+   "blocker": "ITOM-004",
+   "blocks": [
+    "rule:ITOM-003"
+   ],
+   "source_rule": "ITOM-003",
+   "field": "confidence_basis",
+   "quote": "depends on ITOM-004 being clean"
+  },
+  {
+   "id": "DEP-007",
+   "blocker": "CMDB-059",
+   "blocks": [
+    "rule:ITOM-052"
+   ],
+   "source_rule": "ITOM-052",
+   "field": "cross_domain_link",
+   "quote": "depends on CMDB-059 being correct to detect"
+  },
+  {
+   "id": "DEP-008",
+   "blocker": "ITOM-120",
+   "blocks": [
+    "rule:ITOM-121"
+   ],
+   "source_rule": "ITOM-121",
+   "field": "confidence_basis",
+   "quote": "depends on ITOM-120"
+  },
+  {
+   "id": "DEP-009",
+   "blocker": "ITOM-121",
+   "blocks": [
+    "rule:ITOM-135"
+   ],
+   "source_rule": "ITOM-135",
+   "field": "threshold_parameter",
+   "quote": "guard on ITOM-121 coverage"
+  },
+  {
+   "id": "DEP-010",
+   "blocker": "ITSM-002",
+   "blocks": [
+    "rule:ITSM-054"
+   ],
+   "source_rule": "ITSM-002",
+   "field": "cross_domain_link",
+   "quote": "Blocks ITSM-054 recurring pattern detection"
+  },
+  {
+   "id": "DEP-011",
+   "blocker": "ITSM-023",
+   "blocks": [
+    "rule:ITSM-058"
+   ],
+   "source_rule": "ITSM-023",
+   "field": "cross_domain_link",
+   "quote": "Blocks ITSM-058 clustering"
+  },
+  {
+   "id": "DEP-012",
+   "blocker": "ITSM-085",
+   "blocks": [
+    "rule:ITSM-112",
+    "rule:ITSM-127"
+   ],
+   "source_rule": "ITSM-085",
+   "field": "cross_domain_link",
+   "quote": "Precondition for ITSM-112 and ITSM-127"
+  },
+  {
+   "id": "DEP-013",
+   "blocker": "ITSM-103",
+   "blocks": [
+    "rule:ITSM-113"
+   ],
+   "source_rule": "ITSM-113",
+   "field": "cross_domain_link",
+   "quote": "Requires ITSM-103 and ITSM-115 to interpret"
+  },
+  {
+   "id": "DEP-014",
+   "blocker": "ITSM-115",
+   "blocks": [
+    "rule:ITSM-113"
+   ],
+   "source_rule": "ITSM-113",
+   "field": "cross_domain_link",
+   "quote": "Requires ITSM-103 and ITSM-115 to interpret"
+  },
+  {
+   "id": "DEP-015",
+   "blocker": "ITSM-094",
+   "blocks": [
+    "rule:ITSM-123"
+   ],
+   "source_rule": "ITSM-123",
+   "field": "false_positive_guard",
+   "quote": "Requires ITSM-094 to be low, or the denominator is unreliable"
+  },
+  {
+   "id": "DEP-016",
+   "blocker": "CSDM-032",
+   "blocks": [
+    "csdm:lifecycle"
+   ],
+   "source_rule": "CSDM-032",
+   "field": "why_it_matters",
+   "quote": "every lifecycle finding below this one is unmeasurable"
+  },
+  {
+   "id": "DEP-017",
+   "blocker": "CSDM-050",
+   "blocks": [
+    "csdm:environment"
+   ],
+   "source_rule": "CSDM-050",
+   "field": "why_it_matters",
+   "quote": "Every environment finding above is unmeasurable until this is fixed."
+  },
+  {
+   "id": "DEP-018",
+   "blocker": "CSDM-062",
+   "blocks": [
+    "csdm:offerings"
+   ],
+   "source_rule": "CSDM-062",
+   "field": "why_it_matters",
+   "quote": "every commitment, SLA and channel distinction has nowhere to live"
+  },
+  {
+   "id": "DEP-019",
+   "blocker": "CSDM-043",
+   "blocks": [
+    "rule:CSDM-044"
+   ],
+   "source_rule": "CSDM-044",
+   "field": "confidence_basis",
+   "quote": "gated by CSDM-043"
+  },
+  {
+   "id": "DEP-020",
+   "blocker": "CSDM-043",
+   "blocks": [
+    "rule:CSDM-046"
+   ],
+   "source_rule": "CSDM-046",
+   "field": "false_positive_guard",
+   "quote": "this finding is often the symptom of CSDM-043"
+  },
+  {
+   "id": "DEP-021",
+   "blocker": "CSDM-026",
+   "blocks": [
+    "rule:CSDM-017"
+   ],
+   "source_rule": "CSDM-026",
+   "field": "why_it_matters",
+   "quote": "the thousands of individual empty-field findings it replaces"
+  }
+ ]
+}

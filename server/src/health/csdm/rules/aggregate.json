@@ -1,0 +1,20 @@
+{
+ "engine": "aggregate",
+ "rules": {
+  "CSDM-063": {
+   "undefined_dependencies": [
+    "how an incident's channel or category maps to an offering — not given"
+   ]
+  },
+  "CSDM-064": {
+   "undefined_dependencies": [
+    "the commitment target variance threshold, and which commitment field is the target"
+   ]
+  },
+  "CSDM-074": {
+   "undefined_dependencies": [
+    "\"the conformance rule set\" a new service must pass, and the creation window — not given"
+   ]
+  }
+ }
+}

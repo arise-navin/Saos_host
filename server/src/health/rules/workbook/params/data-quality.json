@@ -1,0 +1,564 @@
+{
+ "params_version": "0.1.0",
+ "sheet": "data quality",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Parameter declaration skeleton, one entry per workbook rule. The typed declarations (type, unit, default, status DEFINED/UNDEFINED) are written in Phase 1 with the generalised registry; ITSM already has them in health/rules/itsm/parameters.json.",
+ "rules": {
+  "DQ-001": {
+   "workbook_text": "Placeholder set: unknown, n/a, tbd, none, -, null, 0, default, to be filled",
+   "status": "UNDECLARED"
+  },
+  "DQ-002": {
+   "workbook_text": "Class set configurable. Default: all classes under cmdb_ci_netgear, cmdb_ci_computer, cmdb_ci_appl",
+   "status": "UNDECLARED"
+  },
+  "DQ-003": {
+   "workbook_text": "Derived per class from the identification rule, not a fixed attribute list",
+   "status": "UNDECLARED"
+  },
+  "DQ-004": {
+   "workbook_text": "Class set = classes participating in service maps or impact rules",
+   "status": "UNDECLARED"
+  },
+  "DQ-005": {
+   "workbook_text": "Class scope configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-006": {
+   "workbook_text": "Placeholder set configurable per estate. Default 12 patterns including 0.0.0.0 and 00:00:00:00:00:00.",
+   "status": "UNDECLARED"
+  },
+  "DQ-007": {
+   "workbook_text": "Per-class attribute list from config. Identity attributes weighted 3x.",
+   "status": "UNDECLARED"
+  },
+  "DQ-008": {
+   "workbook_text": "Only fires when more than one active company exists",
+   "status": "UNDECLARED"
+  },
+  "DQ-009": {
+   "workbook_text": "Minimum depth default 3 (country > city > site). Configurable.",
+   "status": "UNDECLARED"
+  },
+  "DQ-010": {
+   "workbook_text": "Per-class list from health config",
+   "status": "UNDECLARED"
+  },
+  "DQ-011": {
+   "workbook_text": "Applies to choice fields only",
+   "status": "UNDECLARED"
+  },
+  "DQ-012": {
+   "workbook_text": "Class scope configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-013": {
+   "workbook_text": "Tolerance window for legitimate lag, default 24h",
+   "status": "UNDECLARED"
+  },
+  "DQ-014": {
+   "workbook_text": "Permitted set read from the instance configuration, not hardcoded",
+   "status": "UNDECLARED"
+  },
+  "DQ-015": {
+   "workbook_text": "Default 3 changes in 90 days. Configurable.",
+   "status": "UNDECLARED"
+  },
+  "DQ-016": {
+   "workbook_text": "Margin threshold configurable. Default: target class match 2x current class match.",
+   "status": "UNDECLARED"
+  },
+  "DQ-017": {
+   "workbook_text": "Any count above zero",
+   "status": "UNDECLARED"
+  },
+  "DQ-018": {
+   "workbook_text": "Include inherited choices from parent tables",
+   "status": "UNDECLARED"
+  },
+  "DQ-019": {
+   "workbook_text": "Pattern set per field type, extensible per manufacturer for serial",
+   "status": "UNDECLARED"
+  },
+  "DQ-020": {
+   "workbook_text": "Ranges configurable per attribute and class",
+   "status": "UNDECLARED"
+  },
+  "DQ-021": {
+   "workbook_text": "Dominant pattern must cover at least 60% of the class before the rule fires",
+   "status": "UNDECLARED"
+  },
+  "DQ-022": {
+   "workbook_text": "Any asymmetric set. Weight 5x a symmetric duplicate in scoring.",
+   "status": "UNDECLARED"
+  },
+  "DQ-023": {
+   "workbook_text": "Exclude placeholders and serials appearing on more than N CIs (likely a default value, not a duplicate)",
+   "status": "UNDECLARED"
+  },
+  "DQ-024": {
+   "workbook_text": "Exclude loopback, link-local, 0.0.0.0, and configured VIP ranges",
+   "status": "UNDECLARED"
+  },
+  "DQ-025": {
+   "workbook_text": "Exclude empty and placeholder",
+   "status": "UNDECLARED"
+  },
+  "DQ-026": {
+   "workbook_text": "Case-insensitive, trimmed, with configurable normalisation (strip domain suffix)",
+   "status": "UNDECLARED"
+  },
+  "DQ-027": {
+   "workbook_text": "Requires at least 3 snapshots. Flag on positive trend above noise threshold.",
+   "status": "UNDECLARED"
+  },
+  "DQ-028": {
+   "workbook_text": "Report by source pair, ranked by count",
+   "status": "UNDECLARED"
+  },
+  "DQ-029": {
+   "workbook_text": "Normalisation configurable: case, whitespace, domain suffix",
+   "status": "UNDECLARED"
+  },
+  "DQ-030": {
+   "workbook_text": "Similarity threshold default 0.85. Identity match is mandatory, not optional.",
+   "status": "UNDECLARED"
+  },
+  "DQ-031": {
+   "workbook_text": "Default 90 days. Configurable.",
+   "status": "UNDECLARED"
+  },
+  "DQ-032": {
+   "workbook_text": "Attribute classification (identity vs descriptive) configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-033": {
+   "workbook_text": "Must account for inheritance — a parent class rule may cover the child",
+   "status": "UNDECLARED"
+  },
+  "DQ-034": {
+   "workbook_text": "Default threshold 20%. Escalate above 40%.",
+   "status": "UNDECLARED"
+  },
+  "DQ-035": {
+   "workbook_text": "Fixed: zero independent entries",
+   "status": "UNDECLARED"
+  },
+  "DQ-036": {
+   "workbook_text": "Report count and list; the ratio is CMDB-046",
+   "status": "UNDECLARED"
+  },
+  "DQ-037": {
+   "workbook_text": "Threshold relative to CI create volume, not absolute",
+   "status": "UNDECLARED"
+  },
+  "DQ-038": {
+   "workbook_text": "Attribute strength classification configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-039": {
+   "workbook_text": "Default 30 days. Configurable per source type.",
+   "status": "UNDECLARED"
+  },
+  "DQ-040": {
+   "workbook_text": "Same-precedence collisions only; different levels are correct behaviour",
+   "status": "UNDECLARED"
+  },
+  "DQ-041": {
+   "workbook_text": "Exact and normalised name comparison",
+   "status": "UNDECLARED"
+  },
+  "DQ-042": {
+   "workbook_text": "Observation window configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-043": {
+   "workbook_text": "Scope to attributes actually written by a source",
+   "status": "UNDECLARED"
+  },
+  "DQ-044": {
+   "workbook_text": "Default 15% drop in 30 days. Configurable per class.",
+   "status": "UNDECLARED"
+  },
+  "DQ-045": {
+   "workbook_text": "Depth limit default 8. Threshold default 60%.",
+   "status": "UNDECLARED"
+  },
+  "DQ-046": {
+   "workbook_text": "Scope to classes expected to have relationships",
+   "status": "UNDECLARED"
+  },
+  "DQ-047": {
+   "workbook_text": "Host class set configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-048": {
+   "workbook_text": "Application class set configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-049": {
+   "workbook_text": "Retired state set read from the instance configuration",
+   "status": "UNDECLARED"
+  },
+  "DQ-050": {
+   "workbook_text": "Per relationship type; some types legitimately permit cycles (peer-to-peer)",
+   "status": "UNDECLARED"
+  },
+  "DQ-051": {
+   "workbook_text": "Requires an independent corroborating source; do not fire on absence alone",
+   "status": "UNDECLARED"
+  },
+  "DQ-052": {
+   "workbook_text": "Permitted scope read from cmdb_rel_type, with hierarchy expansion",
+   "status": "UNDECLARED"
+  },
+  "DQ-053": {
+   "workbook_text": "Direction expectation matrix per type and class pair, configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-054": {
+   "workbook_text": "Window per relationship type; default 30 days for discovery-maintained types",
+   "status": "UNDECLARED"
+  },
+  "DQ-055": {
+   "workbook_text": "Exact triple match",
+   "status": "UNDECLARED"
+  },
+  "DQ-056": {
+   "workbook_text": "Default threshold 85%. Expected count derivation must be shown.",
+   "status": "UNDECLARED"
+  },
+  "DQ-057": {
+   "workbook_text": "Tolerance default 2x interval. Per-class interval overrides supported.",
+   "status": "UNDECLARED"
+  },
+  "DQ-058": {
+   "workbook_text": "Discovery source value set configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-059": {
+   "workbook_text": "CIDR overlap analysis, not string matching",
+   "status": "UNDECLARED"
+  },
+  "DQ-060": {
+   "workbook_text": "Default threshold 60%. Report by class.",
+   "status": "UNDECLARED"
+  },
+  "DQ-061": {
+   "workbook_text": "Age threshold default 180 days",
+   "status": "UNDECLARED"
+  },
+  "DQ-062": {
+   "workbook_text": "Window default 180 days",
+   "status": "UNDECLARED"
+  },
+  "DQ-063": {
+   "workbook_text": "Retired state set read from instance configuration",
+   "status": "UNDECLARED"
+  },
+  "DQ-064": {
+   "workbook_text": "Active map definition configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-065": {
+   "workbook_text": "State mapping between asset and CI lifecycle models, configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-066": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "DQ-067": {
+   "workbook_text": "Open state set per task table",
+   "status": "UNDECLARED"
+  },
+  "DQ-068": {
+   "workbook_text": "Mapping table between CI and asset lifecycle models",
+   "status": "UNDECLARED"
+  },
+  "DQ-069": {
+   "workbook_text": "Default 180 days stale with no action",
+   "status": "UNDECLARED"
+  },
+  "DQ-070": {
+   "workbook_text": "Age threshold default 365 days. Report as a class ratio.",
+   "status": "UNDECLARED"
+  },
+  "DQ-071": {
+   "workbook_text": "Active membership resolved live, not from the group record",
+   "status": "UNDECLARED"
+  },
+  "DQ-072": {
+   "workbook_text": "Evaluate all ownership fields in use on the class",
+   "status": "UNDECLARED"
+  },
+  "DQ-073": {
+   "workbook_text": "Fixed: absence of configuration",
+   "status": "UNDECLARED"
+  },
+  "DQ-074": {
+   "workbook_text": "Field set per class",
+   "status": "UNDECLARED"
+  },
+  "DQ-075": {
+   "workbook_text": "Report as a ratio per service before raising individual findings",
+   "status": "UNDECLARED"
+  },
+  "DQ-076": {
+   "workbook_text": "Default 20% of the in-scope estate. Report distribution regardless.",
+   "status": "UNDECLARED"
+  },
+  "DQ-077": {
+   "workbook_text": "Default threshold 70%. Report alerts and changes separately as well as combined.",
+   "status": "UNDECLARED"
+  },
+  "DQ-078": {
+   "workbook_text": "Default threshold 60%. Window default 90 days.",
+   "status": "UNDECLARED"
+  },
+  "DQ-079": {
+   "workbook_text": "Default threshold 50%",
+   "status": "UNDECLARED"
+  },
+  "DQ-080": {
+   "workbook_text": "Overlap threshold configurable; require both classes populated",
+   "status": "UNDECLARED"
+  },
+  "DQ-081": {
+   "workbook_text": "Window default 365 days",
+   "status": "UNDECLARED"
+  },
+  "DQ-082": {
+   "workbook_text": "Threshold configurable, default 5",
+   "status": "UNDECLARED"
+  },
+  "DQ-083": {
+   "workbook_text": "Default threshold 6 levels",
+   "status": "UNDECLARED"
+  },
+  "DQ-084": {
+   "workbook_text": "Both absent; escalate where the group is referenced by open tasks",
+   "status": "UNDECLARED"
+  },
+  "DQ-085": {
+   "workbook_text": "Fires only where rules reference the field",
+   "status": "UNDECLARED"
+  },
+  "DQ-086": {
+   "workbook_text": "Report the two cases separately; escalate where both are absent",
+   "status": "UNDECLARED"
+  },
+  "DQ-087": {
+   "workbook_text": "Escalate for users who submit requests requiring manager approval",
+   "status": "UNDECLARED"
+  },
+  "DQ-088": {
+   "workbook_text": "Any occurrence where financial integration exists",
+   "status": "UNDECLARED"
+  },
+  "DQ-089": {
+   "workbook_text": "Report per field; escalate where all three are absent",
+   "status": "UNDECLARED"
+  },
+  "DQ-090": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "DQ-091": {
+   "workbook_text": "Report the two separately; escalate on fulfilment group",
+   "status": "UNDECLARED"
+  },
+  "DQ-092": {
+   "workbook_text": "Root locations identified by configuration or by depth",
+   "status": "UNDECLARED"
+  },
+  "DQ-093": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "DQ-094": {
+   "workbook_text": "Report the two separately",
+   "status": "UNDECLARED"
+  },
+  "DQ-095": {
+   "workbook_text": "Evaluate across approval definitions, delegations and manager chains",
+   "status": "UNDECLARED"
+  },
+  "DQ-096": {
+   "workbook_text": "Active membership resolved live at evaluation time",
+   "status": "UNDECLARED"
+  },
+  "DQ-097": {
+   "workbook_text": "Scope to notification-referenced records",
+   "status": "UNDECLARED"
+  },
+  "DQ-098": {
+   "workbook_text": "Include inactive choices as a separate case",
+   "status": "UNDECLARED"
+  },
+  "DQ-099": {
+   "workbook_text": "Mapping table between asset and CI state models, configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-100": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "DQ-101": {
+   "workbook_text": "Pattern set per region; for India include the standard mobile and landline formats",
+   "status": "UNDECLARED"
+  },
+  "DQ-102": {
+   "workbook_text": "Mapping configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-103": {
+   "workbook_text": "Depth limit configurable as a safety bound",
+   "status": "UNDECLARED"
+  },
+  "DQ-104": {
+   "workbook_text": "Depth limit as a safety bound",
+   "status": "UNDECLARED"
+  },
+  "DQ-105": {
+   "workbook_text": "Fires only on multi-company instances",
+   "status": "UNDECLARED"
+  },
+  "DQ-106": {
+   "workbook_text": "Fires only on multi-company instances with group company scoping in use",
+   "status": "UNDECLARED"
+  },
+  "DQ-107": {
+   "workbook_text": "Both populated and different",
+   "status": "UNDECLARED"
+  },
+  "DQ-108": {
+   "workbook_text": "Requires a dominant pattern in at least one population",
+   "status": "UNDECLARED"
+  },
+  "DQ-109": {
+   "workbook_text": "Variance threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "DQ-110": {
+   "workbook_text": "Fires only on multi-company instances",
+   "status": "UNDECLARED"
+  },
+  "DQ-111": {
+   "workbook_text": "Report active-active pairs separately from active-inactive",
+   "status": "UNDECLARED"
+  },
+  "DQ-112": {
+   "workbook_text": "Overlap threshold default 90%; minimum membership 3",
+   "status": "UNDECLARED"
+  },
+  "DQ-113": {
+   "workbook_text": "Address normalisation configurable; include postcode where available",
+   "status": "UNDECLARED"
+  },
+  "DQ-114": {
+   "workbook_text": "Include registration number where populated",
+   "status": "UNDECLARED"
+  },
+  "DQ-115": {
+   "workbook_text": "Requires manufacturer populated; DQ-093 gates this rule",
+   "status": "UNDECLARED"
+  },
+  "DQ-116": {
+   "workbook_text": "Name normalisation plus variable set comparison",
+   "status": "UNDECLARED"
+  },
+  "DQ-117": {
+   "workbook_text": "Requires a successful recent HR import; guard on DQ-118",
+   "status": "UNDECLARED"
+  },
+  "DQ-118": {
+   "workbook_text": "Tolerance default 2x interval",
+   "status": "UNDECLARED"
+  },
+  "DQ-119": {
+   "workbook_text": "Age threshold default 90 days",
+   "status": "UNDECLARED"
+  },
+  "DQ-120": {
+   "workbook_text": "Age threshold default 730 days",
+   "status": "UNDECLARED"
+  },
+  "DQ-121": {
+   "workbook_text": "Requires end-of-life data to be populated",
+   "status": "UNDECLARED"
+  },
+  "DQ-122": {
+   "workbook_text": "Report by days overdue and by view volume",
+   "status": "UNDECLARED"
+  },
+  "DQ-123": {
+   "workbook_text": "Age threshold default 365 days",
+   "status": "UNDECLARED"
+  },
+  "DQ-124": {
+   "workbook_text": "Exclude parent nodes with populated children",
+   "status": "UNDECLARED"
+  },
+  "DQ-125": {
+   "workbook_text": "Any occurrence across all task tables",
+   "status": "UNDECLARED"
+  },
+  "DQ-126": {
+   "workbook_text": "Report deleted and inactive separately",
+   "status": "UNDECLARED"
+  },
+  "DQ-127": {
+   "workbook_text": "Any occurrence on active items",
+   "status": "UNDECLARED"
+  },
+  "DQ-128": {
+   "workbook_text": "Scope to operationally significant reference fields; the full scan is expensive",
+   "status": "UNDECLARED"
+  },
+  "DQ-129": {
+   "workbook_text": "Report each direction separately",
+   "status": "UNDECLARED"
+  },
+  "DQ-130": {
+   "workbook_text": "Resolution evaluated live",
+   "status": "UNDECLARED"
+  },
+  "DQ-131": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "DQ-132": {
+   "workbook_text": "Any occurrence on active reports",
+   "status": "UNDECLARED"
+  },
+  "DQ-133": {
+   "workbook_text": "Pattern set per identifier. PAN and Aadhaar support checksum validation; apply it and report validated matches separately.",
+   "status": "UNDECLARED"
+  },
+  "DQ-134": {
+   "workbook_text": "Personal data field set from classification where it exists, otherwise from DQ-133 detection",
+   "status": "UNDECLARED"
+  },
+  "DQ-135": {
+   "workbook_text": "Content classification method must be stated; metadata-only detection is weaker than content scanning",
+   "status": "UNDECLARED"
+  },
+  "DQ-136": {
+   "workbook_text": "Retention periods from the customer's policy; report the absence of a policy as DQ-139",
+   "status": "UNDECLARED"
+  },
+  "DQ-137": {
+   "workbook_text": "Fires where a classification framework exists on the instance",
+   "status": "UNDECLARED"
+  },
+  "DQ-138": {
+   "workbook_text": "Requires access to the non-production instance, or evidence from the clone configuration",
+   "status": "UNDECLARED"
+  },
+  "DQ-139": {
+   "workbook_text": "Personal data identification from DQ-133 detection and from field semantics",
+   "status": "UNDECLARED"
+  }
+ }
+}

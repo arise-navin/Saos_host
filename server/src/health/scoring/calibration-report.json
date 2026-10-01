@@ -1,0 +1,2587 @@
+{
+ "calibration_version": "calibration/2",
+ "convergence": [
+  {
+   "pass": 1,
+   "held": {
+    "record_aggregation": "R1",
+    "attainment_curve": "A1",
+    "control_aggregation": "C1",
+    "overall": "O1",
+    "systemic_treatment": "T1",
+    "coverage_floor": "F2"
+   },
+   "leaders": {
+    "record_aggregation": "R6",
+    "attainment_curve": "A3",
+    "control_aggregation": "C3",
+    "overall": "O8",
+    "systemic_treatment": "T3",
+    "coverage_floor": "F2"
+   }
+  },
+  {
+   "pass": 2,
+   "held": {
+    "record_aggregation": "R6",
+    "attainment_curve": "A3",
+    "control_aggregation": "C3",
+    "overall": "O8",
+    "systemic_treatment": "T3",
+    "coverage_floor": "F2"
+   },
+   "leaders": {
+    "record_aggregation": "R6",
+    "attainment_curve": "A3",
+    "control_aggregation": "C3",
+    "overall": "O8",
+    "systemic_treatment": "T1",
+    "coverage_floor": "F2"
+   }
+  },
+  {
+   "pass": 3,
+   "held": {
+    "record_aggregation": "R6",
+    "attainment_curve": "A3",
+    "control_aggregation": "C3",
+    "overall": "O8",
+    "systemic_treatment": "T1",
+    "coverage_floor": "F2"
+   },
+   "leaders": {
+    "record_aggregation": "R6",
+    "attainment_curve": "A3",
+    "control_aggregation": "C3",
+    "overall": "O8",
+    "systemic_treatment": "T1",
+    "coverage_floor": "F2"
+   }
+  }
+ ],
+ "candidates_version": "0.3.0",
+ "promoted": false,
+ "promotion_rule": "Decision D-008: a model is promoted only by decision, from a report whose combined configuration passes every property and scenario.",
+ "acceptance": {
+  "unhealthy_below": 50,
+  "unhealthy_note": "'Materially unhealthy' = the product's existing Needs work band (< 50, overall-health.js HEALTH_BANDS). An assumption: review it with the result.",
+  "dilution_tolerance_points": 5,
+  "stability_tolerance_points": 5,
+  "stability_perturbation": 0.1,
+  "masking_band_slack": 1,
+  "masking_note": "No masking: with one module materially unhealthy, the Overall band may be at most `masking_band_slack` band better than that module's band, AND the Overall number must lie inside the band it is shown in."
+ },
+ "axes": {
+  "record_aggregation": {
+   "question": "How does a Method R dimension aggregate its records' scores?",
+   "options": [
+    {
+     "id": "R1",
+     "describe": "record_mean",
+     "note": "today's CMDB: every record counts once",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 99,
+        "Critical": 99.6,
+        "High": 99.85,
+        "Moderate": 99.95,
+        "Low": 99.99
+       }
+      },
+      "P4": {
+       "pass": false,
+       "core_with_10_endpoints": 80,
+       "core_with_10000_endpoints": 99.96,
+       "drift": 19.96
+      },
+      "P5": {
+       "pass": true,
+       "one_charge": 99.6,
+       "restated_same_key": 99.6
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 99.25,
+       "absent": 99.25
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0.763,
+       "deltas": {
+        "blend record -0.05": 0,
+        "blend record +0.05": 0,
+        "blend mixed -0.05": 0.763,
+        "blend mixed +0.05": 0.763,
+        "blend estate -0.05": 0.196,
+        "blend estate +0.05": 0.196
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P4"
+     ],
+     "expectations_passed": 29,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S06F-defective-core-faithful: CMDB is not Healthy when its core is defective"
+     ],
+     "passes_all": false,
+     "stability": 0.763,
+     "distinguishing_failures": [
+      "S06F-defective-core-faithful: CMDB is not Healthy when its core is defective"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "R2",
+     "describe": "consequence_weighted (bc 2 · core 1.5 · other 1 · endpoint 0.75)",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 99,
+        "Critical": 99.6,
+        "High": 99.85,
+        "Moderate": 99.95,
+        "Low": 99.99
+       }
+      },
+      "P4": {
+       "pass": false,
+       "core_with_10_endpoints": 73.333,
+       "core_with_10000_endpoints": 99.92,
+       "drift": 26.587
+      },
+      "P5": {
+       "pass": true,
+       "one_charge": 99.6,
+       "restated_same_key": 99.6
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 99.25,
+       "absent": 99.25
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0.735,
+       "deltas": {
+        "tier bc ×0.9": 0.021,
+        "tier bc ×1.1": 0.021,
+        "tier core ×0.9": 0.055,
+        "tier core ×1.1": 0.053,
+        "tier other ×0.9": 0.013,
+        "tier other ×1.1": 0.012,
+        "tier endpoint ×0.9": 0.067,
+        "tier endpoint ×1.1": 0.058,
+        "blend record -0.05": 0,
+        "blend record +0.05": 0,
+        "blend mixed -0.05": 0.735,
+        "blend mixed +0.05": 0.734,
+        "blend estate -0.05": 0.196,
+        "blend estate +0.05": 0.196
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P4"
+     ],
+     "expectations_passed": 29,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S06F-defective-core-faithful: CMDB is not Healthy when its core is defective"
+     ],
+     "passes_all": false,
+     "stability": 0.735,
+     "distinguishing_failures": [
+      "S06F-defective-core-faithful: CMDB is not Healthy when its core is defective"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "R3",
+     "describe": "consequence_weighted (bc 4 · core 2 · other 1 · endpoint 0.5)",
+     "note": "the tiers floated in the proposal",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 99,
+        "Critical": 99.6,
+        "High": 99.85,
+        "Moderate": 99.95,
+        "Low": 99.99
+       }
+      },
+      "P4": {
+       "pass": false,
+       "core_with_10_endpoints": 68,
+       "core_with_10000_endpoints": 99.841,
+       "drift": 31.841
+      },
+      "P5": {
+       "pass": true,
+       "one_charge": 99.6,
+       "restated_same_key": 99.6
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 99.25,
+       "absent": 99.25
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0.687,
+       "deltas": {
+        "tier bc ×0.9": 0.047,
+        "tier bc ×1.1": 0.046,
+        "tier core ×0.9": 0.072,
+        "tier core ×1.1": 0.069,
+        "tier other ×0.9": 0.027,
+        "tier other ×1.1": 0.027,
+        "tier endpoint ×0.9": 0.095,
+        "tier endpoint ×1.1": 0.085,
+        "blend record -0.05": 0,
+        "blend record +0.05": 0,
+        "blend mixed -0.05": 0.686,
+        "blend mixed +0.05": 0.687,
+        "blend estate -0.05": 0.196,
+        "blend estate +0.05": 0.196
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P4"
+     ],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": false,
+     "stability": 0.687,
+     "distinguishing_failures": [],
+     "passes_axis": false
+    },
+    {
+     "id": "R4",
+     "describe": "consequence_weighted (bc 8 · core 3 · other 1 · endpoint 0.25)",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 99,
+        "Critical": 99.6,
+        "High": 99.85,
+        "Moderate": 99.95,
+        "Low": 99.99
+       }
+      },
+      "P4": {
+       "pass": false,
+       "core_with_10_endpoints": 63.077,
+       "core_with_10000_endpoints": 99.526,
+       "drift": 36.449
+      },
+      "P5": {
+       "pass": true,
+       "one_charge": 99.6,
+       "restated_same_key": 99.6
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 99.25,
+       "absent": 99.25
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0.59,
+       "deltas": {
+        "tier bc ×0.9": 0.093,
+        "tier bc ×1.1": 0.091,
+        "tier core ×0.9": 0.077,
+        "tier core ×1.1": 0.075,
+        "tier other ×0.9": 0.06,
+        "tier other ×1.1": 0.057,
+        "tier endpoint ×0.9": 0.101,
+        "tier endpoint ×1.1": 0.095,
+        "blend record -0.05": 0,
+        "blend record +0.05": 0,
+        "blend mixed -0.05": 0.59,
+        "blend mixed +0.05": 0.589,
+        "blend estate -0.05": 0.196,
+        "blend estate +0.05": 0.196
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P4"
+     ],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": false,
+     "stability": 0.59,
+     "distinguishing_failures": [],
+     "passes_axis": false
+    },
+    {
+     "id": "R5",
+     "describe": "tier_stratified (bc 4 · core 2 · other 1 · endpoint 0.5)",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 99,
+        "Critical": 99.6,
+        "High": 99.85,
+        "Moderate": 99.95,
+        "Low": 99.99
+       }
+      },
+      "P4": {
+       "pass": true,
+       "core_with_10_endpoints": 68,
+       "core_with_10000_endpoints": 68,
+       "drift": 0
+      },
+      "P5": {
+       "pass": true,
+       "one_charge": 99.6,
+       "restated_same_key": 99.6
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 99.25,
+       "absent": 99.25
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0.283,
+       "deltas": {
+        "tier bc ×0.9": 0.244,
+        "tier bc ×1.1": 0.22,
+        "tier core ×0.9": 0.088,
+        "tier core ×1.1": 0.083,
+        "tier other ×0.9": 0.104,
+        "tier other ×1.1": 0.1,
+        "tier endpoint ×0.9": 0.052,
+        "tier endpoint ×1.1": 0.05,
+        "blend record -0.05": 0,
+        "blend record +0.05": 0,
+        "blend mixed -0.05": 0.283,
+        "blend mixed +0.05": 0.282,
+        "blend estate -0.05": 0.196,
+        "blend estate +0.05": 0.196
+       },
+       "note": null
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": 0.283,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    },
+    {
+     "id": "R6",
+     "describe": "tier_stratified (bc 2 · core 1.5 · other 1 · endpoint 0.75)",
+     "note": null,
+     "mechanism": false,
+     "preferred": "D-013: consequence is already charged by the Schema escalation; R6 only stops tail dilution",
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 99,
+        "Critical": 99.6,
+        "High": 99.85,
+        "Moderate": 99.95,
+        "Low": 99.99
+       }
+      },
+      "P4": {
+       "pass": true,
+       "core_with_10_endpoints": 73.333,
+       "core_with_10000_endpoints": 73.333,
+       "drift": 0
+      },
+      "P5": {
+       "pass": true,
+       "one_charge": 99.6,
+       "restated_same_key": 99.6
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 99.25,
+       "absent": 99.25
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0.398,
+       "deltas": {
+        "tier bc ×0.9": 0.24,
+        "tier bc ×1.1": 0.223,
+        "tier core ×0.9": 0.087,
+        "tier core ×1.1": 0.081,
+        "tier other ×0.9": 0.115,
+        "tier other ×1.1": 0.111,
+        "tier endpoint ×0.9": 0.086,
+        "tier endpoint ×1.1": 0.083,
+        "blend record -0.05": 0,
+        "blend record +0.05": 0,
+        "blend mixed -0.05": 0.398,
+        "blend mixed +0.05": 0.398,
+        "blend estate -0.05": 0.196,
+        "blend estate +0.05": 0.196
+       },
+       "note": null
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": 0.398,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    }
+   ],
+   "shared_failures": [],
+   "leader": "R6",
+   "leader_passes_all": true,
+   "options_passing_axis": [
+    "R6",
+    "R5"
+   ],
+   "leader_note": "2 option(s) pass every property and every scenario this axis decides: R6, R5. R6 leads by the tie-break (no added mechanism, then a recorded preference, then the option already held, then scenarios passed, then stability)."
+  },
+  "attainment_curve": {
+   "question": "How does a graded rate or share become attainment?",
+   "options": [
+    {
+     "id": "A1",
+     "describe": "linear curve",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 0,
+        "Critical": 60,
+        "High": 85,
+        "Moderate": 95,
+        "Low": 99
+       }
+      },
+      "P5": {
+       "pass": true,
+       "one_rule": 60,
+       "restated_same_family": 60,
+       "restated_without_family": 20,
+       "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+      },
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 92.5,
+       "absent": 92.5
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 29,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S03F-credential-failure: ITOM is not Healthy while a Systemic defect stands"
+     ],
+     "passes_all": false,
+     "stability": null,
+     "distinguishing_failures": [
+      "S03F-credential-failure: ITOM is not Healthy while a Systemic defect stands"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "A2",
+     "describe": "step curve",
+     "note": "pass/fail at the threshold: today's ITSM rule part",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 0,
+        "Critical": 60,
+        "High": 85,
+        "Moderate": 95,
+        "Low": 99
+       }
+      },
+      "P5": {
+       "pass": true,
+       "one_rule": 60,
+       "restated_same_family": 60,
+       "restated_without_family": 20,
+       "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+      },
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 92.5,
+       "absent": 92.5
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 28,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S10-near-miss-and-collapse: a near miss is nearly healthy",
+      "S11-rate-just-over-limit: just over the limit is nearly healthy"
+     ],
+     "passes_all": false,
+     "stability": null,
+     "distinguishing_failures": [
+      "S10-near-miss-and-collapse: a near miss is nearly healthy",
+      "S11-rate-just-over-limit: just over the limit is nearly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "A3",
+     "describe": "convex curve",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 0,
+        "Critical": 60,
+        "High": 85,
+        "Moderate": 95,
+        "Low": 99
+       }
+      },
+      "P5": {
+       "pass": true,
+       "one_rule": 60,
+       "restated_same_family": 60,
+       "restated_without_family": 20,
+       "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+      },
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 92.5,
+       "absent": 92.5
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": null,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    }
+   ],
+   "shared_failures": [],
+   "leader": "A3",
+   "leader_passes_all": true,
+   "options_passing_axis": [
+    "A3"
+   ],
+   "leader_note": "1 option(s) pass every property and every scenario this axis decides: A3. A3 leads."
+  },
+  "control_aggregation": {
+   "question": "How do a dimension's controls (Method C) aggregate? (Added in the Phase 3 investigation: the weight share dilutes a failure by the number of rules written.)",
+   "options": [
+    {
+     "id": "C1",
+     "describe": "weight share",
+     "note": "Phase 3 baseline: a failure costs its weight's share of every rule written",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 68.354,
+        "Critical": 84.375,
+        "High": 93.506,
+        "Moderate": 97.738,
+        "Low": 99.539
+       }
+      },
+      "P5": {
+       "pass": true,
+       "one_rule": 84.375,
+       "restated_same_family": 84.375,
+       "restated_without_family": 72.973,
+       "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+      },
+      "P6": {
+       "pass": true,
+       "failing": 79.705,
+       "unevaluated": 93.506,
+       "passing": 94.465,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 96.753,
+       "absent": 96.753
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 20,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02-one-module-failing: ITSM materially unhealthy",
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S03-single-systemic-defect: ITOM is not Healthy while a Systemic defect stands",
+      "S12-four-modules-one-unhealthy: Platform materially unhealthy",
+      "S02F-itsm-processes-broken: ITSM materially unhealthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy",
+      "S03F-credential-failure: Discovery is not Healthy",
+      "S03F-credential-failure: ITOM is not Healthy while a Systemic defect stands",
+      "S12F-platform-four-areas-broken: Platform reads Needs attention or worse",
+      "S13F-hygiene-only: the incident dimension is not Healthy"
+     ],
+     "passes_all": false,
+     "stability": null,
+     "distinguishing_failures": [
+      "S02-one-module-failing: ITSM materially unhealthy",
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S03-single-systemic-defect: ITOM is not Healthy while a Systemic defect stands",
+      "S12-four-modules-one-unhealthy: Platform materially unhealthy",
+      "S02F-itsm-processes-broken: ITSM materially unhealthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy",
+      "S03F-credential-failure: Discovery is not Healthy",
+      "S03F-credential-failure: ITOM is not Healthy while a Systemic defect stands",
+      "S12F-platform-four-areas-broken: Platform reads Needs attention or worse",
+      "S13F-hygiene-only: the incident dimension is not Healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "C2",
+     "describe": "severity stratified",
+     "note": "each severity band weighs once, whatever its rule count",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 68.944,
+        "Critical": 91.718,
+        "High": 96.894,
+        "Moderate": 98.447,
+        "Low": 99.689
+       }
+      },
+      "P5": {
+       "pass": true,
+       "one_rule": 91.718,
+       "restated_same_family": 91.718,
+       "restated_without_family": 87.578,
+       "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+      },
+      "P6": {
+       "pass": true,
+       "failing": 88.613,
+       "unevaluated": 96.894,
+       "passing": 96.894,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 98.447,
+       "absent": 98.447
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 19,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02-one-module-failing: ITSM materially unhealthy",
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S03-single-systemic-defect: ITOM is not Healthy while a Systemic defect stands",
+      "S11-rate-just-over-limit: far over the limit is not Healthy",
+      "S12-four-modules-one-unhealthy: Platform materially unhealthy",
+      "S02F-itsm-processes-broken: ITSM materially unhealthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy",
+      "S03F-credential-failure: Discovery is not Healthy",
+      "S03F-credential-failure: ITOM is not Healthy while a Systemic defect stands",
+      "S12F-platform-four-areas-broken: Platform reads Needs attention or worse",
+      "S13F-hygiene-only: the incident dimension is not Healthy"
+     ],
+     "passes_all": false,
+     "stability": null,
+     "distinguishing_failures": [
+      "S02-one-module-failing: ITSM materially unhealthy",
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S03-single-systemic-defect: ITOM is not Healthy while a Systemic defect stands",
+      "S11-rate-just-over-limit: far over the limit is not Healthy",
+      "S12-four-modules-one-unhealthy: Platform materially unhealthy",
+      "S02F-itsm-processes-broken: ITSM materially unhealthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy",
+      "S03F-credential-failure: Discovery is not Healthy",
+      "S03F-credential-failure: ITOM is not Healthy while a Systemic defect stands",
+      "S12F-platform-four-areas-broken: Platform reads Needs attention or worse",
+      "S13F-hygiene-only: the incident dimension is not Healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "C3",
+     "describe": "deduction additive",
+     "note": "the workbook's record semantics applied to a dimension: start at 100, lose each failure's weight",
+     "mechanism": false,
+     "preferred": "D-014: the workbook's own record formula",
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 0,
+        "Critical": 60,
+        "High": 85,
+        "Moderate": 95,
+        "Low": 99
+       }
+      },
+      "P5": {
+       "pass": true,
+       "one_rule": 60,
+       "restated_same_family": 60,
+       "restated_without_family": 20,
+       "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+      },
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 92.5,
+       "absent": 92.5
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": null,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    },
+    {
+     "id": "C4",
+     "describe": "deduction multiplicative",
+     "note": "the same weights; each failure removes its weight as a share of the health that remains",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "pass": true,
+       "scores": {
+        "Systemic": 0,
+        "Critical": 60,
+        "High": 85,
+        "Moderate": 95,
+        "Low": 99
+       }
+      },
+      "P5": {
+       "pass": true,
+       "one_rule": 60,
+       "restated_same_family": 60,
+       "restated_without_family": 36,
+       "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+      },
+      "P6": {
+       "pass": true,
+       "failing": 51,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P7": {
+       "pass": true,
+       "excluded": 92.5,
+       "absent": 92.5
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": null,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    }
+   ],
+   "shared_failures": [],
+   "leader": "C3",
+   "leader_passes_all": true,
+   "options_passing_axis": [
+    "C3",
+    "C4"
+   ],
+   "leader_note": "2 option(s) pass every property and every scenario this axis decides: C3, C4. C3 leads by the tie-break (no added mechanism, then a recorded preference, then the option already held, then scenarios passed, then stability)."
+  },
+  "overall": {
+   "question": "How do module scores become the Overall?",
+   "options": [
+    {
+     "id": "O1",
+     "describe": "weighted mean",
+     "note": "overall-health/1 today",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "3 modules, healthy at 90, one at 49: Overall 76.333 shown as mostly_healthy",
+        "3 modules, healthy at 95, one at 49: Overall 79.667 shown as mostly_healthy",
+        "3 modules, healthy at 100, one at 30: Overall 76.667 shown as mostly_healthy",
+        "3 modules, healthy at 100, one at 49: Overall 83 shown as mostly_healthy",
+        "4 modules, healthy at 90, one at 30: Overall 75 shown as mostly_healthy",
+        "4 modules, healthy at 90, one at 49: Overall 79.75 shown as mostly_healthy"
+       ],
+       "violation_count": 19
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0,
+       "deltas": {},
+       "note": "this option carries no tunable numbers"
+      }
+     },
+     "property_failures": [
+      "P3"
+     ],
+     "expectations_passed": 27,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S12-four-modules-one-unhealthy: the Overall does not hide it (band at most one better, number inside its band)",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_all": false,
+     "stability": 0,
+     "distinguishing_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S12-four-modules-one-unhealthy: the Overall does not hide it (band at most one better, number inside its band)",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "O2",
+     "describe": "weighted mean, band capped at 1 band(s) better than the worst module",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "3 modules, healthy at 90, one at 49: Overall 76.333 shown as needs_attention (the number is outside its band)",
+        "3 modules, healthy at 95, one at 49: Overall 79.667 shown as needs_attention (the number is outside its band)",
+        "3 modules, healthy at 100, one at 30: Overall 76.667 shown as needs_attention (the number is outside its band)",
+        "3 modules, healthy at 100, one at 49: Overall 83 shown as needs_attention (the number is outside its band)",
+        "4 modules, healthy at 90, one at 30: Overall 75 shown as needs_attention (the number is outside its band)",
+        "4 modules, healthy at 90, one at 49: Overall 79.75 shown as needs_attention (the number is outside its band)"
+       ],
+       "violation_count": 19
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0,
+       "deltas": {},
+       "note": "this option carries no tunable numbers"
+      }
+     },
+     "property_failures": [
+      "P3"
+     ],
+     "expectations_passed": 27,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S12-four-modules-one-unhealthy: the Overall does not hide it (band at most one better, number inside its band)",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_all": false,
+     "stability": 0,
+     "distinguishing_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S12-four-modules-one-unhealthy: the Overall does not hide it (band at most one better, number inside its band)",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "O3",
+     "describe": "weighted mean − 0.5 × weighted shortfall below 50",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "3 modules, healthy at 90, one at 49: Overall 76.167 shown as mostly_healthy",
+        "3 modules, healthy at 95, one at 49: Overall 79.5 shown as mostly_healthy",
+        "3 modules, healthy at 100, one at 49: Overall 82.833 shown as mostly_healthy",
+        "4 modules, healthy at 90, one at 49: Overall 79.625 shown as mostly_healthy",
+        "4 modules, healthy at 95, one at 30: Overall 76.25 shown as mostly_healthy",
+        "4 modules, healthy at 95, one at 49: Overall 83.375 shown as mostly_healthy"
+       ],
+       "violation_count": 15
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0.625,
+       "deltas": {
+        "overall lambda ×0.9": 0.625,
+        "overall lambda ×1.1": 0.625,
+        "overall threshold ×0.9": 0.625,
+        "overall threshold ×1.1": 0.625
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P3"
+     ],
+     "expectations_passed": 28,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_all": false,
+     "stability": 0.625,
+     "distinguishing_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "O4",
+     "describe": "weighted mean − 1 × weighted shortfall below 50",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "3 modules, healthy at 90, one at 49: Overall 76 shown as mostly_healthy",
+        "3 modules, healthy at 95, one at 49: Overall 79.333 shown as mostly_healthy",
+        "3 modules, healthy at 100, one at 49: Overall 82.667 shown as mostly_healthy",
+        "4 modules, healthy at 90, one at 49: Overall 79.5 shown as mostly_healthy",
+        "4 modules, healthy at 95, one at 49: Overall 83.25 shown as mostly_healthy",
+        "4 modules, healthy at 100, one at 30: Overall 77.5 shown as mostly_healthy"
+       ],
+       "violation_count": 12
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 1.25,
+       "deltas": {
+        "overall lambda ×0.9": 1.25,
+        "overall lambda ×1.1": 1.25,
+        "overall threshold ×0.9": 1.25,
+        "overall threshold ×1.1": 1.25
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P3"
+     ],
+     "expectations_passed": 28,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_all": false,
+     "stability": 1.25,
+     "distinguishing_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "O5",
+     "describe": "weighted power mean, p = 0.5",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "3 modules, healthy at 95, one at 49: Overall 77.99 shown as mostly_healthy",
+        "3 modules, healthy at 100, one at 49: Overall 81 shown as mostly_healthy",
+        "4 modules, healthy at 90, one at 49: Overall 78.59 shown as mostly_healthy",
+        "4 modules, healthy at 95, one at 30: Overall 75.332 shown as mostly_healthy",
+        "4 modules, healthy at 95, one at 49: Overall 82.085 shown as mostly_healthy",
+        "4 modules, healthy at 100, one at 30: Overall 78.665 shown as mostly_healthy"
+       ],
+       "violation_count": 13
+      },
+      "P8": {
+       "pass": false,
+       "max_delta": 7.536,
+       "deltas": {
+        "overall p -0.1": 7.536,
+        "overall p +0.1": 5.661
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P3",
+      "P8"
+     ],
+     "expectations_passed": 28,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_all": false,
+     "stability": 7.536,
+     "distinguishing_failures": [
+      "S02-one-module-failing: Overall not Healthy and not Mostly healthy",
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "O6",
+     "describe": "weighted geometric mean",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "3 modules, healthy at 95, one at 49: Overall 76.187 shown as mostly_healthy",
+        "3 modules, healthy at 100, one at 49: Overall 78.837 shown as mostly_healthy",
+        "4 modules, healthy at 90, one at 49: Overall 77.309 shown as mostly_healthy",
+        "4 modules, healthy at 95, one at 49: Overall 80.508 shown as mostly_healthy",
+        "4 modules, healthy at 100, one at 49: Overall 83.666 shown as mostly_healthy",
+        "5 modules, healthy at 90, one at 49: Overall 79.695 shown as mostly_healthy"
+       ],
+       "violation_count": 10
+      },
+      "P8": {
+       "pass": false,
+       "max_delta": 5.631,
+       "deltas": {
+        "overall p -0.1": 1.292,
+        "overall p +0.1": 5.631
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P3",
+      "P8"
+     ],
+     "expectations_passed": 29,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_all": false,
+     "stability": 5.631,
+     "distinguishing_failures": [
+      "S02F-itsm-processes-broken: Overall not Healthy and not Mostly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "O7",
+     "describe": "weighted power mean, p = -1",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "4 modules, healthy at 95, one at 49: Overall 76.942 shown as mostly_healthy",
+        "4 modules, healthy at 100, one at 49: Overall 79.352 shown as mostly_healthy",
+        "5 modules, healthy at 90, one at 49: Overall 77.098 shown as mostly_healthy",
+        "5 modules, healthy at 95, one at 49: Overall 79.983 shown as mostly_healthy",
+        "5 modules, healthy at 100, one at 49: Overall 82.77 shown as mostly_healthy"
+       ],
+       "violation_count": 5
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 1.342,
+       "deltas": {
+        "overall p -0.1": 1.314,
+        "overall p +0.1": 1.342
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P3"
+     ],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": false,
+     "stability": 1.342,
+     "distinguishing_failures": [],
+     "passes_axis": false
+    },
+    {
+     "id": "O8",
+     "describe": "0.5 × weighted mean + 0.5 × weakest module",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 3.75,
+       "deltas": {
+        "overall lambda ×0.9": 3.75,
+        "overall lambda ×1.1": 3.75
+       },
+       "note": null
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": 3.75,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    },
+    {
+     "id": "O9",
+     "describe": "0.7 × weighted mean + 0.3 × weakest module",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P3": {
+       "pass": false,
+       "violations": [
+        "4 modules, healthy at 100, one at 49: Overall 75.775 shown as mostly_healthy",
+        "5 modules, healthy at 100, one at 49: Overall 77.56 shown as mostly_healthy"
+       ],
+       "violation_count": 2
+      },
+      "P8": {
+       "pass": false,
+       "max_delta": 5.25,
+       "deltas": {
+        "overall lambda ×0.9": 5.25,
+        "overall lambda ×1.1": 5.25
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P3",
+      "P8"
+     ],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": false,
+     "stability": 5.25,
+     "distinguishing_failures": [],
+     "passes_axis": false
+    }
+   ],
+   "shared_failures": [],
+   "leader": "O8",
+   "leader_passes_all": true,
+   "options_passing_axis": [
+    "O8"
+   ],
+   "leader_note": "1 option(s) pass every property and every scenario this axis decides: O8. O8 leads."
+  },
+  "systemic_treatment": {
+   "question": "Does a standing Systemic defect cap the score, and where? (Added after the first run showed passing controls dilute a Systemic failure.)",
+   "options": [
+    {
+     "id": "T1",
+     "describe": "no Systemic cap",
+     "note": "no cap: Systemic is only its weight (100)",
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "C": {
+        "pass": true,
+        "scores": {
+         "Systemic": 0,
+         "Critical": 60,
+         "High": 85,
+         "Moderate": 95,
+         "Low": 99
+        }
+       },
+       "R": {
+        "pass": true,
+        "scores": {
+         "Systemic": 99,
+         "Critical": 99.6,
+         "High": 99.85,
+         "Moderate": 99.95,
+         "Low": 99.99
+        }
+       },
+       "pass": true
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": null,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    },
+    {
+     "id": "T2",
+     "describe": "dimension capped at 74.9 while a Systemic defect stands",
+     "note": "a dimension with a standing Systemic defect reads at most Needs attention",
+     "mechanism": true,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "C": {
+        "pass": true,
+        "scores": {
+         "Systemic": 0,
+         "Critical": 60,
+         "High": 85,
+         "Moderate": 95,
+         "Low": 99
+        }
+       },
+       "R": {
+        "pass": true,
+        "scores": {
+         "Systemic": 99,
+         "Critical": 99.6,
+         "High": 99.85,
+         "Moderate": 99.95,
+         "Low": 99.99
+        }
+       },
+       "pass": true
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 28,
+     "expectations_total": 30,
+     "expectation_failures": [
+      "S10-near-miss-and-collapse: a near miss is nearly healthy",
+      "S11-rate-just-over-limit: just over the limit is nearly healthy"
+     ],
+     "passes_all": false,
+     "stability": null,
+     "distinguishing_failures": [
+      "S10-near-miss-and-collapse: a near miss is nearly healthy",
+      "S11-rate-just-over-limit: just over the limit is nearly healthy"
+     ],
+     "passes_axis": false
+    },
+    {
+     "id": "T3",
+     "describe": "module capped at 89.9 while a Systemic defect stands",
+     "note": "a module with a standing Systemic defect is never Healthy",
+     "mechanism": true,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "C": {
+        "pass": true,
+        "scores": {
+         "Systemic": 0,
+         "Critical": 60,
+         "High": 85,
+         "Moderate": 95,
+         "Low": 99
+        }
+       },
+       "R": {
+        "pass": true,
+        "scores": {
+         "Systemic": 99,
+         "Critical": 99.6,
+         "High": 99.85,
+         "Moderate": 99.95,
+         "Low": 99.99
+        }
+       },
+       "pass": true
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": null,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    },
+    {
+     "id": "T4",
+     "describe": "module capped at 74.9 while a Systemic defect stands",
+     "note": "a module with a standing Systemic defect reads at most Needs attention",
+     "mechanism": true,
+     "preferred": null,
+     "properties": {
+      "P1": {
+       "pass": true,
+       "violations": [],
+       "violation_count": 0
+      },
+      "P2": {
+       "C": {
+        "pass": true,
+        "scores": {
+         "Systemic": 0,
+         "Critical": 60,
+         "High": 85,
+         "Moderate": 95,
+         "Low": 99
+        }
+       },
+       "R": {
+        "pass": true,
+        "scores": {
+         "Systemic": 99,
+         "Critical": 99.6,
+         "High": 99.85,
+         "Moderate": 99.95,
+         "Low": 99.99
+        }
+       },
+       "pass": true
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": null,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    }
+   ],
+   "shared_failures": [],
+   "leader": "T1",
+   "leader_passes_all": true,
+   "options_passing_axis": [
+    "T1",
+    "T3",
+    "T4"
+   ],
+   "leader_note": "3 option(s) pass every property and every scenario this axis decides: T1, T3, T4. T1 leads by the tie-break (no added mechanism, then a recorded preference, then the option already held, then scenarios passed, then stability)."
+  },
+  "coverage_floor": {
+   "question": "Below what assessment coverage does a module leave the Overall?",
+   "options": [
+    {
+     "id": "F1",
+     "describe": "floor 0.25",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P8": {
+       "pass": false,
+       "max_delta": 15.625,
+       "deltas": {
+        "floor -0.05": 15.625,
+        "floor +0.05": 0
+       },
+       "note": null
+      }
+     },
+     "property_failures": [
+      "P8"
+     ],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": false,
+     "stability": 15.625,
+     "distinguishing_failures": [],
+     "passes_axis": false
+    },
+    {
+     "id": "F2",
+     "describe": "floor 0.4",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0,
+       "deltas": {
+        "floor -0.05": 0,
+        "floor +0.05": 0
+       },
+       "note": null
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": 0,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    },
+    {
+     "id": "F3",
+     "describe": "floor 0.5",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0,
+       "deltas": {
+        "floor -0.05": 0,
+        "floor +0.05": 0
+       },
+       "note": null
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": 0,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    },
+    {
+     "id": "F4",
+     "describe": "floor 0.6",
+     "note": null,
+     "mechanism": false,
+     "preferred": null,
+     "properties": {
+      "P6": {
+       "pass": true,
+       "failing": 45,
+       "unevaluated": 85,
+       "passing": 85,
+       "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+      },
+      "P8": {
+       "pass": true,
+       "max_delta": 0,
+       "deltas": {
+        "floor -0.05": 0,
+        "floor +0.05": 0
+       },
+       "note": null
+      }
+     },
+     "property_failures": [],
+     "expectations_passed": 30,
+     "expectations_total": 30,
+     "expectation_failures": [],
+     "passes_all": true,
+     "stability": 0,
+     "distinguishing_failures": [],
+     "passes_axis": true
+    }
+   ],
+   "shared_failures": [],
+   "leader": "F2",
+   "leader_passes_all": true,
+   "options_passing_axis": [
+    "F2",
+    "F3",
+    "F4"
+   ],
+   "leader_note": "3 option(s) pass every property and every scenario this axis decides: F2, F3, F4. F2 leads by the tie-break (no added mechanism, then a recorded preference, then the option already held, then scenarios passed, then stability)."
+  }
+ },
+ "combined": {
+  "picks": {
+   "record_aggregation": "R6",
+   "attainment_curve": "A3",
+   "control_aggregation": "C3",
+   "overall": "O8",
+   "systemic_treatment": "T1",
+   "coverage_floor": "F2"
+  },
+  "configuration": {
+   "ids": {
+    "record_aggregation": "R6",
+    "attainment_curve": "A3",
+    "overall": "O8",
+    "systemic_treatment": "T1",
+    "control_aggregation": "C3",
+    "coverage_floor": "F2"
+   },
+   "record": {
+    "aggregation": "tier_stratified",
+    "tier_weights": {
+     "bc": 2,
+     "core": 1.5,
+     "other": 1,
+     "endpoint": 0.75
+    }
+   },
+   "curve": "convex",
+   "control": {
+    "aggregation": "deduction_additive"
+   },
+   "blends": {
+    "record": 0.7,
+    "mixed": 0.6,
+    "estate": 0.3
+   },
+   "overall": {
+    "kind": "min_blend",
+    "params": {
+     "lambda": 0.5
+    }
+   },
+   "floor": 0.4,
+   "systemic": null
+  },
+  "properties": {
+   "P1": {
+    "pass": true,
+    "violations": [],
+    "violation_count": 0
+   },
+   "P2": {
+    "C": {
+     "pass": true,
+     "scores": {
+      "Systemic": 0,
+      "Critical": 60,
+      "High": 85,
+      "Moderate": 95,
+      "Low": 99
+     }
+    },
+    "R": {
+     "pass": true,
+     "scores": {
+      "Systemic": 99,
+      "Critical": 99.6,
+      "High": 99.85,
+      "Moderate": 99.95,
+      "Low": 99.99
+     }
+    },
+    "pass": true
+   },
+   "P3": {
+    "pass": true,
+    "violations": [],
+    "violation_count": 0
+   },
+   "P4": {
+    "pass": true,
+    "core_with_10_endpoints": 73.333,
+    "core_with_10000_endpoints": 73.333,
+    "drift": 0
+   },
+   "P5": {
+    "C": {
+     "pass": true,
+     "one_rule": 60,
+     "restated_same_family": 60,
+     "restated_without_family": 20,
+     "note": "Invariance holds only for rules declared one family (ownership / defect family); two unrelated rules are two conditions."
+    },
+    "R": {
+     "pass": true,
+     "one_charge": 99.6,
+     "restated_same_key": 99.6
+    },
+    "pass": true
+   },
+   "P6": {
+    "pass": true,
+    "failing": 45,
+    "unevaluated": 85,
+    "passing": 85,
+    "note": "An unevaluated rule leaves the denominator: it can never score better than passing. What it hides is carried by assessment coverage and validity, never by the number."
+   },
+   "P7": {
+    "C": {
+     "pass": true,
+     "excluded": 92.5,
+     "absent": 92.5
+    },
+    "R": {
+     "pass": true,
+     "excluded": 99.25,
+     "absent": 99.25
+    },
+    "pass": true
+   },
+   "P8": {
+    "pass": true,
+    "max_delta": 3.75,
+    "deltas": {
+     "tier bc ×0.9": 0.24,
+     "tier bc ×1.1": 0.223,
+     "tier core ×0.9": 0.087,
+     "tier core ×1.1": 0.081,
+     "tier other ×0.9": 0.115,
+     "tier other ×1.1": 0.111,
+     "tier endpoint ×0.9": 0.086,
+     "tier endpoint ×1.1": 0.083,
+     "blend record -0.05": 0,
+     "blend record +0.05": 0,
+     "blend mixed -0.05": 0.398,
+     "blend mixed +0.05": 0.398,
+     "blend estate -0.05": 0.196,
+     "blend estate +0.05": 0.196,
+     "overall lambda ×0.9": 3.75,
+     "overall lambda ×1.1": 3.75,
+     "floor -0.05": 0,
+     "floor +0.05": 0
+    },
+    "note": null
+   }
+  },
+  "expectations_passed": 30,
+  "expectations_total": 30,
+  "passes_all": true,
+  "failing": []
+ },
+ "scenarios": [
+  {
+   "id": "S01-healthy",
+   "title": "A healthy estate",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 100,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "every module Healthy",
+     "pass": true
+    },
+    {
+     "expectation": "Overall Healthy",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S02-one-module-failing",
+   "title": "ITSM broken across its processes; everything else healthy",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 25,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 53.125,
+    "band": "needs_attention"
+   },
+   "expectations": [
+    {
+     "expectation": "ITSM materially unhealthy",
+     "pass": true
+    },
+    {
+     "expectation": "Overall not Healthy and not Mostly healthy",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S03-single-systemic-defect",
+   "title": "One Systemic credential failure in Discovery; the rest of ITOM clean",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 80,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 87.5,
+    "band": "mostly_healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "the Discovery dimension is not Healthy",
+     "pass": true
+    },
+    {
+     "expectation": "ITOM is not Healthy while a Systemic defect stands",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S04-thin-coverage",
+   "title": "Platform barely assessed (20% coverage) and scoring badly on what was read",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 75,
+     "participates": false,
+     "coverage": 0.2
+    }
+   },
+   "overall": {
+    "score": 100,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "Platform leaves the Overall below the floor",
+     "pass": true
+    },
+    {
+     "expectation": "the Overall is what the assessed modules say",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S05-product-not-in-use",
+   "title": "Event Management reliably not in use; its dimension excluded",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 100,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "an excluded dimension neither rewards nor penalises",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S06-defective-core-clean-tail",
+   "title": "Every Business Critical and core CI carries a Critical defect; 20,000 clean endpoints",
+   "modules": {
+    "cmdb": {
+     "score": 94.133,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 96.333,
+    "band": "healthy"
+   },
+   "expectations": []
+  },
+  {
+   "id": "S07-low-severity-noise",
+   "title": "40% of records carry one Low hygiene defect",
+   "modules": {
+    "cmdb": {
+     "score": 99.952,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 99.97,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "hygiene noise does not sink the dimension",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S08-escalated-to-systemic",
+   "title": "The same missing-owner defect on Business Critical CIs, escalated to Systemic by context",
+   "modules": {
+    "cmdb": {
+     "score": 97.714,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 98.571,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "escalation lowers the dimension",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S09-recovery",
+   "title": "After remediation: the S06 core defects fixed",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 100,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "the CMDB is Healthy again",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S10-near-miss-and-collapse",
+   "title": "Discovery coverage 84% against 85% (a near miss); Service Mapping coverage 20% against 60% (a collapse)",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 81.754,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 88.596,
+    "band": "mostly_healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "a near miss is nearly healthy",
+     "pass": true
+    },
+    {
+     "expectation": "a collapse is not Healthy",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S11-rate-just-over-limit",
+   "title": "Reopen rate 9% against an 8% limit; change failure 60% against 10%",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 91.435,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 94.647,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "just over the limit is nearly healthy",
+     "pass": true
+    },
+    {
+     "expectation": "far over the limit is not Healthy",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S12-four-modules-one-unhealthy",
+   "title": "Three modules Healthy, Platform materially unhealthy (fully assessed)",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 0,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 37.5,
+    "band": "needs_work"
+   },
+   "expectations": [
+    {
+     "expectation": "Platform materially unhealthy",
+     "pass": true
+    },
+    {
+     "expectation": "the Overall does not hide it (band at most one better, number inside its band)",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S01F-healthy-catalogue",
+   "title": "Every scored workbook rule passes (ITSM 136, ITOM 143, Platform 174)",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 100,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "every module Healthy",
+     "pass": true
+    },
+    {
+     "expectation": "Overall Healthy",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S02F-itsm-processes-broken",
+   "title": "Incident: ITSM-016 (55% of incidents with no CI or service, limit 40%), ITSM-030 (reopen rate 15%, limit 8%), ITSM-037 backlog ageing. Problem: ITSM-056 never progressed, ITSM-061 no state change. Change: ITSM-094 (50% of changes with no CI, limit 30%), ITSM-113 (success 70%, target 90%). Cross-process clean.",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 34.208,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 58.88,
+    "band": "needs_attention"
+   },
+   "expectations": [
+    {
+     "expectation": "ITSM materially unhealthy",
+     "pass": true
+    },
+    {
+     "expectation": "Overall not Healthy and not Mostly healthy",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S03F-credential-failure",
+   "title": "Discovery: ITOM-015 credential failure rate 80% sustained (limit 70%). Every other ITOM rule passes.",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 88.889,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 93.056,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "Discovery is not Healthy",
+     "pass": true
+    },
+    {
+     "expectation": "ITOM is not Healthy while a Systemic defect stands",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S06F-defective-core-faithful",
+   "title": "CMDB-058 (Critical) on every Business Critical and core CI — escalated to Systemic on Business Critical CIs; CMDB-105 (High) likewise, escalated to Critical; CMDB-057 reachability 5% (threshold 60%); DQ-077 impact analysis 10% (threshold 70%). 2,300 clean other and endpoint CIs.",
+   "modules": {
+    "cmdb": {
+     "score": 84.976,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 90.61,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "the relationship dimension is not Healthy",
+     "pass": true
+    },
+    {
+     "expectation": "CMDB is not Healthy when its core is defective",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S12F-platform-four-areas-broken",
+   "title": "Platform: PLT-121/122 (ACLs) + PLT-129; PLT-138/139 (basic auth, vault) + PLT-144; PLT-034/047 (current.update, hard-coded credentials) + PLT-045; PLT-002 (no SLA for a band) + PLT-007/020. Five other Platform areas clean.",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 55.556,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 72.222,
+    "band": "needs_attention"
+   },
+   "expectations": [
+    {
+     "expectation": "Platform reads Needs attention or worse",
+     "pass": true
+    },
+    {
+     "expectation": "the Overall does not hide it (band at most one better, number inside its band)",
+     "pass": true
+    }
+   ]
+  },
+  {
+   "id": "S13F-hygiene-only",
+   "title": "Every Moderate incident rule fails (7 of 51); nothing more severe",
+   "modules": {
+    "cmdb": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "itsm": {
+     "score": 91.25,
+     "participates": true,
+     "coverage": 1
+    },
+    "itom": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    },
+    "platform": {
+     "score": 100,
+     "participates": true,
+     "coverage": 1
+    }
+   },
+   "overall": {
+    "score": 94.531,
+    "band": "healthy"
+   },
+   "expectations": [
+    {
+     "expectation": "the incident dimension is not Healthy",
+     "pass": true
+    },
+    {
+     "expectation": "the incident dimension is not materially unhealthy",
+     "pass": true
+    }
+   ]
+  }
+ ]
+}

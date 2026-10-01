@@ -1,0 +1,17 @@
+{
+ "engine": "temporal_correlation",
+ "rules": {
+  "DQ-118": {
+   "undefined_dependencies": [
+    "which data source is the HR feed — not identified by the workbook, and not recorded on sys_data_source",
+    "the feed's expected run interval — not recorded on the data source"
+   ]
+  },
+  "DQ-136": {
+   "undefined_dependencies": [
+    "the customer's retention periods per record type — a policy the platform does not hold",
+    "personal data found by content (\"from DQ-133 detection\") — DQ-133 has no pattern set; the classified fields alone cannot show personal data that is NOT classified"
+   ]
+  }
+ }
+}

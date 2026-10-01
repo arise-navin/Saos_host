@@ -1,0 +1,81 @@
+{
+ "import_version": "1.0.0",
+ "workbook": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "bytes": 323662,
+ "generated": "2026-09-25",
+ "generator": "server/scripts/import-health-workbook.mjs",
+ "sheets": {
+  "cmdb": {
+   "sheet": "CMDB",
+   "file": "sheets/cmdb.json",
+   "rules": 138,
+   "id_range": [
+    "CMDB-001",
+    "CMDB-138"
+   ],
+   "placeholder": null
+  },
+  "itsm": {
+   "sheet": "ITSM",
+   "file": "sheets/itsm.json",
+   "rules": 139,
+   "id_range": [
+    "ITSM-001",
+    "ITSM-139"
+   ],
+   "placeholder": null
+  },
+  "csdm": {
+   "sheet": "CSDM",
+   "file": "sheets/csdm.json",
+   "rules": 80,
+   "id_range": [
+    "CSDM-001",
+    "CSDM-080"
+   ],
+   "placeholder": null
+  },
+  "itom": {
+   "sheet": "ITOM",
+   "file": "sheets/itom.json",
+   "rules": 156,
+   "id_range": [
+    "ITOM-001",
+    "ITOM-156"
+   ],
+   "placeholder": null
+  },
+  "platform": {
+   "sheet": "platform",
+   "file": "sheets/platform.json",
+   "rules": 183,
+   "id_range": [
+    "PLT-001",
+    "PLT-183"
+   ],
+   "placeholder": null
+  },
+  "data-quality": {
+   "sheet": "data quality",
+   "file": "sheets/data-quality.json",
+   "rules": 139,
+   "id_range": [
+    "DQ-001",
+    "DQ-139"
+   ],
+   "placeholder": null
+  },
+  "itil": {
+   "sheet": "ITIL",
+   "file": "sheets/itil.json",
+   "rules": 148,
+   "id_range": [
+    "ITIL-001",
+    "ITIL-148"
+   ],
+   "placeholder": null
+  }
+ },
+ "schema_sheet": "Schema"
+}

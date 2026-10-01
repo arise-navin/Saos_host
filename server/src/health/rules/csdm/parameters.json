@@ -1,0 +1,398 @@
+{
+ "version": "1.0.0",
+ "phase": "Health Assist Phase 9",
+ "source": {
+  "workbook": "SAOS_Health_Rules_Tracker_v2_9574.xlsx",
+  "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+  "bytes": 323662
+ },
+ "rule_count": 80,
+ "conventions": {
+  "default": "the workbook's stated default, or null with status UNDEFINED — never an invented value (DECISION 3)"
+ },
+ "declarations": {
+  "CSDM-001": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-002": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-003": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-004": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-005": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-006": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-007": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-008": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-009": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-010": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-011": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-012": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-013": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-014": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-015": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-016": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-017": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-018": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-019": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-020": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-021": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-022": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-023": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-024": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "window",
+     "type": "duration",
+     "unit": "days",
+     "default": 90,
+     "description": "incident window",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "CSDM-025": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 365,
+     "description": "age",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "CSDM-026": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "share",
+     "type": "percent",
+     "unit": null,
+     "default": 90,
+     "description": "share of a class at one value",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "CSDM-027": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-028": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-029": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-030": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-031": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-032": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-033": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-034": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-035": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-036": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-037": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-038": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "max_share",
+     "type": "percent",
+     "unit": null,
+     "default": 20,
+     "description": "share of services held by one owner",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "CSDM-039": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "min_age",
+     "type": "duration",
+     "unit": "days",
+     "default": 365,
+     "description": "age",
+     "status": "DEFINED"
+    }
+   ]
+  },
+  "CSDM-040": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-041": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-042": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-043": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-044": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-045": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-046": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-047": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-048": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-049": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-050": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-051": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-052": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-053": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-054": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-055": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-056": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-057": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-058": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-059": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-060": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-061": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-062": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-063": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-064": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "variance",
+     "type": "number",
+     "unit": null,
+     "default": null,
+     "description": "target variance threshold — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "CSDM-065": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-066": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-067": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-068": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-069": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-070": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": [
+    {
+     "key": "threshold",
+     "type": "percent",
+     "unit": null,
+     "default": null,
+     "description": "complete-hierarchy share threshold — UNDEFINED",
+     "status": "UNDEFINED"
+    }
+   ]
+  },
+  "CSDM-071": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-072": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-073": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-074": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-075": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-076": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-077": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-078": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-079": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  },
+  "CSDM-080": {
+   "workbook_text": "Not stated separately in the CSDM KPI Articulation — see Detection Logic.",
+   "parameters": []
+  }
+ }
+}

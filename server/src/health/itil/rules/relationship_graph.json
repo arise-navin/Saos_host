@@ -1,0 +1,10 @@
+{
+ "engine": "relationship_graph",
+ "rules": {
+  "ITIL-089": {
+   "undefined_dependencies": [
+    "how a redundant peer is recognised in the CMDB (a cluster, a load-balanced pool, a named relationship type) and how deep the dependency path is walked — the customer's to state"
+   ]
+  }
+ }
+}

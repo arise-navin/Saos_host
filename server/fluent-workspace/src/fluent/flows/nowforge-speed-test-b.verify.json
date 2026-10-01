@@ -1,0 +1,35 @@
+{
+  "setup": {
+    "table": "incident",
+    "payload": {
+      "short_description": "speedtest-b test",
+      "impact": "1",
+      "urgency": "1"
+    }
+  },
+  "wait": {
+    "flowName": "NowForge Speed Test B",
+    "timeoutSec": 90
+  },
+  "assert": [
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      },
+      "field": "work_notes",
+      "expect": {
+        "value": "NowForge Speed Test B: high priority"
+      },
+      "note": "sets work_notes to high priority when priority is 1"
+    }
+  ],
+  "cleanup": [
+    {
+      "table": "incident",
+      "locate": {
+        "bySetupRecord": true
+      }
+    }
+  ]
+}

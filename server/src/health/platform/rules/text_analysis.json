@@ -1,0 +1,40 @@
+{
+ "engine": "text_analysis",
+ "rules": {
+  "PLT-036": {
+   "undefined_dependencies": [
+    "an operation classification (async-appropriate operations, UI-policy-expressible actions, privileged operations) — \"configurable\", no default"
+   ]
+  },
+  "PLT-043": {
+   "undefined_dependencies": [
+    "the overlap threshold (\"configurable\") and a comparison of flow and workflow logic with scripts"
+   ]
+  },
+  "PLT-067": {
+   "undefined_dependencies": [
+    "an operation classification (async-appropriate operations, UI-policy-expressible actions, privileged operations) — \"configurable\", no default"
+   ]
+  },
+  "PLT-073": {
+   "undefined_dependencies": [
+    "per-rule execution counts and error attribution — the platform keeps no per-rule execution log the workbook names, and syslog entries are not attributed to their rule"
+   ]
+  },
+  "PLT-078": {
+   "undefined_dependencies": [
+    "an operation classification (async-appropriate operations, UI-policy-expressible actions, privileged operations) — \"configurable\", no default"
+   ]
+  },
+  "PLT-082": {
+   "undefined_dependencies": [
+    "the deprecated API set per UI framework version — external reference data"
+   ]
+  },
+  "PLT-162": {
+   "undefined_dependencies": [
+    "the deprecated API list per release — external reference data"
+   ]
+  }
+ }
+}

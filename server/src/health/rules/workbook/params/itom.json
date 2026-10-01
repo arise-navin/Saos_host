@@ -1,0 +1,632 @@
+{
+ "params_version": "0.1.0",
+ "sheet": "ITOM",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Parameter declaration skeleton, one entry per workbook rule. The typed declarations (type, unit, default, status DEFINED/UNDEFINED) are written in Phase 1 with the generalised registry; ITSM already has them in health/rules/itsm/parameters.json.",
+ "rules": {
+  "ITOM-001": {
+   "workbook_text": "CIDR overlap analysis, not string matching. Report by subnet with device count.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-002": {
+   "workbook_text": "Default threshold 85%. The expected-count derivation must be shown alongside the ratio.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-003": {
+   "workbook_text": "CI count threshold configurable, default 50",
+   "status": "UNDECLARED"
+  },
+  "ITOM-004": {
+   "workbook_text": "Any empty location on an active schedule",
+   "status": "UNDECLARED"
+  },
+  "ITOM-005": {
+   "workbook_text": "Require evidence the range is still live: recent incidents, recent events, or non-stale CIs from another source",
+   "status": "UNDECLARED"
+  },
+  "ITOM-006": {
+   "workbook_text": "Tolerance default 2x interval",
+   "status": "UNDECLARED"
+  },
+  "ITOM-007": {
+   "workbook_text": "Class staleness thresholds configurable; compare against the tightest threshold among classes present",
+   "status": "UNDECLARED"
+  },
+  "ITOM-008": {
+   "workbook_text": "Majority threshold default 90% of range unreachable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-009": {
+   "workbook_text": "Window default 90 days",
+   "status": "UNDECLARED"
+  },
+  "ITOM-010": {
+   "workbook_text": "Any overlap. Escalate where reclassification churn is present in the overlap.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-011": {
+   "workbook_text": "Escalate where the range contains CIs supporting Business Critical services",
+   "status": "UNDECLARED"
+  },
+  "ITOM-012": {
+   "workbook_text": "Capability profile derived from MID host specification where available; otherwise from observed throughput",
+   "status": "UNDECLARED"
+  },
+  "ITOM-013": {
+   "workbook_text": "Requires the customer's schedules to be defined; report the absence if they are not",
+   "status": "UNDECLARED"
+  },
+  "ITOM-014": {
+   "workbook_text": "Both fields empty",
+   "status": "UNDECLARED"
+  },
+  "ITOM-015": {
+   "workbook_text": "Default 70% failure rate sustained for 3 consecutive days. Escalate at 14 and 30 days.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-016": {
+   "workbook_text": "Device type inference from port signature and partial classification",
+   "status": "UNDECLARED"
+  },
+  "ITOM-017": {
+   "workbook_text": "Any sustained failure. Temporal correlation with the credential update timestamp strengthens the root-cause claim.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-018": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "ITOM-019": {
+   "workbook_text": "Affinity coverage threshold default 80% of successfully discovered devices",
+   "status": "UNDECLARED"
+  },
+  "ITOM-020": {
+   "workbook_text": "Age threshold default 90 days",
+   "status": "UNDECLARED"
+  },
+  "ITOM-021": {
+   "workbook_text": "Privilege classification configurable; derive from the credential's account role where available",
+   "status": "UNDECLARED"
+  },
+  "ITOM-022": {
+   "workbook_text": "Ratio threshold configurable, default scope 5x actual success footprint",
+   "status": "UNDECLARED"
+  },
+  "ITOM-023": {
+   "workbook_text": "Device type from successful classification or port signature",
+   "status": "UNDECLARED"
+  },
+  "ITOM-024": {
+   "workbook_text": "Fires only where a vault capability exists on the instance",
+   "status": "UNDECLARED"
+  },
+  "ITOM-025": {
+   "workbook_text": "Rotation period from the customer's policy, not assumed. Report the absence of a policy separately.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-026": {
+   "workbook_text": "Any unrestricted credential",
+   "status": "UNDECLARED"
+  },
+  "ITOM-027": {
+   "workbook_text": "Window default 180 days",
+   "status": "UNDECLARED"
+  },
+  "ITOM-028": {
+   "workbook_text": "Default threshold 85%. Report by range and by phase.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-029": {
+   "workbook_text": "Requires at least 5 runs. Flag on positive trend with projected overrun within 90 days.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-030": {
+   "workbook_text": "Report by range and by port signature to identify the device family",
+   "status": "UNDECLARED"
+  },
+  "ITOM-031": {
+   "workbook_text": "Report with the resulting CI quality, not just the phase count",
+   "status": "UNDECLARED"
+  },
+  "ITOM-032": {
+   "workbook_text": "Default 10% of devices producing errors",
+   "status": "UNDECLARED"
+  },
+  "ITOM-033": {
+   "workbook_text": "Any occurrence; report frequency",
+   "status": "UNDECLARED"
+  },
+  "ITOM-034": {
+   "workbook_text": "Disproportion threshold default 3x expected share",
+   "status": "UNDECLARED"
+  },
+  "ITOM-035": {
+   "workbook_text": "Correlate by device identity and run timestamp",
+   "status": "UNDECLARED"
+  },
+  "ITOM-036": {
+   "workbook_text": "Depth and age thresholds configurable; age is the more meaningful of the two",
+   "status": "UNDECLARED"
+  },
+  "ITOM-037": {
+   "workbook_text": "Lag threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-038": {
+   "workbook_text": "Requires at least 5 runs",
+   "status": "UNDECLARED"
+  },
+  "ITOM-039": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "ITOM-040": {
+   "workbook_text": "Size threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-041": {
+   "workbook_text": "Requires sufficient execution volume on both; default minimum 50 executions",
+   "status": "UNDECLARED"
+  },
+  "ITOM-042": {
+   "workbook_text": "Window default 90 days",
+   "status": "UNDECLARED"
+  },
+  "ITOM-043": {
+   "workbook_text": "Failure rate threshold default 60% with minimum volume 20",
+   "status": "UNDECLARED"
+  },
+  "ITOM-044": {
+   "workbook_text": "Timeout rate threshold default 30% with minimum volume 20",
+   "status": "UNDECLARED"
+  },
+  "ITOM-045": {
+   "workbook_text": "Deprecation status from the instance's own metadata",
+   "status": "UNDECLARED"
+  },
+  "ITOM-046": {
+   "workbook_text": "Compare against the pattern version shipped with the current family",
+   "status": "UNDECLARED"
+  },
+  "ITOM-047": {
+   "workbook_text": "All three absent",
+   "status": "UNDECLARED"
+  },
+  "ITOM-048": {
+   "workbook_text": "Minimum duplicate count per pattern configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-049": {
+   "workbook_text": "Threshold relative to execution volume",
+   "status": "UNDECLARED"
+  },
+  "ITOM-050": {
+   "workbook_text": "Window default 180 days",
+   "status": "UNDECLARED"
+  },
+  "ITOM-051": {
+   "workbook_text": "Criticality determined by the services the range's CIs support",
+   "status": "UNDECLARED"
+  },
+  "ITOM-052": {
+   "workbook_text": "Resolve through the CMDB host relationship where available; otherwise compare host identifiers",
+   "status": "UNDECLARED"
+  },
+  "ITOM-053": {
+   "workbook_text": "Heartbeat tolerance default 3x expected interval",
+   "status": "UNDECLARED"
+  },
+  "ITOM-054": {
+   "workbook_text": "Compare major and minor version against instance",
+   "status": "UNDECLARED"
+  },
+  "ITOM-055": {
+   "workbook_text": "Any unvalidated MID in production use",
+   "status": "UNDECLARED"
+  },
+  "ITOM-056": {
+   "workbook_text": "Warning window default 30 days. Escalate inside 7 days.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-057": {
+   "workbook_text": "Capability requirements per work type",
+   "status": "UNDECLARED"
+  },
+  "ITOM-058": {
+   "workbook_text": "Disproportion threshold default 2x the cluster mean",
+   "status": "UNDECLARED"
+  },
+  "ITOM-059": {
+   "workbook_text": "Requires at least 3 observation points",
+   "status": "UNDECLARED"
+  },
+  "ITOM-060": {
+   "workbook_text": "Thresholds from MID configuration where available",
+   "status": "UNDECLARED"
+  },
+  "ITOM-061": {
+   "workbook_text": "Tolerance default 3x heartbeat interval",
+   "status": "UNDECLARED"
+  },
+  "ITOM-062": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "ITOM-063": {
+   "workbook_text": "Required role set per work type; admin on a MID account is always flagged",
+   "status": "UNDECLARED"
+  },
+  "ITOM-064": {
+   "workbook_text": "Supported matrix per instance family",
+   "status": "UNDECLARED"
+  },
+  "ITOM-065": {
+   "workbook_text": "Any unconfigured MID; escalate where disk utilisation is trending up",
+   "status": "UNDECLARED"
+  },
+  "ITOM-066": {
+   "workbook_text": "Threshold default 90 days with no heartbeat",
+   "status": "UNDECLARED"
+  },
+  "ITOM-067": {
+   "workbook_text": "Any non-zero value is notable. Default threshold 10%.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-068": {
+   "workbook_text": "Default threshold 60%. Current means refreshed within its interval.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-069": {
+   "workbook_text": "Requires Service Mapping licensed and pattern coverage confirmed",
+   "status": "UNDECLARED"
+  },
+  "ITOM-070": {
+   "workbook_text": "Window aligned to the map refresh interval",
+   "status": "UNDECLARED"
+  },
+  "ITOM-071": {
+   "workbook_text": "Tolerance default 2x interval",
+   "status": "UNDECLARED"
+  },
+  "ITOM-072": {
+   "workbook_text": "Default 20% drop. Escalate above 50%.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-073": {
+   "workbook_text": "Report both directions separately",
+   "status": "UNDECLARED"
+  },
+  "ITOM-074": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "ITOM-075": {
+   "workbook_text": "Minimum count configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-076": {
+   "workbook_text": "Tier model derived from the best-mapped services in the estate",
+   "status": "UNDECLARED"
+  },
+  "ITOM-077": {
+   "workbook_text": "Report as an estate-wide ratio, not only per service",
+   "status": "UNDECLARED"
+  },
+  "ITOM-078": {
+   "workbook_text": "Report count and class distribution",
+   "status": "UNDECLARED"
+  },
+  "ITOM-079": {
+   "workbook_text": "Any unscheduled definition",
+   "status": "UNDECLARED"
+  },
+  "ITOM-080": {
+   "workbook_text": "Age threshold default 365 days",
+   "status": "UNDECLARED"
+  },
+  "ITOM-081": {
+   "workbook_text": "Any sustained failure",
+   "status": "UNDECLARED"
+  },
+  "ITOM-082": {
+   "workbook_text": "Only fires where traffic-based data collection is available",
+   "status": "UNDECLARED"
+  },
+  "ITOM-083": {
+   "workbook_text": "Exact match on address and port",
+   "status": "UNDECLARED"
+  },
+  "ITOM-084": {
+   "workbook_text": "Tolerance default 3x interval",
+   "status": "UNDECLARED"
+  },
+  "ITOM-085": {
+   "workbook_text": "Tool detection from CI classes, integration endpoints and credential types",
+   "status": "UNDECLARED"
+  },
+  "ITOM-086": {
+   "workbook_text": "Threshold from the connector's own interval",
+   "status": "UNDECLARED"
+  },
+  "ITOM-087": {
+   "workbook_text": "Default 70% drop against a rolling baseline. Baseline must account for weekday and weekend variance.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-088": {
+   "workbook_text": "Thresholds from observed processing capacity",
+   "status": "UNDECLARED"
+  },
+  "ITOM-089": {
+   "workbook_text": "Any sustained failure",
+   "status": "UNDECLARED"
+  },
+  "ITOM-090": {
+   "workbook_text": "Liveness evidence from source CIs, credentials or other integrations",
+   "status": "UNDECLARED"
+  },
+  "ITOM-091": {
+   "workbook_text": "Age is the more meaningful threshold; default 15 minutes",
+   "status": "UNDECLARED"
+  },
+  "ITOM-092": {
+   "workbook_text": "Any sustained discarding",
+   "status": "UNDECLARED"
+  },
+  "ITOM-093": {
+   "workbook_text": "Any unconfigured connector",
+   "status": "UNDECLARED"
+  },
+  "ITOM-094": {
+   "workbook_text": "Class coverage evaluated with hierarchy expansion",
+   "status": "UNDECLARED"
+  },
+  "ITOM-095": {
+   "workbook_text": "Default threshold 85%. Report by source and by class.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-096": {
+   "workbook_text": "Default threshold 15%. Escalate above 30%.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-097": {
+   "workbook_text": "Attribute classification configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-098": {
+   "workbook_text": "Report by node format to identify the systematic cases",
+   "status": "UNDECLARED"
+  },
+  "ITOM-099": {
+   "workbook_text": "Any occurrence within a detected duplicate set",
+   "status": "UNDECLARED"
+  },
+  "ITOM-100": {
+   "workbook_text": "Fires where the rule's class set contains duplicates",
+   "status": "UNDECLARED"
+  },
+  "ITOM-101": {
+   "workbook_text": "Retired state set from instance configuration",
+   "status": "UNDECLARED"
+  },
+  "ITOM-102": {
+   "workbook_text": "Attribute strength classification configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-103": {
+   "workbook_text": "Format classification: FQDN, short name, IP, MAC, composite",
+   "status": "UNDECLARED"
+  },
+  "ITOM-104": {
+   "workbook_text": "Participating class set from the impact configuration",
+   "status": "UNDECLARED"
+  },
+  "ITOM-105": {
+   "workbook_text": "Any disabled rule with live event volume in its class set",
+   "status": "UNDECLARED"
+  },
+  "ITOM-106": {
+   "workbook_text": "Default threshold 20%. Escalate above 40%.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-107": {
+   "workbook_text": "Fires only on a full-population zero",
+   "status": "UNDECLARED"
+  },
+  "ITOM-108": {
+   "workbook_text": "Both absent",
+   "status": "UNDECLARED"
+  },
+  "ITOM-109": {
+   "workbook_text": "Age threshold by severity; default 4 hours Critical, 24 hours Major",
+   "status": "UNDECLARED"
+  },
+  "ITOM-110": {
+   "workbook_text": "Default 60% in a single band. Report by source, since one source usually causes it.",
+   "status": "UNDECLARED"
+  },
+  "ITOM-111": {
+   "workbook_text": "Report by alert type to find the systematic gaps",
+   "status": "UNDECLARED"
+  },
+  "ITOM-112": {
+   "workbook_text": "Any occurrence with non-zero firing count",
+   "status": "UNDECLARED"
+  },
+  "ITOM-113": {
+   "workbook_text": "Ratio threshold default 0.8",
+   "status": "UNDECLARED"
+  },
+  "ITOM-114": {
+   "workbook_text": "Co-occurrence threshold configurable; requires relationship data to identify the pattern",
+   "status": "UNDECLARED"
+  },
+  "ITOM-115": {
+   "workbook_text": "Default 20% of total volume from a single node",
+   "status": "UNDECLARED"
+  },
+  "ITOM-116": {
+   "workbook_text": "Severity bands configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-117": {
+   "workbook_text": "Correlation by dedup key and node",
+   "status": "UNDECLARED"
+  },
+  "ITOM-118": {
+   "workbook_text": "Age threshold default 365 days",
+   "status": "UNDECLARED"
+  },
+  "ITOM-119": {
+   "workbook_text": "Report by rule to identify the systematic cases",
+   "status": "UNDECLARED"
+  },
+  "ITOM-120": {
+   "workbook_text": "Account evidence from cloud CI account identifiers and integration references",
+   "status": "UNDECLARED"
+  },
+  "ITOM-121": {
+   "workbook_text": "Default threshold 90%",
+   "status": "UNDECLARED"
+  },
+  "ITOM-122": {
+   "workbook_text": "Equivalence mapping configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-123": {
+   "workbook_text": "Any sustained failure",
+   "status": "UNDECLARED"
+  },
+  "ITOM-124": {
+   "workbook_text": "Tolerance default 2x interval; cloud intervals are typically short",
+   "status": "UNDECLARED"
+  },
+  "ITOM-125": {
+   "workbook_text": "Scope to cloud classes expected to participate in the service model",
+   "status": "UNDECLARED"
+  },
+  "ITOM-126": {
+   "workbook_text": "Variance threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-127": {
+   "workbook_text": "Any exclusion without a registered justification",
+   "status": "UNDECLARED"
+  },
+  "ITOM-128": {
+   "workbook_text": "Required permission set per provider and discovery scope",
+   "status": "UNDECLARED"
+  },
+  "ITOM-129": {
+   "workbook_text": "Requires a successful recent discovery run; absence during a failed run is not evidence of termination",
+   "status": "UNDECLARED"
+  },
+  "ITOM-130": {
+   "workbook_text": "Required tag set from the customer's policy; report the absence of a policy separately",
+   "status": "UNDECLARED"
+  },
+  "ITOM-131": {
+   "workbook_text": "Availability per provider and resource type",
+   "status": "UNDECLARED"
+  },
+  "ITOM-132": {
+   "workbook_text": "Variance threshold configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-133": {
+   "workbook_text": "Match on instance ID, private IP, MAC or hostname",
+   "status": "UNDECLARED"
+  },
+  "ITOM-134": {
+   "workbook_text": "Any path without registration",
+   "status": "UNDECLARED"
+  },
+  "ITOM-135": {
+   "workbook_text": "Requires cloud discovery to be working; guard on ITOM-121 coverage",
+   "status": "UNDECLARED"
+  },
+  "ITOM-136": {
+   "workbook_text": "Any path with zero enforcement",
+   "status": "UNDECLARED"
+  },
+  "ITOM-137": {
+   "workbook_text": "Both absent",
+   "status": "UNDECLARED"
+  },
+  "ITOM-138": {
+   "workbook_text": "Correlation window configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-139": {
+   "workbook_text": "Deprecation data per provider",
+   "status": "UNDECLARED"
+  },
+  "ITOM-140": {
+   "workbook_text": "Any workflow without the step",
+   "status": "UNDECLARED"
+  },
+  "ITOM-141": {
+   "workbook_text": "Any defined-but-unenforced policy",
+   "status": "UNDECLARED"
+  },
+  "ITOM-142": {
+   "workbook_text": "Active membership resolved live",
+   "status": "UNDECLARED"
+  },
+  "ITOM-143": {
+   "workbook_text": "Required tag set from policy",
+   "status": "UNDECLARED"
+  },
+  "ITOM-144": {
+   "workbook_text": "Attribute comparison set and tolerance configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-145": {
+   "workbook_text": "Age threshold default 90 days; environment from tags or used_for",
+   "status": "UNDECLARED"
+  },
+  "ITOM-146": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED"
+  },
+  "ITOM-147": {
+   "workbook_text": "Requires failure onset date and per-CI staleness; attribute only CIs whose staleness began after onset",
+   "status": "UNDECLARED"
+  },
+  "ITOM-148": {
+   "workbook_text": "Deletion attribution requires audit retention covering the window",
+   "status": "UNDECLARED"
+  },
+  "ITOM-149": {
+   "workbook_text": "Requires both the rule criteria and the integration's attribute payload",
+   "status": "UNDECLARED"
+  },
+  "ITOM-150": {
+   "workbook_text": "Any occurrence; report as a count and as a share of total alerts",
+   "status": "UNDECLARED"
+  },
+  "ITOM-151": {
+   "workbook_text": "Tier classification from CI class",
+   "status": "UNDECLARED"
+  },
+  "ITOM-152": {
+   "workbook_text": "Any Business Critical service with a structurally impossible impact result",
+   "status": "UNDECLARED"
+  },
+  "ITOM-153": {
+   "workbook_text": "Requires MID availability history and audit retention covering the window",
+   "status": "UNDECLARED"
+  },
+  "ITOM-154": {
+   "workbook_text": "Correlation window configurable",
+   "status": "UNDECLARED"
+  },
+  "ITOM-155": {
+   "workbook_text": "Guard on cloud discovery run success; absence during a failed run is not evidence of termination",
+   "status": "UNDECLARED"
+  },
+  "ITOM-156": {
+   "workbook_text": "Both counts computed, not estimated. Report the rule list by name.",
+   "status": "UNDECLARED"
+  }
+ }
+}

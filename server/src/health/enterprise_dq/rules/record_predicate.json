@@ -1,0 +1,389 @@
+{
+ "engine": "record_predicate",
+ "rules": {
+  "DQ-084": {
+   "requires_tables": [
+    {
+     "table": "sys_user_group",
+     "fields": [
+      "name",
+      "active",
+      "manager",
+      "email"
+     ]
+    }
+   ],
+   "table": "sys_user_group",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "manager",
+     "op": "empty"
+    },
+    {
+     "field": "email",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Active groups with neither a manager nor an email are found; the escalation for groups referenced by open tasks, and the role-container guard, are not applied."
+   }
+  },
+  "DQ-086": {
+   "requires_tables": [
+    {
+     "table": "alm_asset",
+     "fields": [
+      "display_name",
+      "model",
+      "serial_number",
+      "sys_class_name"
+     ]
+    }
+   ],
+   "table": "alm_asset",
+   "evidence_fields": [
+    "display_name",
+    "sys_class_name"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "no model",
+     "scope": "",
+     "predicates": [
+      {
+       "field": "model",
+       "op": "empty"
+      }
+     ]
+    },
+    {
+     "variant": "no serial number (hardware)",
+     "scope": "sys_class_name=alm_hardware",
+     "predicates": [
+      {
+       "field": "serial_number",
+       "op": "empty"
+      }
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The two cases are reported separately; assets missing both are not escalated."
+   }
+  },
+  "DQ-087": {
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active",
+      "manager",
+      "web_service_access_only",
+      "internal_integration_user"
+     ]
+    }
+   ],
+   "table": "sys_user",
+   "scope": "active=true^web_service_access_only=false^internal_integration_user=false",
+   "predicates": [
+    {
+     "field": "manager",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "user_name"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Integration and web-service-only accounts are excluded. The top of the hierarchy has no manager by design and is still counted; the join to the approval workflows that resolve through the manager is not made."
+   }
+  },
+  "DQ-088": {
+   "undefined_dependencies": [
+    "whether a financial integration exists — the workbook fires the rule \"where financial integration exists\", and that is not recorded on the instance"
+   ]
+  },
+  "DQ-089": {
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active",
+      "department",
+      "location",
+      "company",
+      "web_service_access_only",
+      "internal_integration_user"
+     ]
+    }
+   ],
+   "table": "sys_user",
+   "evidence_fields": [
+    "user_name"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "no department",
+     "scope": "active=true^web_service_access_only=false^internal_integration_user=false",
+     "predicates": [
+      {
+       "field": "department",
+       "op": "empty"
+      }
+     ]
+    },
+    {
+     "variant": "no location",
+     "scope": "active=true^web_service_access_only=false^internal_integration_user=false",
+     "predicates": [
+      {
+       "field": "location",
+       "op": "empty"
+      }
+     ]
+    },
+    {
+     "variant": "no company",
+     "scope": "active=true^web_service_access_only=false^internal_integration_user=false",
+     "predicates": [
+      {
+       "field": "company",
+       "op": "empty"
+      }
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Reported per field; users missing all three are not escalated. Contractors and external users cannot be told apart (no user type on the platform) and are counted."
+   }
+  },
+  "DQ-091": {
+   "requires_tables": [
+    {
+     "table": "sc_cat_item",
+     "fields": [
+      "name",
+      "active",
+      "owner",
+      "group",
+      "sys_class_name"
+     ]
+    }
+   ],
+   "table": "sc_cat_item",
+   "evidence_fields": [
+    "name",
+    "sys_class_name"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "no owner",
+     "scope": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item",
+     "predicates": [
+      {
+       "field": "owner",
+       "op": "empty"
+      }
+     ]
+    },
+    {
+     "variant": "no fulfilment group",
+     "scope": "active=true^sys_class_nameINsc_cat_item,pc_hardware_cat_item,pc_software_cat_item",
+     "predicates": [
+      {
+       "field": "group",
+       "op": "empty"
+      }
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Requestable items only (record producers, order guides and content items have no fulfilment). An item whose workflow or flow assigns the group dynamically is still counted under \"no fulfilment group\"; the escalation is not applied."
+   }
+  },
+  "DQ-092": {
+   "undefined_dependencies": [
+    "the intended root locations — \"identified by configuration or by depth\", and neither is given"
+   ]
+  },
+  "DQ-093": {
+   "requires_tables": [
+    {
+     "table": "cmdb_model",
+     "fields": [
+      "name",
+      "status",
+      "manufacturer"
+     ]
+    }
+   ],
+   "table": "cmdb_model",
+   "scope": [
+    {
+     "$clause": {
+      "template": "status!={}",
+      "value": {
+       "$choice": {
+        "table": "cmdb_model",
+        "element": "status",
+        "label": "Retired"
+       }
+      }
+     }
+    }
+   ],
+   "predicates": [
+    {
+     "field": "manufacturer",
+     "op": "empty"
+    }
+   ],
+   "evidence_fields": [
+    "name",
+    "sys_class_name"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "\"Active\" is read as not Retired. Generic or internal models with no manufacturer are counted."
+   }
+  },
+  "DQ-094": {
+   "requires_tables": [
+    {
+     "table": "kb_knowledge",
+     "fields": [
+      "number",
+      "workflow_state",
+      "ownership_group",
+      "valid_to"
+     ]
+    }
+   ],
+   "table": "kb_knowledge",
+   "scope": "workflow_state=published",
+   "evidence_fields": [
+    "number",
+    "ownership_group",
+    "valid_to"
+   ],
+   "report_ratio": true,
+   "variants": [
+    {
+     "variant": "no owner",
+     "predicates": [
+      {
+       "field": "ownership_group",
+       "op": "empty"
+      }
+     ]
+    },
+    {
+     "variant": "no review date",
+     "predicates": [
+      {
+       "field": "valid_to",
+       "op": "in",
+       "value": [
+        "",
+        "2100-01-01"
+       ]
+      }
+     ]
+    }
+   ],
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "ServiceNow's article owner is the ownership group and its review date is Valid to, which the platform sets to 2100-01-01 when none is given (D-033). A knowledge base that does not use ownership groups is charged on every article."
+   }
+  },
+  "DQ-100": {
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "manager"
+     ]
+    }
+   ],
+   "table": "sys_user",
+   "scope": "managerISNOTEMPTY",
+   "predicates": [
+    {
+     "field": "manager",
+     "field2": "sys_id",
+     "op": "same_as"
+    }
+   ],
+   "evidence_fields": [
+    "user_name",
+    "active"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The top-of-hierarchy guard for executives is not applied: a self-manager is always reported."
+   }
+  },
+  "DQ-101": {
+   "undefined_dependencies": [
+    "the phone pattern set per region — \"for India include the standard mobile and landline formats\", no pattern given"
+   ]
+  },
+  "DQ-119": {
+   "requires_tables": [
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name",
+      "active",
+      "last_login_time",
+      "sys_created_on"
+     ]
+    }
+   ],
+   "table": "sys_user",
+   "scope": "active=true",
+   "predicates": [
+    {
+     "field": "last_login_time",
+     "op": "empty"
+    },
+    {
+     "field": "sys_created_on",
+     "op": "date_before",
+     "window": {
+      "$param": "min_age",
+      "as": "window"
+     }
+    }
+   ],
+   "evidence_fields": [
+    "user_name",
+    "sys_created_on"
+   ],
+   "report_ratio": true,
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "Users who only receive notifications or approve by email never sign in and are counted."
+   }
+  }
+ }
+}

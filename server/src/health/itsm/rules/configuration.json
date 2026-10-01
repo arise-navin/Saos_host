@@ -1,0 +1,810 @@
+{
+  "engine": "configuration",
+  "rules": {
+    "ITSM-002": {
+      "reader": "sys_choice",
+      "args": {
+        "table": "incident",
+        "element": "category"
+      },
+      "compare": {
+        "name": "choice_usage",
+        "args": {
+          "table": "incident",
+          "field": "category",
+          "window": {
+            "$param": "unused_window",
+            "as": "window"
+          },
+          "dominance_share": {
+            "$param": "dominance_share"
+          },
+          "unused": true
+        }
+      }
+    },
+    "ITSM-003": {
+      "reader": "sla_definition",
+      "args": {
+        "collection": "incident",
+        "activeOnly": true
+      },
+      "compare": {
+        "name": "sla_per_band",
+        "args": {
+          "table": "incident",
+          "field": "priority"
+        }
+      }
+    },
+    "ITSM-004": {
+      "reader": "assignment_rule",
+      "args": {
+        "table": "incident"
+      },
+      "compare": {
+        "name": "records_unmatched_by_conditions",
+        "args": {
+          "table": "incident",
+          "scope": "active=true"
+        }
+      },
+      "partial": {
+        "kind": "false_positive_risk",
+        "not_covered": "Each active assignment rule's condition is evaluated by the instance against the ACTIVE incidents (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)); a rule fires at creation, so an incident whose fields changed since may have matched then and not now. Routing by data lookup rules or flows is not seen."
+      }
+    },
+    "ITSM-005": {
+      "engine": "configuration",
+      "requires_objects": [
+        "priority_matrix"
+      ],
+      "reader": "priority_matrix",
+      "compare": {
+        "name": "lookup_mismatch",
+        "args": {
+          "table": "incident",
+          "inputs": [
+            "impact",
+            "urgency"
+          ],
+          "output": "priority"
+        }
+      },
+      "partial": {
+        "kind": "evidence_gap",
+        "not_covered": "\"Report as a ratio and by group\": the ratio is reported; the by-group split is not. Records whose impact × urgency pair has no lookup row are counted unverifiable, not mismatched."
+      }
+    },
+    "ITSM-006": {
+      "reader": "sys_choice",
+      "args": {
+        "table": "incident",
+        "element": "subcategory"
+      },
+      "compare": {
+        "name": "dependent_choice_pairs",
+        "args": {
+          "table": "incident",
+          "parent_field": "category",
+          "child_field": "subcategory"
+        }
+      }
+    },
+    "ITSM-007": {
+      "engine": "configuration",
+      "reader": "sys_properties",
+      "args": {
+        "names": [
+          "glide.ui.autoclose.time"
+        ]
+      },
+      "compare": {
+        "name": "property_days_at_least",
+        "args": {
+          "property": "glide.ui.autoclose.time",
+          "minimum": {
+            "$param": "minimum_autoclose_days"
+          },
+          "volume_table": "incident",
+          "volume_query": "resolved_atISNOTEMPTY"
+        }
+      },
+      "partial": {
+        "kind": "false_positive_risk",
+        "not_covered": "The auto-close duration is glide.ui.autoclose.time, in calendar days (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)); the workbook's minimum is in business days, so a value of 3–4 calendar days that spans a weekend is not charged. The reopen-timing comparison is not made."
+      }
+    },
+    "ITSM-009": {
+      "reader": "sys_choice",
+      "args": {
+        "table": "incident",
+        "element": "state"
+      },
+      "compare": {
+        "name": "choice_usage",
+        "args": {
+          "table": "incident",
+          "field": "state",
+          "unused": true
+        }
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "Only \"states with zero records\" (unreachable) is evaluated. \"Records in a state with no outbound transition and age above threshold\" (dead-end) needs the state model's transitions, which are UNDEFINED as an object; deadend_age is declared but unused."
+      }
+    },
+    "ITSM-010": {
+      "requires_objects": [
+        "ui_policy",
+        "data_policy"
+      ],
+      "notes": "Mandatory-enforcement objects (UI / data policies) and the field-to-stage mapping are UNDEFINED."
+    },
+    "ITSM-011": {
+      "requires_objects": [
+        "notification"
+      ],
+      "reader": "notification",
+      "args": {
+        "activeOnly": true
+      },
+      "compare": {
+        "name": "recipients_resolve",
+        "args": {
+          "user_field": "recipient_users",
+          "group_field": "recipient_groups"
+        }
+      },
+      "partial": {
+        "kind": "false_positive_risk",
+        "not_covered": "Recipients derived from record fields (recipient_fields) and event parameters are not resolved — only the explicit user / group lists. The guard \"recipient deactivated within a grace period with a delegate configured\" is not applied."
+      }
+    },
+    "ITSM-012": {
+      "reader": "sla_definition",
+      "args": {
+        "activeOnly": true
+      },
+      "compare": {
+        "name": "rows_where",
+        "args": {
+          "selector": {
+            "field": "schedule",
+            "op": "empty"
+          },
+          "field": "name"
+        }
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "Only \"SLA definitions with no schedule\" is evaluated. \"Whose schedule contradicts the commitment they enforce\" needs the service commitment, which is UNDEFINED."
+      }
+    },
+    "ITSM-013": {
+      "reader": "sys_choice",
+      "args": {
+        "table": "incident",
+        "element": "state"
+      },
+      "compare": {
+        "name": "states_absent_from_sla_conditions",
+        "args": {
+          "table": "incident",
+          "field": "state",
+          "collection": "incident",
+          "standard_values": {
+            "$param": "standard_state_values"
+          }
+        }
+      }
+    },
+    "ITSM-014": {
+      "reader": "sys_dictionary",
+      "args": {
+        "table": "incident"
+      },
+      "compare": {
+        "name": "custom_field_population",
+        "args": {
+          "table": "incident",
+          "prefix": "u_",
+          "population_rate": {
+            "$param": "population_rate"
+          }
+        }
+      }
+    },
+    "ITSM-015": {
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "cxs_table_config",
+          "fields": [
+            "table",
+            "active"
+          ]
+        }
+      ],
+      "args": {
+        "table": "cxs_table_config",
+        "fields": [
+          "table",
+          "active"
+        ],
+        "query": "table=incident^active=true"
+      },
+      "compare": {
+        "name": "absent_despite_volume",
+        "args": {
+          "volume_table": "kb_knowledge",
+          "query": "workflow_state=published"
+        }
+      }
+    },
+    "ITSM-029": {
+      "requires_objects": [
+        "assignment_rule"
+      ],
+      "reader": "assignment_rule",
+      "args": {
+        "table": "incident",
+        "activeOnly": true
+      },
+      "compare": {
+        "name": "rules_referencing_fields",
+        "args": {
+          "table": "incident",
+          "fields": [
+            "location",
+            "department"
+          ],
+          "scope": "active=true"
+        }
+      },
+      "notes": "Fires only where an active incident assignment rule condition references the field (the workbook's own guard). Scoped to open incidents."
+    },
+    "ITSM-031": {
+      "engine": "configuration",
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "incident",
+          "fields": [
+            "closed_at",
+            "resolved_at",
+            "closed_by",
+            "resolved_by"
+          ]
+        }
+      ],
+      "args": {
+        "table": "incident",
+        "fields": [
+          "number",
+          "closed_at",
+          "resolved_at",
+          "closed_by",
+          "resolved_by"
+        ],
+        "query": "closed_atISNOTEMPTY^resolved_atISNOTEMPTY"
+      },
+      "compare": {
+        "name": "autoclose_share",
+        "args": {
+          "property": "glide.ui.autoclose.time",
+          "threshold": {
+            "$param": "threshold"
+          }
+        }
+      },
+      "partial": {
+        "kind": "false_positive_risk",
+        "not_covered": "An auto-closure is identified as the OOB \"incident autoclose\" business rule leaves it: closed_by = resolved_by, at least glide.ui.autoclose.time days after resolution (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)). A resolver closing their own incident that late is counted too."
+      }
+    },
+    "ITSM-034": {
+      "engine": "configuration",
+      "reader": "sla_definition",
+      "requires_tables": [
+        {
+          "table": "task_sla",
+          "fields": [
+            "stage",
+            "task"
+          ]
+        }
+      ],
+      "args": {
+        "activeOnly": true
+      },
+      "compare": {
+        "name": "sla_stage_share_by_group",
+        "args": {
+          "stages": [
+            "cancelled",
+            "paused"
+          ],
+          "multiple": {
+            "$param": "multiple_of_mean"
+          }
+        }
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "Judged on the SLA stage (Cancelled, Paused) per task assignment group against the estate share. \"Paused longer than active\" compares two durations per record and is not judged."
+      }
+    },
+    "ITSM-045": {
+      "requires_objects": [
+        "major_incident"
+      ],
+      "notes": "Major-incident configuration is UNDEFINED; the P1 volume threshold is also UNDEFINED."
+    },
+    "ITSM-051": {
+      "requires_objects": [
+        "major_incident"
+      ],
+      "notes": "Major-incident candidate criteria are UNDEFINED."
+    },
+    "ITSM-081": {
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "chg_policy",
+          "fields": [
+            "name",
+            "active"
+          ]
+        },
+        {
+          "table": "chg_policy_applied",
+          "fields": [
+            "change_request"
+          ]
+        },
+        {
+          "table": "sysapproval_approver",
+          "fields": [
+            "sysapproval"
+          ]
+        }
+      ],
+      "args": {
+        "table": "chg_policy",
+        "fields": [
+          "name",
+          "active"
+        ],
+        "query": ""
+      },
+      "compare": {
+        "name": "change_types_without_approval",
+        "args": {
+          "exclude_types": [
+            "standard"
+          ]
+        }
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "Approval routing is change approval policies (decision tables, D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)); their conditions read decision inputs that are not change fields, so routing is judged by what it produced: a type with changes none of which ever had an approval or an applied policy."
+      }
+    },
+    "ITSM-082": {
+      "requires_objects": [
+        "cab"
+      ],
+      "reader": "cab",
+      "args": {
+        "query": [
+          {
+            "$window": {
+              "param": "window",
+              "field": "start",
+              "edge": "within"
+            }
+          }
+        ]
+      },
+      "compare": {
+        "name": "absent_despite_volume",
+        "args": {
+          "volume_table": "change_request",
+          "window": {
+            "$param": "window",
+            "as": "window"
+          }
+        }
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "\"CAB configuration absent\" (a CAB definition object) is not evaluated — only \"zero CAB meeting records in the window despite change volume\"."
+      }
+    },
+    "ITSM-084": {
+      "engine": "configuration",
+      "reader": "sys_properties",
+      "requires_tables": [
+        {
+          "table": "change_request",
+          "fields": [
+            "conflict_status"
+          ]
+        }
+      ],
+      "args": {
+        "names": [
+          "change.conflict.mode",
+          "change.conflict.blackout",
+          "change.conflict.currentci",
+          "change.conflict.currentwindow",
+          "change.conflict.relatedservices",
+          "change.conflict.refresh.conflicts"
+        ]
+      },
+      "compare": {
+        "name": "conflict_detection_running",
+        "args": {}
+      }
+    },
+    "ITSM-085": {
+      "reader": "schedule",
+      "compare": {
+        "name": "absent",
+        "args": {}
+      },
+      "variants": [
+        {
+          "variant": "blackout",
+          "requires_tables": [
+            {
+              "table": "cmn_schedule_blackout",
+              "fields": [
+                "name",
+                "time_zone"
+              ]
+            }
+          ],
+          "args": {
+            "table": "cmn_schedule_blackout",
+            "withSpans": false
+          }
+        },
+        {
+          "variant": "maintenance",
+          "requires_tables": [
+            {
+              "table": "cmn_schedule_maintenance",
+              "fields": [
+                "name",
+                "time_zone"
+              ]
+            }
+          ],
+          "args": {
+            "table": "cmn_schedule_maintenance",
+            "withSpans": false
+          }
+        }
+      ],
+      "partial": {
+        "kind": "evidence_gap",
+        "not_covered": "\"Where change volume exists\" is not gated — absence is reported regardless of change volume."
+      },
+      "notes": "Blackout / maintenance windows are the platform's cmn_schedule_blackout / cmn_schedule_maintenance classes (both extend cmn_schedule), each confirmed by the DECISION 5 pipeline before the read; no type value is assumed."
+    },
+    "ITSM-086": {
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "chg_policy",
+          "fields": [
+            "name",
+            "active"
+          ]
+        },
+        {
+          "table": "sysapproval_approver",
+          "fields": [
+            "sysapproval"
+          ]
+        }
+      ],
+      "args": {
+        "table": "chg_policy",
+        "fields": [
+          "name",
+          "active"
+        ],
+        "query": ""
+      },
+      "compare": {
+        "name": "emergency_approval_burden",
+        "args": {}
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "\"Materially lighter\" is not defined; only an emergency path with at least as many approvals per change as the normal path is charged."
+      }
+    },
+    "ITSM-087": {
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "chg_model",
+          "fields": [
+            "implementation_states"
+          ]
+        },
+        {
+          "table": "sttrm_state",
+          "fields": [
+            "sttrm_model",
+            "state_label",
+            "initial_state"
+          ]
+        },
+        {
+          "table": "sttrm_state_transition",
+          "fields": [
+            "from_state",
+            "to_state"
+          ]
+        }
+      ],
+      "args": {
+        "table": "chg_model",
+        "fields": [
+          "name",
+          "active",
+          "implementation_states"
+        ],
+        "query": "active=true"
+      },
+      "compare": {
+        "name": "models_closing_without_implementation",
+        "args": {
+          "closed_label": "Closed"
+        }
+      }
+    },
+    "ITSM-089": {
+      "engine": "configuration",
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "std_change_record_producer",
+          "fields": [
+            "current_version",
+            "retired"
+          ]
+        },
+        {
+          "table": "std_change_producer_version",
+          "fields": [
+            "sys_created_on"
+          ]
+        }
+      ],
+      "args": {
+        "table": "std_change_record_producer",
+        "fields": [
+          "name",
+          "active",
+          "retired",
+          "current_version"
+        ],
+        "query": "active=true"
+      },
+      "compare": {
+        "name": "template_version_older_than",
+        "args": {
+          "months": {
+            "$param": "review_period"
+          }
+        }
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "ServiceNow templates carry no expiry or review-date field (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)); the review evidence is the template's current version, so a template whose current version is older than the review period is charged."
+      }
+    },
+    "ITSM-090": {
+      "reader": "sys_dictionary",
+      "args": {
+        "table": "change_request",
+        "elements": [
+          "risk",
+          "impact"
+        ]
+      },
+      "compare": {
+        "name": "custom_field_population",
+        "args": {
+          "table": "change_request",
+          "prefix": "",
+          "population_rate": {
+            "$param": "population_threshold"
+          },
+          "require_not_mandatory": true
+        }
+      }
+    },
+    "ITSM-091": {
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "chg_policy",
+          "fields": [
+            "name",
+            "active"
+          ]
+        },
+        {
+          "table": "chg_policy_applied",
+          "fields": [
+            "change_request"
+          ]
+        },
+        {
+          "table": "sysapproval_approver",
+          "fields": [
+            "sysapproval"
+          ]
+        }
+      ],
+      "args": {
+        "table": "chg_policy",
+        "fields": [
+          "name",
+          "active"
+        ],
+        "query": ""
+      },
+      "compare": {
+        "name": "change_types_without_approval",
+        "args": {
+          "exclude_types": [
+            "standard"
+          ],
+          "standard_types": {
+            "$param": "standard_types"
+          },
+          "only_custom": true
+        }
+      }
+    },
+    "ITSM-092": {
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "change_request",
+          "fields": [
+            "risk",
+            "review_status"
+          ]
+        }
+      ],
+      "args": {
+        "table": "change_request",
+        "fields": [
+          "number",
+          "risk",
+          "review_status"
+        ],
+        "query": "state=3"
+      },
+      "compare": {
+        "name": "high_risk_without_review",
+        "args": {
+          "risk_labels": {
+            "$param": "risk_bands"
+          },
+          "process": true
+        }
+      }
+    },
+    "ITSM-093": {
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "chg_soc_definition",
+          "fields": [
+            "name",
+            "active"
+          ]
+        }
+      ],
+      "args": {
+        "table": "chg_soc_definition",
+        "fields": [
+          "name",
+          "active"
+        ],
+        "query": "active=true"
+      },
+      "compare": {
+        "name": "absent_despite_volume",
+        "args": {
+          "volume_table": "change_request",
+          "query": "active=true"
+        }
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "\"Published\" is judged: an active Change Schedule definition exists. \"Consumed\" needs page-access data the platform does not keep as records (the workbook: \"where log data is available\")."
+      }
+    },
+    "ITSM-122": {
+      "engine": "configuration",
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "change_request",
+          "fields": [
+            "risk",
+            "review_status"
+          ]
+        }
+      ],
+      "args": {
+        "table": "change_request",
+        "fields": [
+          "number",
+          "risk",
+          "review_status"
+        ],
+        "query": "state=3"
+      },
+      "compare": {
+        "name": "high_risk_without_review",
+        "args": {
+          "risk_labels": {
+            "$param": "risk_bands"
+          }
+        }
+      }
+    },
+    "ITSM-137": {
+      "engine": "configuration",
+      "reader": "sla_definition",
+      "args": {
+        "activeOnly": true
+      },
+      "compare": {
+        "name": "sla_on_service_without_offering",
+        "args": {}
+      },
+      "partial": {
+        "kind": "detection_gap",
+        "not_covered": "A definition is scoped to a service when its conditions name the service record (business_service, cmdb_ci or service_offering = its sys_id). Conditions that select services by another attribute are not resolved."
+      }
+    },
+    "ITSM-138": {
+      "engine": "configuration",
+      "reader": "table_rows",
+      "requires_tables": [
+        {
+          "table": "change_request",
+          "fields": [
+            "conflict_status"
+          ]
+        }
+      ],
+      "args": {
+        "table": "change_request",
+        "fields": [
+          "number",
+          "cmdb_ci",
+          "conflict_status"
+        ],
+        "query": "conflict_status=No Conflict^cmdb_ciISNOTEMPTY"
+      },
+      "compare": {
+        "name": "no_conflict_without_relationships",
+        "args": {}
+      }
+    }
+  }
+}

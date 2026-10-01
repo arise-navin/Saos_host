@@ -1,0 +1,4216 @@
+{
+ "overlay_version": "0.1.0",
+ "sheet": "platform",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Hand-maintained engineering overlay (decision D-007). Seeded by server/scripts/health-workbook-overlays.mjs. `proposed` names the basis of every auto-proposed value; nothing is an engineering decision until `reviewed` is true.",
+ "rules": {
+  "PLT-001": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "kind": "wording: threshold \"Any definition with duration in business-hours intent and no\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any definition with duration in business-hours intent and no\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-001",
+    "engine": "record_predicate",
+    "classification": "specification_gap",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-002": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-003"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "kind": "wording: threshold \"Any band with non-zero volume and no covering definition\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any band with non-zero volume and no covering definition\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-003",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-003 (D-019)"
+   }
+  },
+  "PLT-003": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-003",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-004": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-004",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-005": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-005",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-006": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "kind": "wording: threshold \"Any insert-only condition where post-insert qualification oc\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any insert-only condition where post-insert qualification oc\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-006",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-007": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-007",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-008": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-009": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-009",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-010": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-010",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-011": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "kind": "wording: threshold \"Any occurrence with non-zero SLA volume\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence with non-zero SLA volume\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-011",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-012": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-012",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-013": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-013",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-014": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-014",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-015": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-015",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-016": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1A. Definition and design\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-016",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-017": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-017",
+    "engine": "temporal_correlation",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-018": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-018",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-019": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-019",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-020": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\"",
+    "kind": "wording: threshold \"Any occurrence; report by definition\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; report by definition\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-020",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-021": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-021",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-022": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-022",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-023": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\"",
+    "kind": "wording: a trend (\"growth\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"growth\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-023",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-024": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-010"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "ITSM-011",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of ITSM-011 (D-019)"
+   }
+  },
+  "PLT-025": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-025",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-026": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-026",
+    "engine": "temporal_correlation",
+    "classification": "specification_gap",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-027": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1B. Runtime behaviour\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-027",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-028": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Commitment linkage\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-028",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-029": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Commitment linkage\"",
+    "kind": "wording: threshold \"Any occurrence with non-zero volume\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence with non-zero volume\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-029",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-030": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Commitment linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-030",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-031": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Commitment linkage\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-031",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-032": {
+   "module": "platform",
+   "dimension": "sla_engineering",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"1C. Commitment linkage\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-032",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-033": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-034": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-034",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json",
+    "replaces_legacy": [
+     "CUSTOM-BEFORE-UPDATE"
+    ]
+   }
+  },
+  "PLT-035": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence; rank by the rule's execution count\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; rank by the rule's execution count\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-035",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-036": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-036",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-037": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-037",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-038": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-038",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-039": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-039",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-040": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-040",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-041": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-041",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-042": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-042",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-043": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-043",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-044": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence without justification\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence without justification\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-044",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-045": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-045",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-046": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-046",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-047": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-047",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-048": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-048",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-049": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence in before, after or display rules\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence in before, after or display rules\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-049",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-050": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-050",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-051": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2A. Design and placement\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-051",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-052": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Execution and impact\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-052",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-053": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Execution and impact\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-053",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-054": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Execution and impact\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-054",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-055": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Execution and impact\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-056": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Execution and impact\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-056",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-057": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2B. Execution and impact\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-057",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-058": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Governance\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-058",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-059": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Governance\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-059",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-060": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Governance\"",
+    "kind": "wording: threshold \"Any occurrence; report count and trend\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; report count and trend\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-060",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-061": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Governance\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-061",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-062": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Governance\"",
+    "kind": "wording: threshold \"Any occurrence; report as a ratio\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; report as a ratio\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-062",
+    "engine": "linkage",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-063": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Governance\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-063",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-064": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"2C. Governance\"",
+    "kind": "wording: a trend (\"Requires at least 2 snapshots\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"Requires at least 2 snapshots\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-064",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-065": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\"",
+    "kind": "wording: threshold \"Any occurrence; escalate where the include performs queries \" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; escalate where the include performs queries \" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-065",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-066": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-066",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-067": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-067",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-068": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-068",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-069": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-069",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-070": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-070",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-071": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-071",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-072": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-072",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-073": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-073",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-074": {
+   "module": "platform",
+   "dimension": "server_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3A. Script Includes\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-074",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-075": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-075",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-076": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-076",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-077": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\"",
+    "kind": "wording: threshold \"Any occurrence; rank by form view volume\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; rank by form view volume\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-077",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-078": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-078",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-079": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\"",
+    "kind": "wording: threshold \"Any occurrence with more than one\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence with more than one\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-079",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-080": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-080",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-081": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-081",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-082": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-082",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-083": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3B. Client Scripts\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-083",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-084": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. UI Policies and Data Policies\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-084",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-085": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. UI Policies and Data Policies\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-085",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-086": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. UI Policies and Data Policies\"",
+    "kind": "wording: threshold \"Any occurrence where those paths carry volume\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence where those paths carry volume\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-086",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-087": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. UI Policies and Data Policies\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-087",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-088": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. UI Policies and Data Policies\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-088",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-089": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. UI Policies and Data Policies\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-089",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-090": {
+   "module": "platform",
+   "dimension": "client_logic",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"3C. UI Policies and Data Policies\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-090",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-091": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-091",
+    "engine": "composite",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-092": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-092",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-093": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-093",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-094": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "kind": "wording: threshold \"Any occurrence; escalate for flows on user-facing or integra\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; escalate for flows on user-facing or integra\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-094",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-095": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-095",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-096": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-096",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-097": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-097",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-098": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-099": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "kind": "wording: threshold \"Any cycle\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any cycle\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-099",
+    "engine": "relationship_graph",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-100": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-100",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-101": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-101",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-102": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-102",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-103": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-103",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-104": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-104",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-105": {
+   "module": "platform",
+   "dimension": "automation",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Flows, Workflows and Automation\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-105",
+    "engine": "aggregate",
+    "classification": "unconfigured",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-106": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-106",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-107": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-108": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-108",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-109": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "kind": "wording: a trend (\"requires at least 5 runs\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"requires at least 5 runs\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-109",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-110": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-110",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json",
+    "replaces_legacy": [
+     "PERF-JOB-ERROR"
+    ]
+   }
+  },
+  "PLT-111": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-111",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-112": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-112",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-113": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-113",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-114": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-114",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-115": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-115",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-116": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "kind": "wording: threshold \"Any occurrence with non-zero volume\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence with non-zero volume\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-116",
+    "engine": "linkage",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-117": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-117",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-118": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\"",
+    "kind": "wording: a trend (\"growing\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"growing\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-118",
+    "engine": "aggregate",
+    "classification": "unconfigured",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-119": {
+   "module": "platform",
+   "dimension": "jobs_events",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Scheduled Jobs and Events\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-119",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-120": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "kind": "wording: a trend (\"trending\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"trending\") — shown, not scored unless Systemic (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-120",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-121": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "kind": "wording: threshold \"Any occurrence; escalate on sensitive tables\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; escalate on sensitive tables\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-121",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-122": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-122",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-123": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-123",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-124": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-124",
+    "engine": "relationship_graph",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-125": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-125",
+    "engine": "text_analysis",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-126": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-126",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-127": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-127",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-128": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-128",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-129": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-129",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json",
+    "replaces_legacy": [
+     "SEC-INACTIVE-ROLE"
+    ]
+   }
+  },
+  "PLT-130": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-130",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-131": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-131",
+    "engine": "aggregate",
+    "classification": "unconfigured",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-132": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-132",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-133": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-133",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-134": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-134",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-135": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-135",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-136": {
+   "module": "platform",
+   "dimension": "access_security",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"ACLs, Roles and Access\"",
+    "kind": "wording: threshold \"Any occurrence; report volume by impersonator\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; report volume by impersonator\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-136",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-137": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-137",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-138": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: threshold \"Any occurrence; report inbound and outbound separately\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; report inbound and outbound separately\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-138",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-139": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-005"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-139",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-140": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-140",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-141": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-009"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-141",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-142": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-142",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-143": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-143",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-144": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-144",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json",
+    "replaces_legacy": [
+     "INT-HTTP"
+    ]
+   }
+  },
+  "PLT-145": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-145",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-146": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-146",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-147": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-147",
+    "engine": "aggregate",
+    "classification": "object_unverified",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-148": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-148",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-149": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-150": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: threshold \"Any occurrence on a recurring import\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence on a recurring import\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-150",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-151": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-151",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-152": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\"",
+    "kind": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-152",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-153": {
+   "module": "platform",
+   "dimension": "integrations",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Integrations and Inbound\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-153",
+    "engine": "reference_integrity",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-154": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\"",
+    "kind": "wording: threshold \"Any unreviewed skipped update; rank by the object's executio\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any unreviewed skipped update; rank by the object's executio\" — pass/fail (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-154",
+    "engine": "configuration",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json",
+    "replaces_legacy": [
+     "UPGRADE-SKIPPED"
+    ]
+   }
+  },
+  "PLT-155": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\"",
+    "kind": "wording: a trend (\"trend\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"trend\") — shown, not scored unless Systemic (approach §8.1)",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-155",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-156": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-156",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-157": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-157",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-158": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-158",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-159": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-159",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-160": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": "rate",
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\"",
+    "kind": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review",
+    "attainment": "wording: a percentage/rate with a stated threshold; attainment direction (good_share vs bad_rate) needs review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-160",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-161": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-161",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-162": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-162",
+    "engine": "text_analysis",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-163": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-163",
+    "engine": "record_predicate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-164": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-164",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-165": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-165",
+    "engine": "record_predicate",
+    "classification": "unconfigured",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-166": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-166",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-167": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-167",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-168": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-168",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-169": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-169",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-170": {
+   "module": "platform",
+   "dimension": "customisation_debt",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [
+    "OWN-007"
+   ],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Customization and Upgrade Debt\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "CMDB-120",
+    "engine": null,
+    "classification": "equivalent",
+    "source": "equivalent of CMDB-120 (D-019)"
+   }
+  },
+  "PLT-171": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-171",
+    "engine": "aggregate",
+    "classification": "unconfigured",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-172": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\"",
+    "kind": "wording: a trend (\"Requires at least 3 windows\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"Requires at least 3 windows\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-172",
+    "engine": "aggregate",
+    "classification": "unconfigured",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-173": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-173",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-174": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": "defect",
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\"",
+    "systemic_role": "approach §5 default; blocker candidates identified in review"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-175": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-175",
+    "engine": "configuration",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-176": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\"",
+    "kind": "wording: a trend (\"growing\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"growing\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-177": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": "trend",
+   "attainment": "none",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\"",
+    "kind": "wording: a trend (\"growth\") — shown, not scored unless Systemic (approach §8.1)",
+    "attainment": "wording: a trend (\"growth\") — shown, not scored unless Systemic (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "not_built",
+    "classification": "not_built"
+   }
+  },
+  "PLT-178": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-178",
+    "engine": "record_predicate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-179": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-179",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-180": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": "binary",
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\"",
+    "kind": "wording: threshold \"Any occurrence; report frequency and trend\" — pass/fail (approach §8.1)",
+    "attainment": "wording: threshold \"Any occurrence; report frequency and trend\" — pass/fail (approach §8.1)"
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-180",
+    "engine": "aggregate",
+    "classification": "executable",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-181": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-181",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-182": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-182",
+    "engine": "aggregate",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  },
+  "PLT-183": {
+   "module": "platform",
+   "dimension": "performance",
+   "kind": null,
+   "attainment": null,
+   "systemic_role": null,
+   "blocks": [],
+   "applicability": null,
+   "ownership": [],
+   "equivalent_of": null,
+   "proposed": {
+    "dimension": "profile: group \"Performance and Platform Health\""
+   },
+   "reviewed": false,
+   "implementation": {
+    "state": "built",
+    "ref": "PLT-183",
+    "engine": "temporal_correlation",
+    "classification": "undefined",
+    "source": "health/platform/rules/*.json"
+   }
+  }
+ }
+}

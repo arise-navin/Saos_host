@@ -1,0 +1,60 @@
+{
+ "engine": "aggregate",
+ "rules": {
+  "ITIL-010": {
+   "undefined_dependencies": [
+    "the reopen / rework rate — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-014": {
+   "undefined_dependencies": [
+    "how many \"top request types by volume\" are judged — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-016": {
+   "specification_gap": {
+    "missing": "what makes a request-type distribution show \"no meaningful differentiation\""
+   }
+  },
+  "ITIL-027": {
+   "undefined_dependencies": [
+    "the linkage share that counts as \"near zero\" — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-032": {
+   "undefined_dependencies": [
+    "the article creation rate against resolved volume — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-036": {
+   "undefined_dependencies": [
+    "the incident volume that makes a service \"high volume\" — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-052": {
+   "undefined_dependencies": [
+    "the target variance across services of one criticality band — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-066": {
+   "undefined_dependencies": [
+    "how many consecutive releases (or what period) make \"trending upward together\" — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-077": {
+   "undefined_dependencies": [
+    "growth metrics against known platform and licence limits — the limits are external reference data and table statistics are empty on the instance"
+   ]
+  },
+  "ITIL-113": {
+   "undefined_dependencies": [
+    "the concentration of dependent services that counts as a risk — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  },
+  "ITIL-122": {
+   "undefined_dependencies": [
+    "the confidence margin a survey must reach to support inference — the supplied rule gives no number and ServiceNow publishes none"
+   ]
+  }
+ }
+}

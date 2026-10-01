@@ -1,0 +1,422 @@
+{
+ "ownership_version": "0.1.0",
+ "status": "proposed — for review",
+ "rule_of_thumb": "Decision 3 (24 Sep 2026): a condition that appears in more than one sheet has ONE owner rule, chosen by domain — data → CMDB / Enterprise DQ, mechanism → ITOM, platform configuration → Platform, process → ITSM. The owner's base severity applies; the others become references that show the owner's result in context, are scored only in the owner module, and are counted once in Overall.",
+ "method": "Candidates were found by comparing rule wording across sheets, then read against each rule's Source Tables / Fields. Pairs that read different objects were dropped. For example, ITOM-091/115 read em_event while PLT-115/117 read sysevent, and CMDB-044/054 judge IRE identification rules while ITOM-097/102 judge event match rules. The data-quality sheet's CMDB Quality rows restate CMDB rules; that is an equivalence recorded per rule in overlays/data-quality.json (`equivalent_of`), not an ownership question.",
+ "relations": {
+  "duplicate": "the same condition on the same objects",
+  "overlap": "one rule's scope contains the other's, or they share a detection; resolved by a scope split or a shared detection rather than one owner"
+ },
+ "conditions": [
+  {
+   "id": "OWN-001",
+   "condition": "Network IP ranges present in CIs with no matching discovery schedule / range",
+   "relation": "duplicate",
+   "members": [
+    "ITOM-001",
+    "CMDB-071",
+    "DQ-059"
+   ],
+   "severities": {
+    "ITOM-001": "Systemic",
+    "CMDB-071": "Critical",
+    "DQ-059": "Critical"
+   },
+   "proposed_owner": "CMDB-071",
+   "basis": "Mechanism: discovery schedule coverage is ITOM configuration. CMDB-071/DQ-059 reference it. AGREED (D-023): the product owner assigned the condition to CMDB-071; it is evaluated and counted in CMDB, with CMDB-071's severity (Critical). The ITOM row shows it as an equivalent.",
+   "severity_conflict": true,
+   "status": "agreed",
+   "owner": "CMDB-071",
+   "decision": "D-023",
+   "agreed_on": "2026-09-24"
+  },
+  {
+   "id": "OWN-002",
+   "condition": "Discovery coverage ratio below threshold",
+   "relation": "duplicate",
+   "members": [
+    "ITOM-002",
+    "CMDB-070",
+    "DQ-056"
+   ],
+   "severities": {
+    "ITOM-002": "Systemic",
+    "CMDB-070": "Systemic",
+    "DQ-056": "Systemic"
+   },
+   "proposed_owner": "CMDB-070",
+   "basis": "Mechanism. Today CMDB-070 is a CMDB trust-gate blocker (measured_kpi); under ownership ITOM-002 carries it as a blocker whose `blocks` names the CMDB dimensions it undermines (approach §5). AGREED (D-023): the product owner assigned the condition to CMDB-070; it is evaluated and counted in CMDB, with CMDB-070's severity (Systemic). The ITOM row shows it as an equivalent.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-070",
+   "decision": "D-023",
+   "agreed_on": "2026-09-24"
+  },
+  {
+   "id": "OWN-003",
+   "condition": "Priority band with record volume and no SLA definition",
+   "relation": "duplicate",
+   "members": [
+    "PLT-002",
+    "ITSM-003"
+   ],
+   "severities": {
+    "PLT-002": "Systemic",
+    "ITSM-003": "Systemic"
+   },
+   "proposed_owner": "ITSM-003",
+   "basis": "Platform configuration: SLA definitions are SLA engineering (Platform 1A). ITSM-003 references it. AGREED (D-025): kept in the module where it is built — ITSM-003 evaluates and counts it; the Platform row shows it as an equivalent.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "ITSM-003",
+   "decision": "D-025",
+   "agreed_on": "2026-09-24"
+  },
+  {
+   "id": "OWN-004",
+   "condition": "Knowledge articles referenced in resolutions but retired or unpublished",
+   "relation": "duplicate",
+   "members": [
+    "ITSM-139",
+    "DQ-131"
+   ],
+   "severities": {
+    "ITSM-139": "Moderate",
+    "DQ-131": "Moderate"
+   },
+   "proposed_owner": "ITSM-139",
+   "basis": "The workbook itself says so: DQ-131's Cross-Domain Link reads \"Duplicates ITSM-139 from the data quality side\". Process. AGREED (D-027): ITSM-139 evaluates and counts it; the Enterprise DQ row shows it as an equivalent.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "ITSM-139",
+   "decision": "D-027",
+   "agreed_on": "2026-09-24"
+  },
+  {
+   "id": "OWN-005",
+   "condition": "Credentials stored outside the credential vault",
+   "relation": "overlap",
+   "members": [
+    "PLT-139",
+    "ITOM-024"
+   ],
+   "severities": {
+    "PLT-139": "Systemic",
+    "ITOM-024": "High"
+   },
+   "proposed_owner": "PLT-139",
+   "basis": "Platform configuration. PLT-139 covers all credential storage; ITOM-024 is the discovery-credential subset and references it.",
+   "severity_conflict": true,
+   "status": "proposed"
+  },
+  {
+   "id": "OWN-006",
+   "condition": "Incidents referencing a Business Service vs a bare CI vs neither",
+   "relation": "overlap",
+   "members": [
+    "ITSM-016",
+    "ITSM-017",
+    "CMDB-117",
+    "DQ-078"
+   ],
+   "severities": {
+    "ITSM-016": "Systemic",
+    "ITSM-017": "Systemic",
+    "CMDB-117": "High",
+    "DQ-078": "High"
+   },
+   "proposed_owner": null,
+   "basis": "Three ratios over the same incident population (incident.cmdb_ci / business_service). ITSM-016 and ITSM-017 ask a process question; CMDB-117/DQ-078 is the CMDB D10 consumption KPI. Proposal: compute the population once and let each rule read it, with no single owner. Needs a decision on whether CMDB D10 keeps CMDB-117.",
+   "severity_conflict": true,
+   "status": "needs_decision"
+  },
+  {
+   "id": "OWN-007",
+   "condition": "Class / table extension depth beyond recommended",
+   "relation": "overlap",
+   "members": [
+    "CMDB-120",
+    "DQ-083",
+    "PLT-170"
+   ],
+   "severities": {
+    "CMDB-120": "Moderate",
+    "DQ-083": "Moderate",
+    "PLT-170": "Moderate"
+   },
+   "proposed_owner": "CMDB-120",
+   "basis": "Scope split: CMDB-120/DQ-083 own the cmdb_ci tree (\"sys_db_object super_class chain within the CMDB tree\"); PLT-170 owns every other table and excludes the CMDB tree. AGREED (D-025): kept in the module where it is built — CMDB-120 evaluates and counts it; the Platform row shows it as an equivalent.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-120",
+   "decision": "D-025",
+   "agreed_on": "2026-09-24"
+  },
+  {
+   "id": "OWN-008",
+   "condition": "Groups with zero active members, by the role that references them",
+   "relation": "overlap",
+   "members": [
+    "CMDB-102",
+    "DQ-071",
+    "ITSM-101",
+    "ITSM-018",
+    "ITSM-134",
+    "DQ-096",
+    "ITOM-142"
+   ],
+   "severities": {
+    "CMDB-102": "Critical",
+    "DQ-071": "Critical",
+    "ITSM-101": "Critical",
+    "ITSM-018": "Critical",
+    "ITSM-134": "Critical",
+    "DQ-096": "Critical",
+    "ITOM-142": "High"
+   },
+   "proposed_owner": null,
+   "basis": "Shared detection: one resolution of active group membership, read by each rule for its own reference role (CI support group, assignment group, approver, provisioning approver). DQ-096's Cross-Domain Link names CMDB-102, ITSM-101 and ITOM-142. Each rule stays scored in its module because it judges a different reference.",
+   "severity_conflict": false,
+   "status": "proposed"
+  },
+  {
+   "id": "OWN-009",
+   "condition": "Integration / connector with no error handling or retry",
+   "relation": "overlap",
+   "members": [
+    "PLT-141",
+    "ITOM-093"
+   ],
+   "severities": {
+    "PLT-141": "Critical",
+    "ITOM-093": "Moderate"
+   },
+   "proposed_owner": null,
+   "basis": "Scope split: ITOM-093 owns Event Management connectors; PLT-141 owns every other integration and excludes them.",
+   "severity_conflict": true,
+   "status": "proposed"
+  },
+  {
+   "id": "OWN-010",
+   "condition": "Notifications firing to inactive users or empty groups",
+   "relation": "overlap",
+   "members": [
+    "ITSM-011",
+    "PLT-024"
+   ],
+   "severities": {
+    "ITSM-011": "High",
+    "PLT-024": "High"
+   },
+   "proposed_owner": "ITSM-011",
+   "basis": "Scope split: PLT-024 owns SLA breach notifications (SLA engineering); ITSM-011 owns every other ITSM notification rule and excludes them. AGREED (D-025): kept in the module where it is built — ITSM-011 evaluates and counts it; the Platform row shows it as an equivalent.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "ITSM-011",
+   "decision": "D-025",
+   "agreed_on": "2026-09-24"
+  },
+  {
+   "id": "OWN-011",
+   "condition": "Application Service with no supporting CIs",
+   "relation": "duplicate",
+   "members": [
+    "CMDB-110",
+    "CSDM-006"
+   ],
+   "severities": {
+    "CMDB-110": "Critical",
+    "CSDM-006": "Critical"
+   },
+   "proposed_owner": "CMDB-110",
+   "basis": "The same detection over both mechanisms (svc_ci_assoc and cmdb_rel_ci). AGREED (D-030): CMDB-110 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-110's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-110",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-012",
+   "condition": "Percentage of principal CIs reachable from a Business Capability",
+   "relation": "duplicate",
+   "members": [
+    "CMDB-112",
+    "CSDM-068"
+   ],
+   "severities": {
+    "CMDB-112": "Systemic",
+    "CSDM-068": "Systemic"
+   },
+   "proposed_owner": "CMDB-112",
+   "basis": "The same traversal and ratio; CSDM-068 says \"Joins CMDB-112\". AGREED (D-030): CMDB-112 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-112's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-112",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-013",
+   "condition": "Service association with no relationship path",
+   "relation": "duplicate",
+   "members": [
+    "CMDB-113",
+    "CSDM-053"
+   ],
+   "severities": {
+    "CMDB-113": "High",
+    "CSDM-053": "High"
+   },
+   "proposed_owner": "CMDB-113",
+   "basis": "The same detection; CSDM-053 says \"Joins CMDB-113\". AGREED (D-030): CMDB-113 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-113's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-113",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-014",
+   "condition": "svc_ci_assoc and cmdb_rel_ci disagreeing",
+   "relation": "duplicate",
+   "members": [
+    "CMDB-114",
+    "CSDM-054"
+   ],
+   "severities": {
+    "CMDB-114": "High",
+    "CSDM-054": "High"
+   },
+   "proposed_owner": "CMDB-114",
+   "basis": "The same symmetric difference per service; CSDM-054 says \"Joins CMDB-114\". AGREED (D-030): CMDB-114 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-114's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-114",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-015",
+   "condition": "Production service supported by non-production CIs",
+   "relation": "duplicate",
+   "members": [
+    "CMDB-111",
+    "CSDM-047"
+   ],
+   "severities": {
+    "CMDB-111": "Critical",
+    "CSDM-047": "Critical"
+   },
+   "proposed_owner": "CMDB-111",
+   "basis": "The same condition; CSDM-047 says \"Joins CMDB-111\". AGREED (D-030): CMDB-111 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-111's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-111",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-016",
+   "condition": "Incidents referencing a service rather than a bare CI",
+   "relation": "duplicate",
+   "members": [
+    "ITSM-017",
+    "CSDM-069"
+   ],
+   "severities": {
+    "ITSM-017": "Systemic",
+    "CSDM-069": "High"
+   },
+   "proposed_owner": "ITSM-017",
+   "basis": "The same measure complemented, over incidents with either reference; CSDM-069 says \"Joins ITSM-017\". AGREED (D-030): ITSM-017 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows ITSM-017's result.",
+   "severity_conflict": true,
+   "status": "agreed",
+   "owner": "ITSM-017",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-017",
+   "condition": "Service referenced in incidents but absent from the CSDM model",
+   "relation": "duplicate",
+   "members": [
+    "ITSM-136",
+    "CSDM-076"
+   ],
+   "severities": {
+    "ITSM-136": "Critical",
+    "CSDM-076": "Critical"
+   },
+   "proposed_owner": "ITSM-136",
+   "basis": "The same condition and wording; CSDM-076 says \"Joins ITSM-136\". AGREED (D-030): ITSM-136 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows ITSM-136's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "ITSM-136",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-018",
+   "condition": "Service owner is an inactive user",
+   "relation": "overlap",
+   "members": [
+    "CMDB-103",
+    "CSDM-034"
+   ],
+   "severities": {
+    "CMDB-103": "Critical",
+    "CSDM-034": "Critical"
+   },
+   "proposed_owner": "CMDB-103",
+   "basis": "CMDB-103 judges every CI's owner, service records included: CSDM-034's records are a subset. AGREED (D-030): CMDB-103 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-103's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-103",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-019",
+   "condition": "Service support group with zero active members",
+   "relation": "overlap",
+   "members": [
+    "CMDB-102",
+    "CSDM-035",
+    "CSDM-077"
+   ],
+   "severities": {
+    "CMDB-102": "Critical",
+    "CSDM-035": "Critical",
+    "CSDM-077": "High"
+   },
+   "proposed_owner": "CMDB-102",
+   "basis": "CMDB-102 judges every CI's support group, service records included; CSDM-035 and CSDM-077 judge the same service records. AGREED (D-030): CMDB-102 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-102's result.",
+   "severity_conflict": true,
+   "status": "agreed",
+   "owner": "CMDB-102",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  },
+  {
+   "id": "OWN-020",
+   "condition": "Service relationships pointing at retired CIs",
+   "relation": "overlap",
+   "members": [
+    "CMDB-080",
+    "CSDM-057"
+   ],
+   "severities": {
+    "CMDB-080": "Critical",
+    "CSDM-057": "Critical"
+   },
+   "proposed_owner": "CMDB-080",
+   "basis": "CMDB-080 judges every edge of a retired CI; CSDM-057's service edges are a subset. CSDM-057 says \"Joins CMDB-080\". AGREED (D-030): CMDB-080 evaluates and counts it; the CSDM rule is not evaluated or scored in CSDM — it shows CMDB-080's result.",
+   "severity_conflict": false,
+   "status": "agreed",
+   "owner": "CMDB-080",
+   "decision": "D-030",
+   "agreed_on": "2026-09-25"
+  }
+ ]
+}

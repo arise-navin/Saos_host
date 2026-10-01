@@ -1,0 +1,698 @@
+{
+ "params_version": "0.1.0",
+ "sheet": "CMDB",
+ "workbook_sha256": "beb2fcd2237d4d5a73ecf1bcdf058966459430083c45c78883e8390cde81f44b",
+ "note": "Parameter declaration skeleton, one entry per workbook rule. The typed declarations (type, unit, default, status DEFINED/UNDEFINED) are written in Phase 1 with the generalised registry; ITSM already has them in health/rules/itsm/parameters.json.",
+ "rules": {
+  "CMDB-001": {
+   "workbook_text": "Fixed: zero active rules",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-002": {
+   "workbook_text": "Fixed: zero matching CIs",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-003": {
+   "workbook_text": "Default 60%. Configurable. Escalate below 40%.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-004": {
+   "workbook_text": "Fixed: absence of principal predicate",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-005": {
+   "workbook_text": "Any non-empty difference. Escalate to Systemic if excluded set contains principal classes or CIs supporting Business Critical services.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-006": {
+   "workbook_text": "Fixed: zero required attributes defined",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-007": {
+   "workbook_text": "Interval derived from the job's own schedule. Default tolerance 1.5x interval.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-008": {
+   "workbook_text": "Any overlap with differing config",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-009": {
+   "workbook_text": "Default 10% of in-scope CIs updated since last computation",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-010": {
+   "workbook_text": "Fixed: zero executions since creation",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-011": {
+   "workbook_text": "Fixed: defaults unchanged",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-012": {
+   "workbook_text": "Placeholder set: unknown, n/a, tbd, none, -, null, 0, default, to be filled",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-013": {
+   "workbook_text": "Class set configurable. Default: all classes under cmdb_ci_netgear, cmdb_ci_computer, cmdb_ci_appl",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-014": {
+   "workbook_text": "Per-class attribute list from config. Identity attributes weighted 3x.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-015": {
+   "workbook_text": "Class set = classes participating in service maps or impact rules",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-016": {
+   "workbook_text": "Class scope configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-017": {
+   "workbook_text": "Placeholder set configurable per estate. Default 12 patterns including 0.0.0.0 and 00:00:00:00:00:00.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-018": {
+   "workbook_text": "Only fires when more than one active company exists",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-019": {
+   "workbook_text": "Per-class list from health config",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-020": {
+   "workbook_text": "Minimum depth default 3 (country > city > site). Configurable.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-021": {
+   "workbook_text": "Applies to choice fields only",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-022": {
+   "workbook_text": "Class scope configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-023": {
+   "workbook_text": "Permitted set read from the instance configuration, not hardcoded",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-024": {
+   "workbook_text": "Incompatibility matrix per relationship type, configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-025": {
+   "workbook_text": "Tolerance window for legitimate lag, default 24h",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-026": {
+   "workbook_text": "Default 3 changes in 90 days. Configurable.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-027": {
+   "workbook_text": "Any count above zero",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-028": {
+   "workbook_text": "Margin threshold configurable. Default: target class match 2x current class match.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-029": {
+   "workbook_text": "Include inherited choices from parent tables",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-030": {
+   "workbook_text": "Pattern set per field type, extensible per manufacturer for serial",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-031": {
+   "workbook_text": "Ranges configurable per attribute and class",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-032": {
+   "workbook_text": "Dominant pattern must cover at least 60% of the class before the rule fires",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-033": {
+   "workbook_text": "Any asymmetric set. Weight 5x a symmetric duplicate in scoring.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-034": {
+   "workbook_text": "Case-insensitive, trimmed, with configurable normalisation (strip domain suffix)",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-035": {
+   "workbook_text": "Exclude placeholders and serials appearing on more than N CIs (likely a default value, not a duplicate)",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-036": {
+   "workbook_text": "Exclude loopback, link-local, 0.0.0.0, and configured VIP ranges",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-037": {
+   "workbook_text": "Exclude empty and placeholder",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-038": {
+   "workbook_text": "Requires at least 3 snapshots. Flag on positive trend above noise threshold.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-039": {
+   "workbook_text": "Report by source pair, ranked by count",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-040": {
+   "workbook_text": "Normalisation configurable: case, whitespace, domain suffix",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-041": {
+   "workbook_text": "Similarity threshold default 0.85. Identity match is mandatory, not optional.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-042": {
+   "workbook_text": "Default 90 days. Configurable.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-043": {
+   "workbook_text": "Report as a number and a trend, not a pass/fail",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-044": {
+   "workbook_text": "Attribute classification (identity vs descriptive) configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-045": {
+   "workbook_text": "Must account for inheritance — a parent class rule may cover the child",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-046": {
+   "workbook_text": "Default threshold 20%. Escalate above 40%.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-047": {
+   "workbook_text": "Fixed: zero independent entries",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-048": {
+   "workbook_text": "Same-precedence collisions only; different levels are correct behaviour",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-049": {
+   "workbook_text": "Default 30 days. Configurable per source type.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-050": {
+   "workbook_text": "Report count and list; the ratio is CMDB-046",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-051": {
+   "workbook_text": "Observation window configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-052": {
+   "workbook_text": "Exact and normalised name comparison",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-053": {
+   "workbook_text": "Threshold relative to CI create volume, not absolute",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-054": {
+   "workbook_text": "Attribute strength classification configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-055": {
+   "workbook_text": "Scope to attributes actually written by a source",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-056": {
+   "workbook_text": "Default 15% drop in 30 days. Configurable per class.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-057": {
+   "workbook_text": "Depth limit default 8. Threshold default 60%.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-058": {
+   "workbook_text": "Scope to classes expected to have relationships",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-059": {
+   "workbook_text": "Host class set configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-060": {
+   "workbook_text": "Application class set configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-061": {
+   "workbook_text": "Retired state set read from the instance configuration",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-062": {
+   "workbook_text": "Per relationship type; some types legitimately permit cycles (peer-to-peer)",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-063": {
+   "workbook_text": "Requires an independent corroborating source; do not fire on absence alone",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-064": {
+   "workbook_text": "Permitted scope read from cmdb_rel_type, with hierarchy expansion",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-065": {
+   "workbook_text": "Direction expectation matrix per type and class pair, configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-066": {
+   "workbook_text": "Window per relationship type; default 30 days for discovery-maintained types",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-067": {
+   "workbook_text": "Expected depth derived from the estate's own best-modelled services, not an imposed standard",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-068": {
+   "workbook_text": "Default 3 standard deviations. Requires a minimum class population of 30.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-069": {
+   "workbook_text": "Exact triple match",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-070": {
+   "workbook_text": "Default threshold 85%. Expected count derivation must be shown.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-071": {
+   "workbook_text": "CIDR overlap analysis, not string matching",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-072": {
+   "workbook_text": "Tolerance default 2x interval. Per-class interval overrides supported.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-073": {
+   "workbook_text": "Discovery source value set configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-074": {
+   "workbook_text": "Default threshold 60%. Report by class.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-075": {
+   "workbook_text": "Age threshold default 180 days",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-076": {
+   "workbook_text": "Per-attribute thresholds; identity attributes tighter than descriptive",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-077": {
+   "workbook_text": "Window default 180 days",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-078": {
+   "workbook_text": "Default threshold 25%",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-079": {
+   "workbook_text": "Default threshold 25%",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-080": {
+   "workbook_text": "Retired state set read from instance configuration",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-081": {
+   "workbook_text": "Active map definition configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-082": {
+   "workbook_text": "State mapping between asset and CI lifecycle models, configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-083": {
+   "workbook_text": "Any occurrence",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-084": {
+   "workbook_text": "Open state set per task table",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-085": {
+   "workbook_text": "Depends on inclusion rule filter construction",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-086": {
+   "workbook_text": "Mapping table between CI and asset lifecycle models",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-087": {
+   "workbook_text": "State sets read from instance configuration",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-088": {
+   "workbook_text": "Default 180 days stale with no action",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-089": {
+   "workbook_text": "Age threshold default 365 days. Report as a class ratio.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-090": {
+   "workbook_text": "Retention period from policy configuration, not assumed",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-091": {
+   "workbook_text": "Default threshold 50%",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-092": {
+   "workbook_text": "Fixed: zero executions",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-093": {
+   "workbook_text": "Active membership evaluated at run time, not from group record alone",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-094": {
+   "workbook_text": "Fixed: empty field",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-095": {
+   "workbook_text": "Report by class, attester and failure reason",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-096": {
+   "workbook_text": "Growth threshold configurable, default top decile by growth rate",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-097": {
+   "workbook_text": "Report count and age distribution",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-098": {
+   "workbook_text": "Report as a measure, not a threshold",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-099": {
+   "workbook_text": "Default 60 days",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-100": {
+   "workbook_text": "Report all three numbers together",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-101": {
+   "workbook_text": "Report the two cases separately",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-102": {
+   "workbook_text": "Active membership resolved live, not from the group record",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-103": {
+   "workbook_text": "Evaluate all ownership fields in use on the class",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-104": {
+   "workbook_text": "Fixed: absence of configuration",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-105": {
+   "workbook_text": "Field set per class",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-106": {
+   "workbook_text": "Report as a ratio per service before raising individual findings",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-107": {
+   "workbook_text": "Default 20% of the in-scope estate. Report distribution regardless.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-108": {
+   "workbook_text": "Age threshold default 365 days. Report as ratio.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-109": {
+   "workbook_text": "Depth limit default 8; state it with the result",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-110": {
+   "workbook_text": "Check both association mechanisms",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-111": {
+   "workbook_text": "Environment value sets configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-112": {
+   "workbook_text": "Depth limit and threshold configurable; default threshold 40%",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-113": {
+   "workbook_text": "Depth limit configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-114": {
+   "workbook_text": "Report both directions of the difference separately",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-115": {
+   "workbook_text": "Scope to classes expected to participate in the service model",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-116": {
+   "workbook_text": "Threshold configurable. Report the three variants always.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-117": {
+   "workbook_text": "Default threshold 60%. Window default 90 days.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-118": {
+   "workbook_text": "Default threshold 50%",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-119": {
+   "workbook_text": "Overlap threshold configurable; require both classes populated",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-120": {
+   "workbook_text": "Default threshold 6 levels",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-121": {
+   "workbook_text": "Window default 365 days",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-122": {
+   "workbook_text": "Threshold configurable, default 5",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-123": {
+   "workbook_text": "Default threshold 5% populated",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-124": {
+   "workbook_text": "Expected band derived from class mix, not a fixed number. State the derivation.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-125": {
+   "workbook_text": "Requires at least 2 snapshots",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-126": {
+   "workbook_text": "Slow threshold configurable, default 95th percentile",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-127": {
+   "workbook_text": "Size threshold configurable; query frequency from the observation window",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-128": {
+   "workbook_text": "Requires at least 3 snapshots for a meaningful trend",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-129": {
+   "workbook_text": "Report as a table, ranked by growth",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-130": {
+   "workbook_text": "Table list configurable",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-131": {
+   "workbook_text": "Requires at least 2 snapshots. Report by domain.",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-132": {
+   "workbook_text": "Match on rule ID plus object identity",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-133": {
+   "workbook_text": "Flag on sustained positive trend above noise",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-134": {
+   "workbook_text": "Requires 2 snapshots with comparable rule versions",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-135": {
+   "workbook_text": "Staleness threshold per class",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-136": {
+   "workbook_text": "Requires at least 3 snapshots",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-137": {
+   "workbook_text": "Requires comparable rule versions across snapshots",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  },
+  "CMDB-138": {
+   "workbook_text": "Requires at least 3 cycles",
+   "status": "UNDECLARED",
+   "note": "Tunables live as code defaults in the owning cmdb-*.js pack (*_DEFAULTS); declared here in Phase 1."
+  }
+ }
+}

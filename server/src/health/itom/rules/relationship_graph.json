@@ -1,0 +1,15 @@
+{
+ "engine": "relationship_graph",
+ "rules": {
+  "ITOM-073": {
+   "undefined_dependencies": [
+    "the service map's own topology as distinct from cmdb_rel_ci — no map-edge object is established"
+   ]
+  },
+  "ITOM-076": {
+   "specification_gap": {
+    "missing": "the tier model \"derived from the best-mapped services in the estate\" — how it is derived, and what counts as best-mapped, is not given"
+   }
+  }
+ }
+}

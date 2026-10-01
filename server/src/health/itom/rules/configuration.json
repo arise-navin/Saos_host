@@ -1,0 +1,2600 @@
+{
+ "engine": "configuration",
+ "rules": {
+  "ITOM-003": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "location"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "location"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_locations_without_schedule",
+    "args": {
+     "ci_threshold": {
+      "$param": "ci_threshold"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A location is \"targeted\" when an active schedule names it. Range → location mapping beyond the schedule's own location is not derived; ITOM-004 (schedules with no location) makes this rule's answer unverifiable."
+   }
+  },
+  "ITOM-005": {
+   "specification_gap": {
+    "missing": "\"still live\" — the workbook asks for evidence (recent incidents, recent events, or non-stale CIs from another source) but gives no window for \"recent\" and no staleness test for \"non-stale\""
+   }
+  },
+  "ITOM-006": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "run_type",
+     "run_period"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_schedule_overdue",
+    "args": {
+     "intervals": [
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Daily"
+        }
+       },
+       "every": "1 days"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Weekly"
+        }
+       },
+       "every": "7 days"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Monthly"
+        }
+       },
+       "every": "1 months"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Periodically"
+        }
+       },
+       "every": "run_period"
+      }
+     ],
+     "completed_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": "Completed"
+      }
+     },
+     "tolerance": {
+      "$param": "tolerance"
+     }
+    }
+   }
+  },
+  "ITOM-007": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "cmdb_health_staleness_rule",
+     "fields": [
+      "applies_to",
+      "duration"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "run_type",
+     "run_period"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_interval_beyond_staleness",
+    "args": {
+     "intervals": [
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Daily"
+        }
+       },
+       "every": "1 days"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Weekly"
+        }
+       },
+       "every": "7 days"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Monthly"
+        }
+       },
+       "every": "1 months"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Periodically"
+        }
+       },
+       "every": "run_period"
+      }
+     ]
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The per-class thresholds are ServiceNow's CMDB Health staleness rules (cmdb_health_staleness_rule, D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)); the tightest among the classes with CIs is used, as the workbook says, whether or not a given schedule discovers that class."
+   }
+  },
+  "ITOM-009": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "discovery_range_item",
+     "fields": [
+      "name",
+      "schedule",
+      "parent",
+      "type",
+      "start_ip_address",
+      "end_ip_address",
+      "network_ip",
+      "netmask",
+      "active"
+     ]
+    },
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "status",
+      "source"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "ip_address"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_range_item",
+    "fields": [
+     "name",
+     "schedule",
+     "parent",
+     "type",
+     "start_ip_address",
+     "end_ip_address",
+     "network_ip",
+     "netmask",
+     "active"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_dead_ranges",
+    "args": {
+     "window": {
+      "$param": "window",
+      "as": "window"
+     },
+     "success_query": "cmdb_ciISNOTEMPTY"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A successful discovery is read as a device-history row that produced a CI (cmdb_ci set); the phase outcome itself is not established. Current network CI data is taken as CI IP addresses."
+   }
+  },
+  "ITOM-010": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "discovery_range_item",
+     "fields": [
+      "name",
+      "schedule",
+      "parent",
+      "type",
+      "start_ip_address",
+      "end_ip_address",
+      "network_ip",
+      "netmask",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_range_item",
+    "fields": [
+     "name",
+     "schedule",
+     "parent",
+     "type",
+     "start_ip_address",
+     "end_ip_address",
+     "network_ip",
+     "netmask",
+     "active"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_overlapping_ranges",
+    "args": {}
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The escalation — reclassification churn (sys_audit on sys_class_name) inside the overlap — is not evaluated: cmdb_ci is not audited by default."
+   }
+  },
+  "ITOM-011": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "ecc_agent_cluster_member_m2m",
+     "fields": [
+      "agent",
+      "cluster"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "mid_select_method",
+     "mid_server"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_schedule_single_mid",
+    "args": {
+     "specific_mid": {
+      "$choice": {
+       "table": "discovery_schedule",
+       "element": "mid_select_method",
+       "label": "Specific MID Server"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "The escalation for ranges carrying Business Critical CIs is ITOM-051's condition and is judged there."
+   }
+  },
+  "ITOM-012": {
+   "undefined_dependencies": [
+    "the MID capability profile (host specification or observed throughput) the concurrency settings are judged against — the workbook gives no derivation"
+   ]
+  },
+  "ITOM-016": {
+   "undefined_dependencies": [
+    "a device-type inference from port signatures and partial classification — the workbook names the idea, not the signature → type mapping"
+   ]
+  },
+  "ITOM-019": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_range_item",
+     "fields": [
+      "name",
+      "schedule",
+      "parent",
+      "type",
+      "start_ip_address",
+      "end_ip_address",
+      "network_ip",
+      "netmask",
+      "active"
+     ]
+    },
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "status",
+      "source"
+     ]
+    },
+    {
+     "table": "dscy_credentials_affinity",
+     "fields": [
+      "credential_id",
+      "ip_address"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "last_discovered"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_range_item",
+    "fields": [
+     "name",
+     "schedule",
+     "parent",
+     "type",
+     "start_ip_address",
+     "end_ip_address",
+     "network_ip",
+     "netmask",
+     "active"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_affinity_coverage",
+    "args": {
+     "window": {
+      "$param": "window",
+      "as": "window"
+     },
+     "success_query": "cmdb_ciISNOTEMPTY",
+     "min_coverage": {
+      "$param": "min_coverage"
+     }
+    }
+   }
+  },
+  "ITOM-020": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_credentials",
+     "fields": [
+      "name",
+      "active",
+      "type",
+      "sys_created_on",
+      "sys_updated_on"
+     ]
+    },
+    {
+     "table": "dscy_credentials_affinity",
+     "fields": [
+      "credential_id",
+      "ip_address"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "last_discovered"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_credentials",
+    "fields": [
+     "name",
+     "type",
+     "sys_created_on"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_credential_unused",
+    "args": {
+     "min_age": {
+      "$param": "min_age",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "A successful use is read as a credential affinity, which the platform writes on successful authentication; a credential whose affinity was purged reads as unused. An affinity table that is EMPTY beside successful discoveries is read as not recorded, and the rule is unavailable (Phase 5E)."
+   }
+  },
+  "ITOM-021": {
+   "undefined_dependencies": [
+    "the credential privilege classification — \"configurable\", no default, and the account-role source is not named"
+   ]
+  },
+  "ITOM-022": {
+   "undefined_dependencies": [
+    "the size of a credential's applies-to scope as an address space — credentials scope by MID and tag, not by range, and the workbook does not say how to size it"
+   ]
+  },
+  "ITOM-023": {
+   "undefined_dependencies": [
+    "a device-type inference from port signatures and partial classification — the workbook names the idea, not the signature → type mapping"
+   ]
+  },
+  "ITOM-024": {
+   "undefined_dependencies": [
+    "owned by PLT-139 (ownership OWN-005, proposed owner PLT-139): the vault condition is evaluated once, in the Platform catalogue (Phase 6)"
+   ]
+  },
+  "ITOM-027": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_credentials",
+     "fields": [
+      "name",
+      "active",
+      "type",
+      "sys_created_on",
+      "sys_updated_on"
+     ]
+    },
+    {
+     "table": "dscy_credentials_affinity",
+     "fields": [
+      "credential_id",
+      "sys_updated_on"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "last_discovered"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_credentials",
+    "fields": [
+     "name",
+     "type",
+     "sys_created_on"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_credential_unused",
+    "args": {
+     "min_age": {
+      "$param": "window",
+      "as": "window"
+     },
+     "recent_window": {
+      "$param": "window",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"No schedule reference\" cannot be judged — schedules do not reference credentials (see ITOM-018) — so only the no-successful-use half is evaluated; the rule can fail but never pass."
+   }
+  },
+  "ITOM-029": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "max_run"
+    ],
+    "query": "active=true^max_runISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itom_run_duration_trend",
+    "args": {
+     "completed_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": "Completed"
+      }
+     },
+     "min_runs": {
+      "$param": "min_runs"
+     },
+     "horizon": {
+      "$param": "horizon",
+      "as": "window"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The configured window is the schedule's max run; a schedule without one is not judged. The trend is an ordinary least-squares line through run durations."
+   }
+  },
+  "ITOM-032": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    },
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "status",
+      "source"
+     ]
+    },
+    {
+     "table": "discovery_log",
+     "fields": [
+      "status",
+      "source",
+      "level"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_status",
+    "fields": [
+     "state",
+     "sys_created_on"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_run_error_rate",
+    "args": {
+     "completed_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": "Completed"
+      }
+     },
+     "error_level": {
+      "$choice": {
+       "table": "discovery_log",
+       "element": "level",
+       "label": "Error"
+      }
+     },
+     "error_share": {
+      "$param": "error_share"
+     },
+     "window": {
+      "$param": "window",
+      "as": "window"
+     }
+    }
+   }
+  },
+  "ITOM-033": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    },
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "max_run"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_status",
+    "fields": [
+     "dscheduler",
+     "state",
+     "started",
+     "completed"
+    ],
+    "query": {
+     "$window": {
+      "param": "window",
+      "field": "sys_created_on",
+      "edge": "within"
+     }
+    }
+   },
+   "compare": {
+    "name": "itom_runs_not_completing",
+    "args": {
+     "cancelled_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": [
+        "Canceled",
+        "Cancelled"
+       ]
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"Truncated\" has no platform state of its own; a run is truncated here when it outlasted its schedule's max run."
+   }
+  },
+  "ITOM-039": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "completed"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_status",
+    "fields": [
+     "dscheduler",
+     "state",
+     "completed",
+     "sys_created_on",
+     "sys_updated_on"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_cancelled_not_rerun",
+    "args": {
+     "cancelled_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": [
+        "Canceled",
+        "Cancelled"
+       ]
+      }
+     },
+     "completed_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": "Completed"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"Within the interval\" is not applied — any later completed run counts as a re-run; the cancelling user is not shown."
+   }
+  },
+  "ITOM-045": {
+   "undefined_dependencies": [
+    "a deprecation marker on probe definitions — \"from the instance's own metadata\", but no marker is named"
+   ]
+  },
+  "ITOM-046": {
+   "undefined_dependencies": [
+    "the pattern versions ServiceNow ships with each instance family — external reference data"
+   ]
+  },
+  "ITOM-050": {
+   "requires_objects": [
+    "pattern_execution"
+   ]
+  },
+  "ITOM-051": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "ecc_agent_cluster_member_m2m",
+     "fields": [
+      "agent",
+      "cluster"
+     ]
+    },
+    {
+     "table": "discovery_range_item",
+     "fields": [
+      "name",
+      "schedule",
+      "parent",
+      "type",
+      "start_ip_address",
+      "end_ip_address",
+      "network_ip",
+      "netmask",
+      "active"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "busines_criticality"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "ip_address"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "mid_select_method",
+     "mid_server"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_single_mid_critical",
+    "args": {
+     "specific_mid": {
+      "$choice": {
+       "table": "discovery_schedule",
+       "element": "mid_select_method",
+       "label": "Specific MID Server"
+      }
+     },
+     "critical_values": [
+      {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "busines_criticality",
+        "label": "1 - most critical"
+       }
+      }
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A range's criticality is read through service-CI associations (svc_ci_assoc) of Business Critical services; support reached only through cmdb_rel_ci paths is not traversed."
+   }
+  },
+  "ITOM-052": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "ecc_agent_cluster_member_m2m",
+     "fields": [
+      "agent",
+      "cluster"
+     ]
+    },
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name",
+      "host_name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "ecc_agent_cluster_member_m2m",
+    "fields": [
+     "agent",
+     "cluster"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_cluster_same_host",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The workbook's fallback — comparing host identifiers — is used; resolution through the CMDB host and hypervisor relationships is not."
+   }
+  },
+  "ITOM-054": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name",
+      "version"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "ecc_agent",
+    "fields": [
+     "name",
+     "version"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_mid_version_mismatch",
+    "args": {
+     "property": "mid.version"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The instance's version is read as its mid.version property (the build its MIDs should run) and compared whole, which is stricter than \"major and minor\"."
+   }
+  },
+  "ITOM-057": {
+   "undefined_dependencies": [
+    "the capability each work type requires — not defined"
+   ]
+  },
+  "ITOM-058": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "ecc_agent_cluster_member_m2m",
+     "fields": [
+      "agent",
+      "cluster"
+     ]
+    },
+    {
+     "table": "ecc_queue",
+     "fields": [
+      "agent"
+     ]
+    },
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "ecc_agent_cluster_member_m2m",
+    "fields": [
+     "agent",
+     "cluster"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_mid_load_share",
+    "args": {
+     "factor": {
+      "$param": "factor"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Load is the MID's ECC queue volume as retained; integration assignment is not read."
+   }
+  },
+  "ITOM-062": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "ecc_agent_capability_m2m",
+     "fields": [
+      "agent"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "mid_server"
+    ],
+    "query": "active=true^mid_serverISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itom_mid_no_capability",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "References by integrations are not read; schedules are."
+   }
+  },
+  "ITOM-063": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name",
+      "user_name"
+     ]
+    },
+    {
+     "table": "sys_user",
+     "fields": [
+      "user_name"
+     ]
+    },
+    {
+     "table": "sys_user_has_role",
+     "fields": [
+      "user",
+      "role"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "ecc_agent",
+    "fields": [
+     "name",
+     "user_name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_mid_admin_account",
+    "args": {
+     "role": "admin"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Only the half the workbook defines — \"admin on a MID account is always flagged\". The required role set per work type is undefined."
+   }
+  },
+  "ITOM-065": {
+   "undefined_dependencies": [
+    "the MID parameter that configures log rotation — ecc_agent_config holds MID parameters by name (verified, Phase 5E), but the workbook names none, and rotation is set in the MID wrapper configuration, not the instance"
+   ]
+  },
+  "ITOM-066": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "ecc_agent",
+     "fields": [
+      "name",
+      "last_refreshed",
+      "host_name"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "name",
+      "install_status"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "ecc_agent",
+    "fields": [
+     "name",
+     "last_refreshed",
+     "host_name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_orphan_mid",
+    "args": {
+     "silence": {
+      "$param": "silence",
+      "as": "window"
+     },
+     "retired_values": [
+      {
+       "$choice": {
+        "table": "cmdb_ci",
+        "element": "install_status",
+        "label": "Retired"
+       }
+      }
+     ]
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The host CI is found by name; a host recorded under another name reads as absent."
+   }
+  },
+  "ITOM-067": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "busines_criticality"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service",
+    "fields": [
+     "name",
+     "sys_class_name",
+     "busines_criticality"
+    ],
+    "query": {
+     "$clause": {
+      "template": "busines_criticality={}",
+      "value": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "busines_criticality",
+        "label": "1 - most critical"
+       }
+      }
+     }
+    }
+   },
+   "compare": {
+    "name": "itom_services_unmapped",
+    "args": {
+     "threshold": {
+      "$param": "threshold"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A service \"has a map\" when it has at least one service-CI association; whether that map is discovered or manual is not distinguished."
+   }
+  },
+  "ITOM-068": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service_discovered",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service_discovered",
+    "fields": [
+     "name",
+     "sys_class_name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_services_unmapped",
+    "args": {
+     "threshold": {
+      "$param": "threshold",
+      "as": "complement"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "\"Current\" (refreshed within its interval) needs the map refresh history, which is not established — any mapped CI counts, so the rule can fail but never pass."
+   }
+  },
+  "ITOM-069": {
+   "undefined_dependencies": [
+    "Service Mapping licensing and pattern coverage per technology stack — not readable from the tables the workbook names"
+   ]
+  },
+  "ITOM-070": {
+   "undefined_dependencies": [
+    "an entry point's traversal state — the entry-point link (sa_m2m_service_entry_point) is verified (Phase 5E) but carries no mapping-run outcome, and no mapping-run object is established"
+   ]
+  },
+  "ITOM-071": {
+   "undefined_dependencies": [
+    "service map refresh history (last refresh, configured interval, CI count per refresh run) — no refresh-run object is established"
+   ]
+  },
+  "ITOM-074": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sa_m2m_service_entry_point",
+     "fields": [
+      "cmdb_ci_service",
+      "cmdb_ci_endpoint"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sa_m2m_service_entry_point",
+    "fields": [
+     "cmdb_ci_service",
+     "cmdb_ci_endpoint"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_entry_point_unmapped",
+    "args": {}
+   }
+  },
+  "ITOM-075": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "duplicate_of",
+      "discovery_source"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci",
+    "fields": [
+     "name",
+     "duplicate_of",
+     "discovery_source"
+    ],
+    "query": "discovery_source=ServiceWatch"
+   },
+   "compare": {
+    "name": "itom_duplicates_from_source",
+    "args": {
+     "source": "ServiceWatch",
+     "minimum": {
+      "$param": "min_count"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A duplicate is a CI IRE flagged (duplicate_of); Service Mapping's CIs carry the discovery source \"ServiceWatch\" (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md))."
+   }
+  },
+  "ITOM-077": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci_service_discovered",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci_service_discovered",
+    "fields": [
+     "name"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_maps_without_network_tier",
+    "args": {
+     "network_root": "cmdb_ci_netgear"
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The network tier is every class descending from cmdb_ci_netgear (the platform's network gear); a network element modelled elsewhere is not counted."
+   }
+  },
+  "ITOM-079": {
+   "undefined_dependencies": [
+    "a tag-based definition's refresh schedule — cmdb_ci_service_by_tags is verified (Phase 5E) but has no schedule field; its calculation state (last_calculated) is not the schedule the workbook names"
+   ]
+  },
+  "ITOM-082": {
+   "undefined_dependencies": [
+    "traffic-based connection data — the rule fires only where it is collected, and no collection object is established"
+   ]
+  },
+  "ITOM-083": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sa_m2m_service_entry_point",
+     "fields": [
+      "cmdb_ci_service",
+      "cmdb_ci_endpoint"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sa_m2m_service_entry_point",
+    "fields": [
+     "cmdb_ci_service",
+     "cmdb_ci_endpoint"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_entry_point_shared",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The SAME entry-point record on more than one service is judged; two distinct entry-point records with equal address and port are not compared (the endpoint address fields vary by endpoint class)."
+   }
+  },
+  "ITOM-084": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_connector_instance",
+     "fields": [
+      "name",
+      "active",
+      "last_status",
+      "last_run_time",
+      "schedule",
+      "last_error_message"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_connector_instance",
+    "fields": [
+     "name",
+     "last_status",
+     "last_run_time",
+     "schedule",
+     "last_error_message"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_connector_stale",
+    "args": {
+     "error_status": {
+      "$choice": {
+       "table": "em_connector_instance",
+       "element": "last_status",
+       "label": "Error"
+      }
+     },
+     "tolerance": {
+      "$param": "tolerance"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The connector records its LAST run, not its last successful pull; an error status is charged directly, and a connector with no interval is judged only on its status."
+   }
+  },
+  "ITOM-085": {
+   "undefined_dependencies": [
+    "evidence of a monitoring tool in the estate (CI classes, integration endpoints, credential types) — the workbook names the sources, not the matching"
+   ]
+  },
+  "ITOM-086": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_connector_instance",
+     "fields": [
+      "name",
+      "active",
+      "last_status",
+      "last_run_time",
+      "schedule",
+      "last_error_message"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_connector_instance",
+    "fields": [
+     "name",
+     "last_status",
+     "last_run_time",
+     "schedule"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_connector_stale",
+    "args": {
+     "error_status": {
+      "$choice": {
+       "table": "em_connector_instance",
+       "element": "last_status",
+       "label": "Error"
+      }
+     },
+     "tolerance": 1,
+     "healthy_only": true
+    }
+   }
+  },
+  "ITOM-090": {
+   "undefined_dependencies": [
+    "\"source liveness evidence\" from source CIs, credentials or other integrations — not defined"
+   ]
+  },
+  "ITOM-093": {
+   "undefined_dependencies": [
+    "ownership OWN-009 (with PLT-141) has no owner yet — the condition is evaluated once, by its owner, when ownership is agreed"
+   ]
+  },
+  "ITOM-094": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_match_rule",
+     "fields": [
+      "name",
+      "active",
+      "ci_type"
+     ]
+    },
+    {
+     "table": "em_event",
+     "fields": [
+      "cmdb_ci"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_match_rule",
+    "fields": [
+     "name",
+     "active",
+     "ci_type",
+     "filter"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_event_rule_classes",
+    "args": {
+     "mode": "uncovered"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "An event rule covers the class in its ci_type and every subclass (the hierarchy expansion the workbook asks for); a rule with no ci_type covers every class. Its filter is not applied."
+   }
+  },
+  "ITOM-096": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "cmdb_ci",
+      "severity",
+      "state",
+      "source",
+      "node",
+      "acknowledged",
+      "message_key"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert",
+    "fields": [
+     "number",
+     "cmdb_ci"
+    ],
+    "query": "cmdb_ciISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itom_alerts_on_isolated_cis",
+    "args": {
+     "threshold": {
+      "$param": "threshold"
+     },
+     "escalate_at": {
+      "$param": "escalate_at"
+     }
+    }
+   }
+  },
+  "ITOM-097": {
+   "undefined_dependencies": [
+    "the classification of match attributes as \"name-type\" — \"configurable\", no default"
+   ]
+  },
+  "ITOM-099": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "cmdb_ci"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "duplicate_of"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert",
+    "fields": [
+     "number",
+     "cmdb_ci"
+    ],
+    "query": "cmdb_ciISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itom_alerts_on_duplicates",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "The duplicate is the CI IRE flagged (duplicate_of set); an alert on it binds to the wrong member of the pair. A duplicate IRE has not flagged is not seen."
+   }
+  },
+  "ITOM-100": {
+   "undefined_dependencies": [
+    "match-rule precedence configuration, and which rules have multiple candidates — not established"
+   ]
+  },
+  "ITOM-102": {
+   "undefined_dependencies": [
+    "attribute strength classification (identity vs descriptive) — \"configurable\", no default"
+   ]
+  },
+  "ITOM-104": {
+   "undefined_dependencies": [
+    "the class set that participates in impact calculation — \"from the impact configuration\", not established"
+   ]
+  },
+  "ITOM-105": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_match_rule",
+     "fields": [
+      "name",
+      "active",
+      "ci_type"
+     ]
+    },
+    {
+     "table": "em_event",
+     "fields": [
+      "cmdb_ci"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_match_rule",
+    "fields": [
+     "name",
+     "active",
+     "ci_type",
+     "filter"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_event_rule_classes",
+    "args": {
+     "mode": "disabled_live"
+    }
+   }
+  },
+  "ITOM-106": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "cmdb_ci",
+      "severity"
+     ]
+    },
+    {
+     "table": "em_impact_status",
+     "fields": [
+      "element_id",
+      "business_service"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert",
+    "fields": [
+     "number",
+     "cmdb_ci"
+    ],
+    "query": [
+     {
+      "$clause": {
+       "template": "severity={}",
+       "value": {
+        "$choice": {
+         "table": "em_alert",
+         "element": "severity",
+         "label": "Critical"
+        }
+       }
+      }
+     },
+     "cmdb_ciISNOTEMPTY"
+    ]
+   },
+   "compare": {
+    "name": "itom_impact_without_service",
+    "args": {
+     "threshold": {
+      "$param": "threshold"
+     },
+     "escalate_at": {
+      "$param": "escalate_at"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The impact tree is stored per CI (em_impact_status.element_id → business_service), not per alert: a Critical alert counts as having an affected service when its bound CI's impact tree names one."
+   }
+  },
+  "ITOM-107": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number"
+     ]
+    },
+    {
+     "table": "em_impact_status",
+     "fields": [
+      "business_service"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert",
+    "fields": [
+     "number"
+    ],
+    "query": ""
+   },
+   "compare": {
+    "name": "itom_impact_never_populated",
+    "args": {}
+   }
+  },
+  "ITOM-108": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "assignment_group",
+      "assigned_to"
+     ]
+    },
+    {
+     "table": "sysevent_email_action",
+     "fields": [
+      "collection",
+      "condition",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sysevent_email_action",
+    "fields": [
+     "name",
+     "condition"
+    ],
+    "query": "collection=em_alert^active=true"
+   },
+   "compare": {
+    "name": "itom_alerts_without_path",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Each active em_alert notification's condition is evaluated by the instance (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)); a notification fired by an event or a flow is not seen."
+   }
+  },
+  "ITOM-111": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert_management_rule",
+     "fields": [
+      "name",
+      "active",
+      "alert_filter",
+      "type"
+     ]
+    },
+    {
+     "table": "em_alert",
+     "fields": [
+      "number"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert_management_rule",
+    "fields": [
+     "name",
+     "active",
+     "alert_filter",
+     "type"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_alerts_unmatched",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Each active alert management rule's alert_filter is evaluated by the instance against the alerts retained (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md))."
+   }
+  },
+  "ITOM-112": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert_management_rule",
+     "fields": [
+      "name",
+      "active"
+     ]
+    },
+    {
+     "table": "em_alert_management_action",
+     "fields": [
+      "management_rule",
+      "active"
+     ]
+    },
+    {
+     "table": "em_alert_management_execution",
+     "fields": [
+      "management_rule"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert_management_rule",
+    "fields": [
+     "name",
+     "active"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_alert_rules_without_action",
+    "args": {}
+   }
+  },
+  "ITOM-113": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "event_count"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert",
+    "fields": [
+     "number",
+     "event_count"
+    ],
+    "query": "event_countISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itom_alert_event_ratio",
+    "args": {
+     "ratio": {
+      "$param": "ratio"
+     }
+    }
+   },
+   "partial": {
+    "kind": "false_positive_risk",
+    "not_covered": "The events are those each retained alert absorbed (em_alert.event_count, D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md)), so both counts share the alert's retention window."
+   }
+  },
+  "ITOM-116": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert_management_rule",
+     "fields": [
+      "name",
+      "active",
+      "alert_filter",
+      "type"
+     ]
+    },
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "severity"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert_management_rule",
+    "fields": [
+     "name",
+     "active",
+     "alert_filter",
+     "type"
+    ],
+    "query": "active=true^type=incident"
+   },
+   "compare": {
+    "name": "itom_alerts_unmatched",
+    "args": {
+     "scope": "severity=1",
+     "rule_type": "incident"
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Critical = em_alert severity 1; an incident-creating rule is an alert management rule of type \"incident\", whose alert_filter the instance evaluates (D-033 (docs/HEALTH-ASSIST-RULE-RESEARCH.md))."
+   }
+  },
+  "ITOM-117": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "cmdb_ci",
+      "severity",
+      "state",
+      "source",
+      "node",
+      "acknowledged",
+      "message_key"
+     ]
+    },
+    {
+     "table": "em_event",
+     "fields": [
+      "source",
+      "node",
+      "cmdb_ci",
+      "severity",
+      "state",
+      "message_key",
+      "time_of_event"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert",
+    "fields": [
+     "number",
+     "message_key",
+     "state",
+     "sys_created_on"
+    ],
+    "query": {
+     "$clause": {
+      "template": "state!={}",
+      "value": {
+       "$choice": {
+        "table": "em_alert",
+        "element": "state",
+        "label": "Closed"
+       }
+      }
+     }
+    }
+   },
+   "compare": {
+    "name": "itom_alerts_open_after_clear",
+    "args": {
+     "clear_severity": {
+      "$choice": {
+       "table": "em_event",
+       "element": "severity",
+       "label": "Clear"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Correlated by message key (the dedup key); the node half of the key is not compared."
+   }
+  },
+  "ITOM-120": {
+   "undefined_dependencies": [
+    "cloud account evidence \"from tags, CIs, integrations or billing references\" — the sources are named, the matching is not"
+   ]
+  },
+  "ITOM-122": {
+   "undefined_dependencies": [
+    "the cloud ↔ on-premises class equivalence mapping — \"configurable\", no default"
+   ]
+  },
+  "ITOM-123": {
+   "requires_objects": [
+    "cloud_account_registry"
+   ]
+  },
+  "ITOM-124": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "run_type",
+     "run_period",
+     "active"
+    ],
+    "query": [
+     "active=true",
+     {
+      "$clause": {
+       "template": "discover={}",
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "discover",
+         "label": "Cloud Resources"
+        }
+       }
+      }
+     }
+    ]
+   },
+   "compare": {
+    "name": "itom_schedule_overdue",
+    "args": {
+     "intervals": [
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Daily"
+        }
+       },
+       "every": "1 days"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Weekly"
+        }
+       },
+       "every": "7 days"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Monthly"
+        }
+       },
+       "every": "1 months"
+      },
+      {
+       "value": {
+        "$choice": {
+         "table": "discovery_schedule",
+         "element": "run_type",
+         "label": "Periodically"
+        }
+       },
+       "every": "run_period"
+      }
+     ],
+     "completed_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": "Completed"
+      }
+     },
+     "tolerance": {
+      "$param": "tolerance"
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Active cloud schedules with no successful run within interval × tolerance are judged; an INACTIVE cloud schedule is not flagged on its own (whether it should run is ITOM-121's question)."
+   }
+  },
+  "ITOM-125": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "name",
+      "sys_class_name"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "cmdb_ci",
+    "fields": [
+     "name",
+     "sys_class_name"
+    ],
+    "query": [
+     {
+      "$clause": {
+       "template": "sys_class_nameIN{}",
+       "value": {
+        "$param": "cloud_classes"
+       }
+      }
+     }
+    ]
+   },
+   "compare": {
+    "name": "itom_cloud_ci_unlinked",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Service-CI associations only; a path to a service through cmdb_rel_ci is not traversed, so the rule can fail but never pass."
+   }
+  },
+  "ITOM-127": {
+   "requires_objects": [
+    "cloud_account_registry"
+   ]
+  },
+  "ITOM-128": {
+   "undefined_dependencies": [
+    "cloud IAM policies \"where retrievable\" and the required permission set per provider — external data"
+   ]
+  },
+  "ITOM-130": {
+   "undefined_dependencies": [
+    "tag-based classification rule results — not established; the required tag set is the customer's policy"
+   ]
+  },
+  "ITOM-131": {
+   "undefined_dependencies": [
+    "cost-collection availability per provider and resource type — external data"
+   ]
+  },
+  "ITOM-134": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-136": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-139": {
+   "undefined_dependencies": [
+    "provider deprecation data for images and sizes — external data"
+   ]
+  },
+  "ITOM-140": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-141": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-143": {
+   "requires_objects": [
+    "cloud_provisioning"
+   ]
+  },
+  "ITOM-144": {
+   "undefined_dependencies": [
+    "the attribute comparison set and drift tolerance — \"configurable\", no default"
+   ]
+  },
+  "ITOM-148": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    },
+    {
+     "table": "sys_audit_delete",
+     "fields": [
+      "tablename",
+      "documentkey"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_status",
+    "fields": [
+     "state",
+     "started"
+    ],
+    "query": "startedISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itom_relationship_deletions_in_failed_runs",
+    "args": {
+     "completed_state": {
+      "$choice": {
+       "table": "discovery_status",
+       "element": "state",
+       "label": "Completed"
+      }
+     }
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "Deletions are the platform's deleted-record audit (sys_audit_delete) for cmdb_rel_ci, attributed to a discovery run that did not complete when they fall between its start and its last update. Deletions older than the audit retention are not seen."
+   }
+  },
+  "ITOM-150": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "em_alert",
+     "fields": [
+      "number",
+      "cmdb_ci"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "duplicate_of"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "em_alert",
+    "fields": [
+     "number",
+     "cmdb_ci"
+    ],
+    "query": "cmdb_ciISNOTEMPTY"
+   },
+   "compare": {
+    "name": "itom_alerts_on_duplicates",
+    "args": {
+     "without_relationships": true
+    }
+   }
+  },
+  "ITOM-152": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "sys_properties",
+     "fields": [
+      "name"
+     ]
+    },
+    {
+     "table": "cmdb_ci_service",
+     "fields": [
+      "name",
+      "busines_criticality",
+      "service_classification"
+     ]
+    },
+    {
+     "table": "em_impact_graph",
+     "fields": [
+      "business_service"
+     ]
+    },
+    {
+     "table": "cmdb_rel_ci",
+     "fields": [
+      "parent",
+      "child"
+     ]
+    },
+    {
+     "table": "service_offering",
+     "fields": [
+      "parent"
+     ]
+    },
+    {
+     "table": "svc_ci_assoc",
+     "fields": [
+      "service_id",
+      "ci_id"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "sys_class_name",
+      "discovery_source"
+     ]
+    },
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "cmdb_ci",
+      "issues"
+     ]
+    },
+    {
+     "table": "sys_db_object",
+     "fields": [
+      "name",
+      "super_class"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "sys_properties",
+    "fields": [
+     "name"
+    ],
+    "query": "name=glide.product.name"
+   },
+   "compare": {
+    "name": "itom_impact_break_cause",
+    "args": {
+     "classification": {
+      "business": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Business Service"
+       }
+      },
+      "technical": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Technology Management Service"
+       }
+      },
+      "application": {
+       "$choice": {
+        "table": "cmdb_ci_service",
+        "element": "service_classification",
+        "label": "Application Service"
+       }
+      }
+     },
+     "critical": [
+      "1 - most critical"
+     ]
+    }
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "A Business Critical service with no impact tree (em_impact_graph), its model walked down as CSDM-075 does; where it reaches the application or infrastructure layer, the break point is traced to Service Mapping (a mapped service with no CI), a CI never discovered (no discovery source) or discovery issues on the CI (D-037). Other ITOM findings are not joined; a model ending higher is CSDM-075's."
+   }
+  },
+  "ITOM-156": {
+   "engine": "configuration",
+   "requires_tables": [
+    {
+     "table": "discovery_schedule",
+     "fields": [
+      "name",
+      "active",
+      "discover",
+      "run_type",
+      "run_period",
+      "max_run",
+      "mid_select_method",
+      "mid_server",
+      "location"
+     ]
+    },
+    {
+     "table": "discovery_status",
+     "fields": [
+      "dscheduler",
+      "state",
+      "started",
+      "completed"
+     ]
+    },
+    {
+     "table": "discovery_device_history",
+     "fields": [
+      "status",
+      "cmdb_ci"
+     ]
+    },
+    {
+     "table": "cmdb_ci",
+     "fields": [
+      "location"
+     ]
+    },
+    {
+     "table": "sysrule_assignment",
+     "fields": [
+      "name",
+      "condition",
+      "active"
+     ]
+    }
+   ],
+   "reader": "table_rows",
+   "args": {
+    "table": "discovery_schedule",
+    "fields": [
+     "name",
+     "location"
+    ],
+    "query": "active=true"
+   },
+   "compare": {
+    "name": "itom_schedule_location_breakage",
+    "args": {}
+   },
+   "partial": {
+    "kind": "detection_gap",
+    "not_covered": "N: CIs in the discovery history of the schedule's runs that have no location; M: assignment (routing), alert management and event rules whose conditions name a location, by name (D-037). \"DR\" rules are not a platform object and are not counted; a location set later by a pattern (the guard) is read as the CI stands now."
+   }
+  }
+ }
+}

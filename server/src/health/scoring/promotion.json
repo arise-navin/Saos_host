@@ -1,0 +1,56 @@
+{
+ "promotion_version": "1.0.0",
+ "model_family": "health-quality/2",
+ "decision": "D-016",
+ "calibration_version": "calibration/2",
+ "candidates_version": "0.3.0",
+ "picks": {
+  "record_aggregation": "R6",
+  "attainment_curve": "A3",
+  "control_aggregation": "C3",
+  "overall": "O8",
+  "systemic_treatment": "T1",
+  "coverage_floor": "F2"
+ },
+ "config": {
+  "record": {
+   "aggregation": "tier_stratified",
+   "tier_weights": {
+    "bc": 2,
+    "core": 1.5,
+    "other": 1,
+    "endpoint": 0.75
+   }
+  },
+  "curve": "convex",
+  "control": {
+   "aggregation": "deduction_additive"
+  },
+  "blends": {
+   "record": 0.7,
+   "mixed": 0.6,
+   "estate": 0.3
+  },
+  "overall": {
+   "kind": "min_blend",
+   "params": {
+    "lambda": 0.5
+   }
+  },
+  "floor": 0.4,
+  "systemic": null
+ },
+ "modules": {
+  "cmdb": "cmdb-quality/2",
+  "itsm": "itsm-quality/2",
+  "itom": "itom-quality/2",
+  "platform": "platform-quality/2",
+  "enterprise_dq": "enterprise-dq-quality/2",
+  "csdm": "csdm-quality/2",
+  "itil": "itil-quality/2"
+ },
+ "overall_model": "overall-health/2",
+ "not_promoted": {
+  "coverage_floor": "F2 = 0.4 applies to the validity of the promoted modules (CMDB, ITSM, ITOM, Platform, Enterprise DQ, CSDM, ITIL) only; each other module gets it when its own phase promotes it"
+ }
+}

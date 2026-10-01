@@ -1,0 +1,10 @@
+{
+ "engine": "text_analysis",
+ "rules": {
+  "DQ-108": {
+   "undefined_dependencies": [
+    "which records' names are compared, and the divergence measure and threshold"
+   ]
+  }
+ }
+}

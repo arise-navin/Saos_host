@@ -1,0 +1,62 @@
+{
+ "engine": "reference_integrity",
+ "rules": {
+  "PLT-005": {
+   "requires_tables": [
+    {
+     "table": "service_commitment",
+     "fields": [
+      "name",
+      "sla"
+     ]
+    },
+    {
+     "table": "contract_sla",
+     "fields": [
+      "active"
+     ]
+    }
+   ],
+   "table": "service_commitment",
+   "scope": "slaISNOTEMPTY",
+   "field": "sla",
+   "target": "contract_sla",
+   "check": "active",
+   "report": [
+    "inactive"
+   ],
+   "evidence_fields": [
+    "name",
+    "sla"
+   ],
+   "partial": {
+    "kind": "evidence_gap",
+    "not_covered": "Commitments are read; offerings reach SLAs only through commitments (service_offering_commitment), so the offering is not named."
+   }
+  },
+  "PLT-027": {
+   "requires_tables": [
+    {
+     "table": "task_sla",
+     "fields": [
+      "task",
+      "sla"
+     ]
+    }
+   ],
+   "table": "task_sla",
+   "scope": "taskISNOTEMPTY",
+   "field": "task",
+   "target": "task",
+   "check": "exists",
+   "report": [
+    "missing"
+   ],
+   "evidence_fields": [
+    "task",
+    "sla",
+    "stage"
+   ]
+  }
+ }
+}
