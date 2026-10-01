@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: saos-api
+    runtime: node
+    plan: starter
+    rootDir: server
+    buildCommand: npm ci && npm ci --prefix fluent-workspace
+    startCommand: npm start
+    healthCheckPath: /healthz
+    disk:
+      name: saos-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 24.18.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: SAOS_DATA_DIR
+        value: /var/data
+      - key: SAOS_AUTH_USER
+        sync: false
+      - key: SAOS_AUTH_PASSWORD
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: LLM_PROVIDER
+        value: ollama
+      - key: OLLAMA_BASE_URL
+        value: https://ollama.com/v1
+      - key: OLLAMA_MODEL
+        value: gpt-oss:120b
+      - key: OLLAMA_API_KEY
+        sync: false

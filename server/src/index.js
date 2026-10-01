@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { accessGuard } from './access.js';
 import { systemRouter } from './routes/system.js';
 import { incidentsRouter } from './routes/incidents.js';
 import { catalogRouter } from './routes/catalog.js';
@@ -42,6 +43,7 @@ import './servicenow/post-install-state.js';
 import { primeCapability } from './servicenow/fluent.js';
 
 const app = express();
+app.use(accessGuard());
 app.use(cors());
 app.use(express.json({ limit: '2mb' }));
 // Before the routes, so a request is logged even when it 404s.
@@ -143,7 +145,7 @@ const PORT = Number(process.env.PORT) || 4000;
  */
 const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
 const HOST = process.env.HOST || '127.0.0.1';
-if (!LOOPBACK.has(HOST)) {
+if (!LOOPBACK.has(HOST) && (!process.env.SAOS_AUTH_USER || !process.env.SAOS_AUTH_PASSWORD)) {
   log.error('http',
     `refusing to bind ${HOST}: NowHelpAssist is unauthenticated and holds instance admin credentials, ` +
     `and its approval endpoint authorises writes to ${getSettings().connection.instanceUrl || 'the bound instance'}. ` +
@@ -216,7 +218,7 @@ function start(attempt = 1) {
     /* Also asks the instance for the real time, before the window's first request. */
     const lic = licenceRequired() ? licence.status() : null;
     banner([
-      `NowHelpAssist  ·  http://localhost:${PORT}   (bound ${HOST} — loopback only)`,
+      `NowHelpAssist  ·  http://localhost:${PORT}   (bound ${HOST} — ${LOOPBACK.has(HOST) ? 'loopback only' : 'password protected'})`,
       `instance   ${s.connection.instanceUrl || '(none bound)'}   (both tiers derive from this)`,
       `model      ${s.llm.provider} · ${s.llm.model || '(default)'}`,
       `storage    ${DB_PATH}`,
